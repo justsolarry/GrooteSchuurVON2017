@@ -85,7 +85,7 @@ a {
       background: transparent; }
       #mainNav.navbar-shrink {
         padding: 10px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+/*        border-bottom: 1px solid rgba(255, 255, 255, 0.3);*/
         background: black; }
       #mainNav .nav-link.active {
         outline: none;
