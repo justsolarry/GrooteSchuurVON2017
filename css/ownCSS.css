@@ -1,3 +1,22 @@
+.menuButton:hover{
+    color: white;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-transition: all .2s ease-in-out;
+      -moz-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+}
+
+
+.subHeadingTitle{
+    word-spacing: 12px;
+    font-family:  Charcoal, sans-serif;
+    font-size: 2.25em;
+    text-transform: uppercase;
+    margin-bottom: 27px;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+}
 /* Targetting all the div inside the col-md-8 tag */
 .cold-md-9 div{
     display:block;
