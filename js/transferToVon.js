@@ -5,7 +5,7 @@ function sendDataToVon(listOfMedicalRecordIds){
     for (i = 0; i < listOfMedicalRecordIds.length; i++) {
         var record = getRecordFromDatabase(listOfMedicalRecordIds[i]);
         var xmlRecord = create2018Xml(record);
-        transferXmlToVon(xmlRecord);
+        transferXmlToVon(xmlRecord); 
     }
 }
 
@@ -25,8 +25,7 @@ function transferXmlToVon(xmlFile)
 
 function create2018Xml (babyData){ //passInJSON object data
 
-    // createHTTPGETConnection();
-    //babyData = JSON.parse(babyData);
+    babyData = JSON.parse(babyData);
 
     var fileNum = 1;
     var date = new Date(); // Format 2011-05-10T16:49:06.547125-04:00
