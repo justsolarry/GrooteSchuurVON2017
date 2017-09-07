@@ -33,6 +33,21 @@ function steroidsForCLDCheck() {
     }
 }
 
+function checkIfThereIsSurgery() {
+    var value1 = document.getElementById('hiddenFieldHidingEntireSurgeryPanel');
+    if ((document.getElementById('pdaSurgeryYes').checked)||
+        (document.getElementById('necSurgeryYes').checked)||
+        (document.getElementById('otherSurgeryYes').checked)
+       ) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    else{
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
 function ropSurgeryCheck() {
     var value1 = document.getElementById('hiddenFieldROPSurgery');
     if (document.getElementById('ropSurgeryYes').checked) {
@@ -317,14 +332,14 @@ function temperatureMeasuredWithinFirstHourCheck() {
 }
 
 function postTransferDispositionCheck() {
+    var e = document.getElementById("postTransferDisposition");
+    var strUser = e.options[e.selectedIndex].value;
+    
     var partB = document.getElementById('TransferFormPartB');
     var partC = document.getElementById('TransferFormPartC');
     var partD = document.getElementById('TransferFormPartD');
     /*if case for Home, died, hospitalized - Show parts D when available*/
-    if ((document.getElementById('postTransferDispositionHome').checked)||
-        (document.getElementById('postTransferDispositionDied').checked)||
-        (document.getElementById('postTransferDispositionHospitalized').checked)
-       ) {
+    if (strUser==0 || strUser==2 || strUser==4){
         $(partB).slideUp("slow");
         $(partC).slideUp("slow");
         $(partD).slideDown("slow");
@@ -333,7 +348,7 @@ function postTransferDispositionCheck() {
         $(partD).addClass('glowingHiddenFields');
     }
     /*if case for transferred - Show parts C and D*/
-    if (document.getElementById('postTransferDispositionTransferred').checked) {
+    if (strUser==1){
         $(partB).slideUp("slow");
         $(partC).slideDown("slow");
         $(partD).slideDown("slow");
@@ -342,7 +357,7 @@ function postTransferDispositionCheck() {
         $(partD).addClass('glowingHiddenFields');
     }
     /*if case for readmitted to hospital - show (B and D)  C if applicable*/
-    if (document.getElementById('postTransferDispositionReadmitted').checked) {
+    if (strUser==3){
         $(partB).slideDown("slow");
         $(partC).slideDown("slow");
         $(partD).slideDown("slow");
@@ -351,6 +366,41 @@ function postTransferDispositionCheck() {
         $(partD).removeClass('glowingHiddenFields');
         $(partB).addClass('glowingHiddenFields');
         $(partC).addClass('glowingHiddenFields');
+        $(partD).addClass('glowingHiddenFields');
+    }
+}
+function dispositionAfterReadmissionCheck() {
+    var e = document.getElementById("dispositionAfterReadmission");
+    var strUser = e.options[e.selectedIndex].value;
+    
+    var partC = document.getElementById('TransferFormPartC');
+    var partD = document.getElementById('TransferFormPartD');
+    /*if case for Home, died, hospitalized - Show parts D */
+    if (strUser==0 || strUser==1 || strUser==3){
+    
+        $(partC).slideUp("slow");
+        $(partD).slideDown("slow");
+        $(partC).removeClass('glowingHiddenFields');
+        $(partD).addClass('glowingHiddenFields');
+    }
+    /*if case for transferred - Show parts C and D when available*/
+    if (strUser==2){
+        $(partC).slideDown("slow");
+        $(partD).slideDown("slow");
+  
+        $(partC).addClass('glowingHiddenFields');
+        $(partD).addClass('glowingHiddenFields');
+    }
+}
+function ultimateDispositionCheck() {
+    var e = document.getElementById("ultimateDisposition");
+    var strUser = e.options[e.selectedIndex].value;
+    
+    var partD = document.getElementById('TransferFormPartD');
+    /*if case for Home, died, hospitalized - Show parts D */
+    if (strUser==0 || strUser==1 || strUser==2){
+    
+        $(partD).slideDown("slow");
         $(partD).addClass('glowingHiddenFields');
     }
 }

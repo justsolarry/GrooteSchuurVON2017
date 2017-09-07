@@ -1,3 +1,38 @@
+function validateMothersName()
+{
+    var alphaExp = /^[a-zA-Z\s\-]*$/;
+    var value1 = document.getElementById('mothersName').value;
+  if ((value1.length) ==0){
+    toastr.error("Mother's Full Name - Value cannot be empty");
+    $('#mothersName').addClass('addRed')
+  }
+    else if (value1.match(alphaExp)){
+             $('#mothersName').removeClass('addRed')
+             }
+    else{
+        toastr.error("Mother's Full Name - Only letters allowed");
+        $('#mothersName').addClass('addRed')
+    }
+  
+}
+function validatePatientsName()
+{
+    var alphaExp = /^[a-zA-Z\s\-]*$/;
+    var value1 = document.getElementById('patientsName').value;
+  if ((value1.length) ==0){
+    toastr.error("Patient's Name - Value cannot be empty");
+    $('#patientsName').addClass('addRed')
+  }
+    else if (value1.match(alphaExp)){
+             $('#patientsName').removeClass('addRed')
+             }
+    else{
+        toastr.error("Patient's Name - Only letters allowed");
+        $('#patientsName').addClass('addRed')
+    }
+  
+}
+
 function validateBirthweight(){
     var weight = document.getElementById('birthWeightInGrams').value;
     if(weight.length==0){

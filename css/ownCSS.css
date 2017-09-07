@@ -1,3 +1,23 @@
+/* START adding units*/
+.panel-body .addingUnits:after{
+    position:relative;
+    right:260px;
+    top:5px;
+    float:right;
+}
+.unitsGrams:after{
+    content:"grams";
+}
+.unitsWeeks:after{
+    content:"weeks";
+}
+.unitsCm:after{
+    content:"cm";
+}
+.unitsDays:after{
+    content:"days";
+}
+/* END adding units*/
 .menuButton:hover{
     color: white;
     outline: none;
@@ -128,7 +148,8 @@
 #hiddenFieldFungalInfection,
 #hiddenFieldROPRetinal,
 #hiddenFieldBirthDefectCodes,
-#hiddenFieldAtDischargeGroup
+#hiddenFieldAtDischargeGroup,
+#hiddenFieldHidingEntireSurgeryPanel
 {
     display:none;
 }
