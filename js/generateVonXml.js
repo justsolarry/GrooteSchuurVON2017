@@ -1,4 +1,3 @@
-
 function create2018Xml (babyData){ //passInJSON object data
 
     babyData = JSON.parse(babyData);
