@@ -175,14 +175,18 @@ function repopulateForm(babyData){
                 alert("Running:"+key);
                 if(document.getElementById(key) != null){
                     
-                    if(document.getElementById(key).type =='radio'){
-                        if(document.getElementById(key).value === babyData[key]){
-                          document.getElementById(key).checked = true;   
+                    alert(key+"| |"+JSON.stringify(document.getElementById(key)));
+                    var field = document.getElementsByName(key);
+                    
+                    //alert(field[0].type);
+                    /*if(document.getElementsByName(key)[0].type === 'radio'){
+                        if(document.getElementsByName(key)[0].value === babyData[key]){
+                          document.getElementsByName(key)[0].checked = true;   
                         }
                     }
                     else{
-                        document.getElementById(key).value = babyData[key];
-                    }
+                        document.getElementsByName(key)[0].value = babyData[key];
+                    }*/
                 }
             }
         }
