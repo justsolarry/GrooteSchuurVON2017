@@ -6,7 +6,7 @@
       
           <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="css/ownCSS.css" rel="stylesheet">
+<!--    <link href="css/ownCSS.css" rel="stylesheet">-->
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -32,11 +32,14 @@
     <!-- Custom VON Team Scripts for this template -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
+<!--
     <script type="text/javascript" src="js/ownScripts.js"></script>
     <script type="text/javascript" src="js/validationScript.js"></script>
+-->
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
     <script src="js/noframework.waypoints.js"></script>
+      
       <script src="js/transferToVon.js"></script>
       <script src="js/db.js"></script>
       <script src="js/generateVonXml.js"></script>
@@ -45,9 +48,9 @@
   <body>
     <h1>Test Data Transfer Environment</h1>
       <script>var listOfIds = [1,2]; </script>
-      <button onclick="sendDataToVon(listOfIds)">Press Me To submit data to Test Von Environment</button>
+      <button class="btn btn-default" onclick="sendDataToVon(listOfIds)">Press Me To submit data to Test Von Environment</button>
 <!--      List of ids will get passed in-->
-        <code id="xmlContent"></code>
-    <div id="demo">text</div>
+        <br>
+      <xmp id="xmlContent"></xmp>
     </body>
 </html>
