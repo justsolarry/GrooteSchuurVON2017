@@ -176,7 +176,9 @@ function repopulateForm(babyData){
                 if(document.getElementById(key) != null){
                     
                     if(document.getElementById(key).type =='radio'){
-                        document.getElementById(key).checked = true; 
+                        if(document.getElementById(key).value === babyData[key]){
+                          document.getElementById(key).checked = true;   
+                        }
                     }
                     else{
                         document.getElementById(key).value = babyData[key];
