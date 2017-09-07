@@ -306,15 +306,6 @@ function addNewSurgeryField(){
 }
 
 
-function numberOfInfantsDeliveredCheck() {
-    if (document.getElementById('multipleGestationNo').checked) {
-        document.getElementById('hiddenField3').style.display = 'none';
-    }
-    if (document.getElementById('multipleGestationYes').checked) {
-        document.getElementById('hiddenField3').style.display = 'inline';
-    }
-}
-
 function temperatureMeasuredWithinFirstHourCheck() {
     var value1 = document.getElementById('hiddenFieldTemperatureFirstHour');
     if (document.getElementById('temperatureMeasuredWithinFirstHourYes').checked) {
@@ -404,11 +395,27 @@ function ultimateDispositionCheck() {
         $(partD).addClass('glowingHiddenFields');
     }
 }
+
+function numberOfInfantsDeliveredCheck() {
+    var e = document.getElementById("numberOfInfantsDelivered");
+    var strUser = e.options[e.selectedIndex].value;
+    
+    var value1 = document.getElementById('hiddenFieldAPGARGroup');
+    if (strUser>0 && strUser <11){
+    
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields');
+    }
+    if(strUser ==0){
+            $(value1).slideUp("slow");
+            $(value1).removeClass('glowingHiddenFields');
+            }
+}
 function PIHOccurCheck() {
     
 }
 function showTransferHideDischarge() { 
-    document.getElementById('transfer').style.display = 'block'; 
+    document.getElementById('transfer').slideDown("slow");
 }
 
 /*window.onscroll = function() {myFunction()};
@@ -426,58 +433,73 @@ function myFunction() {
 $(document).ready(function() {
     /*Using the hide function wasn't optimal as it shows up when you load the page. Used display:none instead in CSS*/
     /*$("#sidebar-container").hide(); //hide your div initially*/
-    var topOfOthDiv = $("#PatientFormID").offset().top;
-    var topOfOthDiv1 = $("#28DayFormID").offset().top;
-    //disharge and transfer is going to be at the same position
-    var topOfOthDiv2 = $("#DischargeTransferForm").offset().top;
-    var topOfOthDiv3 = $("#TransferFormID").offset().top;
+    var patientFormLocation = $("#PatientFormID").offset().top;
+    var generalDataItemsFormLocation = $("#generalDataItemsID").offset().top;
+    var transferFormLocation = $("#TransferFormID").offset().top;
+    
     $(window).scroll(function() {
-        if($(window).scrollTop() < topOfOthDiv-100) { //if still on the main page, dont show
+        var windowLocation = $(window).scrollTop();
+        
+            console.log("patientFormLocation location: "+patientFormLocation);
+            console.log("general location: "+generalDataItemsFormLocation);
+            console.log("transfer location: "+transferFormLocation);
+            console.log("window scroll location: "+windowLocation);
+        if($(window).scrollTop() < patientFormLocation-100) { //if still on the main page, dont show 1076
             $("#sidebar-container").fadeOut(500);
+            console.log("home page");
         }
-        if($(window).scrollTop() > topOfOthDiv-100) { //scrolled past the patient form
-            if($('.28dayProgressBar').hasClass('glowingButton')){
-                $('.28dayProgressBar').removeClass('glowingButton')
+        if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
+            if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
+                $('.generalDataItemsProgressBar').removeClass('glowingButton')
                }
             if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
                 $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
                }
             $("#sidebar-container").fadeIn(500);
-            $('.patientFormProgressBar').addClass('glowingButton')
+            $('.patientFormProgressBar').addClass('glowingButton');
             
             /* Toggling Buttons */
-            $('#patientFormCircle').addClass('glowingButton')
-            $('#28DayFormCircle').removeClass('glowingButton')
-            $('#dischargeCircle').removeClass('glowingButton')
+            $('#patientFormCircle').addClass('glowingButton');
+            $('#generalDataItemsFormCircle').removeClass('glowingButton');
+            $('#dischargeCircle').removeClass('glowingButton');
             
             /* Toggling different Color */
             $('#patientFormCircle').css('background-color', 'green');
+            console.log("in first section");
         }
-        if($(window).scrollTop() > topOfOthDiv1-100) { //scrolled past the 28 day form 
+        if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156
             if($('.patientFormProgressBar').hasClass('glowingButton')){
-                $('.patientFormProgressBar').removeClass('glowingButton')
+                $('.patientFormProgressBar').removeClass('glowingButton');
                }
             if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
-                $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
+                $('.dischargeAndTransferProgressBar').removeClass('glowingButton');
                }
             /*$('.patientFormProgressBar').removeClass('glowingButton')*/
-            $('.28dayProgressBar').addClass('glowingButton')
+            $('.generalDataItemsProgressBar').addClass('glowingButton');
             /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
             /* Toggling Buttons */
-            $('#patientFormCircle').removeClass('glowingButton')
-            $('#28DayFormCircle').addClass('glowingButton')
-            $('#dischargeCircle').removeClass('glowingButton')
+            $('#patientFormCircle').removeClass('glowingButton');
+            $('#generalDataItemsFormCircle').addClass('glowingButton');
+            $('#dischargeCircle').removeClass('glowingButton');
+            console.log("in second section");
         }
-        if($(window).scrollTop() > topOfOthDiv2-100) { //scrolled past the discharge/transfer form
-            
-            $('.patientFormProgressBar').removeClass('glowingButton')
-            $('.28dayProgressBar').removeClass('glowingButton')
-            $('.dischargeAndTransferProgressBar').addClass('glowingButton')
+        if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
+            if($('.patientFormProgressBar').hasClass('glowingButton')){
+                $('.patientFormProgressBar').removeClass('glowingButton');
+               }
+            if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
+                $('.generalDataItemsProgressBar').removeClass('glowingButton');
+               }
+            /*$('.patientFormProgressBar').removeClass('glowingButton')*/
+            $('.dischargeAndTransferProgressBar').addClass('glowingButton');
+            /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
             /* Toggling Buttons */
-            $('#patientFormCircle').removeClass('glowingButton')
-            $('#28DayFormCircle').removeClass('glowingButton')
-            $('#dischargeCircle').addClass('glowingButton')
+            $('#patientFormCircle').removeClass('glowingButton');
+            $('#generalDataItemsFormCircle').removeClass('glowingButton');
+            $('#dischargeCircle').addClass('glowingButton');
+            console.log("in third section");
         }
+        
     });
 });
 
