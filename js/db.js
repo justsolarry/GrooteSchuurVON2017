@@ -1,5 +1,6 @@
 function createRecordInDatabase(medicalRecordId){
-    var medicalRecordObject = {_id = medicalRecordId}
+    var medicalRecordObject = {};
+    medicalRecordObject._id = medicalRecordId;
     createHTTPPOSTConnectionRecord(medicalRecordObject);
 }
 
@@ -50,7 +51,7 @@ function createHTTPPOSTConnection(medicalRecordId){ // must change to pass in va
 function createHTTPGETConnection(medicalRecordId){
   var babyData = {idMisMatch: true};
   var http = new XMLHttpRequest();
-  var url = "http://196.42.86.86:5984/test1/" + medicalRecordId; //server will change -> config file?
+  var url = "http://196.24.190.61:5984/test1/" + medicalRecordId; //server will change -> config file?
   http.open("GET", url, false);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
