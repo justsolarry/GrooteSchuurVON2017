@@ -150,7 +150,9 @@
 #hiddenFieldBirthDefectCodes,
 #hiddenFieldAtDischargeGroup,
 #hiddenFieldHidingEntireSurgeryPanel,
-#hiddenFieldAPGARGroup
+#hiddenFieldAPGARGroup,
+#hiddenFieldCongenitalInfectionOrganisms,
+#hiddenFieldPIHWhereOccurred
 {
     display:none;
 }
@@ -176,7 +178,7 @@
     display:none;
 }
 /* Hiding Discharge/Transfer Form Sections */
-#transfer{
+#transferSection{
     display:none;
 }
 /*text in the radio buttons*/

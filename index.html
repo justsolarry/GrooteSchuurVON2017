@@ -301,19 +301,19 @@
                                         </div>
                                     </div>
                                     <div class="form-group input-group">
-                                        <label class="fixingLabelAlignment"> Died in Delivery Room :</label>
-                                        <div class="fixingInputAlignment">
+                                            <label class="fixingLabelAlignment">Died in Delivery Room : </label>
                                             <span class="radioFloatLeft">
-                                                        <input id="alive" type="radio" onclick="" name = status value="0">
-                                                        <label for="inbornCheck" class="radioText">Yes</label>
-                                                    </span>
-                                            <span class="radioFloatLeft">
-                                                        <input id="died" type="radio" onclick="" name = status value="1">
-                                                        <label class="radioText">No Make it default</label>
+                                                    <label class="radioText">Yes</label>
+                                                    <input class="radioType" id="diedInDeliveryRoomYes" type="radio" name = diedInDeliveryRoom value="1">
 
-                                                    </span>
+                                                </span>
+
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">No</label>
+                                                    <input class="radioType" id="diedInDeliveryRoomNo" type="radio" name = diedInDeliveryRoom value="0">
+
+                                                </span>
                                         </div>
-                                    </div>
 
                                 </div>
 
@@ -529,6 +529,11 @@
                                                     <input class="radioType" id="modeOfDeliveryCesareanSection" type="radio" name = modeOfDelivery value="0">
 
                                                 </span>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">Unknown</label>
+                                                    <input class="radioType" id="modeOfDeliveryUnknown" type="radio" name = modeOfDelivery value="0">
+
+                                                </span>
                                         </div>
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Sex of Infant : </label>
@@ -606,8 +611,56 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">Congenital Infection : </label>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">Yes</label>
+                                                    <input class="radioType" id="congenitalInfectionYes" onclick="javascript:congenitalInfectionCheck();" type="radio" name = congenitalInfection value="1">
+                                                </span>
 
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">No</label>
+                                                    <input class="radioType" id="congenitalInfectionNo" onclick="javascript:congenitalInfectionCheck();"  type="radio" name = congenitalInfection value="0">
+                                                </span>
 
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">Unknown</label>
+                                                    <input class="radioType" id="congenitalInfectionUnknown" onclick="javascript:congenitalInfectionCheck();" type="radio" name = congenitalInfection value="0">
+                                                </span>
+                                        </div>
+
+                                        <div id="hiddenFieldCongenitalInfectionOrganisms">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Congenital Infection, Organism(s) : </label>
+                                                <div class="fixingInputAlignment">
+                                                    <select id="congenitalCode1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                                                            <option value="">---------None---------</option>
+                                                                                            <option value="">103 - Aeromonas Species</option>
+                                                                                        </select>
+                                                </div>
+                                                <label class="fixingLabelAlignment"></label>
+                                                <div class="fixingInputAlignment">
+                                                    <select id="congenitalCode2" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                                                            <option value="">---------None---------</option>
+                                                                                            <option value="">103 - Aeromonas Species</option>
+                                                                                        </select>
+                                                </div>
+                                                <label class="fixingLabelAlignment"></label>
+                                                <div class="fixingInputAlignment">
+                                                    <select id="congenitalCode3" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                                                            <option value="">---------None---------</option>
+                                                                                            <option value="">103 - Aeromonas Species</option>
+                                                                                        </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                            
+                                        
+                                        
+                                        
+                                        
+                                        
                                         <div class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-heading">
                                                 Initial Resuscitation
@@ -803,6 +856,11 @@
                                                     <input class="radioType" id="temperatureMeasuredWithinFirstHourNA" onclick="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="0">
 
                                                 </span>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">Unknown</label>
+                                                    <input class="radioType" id="temperatureMeasuredWithinFirstHourUnknown" onclick="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="0">
+
+                                                </span>
                                         </div>
                                         <div id="hiddenFieldTemperatureFirstHour" class="form-group input-group">
                                             <label class="fixingLabelAlignment">Temperature within First Hour : </label>
@@ -826,6 +884,11 @@
                                                         <span class="radioFloatLeftInner">
                                                                 <label class="radioText">No</label>
                                                                 <input class="radioType" id="bacterialSepsisBeforeNo" onclick="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="0">
+
+                                                            </span>
+                                                        <span class="radioFloatLeftInner">
+                                                                <label class="radioText">N/A</label>
+                                                                <input class="radioType" id="bacterialSepsisBeforeNA" onclick="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="0">
 
                                                             </span>
                                                         <span class="radioFloatLeftInner">
@@ -914,15 +977,40 @@
                                                 <div id="hiddenFieldCranialImaging" class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInner">Worst Grade of PIH (0-4) : </label>
                                                     <div class="fixingInputAlignmentInner">
-                                                        <select name=state class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                        <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                     <option value="4">4</option>
-                                                </select>
+                                                        </select>
                                                     </div>
                                                 </div>
+                                                <div id="hiddenFieldPIHWhereOccurred">
+                                                    <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Where Occurred?  : </label>
+                                                    <span class="radioFloatLeftInner">
+                                                    <input class="radioType" id="PIHWhereOccurredYourHospital" type="radio" name = PIHWhereOccurred value="1">
+                                                    <label class="radioText">Your Hospital</label>
+                                                </span>
+
+                                                    <span class="radioFloatLeftInner">
+                                                    <input class="radioType" id="PIHWhereOccurredOtherHosptal" type="radio" name = PIHWhereOccurred value="0">
+                                                    <label class="radioText">Other Hospital</label>
+                                                </span>
+
+                                                    <span class="radioFloatLeftInner">
+                                                    <input class="radioType" id="PIHWhereOccurredNA" type="radio" name = PIHWhereOccurred value="0">
+                                                    <label class="radioText">N/A</label>
+                                                </span>
+                                                    <span class="radioFloatLeftInner">
+                                                    <input class="radioType" id="PIHWhereOccurredUnknown" type="radio" onchange="javascript:PIHWhereOccurredCheck();" name = PIHWhereOccurred value="0">
+                                                    <label class="radioText">Unknown</label>
+                                                </span>
+                                                </div>
+                                                </div>
+                                                
+                                                
                                             </div>
                                         </div>
 
@@ -981,6 +1069,14 @@
                                                                     <label class="radioText">No</label>
                                                                     <input class="radioType" id="conventionalVentilationAfterInitialNo" type="radio" name = conventionalVentilationAfterInitial value="0">
                                                                 </span>
+                                                            <span class="radioFloatLeftInner">
+                                                                    <label class="radioText">N/A</label>
+                                                                    <input class="radioType" id="conventionalVentilationAfterInitialNA" type="radio" name = conventionalVentilationAfterInitial value="1">
+                                                                </span>
+                                                            <span class="radioFloatLeftInner">
+                                                                    <label class="radioText">Unknown</label>
+                                                                    <input class="radioType" id="conventionalVentilationAfterInitialUnknown" type="radio" name = conventionalVentilationAfterInitial value="0">
+                                                                </span>
                                                         </div>
                                                     </div>
                                                     <div class="form-group input-group">
@@ -995,6 +1091,11 @@
                                                             <span class="radioFloatLeftInner">
                                                                         <label class="radioText">No</label>
                                                                         <input class="radioType" id="highFrequencyAfterInitialNo" type="radio" name = highFrequencyAfterInitial value="0">
+
+                                                                    </span>
+                                                            <span class="radioFloatLeftInner">
+                                                                        <label class="radioText">N/A</label>
+                                                                        <input class="radioType" id="highFrequencyAfterInitialNA" type="radio" name = highFrequencyAfterInitial value="0">
 
                                                                     </span>
                                                             <span class="radioFloatLeftInner">
@@ -1016,6 +1117,11 @@
                                                             <span class="radioFloatLeftInner">
                                                                 <label class="radioText">No</label>
                                                                 <input class="radioType" id="highFlowAfterInitialNo" type="radio" name = highFlowAfterInitial value="0">
+
+                                                            </span>
+                                                            <span class="radioFloatLeftInner">
+                                                                <label class="radioText">N/A</label>
+                                                                <input class="radioType" id="highFlowAfterInitialNA" type="radio" name = highFlowAfterInitial value="0">
 
                                                             </span>
                                                             <span class="radioFloatLeftInner">
@@ -1041,6 +1147,11 @@
 
                                                             </span>
                                                             <span class="radioFloatLeftInner">
+                                                                <label class="radioText">N/A</label>
+                                                                <input class="radioType" id="nasalVentilationAfterInitialNA" type="radio" name = nasalVentilationAfterInitial value="0">
+
+                                                            </span>
+                                                            <span class="radioFloatLeftInner">
                                                                 <label class="radioText">Unknown</label>
                                                                 <input class="radioType" id="nasalVentilationAfterInitialUnknown" type="radio" name = nasalVentilationAfterInitial value="0">
 
@@ -1062,8 +1173,39 @@
 
                                                             </span>
                                                             <span class="radioFloatLeftInner">
+                                                                <label class="radioText">N/A</label>
+                                                                <input class="radioType" id="nasalCPAPAfterInitialNA" type="radio" name = nasalCPAPAfterInitial value="0">
+
+                                                            </span>
+                                                            <span class="radioFloatLeftInner">
                                                                 <label class="radioText">Unknown</label>
                                                                 <input class="radioType" id="nasalCPAPAfterInitialUnknown" type="radio" name = nasalCPAPAfterInitial value="0">
+
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInner">Nasal CPAP or Nasal Vent before or without ever having received ETT Vent : </label>
+                                                        <div class="fixingInputAlignmentInner">
+                                                            <span class="radioFloatLeftInner">
+                                                                <label class="radioText">Yes</label>
+                                                                <input class="radioType" id="nasalCPAPOrNasalVentAfterInitialYes" type="radio" name = nasalCPAPOrNasalVentAfterInitial value="1">
+
+                                                            </span>
+
+                                                            <span class="radioFloatLeftInner">
+                                                                <label class="radioText">No</label>
+                                                                <input class="radioType" id="nasalCPAPOrNasalVentAfterInitialNo" type="radio" name = nasalCPAPOrNasalVentAfterInitial value="0">
+
+                                                            </span>
+                                                            <span class="radioFloatLeftInner">
+                                                                <label class="radioText">N/A</label>
+                                                                <input class="radioType" id="nasalCPAPOrNasalVentAfterInitialNA" type="radio" name = nasalCPAPOrNasalVentAfterInitial value="0">
+
+                                                            </span>
+                                                            <span class="radioFloatLeftInner">
+                                                                <label class="radioText">Unknown</label>
+                                                                <input class="radioType" id="nasalCPAPOrNasalVentAfterInitialUnknown" type="radio" name = nasalCPAPOrNasalVentAfterInitial value="0">
 
                                                             </span>
                                                         </div>
@@ -1277,6 +1419,16 @@
                                                         <input class="radioType" id="steroidsForCLDWhereGivenBoth" type="radio" name = steroidsForCLDWhereGiven value="0">
 
                                                     </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="steroidsForCLDWhereGivenNA" type="radio" name = steroidsForCLDWhereGiven value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="steroidsForCLDWhereGivenUnknown" type="radio" name = steroidsForCLDWhereGiven value="0">
+
+                                                    </span>
                                             </div>
                                         </div>
                                         <div class="form-group input-group">
@@ -1291,6 +1443,11 @@
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="ibuprofenNo" type="radio" name = ibuprofen value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="ibuprofenNA" type="radio" name = ibuprofen value="0">
 
                                                     </span>
                                                 <span class="radioFloatLeft">
@@ -1315,6 +1472,11 @@
 
                                                     </span>
                                                 <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="acetaminophenNA" type="radio" name = acetaminophen value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
                                                         <label class="radioText">Unknown</label>
                                                         <input class="radioType" id="acetaminophenUnknown" type="radio" name = acetaminophen value="0">
 
@@ -1333,6 +1495,11 @@
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="probioticsNo" type="radio" name = probiotics value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="probioticsNA" type="radio" name = probiotics value="0">
 
                                                     </span>
                                                 <span class="radioFloatLeft">
@@ -1357,6 +1524,11 @@
 
                                                     </span>
                                                 <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="ropTreatmentWithVegfDrugNA" type="radio" name = ropTreatmentWithVegfDrug value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
                                                         <label class="radioText">Unknown</label>
                                                         <input class="radioType" id="ropTreatmentWithVegfDrugUnknown" type="radio" name = ropTreatmentWithVegfDrug value="0">
 
@@ -1378,6 +1550,11 @@
 
                                                     </span>
                                                 <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="caffeineNA" type="radio" name = caffeine value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
                                                         <label class="radioText">Unknown</label>
                                                         <input class="radioType" id="caffeineUnknown" type="radio" name = caffeine value="0">
 
@@ -1392,10 +1569,14 @@
                                                         <input class="radioType" id="ropSurgeryYes" onclick="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="1">
 
                                                     </span>
-
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="ropSurgeryNo" onclick="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="ropSurgeryNA" onclick="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="0">
 
                                                     </span>
                                                 <span class="radioFloatLeft">
@@ -1424,6 +1605,16 @@
                                                         <input class="radioType" id="ropSurgeryWhereDoneBoth" type="radio" name = ropSurgeryWhereDone value="0">
 
                                                     </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="ropSurgeryWhereDoneNA" type="radio" name = ropSurgeryWhereDone value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="ropSurgeryWhereDoneUnknown" type="radio" name = ropSurgeryWhereDone value="0">
+
+                                                    </span>
                                             </div>
                                         </div>
                                         <div class="form-group input-group">
@@ -1438,6 +1629,11 @@
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="pdaSurgeryNo" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="pdaSurgeryNA" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="0">
 
                                                     </span>
                                                 <span class="radioFloatLeft">
@@ -1462,6 +1658,11 @@
 
                                                     </span>
                                                 <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="necSurgeryNA" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
                                                         <label class="radioText">Unknown</label>
                                                         <input class="radioType" id="necSurgeryUnknown" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="0">
 
@@ -1480,6 +1681,11 @@
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="otherSurgeryNo" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="otherSurgeryNA" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="0">
 
                                                     </span>
                                                 <span class="radioFloatLeft">
@@ -2291,6 +2497,11 @@
 
                                                     </span>
                                                 <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="respiratoryDistressSyndromeNA" type="radio" name = respiratoryDistressSyndrome value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
                                                         <label class="radioText">Unknown</label>
                                                         <input class="radioType" id="respiratoryDistressSyndromeUnknown" type="radio" name = respiratoryDistressSyndrome value="0">
 
@@ -2309,6 +2520,11 @@
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="pneumothoraxNo" onclick="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="pneumothoraxNA" onclick="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="0">
 
                                                     </span>
                                                 <span class="radioFloatLeft">
@@ -2337,6 +2553,16 @@
                                                         <input class="radioType" id="pneumothoraxWhereOccuredBoth" type="radio" name = pneumothoraxWhereOccured value="0">
 
                                                     </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="pneumothoraxWhereOccuredNA" type="radio" name = pneumothoraxWhereOccured value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="pneumothoraxWhereOccuredUnknown" type="radio" name = pneumothoraxWhereOccured value="0">
+
+                                                    </span>
                                             </div>
                                         </div>
                                         <div class="form-group input-group">
@@ -2351,6 +2577,11 @@
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="patentDuctusArteriosusNo" type="radio" name = patentDuctusArteriosus value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="patentDuctusArteriosusNA" type="radio" name = patentDuctusArteriosus value="0">
 
                                                     </span>
                                                 <span class="radioFloatLeft">
@@ -2372,6 +2603,11 @@
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="necrotizingEnterocolitisNo" onclick="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/a</label>
+                                                        <input class="radioType" id="necrotizingEnterocolitisNA" onclick="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="0">
 
                                                     </span>
                                                 <span class="radioFloatLeft">
@@ -2400,6 +2636,16 @@
                                                         <input class="radioType" id="necrotizingEnterocolitisWhereOccuredBoth" type="radio" name = necrotizingEnterocolitisWhereOccured value="0">
 
                                                     </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="necrotizingEnterocolitisWhereOccuredNA" type="radio" name = necrotizingEnterocolitisWhereOccured value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="necrotizingEnterocolitisWhereOccuredUnknown" type="radio" name = necrotizingEnterocolitisWhereOccured value="0">
+
+                                                    </span>
                                             </div>
                                         </div>
                                         <div class="form-group input-group">
@@ -2414,6 +2660,11 @@
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="focalIntestinalPerforationNo" onclick="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="focalIntestinalPerforationNA" onclick="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="0">
 
                                                     </span>
                                                 <span class="radioFloatLeft">
@@ -2442,6 +2693,16 @@
                                                         <input class="radioType" id="focalIntestinalPerforationWhereOccuredBoth" type="radio" name = focalIntestinalPerforationWhereOccured value="0">
 
                                                     </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="focalIntestinalPerforationWhereOccuredNA" type="radio" name = focalIntestinalPerforationWhereOccured value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="focalIntestinalPerforationWhereOccuredUnknown" type="radio" name = focalIntestinalPerforationWhereOccured value="0">
+
+                                                    </span>
                                             </div>
                                         </div>
                                         <div class="InnerPanel inner-panel-primary">
@@ -2461,6 +2722,11 @@
                                                         <span class="radioFloatLeftInner">
                                                                 <label class="radioText">No</label>
                                                                 <input class="radioType" id="bacterialSepsisNo" onclick="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="0">
+
+                                                            </span>
+                                                        <span class="radioFloatLeftInner">
+                                                                <label class="radioText">N/A</label>
+                                                                <input class="radioType" id="bacterialSepsisNA" onclick="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="0">
 
                                                             </span>
                                                         <span class="radioFloatLeftInner">
@@ -2488,6 +2754,16 @@
                                                             <span class="radioFloatLeftInner">
                                                         <label class="radioText">Both</label>
                                                         <input class="radioType" id="bacterialSepsisWhereOccurredBoth" type="radio" name = bacterialSepsisWhereOccurred value="0">
+
+                                                    </span>
+                                                            <span class="radioFloatLeftInner">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="bacterialSepsisWhereOccurredNA" type="radio" name = bacterialSepsisWhereOccurred value="0">
+
+                                                    </span>
+                                                            <span class="radioFloatLeftInner">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="bacterialSepsisWhereOccurredUnknown" type="radio" name = bacterialSepsisWhereOccurred value="0">
 
                                                     </span>
                                                         </div>
@@ -2542,6 +2818,11 @@
                                                         <input class="radioType" id="coagulaseNegativeNA" onclick="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="0">
 
                                                     </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="coagulaseNegativeNA" onclick="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="0">
+
+                                                    </span>
                                                     </div>
                                                 </div>
                                                 <div id="hiddenFieldCoagulaseNegative" class="form-group input-group">
@@ -2561,6 +2842,16 @@
                                                         <span class="radioFloatLeftInner">
                                                         <label class="radioText">Both</label>
                                                         <input class="radioType" id="coagulaseNegativeWhereOccurredBoth" type="radio" name = coagulaseNegativeWhereOccurred value="0">
+
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="coagulaseNegativeWhereOccurredNA" type="radio" name = coagulaseNegativeWhereOccurred value="0">
+
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="coagulaseNegativeWhereOccurredUnknown" type="radio" name = coagulaseNegativeWhereOccurred value="0">
 
                                                     </span>
                                                     </div>
@@ -2585,6 +2876,11 @@
                                                         <input class="radioType" id="fungalInfectionNA" onclick="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="0">
 
                                                     </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="fungalInfectionUnknown" onclick="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="0">
+
+                                                    </span>
                                                     </div>
                                                 </div>
                                                 <div id="hiddenFieldFungalInfection" class="form-group input-group">
@@ -2604,6 +2900,16 @@
                                                         <span class="radioFloatLeftInner">
                                                         <label class="radioText">Both</label>
                                                         <input class="radioType" id="fungalInfectionWhereOccurredBoth" type="radio" name = fungalInfectionWhereOccurred value="0">
+
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        <label class="radioText">N/A</label>
+                                                        <input class="radioType" id="fungalInfectionWhereOccurredNA" type="radio" name = fungalInfectionWhereOccurred value="0">
+
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="fungalInfectionWhereOccurredUnknown" type="radio" name = fungalInfectionWhereOccurred value="0">
 
                                                     </span>
                                                     </div>
@@ -2637,6 +2943,11 @@
                                                         <input class="radioType" id="cysticPeriventricularNA" type="radio" name = cysticPeriventricular value="0">
 
                                                     </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="cysticPeriventricularUnknown" type="radio" name = cysticPeriventricular value="0">
+
+                                                    </span>
                                             </div>
                                         </div>
                                         <div class="form-group input-group">
@@ -2656,6 +2967,11 @@
                                                 <span class="radioFloatLeft">
                                                         <label class="radioText">N/A</label>
                                                         <input class="radioType" id="ROPRetinalNA" onclick="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="0">
+
+                                                    </span>
+                                                <span class="radioFloatLeft">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="ROPRetinalUnknown" onclick="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="0">
 
                                                     </span>
                                             </div>
@@ -2685,6 +3001,11 @@
                                                 <span class="radioFloatLeft">
                                                                 <label class="radioText">No</label>
                                                                 <input class="radioType" id="birthDefectNo" onclick="javascript:birthDefectCheck();" type="radio" name = birthDefect value="0">
+
+                                                            </span>
+                                                <span class="radioFloatLeft">
+                                                                <label class="radioText">Unknown</label>
+                                                                <input class="radioType" id="birthDefectUnknown" onclick="javascript:birthDefectCheck();" type="radio" name = birthDefect value="0">
 
                                                             </span>
                                             </div>
@@ -2981,10 +3302,11 @@
                     </div>
                 </div>
             </div>
+            <span id="transfer"></span>
         </section>
         <!-- END SECOND SECTION -->
         <!-- START THIRD SECTION (TRANSFER) -->
-        <section id="transfer" class="content-section text-center">
+        <section id="transferSection" class="content-section text-center">
             <div class="container-fluid">
 
                 <div class="row">
@@ -2999,7 +3321,7 @@
                     <div id="col-md-8-div-4" class="col-md-9">
                         <form id="fourthForm" class="general-form">
 
-                            <div class="panel panel-primary">
+                            <div class="panel panel-primary" style="height:80vh">
                                 <div class="panel-body">
                                     <div id="TransferFormPartA" class="InnerPanel inner-panel-primary">
                                         <div class="inner-panel-heading">
