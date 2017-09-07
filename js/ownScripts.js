@@ -136,6 +136,65 @@ function focalIntestinalPerforationCheck() {
     }
 }
 
+function fetalMedicineUnitFlaggedCheck() {
+    var value1 = document.getElementById('hiddenFieldFetalMedicineUnitFlaggedGroup');
+    if (document.getElementById('fetalMedicineUnitFlaggedYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('fetalMedicineUnitFlaggedNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function jaundiceNeedingPhototherapyCheck() {
+    var value1 = document.getElementById('hiddenFieldJaundiceNeedingPhototherapy');
+    if (document.getElementById('jaundiceNeedingPhototherapyYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('jaundiceNeedingPhototherapyNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function invasiveVentilationCheck() {
+    var value1 = document.getElementById('hiddenFieldInvasiveVentilation');
+    if (document.getElementById('invasiveVentilationYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('invasiveVentilationNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+function HIVStatusCheck() {
+    var value1 = document.getElementById('hiddenFieldHIVStatus');
+    if (document.getElementById('HIVStatusPositive').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('HIVStatusNegative').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function hearingScreenCheck() {
+    var value1 = document.getElementById('hiddenFieldHearingScreenCheck');
+    if (document.getElementById('hearingScreenYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('hearingScreenNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
 function coagulaseNegativeCheck() {
     var value1 = document.getElementById('hiddenFieldCoagulaseNegative');
     if (document.getElementById('coagulaseNegativeYes').checked) {

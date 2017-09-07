@@ -17,6 +17,9 @@
 .unitsDays:after{
     content:"days";
 }
+.unitsYears:after{
+    content:"years";
+}
 /* END adding units*/
 .menuButton:hover{
     color: white;
@@ -152,7 +155,13 @@
 #hiddenFieldHidingEntireSurgeryPanel,
 #hiddenFieldAPGARGroup,
 #hiddenFieldCongenitalInfectionOrganisms,
-#hiddenFieldPIHWhereOccurred
+#hiddenFieldPIHWhereOccurred,
+#hiddenFieldFetalMedicineUnitFlaggedGroup,
+#hiddenFieldJaundiceNeedingPhototherapy,
+#hiddenFieldInvasiveVentilation,
+#hiddenFieldHIVStatus,
+#hiddenFieldHearingScreenCheck,
+#hiddenFieldRVD
 {
     display:none;
 }

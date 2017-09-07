@@ -156,7 +156,7 @@
                                     </div>-->
                                 <div class="panel-body">
                                     <div class="form-group input-group">
-                                        <label class="fixingLabelAlignment">Birth Weights : </label>
+                                        <label class="fixingLabelAlignment">Birth Weight : </label>
                                         <div class="fixingInputAlignment">
                                             <span class="addingUnits unitsGrams">
                                                 <input id="birthWeightInGrams" class="form-control" onblur="validateBirthweight()" type="text" placeholder="1500">
@@ -414,7 +414,11 @@
                                                     <input class="radioType" id="prenatalCareNo" type="radio" name = prenatalCare value="0">
 
                                                 </span>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">N/A</label>
+                                                    <input class="radioType" id="prenatalCareNA" type="radio" name = prenatalCare value="0">
 
+                                                </span>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Unknown</label>
                                                     <input class="radioType" id="prenatalCareUnkown" type="radio" name = prenatalCare value="0">
@@ -435,7 +439,11 @@
                                                     <input class="radioType" id="antenatalSteroidsNo" type="radio" name = antenatalSteroids value="0">
 
                                                 </span>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">N/A</label>
+                                                    <input class="radioType" id="antenatalSteroidsNA" type="radio" name = antenatalSteroids value="0">
 
+                                                </span>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Unknown</label>
                                                     <input class="radioType" id="antenatalSteroidsUnknown" type="radio" name = antenatalSteroids value="0">
@@ -453,6 +461,11 @@
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">No</label>
                                                     <input class="radioType" id="antenatalMagnesiumSulfateNo" type="radio" name = antenatalMagnesiumSulfate value="0">
+
+                                                </span>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">N/A</label>
+                                                    <input class="radioType" id="antenatalMagnesiumSulfateNA" type="radio" name = antenatalMagnesiumSulfate value="0">
 
                                                 </span>
 
@@ -475,7 +488,11 @@
                                                     <input class="radioType" id="chorioamnionitisNo" type="radio" name = chorioamnionitis value="0">
 
                                                 </span>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">N/A</label>
+                                                    <input class="radioType" id="chorioamnionitisNA" type="radio" name = chorioamnionitis value="0">
 
+                                                </span>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Unknown</label>
                                                     <input class="radioType" id="chorioamnionitisUnknown" type="radio" name = chorioamnionitis value="0">
@@ -493,6 +510,11 @@
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">No</label>
                                                     <input class="radioType" id="maternalHypertensionNo" type="radio" name = maternalHypertension value="0">
+
+                                                </span>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">N/A</label>
+                                                    <input class="radioType" id="maternalHypertensionNA" type="radio" name = maternalHypertension value="0">
 
                                                 </span>
 
@@ -513,6 +535,16 @@
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">No</label>
                                                     <input class="radioType" id="maternalDiabetesNo" type="radio" name = maternalDiabetes value="0">
+
+                                                </span>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">N/A</label>
+                                                    <input class="radioType" id="maternalDiabetesNA" type="radio" name = maternalDiabetes value="0">
+
+                                                </span>
+                                            <span class="radioFloatLeft">
+                                                    <label class="radioText">Unknown</label>
+                                                    <input class="radioType" id="maternalDiabetesUnknown" type="radio" name = maternalDiabetes value="0">
 
                                                 </span>
                                         </div>
@@ -968,7 +1000,11 @@
                                                     <input class="radioType" id="cranialImagingNo" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="0">
                                                     <label class="radioText">No</label>
                                                 </span>
-
+                                                    
+                                                    <span class="radioFloatLeftInner">
+                                                    <input class="radioType" id="cranialImagingNA" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="0">
+                                                    <label class="radioText">N/A</label>
+                                                </span>
                                                     <span class="radioFloatLeftInner">
                                                     <input class="radioType" id="cranialImagingUnknown" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="0">
                                                     <label class="radioText">Unknown</label>
@@ -2819,8 +2855,8 @@
 
                                                     </span>
                                                         <span class="radioFloatLeftInner">
-                                                        <label class="radioText">N/A</label>
-                                                        <input class="radioType" id="coagulaseNegativeNA" onclick="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="0">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="coagulaseNegativeUnknown" onclick="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="0">
 
                                                     </span>
                                                     </div>
@@ -3245,12 +3281,12 @@
 
                                             <div class="fixingInputAlignment">
                                                 <select name=initialDisposition class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                <option value="">---------SELECT---------</option>
-                                                <option value="">Home</option>
-                                                <option value="">Died</option>
-                                                <option value="">Transferred</option>
-                                                <option value="">Still Hospitalized as of First Birthday</option>
-                                        </select>
+                                                    <option value="">---------SELECT---------</option>
+                                                    <option value="">Home</option>
+                                                    <option value="">Died</option>
+                                                    <option value="">Transferred</option>
+                                                    <option value="">Still Hospitalized as of First Birthday</option>
+                                                </select>
                                             </div>
 
                                         </div>
@@ -3281,6 +3317,290 @@
                                     </span>
                                             </div>
                                         </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <!--START additional fields-->
+                                        <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">Chromosomes Done :  </label>
+                                            <div class="fixingInputAlignment">
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Yes</label>
+                                                <input class="radioType" id="chromosomesDoneYes" type="radio" name = chromosomesDone value="1">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">No</label>
+                                                <input class="radioType" id="chromosomesDoneNo" type="radio" name = chromosomesDone value="0">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">N/A</label>
+                                                <input class="radioType" id="chromosomesDoneNA" type="radio" name = chromosomesDone value="0">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Unknown</label>
+                                                <input class="radioType" id="chromosomesDoneUnknown" type="radio" name = chromosomesDone value="0">
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">Fetal Medicine Unit (FMU) Scan  :  </label>
+                                            <div class="fixingInputAlignment">
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Yes</label>
+                                                <input class="radioType" id="fetalMedicineUnitFlaggedYes" onclick="javascript:fetalMedicineUnitFlaggedCheck()" type="radio" name = fetalMedicineUnitFlagged value="1">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">No</label>
+                                                <input class="radioType" id="fetalMedicineUnitFlaggedNo" onclick="javascript:fetalMedicineUnitFlaggedCheck()" type="radio" name = fetalMedicineUnitFlagged value="0">
+                                            </span>
+                                            </div>
+                                        </div>
+                                            <div id="hiddenFieldFetalMedicineUnitFlaggedGroup">
+                                                <div class="form-group input-group new-input-group">
+                                                    <label class="fixingLabelAlignment">Antenatal Scan : </label>
+                                                    <div class="fixingInputAlignment">
+                                                        <span class="addingUnits unitsCm">
+                                                            <input id="antenatalScan" class="form-control" type="text" placeholder="6">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group input-group new-input-group">
+                                                    <label class="fixingLabelAlignment">Postnatal Scan : </label>
+                                                    <div class="fixingInputAlignment">
+                                                        <span class="addingUnits unitsCm">
+                                                            <input id="postnatalScan" class="form-control" type="text" placeholder="6">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                        <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">Jaundice needing Phototherapy  :  </label>
+                                            <div class="fixingInputAlignment">
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Yes</label>
+                                                <input class="radioType" id="jaundiceNeedingPhototherapyYes" onclick="javascript:jaundiceNeedingPhototherapyCheck()" type="radio" name = jaundiceNeedingPhototherapy value="1">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">No</label>
+                                                <input class="radioType" id="jaundiceNeedingPhototherapyNo" onclick="javascript:jaundiceNeedingPhototherapyCheck()" type="radio" name = jaundiceNeedingPhototherapy value="0">
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div id="hiddenFieldJaundiceNeedingPhototherapy">
+                                            <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">Level above Exchange  :  </label>
+                                            <div class="fixingInputAlignment">
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Yes</label>
+                                                <input class="radioType" id="levelAboveExchangeYes" type="radio" name = levelAboveExchange value="1">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">No</label>
+                                                <input class="radioType" id="levelAboveExchangeNo" type="radio" name = levelAboveExchange value="0">
+                                            </span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">Invasive Ventilation  :  </label>
+                                            <div class="fixingInputAlignment">
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Yes</label>
+                                                <input class="radioType" id="invasiveVentilationYes" onclick="javascript:invasiveVentilationCheck()" type="radio" name = invasiveVentilation value="1">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">No</label>
+                                                <input class="radioType" id="invasiveVentilationNo" onclick="javascript:invasiveVentilationCheck()" type="radio" name = invasiveVentilation value="0">
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div id="hiddenFieldInvasiveVentilation">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Day of Life Ventilation Started  :  </label>
+                                                <div class="fixingInputAlignment">
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Total Duration  :  </label>
+                                                <div class="fixingInputAlignment">
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Diagnosis  :  </label>
+                                                <div class="fixingInputAlignment">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">Mother's HIV Status  :  </label>
+                                            <div class="fixingInputAlignment">
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Positive</label>
+                                                <input class="radioType" id="HIVStatusPositive" onclick="javascript:HIVStatusCheck()" type="radio" name = HIVStatus value="1">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Negative</label>
+                                                <input class="radioType" id="HIVStatusNegative" onclick="javascript:HIVStatusCheck()" type="radio" name = HIVStatus value="0">
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div id="hiddenFieldHIVStatus">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Maternal Viral Load  :  </label>
+                                                <div class="fixingInputAlignment">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Resistant Virus  :  </label>
+                                                <div class="fixingInputAlignment">
+                                                    <span class="radioFloatLeft">
+                                                        <label class="radioText">Yes</label>
+                                                        <input class="radioType" id="resistantVirusYes" type="radio" name = resistantVirus value="1">
+                                                    </span>
+                                                    <span class="radioFloatLeft">
+                                                        <label class="radioText">No</label>
+                                                        <input class="radioType" id="resistantVirusNo" type="radio" name = resistantVirus value="0">
+                                                    </span>
+                                                    <span class="radioFloatLeft">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="resistantVirusUnknown" type="radio" name = resistantVirus value="0">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>    
+                                        <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">Hearing Screen  :  </label>
+                                            <div class="fixingInputAlignment">
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Yes</label>
+                                                <input class="radioType" id="hearingScreenYes" onclick="javascript:hearingScreenCheck()" type="radio" name = hearingScreen value="1">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">No</label>
+                                                <input class="radioType" id="hearingScreenNo" onclick="javascript:hearingScreenCheck()" type="radio" name = hearingScreen value="0">
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div id="hiddenFieldHearingScreenCheck">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Result  :  </label>
+                                                <div class="fixingInputAlignment">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Mother's Age  :  </label>
+                                                <div class="fixingInputAlignment">
+                                                        <span class="addingUnits unitsYears">
+                                                            <input id="antenatalScan" class="form-control" type="text" placeholder="6">
+                                                        </span>
+                                                    </div>
+                                            </div>
+                                        <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Grav  :  </label>
+                                                <div class="fixingInputAlignment">
+                                                <select name=grav class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <option value="">---------SELECT---------</option>
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                    <option value="">6</option>
+                                                    <option value="">7</option>
+                                                    <option value="">8</option>
+                                                    <option value="">9</option>
+                                                    <option value="">10</option>
+                                                    <option value="">Unknown</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Para  :  </label>
+                                                <div class="fixingInputAlignment">
+                                                <select name=para class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <option value="">---------SELECT---------</option>
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                    <option value="">6</option>
+                                                    <option value="">7</option>
+                                                    <option value="">8</option>
+                                                    <option value="">9</option>
+                                                    <option value="">10</option>
+                                                    <option value="">Unknown</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">RVD  :  </label>
+                                            <div class="fixingInputAlignment">
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Yes</label>
+                                                <input class="radioType" id="RVDYes" onclick="javascript:RVDCheck()" type="radio" name = RVD value="1">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">No</label>
+                                                <input class="radioType" id="RVDNo" onclick="javascript:RVDCheck()" type="radio" name = RVD value="0">
+                                            </span>
+                                                <span class="radioFloatLeft">
+                                                <label class="radioText">Unknown</label>
+                                                <input class="radioType" id="RVDUnknown" onclick="javascript:RVDCheck()" type="radio" name = RVD value="0">
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div id="hiddenFieldRVD">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Viral Load  :  </label>
+                                                <div class="fixingInputAlignment">
+                                                <select name=viralLoad class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <option value="">---------SELECT---------</option>
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                    <option value="">6</option>
+                                                    <option value="">7</option>
+                                                    <option value="">8</option>
+                                                    <option value="">9</option>
+                                                    <option value="">10</option>
+                                                    <option value="">Unknown</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        </div>
+                                        <div class="form-group input-group">
+                                                <label class="fixingLabelAlignment">Baby PCR  :  </label>
+                                                <div class="fixingInputAlignment">
+                                                    <span class="radioFloatLeft">
+                                                        <label class="radioText">Positive</label>
+                                                        <input class="radioType" id="babyPCRPositive" type="radio" name = babyPCR value="1">
+                                                    </span>
+                                                    <span class="radioFloatLeft">
+                                                        <label class="radioText">Negative</label>
+                                                        <input class="radioType" id="babyPCRNegative" type="radio" name = babyPCR value="0">
+                                                    </span>
+                                                    <span class="radioFloatLeft">
+                                                        <label class="radioText">Unknown</label>
+                                                        <input class="radioType" id="babyPCRUnknown" type="radio" name = babyPCR value="0">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        <!--END additional fields-->
                                     </div>
 
 
