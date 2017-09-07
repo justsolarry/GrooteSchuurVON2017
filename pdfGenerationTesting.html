@@ -1,7 +1,6 @@
-
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
+<html>
+      <head>
     <title>Test Environment</title>
       
           <!-- Bootstrap core CSS -->
@@ -30,8 +29,8 @@
     <script src="js/grayscale.js"></script>
     <script src="js/toastr.js"></script>
     <!-- Custom VON Team Scripts for this template -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
+    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    
 <!--
     <script type="text/javascript" src="js/ownScripts.js"></script>
     <script type="text/javascript" src="js/validationScript.js"></script>
@@ -44,13 +43,39 @@
       <script src="js/db.js"></script>
       <script src="js/generateVonXml.js"></script>
       <script src="js/toastr.js"></script>
+<!--    <script src="js/jspdf.js"></script>-->
+          <script src="js/generatePDF.js"></script>
+          
+          <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+          
   </head>
-  <body>
-    <h1>Test Data Transfer Environment</h1>
-      <script>var listOfIds = [1,2,3]; </script>
-      <button class="btn btn-default" onclick="sendDataToVon(listOfIds)">Press Me To submit data to Test Von Environment</button>
-<!--      List of ids will get passed in-->
+    <body>
+    <div id="dischargeTransferHTMLPrint">
+        <h1>Discharge/Transfer Letter</h1>
         <br>
-      <xmp id="xmlContent"></xmp>
+        <div>
+            <p>Neonatal Unit</p>
+            <p>Groote Schuur Hospital</p>
+            <p>021-404-6069</p>
+        </div>
+        <hr>
+        <br>
+        <p>Baby of: ________________</p>
+        <p>Folder Number: __________</p>
+        <p>DOB: ____________________</p>
+        <p>Gender: _________________</p>
+        <p>Mothers Age: ____________</p>
+        <p>Mode Of Delivery: _______</p>
+        <p>Apgars (1min): __________</p>
+        <p>Apgars (5min): __________</p>
+        <p>Birth Weight: ___________</p>
+        
+        <br>
+        <p>alkjsdsvjac nahbiaskjb</p>
+    </div>
+    <div id="editor"></div>
+    <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>
+
     </body>
 </html>
