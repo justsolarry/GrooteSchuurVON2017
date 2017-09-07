@@ -415,20 +415,10 @@ function PIHOccurCheck() {
     
 }
 function showTransferHideDischarge() { 
-    document.getElementById('transfer').slideDown("slow");
+   $("#transfer").css({visibility: "visible"});
+    
 }
 
-/*window.onscroll = function() {myFunction()};
-
-function myFunction() {
-  var mydivpos = document.getElementById("passingPoint").offsetTop;
-  var scrollPos = document.getElementsByTagName("body")[0].scrollTop;
-  
-  if(scrollPos >= mydivpos-50)
-    document.getElementById("sidebar-container").className = "";
-  else
-    document.getElementById("sidebar-container").className = "hide-sidebar";
-};*/
 
 $(document).ready(function() {
     /*Using the hide function wasn't optimal as it shows up when you load the page. Used display:none instead in CSS*/
@@ -438,15 +428,8 @@ $(document).ready(function() {
     var transferFormLocation = $("#TransferFormID").offset().top;
     
     $(window).scroll(function() {
-        var windowLocation = $(window).scrollTop();
-        
-            console.log("patientFormLocation location: "+patientFormLocation);
-            console.log("general location: "+generalDataItemsFormLocation);
-            console.log("transfer location: "+transferFormLocation);
-            console.log("window scroll location: "+windowLocation);
         if($(window).scrollTop() < patientFormLocation-100) { //if still on the main page, dont show 1076
             $("#sidebar-container").fadeOut(500);
-            console.log("home page");
         }
         if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
             if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
@@ -465,7 +448,6 @@ $(document).ready(function() {
             
             /* Toggling different Color */
             $('#patientFormCircle').css('background-color', 'green');
-            console.log("in first section");
         }
         if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156
             if($('.patientFormProgressBar').hasClass('glowingButton')){
@@ -481,7 +463,6 @@ $(document).ready(function() {
             $('#patientFormCircle').removeClass('glowingButton');
             $('#generalDataItemsFormCircle').addClass('glowingButton');
             $('#dischargeCircle').removeClass('glowingButton');
-            console.log("in second section");
         }
         if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
             if($('.patientFormProgressBar').hasClass('glowingButton')){
@@ -497,7 +478,6 @@ $(document).ready(function() {
             $('#patientFormCircle').removeClass('glowingButton');
             $('#generalDataItemsFormCircle').removeClass('glowingButton');
             $('#dischargeCircle').addClass('glowingButton');
-            console.log("in third section");
         }
         
     });
