@@ -1,3 +1,5 @@
+function testData(){
+    
 var babyData = {        //testData
   patientMedicalRecordNumber: 14304791,
   birthYear: 2018,
@@ -17,7 +19,7 @@ var babyData = {        //testData
   maternalHypertension: 1,
   maternalDiabetes: 0,
   modeOfDelivery: 0,
-  sexOfInfant: 0,
+  sexOfInfant: 1,
   multipleGestation: 0,
   numberOfBirthsDelivered: 77,
   congenitalInfection: 0,
@@ -157,7 +159,8 @@ var babyData = {        //testData
   // trachealSuctioningAttempted: 7,
   // seizures: 7
 };
-
+    return babyData;
+}
 // { maternalRaceOfMother
 //   undefined: 0,
 //   Black: 1,

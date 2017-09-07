@@ -45,6 +45,7 @@
       <script src="js/toastr.js"></script>
 <!--    <script src="js/jspdf.js"></script>-->
           <script src="js/generatePDF.js"></script>
+          <script src="js/recordTestDataObject.js"></script>
           
           <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
@@ -64,18 +65,27 @@
         <p>Baby of: ________________</p>
         <p>Folder Number: __________</p>
         <p>DOB: ____________________</p>
-        <p>Gender: _________________</p>
+        <p>Gender: <span id="sexOfInfant"></span></p>
         <p>Mothers Age: ____________</p>
-        <p>Mode Of Delivery: _______</p>
-        <p>Apgars (1min): __________</p>
-        <p>Apgars (5min): __________</p>
-        <p>Birth Weight: ___________</p>
+        <p>Mode Of Delivery: <span id="modeOfDelivery"></span></p>
+        <p>Apgars (1min): <span id="apgarScoresOneMin"></span></p>
+        <p>Apgars (5min): <span id="apgarScoresFiveMin"></span></p>
+        <p>Birth Weight: <span id="birthWeightInGrams"></span></p>
         
         <br>
-        <p>alkjsdsvjac nahbiaskjb</p>
+        
     </div>
     <div id="editor"></div>
     <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>
-
+        <script>
+            var babyData = testData();
+            
+            var sex = babyData.sexOfInfant;
+            document.getElementById("sexOfInfant").innerHTML = (sex == 0) ? "male" : (sex == 1) ? "female" : "Unknown";
+            document.getElementById("modeOfDelivery").innerHTML = babyData.modeOfDelivery;
+            document.getElementById("apgarScoresOneMin").innerHTML = babyData.apgarScoresOneMin;
+            document.getElementById("apgarScoresFiveMin").innerHTML = babyData.apgarScoresFiveMin;
+            document.getElementById("birthWeightInGrams").innerHTML = babyData.birthWeightInGrams;
+        </script>
     </body>
 </html>
