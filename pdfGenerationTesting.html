@@ -51,35 +51,31 @@
           
   </head>
     <body>
-    <div id="content">
-        <h1>Hello, this is a H3 tag</h1>
-        <p>This is the html that will be generated into a pdf</p>
+    <div id="dischargeTransferHTMLPrint">
+        <h1>Discharge/Transfer Letter</h1>
         <br>
+        <div>
+            <p>Neonatal Unit</p>
+            <p>Groote Schuur Hospital</p>
+            <p>021-404-6069</p>
+        </div>
+        <hr>
+        <br>
+        <p>Baby of: ________________</p>
+        <p>Folder Number: __________</p>
+        <p>DOB: ____________________</p>
+        <p>Gender: _________________</p>
+        <p>Mothers Age: ____________</p>
+        <p>Mode Of Delivery: _______</p>
+        <p>Apgars (1min): __________</p>
+        <p>Apgars (5min): __________</p>
+        <p>Birth Weight: ___________</p>
+        
         <br>
         <p>alkjsdsvjac nahbiaskjb</p>
-
     </div>
     <div id="editor"></div>
-    <button class="btn btn-default" id="cmd">Generate PDF</button>
-<!--
-        <script>
-var doc = new jsPDF();
-var specialElementHandlers = {
-    '#editor': function (element, renderer) {
-        return true;
-    }
-};
+    <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>
 
-$('#cmd').click(function () {   
-    doc.fromHTML($('#content').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    doc.save('sample-file.pdf');
-});
-
-
-</script>
--->
     </body>
 </html>

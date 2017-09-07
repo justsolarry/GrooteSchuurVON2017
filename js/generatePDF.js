@@ -5,13 +5,11 @@ function savePdf(){
             return true;
         }
     };
-
-//    $('#cmd').click(function () {   
-        doc.fromHTML($('#content').html(), 15, 15, {
+        doc.fromHTML($('#dischargeTransferHTMLPrint').html(), 15, 15, {
             'width': 170,
                 'elementHandlers': specialElementHandlers
         });
         doc.save('Report.pdf');
-//    });
+
 }
 
