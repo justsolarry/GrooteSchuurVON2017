@@ -1,3 +1,5 @@
+var tempBabyData = {idMisMatch: true}; 
+
 function createRecordInDatabase(medicalRecordId){
     var medicalRecordObject = {};
     medicalRecordObject._id = medicalRecordId;
@@ -5,7 +7,8 @@ function createRecordInDatabase(medicalRecordId){
 }
 
 function getRecordFromDatabase(medicalRecordId){
-    return createHTTPGETConnection(medicalRecordId)
+    createHTTPGETConnection(medicalRecordId)
+    return tempBabyData;
 }
 
 function writeDataToRecord(medicalRecordId){
@@ -48,17 +51,23 @@ function createHTTPPOSTConnection(medicalRecordId){ // must change to pass in va
   http.send(JSON.stringify(babyDataObject));
 }
 
+
 function createHTTPGETConnection(medicalRecordId){
-  var babyData = {idMisMatch: true};
+
   var http = new XMLHttpRequest();
   var url = "http://196.24.190.61:5984/test1/" + medicalRecordId; //server will change -> config file?
   http.open("GET", url, false);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         babyData = this.responseText;
+        
+        toastr.info("successful connection to database");
+       
+        tempBabyData = JSON.parse(babyData);
         //console.log(this.responseText);
     }
   }
   http.send();
-    return babyData;
+    
+    
 }
