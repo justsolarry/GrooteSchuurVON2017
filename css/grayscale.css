@@ -9,7 +9,7 @@ body {
   width: 100%;
   height: 100%;
   color: white;
-  background-color: black; 
+  background-color: #222225; /*    Not fixed just for testing*/
   transition: background-color .5s;
 }
 
@@ -100,7 +100,7 @@ a {
   padding: 100px 0;
   text-align: center;
   color: white;
-  background: url(../img/babyPicture.jpg) no-repeat bottom center scroll;
+  background: url(../img/babyFeet.jpg) no-repeat bottom center scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
