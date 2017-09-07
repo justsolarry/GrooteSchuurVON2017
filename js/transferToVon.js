@@ -1,5 +1,4 @@
-//Notes:    Need to improve efficientcy by transferring multiple records in one xml file
-//          Must update database to reflect the records state of published
+//Notes:    Must update database to reflect the records state of published
 
 function sendDataToVon(listOfMedicalRecordIds){
     for (i = 0; i < listOfMedicalRecordIds.length; i++) {

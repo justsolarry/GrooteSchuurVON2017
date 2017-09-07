@@ -1,7 +1,6 @@
-
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
+<html>
+      <head>
     <title>Test Environment</title>
       
           <!-- Bootstrap core CSS -->
@@ -30,8 +29,8 @@
     <script src="js/grayscale.js"></script>
     <script src="js/toastr.js"></script>
     <!-- Custom VON Team Scripts for this template -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
+    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    
 <!--
     <script type="text/javascript" src="js/ownScripts.js"></script>
     <script type="text/javascript" src="js/validationScript.js"></script>
@@ -44,13 +43,43 @@
       <script src="js/db.js"></script>
       <script src="js/generateVonXml.js"></script>
       <script src="js/toastr.js"></script>
+<!--    <script src="js/jspdf.js"></script>-->
+          <script src="js/generatePDF.js"></script>
+          
+          <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+          
   </head>
-  <body>
-    <h1>Test Data Transfer Environment</h1>
-      <script>var listOfIds = [1,2,3]; </script>
-      <button class="btn btn-default" onclick="sendDataToVon(listOfIds)">Press Me To submit data to Test Von Environment</button>
-<!--      List of ids will get passed in-->
+    <body>
+    <div id="content">
+        <h1>Hello, this is a H3 tag</h1>
+        <p>This is the html that will be generated into a pdf</p>
         <br>
-      <xmp id="xmlContent"></xmp>
+        <br>
+        <p>alkjsdsvjac nahbiaskjb</p>
+
+    </div>
+    <div id="editor"></div>
+    <button class="btn btn-default" id="cmd">Generate PDF</button>
+<!--
+        <script>
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+$('#cmd').click(function () {   
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+});
+
+
+</script>
+-->
     </body>
 </html>
