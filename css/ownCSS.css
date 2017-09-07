@@ -177,7 +177,7 @@
 }
 /* Hiding Discharge/Transfer Form Sections */
 #transfer{
-    
+    display:none;
 }
 /*text in the radio buttons*/
 /* STRAIGHTING THE : PART */
@@ -704,8 +704,8 @@ div ul li .firstATag:after{
 
 /*START Panel CSS*/
 .panel {
-    margin-bottom: 20px;
-    margin-left: 25px;
+    /*margin-bottom: 20px;
+    margin-left: 25px;*/
     background-color: transparent;
     border: 1px solid #337ab7;
     border-radius: 4px;
