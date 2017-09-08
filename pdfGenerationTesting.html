@@ -62,8 +62,10 @@
         </div>
         <hr>
         <br>
-        <p>Baby of: ________________</p>
-        <p>Folder Number: __________</p>
+        <div>
+            <span>Baby of: <span id="mothersNameAndSurname"></span></span>
+            <span>Folder Number: __________</span>
+        </div>
         <p>DOB: ____________________</p>
         <p>Gender: <span id="sexOfInfant"></span></p>
         <p>Mothers Age: ____________</p>
@@ -71,7 +73,41 @@
         <p>Apgars (1min): <span id="apgarScoresOneMin"></span></p>
         <p>Apgars (5min): <span id="apgarScoresFiveMin"></span></p>
         <p>Birth Weight: <span id="birthWeightInGrams"></span></p>
-        
+        <p>Head Circumference: <span id="headCircumferenceAtBirth">cm</span></p>
+        <p>Gestational Age: <span id="gestationalAge"></span></p>
+        <br>
+        <p>Problem list</p>
+        <p>1) ELBW/VLBW/LBW. If the baby is less than 1000g then ELBW, 1000-1499 then VLBW and 1500-2500 LBW</p>
+        <p>2) Extremely premature (less than 28 weeks), Very premature (28- less than32 weeks); Premature (32-less than 37 weeks). (put GA in brackets)</p>
+        <p>3) Multiple pregnancy (if twin/triplet)</p>
+        <p>4) RVDe if RVD+ from additional birth details above. PCR Result</p>
+        <p>5) RDS requiring surfactant (from VON)</p>
+        <p>6) CLD if oxygen at 36 weeks (from VON)</p>
+        <p>7) NEC if NEC+ (from VON)</p>
+        <p>8) Ventilation (from question 2 above). Include day of life of starting and number of days and diagnosis</p>
+        <p>9) HIE and info from question 3 above</p>
+        <p>10) Neonatal jaundice – from question 1 above</p>
+        <p>11) Sepsis from question 4 above</p>
+        <p>12) Fetal Medicine Unit (info from 5 above)</p>
+        <p>13) Abnormal Head Ultrasound (info from 7 above)</p>
+        <p>14) Chromosomes done (info from 6 above)</p>
+        <p>15) Vaccine done (info from 8 above)</p>
+        <p>(Give options for additional problems with explanations)</p>
+        <p>.</p>
+        <p>.</p>
+        <p>.</p>
+        <p>.</p>
+        <p>.</p>
+        <p>.</p>
+        <p>.</p>
+        <p>.</p>
+        <p>.</p>
+        <p>Date of Discharge/Transfer: <span id="dateOfDischarge"></span> <span id="placeOfTransfer"></span> <span id="weightAtDischarge"></span> <span id="headCircumferenceAtDischarge"></span></p>
+        <p>Meds:_____________________</p>
+            <p>Feeds:____________________</p>
+        <br>
+        <p>Follow up appointments: </p>
+        <p>Done by Dr</p>
         <br>
         
     </div>
@@ -82,10 +118,14 @@
             
             var sex = babyData.sexOfInfant;
             document.getElementById("sexOfInfant").innerHTML = (sex == 0) ? "male" : (sex == 1) ? "female" : "Unknown";
-            document.getElementById("modeOfDelivery").innerHTML = babyData.modeOfDelivery;
+            var delivery = babyData.modeOfDelivery;
+            document.getElementById("modeOfDelivery").innerHTML = (delivery == 0) ? "Vaginal" : (delivery == 1) ? "Cesarian" : "Unknown";
             document.getElementById("apgarScoresOneMin").innerHTML = babyData.apgarScoresOneMin;
             document.getElementById("apgarScoresFiveMin").innerHTML = babyData.apgarScoresFiveMin;
             document.getElementById("birthWeightInGrams").innerHTML = babyData.birthWeightInGrams;
+            document.getElementById("headCircumferenceAtBirth").innerHTML = babyData.headCircumferenceAtBirth;
+            document.getElementById("gestationalAge").innerHTML = babyData.gestationalAgeInWeeks + "weeks and " + babyData.gestationalAgePlusDays + "days";
+
         </script>
     </body>
 </html>
