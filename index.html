@@ -3228,7 +3228,17 @@
         $('form').sisyphus(
             {
                 locationBased: true,
-                timeout: 5
+                timeout: 10,
+                //autoRelease: true,
+                onSave: function() {
+                    var date = new Date();
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    var seconds = date.getSeconds();
+                    toastr.options.showMethod = 'slideDown';
+                    toastr.success('Saved', 'Autosave', {timeOut: 750});
+                    //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
+                }
             }
         );
     });
