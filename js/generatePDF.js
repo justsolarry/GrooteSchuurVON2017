@@ -1,3 +1,5 @@
+//Notes:    The html to pdf generator doesnt follow html formatting may approach different 
+
 function savePdf(){
     var doc = new jsPDF();
     var specialElementHandlers = {
@@ -10,6 +12,5 @@ function savePdf(){
                 'elementHandlers': specialElementHandlers
         });
         doc.save('Report.pdf');
-
 }
 
