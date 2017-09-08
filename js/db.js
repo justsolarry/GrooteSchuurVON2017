@@ -216,3 +216,77 @@ function checkForPopulation(){
     } 
     else {}
 }
+
+var tempBabyData = {idMisMatch: true}; 
+
+function createRecordInDatabase(medicalRecordId){
+    var medicalRecordObject = {};
+    medicalRecordObject._id = medicalRecordId;
+    createHTTPPOSTConnectionRecord(medicalRecordObject);
+}
+
+function getRecordFromDatabase(medicalRecordId){
+    createHTTPGETConnection(medicalRecordId)
+    return tempBabyData;
+}
+
+function writeDataToRecord(medicalRecordId){
+  createHTTPPOSTConnection(medicalRecordId);
+}
+
+function removeDataFromDatabase(medicalRecordId, listOfDataPoints){
+  
+}
+
+function updateDataInRecord(medicalRecordId){
+
+  }
+
+function createHTTPPOSTConnectionRecord(babyDataObject){ 
+  var http = new XMLHttpRequest();
+  var url = "http://196.42.86.86:5984/test1/"; //server will change //test server https://www.posttestserver.com/
+  http.open("PUT", url, true);
+  http.setRequestHeader("Content-type", "application/json");
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        document.getElementById("demo").innerHTML = this.responseText;
+    }
+  }
+  document.getElementById("xmlContent").innerHTML = JSON.stringify(babyDataObject);
+  http.send(JSON.stringify(babyDataObject));
+}
+
+function createHTTPPOSTConnection(medicalRecordId){ // must change to pass in values
+  var http = new XMLHttpRequest();
+  var url = "http://196.42.86.86:5984/test1/" + babyDataObject._id; //server will change //test server https://www.posttestserver.com/
+  http.open("PUT", url, true);
+  http.setRequestHeader("Content-type", "application/json");
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        document.getElementById("demo").innerHTML = this.responseText;
+    }
+  }
+  document.getElementById("xmlContent").innerHTML = JSON.stringify(babyDataObject);
+  http.send(JSON.stringify(babyDataObject));
+}
+
+
+function createHTTPGETConnection(medicalRecordId){
+
+  var http = new XMLHttpRequest();
+  var url = "http://196.24.190.61:5984/test1/" + medicalRecordId; //server will change -> config file?
+  http.open("GET", url, false);
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        babyData = this.responseText;
+        
+        toastr.info("successful connection to database");
+       
+        tempBabyData = JSON.parse(babyData);
+        //console.log(this.responseText);
+    }
+  }
+  http.send();
+    
+    
+}

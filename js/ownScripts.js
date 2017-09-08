@@ -1,12 +1,12 @@
 
 
 function inbornOutbornCheck() {
-    if (document.getElementById('inbornCheck').checked) {
+    if (document.getElementById('locationOFBirthInborn').checked) {
         $("#hiddenField1").slideUp("slow");
         $("#hiddenField2").slideUp("slow");
         $('.GroupingHiddenField1').removeClass('glowingHiddenFields')
     }
-    if (document.getElementById('outbornCheck').checked) {
+    if (document.getElementById('locationOFBirthOutborn').checked) {
         $("#hiddenField1").slideDown("slow");
         $("#hiddenField2").slideDown("slow");
         $('.GroupingHiddenField1').addClass('glowingHiddenFields')
@@ -64,6 +64,22 @@ function ropSurgeryCheck() {
     }
 }
 
+function congenitalInfectionCheck() {
+    var value1 = document.getElementById('hiddenFieldCongenitalInfectionOrganisms');
+    if (document.getElementById('congenitalInfectionYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('congenitalInfectionNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('congenitalInfectionUnknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
 function pneumothoraxCheck() {
     var value1 = document.getElementById('hiddenFieldpPneumothorax');
     if (document.getElementById('pneumothoraxYes').checked) {
@@ -90,6 +106,10 @@ function necrotizingEnterocolitisCheck() {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
+    if (document.getElementById('necrotizingEnterocolitisNA').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
     if (document.getElementById('necrotizingEnterocolitisUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
@@ -106,7 +126,104 @@ function focalIntestinalPerforationCheck() {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
+    if (document.getElementById('focalIntestinalPerforationNA').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
     if (document.getElementById('focalIntestinalPerforationUnknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function fetalMedicineUnitFlaggedCheck() {
+    var value1 = document.getElementById('hiddenFieldFetalMedicineUnitFlaggedGroup');
+    if (document.getElementById('fetalMedicineUnitFlaggedYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('fetalMedicineUnitFlaggedNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function jaundiceNeedingPhototherapyCheck() {
+    var value1 = document.getElementById('hiddenFieldJaundiceNeedingPhototherapy');
+    if (document.getElementById('jaundiceNeedingPhototherapyYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('jaundiceNeedingPhototherapyNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+function hypoxicIschaemicEncephalopathyCheck() {
+    var value1 = document.getElementById('hiddenFieldhypoxicIschaemicEncephalopathy');
+    if (document.getElementById('hypoxicIschaemicEncephalopathyYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('hypoxicIschaemicEncephalopathyNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function RVDCheck() {
+    var value1 = document.getElementById('hiddenFieldRVD');
+    var value2 = document.getElementById('hiddenFieldPCRDate');
+    if (document.getElementById('RVDYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+        $(value2).slideDown("slow");
+        $(value2).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('RVDNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
+        $(value2).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('RVDUnknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
+        $(value2).removeClass('glowingHiddenFields')
+    }
+}
+
+function invasiveVentilationCheck() {
+    var value1 = document.getElementById('hiddenFieldInvasiveVentilation');
+    if (document.getElementById('invasiveVentilationYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('invasiveVentilationNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+function HIVStatusCheck() {
+    var value1 = document.getElementById('hiddenFieldHIVStatus');
+    if (document.getElementById('HIVStatusPositive').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('HIVStatusNegative').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function hearingScreenCheck() {
+    var value1 = document.getElementById('hiddenFieldHearingScreenCheck');
+    if (document.getElementById('hearingScreenYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('hearingScreenNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
@@ -123,6 +240,10 @@ function coagulaseNegativeCheck() {
         $(value1).removeClass('glowingHiddenFields')
     }
     if (document.getElementById('coagulaseNegativeNA').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('coagulaseNegativeUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
@@ -143,6 +264,10 @@ function fungalInfectionCheck() {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
+    if (document.getElementById('fungalInfectionUnknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
 }
 
 function ROPRetinalCheck() {
@@ -159,6 +284,10 @@ function ROPRetinalCheck() {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
+    if (document.getElementById('ROPRetinalUnknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
 }
 
 function birthDefectCheck() {
@@ -168,6 +297,26 @@ function birthDefectCheck() {
         $(value1).addClass('glowingHiddenFields')
     }
     if (document.getElementById('birthDefectNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('birthDefectUnknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function CFM48HoursCheck() {
+    var value1 = document.getElementById('hiddenFieldCFM48Hours');
+    if (document.getElementById('CFM48HoursYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('CFM48HoursNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('CFM48HoursUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
@@ -261,6 +410,10 @@ function bacterialSepsisBeforeCheck() {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
+    if (document.getElementById('bacterialSepsisBeforeNA').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
     if (document.getElementById('bacterialSepsisBeforeUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
@@ -274,6 +427,10 @@ function cranialImagingCheck() {
         $(value1).addClass('glowingHiddenFields')
     }
     if (document.getElementById('cranialImagingNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('cranialImagingNA').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
@@ -299,21 +456,28 @@ function bacterialSepsisCheck() {
     }
 }
 
+function immunizations652Check() {
+    var value1 = document.getElementById('hiddenFieldImmunizations652');
+    if (document.getElementById('immunizations652Yes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('immunizations652No').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('immunizations652Unknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
 /*Adding new surgery fields*/
 function addNewSurgeryField(){
     /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
     $("#hiddenFieldSurgery2").slideDown("slow");
 }
 
-
-function numberOfInfantsDeliveredCheck() {
-    if (document.getElementById('multipleGestationNo').checked) {
-        document.getElementById('hiddenField3').style.display = 'none';
-    }
-    if (document.getElementById('multipleGestationYes').checked) {
-        document.getElementById('hiddenField3').style.display = 'inline';
-    }
-}
 
 function temperatureMeasuredWithinFirstHourCheck() {
     var value1 = document.getElementById('hiddenFieldTemperatureFirstHour');
@@ -326,6 +490,10 @@ function temperatureMeasuredWithinFirstHourCheck() {
         $(value1).removeClass('glowingHiddenFields');
     }
     if (document.getElementById('temperatureMeasuredWithinFirstHourNA').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields');
+    }
+    if (document.getElementById('temperatureMeasuredWithinFirstHourUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields');
     }
@@ -404,80 +572,127 @@ function ultimateDispositionCheck() {
         $(partD).addClass('glowingHiddenFields');
     }
 }
+
+
+
+function PIHWhereOccurredCheck() {
+    var e = document.getElementById("worstGradePIH");
+    var strUser = e.options[e.selectedIndex].value;
+    
+    var hiddenField = document.getElementById('hiddenFieldPIHWhereOccurred');
+    /*if case for Home, died, hospitalized - Show parts D */
+    if (strUser==1 || strUser==2 || strUser==3 || strUser==4){
+    
+        $(hiddenField).slideDown("slow");
+        $(hiddenField).addClass('glowingHiddenFields');
+    }
+    else{
+        $(hiddenField).slideUp("slow");
+        $(hiddenField).removeClass('glowingHiddenFields');
+    }
+}
+
+function sepsisDuringAdmissionCheck() {
+    var e = document.getElementById("sepsisDuringAdmission");
+    var strUser = e.options[e.selectedIndex].value;
+    
+    var hiddenField = document.getElementById('hiddenFieldSepsisDuringAdmission');
+    if (strUser==1 || strUser==2 || strUser==3){
+    
+        $(hiddenField).slideDown("slow");
+        $(hiddenField).addClass('glowingHiddenFields');
+    }
+    else{
+        $(hiddenField).slideUp("slow");
+        $(hiddenField).removeClass('glowingHiddenFields');
+    }
+}
+
+function numberOfInfantsDeliveredCheck() {
+    var e = document.getElementById("numberOfInfantsDelivered");
+    var strUser = e.options[e.selectedIndex].value;
+    
+    var value1 = document.getElementById('hiddenFieldAPGARGroup');
+    if (strUser>0 && strUser <11){
+    
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields');
+    }
+    if(strUser ==0){
+            $(value1).slideUp("slow");
+            $(value1).removeClass('glowingHiddenFields');
+            }
+}
 function PIHOccurCheck() {
     
 }
 function showTransferHideDischarge() { 
-    document.getElementById('transfer').style.display = 'block'; 
+    $("#transferSection").css("display", "block");
+    console.log("function working");
+    
 }
 
-/*window.onscroll = function() {myFunction()};
-
-function myFunction() {
-  var mydivpos = document.getElementById("passingPoint").offsetTop;
-  var scrollPos = document.getElementsByTagName("body")[0].scrollTop;
-  
-  if(scrollPos >= mydivpos-50)
-    document.getElementById("sidebar-container").className = "";
-  else
-    document.getElementById("sidebar-container").className = "hide-sidebar";
-};*/
 
 $(document).ready(function() {
     /*Using the hide function wasn't optimal as it shows up when you load the page. Used display:none instead in CSS*/
     /*$("#sidebar-container").hide(); //hide your div initially*/
-    var topOfOthDiv = $("#PatientFormID").offset().top;
-    var topOfOthDiv1 = $("#28DayFormID").offset().top;
-    //disharge and transfer is going to be at the same position
-    var topOfOthDiv2 = $("#DischargeTransferForm").offset().top;
-    var topOfOthDiv3 = $("#TransferFormID").offset().top;
+    var patientFormLocation = $("#PatientFormID").offset().top;
+    var generalDataItemsFormLocation = $("#generalDataItemsID").offset().top;
+    var transferFormLocation = $("#transfer").offset().top;
+    
     $(window).scroll(function() {
-        if($(window).scrollTop() < topOfOthDiv-100) { //if still on the main page, dont show
+        if($(window).scrollTop() < patientFormLocation-100) { //if still on the main page, dont show 1076
             $("#sidebar-container").fadeOut(500);
         }
-        if($(window).scrollTop() > topOfOthDiv-100) { //scrolled past the patient form
-            if($('.28dayProgressBar').hasClass('glowingButton')){
-                $('.28dayProgressBar').removeClass('glowingButton')
+        if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
+            if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
+                $('.generalDataItemsProgressBar').removeClass('glowingButton')
                }
             if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
                 $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
                }
             $("#sidebar-container").fadeIn(500);
-            $('.patientFormProgressBar').addClass('glowingButton')
+            $('.patientFormProgressBar').addClass('glowingButton');
             
             /* Toggling Buttons */
-            $('#patientFormCircle').addClass('glowingButton')
-            $('#28DayFormCircle').removeClass('glowingButton')
-            $('#dischargeCircle').removeClass('glowingButton')
+            $('#patientFormCircle').addClass('glowingButton');
+            $('#generalDataItemsFormCircle').removeClass('glowingButton');
+            $('#dischargeCircle').removeClass('glowingButton');
             
             /* Toggling different Color */
             $('#patientFormCircle').css('background-color', 'green');
         }
-        if($(window).scrollTop() > topOfOthDiv1-100) { //scrolled past the 28 day form 
+        if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156
             if($('.patientFormProgressBar').hasClass('glowingButton')){
-                $('.patientFormProgressBar').removeClass('glowingButton')
+                $('.patientFormProgressBar').removeClass('glowingButton');
                }
             if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
-                $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
+                $('.dischargeAndTransferProgressBar').removeClass('glowingButton');
                }
             /*$('.patientFormProgressBar').removeClass('glowingButton')*/
-            $('.28dayProgressBar').addClass('glowingButton')
+            $('.generalDataItemsProgressBar').addClass('glowingButton');
             /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
             /* Toggling Buttons */
-            $('#patientFormCircle').removeClass('glowingButton')
-            $('#28DayFormCircle').addClass('glowingButton')
-            $('#dischargeCircle').removeClass('glowingButton')
+            $('#patientFormCircle').removeClass('glowingButton');
+            $('#generalDataItemsFormCircle').addClass('glowingButton');
+            $('#dischargeCircle').removeClass('glowingButton');
         }
-        if($(window).scrollTop() > topOfOthDiv2-100) { //scrolled past the discharge/transfer form
-            
-            $('.patientFormProgressBar').removeClass('glowingButton')
-            $('.28dayProgressBar').removeClass('glowingButton')
-            $('.dischargeAndTransferProgressBar').addClass('glowingButton')
+        if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
+            if($('.patientFormProgressBar').hasClass('glowingButton')){
+                $('.patientFormProgressBar').removeClass('glowingButton');
+               }
+            if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
+                $('.generalDataItemsProgressBar').removeClass('glowingButton');
+               }
+            /*$('.patientFormProgressBar').removeClass('glowingButton')*/
+            $('.dischargeAndTransferProgressBar').addClass('glowingButton');
+            /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
             /* Toggling Buttons */
-            $('#patientFormCircle').removeClass('glowingButton')
-            $('#28DayFormCircle').removeClass('glowingButton')
-            $('#dischargeCircle').addClass('glowingButton')
+            $('#patientFormCircle').removeClass('glowingButton');
+            $('#generalDataItemsFormCircle').removeClass('glowingButton');
+            $('#dischargeCircle').addClass('glowingButton');
         }
+        
     });
 });
 
@@ -485,7 +700,7 @@ $(document).ready(function() {
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").style.width = "20%";
 }
 
 /* Set the width of the side navigation to 0 */
