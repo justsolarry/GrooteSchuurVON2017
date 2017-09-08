@@ -84,9 +84,47 @@
                            Create New Entry <i class="fa fa-angle-double-down animated"></i>
                         </a>-->
 
-                    </div>
-                </div>
-            </div>
+        <table id="jqGrid" class="display nowrap">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Patient Medical Record #</th>
+            <th>ID</th>
+            <th>Birth Year</th>
+            <th>Birth Weight</th>
+            <th>Birth Date</th>
+            <th>Intial Disposition</th>
+            <th>Location</th>
+            <th>Day 28</th>
+            <th>Week 36</th>
+        </tr>
+        </thead>
+        </table>
+    
+    <script type="text/javascript"> 
+        //$(document).ready(function(){loadGrid()});
+        //
+        $(document).ready( function () {
+        fetchData();
+            
+    var table = $('#jqGrid').DataTable();
+    
+    table.rows().every( function ( rowIdx, tableLoop, rowLoop ) {       
+        var cell = table.cell({ row: rowIdx, column: 0 }).node();
+        $(cell).addClass('warning');        
+    });
+            
+    $("#jqGrid").on('click', 'tr', function () {
+        var row = $(this).attr('id');
+        displayData(row);
+    });        
+            
+    } );
+    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; VON 2017</p>
         </div>
     </header>
     
