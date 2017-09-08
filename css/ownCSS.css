@@ -17,6 +17,12 @@
 .unitsDays:after{
     content:"days";
 }
+.unitsYears:after{
+    content:"years";
+}
+.unitsCentigrade:after{
+    content: "\2103";
+}
 /* END adding units*/
 .menuButton:hover{
     color: white;
@@ -150,7 +156,18 @@
 #hiddenFieldBirthDefectCodes,
 #hiddenFieldAtDischargeGroup,
 #hiddenFieldHidingEntireSurgeryPanel,
-#hiddenFieldAPGARGroup
+#hiddenFieldAPGARGroup,
+#hiddenFieldCongenitalInfectionOrganisms,
+#hiddenFieldPIHWhereOccurred,
+#hiddenFieldFetalMedicineUnitFlaggedGroup,
+#hiddenFieldJaundiceNeedingPhototherapy,
+#hiddenFieldInvasiveVentilation,
+#hiddenFieldHIVStatus,
+#hiddenFieldHearingScreenCheck,
+#hiddenFieldRVD,
+#hiddenFieldhypoxicIschaemicEncephalopathy,
+#hiddenFieldSepsisDuringAdmission,
+#hiddenFieldImmunizations652
 {
     display:none;
 }
@@ -176,7 +193,7 @@
     display:none;
 }
 /* Hiding Discharge/Transfer Form Sections */
-#transfer{
+#transferSection{
     display:none;
 }
 /*text in the radio buttons*/
