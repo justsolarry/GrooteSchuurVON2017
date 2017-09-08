@@ -1,12 +1,12 @@
 
 
 function inbornOutbornCheck() {
-    if (document.getElementById('inbornCheck').checked) {
+    if (document.getElementById('locationOFBirthInborn').checked) {
         $("#hiddenField1").slideUp("slow");
         $("#hiddenField2").slideUp("slow");
         $('.GroupingHiddenField1').removeClass('glowingHiddenFields')
     }
-    if (document.getElementById('outbornCheck').checked) {
+    if (document.getElementById('locationOFBirthOutborn').checked) {
         $("#hiddenField1").slideDown("slow");
         $("#hiddenField2").slideDown("slow");
         $('.GroupingHiddenField1').addClass('glowingHiddenFields')

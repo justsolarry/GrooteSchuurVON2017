@@ -205,11 +205,11 @@
                                         <label class="fixingLabelAlignment">Location of Birth :  </label>
                                         <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
-                                                        <input id="inbornCheck" type="radio" onclick="javascript:inbornOutbornCheck();" name = outbornBirth value="0">
+                                                        <input id="locationOFBirthInborn" type="radio" onclick="javascript:inbornOutbornCheck();" name = locationOFBirth value="0">
                                                         <label for="inbornCheck" class="radioText">Inborn</label>
                                                     </span>
                                             <span class="radioFloatLeft">
-                                                        <input id="outbornCheck" type="radio" onclick="javascript:inbornOutbornCheck();" name = outbornBirth value="1">
+                                                        <input id="locationOFBirthOutborn" type="radio" onclick="javascript:inbornOutbornCheck();" name = locationOFBirth value="1">
                                                         <label class="radioText">Outborn</label>
                                                     </span>
                                         </div>
@@ -359,7 +359,7 @@
                                 <!--STARTING Main Panel-->
                                 <div class="panel panel-primary">
                                     <div class="panel-body">
-                                        <div class="form-group input-group ">
+                                        <div class="form-group input-group gestationalAgeDiv">
                                             <label class="fixingLabelAlignment">Gestational Age : </label>
                                             <div class="fixingInputAlignment">
                                                 <span class="addingUnits unitsWeeks">
@@ -367,7 +367,7 @@
                                             </span>
                                             </div>
                                         </div>
-                                        <div class="form-group input-group ">
+                                        <div class="form-group input-group gestationalAgeDaysDiv">
                                             <label class="fixingLabelAlignment"></label>
                                             <div class="fixingInputAlignment">
                                                 <select name=gestionalDays class=" ddList centerSelect form-control" style="height:32px;width:20%;">
@@ -380,19 +380,19 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group input-group new-input-group">
+                                        <div class="form-group input-group headCircumferenceDiv">
                                             <label class="fixingLabelAlignment">Head Circumference : </label>
                                             <div class="fixingInputAlignment">
                                                 <span class="addingUnits unitsCm">
-                                                <input class="form-control" type="text" placeholder="6" >
+                                                <input id="headCircumference" name="headCircumference" class="form-control" type="text" placeholder="6" >
                                             </span>
                                             </div>
                                         </div>
 
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group raceOfMotherDiv">
                                             <label class="fixingLabelAlignment">Race of Mother : </label>
                                             <div class="fixingInputAlignment">
-                                                <select name=ethnicityOfMother class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                <select id="raceOfMother" name=raceOfMother class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option value="blackRace">Black</option>
                                                     <option value="colouredRace">Coloured</option>
                                                     <option value="whiteRace">White</option>
@@ -401,7 +401,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group prenatalCareDiv">
                                             <label class="fixingLabelAlignment">Prenatal Care : </label>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Yes</label>
@@ -426,7 +426,7 @@
                                                 </span>
 
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group antenatalSteroidsDiv">
                                             <label class="fixingLabelAlignment">Antenatal Steroids : </label>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Yes</label>
@@ -450,7 +450,7 @@
 
                                                 </span>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group antenatalMagnesiumSulfateDiv">
                                             <label class="fixingLabelAlignment">Antenatal Magnesium Sulfate : </label>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Yes</label>
@@ -475,7 +475,7 @@
 
                                                 </span>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group chorioamnionitisDiv">
                                             <label class="fixingLabelAlignment">Chorioamnionitis : </label>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Yes</label>
@@ -499,7 +499,7 @@
 
                                                 </span>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group maternalHypertensionDiv">
                                             <label class="fixingLabelAlignment">Maternal Hypertension, Choronic/Pregnancy-Induced : </label>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Yes</label>
@@ -524,7 +524,7 @@
 
                                                 </span>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group maternalDiabetesDiv">
                                             <label class="fixingLabelAlignment">Maternal Diabetes : </label>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Yes</label>
@@ -548,7 +548,7 @@
 
                                                 </span>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group modeOfDeliveryDiv">
                                             <label class="fixingLabelAlignment">Mode of Delivery : </label>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Vaginal</label>
@@ -567,7 +567,7 @@
 
                                                 </span>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group sexOfInfantDiv">
                                             <label class="fixingLabelAlignment">Sex of Infant : </label>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Male</label>
@@ -587,10 +587,10 @@
 
                                                 </span>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group numberOfInfantsDelivered">
                                             <label class="fixingLabelAlignment">Number of Infants Delivered : </label>
                                             <div class="fixingInputAlignment">
-                                                <select id="numberOfInfantsDelivered" name=state class=" ddList centerSelect form-control" onchange="javascript:numberOfInfantsDeliveredCheck();" style="height:32px;width:20%;">
+                                                <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class=" ddList centerSelect form-control" onchange="javascript:numberOfInfantsDeliveredCheck();" style="height:32px;width:20%;">
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -606,10 +606,10 @@
                                             </div>
                                         </div>
                                         <div id="hiddenFieldAPGARGroup">
-                                            <div class="form-group input-group">
+                                            <div class="form-group input-group apgarScoresOneMinDiv">
                                                 <label class="fixingLabelAlignment">APGAR Scores @ 1 minute : </label>
                                                 <div class="fixingInputAlignment">
-                                                    <select id="apgarScoresOneMin" name=state class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                    <select id="apgarScoresOneMin" name="apgarScoresOneMin" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -624,10 +624,10 @@
                                                 </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group input-group">
+                                            <div class="form-group input-group apgarScoresFiveMinDiv">
                                                 <label class="fixingLabelAlignment">APGAR Scores @ 5 minutes : </label>
                                                 <div class="fixingInputAlignment">
-                                                    <select id="apgarScoresFiveMin" name=state class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                    <select id="apgarScoresFiveMin" name="apgarScoresFiveMin" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -643,7 +643,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group input-group congenitalInfectionDiv">
                                             <label class="fixingLabelAlignment">Congenital Infection : </label>
                                             <span class="radioFloatLeft">
                                                     <label class="radioText">Yes</label>
@@ -662,10 +662,10 @@
                                         </div>
 
                                         <div id="hiddenFieldCongenitalInfectionOrganisms">
-                                            <div class="form-group input-group">
+                                            <div class="form-group input-group congenitalCodeDiv">
                                                 <label class="fixingLabelAlignment">Congenital Infection, Organism(s) : </label>
                                                 <div class="fixingInputAlignment">
-                                                    <select id="congenitalCode1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <select id="congenitalCode1" name="congenitalCode" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                                                             <option value="">---------None---------</option>
                                                                                             <option value="">103 - Aeromonas Species</option>
                                                                                         </select>
@@ -686,13 +686,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                            
-                                        
-                                        
-                                        
-                                        
-                                        
                                         <div class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-heading">
                                                 Initial Resuscitation
@@ -894,9 +887,15 @@
 
                                                 </span>
                                         </div>
-                                        <div id="hiddenFieldTemperatureFirstHour" class="form-group input-group">
-                                            <label class="fixingLabelAlignment">Temperature within First Hour : </label>
-                                            <input type="number" name=temperatureWithinFirstHour class="inputFieldResize">
+                                        <div id="hiddenFieldTemperatureFirstHour">
+                                            <div class="form-group input-group new-input-group">
+                                                <label class="fixingLabelAlignment">Temperature : </label>
+                                                <div class="fixingInputAlignment">
+                                                    <span class="addingUnits unitsCentigrade">
+                                                    <input class="form-control" type="text" placeholder="25" >
+                                                </span>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="InnerPanel inner-panel-primary">

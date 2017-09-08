@@ -20,6 +20,9 @@
 .unitsYears:after{
     content:"years";
 }
+.unitsCentigrade:after{
+    content: "\2103";
+}
 /* END adding units*/
 .menuButton:hover{
     color: white;
