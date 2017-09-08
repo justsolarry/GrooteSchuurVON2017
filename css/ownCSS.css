@@ -161,7 +161,10 @@
 #hiddenFieldInvasiveVentilation,
 #hiddenFieldHIVStatus,
 #hiddenFieldHearingScreenCheck,
-#hiddenFieldRVD
+#hiddenFieldRVD,
+#hiddenFieldhypoxicIschaemicEncephalopathy,
+#hiddenFieldSepsisDuringAdmission,
+#hiddenFieldImmunizations652
 {
     display:none;
 }

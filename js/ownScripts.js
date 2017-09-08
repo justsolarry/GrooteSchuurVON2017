@@ -159,6 +159,40 @@ function jaundiceNeedingPhototherapyCheck() {
         $(value1).removeClass('glowingHiddenFields')
     }
 }
+function hypoxicIschaemicEncephalopathyCheck() {
+    var value1 = document.getElementById('hiddenFieldhypoxicIschaemicEncephalopathy');
+    if (document.getElementById('hypoxicIschaemicEncephalopathyYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('hypoxicIschaemicEncephalopathyNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function RVDCheck() {
+    var value1 = document.getElementById('hiddenFieldRVD');
+    var value2 = document.getElementById('hiddenFieldPCRDate');
+    if (document.getElementById('RVDYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+        $(value2).slideDown("slow");
+        $(value2).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('RVDNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
+        $(value2).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('RVDUnknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
+        $(value2).removeClass('glowingHiddenFields')
+    }
+}
 
 function invasiveVentilationCheck() {
     var value1 = document.getElementById('hiddenFieldInvasiveVentilation');
@@ -267,6 +301,22 @@ function birthDefectCheck() {
         $(value1).removeClass('glowingHiddenFields')
     }
     if (document.getElementById('birthDefectUnknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function CFM48HoursCheck() {
+    var value1 = document.getElementById('hiddenFieldCFM48Hours');
+    if (document.getElementById('CFM48HoursYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('CFM48HoursNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('CFM48HoursUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
@@ -406,6 +456,22 @@ function bacterialSepsisCheck() {
     }
 }
 
+function immunizations652Check() {
+    var value1 = document.getElementById('hiddenFieldImmunizations652');
+    if (document.getElementById('immunizations652Yes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('immunizations652No').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('immunizations652Unknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
 /*Adding new surgery fields*/
 function addNewSurgeryField(){
     /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
@@ -507,6 +573,8 @@ function ultimateDispositionCheck() {
     }
 }
 
+
+
 function PIHWhereOccurredCheck() {
     var e = document.getElementById("worstGradePIH");
     var strUser = e.options[e.selectedIndex].value;
@@ -514,6 +582,22 @@ function PIHWhereOccurredCheck() {
     var hiddenField = document.getElementById('hiddenFieldPIHWhereOccurred');
     /*if case for Home, died, hospitalized - Show parts D */
     if (strUser==1 || strUser==2 || strUser==3 || strUser==4){
+    
+        $(hiddenField).slideDown("slow");
+        $(hiddenField).addClass('glowingHiddenFields');
+    }
+    else{
+        $(hiddenField).slideUp("slow");
+        $(hiddenField).removeClass('glowingHiddenFields');
+    }
+}
+
+function sepsisDuringAdmissionCheck() {
+    var e = document.getElementById("sepsisDuringAdmission");
+    var strUser = e.options[e.selectedIndex].value;
+    
+    var hiddenField = document.getElementById('hiddenFieldSepsisDuringAdmission');
+    if (strUser==1 || strUser==2 || strUser==3){
     
         $(hiddenField).slideDown("slow");
         $(hiddenField).addClass('glowingHiddenFields');
