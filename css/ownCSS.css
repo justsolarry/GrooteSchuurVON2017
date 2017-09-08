@@ -820,3 +820,11 @@ div ul li .firstATag:after{
     display:block;
     text-align: center;
 }
+
+th{
+  color: white;
+}
+
+table{
+    color:black;
+}
