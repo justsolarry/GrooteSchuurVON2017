@@ -1,5 +1,5 @@
 //Notes:    File numbering system
-//
+//          Additional 2018 surgery fields
 
 function create2018Xml(babyData){
     var fileNum = 1;
@@ -127,26 +127,46 @@ function createXmlForEachRecord(BabyData){
     var pdaSurgery = (babyData.pdaSurgery != undefined) ? "<PDASURG>"+babyData.pdaSurgery+"</PDASURG>\n" : "";
     var necSurgery = (babyData.necSurgery != undefined) ? "<NECSURG>"+babyData.necSurgery+"</NECSURG>\n" : "";
     var otherSurgery = (babyData.otherSurgery != undefined) ? "<OSURG>"+babyData.otherSurgery+"</OSURG>\n" : "";
+    
     var firstSurgeryCode = (babyData.firstSurgeryCode != undefined) ? "<SRGCD1>"+babyData.firstSurgeryCode+"</SRGCD1>\n" : "";
     var firstSurgeryLocation = (babyData.firstSurgeryLocation != undefined) ? "<SRGLOC1>"+babyData.firstSurgeryLocation+"</SRGLOC1>\n" : "";
+    var firstSurgerySiteInfection = (babyData.firstSurgerySiteInfection != undefined) ? "<SRGSSI1>"+babyData.firstSurgerySiteInfection +"</SRGSSI1>\n" : "";
+    
     var secondSurgery = (babyData.secondSurgery != undefined) ? "<SRGCD2>"+babyData.secondSurgery+"</SRGCD2>\n" : "";
     var secondarySurgeryLocation = (babyData.secondarySurgeryLocation != undefined) ? "<SRGLOC2>"+babyData.secondarySurgeryLocation+"</SRGLOC2>\n" : "";
+    var secondarySurgerySiteInfection = (babyData.secondarySurgerySiteInfection != undefined) ? "<SRGSSI2>"+babyData.secondarySurgerySiteInfection +"</SRGSSI2>\n" : "";
+    
     var thirdSurgery = (babyData.thirdSurgery != undefined) ? "<SRGCD3>"+babyData.thirdSurgery+"</SRGCD3>\n" : "";
     var thirdSurgeryLocation = (babyData.thirdSurgeryLocation != undefined) ? "<SRGLOC3>"+babyData.thirdSurgeryLocation+"</SRGLOC3>\n" : "";
+    var thirdSurgerySiteInfection = (babyData.thirdSurgerySiteInfection != undefined) ? "<SRGSSI3>"+babyData.thirdSurgerySiteInfection +"</SRGSSI3>\n" : "";
+    
     var fourthSurgery = (babyData.fourthSurgery != undefined) ? "<SRGCD4>"+babyData.fourthSurgery+"</SRGCD4>\n" : "";
     var fourthSurgeryLocation = (babyData.fourthSurgeryLocation != undefined) ? "<SRGLOC4>"+babyData.fourthSurgeryLocation+"</SRGLOC4>\n" : "";
+    var fourthSurgerySiteInfection = (babyData.fourthSurgerySiteInfection != undefined) ? "<SRGSSI4>"+babyData.fourthSurgerySiteInfection +"</SRGSSI4>\n" : "";
+    
     var fifthSurgery = (babyData.fifthSurgery != undefined) ? "<SRGCD5>"+babyData.fifthSurgery+"</SRGCD5>\n" : "";
     var fifthSurgeryLocation = (babyData.fifthSurgeryLocation != undefined) ? "<SRGLOC5>"+babyData.fifthSurgeryLocation+"</SRGLOC5>\n" : "";
+    var fifthSurgerySiteInfection = (babyData.fifthSurgerySiteInfection != undefined) ? "<SRGSSI5>"+babyData.fifthSurgerySiteInfection +"</SRGSSI5>\n" : "";
+    
     var sixthSurgery = (babyData.sixthSurgery != undefined) ? "<SRGCD6>"+babyData.sixthSurgery+"</SRGCD6>\n" : "";
     var sixthSurgeryLocation = (babyData.sixthSurgeryLocation != undefined) ? "<SRGLOC6>"+babyData.sixthSurgeryLocation+"</SRGLOC6>\n" : "";
+    var sixthSurgerySiteInfection = (babyData.sixthSurgerySiteInfection != undefined) ? "<SRGSSI6>"+babyData.sixthSurgerySiteInfection +"</SRGSSI6>\n" : "";
+    
     var seventhSurgery = (babyData.seventhSurgery != undefined) ? "<SRGCD7>"+babyData.seventhSurgery+"</SRGCD7>\n" : "";
     var seventhSurgeryLocation = (babyData.seventhSurgeryLocation != undefined) ? "<SRGLOC7>"+babyData.seventhSurgeryLocation+"</SRGLOC7>\n" : "";
+    var seventhSurgerySiteInfection = (babyData.seventhSurgerySiteInfection != undefined) ? "<SRGSSI7>"+babyData.seventhSurgerySiteInfection +"</SRGSSI7>\n" : "";
+    
     var eighthSurgery = (babyData.eighthSurgery != undefined) ? "<SRGCD8>"+babyData.eighthSurgery+"</SRGCD8>\n" : "";
     var eighthSurgeryLocation = (babyData.eighthSurgeryLocation != undefined) ? "<SRGLOC8>"+babyData.eighthSurgeryLocation+"</SRGLOC8>\n" : "";
+    var eighthSurgerySiteInfection = (babyData.eighthSurgerySiteInfection != undefined) ? "<SRGSSI8>"+babyData.eighthSurgerySiteInfection +"</SRGSSI8>\n" : "";
+    
     var ninethSurgery = (babyData.ninethSurgery != undefined) ? "<SRGCD9>"+babyData.ninethSurgery+"</SRGCD9>\n" : "";
     var ninethSurgeryLocation = (babyData.ninethSurgeryLocation != undefined) ? "<SRGLOC9>"+babyData.ninethSurgeryLocation+"</SRGLOC9>\n" : "";
+    var ninethSurgerySiteInfection = (babyData.ninethSurgerySiteInfection != undefined) ? "<SRGSSI9>"+babyData.ninethSurgerySiteInfection +"</SRGSSI9>\n" : "";
+    
     var tenthSurgery = (babyData.tenthSurgery != undefined) ? "<SRGCD10>"+babyData.tenthSurgery+"</SRGCD10>\n" : "";
     var tenthSurgeryLocation = (babyData.tenthSurgeryLocation != undefined) ? "<SRGLOC10>"+babyData.tenthSurgeryLocation+"</SRGLOC10>\n" : "";
+    var tenthSurgerySiteInfection = (babyData.tenthSurgerySiteInfection != undefined) ? "<SRGSSI10>"+babyData.tenthSurgerySiteInfection +"</SRGSSI10>\n" : "";
 
     var otherSurgeryDescription = (babyData.otherSurgeryDescription != undefined) ? "<OSRGDESC>"+babyData.otherSurgeryDescription+"</OSRGDESC>\n" : "";
     var respiratoryDistressSyndrome = (babyData.respiratoryDistressSyndrome != undefined) ? "<RDS>"+babyData.respiratoryDistressSyndrome+"</RDS>\n" : "";
