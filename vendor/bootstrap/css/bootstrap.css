@@ -2520,6 +2520,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     border-width: 2px;
     box-shadow:0 0 20px #d9534f;
 }
+.addGreen{
+    /*border-color: #d9534f;
+    border-width: 2px;
+    box-shadow:0 0 20px #d9534f;*/
+}
 
 .has-danger .form-control {
   border-color: #d9534f;

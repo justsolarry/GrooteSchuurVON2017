@@ -2,14 +2,12 @@
 
 function inbornOutbornCheck() {
     if (document.getElementById('locationOFBirthInborn').checked) {
-        $("#hiddenField1").slideUp("slow");
-        $("#hiddenField2").slideUp("slow");
-        $('.GroupingHiddenField1').removeClass('glowingHiddenFields')
+        $("#GroupingHiddenField1").slideUp("slow");
+        $('#GroupingHiddenField1').removeClass('glowingHiddenFields')
     }
     if (document.getElementById('locationOFBirthOutborn').checked) {
-        $("#hiddenField1").slideDown("slow");
-        $("#hiddenField2").slideDown("slow");
-        $('.GroupingHiddenField1').addClass('glowingHiddenFields')
+        $("#GroupingHiddenField1").slideDown("slow");
+        $('#GroupingHiddenField1').addClass('glowingHiddenFields')
     }
 }
 
@@ -644,6 +642,7 @@ $(document).ready(function() {
         if($(window).scrollTop() < patientFormLocation-100) { //if still on the main page, dont show 1076
             $("#sidebar-container").fadeOut(500);
         }
+        /*patient form*/
         if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
             if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
                 $('.generalDataItemsProgressBar').removeClass('glowingButton')
@@ -660,7 +659,27 @@ $(document).ready(function() {
             $('#dischargeCircle').removeClass('glowingButton');
             
             /* Toggling different Color */
-            $('#patientFormCircle').css('background-color', 'green');
+            /*Checking if the fields match green or red and change colours*/
+            /*Does it have either of the classes? If not, then its blank*/
+            if(
+                (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) &&
+                (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) &&
+                (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) &&
+                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen'))
+              ){
+               $('#patientFormCircle').css('background-color', 'black');
+               }
+            else if($('#birthWeightInGrams').hasClass('addRed') ||
+                   $('#mothersFirstName').hasClass('addRed') ||
+                     $('#mothersLastName').hasClass('addRed') ||
+                    $('#patientsName').hasClass('addRed') 
+                   ){
+                $('#patientFormCircle').css('background-color', 'red');
+            }
+            else{
+                $('#patientFormCircle').css('background-color', 'green');
+            }
+            
         }
         if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156
             if($('.patientFormProgressBar').hasClass('glowingButton')){
@@ -734,7 +753,16 @@ $('.centerSelect').on('change', function(){
 /*Auto filling the babies name */
 var patientsName = document.getElementById("patientsName");
 var patientsNameInSideBar = document.getElementById("patientInfoPanelPatientNameDisplayID");
-$("#mothersName").keyup(function() {
+/*combining the names*/
+/*var fullName = document.getElementById("mothersFirstName") + document.getElementById("mothersLastName");*/
+$("#mothersFirstName").keydown(function() {
+    
     patientsName.value = "Baby "+this.value;
     patientsNameInSideBar.value = "Baby "+this.value;
 });
+/*
+$("#mothersLastName").keyup(function() {
+    var patientsName = document.getElementById("patientsName");
+    patientsName.value = "Baby "+this.value;
+    patientsNameInSideBar.value = "Baby "+this.value;
+});*/

@@ -132,8 +132,9 @@
 }
 
 /* Hiding Fields*/
-#hiddenField1,
-#hiddenField2,
+/*#hiddenField1,
+#hiddenField2,*/
+#GroupingHiddenField1,
 #hiddenField3,
 #hiddenField4,
 #hiddenField5,

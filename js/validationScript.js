@@ -1,20 +1,45 @@
-function validateMothersName()
+function validateMothersFirstName()
 {
     var alphaExp = /^[a-zA-Z\s\-]*$/;
-    var value1 = document.getElementById('mothersName').value;
+    var value1 = document.getElementById('mothersFirstName').value;
   if ((value1.length) ==0){
-    toastr.error("Mother's Full Name - Value cannot be empty");
-    $('#mothersName').addClass('addRed')
+    toastr.error("Mother's First Name - Value cannot be empty");
+    $('#mothersFirstName').addClass('addRed')
+      $('#mothersFirstName').removeClass('addGreen')
   }
     else if (value1.match(alphaExp)){
-             $('#mothersName').removeClass('addRed')
+             $('#mothersFirstName').removeClass('addRed')
+                $('#mothersFirstName').addClass('addGreen')
              }
     else{
-        toastr.error("Mother's Full Name - Only letters allowed");
-        $('#mothersName').addClass('addRed')
+        toastr.error("Mother's First Name - Only letters allowed");
+        $('#mothersFirstName').addClass('addRed')
+        $('#mothersFirstName').removeClass('addGreen')
     }
   
 }
+
+function validateMothersLastName()
+{
+    var alphaExp = /^[a-zA-Z\s\-]*$/;
+    var value1 = document.getElementById('mothersLastName').value;
+  if ((value1.length) ==0){
+    toastr.error("Mother's Last Name - Value cannot be empty");
+    $('#mothersLastName').addClass('addRed')
+      $('#mothersLastName').removeClass('addGreen')
+  }
+    else if (value1.match(alphaExp)){
+             $('#mothersLastName').removeClass('addRed')
+            $('#mothersLastName').addClass('addGreen')
+             }
+    else{
+        toastr.error("Mother's Last Name - Only letters allowed");
+        $('#mothersLastName').addClass('addRed')
+        $('#mothersLastName').removeClass('addGreen')
+    }
+  
+}
+
 function validatePatientsName()
 {
     var alphaExp = /^[a-zA-Z\s\-]*$/;
@@ -22,13 +47,16 @@ function validatePatientsName()
   if ((value1.length) ==0){
     toastr.error("Patient's Name - Value cannot be empty");
     $('#patientsName').addClass('addRed')
+      $('#patientsName').removeClass('addGreen')
   }
     else if (value1.match(alphaExp)){
              $('#patientsName').removeClass('addRed')
+        $('#patientsName').addClass('addGreen')
              }
     else{
         toastr.error("Patient's Name - Only letters allowed");
         $('#patientsName').addClass('addRed')
+        $('#patientsName').removeClass('addGreen')
     }
   
 }
@@ -41,29 +69,36 @@ function validateBirthweight(){
     }
     else{
         if(isNaN(weight)){
-        toastr.error('Birth Weight - Numbers only');
-        $('#birthWeightInGrams').addClass('addRed')
+            toastr.error('Birth Weight - Numbers only');
+            $('#birthWeightInGrams').addClass('addRed')
+            $('#birthWeightInGrams').removeClass('addGreen')
         }
         if (weight < 1){
             toastr.error('Birth Weight - Value cannot be zero or negative');
             $('#birthWeightInGrams').addClass('addRed')
+            $('#birthWeightInGrams').removeClass('addGreen')
         }
         if (weight >0  && weight < 50){
             toastr.error('Birth Weight - Value must be in grams, not kilograms');
             $('#birthWeightInGrams').addClass('addRed')
+            $('#birthWeightInGrams').removeClass('addGreen')
         }
         if (weight >50  && weight < 401){
             toastr.error('Birth Weight - Value too Low');
             $('#birthWeightInGrams').addClass('addRed')
+            $('#birthWeightInGrams').removeClass('addGreen')
         }
         if (weight > 5000 && weight<7000){
             toastr.warning('Birth Weight - Are you sure?');  
         }
         if (weight >=7000 ){
-            toastr.warning('Birth Weight - Value too High');  
+            toastr.error('Birth Weight - Value too High'); 
+            $('#birthWeightInGrams').addClass('addRed')
+            $('#birthWeightInGrams').removeClass('addGreen')
         }
         if(weight>400 && weight<1501){
             $('#birthWeightInGrams').removeClass('addRed')
+            $('#birthWeightInGrams').addClass('addGreen')
         }
     }
     

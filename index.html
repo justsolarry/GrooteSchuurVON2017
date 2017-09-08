@@ -44,7 +44,7 @@
     <!-- Navigation -->
     <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
         <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer">
-            Menus<i class="fa fa-bars"></i>
+            Menu<i class="fa fa-bars"></i>
         </button>
 
         <div class="container">
@@ -172,28 +172,28 @@
                                     <div class="form-group input-group">
                                         <label class="fixingLabelAlignment">Mother's First Name : </label>
                                         <div class="fixingInputAlignment">
-                                            <input id="mothersFirstName" onblur="validateMothersName()" class="form-control" type="text" name="mothersName" placeholder="Mary">
+                                            <input id="mothersFirstName" name="mothersFirstName" onblur="validateMothersFirstName()" class="form-control" type="text" placeholder="Mary">
                                         </div>
 
                                     </div>
                                     <div class="form-group input-group">
                                         <label class="fixingLabelAlignment">Mother's Last Name : </label>
                                         <div class="fixingInputAlignment">
-                                            <input id="mothersLastName" onblur="validateMothersName()" class="form-control" type="text" name="mothersLastName" placeholder="Brown">
+                                            <input id="mothersLastName" name="mothersLastName" onblur="validateMothersLastName()" class="form-control" type="text" placeholder="Brown">
                                         </div>
 
                                     </div>
                                     <div class="form-group input-group ">
                                         <label class="fixingLabelAlignment">Patient's Name : </label>
                                         <div class="fixingInputAlignment ">
-                                            <input id="patientsName" onblur="validatePatientsName()" class="form-control " type="text" placeholder="Baby Mary Brown">
+                                            <input id="patientsName" name="patientsName" onblur="validatePatientsName()" class="form-control " type="text" placeholder="Baby Mary Brown">
                                         </div>
 
                                     </div>
                                     <div class="form-group input-group">
                                         <label class="fixingLabelAlignment">Patient's Medical Record Number : </label>
                                         <div class="fixingInputAlignment">
-                                            <input id="patientMedicalRecordNumber" onblur="validatePatientMedicalRecordNumber()" class="form-control" type="text" placeholder="15494922">
+                                            <input id="patientMedicalRecordNumber" name="patientMedicalRecordNumber" onblur="validatePatientMedicalRecordNumber()" class="form-control" type="text" placeholder="15494922">
                                             <i class="fa fa-question-circle ownToolTip">
                                                   <span class="ownToolTipText">1</span>
                                                 </i>
@@ -222,7 +222,7 @@
                                                     </span>
                                         </div>
                                     </div>
-                                    <div class="GroupingHiddenField1" style="border-radius: 4px; ">
+                                    <div id="GroupingHiddenField1" style="border-radius: 4px; ">
 
                                         <div id="hiddenField1" class="form-group input-group">
                                             <label class="fixingLabelAlignment">Date of Admission : </label>
@@ -233,42 +233,6 @@
                                                     </i>
                                             </div>
                                         </div>
-
-                                        <!--<div id = "hiddenField1" class="form-group input-group" >
-                                            <label class= "fixingLabelAlignment">Day of Admission to your Center (1-28) : </label>
-                                            <div class="fixingInputAlignment">
-                                                <select name =state class=" ddList centerSelect form-control" style="height:32px; width:100px;">
-                                                  <option value="1">1</option>
-                                                  <option value="2">2</option>
-                                                  <option value="3">3</option>
-                                                  <option value="4">4</option>
-                                                  <option value="5">5</option>
-                                                  <option value="6">6</option>
-                                                  <option value="7">7</option>
-                                                  <option value="8">8</option>
-                                                  <option value="9">9</option>
-                                                  <option value="10">10</option>
-                                                  <option value="11">11</option>
-                                                  <option value="12">12</option>
-                                                  <option value="13">13</option>
-                                                  <option value="14">14</option>
-                                                  <option value="15">15</option>
-                                                  <option value="16">16</option>
-                                                  <option value="17">17</option>
-                                                  <option value="18">18</option>
-                                                  <option value="19">19</option>
-                                                  <option value="20">20</option>
-                                                  <option value="21">21</option>
-                                                  <option value="22">22</option>
-                                                  <option value="23">23</option>
-                                                  <option value="24">24</option>
-                                                  <option value="25">25</option>
-                                                  <option value="26">26</option>
-                                                  <option value="27">27</option>
-                                                  <option value="28">28</option>
-                                                </select>
-                                            </div>
-                                            </div>-->
 
                                         <div id="hiddenField2" class="form-group input-group">
                                             <label class="fixingLabelAlignment">Transfer Code of Center to which Infant Transferred : </label>
@@ -401,7 +365,8 @@
                                         <div class="form-group input-group raceOfMotherDiv">
                                             <label class="fixingLabelAlignment">Race of Mother : </label>
                                             <div class="fixingInputAlignment">
-                                                <select id="raceOfMother" name=raceOfMother class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                <select id="raceOfMother" name=raceOfMother class=" ddList centerSelect form-control" style="height:32px;width:40%;">
+                                                    <option disabled selected value>---------SELECT---------</option>
                                                     <option value="1">Black</option>
                                                     <option value="7">Coloured</option>
                                                     <option value="3">White</option>
@@ -1011,23 +976,26 @@
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Oxygen on Day 28 > 21% : </label>
                                             <span class="radioFloatLeft">
-                                                    <input class="radioType" id="oxygenDay28Yes" type="radio" name = oxygenDay28 value="1">
-                                                    <label class="radioText">Yes</label>
-                                                </span>
+                                                <label class="radioText">Yes</label>
+                                                <input class="radioType" id="oxygenDay28Yes" type="radio" name = oxygenDay28 value="1">
+                                            </span>
 
                                             <span class="radioFloatLeft">
+                                                <label class="radioText">No</label>
                                                     <input class="radioType" id="oxygenDay28No" type="radio" name = oxygenDay28 value="0">
-                                                    <label class="radioText">No</label>
+                                                    
                                                 </span>
 
                                             <span class="radioFloatLeft">
+                                                <label class="radioText">N/A</label>
                                                     <input class="radioType" id="oxygenDay28NA" type="radio" name = oxygenDay28 value="7">
-                                                    <label class="radioText">N/A</label>
+                                                    
                                                 </span>
 
                                             <span class="radioFloatLeft">
+                                                <label class="radioText">Unknown</label>
                                                     <input class="radioType" id="oxygenDay28Unknown" type="radio" name = oxygenDay28 value="9">
-                                                    <label class="radioText">Unknown</label>
+                                                    
                                                 </span>
                                         </div>
                                         <div class="InnerPanel inner-panel-primary">
@@ -1038,22 +1006,26 @@
                                                 <div class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInner">Cranial Imaging(US/CT/MRI) on or before day 28  : </label>
                                                     <span class="radioFloatLeftInner">
+                                                        <label class="radioText">Yes</label>
                                                     <input class="radioType" id="cranialImagingYes" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="1">
-                                                    <label class="radioText">Yes</label>
+                                                    
                                                 </span>
 
                                                     <span class="radioFloatLeftInner">
+                                                        <label class="radioText">No</label>
                                                     <input class="radioType" id="cranialImagingNo" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="0">
-                                                    <label class="radioText">No</label>
+                                                    
                                                 </span>
                                                     
                                                     <span class="radioFloatLeftInner">
+                                                        <label class="radioText">N/A</label>
                                                     <input class="radioType" id="cranialImagingNA" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="7">
-                                                    <label class="radioText">N/A</label>
+                                                    
                                                 </span>
                                                     <span class="radioFloatLeftInner">
+                                                        <label class="radioText">Unknown</label>
                                                     <input class="radioType" id="cranialImagingUnknown" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="9">
-                                                    <label class="radioText">Unknown</label>
+                                                    
                                                 </span>
                                                 </div>
                                                 <div id="hiddenFieldCranialImaging" class="form-group input-group">
@@ -4227,7 +4199,7 @@
     <script>checkForPopulation()</script>
     <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
     
-<script type="text/javascript">
+<!--<script type="text/javascript">
     $(document).ready(function() {
         $('form').sisyphus(
             {
@@ -4246,7 +4218,7 @@
             }
         );
     });
-</script>
+</script>-->
 </body>
 
 </html>
