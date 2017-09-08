@@ -22,6 +22,7 @@
     <!-- Custom styles for this template -->
     <link href="css/grayscale.css" rel="stylesheet">
     <link href="css/toastr.css" rel="stylesheet" />
+    
 
     <!-- Temporary navbar container fix -->
     <style>
@@ -36,11 +37,10 @@
         }
     </style>
 
-
 </head>
 
 <body id="page-top">
-
+    
     <!-- Navigation -->
     <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
         <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer">
@@ -4225,6 +4225,28 @@
     <script src="js/noframework.waypoints.js"></script>
     <script src= "js/db.js"></script>
     <script>checkForPopulation()</script>
+    <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('form').sisyphus(
+            {
+                locationBased: true,
+                timeout: 10,
+                //autoRelease: true,
+                onSave: function() {
+                    var date = new Date();
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    var seconds = date.getSeconds();
+                    toastr.options.showMethod = 'slideDown';
+                    toastr.success('Saved', 'Autosave', {timeOut: 750});
+                    //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
+                }
+            }
+        );
+    });
+</script>
 </body>
 
 </html>

@@ -143,7 +143,7 @@ function displayData(id){
         babyData = JSON.parse(this.responseText);
         console.log(this.responseText);
         //document.getElementById("demo").innerHTML = myObject;
-        window.location = "index.html?id="+id;        
+        window.location = "index.html?id="+id+"#PatientFormID";        
     }
   }
   http.send();
@@ -172,21 +172,26 @@ function repopulateForm(babyData){
         for (var key in babyData) {
             if (babyData.hasOwnProperty(key)) {
             //alert(key + " -> " + babyData[key]);
-                alert("Running:"+key);
+                //alert("Running:"+key);
                 if(document.getElementById(key) != null){
                     
-                    alert(key+"| |"+JSON.stringify(document.getElementById(key)));
-                    var field = document.getElementsByName(key);
+                    //alert(key+"| |"+JSON.stringify(document.getElementById(key)));
+                    //var field = document.getElementsByName(key);
                     
                     //alert(field[0].type);
-                    /*if(document.getElementsByName(key)[0].type === 'radio'){
-                        if(document.getElementsByName(key)[0].value === babyData[key]){
-                          document.getElementsByName(key)[0].checked = true;   
+                    /*if(document.getElementById(key).type === 'radio'){
+                        if(document.getElementById(key).value === babyData[key]){
+                          document.getElementById(key).checked = true;   
                         }
                     }
                     else{
-                        document.getElementsByName(key)[0].value = babyData[key];
+                        document.getElementById(key).value = babyData[key];
                     }*/
+                    
+                    var elements = document.getElementsByName(key);
+                    alert(JSON.stringify(elements));
+                    
+                    
                 }
             }
         }
@@ -207,7 +212,7 @@ function checkForPopulation(){
        _url = new URL(url);
        var id = _url.searchParams.get("id");
         displayForm(id);
-        alert("There are params"+id)
+        //alert("There are params"+id)
     } 
     else {}
 }
