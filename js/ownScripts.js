@@ -621,9 +621,7 @@ function numberOfInfantsDeliveredCheck() {
             $(value1).removeClass('glowingHiddenFields');
             }
 }
-function PIHOccurCheck() {
-    
-}
+
 function showTransferHideDischarge() { 
     $("#transferSection").css("display", "block");
     console.log("function working");
@@ -631,7 +629,9 @@ function showTransferHideDischarge() {
 }
 
 
+
 $(document).ready(function() {
+    toastr.options.closeButton = true;
     /*Using the hide function wasn't optimal as it shows up when you load the page. Used display:none instead in CSS*/
     /*$("#sidebar-container").hide(); //hide your div initially*/
     var patientFormLocation = $("#PatientFormID").offset().top;
@@ -657,7 +657,7 @@ $(document).ready(function() {
             $('#patientFormCircle').addClass('glowingButton');
             $('#generalDataItemsFormCircle').removeClass('glowingButton');
             $('#dischargeCircle').removeClass('glowingButton');
-            
+            console.log("length of radio "+($('input[name=locationOFBirthInborn]:checked').length));
             /* Toggling different Color */
             /*Checking if the fields match green or red and change colours*/
             /*Does it have either of the classes? If not, then its blank*/
@@ -665,14 +665,18 @@ $(document).ready(function() {
                 (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) &&
                 (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) &&
                 (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) &&
-                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen'))
+                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) &&
+                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen')) &&
+                ($('input[name=locationOFBirthInborn]:checked').length > 0)
               ){
                $('#patientFormCircle').css('background-color', 'black');
                }
             else if($('#birthWeightInGrams').hasClass('addRed') ||
                    $('#mothersFirstName').hasClass('addRed') ||
                      $('#mothersLastName').hasClass('addRed') ||
-                    $('#patientsName').hasClass('addRed') 
+                    $('#patientsName').hasClass('addRed') ||
+                    $('#patientMedicalRecordNumber').hasClass('addRed')||
+                    ($('input[name=locationOFBirthInborn]:checked').length == 0)
                    ){
                 $('#patientFormCircle').css('background-color', 'red');
             }
@@ -713,6 +717,10 @@ $(document).ready(function() {
         }
         
     });
+    
+    
+    
+    
 });
 
 /* START Opening and Closing Menu Bar   */
@@ -755,14 +763,88 @@ var patientsName = document.getElementById("patientsName");
 var patientsNameInSideBar = document.getElementById("patientInfoPanelPatientNameDisplayID");
 /*combining the names*/
 /*var fullName = document.getElementById("mothersFirstName") + document.getElementById("mothersLastName");*/
-$("#mothersFirstName").keydown(function() {
+$("#mothersFirstName").keyup(function() {
     
     patientsName.value = "Baby "+this.value;
     patientsNameInSideBar.value = "Baby "+this.value;
 });
-/*
+/*var patientsName = document.getElementById("patientsName");
 $("#mothersLastName").keyup(function() {
-    var patientsName = document.getElementById("patientsName");
-    patientsName.value = "Baby "+this.value;
-    patientsNameInSideBar.value = "Baby "+this.value;
+    document.getElementById("patientsName").value = copyOverPatientsName +this.value;
 });*/
+
+var patientMedicalNumber = document.getElementById("patientMedicalRecordNumber");
+var patientMedicalNumberSideBar = document.getElementById("patientInfoPanelPatientMedicalDisplayID");
+/*combining the names*/
+/*var fullName = document.getElementById("mothersFirstName") + document.getElementById("mothersLastName");*/
+$("#patientMedicalRecordNumber").keyup(function() {
+    
+    patientMedicalNumber.value = this.value;
+    patientMedicalNumberSideBar.value = this.value;
+});
+
+
+
+/* START DATES*/
+/*Date of Birth*/
+$( function() {
+    
+    $( "#dateOfBirth" ).datepicker({
+      showButtonPanel: true,
+    dateFormat: 'dd-mm-yy',
+        maxDate: '0',
+        minDate: '-18M'
+        
+    });   
+  } );
+/*Date of Admission*/
+$( function() {
+    
+    $( "#dateOfAdmission" ).datepicker({
+      showButtonPanel: true,
+    dateFormat: 'dd-mm-yy',
+        maxDate: '0',
+        minDate: '-18M'
+        
+    });   
+  } );
+/*Date of Initial Disposition*/
+$( function() {
+    
+    $( "#dateOfInitialDisposition" ).datepicker({
+      showButtonPanel: true,
+    dateFormat: 'dd-mm-yy',
+        maxDate: '0',
+        minDate: '-18M'
+        
+    });   
+  } );
+function adding28Days(){
+    var arg = 28;
+    var d = $('#dateOfBirth').datepicker('getDate');
+    d.setDate(d.getDate() + arg);
+    $('#day28Date').datepicker('setDate', d);
+    
+    /*var dateOfBirth = document.getElementById('dateOfBirth').value;
+    console.log(dateOfbirth);
+    if(dateOfBirth.length!=0){
+        $('#birthWeightInGrams').addClass('addGreen')
+        $('#birthWeightInGrams').removeClass('addRed')
+       }
+    else{
+        $('#birthWeightInGrams').removeClass('addGreen')
+        $('#birthWeightInGrams').addClass('addRed')
+    }*/
+    
+}
+        
+/*28 day date*/
+$( function() {
+    
+    $( "#day28Date" ).datepicker({
+      showButtonPanel: true,
+    dateFormat: 'dd-mm-yy'
+        
+    });
+  } );
+/* END DATES*/

@@ -89,7 +89,9 @@ function validateBirthweight(){
             $('#birthWeightInGrams').removeClass('addGreen')
         }
         if (weight > 5000 && weight<7000){
-            toastr.warning('Birth Weight - Are you sure?');  
+            toastr.warning('Birth Weight - Are you sure?'); 
+            $('#birthWeightInGrams').removeClass('addRed')
+            $('#birthWeightInGrams').addClass('addGreen')
         }
         if (weight >=7000 ){
             toastr.error('Birth Weight - Value too High'); 
@@ -97,6 +99,10 @@ function validateBirthweight(){
             $('#birthWeightInGrams').removeClass('addGreen')
         }
         if(weight>400 && weight<1501){
+            $('#birthWeightInGrams').removeClass('addRed')
+            $('#birthWeightInGrams').addClass('addGreen')
+        }
+        if(weight>1500 && weight<5001){
             $('#birthWeightInGrams').removeClass('addRed')
             $('#birthWeightInGrams').addClass('addGreen')
         }
@@ -147,13 +153,28 @@ function validateGestationalAgeInWeeks()
   
 }
 //dayofAdmission is calculated
-function validateHeadCircumference(bheadcir){
-  if (bheadcir == null){
-    alert("Please insert head circumference");
-  }
-  if (bheadcir > 10.0 || bheadcir < 70.0){
-    alert("Please insert head circumference in cm; range: 10.0 - 70.0cm");
-  }
+function validateHeadCircumference() {
+    var headCircumference =document.getElementById('headCircumference').value;
+    
+    if(headCircumference.length==0){
+       toastr.error('Head Circumference - Value cannot be empty');
+        $('#headCircumference').addClass('addRed');
+        $('#headCircumference').removeClass('addGreen');
+       }
+    else
+    if(headCircumference>= 10 && headCircumference<=70){
+        var roundedHeadCircumference = Math.round(headCircumference/10)*10;
+        document.getElementById('headCircumference').value=roundedHeadCircumference;
+        $('#headCircumference').addClass('addGreen');
+        $('#headCircumference').removeClass('addRed');
+       }
+    else{
+        toastr.error('Head Circumference - Invalid value, must be from 10-70cm');
+        $('#headCircumference').addClass('addRed');
+        $('#headCircumference').removeClass('addGreen');
+    }
+    
+    
 }
 function validateNumberOfInfants(nbirths){
   if (!(nbirths > 0 || nbirths < 11 || nbirths == null)){
@@ -170,3 +191,54 @@ function validateApgarScore5min(ap5){
     alert("Please insert apgar score for 5 minute; range: 0 - 10");
   }
 }
+
+
+$("#birthWeightInGrams").on( "keyup", function( event ) {
+    
+    // 1.
+    var selection = window.getSelection().toString();
+    if ( selection !== '' ) {
+        return;
+    }
+    // 2.
+    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+        return;
+    }
+    // 1
+        var $this = $( this );
+        var input = $this.val();
+        // 2
+        var input = input.replace(/[\D\s\._\-]+/g, "");
+        // 3
+        input = input ? parseInt( input, 10 ) : 0;
+        // 4
+        $this.val( function() {
+            return ( input === 0 ) ? "" : input.toString();
+        } );
+ 
+} );
+
+$("#patientMedicalRecordNumber").on( "keyup", function( event ) {
+    
+    // 1.
+    var selection = window.getSelection().toString();
+    if ( selection !== '' ) {
+        return;
+    }
+    // 2.
+    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+        return;
+    }
+    // 1
+        var $this = $( this );
+        var input = $this.val();
+        // 2
+        var input = input.replace(/[\D\s\._\-]+/g, "");
+        // 3
+        input = input ? parseInt( input, 10 ) : 0;
+        // 4
+        $this.val( function() {
+            return ( input === 0 ) ? "" : input.toString();
+        } );
+ 
+} );
