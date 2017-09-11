@@ -877,3 +877,11 @@ div ul li .firstATag:after{
 /* START Settings for all the dates*/
 
 /* END Settings for all the dates*/
+
+th{
+  color: white;
+}
+
+table{
+    color:black;
+}
