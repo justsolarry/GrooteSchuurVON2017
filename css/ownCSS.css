@@ -1,9 +1,17 @@
 /* START adding units*/
-.panel-body .addingUnits:after{
+.panel-body .addingCalendar:after{
     position:relative;
     right:260px;
     top:5px;
     float:right;
+    font-family: FontAwesome;
+}
+.panel-body .addingUnits:after {
+    position:relative;
+    right:260px;
+    top:5px;
+    float:right;
+    
 }
 .unitsGrams:after{
     content:"grams";
@@ -22,6 +30,9 @@
 }
 .unitsCentigrade:after{
     content: "\2103";
+}
+.addingCalendarIcon:after{
+    content: "\f073";
 }
 /* END adding units*/
 .menuButton:hover{
@@ -55,7 +66,7 @@
 }
 .fixingInputAlignmentForSurgery{
     margin-left:150px;
-    width:850px;
+    width:900px;
     height:32px; 
     /*background-color:skyblue;*/
 }
@@ -85,19 +96,21 @@
     color: white;
 }
 
-
-.fixingLabelAlignment{
-    display: inline-block;
+/* The first label inside the DIV input-group class*/
+.input-group .fixingLabelAlignment{
     float: left;
     clear: left;
-    height:32px;
-    width: 450px;
     text-align: right;
+    font-size:18px;
     padding-right:10px;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 100;
-   /*background-color: green;*/
+    display: inline-block;
+    height:32px;
+    width: 450px;
+    /*background-color:green;*/
 }
+
 
 .fixingLabelAlignmentInner{
     display: inline-block;
@@ -132,8 +145,9 @@
 }
 
 /* Hiding Fields*/
-#hiddenField1,
-#hiddenField2,
+/*#hiddenField1,
+#hiddenField2,*/
+#GroupingHiddenField1,
 #hiddenField3,
 #hiddenField4,
 #hiddenField5,
@@ -268,8 +282,8 @@
     display: inline-block;
     border-bottom: 1px dotted black;
     /* START changing the location of the icon*/
-    right:100px;
-    top:7px;
+    right:80px;
+    top:4px;
     /* END changing the location of the icon*/
 }
 .ownToolTip .ownToolTipText {
@@ -429,7 +443,6 @@
     margin:0;
     margin-left:60px;
     padding:0;
-    bottom:50px;
     position:relative;
     counter-reset: step;
 }
@@ -447,7 +460,7 @@
 }
 /* each item in the list */
 .progressBarUL li{
-    margin: 120px 0px;
+    margin: 100px 0px;
     position:relative;
     
 }
@@ -729,12 +742,12 @@ div ul li .firstATag:after{
     /*margin-bottom: 20px;
     margin-left: 25px;*/
     background-color: transparent;
-    border: 1px solid #337ab7;
+    border: 3px solid #337ab7;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    width:100%;
     overflow: auto;
+    
 }
 .panel-primary {
     border-color: #337ab7;
@@ -742,7 +755,8 @@ div ul li .firstATag:after{
     font-size: 14px;
     line-height: 1.42857143;
     color:#999999;
-    width:1000px;
+    max-width:100%;
+    margin: 0 auto;
 }
 .panel-primary>.panel-heading {
     color: #fff;
@@ -768,11 +782,12 @@ div ul li .firstATag:after{
 }
 
 /*END Panel CSS*/
+
+/* START Inner Panel*/
 .InnerPanel {
-    margin-bottom: 20px;
-    margin-left: 25px;
+    margin: 2em 0;
     background-color: transparent;
-    border: 1px solid #337ab7;
+    border: 1.5px solid #337ab7;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -785,7 +800,7 @@ div ul li .firstATag:after{
     font-size: 14px;
     line-height: 1.42857143;
     color:#999999;
-    width:880px;
+    width:100%;
 }
 .inner-panel-primary>.inner-panel-heading {
     color: #fff;
@@ -798,21 +813,55 @@ div ul li .firstATag:after{
     border-bottom: 1px solid transparent;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+    font-size: 18px;
+    text-transform: uppercase;
+    
 }
 
 .inner-panel-body {
     padding: 35px;
 }
-.inner-panel-body p {
+
+/* END Inner Panel*/
+
+/*START Inner inner panel*/
+.InnerInnerPanel {
+    background-color: transparent;
+    border: 1px solid #337ab7;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    width:100%;
+    overflow: auto;
+}
+.inner-inner-panel-primary {
+    border-color: #337ab7;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-    color: white;
+    color:#999999;
+    width:880px;
 }
-/* START Inner Panel*/
+.inner-inner-panel-primary>.inner-inner-panel-heading {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
 
+.inner-inner-panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    font-size: 18px;
+    text-transform: uppercase;
+    
+}
 
-/* END Inner Panel*/
+.inner-inner-panel-body {
+    padding: 35px;
+}
+/*END Inner inner panel*/
 /* START Centering the drop down select */
 .tempforSize {display: inline-block !important;}
 /* END Centering the drop down select */
@@ -825,3 +874,6 @@ div ul li .firstATag:after{
     display:block;
     text-align: center;
 }
+/* START Settings for all the dates*/
+
+/* END Settings for all the dates*/
