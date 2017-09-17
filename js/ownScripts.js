@@ -2,14 +2,12 @@
 
 function inbornOutbornCheck() {
     if (document.getElementById('locationOFBirthInborn').checked) {
-        $("#hiddenField1").slideUp("slow");
-        $("#hiddenField2").slideUp("slow");
-        $('.GroupingHiddenField1').removeClass('glowingHiddenFields')
+        $("#GroupingHiddenField1").slideUp("slow");
+        $('#GroupingHiddenField1').removeClass('glowingHiddenFields')
     }
     if (document.getElementById('locationOFBirthOutborn').checked) {
-        $("#hiddenField1").slideDown("slow");
-        $("#hiddenField2").slideDown("slow");
-        $('.GroupingHiddenField1').addClass('glowingHiddenFields')
+        $("#GroupingHiddenField1").slideDown("slow");
+        $('#GroupingHiddenField1').addClass('glowingHiddenFields')
     }
 }
 
@@ -623,9 +621,7 @@ function numberOfInfantsDeliveredCheck() {
             $(value1).removeClass('glowingHiddenFields');
             }
 }
-function PIHOccurCheck() {
-    
-}
+
 function showTransferHideDischarge() { 
     $("#transferSection").css("display", "block");
     console.log("function working");
@@ -633,7 +629,9 @@ function showTransferHideDischarge() {
 }
 
 
+
 $(document).ready(function() {
+    toastr.options.closeButton = true;
     /*Using the hide function wasn't optimal as it shows up when you load the page. Used display:none instead in CSS*/
     /*$("#sidebar-container").hide(); //hide your div initially*/
     var patientFormLocation = $("#PatientFormID").offset().top;
@@ -644,6 +642,7 @@ $(document).ready(function() {
         if($(window).scrollTop() < patientFormLocation-100) { //if still on the main page, dont show 1076
             $("#sidebar-container").fadeOut(500);
         }
+        /*patient form*/
         if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
             if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
                 $('.generalDataItemsProgressBar').removeClass('glowingButton')
@@ -658,9 +657,33 @@ $(document).ready(function() {
             $('#patientFormCircle').addClass('glowingButton');
             $('#generalDataItemsFormCircle').removeClass('glowingButton');
             $('#dischargeCircle').removeClass('glowingButton');
-            
+            console.log("length of radio "+($('input[name=locationOFBirthInborn]:checked').length));
             /* Toggling different Color */
-            $('#patientFormCircle').css('background-color', 'green');
+            /*Checking if the fields match green or red and change colours*/
+            /*Does it have either of the classes? If not, then its blank*/
+            if(
+                (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) &&
+                (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) &&
+                (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) &&
+                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) &&
+                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen')) &&
+                ($('input[name=locationOFBirthInborn]:checked').length > 0)
+              ){
+               $('#patientFormCircle').css('background-color', 'black');
+               }
+            else if($('#birthWeightInGrams').hasClass('addRed') ||
+                   $('#mothersFirstName').hasClass('addRed') ||
+                     $('#mothersLastName').hasClass('addRed') ||
+                    $('#patientsName').hasClass('addRed') ||
+                    $('#patientMedicalRecordNumber').hasClass('addRed')||
+                    ($('input[name=locationOFBirthInborn]:checked').length == 0)
+                   ){
+                $('#patientFormCircle').css('background-color', 'red');
+            }
+            else{
+                $('#patientFormCircle').css('background-color', 'green');
+            }
+            
         }
         if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156
             if($('.patientFormProgressBar').hasClass('glowingButton')){
@@ -694,13 +717,17 @@ $(document).ready(function() {
         }
         
     });
+    
+    
+    
+    
 });
 
 /* START Opening and Closing Menu Bar   */
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").style.width = "20%";
 }
 
 /* Set the width of the side navigation to 0 */
@@ -734,7 +761,90 @@ $('.centerSelect').on('change', function(){
 /*Auto filling the babies name */
 var patientsName = document.getElementById("patientsName");
 var patientsNameInSideBar = document.getElementById("patientInfoPanelPatientNameDisplayID");
-$("#mothersName").keyup(function() {
+/*combining the names*/
+/*var fullName = document.getElementById("mothersFirstName") + document.getElementById("mothersLastName");*/
+$("#mothersFirstName").keyup(function() {
+    
     patientsName.value = "Baby "+this.value;
     patientsNameInSideBar.value = "Baby "+this.value;
 });
+/*var patientsName = document.getElementById("patientsName");
+$("#mothersLastName").keyup(function() {
+    document.getElementById("patientsName").value = copyOverPatientsName +this.value;
+});*/
+
+var patientMedicalNumber = document.getElementById("patientMedicalRecordNumber");
+var patientMedicalNumberSideBar = document.getElementById("patientInfoPanelPatientMedicalDisplayID");
+/*combining the names*/
+/*var fullName = document.getElementById("mothersFirstName") + document.getElementById("mothersLastName");*/
+$("#patientMedicalRecordNumber").keyup(function() {
+    
+    patientMedicalNumber.value = this.value;
+    patientMedicalNumberSideBar.value = this.value;
+});
+
+
+
+/* START DATES*/
+/*Date of Birth*/
+$( function() {
+    
+    $( "#dateOfBirth" ).datepicker({
+      showButtonPanel: true,
+    dateFormat: 'dd-mm-yy',
+        maxDate: '0',
+        minDate: '-18M'
+        
+    });   
+  } );
+/*Date of Admission*/
+$( function() {
+    
+    $( "#dateOfAdmission" ).datepicker({
+      showButtonPanel: true,
+    dateFormat: 'dd-mm-yy',
+        maxDate: '0',
+        minDate: '-18M'
+        
+    });   
+  } );
+/*Date of Initial Disposition*/
+$( function() {
+    
+    $( "#dateOfInitialDisposition" ).datepicker({
+      showButtonPanel: true,
+    dateFormat: 'dd-mm-yy',
+        maxDate: '0',
+        minDate: '-18M'
+        
+    });   
+  } );
+function adding28Days(){
+    var arg = 28;
+    var d = $('#dateOfBirth').datepicker('getDate');
+    d.setDate(d.getDate() + arg);
+    $('#day28Date').datepicker('setDate', d);
+    
+    /*var dateOfBirth = document.getElementById('dateOfBirth').value;
+    console.log(dateOfbirth);
+    if(dateOfBirth.length!=0){
+        $('#birthWeightInGrams').addClass('addGreen')
+        $('#birthWeightInGrams').removeClass('addRed')
+       }
+    else{
+        $('#birthWeightInGrams').removeClass('addGreen')
+        $('#birthWeightInGrams').addClass('addRed')
+    }*/
+    
+}
+        
+/*28 day date*/
+$( function() {
+    
+    $( "#day28Date" ).datepicker({
+      showButtonPanel: true,
+    dateFormat: 'dd-mm-yy'
+        
+    });
+  } );
+/* END DATES*/

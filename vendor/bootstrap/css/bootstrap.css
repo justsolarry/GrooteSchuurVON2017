@@ -2520,6 +2520,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     border-width: 2px;
     box-shadow:0 0 20px #d9534f;
 }
+.addGreen{
+    /*border-color: #d9534f;
+    border-width: 2px;
+    box-shadow:0 0 20px #d9534f;*/
+}
 
 .has-danger .form-control {
   border-color: #d9534f;
@@ -3483,16 +3488,7 @@ tbody.collapse.show {
   width: 40%;
     */
 }
-/* The first label inside the DIV input-group class*/
-.input-group .fixingLabelAlignment{
-    float: left;
-    clear: left;
-    text-align: right;
-    font-size:18px;
-    padding-right:10px;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 100;
-}
+
 
 .input-group .form-control {
   
