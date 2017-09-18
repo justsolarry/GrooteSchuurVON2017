@@ -204,7 +204,7 @@ progress {
 textarea {
   overflow: auto;
 }
-
+/*MAIN CHANGES ARE HERE*/
 [type="checkbox"],
 [type="radio"] {
   -webkit-box-sizing: border-box;
@@ -212,6 +212,7 @@ textarea {
   padding: 0;
     
 }
+
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {

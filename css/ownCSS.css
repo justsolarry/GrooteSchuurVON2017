@@ -33,6 +33,7 @@
 }
 .addingCalendarIcon:after{
     content: "\f073";
+    color:black;
 }
 /* END adding units*/
 .menuButton:hover{
@@ -616,14 +617,20 @@ div ul li .firstATag:after{
     margin: 0 0;
     margin-top: 0px;
     line-height: 32px;
+    
+    
 }
 
 .radioFloatLeftInner{ /*for less than 3/4 radio */
     float:left;
-    margin: 0 25px;
-    margin-top: 5px;
+    margin: 0 0px;
+    margin-top: -5px;
     right:500px;
+    line-height: 32px;
     /*background: red;*/
+}
+input[type="radio"]{
+    display:none;
 }
 
 .radioFloatLeftForSurgery{ /*for less than 3/4 radio */
@@ -638,13 +645,28 @@ div ul li .firstATag:after{
 .radioText{
     font-family: Helvetica, Arial, sans-serif;
     font-weight:100;
-    border: 1px solid grey;
-    background-color: black;
     border-radius: 4px;
     padding :0px 10px;
+    border: 1px solid #444444;
+	background: #222222 url("../images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #eeeeee;
+    cursor: pointer;
+}
+
+.radioText:hover{
+    border: 1px solid #0b93d5;
+	background: #003147 url("../images/ui-bg_highlight-soft_33_003147_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #ffffff;
+}
+input[type="radio"]:checked~label {
+    border: 1px solid #26b3f7;
+    background: #0972a5 url(/themeroller/images/ui-bg_highlight-hard_20_0972a5_1x100.png) 50% 50% repeat-x;
+    font-weight: normal;
+    color: #ffffff;
 }
 .radioTextMoreThanTwoVerticalAlign{
-    
     display:block;
     text-align:left;
     margin-left:470px;

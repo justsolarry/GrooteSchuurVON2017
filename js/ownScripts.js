@@ -11,6 +11,13 @@ function inbornOutbornCheck() {
     }
 }
 
+function applyRadioTextSelectedColour(element) {
+    if (document.getElementById(element).checked) {
+        $('.diedInDeliveryRoomYesLabel').addClass('radioTextSelectedColour')
+    }
+    
+}
+
 function steroidsForCLDCheck() {
     var value1 = document.getElementById('hiddenFieldSteroidsCLD');
     if (document.getElementById('steroidsForCLDYes').checked) {
@@ -581,7 +588,6 @@ function ultimateDispositionCheck() {
 }
 
 
-
 function PIHWhereOccurredCheck() {
     var e = document.getElementById("worstGradePIH");
     var strUser = e.options[e.selectedIndex].value;
@@ -635,13 +641,15 @@ function sepsisDuringAdmissionCheck() {
 function numberOfInfantsDeliveredCheck() {
     if (document.getElementById('multipleGestationYes').checked) {
         $("#numberOfInfantsDelivered").val('2').change();
-         $('#numberOfInfantsDelivered option[value=1]').prop('disabled', true);
-        $('#numberOfInfantsDelivered option[value=77]').prop('disabled', true);
-        $('#numberOfInfantsDelivered option[value=99]').prop('disabled', true);
+        $('#numberOfInfantsDelivered option').prop("disabled", false);
+        $('#numberOfInfantsDelivered option[value=00]').prop('disabled', true); //disables select
+        $('#numberOfInfantsDelivered option[value=1]').prop('disabled', true); //disables 1
+        $('#numberOfInfantsDelivered option[value=77]').prop('disabled', true); //disables 77
+        $('#numberOfInfantsDelivered option[value=99]').prop('disabled', true); //disables 99
     }
     if (document.getElementById('multipleGestationNo').checked) {
         $("#numberOfInfantsDelivered").val('1').change();
-        $('#numberOfInfantsDelivered option:not([value=1])').prop('disabled', true);
+        $('#numberOfInfantsDelivered option:not([value=1])').prop('disabled', true); //disable everything that isn't 1
     }
     if (document.getElementById('multipleGestationUnknown').checked) {
         $("#numberOfInfantsDelivered").val('99').change();
