@@ -505,7 +505,7 @@ function postTransferDispositionCheck() {
     var partC = document.getElementById('TransferFormPartC');
     var partD = document.getElementById('TransferFormPartD');
     /*if case for Home, died, hospitalized - Show parts D when available*/
-    if (strUser==0 || strUser==2 || strUser==4){
+    if (strUser==1 || strUser==3 || strUser==5){
         $(partB).slideUp("slow");
         $(partC).slideUp("slow");
         $(partD).slideDown("slow");
@@ -514,7 +514,7 @@ function postTransferDispositionCheck() {
         $(partD).addClass('glowingHiddenFields');
     }
     /*if case for transferred - Show parts C and D*/
-    if (strUser==1){
+    if (strUser==2){
         $(partB).slideUp("slow");
         $(partC).slideDown("slow");
         $(partD).slideDown("slow");
@@ -523,7 +523,7 @@ function postTransferDispositionCheck() {
         $(partD).addClass('glowingHiddenFields');
     }
     /*if case for readmitted to hospital - show (B and D)  C if applicable*/
-    if (strUser==3){
+    if (strUser==4){
         $(partB).slideDown("slow");
         $(partC).slideDown("slow");
         $(partD).slideDown("slow");
@@ -533,6 +533,15 @@ function postTransferDispositionCheck() {
         $(partB).addClass('glowingHiddenFields');
         $(partC).addClass('glowingHiddenFields');
         $(partD).addClass('glowingHiddenFields');
+    }
+    /*Unknown*/
+    if (strUser==9 || strUser==7){
+        $(partB).slideUp("slow");
+        $(partC).slideUp("slow");
+        $(partD).slideUp("slow");
+        $(partB).removeClass('glowingHiddenFields');
+        $(partC).removeClass('glowingHiddenFields');
+        $(partD).removeClass('glowingHiddenFields');
     }
 }
 function dispositionAfterReadmissionCheck() {
@@ -590,12 +599,29 @@ function PIHWhereOccurredCheck() {
     }
 }
 
+function initialDispositionCheck() {
+    var e = document.getElementById("initialDisposition");
+    var strUser = e.options[e.selectedIndex].value;
+    
+    var hiddenField = document.getElementById('TransferFormPartA');
+    /* if transferred */
+    if (strUser==2 ){
+    
+        $(hiddenField).slideDown("slow");
+        $(hiddenField).addClass('glowingHiddenFields');
+    }
+    else{
+        $(hiddenField).slideUp("slow");
+        $(hiddenField).removeClass('glowingHiddenFields');
+    }
+}
+
 function sepsisDuringAdmissionCheck() {
     var e = document.getElementById("sepsisDuringAdmission");
     var strUser = e.options[e.selectedIndex].value;
     
     var hiddenField = document.getElementById('hiddenFieldSepsisDuringAdmission');
-    if (strUser==1 || strUser==2 || strUser==3){
+    if (strUser==1 || strUser==2 ){
     
         $(hiddenField).slideDown("slow");
         $(hiddenField).addClass('glowingHiddenFields');
@@ -607,42 +633,54 @@ function sepsisDuringAdmissionCheck() {
 }
 
 function numberOfInfantsDeliveredCheck() {
-    var e = document.getElementById("numberOfInfantsDelivered");
-    var strUser = e.options[e.selectedIndex].value;
-    
-    var value1 = document.getElementById('hiddenFieldAPGARGroup');
-    if (strUser>0 && strUser <11){
-    
-        $(value1).slideDown("slow");
-        $(value1).addClass('glowingHiddenFields');
+    if (document.getElementById('multipleGestationYes').checked) {
+        $("#numberOfInfantsDelivered").val('2').change();
+         $('#numberOfInfantsDelivered option[value=1]').prop('disabled', true);
+        $('#numberOfInfantsDelivered option[value=77]').prop('disabled', true);
+        $('#numberOfInfantsDelivered option[value=99]').prop('disabled', true);
     }
-    if(strUser ==0){
-            $(value1).slideUp("slow");
-            $(value1).removeClass('glowingHiddenFields');
-            }
+    if (document.getElementById('multipleGestationNo').checked) {
+        $("#numberOfInfantsDelivered").val('1').change();
+        $('#numberOfInfantsDelivered option:not([value=1])').prop('disabled', true);
+    }
+    if (document.getElementById('multipleGestationUnknown').checked) {
+        $("#numberOfInfantsDelivered").val('99').change();
+        $('#numberOfInfantsDelivered option:not([value=99])').prop('disabled', true);
+    }
 }
-
-function showTransferHideDischarge() { 
-    $("#transferSection").css("display", "block");
-    console.log("function working");
-    
-}
-
 
 
 $(document).ready(function() {
     toastr.options.closeButton = true;
+    /*START Menu Controls*/
+    $(".createNewEntryMenuButton").removeClass("activeMenuButton");
+    $(".viewAllEntriesMenuButton").removeClass("activeMenuButton");
+    var currentLocation = window.location.href;
+    if(currentLocation.includes("index.html"))
+       {
+           $(".createNewEntryMenuButton").addClass("activeMenuButton");
+       }
+    if(currentLocation.includes("viewTable.html"))
+       {
+           $(".viewAllEntriesMenuButton").addClass("activeMenuButton");
+       }
+    /*END Menu Controls*/
     /*Using the hide function wasn't optimal as it shows up when you load the page. Used display:none instead in CSS*/
     /*$("#sidebar-container").hide(); //hide your div initially*/
     var patientFormLocation = $("#PatientFormID").offset().top;
     var generalDataItemsFormLocation = $("#generalDataItemsID").offset().top;
-    var transferFormLocation = $("#transfer").offset().top;
+    var transferFormLocation = $("#TransferFormID").offset().top;
     
     $(window).scroll(function() {
-        if($(window).scrollTop() < patientFormLocation-100) { //if still on the main page, dont show 1076
+        //condition statement to HIDE the side bar
+        if($(window).scrollTop() < patientFormLocation-100) { 
             $("#sidebar-container").fadeOut(500);
         }
-        /*patient form*/
+        //condition statement to DISPLAY the side bar
+        if($(window).scrollTop() > patientFormLocation-100){
+           $("#sidebar-container").fadeIn(500);
+           }
+        //Patient Form Section
         if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
             if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
                 $('.generalDataItemsProgressBar').removeClass('glowingButton')
@@ -650,9 +688,8 @@ $(document).ready(function() {
             if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
                 $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
                }
-            $("#sidebar-container").fadeIn(500);
-            $('.patientFormProgressBar').addClass('glowingButton');
             
+            $('.patientFormProgressBar').addClass('glowingButton');
             /* Toggling Buttons */
             $('#patientFormCircle').addClass('glowingButton');
             $('#generalDataItemsFormCircle').removeClass('glowingButton');
@@ -666,8 +703,7 @@ $(document).ready(function() {
                 (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) &&
                 (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) &&
                 (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) &&
-                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen')) &&
-                ($('input[name=locationOFBirthInborn]:checked').length > 0)
+                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen'))
               ){
                $('#patientFormCircle').css('background-color', 'black');
                }
@@ -675,8 +711,7 @@ $(document).ready(function() {
                    $('#mothersFirstName').hasClass('addRed') ||
                      $('#mothersLastName').hasClass('addRed') ||
                     $('#patientsName').hasClass('addRed') ||
-                    $('#patientMedicalRecordNumber').hasClass('addRed')||
-                    ($('input[name=locationOFBirthInborn]:checked').length == 0)
+                    $('#patientMedicalRecordNumber').hasClass('addRed')
                    ){
                 $('#patientFormCircle').css('background-color', 'red');
             }
@@ -790,8 +825,9 @@ $("#patientMedicalRecordNumber").keyup(function() {
 $( function() {
     
     $( "#dateOfBirth" ).datepicker({
-      showButtonPanel: true,
-    dateFormat: 'dd-mm-yy',
+        showButtonPanel: true,
+        numberOfMonths: 2,
+        dateFormat: 'dd-mm-yy',
         maxDate: '0',
         minDate: '-18M'
         
@@ -825,23 +861,41 @@ function adding28Days(){
     d.setDate(d.getDate() + arg);
     $('#day28Date').datepicker('setDate', d);
     
-    /*var dateOfBirth = document.getElementById('dateOfBirth').value;
-    console.log(dateOfbirth);
-    if(dateOfBirth.length!=0){
-        $('#birthWeightInGrams').addClass('addGreen')
-        $('#birthWeightInGrams').removeClass('addRed')
-       }
-    else{
-        $('#birthWeightInGrams').removeClass('addGreen')
-        $('#birthWeightInGrams').addClass('addRed')
-    }*/
     
+    
+}
+
+function dateOfBirthCheck(){
+    var dateOfBirth = document.getElementById('dateOfBirth').value;
+    alert("got into the second check");
+    alert(dateOfBirth.length)
+    if(dateOfBirth.length==0){
+        alert("adding red")
+        $('#dateOfBirth').datepicker( "setDate" , null );
+        $('#dateOfBirth').removeClass('addGreen')
+        $('#dateOfBirth').addClass('addRed')
+        toastr.error('Date of Birth - Must be completed');
+       }
+    if(dateOfBirth.length>0){
+        $('#dateOfBirth').addClass('addGreen')
+        $('#dateOfBirth').removeClass('addRed')
+        alert("adding green")
+    }
 }
         
 /*28 day date*/
 $( function() {
     
     $( "#day28Date" ).datepicker({
+      showButtonPanel: true,
+    dateFormat: 'dd-mm-yy'
+        
+    });
+  } );
+/*Date discharged home, died or first birthday date*/
+$( function() {
+    
+    $( "#dateDischargedHomeDiedOrBirthday" ).datepicker({
       showButtonPanel: true,
     dateFormat: 'dd-mm-yy'
         

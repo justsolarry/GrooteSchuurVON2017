@@ -51,7 +51,7 @@ function validatePatientsName()
   }
     else if (value1.match(alphaExp)){
              $('#patientsName').removeClass('addRed')
-        $('#patientsName').addClass('addGreen')
+            $('#patientsName').addClass('addGreen')
              }
     else{
         toastr.error("Patient's Name - Only letters allowed");
@@ -66,6 +66,7 @@ function validateBirthweight(){
     if(weight.length==0){
         toastr.error('Birth Weight - Value cannot be empty');
         $('#birthWeightInGrams').addClass('addRed')
+        $('#birthWeightInGrams').removeClass('addGreen')
     }
     else{
         if(isNaN(weight)){
@@ -109,27 +110,80 @@ function validateBirthweight(){
     }
     
 }
+function validateWeightAtInitialDisposition(){
+    var weight = document.getElementById('weightAtInitialDisposition').value;
+    if(weight.length==0){
+        toastr.error('Weight at Initial Disposition - Value cannot be empty');
+        $('#weightAtInitialDisposition').addClass('addRed')
+    }
+    else{
+        if(isNaN(weight)){
+            toastr.error('Weight at Initial Disposition - Numbers only');
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+        if (weight < 1){
+            toastr.error('Weight at Initial Disposition - Value cannot be zero or negative');
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+        if (weight >0  && weight < 50){
+            toastr.error('Weight at Initial Disposition - Value must be in grams, not kilograms');
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+        if (weight >50  && weight < 401){
+            toastr.error('Weight at Initial Disposition - Value too Low');
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+        if (weight > 5000 && weight<7000){
+            toastr.warning('Weight at Initial Disposition - Are you sure?'); 
+            $('#weightAtInitialDisposition').removeClass('addRed')
+            $('#weightAtInitialDisposition').addClass('addGreen')
+        }
+        if (weight >=7000 ){
+            toastr.error('Weight at Initial Disposition - Value too High'); 
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+        if(weight>400 && weight<1501){
+            $('#weightAtInitialDisposition').removeClass('addRed')
+            $('#weightAtInitialDisposition').addClass('addGreen')
+        }
+        if(weight>1500 && weight<5001){
+            $('#weightAtInitialDisposition').removeClass('addRed')
+            $('#weightAtInitialDisposition').addClass('addGreen')
+        }
+    }
+    
+}
 function validatePatientMedicalRecordNumber(){
     var MedicalRecordNumber = document.getElementById('patientMedicalRecordNumber').value;
     if(MedicalRecordNumber.length==0){
         toastr.error('Medical Record Number - Value cannot be empty');
         $('#patientMedicalRecordNumber').addClass('addRed')
+        $('#patientMedicalRecordNumber').removeClass('addGreen')
     }
     else{
        if((MedicalRecordNumber.length)!=9){
         toastr.error('Medical Record Number - Must have 8 numbers');
         $('#patientMedicalRecordNumber').addClass('addRed')
+           $('#patientMedicalRecordNumber').removeClass('addGreen')
         }
         if(MedicalRecordNumber <1){
            toastr.error('Medical Record Number - Value cannot be zero or negative');
             $('#patientMedicalRecordNumber').addClass('addRed')
+            $('#patientMedicalRecordNumber').removeClass('addGreen')
            }
         if(isNaN(MedicalRecordNumber)){
             toastr.error('Medical Record Number - Numbers only');
             $('#patientMedicalRecordNumber').addClass('addRed')
+            $('#patientMedicalRecordNumber').removeClass('addGreen')
         }
         if(MedicalRecordNumber.length==9){
             $('#patientMedicalRecordNumber').removeClass('addRed')
+            $('#patientMedicalRecordNumber').addClass('addGreen')
         } 
         
     }
@@ -163,18 +217,33 @@ function validateHeadCircumference() {
        }
     else
     if(headCircumference>= 10 && headCircumference<=70){
-        var roundedHeadCircumference = Math.round(headCircumference/10)*10;
-        document.getElementById('headCircumference').value=roundedHeadCircumference;
         $('#headCircumference').addClass('addGreen');
         $('#headCircumference').removeClass('addRed');
        }
     else{
-        toastr.error('Head Circumference - Invalid value, must be from 10-70cm');
+        toastr.error('Head Circumference - Invalid value, must be from 10.0-70.0cm');
         $('#headCircumference').addClass('addRed');
         $('#headCircumference').removeClass('addGreen');
     }
+}
+function validateHeadCircumferenceInitialDisposition() {
+    var headCircumference =document.getElementById('headCircumferenceInitialDisposition').value;
     
-    
+    if(headCircumference.length==0){
+       toastr.error('Head Circumference - Value cannot be empty');
+        $('#headCircumferenceInitialDisposition').addClass('addRed');
+        $('#headCircumferenceInitialDisposition').removeClass('addGreen');
+       }
+    else
+    if(headCircumference>= 10 && headCircumference<=70){
+        $('#headCircumferenceInitialDisposition').addClass('addGreen');
+        $('#headCircumferenceInitialDisposition').removeClass('addRed');
+       }
+    else{
+        toastr.error('Head Circumference - Invalid value, must be from 10.0-70.0cm');
+        $('#headCircumferenceInitialDisposition').addClass('addRed');
+        $('#headCircumferenceInitialDisposition').removeClass('addGreen');
+    }
 }
 function validateNumberOfInfants(nbirths){
   if (!(nbirths > 0 || nbirths < 11 || nbirths == null)){
