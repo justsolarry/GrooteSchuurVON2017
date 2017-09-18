@@ -181,7 +181,8 @@
 #hiddenFieldRVD,
 #hiddenFieldhypoxicIschaemicEncephalopathy,
 #hiddenFieldSepsisDuringAdmission,
-#hiddenFieldImmunizations652
+#hiddenFieldImmunizations652,
+#hiddenFieldCFM48Hours
 {
     display:none;
 }
@@ -200,14 +201,11 @@
     display:none;
 }
 
-/*Hiding Transfer Form section B - D*/
+/*Hiding Transfer Form section A - D*/
+#TransferFormPartA,
 #TransferFormPartB,
 #TransferFormPartC,
 #TransferFormPartD{
-    display:none;
-}
-/* Hiding Discharge/Transfer Form Sections */
-#transferSection{
     display:none;
 }
 /*text in the radio buttons*/
@@ -615,8 +613,9 @@ div ul li .firstATag:after{
 /* radio buttons */
 .radioFloatLeft{ /*for less than 3/4 radio */
     float:left;
-    margin: 0 25px;
-    margin-top: 5px;
+    margin: 0 0;
+    margin-top: 0px;
+    line-height: 32px;
 }
 
 .radioFloatLeftInner{ /*for less than 3/4 radio */
@@ -639,6 +638,10 @@ div ul li .firstATag:after{
 .radioText{
     font-family: Helvetica, Arial, sans-serif;
     font-weight:100;
+    border: 1px solid grey;
+    background-color: black;
+    border-radius: 4px;
+    padding :0px 10px;
 }
 .radioTextMoreThanTwoVerticalAlign{
     
@@ -857,7 +860,9 @@ div ul li .firstATag:after{
     text-transform: uppercase;
     
 }
-
+.activeMenuButton{
+    color: #42DCA3 !important;
+}
 .inner-inner-panel-body {
     padding: 35px;
 }
