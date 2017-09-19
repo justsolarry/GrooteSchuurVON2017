@@ -41,7 +41,7 @@
 </head>
 
 <body id="page-top">
-    
+
     <!-- Navigation -->
     <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
         <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer">
@@ -92,7 +92,7 @@
         </div>
     </header>
 
-        <!-- START FIRST SECTION -->
+    <!-- START FIRST SECTION -->
 
     <section id="WholeForm">
         <section id="about" class="content-section text-center">
@@ -127,26 +127,26 @@
                         <div class="panelForTheWholeProgressPart" style=" position:relative; bottom: 50px;">
                             <ul class="progressBarUL sidebar-nav">
 
-                            <li class="nav-item">
-                                <a id="patientFormCircle" class="firstATag changeGreen" href="#PatientFormID"></a>
-                                <a id="patientButtonID" class="nav-link patientFormProgressBar" href="#PatientFormID">Patient Identification</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a id="patientFormCircle" class="firstATag changeGreen" href="#PatientFormID"></a>
+                                    <a id="patientButtonID" class="nav-link patientFormProgressBar" href="#PatientFormID">Patient Identification</a>
+                                </li>
 
-                            <li id="listItem2" class="nav-item">
-                                <a id="generalDataItemsFormCircle" class="firstATag" href="#generalDataItemsID"></a>
-                                <a id="dayButtonID" class="nav-link generalDataItemsProgressBar" href="#generalDataItemsID">General Data Items</a>
-                            </li>
+                                <li id="listItem2" class="nav-item">
+                                    <a id="generalDataItemsFormCircle" class="firstATag" href="#generalDataItemsID"></a>
+                                    <a id="dayButtonID" class="nav-link generalDataItemsProgressBar" href="#generalDataItemsID">General Data Items</a>
+                                </li>
 
-                            <li id="listItem3" class="nav-item">
-                                <a id="dischargeCircle" class="firstATag" href="#TransferFormID"></a>
-                                <a id="dischargeButtonID" class="nav-link dischargeAndTransferProgressBar" href="#TransferFormID">Additional Info</a>
-                            </li>
-                        </ul>
-                        <!-- Command buttons at the bottom of the progress bar forms -->
-                        <a href="" class="btn btn-default btn-lg" style="position:relative; width:80%; bottom: 60px;">Print</a>
-                            
+                                <li id="listItem3" class="nav-item">
+                                    <a id="dischargeCircle" class="firstATag" href="#TransferFormID"></a>
+                                    <a id="dischargeButtonID" class="nav-link dischargeAndTransferProgressBar" href="#TransferFormID">Additional Info</a>
+                                </li>
+                            </ul>
+                            <!-- Command buttons at the bottom of the progress bar forms -->
+                            <a href="" class="btn btn-default btn-lg" style="position:relative; width:80%; bottom: 60px;">Print</a>
+
                         </div>
-                        
+
                     </div>
 
                     <!-- ***************  Side bar *************** -->
@@ -199,7 +199,7 @@
                                         <label class="fixingLabelAlignment">Patient's Medical Record Number : </label>
                                         <div class="fixingInputAlignment">
                                             <input id="patientMedicalRecordNumber" name="patientMedicalRecordNumber" onchange="validatePatientMedicalRecordNumber()" class="form-control" type="search" placeholder="15494922" maxlength="9">
-                                            
+
                                         </div>
 
                                     </div>
@@ -238,18 +238,18 @@
                                     <div id="GroupingHiddenField1" class="InnerPanel inner-panel-primary">
                                         <div class="inner-panel-body">
                                             <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Date of Admission : </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="addingCalendar addingCalendarIcon">
+                                                <label class="fixingLabelAlignmentInner">Date of Admission : </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <span class="addingCalendarInner addingCalendarIcon">
                                                     <input type="text" placeholder="dd-mm-yyyy" name="dateOfAdmission" id="dateOfAdmission" class="form-control"/>
                                                 </span>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Transfer Code of Center from which Infant Transferred : </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <select name=transferCodePIW class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Transfer Code of Center from which Infant Transferred : </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <select name=transferCodePIW class=" ddList centerSelect form-control" style="height:32px;width:80%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="13240">13240 - Mowbray Maternity Hospital</option>
                                                     <option value="14994">14994 - New Somerset Hospital</option>
@@ -262,22 +262,23 @@
                                                     <option value="77777777">N/A</option>
                                                     <option value="99999999">Unknown</option>
                                                 </select>
+                                                </div>
                                             </div>
                                         </div>
-                                        </div>
-                                        
+
 
                                     </div>
 
-                                    
+
                                     <div class="form-group input-group">
-                                            <label class="fixingLabelAlignment">Died in Delivery Room : </label>
-                                            <span class="radioFloatLeft">
+                                        <label class="fixingLabelAlignment">Died in Delivery Room : </label>
+                                        <div class="fixingInputAlignment">
+                                        <span class="radioFloatLeft">
                                                 <input class="radioType" id="diedInDeliveryRoomYes" type="radio" name = diedInDeliveryRoom value="1">
                                                 <label class="radioText" for="diedInDeliveryRoomYes">Yes</label>
                                             </span>
 
-                                            <span class="radioFloatLeft">
+                                        <span class="radioFloatLeft">
                                                 
                                                         <input class="radioType" id="diedInDeliveryRoomNo" type="radio" name = diedInDeliveryRoom value="0">
                                                     <label class="radioText" for="diedInDeliveryRoomNo">No</label>
@@ -285,6 +286,8 @@
 
                                                 </span>
                                         </div>
+                                        
+                                    </div>
 
                                 </div>
 
@@ -336,7 +339,7 @@
                                                 <span class="addingUnits unitsWeeks">
                                                     <input id="gestationalAgeInWeeksID" class="form-control" type="text" onchange="validateGestationalAgeInWeeks()" placeholder="15">
                                                 </span>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="form-group input-group gestationalAgeDaysDiv">
@@ -389,7 +392,7 @@
                                                 <input class="radioType" id="prenatalCareNo" type="radio" name = prenatalCare value="0">
                                                 <label class="radioText" for="prenatalCareNo">No</label>
                                             </span>
-                                            
+
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="prenatalCareUnkown" type="radio" name = prenatalCare value="9">
                                                 <label class="radioText" for="prenatalCareUnkown"> Unknown</label>
@@ -516,7 +519,7 @@
 
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="modeOfDeliveryCesareanSection" type="radio" name = modeOfDelivery value="0">
-                                                    <label class="radioText" for="modeOfDeliveryCesareanSection"> Cesarean Section</label>
+                                                    <label class="radioText" for="modeOfDeliveryCesareanSection"> C-Section</label>
                                                     
 
                                                 </span>
@@ -575,7 +578,7 @@
                                         <div class="form-group input-group numberOfInfantsDelivered">
                                             <label class="fixingLabelAlignment">Number of Infants Delivered : </label>
                                             <div class="fixingInputAlignment">
-                                                <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class=" ddList centerSelect form-control" style="height:32px;width:30%;">
+                                                <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option disabled selected value="00">SELECT</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -592,11 +595,11 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        
-                                            <div class="form-group input-group apgarScoresOneMinDiv">
-                                                <label class="fixingLabelAlignment">APGAR Scores @ 1 minute : </label>
-                                                <div class="fixingInputAlignment">
-                                                    <select id="apgarScoresOneMin" name="apgarScoresOneMin" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+
+                                        <div class="form-group input-group apgarScoresOneMinDiv">
+                                            <label class="fixingLabelAlignment">APGAR Scores @ 1 minute : </label>
+                                            <div class="fixingInputAlignment">
+                                                <select id="apgarScoresOneMin" name="apgarScoresOneMin" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
@@ -612,12 +615,12 @@
                                                     <option value="77">N/A</option>
                                                     <option value="99">Unknown</option>
                                                 </select>
-                                                </div>
                                             </div>
-                                            <div class="form-group input-group apgarScoresFiveMinDiv">
-                                                <label class="fixingLabelAlignment">APGAR Scores @ 5 minutes : </label>
-                                                <div class="fixingInputAlignment">
-                                                    <select id="apgarScoresFiveMin" name="apgarScoresFiveMin" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                        </div>
+                                        <div class="form-group input-group apgarScoresFiveMinDiv">
+                                            <label class="fixingLabelAlignment">APGAR Scores @ 5 minutes : </label>
+                                            <div class="fixingInputAlignment">
+                                                <select id="apgarScoresFiveMin" name="apgarScoresFiveMin" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
@@ -633,10 +636,10 @@
                                                     <option value="77">N/A</option>
                                                     <option value="99">Unknown</option>
                                                 </select>
-                                                </div>
                                             </div>
-                                        
-                                        
+                                        </div>
+
+
                                         <div class="form-group input-group" style="background-color: red;">
                                             <label class="fixingLabelAlignment">Temperature Measured within the First Hour after Admission to YOUR NICU : </label>
                                             <span class="radioFloatLeft">
@@ -688,9 +691,9 @@
                                         <div id="hiddenFieldCongenitalInfectionOrganisms" class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
                                                 <div class="form-group input-group congenitalCodeDiv">
-                                                <label class="fixingLabelAlignmentInner">(1) Congenital Infection, Organism(s) : </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <select id="congenitalCodeFirstPart1" name="congenitalCodeFirstPart1" onchange="javascript:congenitalCode1FirstPartCheck();" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <label class="fixingLabelAlignmentInner">(1) Congenital Infection, Organism(s) : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="congenitalCodeFirstPart1" name="congenitalCodeFirstPart1" onchange="javascript:congenitalCode1FirstPartCheck();" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                         <option disabled selected value>SELECT</option>
                                                         <option value="1">Central Nervous System Anomalies</option>
                                                         <option value="2">Congenital Heart Anomalies</option>
@@ -703,11 +706,11 @@
                                                         <option value="7777">N/A</option>
                                                         <option value="9999">Unknown</option>
                                                     </select>
-                                                </div>
-                                                
+                                                    </div>
+
                                                 </div>
                                                 <div id="hiddenFieldCongenitalCode1SecondPart">
-                                                        <div class="form-group input-group">
+                                                    <div class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInner">(1) Code : </label>
                                                         <div class="fixingInputAlignmentInner">
                                                             <select id="congenitalCodeSecondPart1" name="congenitalCodeSecondPart1" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
@@ -725,7 +728,7 @@
                                                     </div>
                                                 </div>
                                                 <div id="hiddenFieldCongenitalCode1SecondPart">
-                                                        <div class="form-group input-group">
+                                                    <div class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInner">(1) Code : </label>
                                                         <div class="fixingInputAlignmentInner">
                                                             <select id="congenitalCode1SecondPart" name="congenitalCode1SecondPart" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
@@ -742,11 +745,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
-                                                
+
+
                                             </div>
                                         </div>
-                                        
+
                                         <div class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-heading">
                                                 Initial Resuscitation
@@ -776,28 +779,28 @@
                                                                     </span>
                                                     </div>
                                                 </div>
-                                                
-                                                    <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Face Mask Vent : </label>
-                                                        <div class="fixingInputAlignmentInner">
-                                                            <span class="radioFloatLeftInner">
+
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Face Mask Vent : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="faceMaskVentYes" type="radio" name = faceMaskVent value="1">
                                                                     <label class="radioText" for="faceMaskVentYes"> Yes</label>
                                                                     
                                                                 </span>
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="faceMaskVentNo" type="radio" name = faceMaskVent value="0">
                                                                     <label class="radioText" for="faceMaskVentNo"> No</label>
                                                                     
                                                                 </span>
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="faceMaskVentUnknown" type="radio" name = faceMaskVent value="9">
                                                                     <label class="radioText" for="faceMaskVentUnknown"> Unknown</label>
                                                                     
                                                                 </span>
-                                                        </div>
                                                     </div>
-                                                    <!--<div class="form-group input-group">
+                                                </div>
+                                                <!--<div class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInner">Laryngeal Mask Airway : </label>
                                                         <div class="fixingInputAlignmentInner">
                                                             <span class="radioFloatLeftInner">
@@ -814,79 +817,79 @@
                                                                 </span>
                                                         </div>
                                                     </div>-->
-                                                    <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Endotracheal Tube Vent  : </label>
-                                                        <div class="fixingInputAlignmentInner">
-                                                            <span class="radioFloatLeftInner">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Endotracheal Tube Vent  : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="endotrachealTubeVentYes" type="radio" name = endotrachealTubeVent value="1">
                                                                         <label class="radioText" for="endotrachealTubeVentYes"> Yes</label>
                                                                         
 
                                                                     </span>
 
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="endotrachealTubeVentNo" type="radio" name = endotrachealTubeVent value="0">
                                                                         <label class="radioText" for="endotrachealTubeVentNo"> No</label>
                                                                         
 
                                                                     </span>
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="endotrachealTubeVentUnknown" type="radio" name = endotrachealTubeVent value="9">
                                                                         <label class="radioText" for="endotrachealTubeVentUnknown"> Unknown</label>
                                                                         
 
                                                                     </span>
-                                                        </div>
                                                     </div>
-                                                    <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Epinephrine : </label>
-                                                        <div class="fixingInputAlignmentInner">
-                                                            <span class="radioFloatLeftInner">
+                                                </div>
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Epinephrine : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="epinephrineYes" type="radio" name = epinephrine value="1">
                                                                 <label class="radioText" for="epinephrineYes"> Yes</label>
                                                                 
 
                                                             </span>
 
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="epinephrineNo" type="radio" name = epinephrine value="0">
                                                                 <label class="radioText" for="epinephrineNo"> No</label>
                                                                 
 
                                                             </span>
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="epinephrineUnknown" type="radio" name = epinephrine value="9">
                                                                 <label class="radioText" for="epinephrineUnknown"> Unknown</label>
                                                                 
 
                                                             </span>
-                                                        </div>
                                                     </div>
-                                                    <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Cardiac Compression : </label>
-                                                        <div class="fixingInputAlignmentInner">
-                                                            <span class="radioFloatLeftInner">
+                                                </div>
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Cardiac Compression : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="cardiacCompressionYes" type="radio" name = cardiacCompression value="1">
                                                                 <label class="radioText" for="cardiacCompressionYes"> Yes</label>
                                                                 
 
                                                             </span>
 
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="cardiacCompressionNo" type="radio" name = cardiacCompression value="0">
                                                                 <label class="radioText" for="cardiacCompressionNo"> No</label>
                                                                 
 
                                                             </span>
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="cardiacCompressionUnknown" type="radio" name = cardiacCompression value="9">
                                                                 <label class="radioText" for="cardiacCompressionUnknown"> Unknown</label>
                                                                 
 
                                                             </span>
-                                                        </div>
                                                     </div>
-                                                    <!--<div class="form-group input-group">
+                                                </div>
+                                                <!--<div class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInner">Nasal Vent : </label>
                                                         <div class="fixingInputAlignmentInner">
                                                             <span class="radioFloatLeftInner">
@@ -907,39 +910,39 @@
                                                             </span>
                                                         </div>
                                                     </div>-->
-                                                    <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Nasal CPAP : </label>
-                                                        <div class="fixingInputAlignmentInner">
-                                                            <span class="radioFloatLeftInner">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Nasal CPAP : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="nasalCPAPAtInitialYes" type="radio" name = nasalCPAPAtInitial value="1">
                                                                 <label class="radioText" for="nasalCPAPAtInitialYes"> Yes</label>
                                                                 
 
                                                             </span>
 
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="nasalCPAPAtInitialNo" type="radio" name = nasalCPAPAtInitial value="0">
                                                                 <label class="radioText" for="nasalCPAPAtInitialNo"> No</label>
                                                             </span>
-                                                            <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="nasalCPAPAtInitialUnknown" type="radio" name = nasalCPAPAtInitial value="9">
                                                                 <label class="radioText" for="nasalCPAPAtInitialUnknown"> Unknown</label>
                                                             </span>
-                                                            <i class="fa fa-question-circle ownToolTip">
+                                                        <i class="fa fa-question-circle ownToolTip">
                                                         <span class="ownToolTipText">1</span>
                                              </i>
-                                                        </div>
                                                     </div>
-                                                
+                                                </div>
+
                                             </div>
                                             <!-- END Subheadings-->
                                         </div>
                                         <div id="hiddenFieldTemperatureFirstHour" class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
                                                 <div class="form-group input-group new-input-group">
-                                                <label class="fixingLabelAlignmentInner">Temperature &#8451 : </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <select id="temperatureAdmission" name="temperatureAdmission" class=" ddList centerSelect form-control"  style="height:32px;width:20%;">
+                                                    <label class="fixingLabelAlignmentInner">Temperature &#8451 : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="temperatureAdmission" name="temperatureAdmission" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option value="20.0">20.0</option>
                                                     <option value="21.0">21.0</option>
                                                     <option value="22.0">22.0</option>
@@ -969,10 +972,10 @@
                                                     <option value="777.7">N/A</option>
                                                     <option value="999.9">Unknown</option>
                                                 </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            </div>
-                                            
+
                                         </div>
                                         <div class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
@@ -1009,33 +1012,34 @@
                                                 <div id="hiddenFieldBacterialSepsisBefore" class="InnerInnerPanel inner-inner-panel-primary">
                                                     <div class="inner-inner-panel-body">
                                                         <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes : </label>
-                                                        <div class="fixingInputAlignmentForBacterialSepsis">
-                                                            <select id="pathogenCodeBefore1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                            <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes : </label>
+                                                            <div class="fixingInputAlignmentInnerInner">
+                                                                <select id="pathogenCodeBefore1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------None---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
-                                                        </div>
-                                                        <label class="fixingLabelAlignmentInner"></label>
-                                                        <div class="fixingInputAlignmentForBacterialSepsis">
-                                                            <select id="pathogenCodeBefore2" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                            </div>
+                                                            <label class="fixingLabelAlignmentInnerInner"></label>
+                                                            <div class="fixingInputAlignmentInnerInner">
+                                                                <select id="pathogenCodeBefore2" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------None---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
-                                                        </div>
-                                                        <label class="fixingLabelAlignmentInner"></label>
-                                                        <div class="fixingInputAlignmentForBacterialSepsis">
-                                                            <select id="pathogenCodeBefore3" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                            </div>
+                                                            <label class="fixingLabelAlignmentInnerInner"></label>
+                                                            <div class="fixingInputAlignmentInnerInner">
+                                                                <select id="pathogenCodeBefore3" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------None---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
+                                                            </div>
                                                         </div>
+
                                                     </div>
-                                                        
-                                                    </div>    
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Oxygen on Day 28 > 21% : </label>
                                             <span class="radioFloatLeft">
@@ -1084,7 +1088,7 @@
                                                     
                                                     
                                                 </span>
-                                                    
+
                                                     <span class="radioFloatLeftInner">
                                                         <input class="radioType" id="cranialImagingNA" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="7">
                                                         <label class="radioText" for="cranialImagingNA"> N/A</label>
@@ -1099,11 +1103,11 @@
                                                 </span>
                                                 </div>
                                                 <div id="hiddenFieldCranialImaging" class="InnerInnerPanel inner-inner-panel-primary">
-                                                <div class="inner-inner-panel-body">
-                                                        <div  class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Worst Grade of PIH (0-4) : </label>
-                                                    <div class="fixingInputAlignmentInner">
-                                                        <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                    <div class="inner-inner-panel-body">
+                                                        <div class="form-group input-group">
+                                                            <label class="fixingLabelAlignmentInnerInner">Worst Grade of PIH (0-4) : </label>
+                                                            <div class="fixingInputAlignmentInnerInner">
+                                                                <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -1112,35 +1116,35 @@
                                                     <option value="7">N/A</option>
                                                     <option value="9">Unknown</option>
                                                         </select>
-                                                    </div>
-                                                </div>
-                                                    <div id="hiddenFieldPIHWhereOccurred">
-                                                    <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Where Occurred?  : </label>
-                                                    <span class="radioFloatLeftInner">
+                                                            </div>
+                                                        </div>
+                                                        <div id="hiddenFieldPIHWhereOccurred">
+                                                            <div class="form-group input-group">
+                                                                <label class="fixingLabelAlignmentInnerInner">Where Occurred?  : </label>
+                                                                <span class="radioFloatLeftInner">
                                                     
                                                     <label class="radioText"><input class="radioType" id="PIHWhereOccurredYourHospital" type="radio" name = PIHWhereOccurred value="1"> Your Hospital</label>
                                                 </span>
 
-                                                    <span class="radioFloatLeftInner">
+                                                                <span class="radioFloatLeftInner">
                                                     
                                                     <label class="radioText"><input class="radioType" id="PIHWhereOccurredOtherHosptal" type="radio" name = PIHWhereOccurred value="2"> Other Hospital</label>
                                                 </span>
 
-                                                    <span class="radioFloatLeftInner">
+                                                                <span class="radioFloatLeftInner">
                                                     <label class="radioText"><input class="radioType" id="PIHWhereOccurredNA" type="radio" name = PIHWhereOccurred value="7"> N/A</label>
                                                 </span>
-                                                    <span class="radioFloatLeftInner">
+                                                                <span class="radioFloatLeftInner">
                                                     <label class="radioText"><input class="radioType" id="PIHWhereOccurredUnknown" type="radio" onchange="javascript:PIHWhereOccurredCheck();" name = PIHWhereOccurred value="9"> Unknown</label>
                                                 </span>
-                                                </div>
-                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                
-                                                
-                                                
-                                                
+
+
+
+
                                             </div>
                                         </div>
                                         <div class="form-group input-group">
@@ -1317,7 +1321,7 @@
                                                                 
 
                                                             </span>
-                                                            
+
                                                         </div>
                                                     </div>
                                                     <div class="form-group input-group">
@@ -1351,7 +1355,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Nasal CPAP or Nasal Vent before or without ever having received ETT Vent : </label>
+                                                        <label class="fixingLabelAlignmentInner">Nasal CPAP/Nasal Vent before/without ever having received ETT Vent : </label>
                                                         <div class="fixingInputAlignmentInner">
                                                             <span class="radioFloatLeftInner">
                                                                 <input class="radioType" id="nasalCPAPOrNasalVentAfterInitialYes" type="radio" name = nasalCPAPOrNasalVentAfterInitial value="1">
@@ -1583,8 +1587,8 @@
                                                     </span>
                                             </div>
                                         </div>
-                                        
-                                            <!--<div id="hiddenFieldSteroidsCLD" class="InnerPanel inner-panel-primary">
+
+                                        <!--<div id="hiddenFieldSteroidsCLD" class="InnerPanel inner-panel-primary">
                                                 <div class="inner-panel-body">
                                                     <div class="form-group input-group">
                                                          <label class="fixingLabelAlignmentInner">Where Given : </label>
@@ -1613,9 +1617,9 @@
                                                     </div>
                                                 </div>
                                             </div>-->
-                                            
-                                            
-                                        
+
+
+
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Ibuprofen for PDA : </label>
                                             <div class="fixingInputAlignment">
@@ -1772,41 +1776,41 @@
                                             </div>
                                         </div>
                                         <div id="hiddenFieldROPSurgery" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-body">
+                                            <div class="inner-panel-body">
                                                 <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Where Given : </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                                    <label class="fixingLabelAlignmentInnerInner">Where Given : </label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="ropSurgeryWhereDoneYourHospital" type="radio" name = ropSurgeryWhereDone value="1">
                                                     <label class="radioText" for="ropSurgeryWhereDoneYourHospital">Your Hospital</label>
                                                     </span>
 
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="ropSurgeryWhereDoneOtherHospital" type="radio" name = ropSurgeryWhereDone value="2">
                                                     <label class="radioText" for="ropSurgeryWhereDoneOtherHospital">Other Hospital</label>
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="ropSurgeryWhereDoneBoth" type="radio" name = ropSurgeryWhereDone value="3">
                                                     <label class="radioText" for="ropSurgeryWhereDoneBoth">Both</label>
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="ropSurgeryWhereDoneNA" type="radio" name = ropSurgeryWhereDone value="7">
                                                     <label class="radioText" for="ropSurgeryWhereDoneNA">N/A</label>
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="ropSurgeryWhereDoneUnknown" type="radio" name = ropSurgeryWhereDone value="9">
                                                     <label class="radioText" for="ropSurgeryWhereDoneUnknown">Unknown</label>
                                                     </span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                            </div>
-                                        </div>
-                                        
+
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Surgery/Interventional Catheterization for Closure of PDA :  </label>
                                             <div class="fixingInputAlignment">
@@ -1991,10 +1995,10 @@
                                                             <label class="radioText" for="surgicalInfection1Unknown">Unknown</label>
                                                     </span>
                                                     </div>
-                                                    
-                                                    
-                                                    
-                                                    
+
+
+
+
                                                     <div id="hiddenFieldSurgery2" class="form-group input-group">
                                                         <label class="fixingLabelAlignmentForSurgeryRecords">Surgery Code 2 :</label>
                                                         <div class="fixingInputAlignmentForSurgery">
@@ -2042,52 +2046,52 @@
 
                                                 </select>
                                                             <label class="fixingLabelAlignmentForSurgeryRecords"></label>
-                                                        <span class="radioFloatLeftForSurgery">
+                                                            <span class="radioFloatLeftForSurgery">
                                                         <label class="radioText">Your Hospital</label>
                                                         <input class="radioType" id="surgeryCode2YourHospital" type="radio" name = surgeryCode2 value="1">
 
                                                     </span>
 
-                                                        <span class="radioFloatLeftForSurgery">
+                                                            <span class="radioFloatLeftForSurgery">
                                                         <label class="radioText">Other Hospital</label>
                                                         <input class="radioType" id="surgeryCode2OtherHospital" type="radio" name = surgeryCode2 value="2">
 
                                                     </span>
-                                                        <span class="radioFloatLeftForSurgery">
+                                                            <span class="radioFloatLeftForSurgery">
                                                         <label class="radioText">Both</label>
                                                         <input class="radioType" id="surgeryCode2Both" type="radio" name = surgeryCode2 value="3">
 
                                                     </span>
-                                                        <span class="radioFloatLeftForSurgery">
+                                                            <span class="radioFloatLeftForSurgery">
                                                         <label class="radioText">N/A</label>
                                                         <input class="radioType" id="surgeryCode2NA" type="radio" name = surgeryCode2 value="7">
 
                                                     </span>
-                                                        <span class="radioFloatLeftForSurgery">
+                                                            <span class="radioFloatLeftForSurgery">
                                                         <label class="radioText">Unknown</label>
                                                         <input class="radioType" id="surgeryCode2Unknown" type="radio" name = surgeryCode2 value="9">
 
                                                     </span>
-                                                    </div>
-                                                    <label class="fixingLabelAlignmentForSurgeryRecords">Surgical Site Infection 2 :</label>
-                                                    <div class="fixingInputAlignmentForSurgery">
-                                                        <span class="radioFloatLeft">
+                                                        </div>
+                                                        <label class="fixingLabelAlignmentForSurgeryRecords">Surgical Site Infection 2 :</label>
+                                                        <div class="fixingInputAlignmentForSurgery">
+                                                            <span class="radioFloatLeft">
                                                         <label class="radioText">Yes</label>
                                                         <input class="radioType" id="surgicalInfection2Yes" type="radio" name = surgicalInfection2 value="1">
 
                                                     </span>
 
-                                                        <span class="radioFloatLeft">
+                                                            <span class="radioFloatLeft">
                                                         <label class="radioText">No</label>
                                                         <input class="radioType" id="surgicalInfection2No" type="radio" name = surgicalInfection2 value="0">
 
                                                     </span>
-                                                        <span class="radioFloatLeft">
+                                                            <span class="radioFloatLeft">
                                                         <label class="radioText">N/A</label>
                                                         <input class="radioType" id="surgicalInfection2NA" type="radio" name = surgicalInfection2 value="7">
 
                                                     </span>
-                                                        <span class="radioFloatLeft">
+                                                            <span class="radioFloatLeft">
                                                         <label class="radioText">Unknown</label>
                                                         <input class="radioType" id="surgicalInfection2Unknown" type="radio" name = surgicalInfection2 value="9">
 
@@ -2291,15 +2295,15 @@
 
                                                     </span>
                                                     </div>
-                                                    </div>
                                                 </div>
-                                                <!-- START Button to add new surgery fields-->
-                                                <div class="form-group input-group">
-                                                    <a href="javascript:addNewSurgeryField();" class="btn btn-default btn-lg page-scroll" style="position:relative;margin-top:100px; width:80%;">Add new Surgery</a>
-                                                </div>
-                                                <!-- END Button to add new surgery fields-->
                                             </div>
-                                        
+                                            <!-- START Button to add new surgery fields-->
+                                            <div class="form-group input-group">
+                                                <a href="javascript:addNewSurgeryField();" class="btn btn-default btn-lg page-scroll" style="position:relative;margin-top:100px; width:80%;">Add new Surgery</a>
+                                            </div>
+                                            <!-- END Button to add new surgery fields-->
+                                        </div>
+
                                         <!-- END Surgery Codes-->
 
                                         <div class="form-group input-group">
@@ -2355,41 +2359,41 @@
                                             </div>
                                         </div>
                                         <div id="hiddenFieldpPneumothorax" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-body">
+                                            <div class="inner-panel-body">
                                                 <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Where Given : </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                                    <label class="fixingLabelAlignmentInnerInner">Where Given : </label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="pneumothoraxWhereOccuredYourHospital" type="radio" name = pneumothoraxWhereOccured value="1">
                                                     <label class="radioText" for="pneumothoraxWhereOccuredYourHospital">Your Hospital</label>
                                                     </span>
 
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="pneumothoraxWhereOccuredOtherHospital" type="radio" name = pneumothoraxWhereOccured value="2">
                                                     <label class="radioText" for="pneumothoraxWhereOccuredOtherHospital">Other Hospital</label>
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="pneumothoraxWhereOccuredBoth" type="radio" name = pneumothoraxWhereOccured value="3">
                                                     <label class="radioText" for="pneumothoraxWhereOccuredBoth">Both</label>
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="pneumothoraxWhereOccuredNA" type="radio" name = pneumothoraxWhereOccured value="7">
                                                     <label class="radioText" for="pneumothoraxWhereOccuredNA">N/A</label>
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="pneumothoraxWhereOccuredUnknown" type="radio" name = pneumothoraxWhereOccured value="9">
                                                     <label class="radioText" for="pneumothoraxWhereOccuredUnknown">Unknown</label>
                                                     </span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                            </div>
-                                        </div>
-                                        
+
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Patent Ductus Arteriosus :</label>
                                             <div class="fixingInputAlignment">
@@ -2443,41 +2447,41 @@
                                             </div>
                                         </div>
                                         <div id="hiddenFieldnecrotizingEnterocolitis" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-body">
+                                            <div class="inner-panel-body">
                                                 <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Where Given : </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                                    <label class="fixingLabelAlignmentInnerInner">Where Given : </label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="necrotizingEnterocolitisWhereOccuredYourHospital" type="radio" name = necrotizingEnterocolitisWhereOccured value="1">
                                                     <label class="radioText" for="necrotizingEnterocolitisWhereOccuredYourHospital">Your Hospital</label>
                                                     </span>
 
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="necrotizingEnterocolitisWhereOccuredOtherHospital" type="radio" name = necrotizingEnterocolitisWhereOccured value="2">
                                                     <label class="radioText" for="necrotizingEnterocolitisWhereOccuredOtherHospital">Other Hospital</label>
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="necrotizingEnterocolitisWhereOccuredBoth" type="radio" name = necrotizingEnterocolitisWhereOccured value="3">
                                                     <label class="radioText" for="necrotizingEnterocolitisWhereOccuredBoth">Both</label>
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="necrotizingEnterocolitisWhereOccuredNA" type="radio" name = necrotizingEnterocolitisWhereOccured value="7">
                                                     <label class="radioText" for="necrotizingEnterocolitisWhereOccuredNA">N/A</label>
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="necrotizingEnterocolitisWhereOccuredUnknown" type="radio" name = necrotizingEnterocolitisWhereOccured value="9">
                                                     <label class="radioText" for="necrotizingEnterocolitisWhereOccuredUnknown">Unknown</label>
                                                     </span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                            </div>
-                                        </div>
-                                        
+
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Focal Intestinal Perforation :</label>
                                             <div class="fixingInputAlignment">
@@ -2505,41 +2509,41 @@
                                             </div>
                                         </div>
                                         <div id="hiddenFieldfocalIntestinalPerforation" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-body">
+                                            <div class="inner-panel-body">
                                                 <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Where Given : </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                                    <label class="fixingLabelAlignmentInnerInner">Where Given : </label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <span class="radioFloatLeftInner">
                                                         <label class="radioText">Your Hospital</label>
                                                         <input class="radioType" id="focalIntestinalPerforationWhereOccuredYourHospital" type="radio" name = focalIntestinalPerforationWhereOccured value="1">
 
                                                     </span>
 
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         <label class="radioText">Other Hospital</label>
                                                         <input class="radioType" id="focalIntestinalPerforationWhereOccuredOtherHospital" type="radio" name = focalIntestinalPerforationWhereOccured value="2">
 
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         <label class="radioText">Both</label>
                                                         <input class="radioType" id="focalIntestinalPerforationWhereOccuredBoth" type="radio" name = focalIntestinalPerforationWhereOccured value="3">
 
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         <label class="radioText">N/A</label>
                                                         <input class="radioType" id="focalIntestinalPerforationWhereOccuredNA" type="radio" name = focalIntestinalPerforationWhereOccured value="7">
 
                                                     </span>
-                                                <span class="radioFloatLeftInner">
+                                                        <span class="radioFloatLeftInner">
                                                         <label class="radioText">Unknown</label>
                                                         <input class="radioType" id="focalIntestinalPerforationWhereOccuredUnknown" type="radio" name = focalIntestinalPerforationWhereOccured value="9">
 
                                                     </span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                            </div>
-                                        </div>
-                                        
+
                                         <div class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-heading">
                                                 After Day 3 of Life
@@ -2606,7 +2610,7 @@
 
                                                     <div class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes : </label>
-                                                        <div class="fixingInputAlignmentForBacterialSepsis">
+                                                        <div class="fixingInputAlignmentInner">
                                                             <select id="pathogenCode1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                                 <option disabled selected value>SELECT</option>
                                                                 <option value="102">102 - Acinetobacter species including multidrug-resistant Acinetobacter</option>
@@ -2631,7 +2635,7 @@
                                                             </select>
                                                         </div>
                                                         <label class="fixingLabelAlignmentInner"></label>
-                                                        <div class="fixingInputAlignmentForBacterialSepsis">
+                                                        <div class="fixingInputAlignmentInner">
                                                             <select id="pathogenCode2" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                                     <option disabled selected value>SELECT</option>
                                                                 <option value="102">102 - Acinetobacter species including multidrug-resistant Acinetobacter</option>
@@ -2656,7 +2660,7 @@
                                             </select>
                                                         </div>
                                                         <label class="fixingLabelAlignmentInner"></label>
-                                                        <div class="fixingInputAlignmentForBacterialSepsis">
+                                                        <div class="fixingInputAlignmentInner">
                                                             <select id="pathogenCode3" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                                         <option disabled selected value>SELECT</option>
                                                                 <option value="102">102 - Acinetobacter species including multidrug-resistant Acinetobacter</option>
@@ -2833,7 +2837,7 @@
                                                         
                                                         <input class="radioType" id="cysticPeriventricularNA" type="radio" name = cysticPeriventricular value="7">
                                                     <label class="radioText" f="cysticPeriventricularNA">N/A</label>
-                                                    </span> 
+                                                    </span>
                                                 <span class="radioFloatLeft">
                                                         
                                                         <input class="radioType" id="cysticPeriventricularUnknown" type="radio" name = cysticPeriventricular value="9">
@@ -2868,11 +2872,11 @@
                                             </div>
                                         </div>
                                         <div id="hiddenFieldROPRetinal" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-body">
+                                            <div class="inner-panel-body">
                                                 <div class="form-group input-group">
-                                            <label class="fixingLabelAlignment">Worst Stage of ROP : </label>
-                                            <div class="fixingInputAlignment">
-                                                <select name=state class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                    <label class="fixingLabelAlignmentInnerInner">Worst Stage of ROP : </label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select name=state class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                 <option value="0">0</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -2880,11 +2884,11 @@
                                                 <option value="4">4</option>
                                                 <option value="5">5</option>
                                             </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                            </div>
-                                        </div>
-                                        
+
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Major Birth Defect :</label>
                                             <div class="fixingInputAlignment">
@@ -2907,48 +2911,48 @@
                                             </div>
                                         </div>
                                         <div id="hiddenFieldBirthDefectCodes" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-body">
+                                            <div class="inner-panel-body">
                                                 <div class="form-group input-group">
-                                            <label class="fixingLabelAlignment">Birth Defect Codes : </label>
-                                            <div class="fixingInputAlignmentForBacterialSepsis">
-                                                <select id="birthDefectCode1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <label class="fixingLabelAlignment">Birth Defect Codes : </label>
+                                                    <div class="fixingInputAlignmentForBacterialSepsis">
+                                                        <select id="birthDefectCode1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------SELECT---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
-                                            </div>
-                                            <label class="fixingLabelAlignment"></label>
-                                            <div class="fixingInputAlignmentForBacterialSepsis">
-                                                <select id="birthDefectCode2" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    </div>
+                                                    <label class="fixingLabelAlignment"></label>
+                                                    <div class="fixingInputAlignmentForBacterialSepsis">
+                                                        <select id="birthDefectCode2" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------SELECT---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
-                                            </div>
-                                            <label class="fixingLabelAlignment"></label>
-                                            <div class="fixingInputAlignmentForBacterialSepsis">
-                                                <select id="birthDefectCode3" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    </div>
+                                                    <label class="fixingLabelAlignment"></label>
+                                                    <div class="fixingInputAlignmentForBacterialSepsis">
+                                                        <select id="birthDefectCode3" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------SELECT---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
-                                            </div>
-                                            <label class="fixingLabelAlignment"></label>
-                                            <div class="fixingInputAlignmentForBacterialSepsis">
-                                                <select id="birthDefectCode4" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    </div>
+                                                    <label class="fixingLabelAlignment"></label>
+                                                    <div class="fixingInputAlignmentForBacterialSepsis">
+                                                        <select id="birthDefectCode4" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------SELECT---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
-                                            </div>
-                                                <label class="fixingLabelAlignment"></label>
-                                                <div class="fixingInputAlignmentForBacterialSepsis">
-                                                    <select id="birthDefectCode5" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    </div>
+                                                    <label class="fixingLabelAlignment"></label>
+                                                    <div class="fixingInputAlignmentForBacterialSepsis">
+                                                        <select id="birthDefectCode5" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                     <option value="">---------SELECT---------</option>
                                                     <option value="">103 - Aeromonas Species</option>
                                                 </select>
-                                                </div>
+                                                    </div>
 
-                                        </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Enteral Feeding at Discharge :</label>
                                             <div class="fixingInputAlignment">
@@ -3176,14 +3180,14 @@
 
                                         </div>
                                         <div id="TransferFormPartA" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-heading">
-                                            PART A. Complete for ALL Transferred Infants
-                                        </div>
-                                        <div class="inner-panel-body">
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Reason for Transfer : </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <select name=reasonForTransfer class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                            <div class="inner-panel-heading">
+                                                PART A. Complete for ALL Transferred Infants
+                                            </div>
+                                            <div class="inner-panel-body">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Reason for Transfer : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select name=reasonForTransfer class=" ddList centerSelect form-control" style="height:32px;width:80%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="1">Growth/Discharge planning</option>
                                                     <option value="2">Medical/Diagnostic Services</option>
@@ -3194,12 +3198,12 @@
                                                     <option value="7">N/A</option>
                                                     <option value="9">Unknown</option>
                                                 </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Transfer Code of Center to Which infant Transferred : </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <select name=transferCode class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Transfer Code of Center to Which infant Transferred : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select name=transferCode class=" ddList centerSelect form-control" style="height:32px;width:80%;">
                                                         <option disabled selected value>SELECT</option>
                                                     <option value="13240">13240 - Mowbray Maternity Hospital</option>
                                                     <option value="14994">14994 - New Somerset Hospital</option>
@@ -3212,12 +3216,12 @@
                                                         <option value="77777777">N/A</option>
                                                         <option value="99999999">Unknown</option>
                                                 </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Post Transfer Disposition : </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <select id="postTransferDisposition" onchange="javascript:postTransferDispositionCheck();" name=postTransferDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Post Transfer Disposition : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="postTransferDisposition" onchange="javascript:postTransferDispositionCheck();" name=postTransferDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="1">Home</option>
                                                     <option value="2">Transferred Again to Another Hospital</option>
@@ -3227,22 +3231,22 @@
                                                         <option value="7">N/A</option>
                                                         <option value="9">Unknown</option>
                                                 </select>
+                                                    </div>
+
                                                 </div>
 
+
                                             </div>
-                                            
-                                
                                         </div>
-                                    </div>
-                                    <div id="TransferFormPartB" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-heading">
-                                            PART B. Complete ONLY for Readmitted Infants
-                                        </div>
-                                        <div class="inner-panel-body">
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Disposition after Readmission : </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <select id="dispositionAfterReadmission" onchange="javascript:dispositionAfterReadmissionCheck();" name=dispositionAfterReadmission class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                        <div id="TransferFormPartB" class="InnerPanel inner-panel-primary">
+                                            <div class="inner-panel-heading">
+                                                PART B. Complete ONLY for Readmitted Infants
+                                            </div>
+                                            <div class="inner-panel-body">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Disposition after Readmission : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="dispositionAfterReadmission" onchange="javascript:dispositionAfterReadmissionCheck();" name=dispositionAfterReadmission class=" ddList centerSelect form-control" style="height:32px;width:80%;">
                                                     <option disabled selected value></option>
                                                     <option value="1">Home</option>
                                                     <option value="3">Died</option>
@@ -3251,20 +3255,20 @@
                                                         <option value="7">N/A</option>
                                                         <option value="9">Unknown</option>
                                                 </select>
-                                                </div>
+                                                    </div>
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div id="TransferFormPartC" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-heading">
-                                            PART C. Complete ONLY for Infants Who Transferred More than Once
-                                        </div>
-                                        <div class="inner-panel-body">
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Ultimate Disposition : </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <select id="ultimateDisposition" onchange="javascript:ultimateDispositionCheck();" name=ultimateDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                        <div id="TransferFormPartC" class="InnerPanel inner-panel-primary">
+                                            <div class="inner-panel-heading">
+                                                PART C. Complete ONLY for Infants Who Transferred More than Once
+                                            </div>
+                                            <div class="inner-panel-body">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Ultimate Disposition : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="ultimateDisposition" onchange="javascript:ultimateDispositionCheck();" name=ultimateDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
                                                     <option disabled selected value></option>
                                                     <option value="1">Home</option>
                                                     <option value="3">Died</option>
@@ -3272,34 +3276,34 @@
                                                         <option value="7">N/A</option>
                                                         <option value="9">Unknown</option>
                                                 </select>
-                                                </div>
+                                                    </div>
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div id="TransferFormPartD" class="InnerPanel inner-panel-primary">
-                                        <div class="inner-panel-heading">
-                                            PART D. Complete for ALL Transferred Infants
-                                        </div>
-                                        <div class="inner-panel-body">
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Date discharged home, died or first birthday date : </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <span class="addingCalendar addingCalendarIcon">
+                                        <div id="TransferFormPartD" class="InnerPanel inner-panel-primary">
+                                            <div class="inner-panel-heading">
+                                                PART D. Complete for ALL Transferred Infants
+                                            </div>
+                                            <div class="inner-panel-body">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Date discharged home, died or first birthday date : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <span class="addingCalendar addingCalendarIcon">
                                                     <input type="text" name="dateDischargedHomeDiedOrBirthday" id="dateDischargedHomeDiedOrBirthday" class="form-control addRed" style="border-color: rgba(0, 0, 0, 0.15); box-shadow: 0 0 0"/>
                                                     </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Total Length of Stay : </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <span class="addingUnits unitsDays">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Total Length of Stay : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <span class="addingUnits unitsDays">
                                                         <input id="totalLengthOfStay" class="form-control" onblur="validateBirthweight()" type="text" placeholder="20">
                                                     </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                         <div class="form-group input-group">
                                             <label class="fixingLabelAlignment">Date of Initial Disposition : </label>
                                             <div class="fixingInputAlignment">
@@ -3335,8 +3339,8 @@
                                     </span>
                                             </div>
                                         </div>
-                                        
-                                        
+
+
                                     </div>
                                 </div>
                             </form>
@@ -3347,10 +3351,10 @@
                             </div>
                             <!-- END Discharge or Transfer Button -->
                         </div>
-                        </div>
                     </div>
                 </div>
-            
+            </div>
+
             <!--<span id="transfer"></span>-->
         </section>
         <!-- END SECOND SECTION -->
@@ -3372,24 +3376,34 @@
 
                             <div class="panel panel-primary">
                                 <div class="panel-body">
-                                        <!--START Additional Birth Details-->
-                                    <div class="InnerPanel inner-panel-primary">
-                                            <div class="inner-panel-heading">
-                                                Additional Birth Details
+                                    <div class="form-group input-group">
+                                            <label class="fixingLabelAlignment">Initial Length of Stay : </label>
+                                            <div class="fixingInputAlignment">
+                                                <span class="addingUnits unitsDays">
+                                        
+                                        <input id="initialLengthOfStay" class="form-control" onblur="validateBirthweight()" type="text" placeholder="1122">
+                                    
+                                    </span>
                                             </div>
-                                            <div class="inner-panel-body">
-                                                <div class="form-group input-group">
+                                        </div>
+                                    <!--START Additional Birth Details-->
+                                    <div class="InnerPanel inner-panel-primary">
+                                        <div class="inner-panel-heading">
+                                            Additional Birth Details
+                                        </div>
+                                        <div class="inner-panel-body">
+                                            <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner">Mother's Age  :  </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                        <span class="addingUnits unitsYears">
+                                                    <span class="addingUnitsInner unitsYears">
                                                             <input id="mothersAge" name="mothersAge" class="form-control" type="text" placeholder="6">
                                                         </span>
-                                                    </div>
+                                                </div>
                                             </div>
-                                        <div class="form-group input-group">
+                                            <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner">Grav  :  </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                <select id="grav" name=grav class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <select id="grav" name=grav class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -3403,12 +3417,12 @@
                                                     <option value="">10</option>
                                                     <option value="">Unknown</option>
                                                 </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group input-group">
+                                            <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner">Para  :  </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                <select id="para" name=para class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <select id="para" name=para class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -3422,12 +3436,12 @@
                                                     <option value="">10</option>
                                                     <option value="">Unknown</option>
                                                 </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group input-group">
+                                            <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner">Baby Length  :  </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                <select id="babyLength" name=babyLength class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <select id="babyLength" name=babyLength class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -3441,34 +3455,34 @@
                                                     <option value="">10</option>
                                                     <option value="">Unknown</option>
                                                 </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">RVD  :  </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">RVD  :  </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <span class="radioFloatLeftInner">
                                                     <input class="radioType" id="RVDYes" onclick="javascript:RVDCheck()" type="radio" name = RVD value="1">
                                                 <label class="radioText" for="RVDYes"> Yes</label>
                                                 
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                     <input class="radioType" id="RVDNo" onclick="javascript:RVDCheck()" type="radio" name = RVD value="0">
                                                 <label class="radioText" for="RVDNo"> No</label>
                                                 
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                     <input class="radioType" id="RVDUnknown" onclick="javascript:RVDCheck()" type="radio" name = RVD value="0">
                                                 <label class="radioText" for="RVDUnknown"> Unknown</label>
                                                 
                                             </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div id="hiddenFieldRVD" class="InnerInnerPanel inner-inner-panel-primary">
-                                            <div class="inner-inner-panel-body">
-                                                <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Viral Load  :  </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                <select id="viralLoad" name=viralLoad class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                            <div id="hiddenFieldRVD" class="InnerInnerPanel inner-inner-panel-primary">
+                                                <div class="inner-inner-panel-body">
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Viral Load  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <select id="viralLoad" name=viralLoad class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                     <option disabled selected value >SELECT</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -3482,141 +3496,141 @@
                                                     <option value="">10</option>
                                                     <option value="">Unknown</option>
                                                 </select>
-                                            </div>
-                                        </div>
-                                                <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Baby PCR  :  </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <span class="radioFloatLeftInner">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Baby PCR  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeftInner">
                                                         <input class="radioType" id="babyPCRPositive" type="radio" name = babyPCR value="1">
                                                         <label class="radioText" for="babyPCRPositive"> Positive</label>
                                                         
                                                     </span>
-                                                    <span class="radioFloatLeftInner">
+                                                            <span class="radioFloatLeftInner">
                                                         <input class="radioType" id="babyPCRNegative" type="radio" name = babyPCR value="0">
                                                         <label class="radioText" for="babyPCRNegative"> Negative</label>
                                                         
                                                     </span>
-                                                    <span class="radioFloatLeftInner">
+                                                            <span class="radioFloatLeftInner">
                                                         <input class="radioType" id="babyPCRUnknown" type="radio" name = babyPCR value="0">
                                                         <label class="radioText" for="babyPCRUnknown"> Unknown</label>
                                                         
                                                     </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+
                                             </div>
-                                            </div>
-                                            
-                                        
                                         </div>
-                                            </div>
                                     </div>
-                                        <!--END Additional Birth Details-->
-                                        <!--START Clinical Additional Fields-->
+                                    <!--END Additional Birth Details-->
+                                    <!--START Clinical Additional Fields-->
                                     <div class="InnerPanel inner-panel-primary">
-                                            <div class="inner-panel-heading">
-                                                Clinical
-                                            </div>
-                                            <div class="inner-panel-body">
-                                                <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Jaundice needing Phototherapy  :  </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                        <div class="inner-panel-heading">
+                                            Clinical
+                                        </div>
+                                        <div class="inner-panel-body">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Jaundice needing Phototherapy  :  </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="jaundiceNeedingPhototherapyYes" onclick="javascript:jaundiceNeedingPhototherapyCheck()" type="radio" name = jaundiceNeedingPhototherapy value="1">
                                                     <label class="radioText" for="jaundiceNeedingPhototherapyYes">Yes</label>
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="jaundiceNeedingPhototherapyNo" onclick="javascript:jaundiceNeedingPhototherapyCheck()" type="radio" name = jaundiceNeedingPhototherapy value="0">
                                                     <label class="radioText" for="jaundiceNeedingPhototherapyNo">No</label>
                                             </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div id="hiddenFieldJaundiceNeedingPhototherapy" class="InnerInnerPanel inner-inner-panel-primary">
-                                            <div class="inner-inner-panel-body">
-                                                <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Level above Exchange  :  </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                            <div id="hiddenFieldJaundiceNeedingPhototherapy" class="InnerInnerPanel inner-inner-panel-primary">
+                                                <div class="inner-inner-panel-body">
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Level above Exchange  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="levelAboveExchangeYes" type="radio" name = levelAboveExchange value="1">
                                                     <label class="radioText" for="levelAboveExchangeYes">Yes</label>
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                            <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="levelAboveExchangeNo" type="radio" name = levelAboveExchange value="0">
                                                     <label class="radioText" for="levelAboveExchangeNo">No</label>
                                             </span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </div>
-                                            </div>
-                                            
-                                        </div>
-                                        </div>
-                                                <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Invasive Ventilation  :  </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Invasive Ventilation  :  </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="invasiveVentilationYes" onclick="javascript:invasiveVentilationCheck()" type="radio" name = invasiveVentilation value="1">
                                                     <label class="radioText" for="invasiveVentilationYes">Yes</label>
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="invasiveVentilationNo" onclick="javascript:invasiveVentilationCheck()" type="radio" name = invasiveVentilation value="0">
                                                     <label class="radioText" for="invasiveVentilationNo">No</label>
                                             </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div id="hiddenFieldInvasiveVentilation" class="InnerInnerPanel inner-inner-primary-panel">
-                                            <div class="inner-inner-panel-body">
-                                                <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Day of Life Ventilation Started  :  </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <span class="addingUnits unitsDays">
+                                            <div id="hiddenFieldInvasiveVentilation" class="InnerInnerPanel inner-inner-primary-panel">
+                                                <div class="inner-inner-panel-body">
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Day of Life Ventilation Started  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="addingUnits unitsDays">
                                                             <input id="dayOfLifeVentilationStarted" name="dayOfLifeVentilationStarted" class="form-control" type="text" placeholder="6">
                                                         </span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Total Duration  :  </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <span class="addingUnits unitsDays">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Total Duration  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="addingUnits unitsDays">
                                                             <input id="dayOfLifeVentilationStartedDuration" name="dayOfLifeVentilationStartedDuration" class="form-control" type="text" placeholder="6">
                                                         </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Diagnosis  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+
+                                                            <input id="dayOfLifeVentilationStartedDiagnosis" name="dayOfLifeVentilationStartedDiagnosis" class="form-control" type="text" placeholder="">
+
+                                                        </div>
+                                                    </div>
                                                 </div>
+
                                             </div>
                                             <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Diagnosis  :  </label>
+                                                <label class="fixingLabelAlignmentInner">Hypoxic Ischaemic Encephalopathy (HIE)  :  </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                    
-                                                            <input id="dayOfLifeVentilationStartedDiagnosis" name="dayOfLifeVentilationStartedDiagnosis" class="form-control" type="text" placeholder="">
-                                                        
-                                                </div>
-                                            </div>
-                                            </div>
-                                            
-                                        </div>
-                                                <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Hypoxic Ischaemic Encephalopathy (HIE)  :  </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="hypoxicIschaemicEncephalopathyYes" onclick="javascript:hypoxicIschaemicEncephalopathyCheck()" type="radio" name = hypoxicIschaemicEncephalopathy value="1">
                                                     <label class="radioText" for="hypoxicIschaemicEncephalopathyYes">Yes</label>
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="hypoxicIschaemicEncephalopathyNo" onclick="javascript:hypoxicIschaemicEncephalopathyCheck()" type="radio" name = hypoxicIschaemicEncephalopathy value="0">
                                                     <label class="radioText" for="hypoxicIschaemicEncephalopathyNo">No</label>
                                             </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div id="hiddenFieldhypoxicIschaemicEncephalopathy" class="InnerInnerPanel inner-inner-panel-primary">
-                                            <div class="inner-inner-panel-body">
-                                                <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Highest HIE Score  :  </label>
-                                                    <div class="fixingInputAlignmentInner">
-                                                    <select name=hypoxicIschaemicEncephalopathyHighestScore class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                            <div id="hiddenFieldhypoxicIschaemicEncephalopathy" class="InnerInnerPanel inner-inner-panel-primary">
+                                                <div class="inner-inner-panel-body">
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Highest HIE Score  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <select name=hypoxicIschaemicEncephalopathyHighestScore class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                         <option disabled selected value>SELECT</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
@@ -3639,62 +3653,62 @@
                                                         <option value="20">20</option>
                                                         
                                                     </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Cooled  :  </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <span class="radioFloatLeftInner">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Cooled  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeftInner">
                                                     
                                                     <input class="radioType" id="cooledYes" type="radio" name = cooled value="1">
                                                         <label class="radioText" for="cooledYes">Yes</label>
                                                 </span>
-                                                    <span class="radioFloatLeftInner">
+                                                            <span class="radioFloatLeftInner">
                                                     
                                                     <input class="radioType" id="cooledNo" type="radio" name = cooled value="0">
                                                         <label class="radioText" for="cooledNo">No</label>
                                                 </span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">CFM at 48 Hours :  </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <span class="radioFloatLeftInner">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">CFM at 48 Hours :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeftInner">
                                                     
                                                     <input class="radioType" id="CFM48HoursYes" onclick="javascript:CFM48HoursCheck()" type="radio" name = CFM48Hours value="1">
                                                         <label class="radioText" for="CFM48HoursYes">Yes</label>
                                                 </span>
-                                                    <span class="radioFloatLeftInner">
+                                                            <span class="radioFloatLeftInner">
                                                     
                                                     <input class="radioType" id="CFM48HoursNo" onclick="javascript:CFM48HoursCheck()" type="radio" name = CFM48Hours value="0">
                                                         <label class="radioText" for="CFM48HoursNo">No</label>
                                                 </span>
-                                                    <span class="radioFloatLeftInner">
+                                                            <span class="radioFloatLeftInner">
                                                     
                                                     <input class="radioType" id="CFM48HoursUnknown" onclick="javascript:CFM48HoursCheck()" type="radio" name = CFM48Hours value="9">
                                                         <label class="radioText" for="CFM48HoursUnknown">Unknown</label>
                                                 </span>
-                                                </div>
-                                            </div>
-                                            <div id="hiddenFieldCFM48Hours">
-                                                <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner"></label>
-                                                        <div class="fixingInputAlignmentInner">
-                                                        <select name="CFMHighestScore" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                        </div>
+                                                    </div>
+                                                    <div id="hiddenFieldCFM48Hours">
+                                                        <div class="form-group input-group">
+                                                            <label class="fixingLabelAlignmentInnerInner"></label>
+                                                            <div class="fixingInputAlignmentInnerInner">
+                                                                <select name="CFMHighestScore" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                             <option disabled selected value>SELECT</option>
                                                             <option value="">Normal</option>
                                                             <option value="">Discontinues Normal</option>
                                                             <option value="">Severely Abnormal</option>
                                                         </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Sepsis during Admission  :  </label>
-                                                    <div class="fixingInputAlignmentInner">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Sepsis during Admission  :  </label>
+                                                <div class="fixingInputAlignmentInner">
                                                     <select id="sepsisDuringAdmission" name="sepsisDuringAdmission" onchange="javascript:sepsisDuringAdmissionCheck();" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                         <option disabled selected value>SELECT</option>
                                                         <option value="1">Confirmed</option>
@@ -3703,12 +3717,12 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        <div id="hiddenFieldSepsisDuringAdmission" class="InnerInnerPanel inner-inner-panel-primary">
-                                            <div class="inner-inner-panel-body">
-                                                <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Number of Epsidoes  :  </label>
-                                                    <div class="fixingInputAlignmentInner">
-                                                    <select id="numberOfEpisodes" name="numberOfEpisodes" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                            <div id="hiddenFieldSepsisDuringAdmission" class="InnerInnerPanel inner-inner-panel-primary">
+                                                <div class="inner-inner-panel-body">
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Number of Epsidoes  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <select id="numberOfEpisodes" name="numberOfEpisodes" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                         <option value="">---------SELECT---------</option>
                                                         <option value="">1</option>
                                                         <option value="">2</option>
@@ -3716,218 +3730,218 @@
                                                         <option value="">4</option>
                                                         <option value="">5</option>
                                                     </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Meningitis  :  </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <span class="radioFloatLeft">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Meningitis  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeft">
                                                     
                                                     <input class="radioType" id="meningitisYes" type="radio" name = meningitis value="1">
                                                         <label class="radioText" for="meningitisYes">Yes</label>
                                                 </span>
-                                                    <span class="radioFloatLeft">
+                                                            <span class="radioFloatLeft">
                                                     
                                                     <input class="radioType" id="meningitisNo" type="radio" name = meningitis value="0">
                                                         <label class="radioText" for="meningitisNo">No</label>
                                                 </span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Organisms : </label>
-                                                        <div class="fixingInputAlignmentInner">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Organisms : </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
                                                             <select id="organismCode1" name=organismCode1 class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------None---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
                                                         </div>
-                                                        <label class="fixingLabelAlignmentInner"></label>
-                                                        <div class="fixingInputAlignmentInner">
+                                                        <label class="fixingLabelAlignmentInnerInner"></label>
+                                                        <div class="fixingInputAlignmentInnerInner">
                                                             <select id="organismCode2" name=organismCode2 class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------None---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
                                                         </div>
-                                                        <label class="fixingLabelAlignmentInner"></label>
-                                                        <div class="fixingInputAlignmentInner">
+                                                        <label class="fixingLabelAlignmentInnerInner"></label>
+                                                        <div class="fixingInputAlignmentInnerInner">
                                                             <select id="organismCode3" name=organismCode3 class=" ddList centerSelect form-control" style="height:32px;width:70%;">
                                                 <option value="">---------None---------</option>
                                                 <option value="">103 - Aeromonas Species</option>
                                             </select>
                                                         </div>
                                                     </div>
+                                                </div>
+
                                             </div>
-                                            
                                         </div>
-                                            </div>
                                     </div>
-                                        <!--END Clinical Additional Fields-->
-                                        <!--START investigation and procedures-->
+                                    <!--END Clinical Additional Fields-->
+                                    <!--START investigation and procedures-->
                                     <div class="InnerPanel inner-panel-primary">
-                                            <div class="inner-panel-heading">
-                                                Investigations & Procedures
-                                            </div>
-                                            <div class="inner-panel-body">
-                                                <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Fetal Medicine Unit (FMU) Scan  :  </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                        <div class="inner-panel-heading">
+                                            Investigations & Procedures
+                                        </div>
+                                        <div class="inner-panel-body">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Fetal Medicine Unit (FMU) Scan  :  </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="fetalMedicineUnitFlaggedYes" onclick="javascript:fetalMedicineUnitFlaggedCheck()" type="radio" name = fetalMedicineUnitFlagged value="1">
                                                     <label class="radioText" for="fetalMedicineUnitFlaggedYes">Yes</label>
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="fetalMedicineUnitFlaggedNo" onclick="javascript:fetalMedicineUnitFlaggedCheck()" type="radio" name = fetalMedicineUnitFlagged value="0">
                                                     <label class="radioText" for="fetalMedicineUnitFlaggedNo">No</label>
                                             </span>
+                                                </div>
                                             </div>
-                                        </div>
                                             <div id="hiddenFieldFetalMedicineUnitFlaggedGroup" class="InnerInnerPanel inner-inner-panel-primary">
                                                 <div class="inner-inner-panel-body">
                                                     <div class="form-group input-group new-input-group">
-                                                    <label class="fixingLabelAlignmentInner">Antenatal Scan : </label>
-                                                    <div class="fixingInputAlignment">
-                                                        <textarea id="antenatalScan" name="antenatalScan" class="form-controlTextArea" rows = "4" cols="25"></textarea>
-                                                       
+                                                        <label class="fixingLabelAlignmentInnerInner">Antenatal Scan : </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <textarea id="antenatalScan" name="antenatalScan" class="form-controlTextArea" rows="4" cols="25"></textarea>
+
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                </div>
-                                                
+
                                             </div>
-                                        <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Chromosomes Done :  </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Chromosomes Done :  </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="chromosomesDoneYes" type="radio" name = chromosomesDone value="1">
                                                     <label class="radioText" for="chromosomesDoneYes">Yes</label>
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="chromosomesDoneNo" type="radio" name = chromosomesDone value="0">
                                                     <label class="radioText" for="chromosomesDoneNo">No</label>
                                             </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Abnormal head ultrasound   :  </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Abnormal head ultrasound   :  </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="hearingScreenYes" onclick="javascript:hearingScreenCheck()" type="radio" name = hearingScreen value="1">
                                                     <label class="radioText" for="hearingScreenYes">Yes</label>
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="hearingScreenNo" onclick="javascript:hearingScreenCheck()" type="radio" name = hearingScreen value="0">
                                                     <label class="radioText" for="hearingScreenNo">No</label>
                                             </span>
-                                            </div>
-                                        </div>
-                                        <div id="hiddenFieldHearingScreenCheck" class="InnerInnerPanel inner-inner-panel-primary">
-                                            <div class="inner-inner-panel-body">
-                                                <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Result  :  </label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <span class="addingUnits unitsCm">
-                                                            <input id="hearingScreenResult" name="hearingScreenResult" class="form-control" type="text" placeholder="6">
-                                                        </span>
                                                 </div>
                                             </div>
+                                            <div id="hiddenFieldHearingScreenCheck" class="InnerInnerPanel inner-inner-panel-primary">
+                                                <div class="inner-inner-panel-body">
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Result  :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="addingUnitsInner unitsCm">
+                                                            <input id="hearingScreenResult" name="hearingScreenResult" class="form-control" type="text" placeholder="6">
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
-                                            
-                                        </div>
-                                                <div class="form-group input-group">
-                                            <label class="fixingLabelAlignmentInner">Baby >40days old - received 6/52 immunizations   :  </label>
-                                            <div class="fixingInputAlignmentInner">
-                                                <span class="radioFloatLeftInner">
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Baby >40days old - received 6/52 immunizations   :  </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="immunizations652Yes" onclick="javascript:immunizations652Check()" type="radio" name = immunizations652 value="1">
                                                     <label class="radioText" for="immunizations652Yes">Yes</label>
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="immunizations652No" onclick="javascript:immunizations652Check()" type="radio" name = immunizations652 value="0">
                                                     <label class="radioText" for="immunizations652No">No</label>
                                             </span>
-                                                <span class="radioFloatLeftInner">
+                                                    <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="immunizations652Unknown" onclick="javascript:immunizations652Check()" type="radio" name = "immunizations652" value="0">
                                                     <label class="radioText" for="immunizations652Unknown">Unknown</label>
                                             </span>
-                                            </div>
-                                        </div>
-                                        <div id="hiddenFieldImmunizations652" class="InnerInnerPanel inner-inner-panel-primary">
-                                            <div class="inner-inner-panel-body">
-                                                <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignment">Date :  </label>
-                                                    <div class="fixingInputAlignment">
-                                                        <input id="immunizations652Date" name="immunizations652Date" class="form-control" type="date">
-                                                    </div>
                                                 </div>
                                             </div>
-                                            
+                                            <div id="hiddenFieldImmunizations652" class="InnerInnerPanel inner-inner-panel-primary">
+                                                <div class="inner-inner-panel-body">
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Date :  </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <input id="immunizations652Date" name="immunizations652Date" class="form-control" type="date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
-                                            </div>
                                     </div>
-                                        <!--END investigation and procedures-->
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        <!--START EXTRA OVERWEIGHT FIELDS-->
-                                            
-                                        <!--END EXTRA OVERWEIGHT FIELDS-->
-                                        <!--END additional fields-->
-                                        
-                                        <!--START APPOINTMENT-->
-                                        <div class="InnerPanel inner-panel-primary">
-                                            <div class="inner-panel-heading">
-                                                Follow Up Appointment
-                                            </div>
-                                            <div class="inner-panel-body">
-                                                <div class="form-group input-group">
+                                    <!--END investigation and procedures-->
+
+
+
+
+
+                                    <!--START EXTRA OVERWEIGHT FIELDS-->
+
+                                    <!--END EXTRA OVERWEIGHT FIELDS-->
+                                    <!--END additional fields-->
+
+                                    <!--START APPOINTMENT-->
+                                    <div class="InnerPanel inner-panel-primary">
+                                        <div class="inner-panel-heading">
+                                            Follow Up Appointment
+                                        </div>
+                                        <div class="inner-panel-body">
+                                            <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner">Appointment Location  :  </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                <input id="appointmentLocation" name="appointmentLocation" class="form-control" type="search">
+                                                    <input id="appointmentLocation" name="appointmentLocation" class="form-control" type="search">
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Appointment Date :  </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <input id="appointmentDate" name="appointmentDate" class="form-control" type="date">
+                                                </div>
+                                            </div>
+                                            <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Immunization Date :  </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                    <input id="immunizationDate" name="immunizationDate" class="form-control" type="date">
+                                                </div>
+                                            </div>
+                                            <!--Still need to hide-->
+                                            <div>
                                                 <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Appointment Date :  </label>
+                                                    <label class="fixingLabelAlignmentInner">Appointment 10/52 PCR test Date:  </label>
                                                     <div class="fixingInputAlignmentInner">
-                                                        <input id="appointmentDate" name="appointmentDate" class="form-control" type="date">
+                                                        <input id="PCRDate" name="PCRDate" class="form-control" type="date">
                                                     </div>
                                                 </div>
-                                              <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Immunization Date :  </label>
+                                            </div>
+
+
+                                            <div id="hiddenFieldROPDate">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">ROP Date :  </label>
                                                     <div class="fixingInputAlignmentInner">
-                                                        <input id="immunizationDate" name="immunizationDate" class="form-control" type="date">
-                                                    </div>
-                                                </div>
-                                                <!--Still need to hide-->
-                                                <div>
-                                                    <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Appointment 10/52 PCR test Date:  </label>
-                                                        <div class="fixingInputAlignmentInner">
-                                                            <input id="PCRDate" name="PCRDate" class="form-control" type="date">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                
-                                                <div id="hiddenFieldROPDate">
-                                                    <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">ROP Date :  </label>
-                                                        <div class="fixingInputAlignmentInner">
-                                                            <input id="ROPDate" name="ROPDate" class="form-control" type="date">
-                                                        </div>
+                                                        <input id="ROPDate" name="ROPDate" class="form-control" type="date">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--END APPOINTMENT-->
+                                    </div>
+                                    <!--END APPOINTMENT-->
                                 </div>
                             </div>
 
@@ -3985,7 +3999,7 @@
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.js"></script>
 
-        
+
 
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.js"></script>
@@ -3998,12 +4012,14 @@
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
     <script src="js/noframework.waypoints.js"></script>
-    <script src= "js/db.js"></script>
-    <script>checkForPopulation()</script>
+    <script src="js/db.js"></script>
+    <script>
+        checkForPopulation()
+    </script>
     <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
     <!--Calendar-->
     <script type="text/javascript" src="Calendar/jquery-ui.js"></script>
-<!--<script type="text/javascript">
+    <!--<script type="text/javascript">
     $(document).ready(function() {
         $('form').sisyphus(
             {
