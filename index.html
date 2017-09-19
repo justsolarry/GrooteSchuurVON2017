@@ -82,7 +82,7 @@
                         <label class="subHeadingTitle">Neonatal Unit</label>
                         <h5 style="font-family: 'Julius sans one'">Data Capture & Report Management System</h5>
 
-                        <a href="#PatientFormID" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;">
+                        <a href="#PatientFormID" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="createRecordInDatabase()">
                            Create New Entry <i class="fa fa-angle-double-down animated"></i>
                         </a>
 
@@ -105,7 +105,7 @@
                     </div>
 
                 </div>
-
+                
                 <div class="row">
                     <div class="col-md-3"></div>
 
@@ -177,6 +177,8 @@
                                     <div class="form-group input-group">
                                         <label class="fixingLabelAlignment">Mother's First Name : </label>
                                         <div class="fixingInputAlignment">
+                                            <input type="hidden" id="_id" name="_id">
+                                            <input type="hidden" id="_rev" name="_rev">
                                             <input id="mothersFirstName" name="mothersFirstName" onchange="validateMothersFirstName()" class="form-control" type="search" placeholder="Mary">
                                         </div>
 
@@ -3989,9 +3991,10 @@
     <script src= "js/db.js"></script>
     <script>checkForPopulation()</script>
     <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
-    <!--Calendar-->
     <script type="text/javascript" src="Calendar/jquery-ui.js"></script>
-<!--<script type="text/javascript">
+    <script type="text/javascript" src="js/jquery.serializejson.js"></script>
+    
+<script type="text/javascript">
     $(document).ready(function() {
         $('form').sisyphus(
             {
@@ -4006,9 +4009,13 @@
                     toastr.options.showMethod = 'slideDown';
                     toastr.success('Saved', 'Autosave', {timeOut: 750});
                     //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
+                    
+                    //alert(JSON.stringify($('form').serializeJSON()));
                 }
+
             }
         );
+        //alert(JSON.stringify($('form').serializeJSON()));
     });
 </script>-->
 </body>

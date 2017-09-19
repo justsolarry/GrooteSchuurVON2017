@@ -80,6 +80,7 @@
                                     <th>Location</th>
                                     <th>Day 28</th>
                                     <th>Week 36</th>
+                                    <th>Submit to VON</th>
                                 </tr>
                                 </thead>
                                 </table>
@@ -125,20 +126,38 @@
     <script type="text/javascript"> 
         //$(document).ready(function(){loadGrid()});
         //
-        $(document).ready( function () {
-        fetchData();
+    $(document).ready( function () {
+    fetchData();
             
     var table = $('#jqGrid').DataTable();
     
-    table.rows().every( function ( rowIdx, tableLoop, rowLoop ) {       
+        table.rows().every( function ( rowIdx, tableLoop, rowLoop ) {       
         var cell = table.cell({ row: rowIdx, column: 0 }).node();
         $(cell).addClass('warning');        
     });
+    
+    var button = false;
+    var row = '';
+            
+    $("#jqGrid").on('click', 'button', function () {
+        row = $(this).parents('tr').attr('id');
+        //displayData(row);
+        button=true;
+    });  
             
     $("#jqGrid").on('click', 'tr', function () {
-        var row = $(this).attr('id');
-        displayData(row);
-    });        
+        row = $(this).attr('id');
+        if(button===true){
+           //submit to von    
+            alert(row+"'s button has been clicked");
+            
+        }else{
+          alert(row+" has been clicked");
+          displayData(row);
+        }
+        
+    });       
+
             
     } );
     </script>

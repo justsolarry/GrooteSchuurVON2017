@@ -36,10 +36,7 @@ function fetchData(){
         $('#jqGrid').DataTable( {
         "scrollX": true,
         "scrollCollapse": "true",
-        "fixedColumns":   {
-            "leftColumns": "2"
-        },
-        "ajax": {"url":"http://196.24.190.72:5984/test1/_all_docs?include_docs=true",
+        "ajax": {"url":"http://test.localhost.com:5984/test1/_all_docs?include_docs=true",
                  "dataSrc": "rows", 
                  "xhrFields": {
                     withCredentials: true
@@ -51,11 +48,15 @@ function fetchData(){
             orderable: false,
             className: 'select-checkbox',
             targets:   0
+        }, {
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<button>Submit to VON</button>"
         } ],
-        /*select: {
-            style:    'os',
+        select: {
+            style:    'multi',
             selector: 'td:first-child'
-        },*/
+        },
         //order: [[ 1, 'asc' ]],
         "columns": [
             {"data": null, defaultContent:""},
@@ -98,7 +99,8 @@ function fetchData(){
                         var dummyData = formatDate();
                             return dummyData;
                       } 
-            }
+            },
+            {"data": null}
         ],
      //"dom": 'Afrtip',
      /*"buttons": [        {

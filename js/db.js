@@ -179,18 +179,17 @@ function repopulateForm(babyData){
                     //var field = document.getElementsByName(key);
                     
                     //alert(field[0].type);
-                    /*if(document.getElementById(key).type === 'radio'){
+                    if(document.getElementById(key).type === 'radio'){
                         if(document.getElementById(key).value === babyData[key]){
                           document.getElementById(key).checked = true;   
                         }
                     }
                     else{
                         document.getElementById(key).value = babyData[key];
-                    }*/
+                    }
                     
-                    var elements = document.getElementsByName(key);
-                    alert(JSON.stringify(elements));
-                    
+                    //var elements = document.getElementsByName(key);
+                    //alert(JSON.stringify(elements));
                     
                 }
             }
@@ -219,6 +218,15 @@ function checkForPopulation(){
 
 var tempBabyData = {idMisMatch: true}; 
 
+function createRecordInDatabase(){
+    var data = retrieveAllDocs();
+    var id = data.rows.length+1;
+    console.log(data.rows.length);
+    var medicalRecordObject = {};
+    medicalRecordObject._id = id;
+    createHTTPPOSTConnectionRecord(medicalRecordObject);
+}
+
 function createRecordInDatabase(medicalRecordId){
     var medicalRecordObject = {};
     medicalRecordObject._id = medicalRecordId;
@@ -239,8 +247,8 @@ function removeDataFromDatabase(medicalRecordId, listOfDataPoints){
 }
 
 function updateDataInRecord(medicalRecordId){
-
-  }
+    
+}
 
 function createHTTPPOSTConnectionRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
@@ -256,7 +264,7 @@ function createHTTPPOSTConnectionRecord(babyDataObject){
   http.send(JSON.stringify(babyDataObject));
 }
 
-function createHTTPPOSTConnection(medicalRecordId){ // must change to pass in values
+function createHTTPPOSTConnection(babyDataObject, medicalRecordId){ // must change to pass in values
   var http = new XMLHttpRequest();
   var url = "http://196.42.86.86:5984/test1/" + babyDataObject._id; //server will change //test server https://www.posttestserver.com/
   http.open("PUT", url, true);
