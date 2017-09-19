@@ -184,18 +184,25 @@ function RVDCheck() {
         $(value1).addClass('glowingHiddenFields')
         $(value2).slideDown("slow");
         $(value2).addClass('glowingHiddenFields')
+        /* Hides the PCR Date in the appointment section */
+        $('#hiddenFieldAppointmentPCRDate').slideUp("slow");
+        
     }
     if (document.getElementById('RVDNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
         $(value2).slideUp("slow");
         $(value2).removeClass('glowingHiddenFields')
+        /* Reveal the PCR Date in the appointment section */
+        $('#hiddenFieldAppointmentPCRDate').slideDown("slow");
     }
     if (document.getElementById('RVDUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
         $(value2).slideUp("slow");
         $(value2).removeClass('glowingHiddenFields')
+        /* Reveal the PCR Date in the appointment section */
+        $('#hiddenFieldAppointmentPCRDate').slideDown("slow");
     }
 }
 
@@ -635,6 +642,16 @@ function sepsisDuringAdmissionCheck() {
     else{
         $(hiddenField).slideUp("slow");
         $(hiddenField).removeClass('glowingHiddenFields');
+    }
+}
+
+function congenitalCode1FirstPartCheck(){
+    var e = document.getElementById("congenitalCodeFirstPart1");
+    var strUser = e.options[e.selectedIndex].value;
+    var hiddenField = document.getElementById('hiddenFieldCongenitalCode1SecondPart');
+    if (strUser==1 ){
+        $(hiddenField).slideDown("slow");
+        $(hiddenField).addClass('glowingHiddenFields');
     }
 }
 

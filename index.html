@@ -688,58 +688,65 @@
                                         <div id="hiddenFieldCongenitalInfectionOrganisms" class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
                                                 <div class="form-group input-group congenitalCodeDiv">
-                                                <label class="fixingLabelAlignmentInner">Congenital Infection, Organism(s) : </label>
+                                                <label class="fixingLabelAlignmentInner">(1) Congenital Infection, Organism(s) : </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                    <select id="congenitalCode1" name="congenitalCode" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                        <option disabled selected value>---------None---------</option>
-                                                        <option value="101">101 - Toxoplasmosis (Taxoplasma gondii)</option>
-                                                        <option value="102">102 - Rubella Virus</option>
-                                                        <option value="103">103 - Syphilis (Treponema pallidum)</option>
-                                                        <option value="104">104 - Cytomegalovirus</option>
-                                                        <option value="105">105 - Herpes Simplex</option>
-                                                        <option value="106">106 - Parvovirus B19</option>
-                                                        <option value="107">107 - Zika Virus</option>
-                                                        <option value="108">108 - Varicella Zoster Virus</option>
+                                                    <select id="congenitalCodeFirstPart1" name="congenitalCodeFirstPart1" onchange="javascript:congenitalCode1FirstPartCheck();" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                        <option disabled selected value>SELECT</option>
+                                                        <option value="1">Central Nervous System Anomalies</option>
+                                                        <option value="2">Congenital Heart Anomalies</option>
+                                                        <option value="3">Gastro-Intestinal Anomalies</option>
+                                                        <option value="4">Genito-Urinary Anomalies</option>
+                                                        <option value="5">Chromosomal Anomalies</option>
+                                                        <option value="6">Other Congenital Anomalies</option>
+                                                        <option value="7">Pulmonary Anomalies</option>
+                                                        <option value="8">Other Lethal or Life Threatening Anomalies</option>
                                                         <option value="7777">N/A</option>
                                                         <option value="9999">Unknown</option>
                                                     </select>
                                                 </div>
-                                                <label class="fixingLabelAlignmentInner"></label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <select id="congenitalCode2" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                        <option disabled selected value>---------None---------</option>
-                                                        <option value="101">101 - Toxoplasmosis (Taxoplasma gondii)</option>
-                                                        <option value="102">102 - Rubella Virus</option>
-                                                        <option value="103">103 - Syphilis (Treponema pallidum)</option>
-                                                        <option value="104">104 - Cytomegalovirus</option>
-                                                        <option value="105">105 - Herpes Simplex</option>
-                                                        <option value="106">106 - Parvovirus B19</option>
-                                                        <option value="107">107 - Zika Virus</option>
-                                                        <option value="108">108 - Varicella Zoster Virus</option>
-                                                        <option value="7777">N/A</option>
-                                                        <option value="9999">Unknown</option>
-                                                    </select>
+                                                
                                                 </div>
-                                                <label class="fixingLabelAlignmentInner"></label>
-                                                <div class="fixingInputAlignmentInner">
-                                                    <select id="congenitalCode3" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                        <option disabled selected value>---------None---------</option>
-                                                        <option value="101">101 - Toxoplasmosis (Taxoplasma gondii)</option>
-                                                        <option value="102">102 - Rubella Virus</option>
-                                                        <option value="103">103 - Syphilis (Treponema pallidum)</option>
-                                                        <option value="104">104 - Cytomegalovirus</option>
-                                                        <option value="105">105 - Herpes Simplex</option>
-                                                        <option value="106">106 - Parvovirus B19</option>
-                                                        <option value="107">107 - Zika Virus</option>
-                                                        <option value="108">108 - Varicella Zoster Virus</option>
-                                                        <option value="7777">N/A</option>
-                                                        <option value="9999">Unknown</option>
-                                                    </select>
+                                                <div id="hiddenFieldCongenitalCode1SecondPart">
+                                                        <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInner">(1) Code : </label>
+                                                        <div class="fixingInputAlignmentInner">
+                                                            <select id="congenitalCodeSecondPart1" name="congenitalCodeSecondPart1" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                                <option disabled selected value>SELECT</option>
+                                                                <option value="101">101 - Toxoplasmosis (Taxoplasma gondii)</option>
+                                                                <option value="102">102 - Rubella Virus</option>
+                                                                <option value="103">103 - Syphilis (Treponema pallidum)</option>
+                                                                <option value="104">104 - Cytomegalovirus</option>
+                                                                <option value="105">105 - Herpes Simplex</option>
+                                                                <option value="106">106 - Parvovirus B19</option>
+                                                                <option value="107">107 - Zika Virus</option>
+                                                                <option value="108">108 - Varicella Zoster Virus</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <div id="hiddenFieldCongenitalCode1SecondPart">
+                                                        <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInner">(1) Code : </label>
+                                                        <div class="fixingInputAlignmentInner">
+                                                            <select id="congenitalCode1SecondPart" name="congenitalCode1SecondPart" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                                <option disabled selected value>SELECT</option>
+                                                                <option value="101">101 - Toxoplasmosis (Taxoplasma gondii)</option>
+                                                                <option value="102">102 - Rubella Virus</option>
+                                                                <option value="103">103 - Syphilis (Treponema pallidum)</option>
+                                                                <option value="104">104 - Cytomegalovirus</option>
+                                                                <option value="105">105 - Herpes Simplex</option>
+                                                                <option value="106">106 - Parvovirus B19</option>
+                                                                <option value="107">107 - Zika Virus</option>
+                                                                <option value="108">108 - Varicella Zoster Virus</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
                                             </div>
-                                            </div>
-                                            
                                         </div>
+                                        
                                         <div class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-heading">
                                                 Initial Resuscitation
@@ -1107,10 +1114,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div id="hiddenFieldPIHWhereOccurred">
+                                                    <div id="hiddenFieldPIHWhereOccurred">
                                                     <div class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInner">Where Occurred?  : </label>
                                                     <span class="radioFloatLeftInner">
@@ -1131,6 +1135,10 @@
                                                 </span>
                                                 </div>
                                                 </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
                                                 
                                                 
                                             </div>
@@ -3461,7 +3469,7 @@
                                                 <label class="fixingLabelAlignmentInner">Viral Load  :  </label>
                                                 <div class="fixingInputAlignmentInner">
                                                 <select id="viralLoad" name=viralLoad class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                    <option value="">---------SELECT---------</option>
+                                                    <option disabled selected value >SELECT</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
                                                     <option value="">3</option>
@@ -3476,8 +3484,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                            </div>
-                                            <div class="form-group input-group">
+                                                <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner">Baby PCR  :  </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <span class="radioFloatLeftInner">
@@ -3497,6 +3504,8 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            </div>
+                                            
                                         
                                         </div>
                                             </div>
@@ -3898,12 +3907,15 @@
                                                     </div>
                                                 </div>
                                                 <!--Still need to hide-->
+                                                <div>
                                                     <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Appointment 10/52 PCR test Date:  </label>
-                                                    <div class="fixingInputAlignmentInner">
-                                                        <input id="PCRDate" name="PCRDate" class="form-control" type="date">
+                                                        <label class="fixingLabelAlignmentInner">Appointment 10/52 PCR test Date:  </label>
+                                                        <div class="fixingInputAlignmentInner">
+                                                            <input id="PCRDate" name="PCRDate" class="form-control" type="date">
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                
                                                 
                                                 <div id="hiddenFieldROPDate">
                                                     <div class="form-group input-group">

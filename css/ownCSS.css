@@ -183,7 +183,8 @@
 #hiddenFieldhypoxicIschaemicEncephalopathy,
 #hiddenFieldSepsisDuringAdmission,
 #hiddenFieldImmunizations652,
-#hiddenFieldCFM48Hours
+#hiddenFieldCFM48Hours,
+#hiddenFieldCongenitalCode1SecondPart
 {
     display:none;
 }
