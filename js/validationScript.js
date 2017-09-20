@@ -99,13 +99,33 @@ function validateBirthweight(){
             $('#birthWeightInGrams').addClass('addRed')
             $('#birthWeightInGrams').removeClass('addGreen')
         }
-        if(weight>400 && weight<1501){
+        if(weight>=401 && weight<=1500){ // IS A VON BABY
             $('#birthWeightInGrams').removeClass('addRed')
             $('#birthWeightInGrams').addClass('addGreen')
         }
-        if(weight>1500 && weight<5001){
+        if(weight>=1501 && weight<=5000){ 
             $('#birthWeightInGrams').removeClass('addRed')
             $('#birthWeightInGrams').addClass('addGreen')
+        }
+        if(weight>=1501 && weight<=7000){ //showing Not a VON baby fields
+            showNotAVonBabyFields();
+            notAVonBabyFlag();
+        }
+        if(weight<=1500 || weight>=7001){
+            hideNotAVonBabyFields();  //hiding Not a VON baby fields
+            
+           }
+        if(weight>0 && weight<1400){
+            $('#hiddenFieldROPDate').slideDown('slow');//displaying ROPScreenDate
+        }
+        if(weight>=1400){ //hiding ROPScreenDate if 
+            $('#hiddenFieldROPDate').slideUp('slow');
+        }
+        if(weight>1800){ //showing HIE in additional fields section
+            $('.HIEDiv').slideDown('slow');
+        }
+        if(weight<=1800){ //hiding HIE in additional fields section
+            $('.HIEDiv').slideUp('slow');
         }
     }
     
@@ -311,3 +331,4 @@ $("#patientMedicalRecordNumber").on( "keyup", function( event ) {
         } );
  
 } );
+
