@@ -17,7 +17,7 @@ textarea{
 }
 .panel-body .addingUnits:after {
     position:relative;
-    right:260px;
+    right:280px;
     top:5px;
     float:right; 
 }

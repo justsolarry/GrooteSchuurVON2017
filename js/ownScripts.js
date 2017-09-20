@@ -819,15 +819,8 @@ function showNotAVonBabyFields(){
 
 function hideNotAVonBabyFields(){
     $(".babyLengthDiv").slideUp('slow');
-}
-function notAVonBabyFlag(){
-    var flag = true;
-    return flag;
-}
-
-function isAVonBabyFlag(){
-    var flag = false;
-    return flag;
+    $("#download").slideDown('slow');
+    $("#listItem2").slideDown('slow');
 }
 
 $(document).ready(function() {
@@ -869,13 +862,59 @@ $(document).ready(function() {
            $("#sidebar-container").fadeIn(500);
            }
         //Patient Form Section
-        /*if(Boolean(notAVonBabyFlag())){
+        if(generalDataItemsFormLocation==0){
+            // START patient to additional
+            if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the patient form 1076
             
+            if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
+                $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
+               }
+            
+            $('.patientFormProgressBar').addClass('glowingButton');
+            /* Toggling Buttons */
+            $('#patientFormCircle').addClass('glowingButton');
+            $('#generalDataItemsFormCircle').removeClass('glowingButton');
+            $('#dischargeCircle').removeClass('glowingButton');
+            console.log("length of radio "+($('input[name=locationOFBirthInborn]:checked').length));
+            /* Toggling different Color */
+            /*Checking if the fields match green or red and change colours*/
+            /*Does it have either of the classes? If not, then its blank*/
+            if(
+                (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) &&
+                (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) &&
+                (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) &&
+                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) &&
+                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen'))
+              ){
+               $('#patientFormCircle').css('background-color', 'black');
+               }
+            else if($('#birthWeightInGrams').hasClass('addRed') ||
+                   $('#mothersFirstName').hasClass('addRed') ||
+                     $('#mothersLastName').hasClass('addRed') ||
+                    $('#patientsName').hasClass('addRed') ||
+                    $('#patientMedicalRecordNumber').hasClass('addRed')
+                   ){
+                $('#patientFormCircle').css('background-color', 'red');
+            }
+            else{
+                $('#patientFormCircle').css('background-color', 'green');
+            }
+            
+        }
+            // START additional and beyond
+            if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
+                if($('.patientFormProgressBar').hasClass('glowingButton')){
+                    $('.patientFormProgressBar').removeClass('glowingButton');
+                   }
+                $('.dischargeAndTransferProgressBar').addClass('glowingButton');
+                /* Toggling Buttons */
+                $('#patientFormCircle').removeClass('glowingButton');
+                $('#dischargeCircle').addClass('glowingButton');
+        }
            }
-        if(Boolean(isAVonBabyFlag())){
-            
-           }*/
-        if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
+        else if(generalDataItemsFormLocation>0){
+            //START old checks
+            if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
             if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
                 $('.generalDataItemsProgressBar').removeClass('glowingButton')
                }
@@ -914,22 +953,22 @@ $(document).ready(function() {
             }
             
         }
-        if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156
-            if($('.patientFormProgressBar').hasClass('glowingButton')){
-                $('.patientFormProgressBar').removeClass('glowingButton');
-               }
-            if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
-                $('.dischargeAndTransferProgressBar').removeClass('glowingButton');
-               }
-            /*$('.patientFormProgressBar').removeClass('glowingButton')*/
-            $('.generalDataItemsProgressBar').addClass('glowingButton');
-            /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
-            /* Toggling Buttons */
-            $('#patientFormCircle').removeClass('glowingButton');
-            $('#generalDataItemsFormCircle').addClass('glowingButton');
-            $('#dischargeCircle').removeClass('glowingButton');
-        }
-        if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
+            if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156
+                if($('.patientFormProgressBar').hasClass('glowingButton')){
+                    $('.patientFormProgressBar').removeClass('glowingButton');
+                   }
+                if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
+                    $('.dischargeAndTransferProgressBar').removeClass('glowingButton');
+                   }
+                /*$('.patientFormProgressBar').removeClass('glowingButton')*/
+                $('.generalDataItemsProgressBar').addClass('glowingButton');
+                /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
+                /* Toggling Buttons */
+                $('#patientFormCircle').removeClass('glowingButton');
+                $('#generalDataItemsFormCircle').addClass('glowingButton');
+                $('#dischargeCircle').removeClass('glowingButton');
+            }
+            if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
             if($('.patientFormProgressBar').hasClass('glowingButton')){
                 $('.patientFormProgressBar').removeClass('glowingButton');
                }
@@ -944,6 +983,8 @@ $(document).ready(function() {
             $('#generalDataItemsFormCircle').removeClass('glowingButton');
             $('#dischargeCircle').addClass('glowingButton');
         }
+        }
+        
         
     });
     

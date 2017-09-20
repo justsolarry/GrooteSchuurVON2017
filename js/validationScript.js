@@ -109,11 +109,9 @@ function validateBirthweight(){
         }
         if(weight>=1501 && weight<=7000){ //showing Not a VON baby fields
             showNotAVonBabyFields();
-            notAVonBabyFlag();
         }
         if(weight<=1500 || weight>=7001){
             hideNotAVonBabyFields();  //hiding Not a VON baby fields
-            
            }
         if(weight>0 && weight<1400){
             $('#hiddenFieldROPDate').slideDown('slow');//displaying ROPScreenDate
