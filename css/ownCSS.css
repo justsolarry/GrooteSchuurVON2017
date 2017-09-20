@@ -1,3 +1,5 @@
+textarea{
+}
 /* START adding units*/
 .panel-body .addingCalendar:after{
     position:relative;
@@ -27,6 +29,9 @@
 }
 .unitsGrams:after{
     content:"grams";
+}
+.unitsHours:after{
+    content:"hours";
 }
 .unitsWeeks:after{
     content:"weeks";
@@ -211,11 +216,19 @@
 #hiddenFieldSepsisDuringAdmission,
 #hiddenFieldImmunizations652,
 #hiddenFieldCFM48Hours,
-#hiddenFieldCongenitalCode1SecondPart
+#hiddenFieldCongenitalCode1SecondPart,
+#hiddenFieldAppointmentPCRDate,
+#hiddenFieldSurfactantAtAnyTime,
+#hiddenFieldAbnormalHeadUltrasound,
+#hiddenFieldChromosomesDone
 {
     display:none;
 }
 
+/* Hiding not a VON baby fields */
+.babyLengthDiv{
+    display:none;
+}
 /*Hiding surgery field 2-10*/
 #hiddenFieldSurgery2,
 #hiddenFieldSurgery3,

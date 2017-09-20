@@ -1,4 +1,114 @@
-
+function diedInDeliveryRoomCheck(){
+    if (document.getElementById('diedInDeliveryRoomYes').checked) { //hiding the unnecessary fields
+        $(".gestationalAgeInWeeksDiv").slideDown("slow");
+        $(".gestionalDaysDiv").slideDown("slow");
+        $(".headCircumferenceDiv").slideDown("slow");
+        $(".raceOfMotherDiv").slideDown("slow");
+        $(".prenatalCareDiv").slideDown("slow");
+        $(".antenatalSteroidsDiv").slideDown("slow");
+        $(".antenatalMagnesiumSulfateDiv").slideDown("slow");
+        $(".chorioamnionitisDiv").slideDown("slow");
+        $(".maternalHypertensionDiv").slideDown("slow");
+        $(".maternalDiabetesDiv").slideDown("slow");
+        $(".modeOfDeliveryDiv").slideDown("slow");
+        $(".sexOfInfantDiv").slideDown("slow");
+        $(".multipleGestationDiv").slideDown("slow");
+        $(".numberOfInfantsDeliveredDiv").slideDown("slow");
+        $(".apgarScoresOneMinDiv").slideDown("slow");
+        $(".apgarScoresFiveMinDiv").slideDown("slow");
+        $(".temperatureMeasuredWithinFirstHourDiv").slideUp("slow");
+        $(".congenitalInfectionDiv").slideDown("slow");
+        $(".surfactantAtAnyTimeDiv").slideDown("slow");
+        $(".InitialResuscitationDiv").slideDown("slow");
+        $(".bacterialSepsisBeforeDiv").slideUp("slow");
+        $(".oxygenDay28Div").slideUp("slow");
+        $(".PIHDiv").slideUp("slow");
+        $(".diedWithin12HoursDiv").slideUp("slow");
+        $(".RespiratorySupportAfterInitialResuscitationDiv").slideUp("slow");
+        $(".RespiratorySupportAt36WeeksDiv").slideUp("slow");
+        $(".SteroidsDiv").slideUp("slow");
+        $(".IbuprofenDiv").slideUp("slow");
+        $(".acetaminophenDiv").slideUp("slow");
+        $(".probioticsDiv").slideUp("slow");
+        $(".ropTreatmentWithVegfDrugDiv").slideUp("slow");
+        $(".caffeineDiv").slideUp("slow");
+        $(".ropSurgeryDiv").slideUp("slow");
+        $(".pdaSurgeryDiv").slideUp("slow");
+        $(".necSurgeryDiv").slideUp("slow");
+        $(".otherSurgeryDiv").slideUp("slow");
+        $(".respiratoryDistressSyndromeDiv").slideUp("slow");
+        $(".pneumothoraxDiv").slideUp("slow");
+        $(".patentDuctusArteriosusDiv").slideUp("slow");
+        $(".necrotizingEnterocolitisDiv").slideUp("slow");
+        $(".focalIntestinalPerforationDiv").slideUp("slow");
+        $(".afterDay3OfLifeDiv").slideUp("slow");
+        $(".cysticPeriventricularDiv").slideUp("slow");
+        $(".ROPRetinalDiv").slideUp("slow");
+        $(".birthDefectDiv").slideDown("slow");
+        $(".enteralFeedingDiv").slideUp("slow");
+        $(".oxygenRespiratoryMonitorDiv").slideUp("slow");
+        $(".initialDispositionDiv").slideUp("slow");
+        $(".dateOfInitialDispositionDiv").slideUp("slow");
+        $(".weightAtInitialDispositionDiv").slideUp("slow");
+        $(".headCircumferenceInitialDispositionDiv").slideUp("slow");
+        $(".initialLengthOfStayDiv").slideUp("slow");
+        
+    }
+    if (document.getElementById('diedInDeliveryRoomNo').checked) { //revealing the fields
+        $(".gestationalAgeInWeeksDiv").slideUp("slow");
+        $(".gestionalDaysDiv").slideUp("slow");
+        $(".headCircumferenceDiv").slideUp("slow");
+        $(".raceOfMotherDiv").slideUp("slow");
+        $(".prenatalCareDiv").slideUp("slow");
+        $(".antenatalSteroidsDiv").slideUp("slow");
+        $(".antenatalMagnesiumSulfateDiv").slideUp("slow");
+        $(".chorioamnionitisDiv").slideUp("slow");
+        $(".maternalHypertensionDiv").slideUp("slow");
+        $(".maternalDiabetesDiv").slideUp("slow");
+        $(".modeOfDeliveryDiv").slideUp("slow");
+        $(".sexOfInfantDiv").slideUp("slow");
+        $(".multipleGestationDiv").slideUp("slow");
+        $(".numberOfInfantsDeliveredDiv").slideUp("slow");
+        $(".apgarScoresOneMinDiv").slideUp("slow");
+        $(".apgarScoresFiveMinDiv").slideUp("slow");
+        $(".temperatureMeasuredWithinFirstHourDiv").slideDown("slow");
+        $(".congenitalInfectionDiv").slideUp("slow");
+        $(".surfactantAtAnyTimeDiv").slideUp("slow");
+        $(".InitialResuscitationDiv").slideUp("slow");
+        $(".bacterialSepsisBeforeDiv").slideDown("slow");
+        $(".oxygenDay28Div").slideDown("slow");
+        $(".PIHDiv").slideDown("slow");
+        $(".diedWithin12HoursDiv").slideDown("slow");
+        $(".RespiratorySupportAfterInitialResuscitationDiv").slideDown("slow");
+        $(".RespiratorySupportAt36WeeksDiv").slideDown("slow");
+        $(".SteroidsDiv").slideDown("slow");
+        $(".IbuprofenDiv").slideDown("slow");
+        $(".acetaminophenDiv").slideDown("slow");
+        $(".probioticsDiv").slideDown("slow");
+        $(".ropTreatmentWithVegfDrugDiv").slideDown("slow");
+        $(".caffeineDiv").slideDown("slow");
+        $(".ropSurgeryDiv").slideDown("slow");
+        $(".pdaSurgeryDiv").slideDown("slow");
+        $(".necSurgeryDiv").slideDown("slow");
+        $(".otherSurgeryDiv").slideDown("slow");
+        $(".respiratoryDistressSyndromeDiv").slideDown("slow");
+        $(".pneumothoraxDiv").slideDown("slow");
+        $(".patentDuctusArteriosusDiv").slideDown("slow");
+        $(".necrotizingEnterocolitisDiv").slideDown("slow");
+        $(".focalIntestinalPerforationDiv").slideDown("slow");
+        $(".afterDay3OfLifeDiv").slideDown("slow");
+        $(".cysticPeriventricularDiv").slideDown("slow");
+        $(".ROPRetinalDiv").slideDown("slow");
+        $(".birthDefectDiv").slideUp("slow");
+        $(".enteralFeedingDiv").slideDown("slow");
+        $(".oxygenRespiratoryMonitorDiv").slideDown("slow");
+        $(".initialDispositionDiv").slideDown("slow");
+        $(".dateOfInitialDispositionDiv").slideDown("slow");
+        $(".weightAtInitialDispositionDiv").slideDown("slow");
+        $(".headCircumferenceInitialDispositionDiv").slideDown("slow");
+        $(".initialLengthOfStayDiv").slideDown("slow");
+    }
+}
 
 function inbornOutbornCheck() {
     if (document.getElementById('locationOFBirthInborn').checked) {
@@ -16,6 +126,22 @@ function applyRadioTextSelectedColour(element) {
         $('.diedInDeliveryRoomYesLabel').addClass('radioTextSelectedColour')
     }
     
+}
+
+function surfactantAtAnyTimeCheck(){
+    var value1 = document.getElementById('hiddenFieldSurfactantAtAnyTime');
+    if (document.getElementById('surfactantAtAnyTimeYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('surfactantAtAnyTimeNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('surfactantAtAnyTimeUnknown').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
 }
 
 function steroidsForCLDCheck() {
@@ -186,7 +312,6 @@ function RVDCheck() {
         $(value2).addClass('glowingHiddenFields')
         /* Hides the PCR Date in the appointment section */
         $('#hiddenFieldAppointmentPCRDate').slideUp("slow");
-        
     }
     if (document.getElementById('RVDNo').checked) {
         $(value1).slideUp("slow");
@@ -229,13 +354,25 @@ function HIVStatusCheck() {
     }
 }
 
-function hearingScreenCheck() {
-    var value1 = document.getElementById('hiddenFieldHearingScreenCheck');
-    if (document.getElementById('hearingScreenYes').checked) {
+function abnormalHeadUltrasoundCheck() {
+    var value1 = document.getElementById('hiddenFieldAbnormalHeadUltrasound');
+    if (document.getElementById('abnormalHeadUltrasoundYes').checked) {
         $(value1).slideDown("slow");
         $(value1).addClass('glowingHiddenFields')
     }
-    if (document.getElementById('hearingScreenNo').checked) {
+    if (document.getElementById('abnormalHeadUltrasoundNo').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+
+function chromosomesDoneCheck() {
+    var value1 = document.getElementById('hiddenFieldChromosomesDone');
+    if (document.getElementById('chromosomesDoneYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    if (document.getElementById('chromosomesDoneNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
@@ -674,6 +811,24 @@ function numberOfInfantsDeliveredCheck() {
     }
 }
 
+function showNotAVonBabyFields(){
+    $(".babyLengthDiv").slideDown('slow');
+    $("#download").slideUp('slow');
+    $("#listItem2").slideUp('slow');
+}
+
+function hideNotAVonBabyFields(){
+    $(".babyLengthDiv").slideUp('slow');
+}
+function notAVonBabyFlag(){
+    var flag = true;
+    return flag;
+}
+
+function isAVonBabyFlag(){
+    var flag = false;
+    return flag;
+}
 
 $(document).ready(function() {
     toastr.options.closeButton = true;
@@ -692,11 +847,19 @@ $(document).ready(function() {
     /*END Menu Controls*/
     /*Using the hide function wasn't optimal as it shows up when you load the page. Used display:none instead in CSS*/
     /*$("#sidebar-container").hide(); //hide your div initially*/
-    var patientFormLocation = $("#PatientFormID").offset().top;
-    var generalDataItemsFormLocation = $("#generalDataItemsID").offset().top;
-    var transferFormLocation = $("#TransferFormID").offset().top;
+    
     
     $(window).scroll(function() {
+        var patientFormLocation = $("#PatientFormID").offset().top;
+        var generalDataItemsFormLocation = $("#generalDataItemsID").offset().top;
+        var transferFormLocation = $("#TransferFormID").offset().top;
+        /* debugging */
+        console.log($(window).scrollTop())
+        console.log("patient: "+ patientFormLocation)
+        console.log("general: "+generalDataItemsFormLocation)
+        console.log("additional: "+transferFormLocation)
+        /* debugging */
+        
         //condition statement to HIDE the side bar
         if($(window).scrollTop() < patientFormLocation-100) { 
             $("#sidebar-container").fadeOut(500);
@@ -706,6 +869,12 @@ $(document).ready(function() {
            $("#sidebar-container").fadeIn(500);
            }
         //Patient Form Section
+        /*if(Boolean(notAVonBabyFlag())){
+            
+           }
+        if(Boolean(isAVonBabyFlag())){
+            
+           }*/
         if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
             if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
                 $('.generalDataItemsProgressBar').removeClass('glowingButton')
@@ -846,7 +1015,7 @@ $("#patientMedicalRecordNumber").keyup(function() {
 
 
 /* START DATES*/
-/*Date of Birth*/
+/* START Date of Birth*/
 $( function() {
     
     $( "#dateOfBirth" ).datepicker({
@@ -858,28 +1027,79 @@ $( function() {
         
     });   
   } );
-/*Date of Admission*/
+/* END Date of Birth*/
+/* START Date of Admission*/
 $( function() {
     
     $( "#dateOfAdmission" ).datepicker({
-      showButtonPanel: true,
-    dateFormat: 'dd-mm-yy',
+        showButtonPanel: true,
+        dateFormat: 'dd-mm-yy',
         maxDate: '0',
         minDate: '-18M'
         
     });   
   } );
-/*Date of Initial Disposition*/
+/* END Date of Admission*/
+/* START Date of Initial Disposition*/
 $( function() {
     
     $( "#dateOfInitialDisposition" ).datepicker({
-      showButtonPanel: true,
-    dateFormat: 'dd-mm-yy',
+        showButtonPanel: true,
+        dateFormat: 'dd-mm-yy',
         maxDate: '0',
         minDate: '-18M'
         
     });   
   } );
+/* END Date of Initial Disposition*/
+/* START Date of Appointment Date*/
+$( function() {
+    
+    $( "#appointmentDate" ).datepicker({
+        showButtonPanel: true,
+        dateFormat: 'dd-mm-yy',
+        maxDate: '+18M',
+        minDate: '0'
+        
+    });   
+  } );
+/* END Date of Appointment Date*/
+/* START Date of Immunization Date*/
+$( function() {
+    
+    $( "#immunizationDate" ).datepicker({
+        showButtonPanel: true,
+        dateFormat: 'dd-mm-yy',
+        maxDate: '+18M',
+        minDate: '0'
+        
+    });   
+  } );
+/* END Date of Immunization Date*/
+/* START Date of PCR Date*/
+$( function() {
+    
+    $( "#PCRDate" ).datepicker({
+        showButtonPanel: true,
+        dateFormat: 'dd-mm-yy',
+        maxDate: '+18M',
+        minDate: '0'
+        
+    });   
+  } );
+/* END Date of PCR Date*/
+/* START Date of ROP Date*/
+$( function() {
+    
+    $( "#ROPDate" ).datepicker({
+        showButtonPanel: true,
+        dateFormat: 'dd-mm-yy',
+        maxDate: '+18M',
+        minDate: '0'
+        
+    });   
+  } );
+/* END Date of ROP Date*/
 function adding28Days(){
     var arg = 28;
     var d = $('#dateOfBirth').datepicker('getDate');
