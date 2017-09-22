@@ -1,7 +1,15 @@
 function testData(){
     
 var babyData = {        //testData
-  patientMedicalRecordNumber: 14304791,
+    mothersFirstName: "Mary",
+    mothersLastName: "Brown",
+    patientMedicalRecordNumber: 14304791,
+    dateOfBirth: new Date(2017, 09, 12),
+    patientsName: "Baby Mary Brown",
+    dateOfAdmission: new Date(2017, 09, 15),
+    dateOfInitialDisposition: new Date(2017, 09, 15),
+    
+    
   birthYear: 2018,
   birthWeightInGrams: 900,
   gestationalAgeInWeeks: 27,
