@@ -1,68 +1,16 @@
 <!DOCTYPE html>
 <html>
-      <head>
+  <head>
     <title>Test Environment</title>
-      
-
-          <!-- Bootstrap core CSS -->
-<!--    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">-->
-<!--    <link href="css/ownCSS.css" rel="stylesheet">-->
-    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
-    <link href="css/hover.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-<!--    <link href="css/grayscale.css" rel="stylesheet">-->
-    <link href="css/toastr.css" rel="stylesheet" />
-    <link href="css/dischargeStyle.scss" rel="stylesheet"/>     
-      
-      <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/tether/tether.min.js"></script>
-<!--    <script src="vendor/bootstrap/js/bootstrap.js"></script>-->
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.js"></script>
-
-
-    <!-- Custom scripts for this template -->
-    <script src="js/grayscale.js"></script>
-    <script src="js/toastr.js"></script>
-    <!-- Custom VON Team Scripts for this template -->
-    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-    
-<!--
-    <script type="text/javascript" src="js/ownScripts.js"></script>
-    <script type="text/javascript" src="js/validationScript.js"></script>
--->
-    <script type="text/javascript" src="js/vue.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-    <script src="js/noframework.waypoints.js"></script>
-<!--
-      
-      <script src="js/transferToVon.js"></script>
-      <script src="js/db.js"></script>
-      <script src="js/generateVonXml.js"></script>
-      <script src="js/toastr.js"></script>
-          
--->
-<!--    <script src="js/jspdf.js"></script>-->
-          <script src="js/generatePDF.js"></script>
-          <script src="js/recordTestDataObject.js"></script>
-          
-          <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
-          
-          
+    <script src="js/recordTestDataObject.js"></script>
+    <link href="dischargeStyle.scss" rel="stylesheet"/>    
   </head>
     <body>
     <div id="dischargeTransferHTMLPrint">
         <div class="printRow">
-            <span class="one-third" class="blue">
+            <span class="one-third">
                 <br>
-                <p>Western Cape Logo</p>
+                <p class="blue">Western Cape Logo</p>
             </span>
             <span class="one-third">
                 <h3>Discharge/Transfer Letter</h3>
@@ -77,29 +25,20 @@
         
         <hr>
         
-        <h1>Discharge/Transfer Letter</h1>
-        <br>
-        <div>
-            <p>Neonatal Unit</p>
-            <p>Groote Schuur Hospital</p>
-            <p>021-404-6069</p>
-        </div>
-        <hr>
-        <br>
         <div>
             <span>Baby of: <span id="mothersNameAndSurname"></span></span>
-            <span>Folder Number: __________</span>
-        </div>
-        <p>DOB: ____________________</p>
-        <p>Gender: <span id="sexOfInfant"></span></p>
-        <p>Mothers Age: ____________</p>
-        <p>Mode Of Delivery: <span id="modeOfDelivery"></span></p>
-        <p>Apgars (1min): <span id="apgarScoresOneMin"></span></p>
-        <p>Apgars (5min): <span id="apgarScoresFiveMin"></span></p>
-        <p>Birth Weight: <span id="birthWeightInGrams"></span></p>
-        <p>Head Circumference: <span id="headCircumferenceAtBirth">cm</span></p>
-        <p>Gestational Age: <span id="gestationalAge"></span></p>
+            <span>Folder Number: ______</span>        
+            <span>DOB: <span id="dateOfBirth"></span></span>
+            <span>Gender: <span id="sexOfInfant"></span></span>
+            <span>Mothers Age: <span id="mothersAge"></span></span>
+            <span>Mode Of Delivery: <span id="modeOfDelivery"></span></span>
+            <span>Apgars (1min): <span id="apgarScoresOneMin"></span></span>
+            <span>Apgars (5min): <span id="apgarScoresFiveMin"></span></span>
+            <span>Birth Weight: <span id="birthWeightInGrams"></span></span>
+            <span>Head Circumference: <span id="headCircumferenceAtBirth">cm</span></span>
+            <span>Gestational Age: <span id="gestationalAge"></span></span>
         <br>
+        </div>
         <p>Problem list</p>
         <p>1) ELBW/VLBW/LBW. If the baby is less than 1000g then ELBW, 1000-1499 then VLBW and 1500-2500 LBW</p>
         <p>2) Extremely premature (less than 28 weeks), Very premature (28- less than32 weeks); Premature (32-less than 37 weeks). (put GA in brackets)</p>

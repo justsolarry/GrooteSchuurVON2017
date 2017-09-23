@@ -1,0 +1,59 @@
+          
+//$A4PageWidth: 210mm; 
+$A4PageWidthLess1mmBorder: 208mm;
+$A4PageWidthOneThird: 70mm;
+$A4PageHeight: 297mm;
+
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+        #dischargeTransferHTMLPrint, #dischargeTransferHTMLPrint * {
+        visibility: visible;
+    }
+    #dischargeTransferHTMLPrint {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $A4PageWidthLess1mmBorder; 
+        height: $A4PageHeight;
+        border: 1mm solid black;
+        margin:0;
+    }    
+    .one-third{
+        width: 70mm;
+        height:150px;
+        display:inline;
+    }
+}
+
+//#dischargeTransferHTMLPrint, #dischargeTransferHTMLPrint * {
+//visibility: hidden;
+//}
+
+.printRow{
+    display:block;
+    width: $A4PageWidth;
+    height: 200px;
+}
+
+#dischargeTransferHTMLPrint {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $A4PageWidth; 
+    height: $A4PageHeight;
+    border: 2px solid black;
+} 
+
+.one-third{
+    float:left;
+    width: 70mm;
+    height:150px;
+    display:inline-block;
+}
+
+.blue{
+    color:blue;
+}
