@@ -29,7 +29,7 @@ function createHTTPGETConnection(){
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
   var babyData = {};
-  var url = "http://localhost:5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
+  var url = "http://196.24.190.72:5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
   http.open("GET", url, false);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
@@ -135,7 +135,7 @@ function displayData(id){
   alert("Row "+id+" has been clicked.");
     
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/test1/"+id; //admin:vonadmin123@
+  var url = "http://196.24.190.72:5984/test1/"+id; //admin:vonadmin123@
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
@@ -153,7 +153,7 @@ function displayForm(id){
   alert("Row "+id+"'s data to display.");
     
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/test1/"+id; //admin:vonadmin123@
+  var url = "http://196.24.190.72:5984/test1/"+id; //admin:vonadmin123@
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
@@ -274,7 +274,7 @@ function createHTTPPOSTConnection(medicalRecordId){ // must change to pass in va
 function createHTTPGETConnection(medicalRecordId){
 
   var http = new XMLHttpRequest();
-  var url = "http://196.24.190.61:5984/test1/" + medicalRecordId; //server will change -> config file?
+  var url = "http://196.24.190.72:5984/test1/" + medicalRecordId; //server will change -> config file?
   http.open("GET", url, false);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
