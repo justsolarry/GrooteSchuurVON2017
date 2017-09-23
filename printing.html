@@ -1,3 +1,5 @@
+<!--Notes: Natural Language formatting (bullets points)-->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,76 +9,74 @@
   </head>
     <body>
     <div id="dischargeTransferHTMLPrint">
+        
         <div class="printRow">
             <span class="one-third">
-                <br>
-                <p class="blue">Western Cape Logo</p>
+                <br><br>
+                <img src="img/westernCapeLogo.png" alt="Western Cape" width="90%">
             </span>
             <span class="one-third">
                 <h3>Discharge/Transfer Letter</h3>
             </span>
-            <span class="one-third">
-                <br>
-                <p class="blue">Neonatal Unit</p>
-                <p>Groote Schuur Hospital</p>
-                <p>021-404-6069</p>
+            <span class="one-third" style="float:right">
+                <br><br>
+                <p>Neonatal Unit<br>
+                Groote Schuur Hospital<br>
+                021-404-6069</p>
             </span>
         </div>
         
         <hr>
         
-        <div>
-            <span>Baby of: <span id="mothersNameAndSurname"></span></span>
-            <span>Folder Number: ______</span>        
-            <span>DOB: <span id="dateOfBirth"></span></span>
-            <span>Gender: <span id="sexOfInfant"></span></span>
-            <span>Mothers Age: <span id="mothersAge"></span></span>
-            <span>Mode Of Delivery: <span id="modeOfDelivery"></span></span>
-            <span>Apgars (1min): <span id="apgarScoresOneMin"></span></span>
-            <span>Apgars (5min): <span id="apgarScoresFiveMin"></span></span>
-            <span>Birth Weight: <span id="birthWeightInGrams"></span></span>
-            <span>Head Circumference: <span id="headCircumferenceAtBirth">cm</span></span>
-            <span>Gestational Age: <span id="gestationalAge"></span></span>
-        <br>
+        <div class="headingValues">
+            <span><b>Baby of</b>: <span id="mothersNameAndSurname"></span></span>
+            <span><b>Folder Number</b>: ______</span>        
+            <span><b>DOB</b>: <span id="dateOfBirth"></span></span>
+            <span><b>Gender</b>: <span id="sexOfInfant"></span></span>
+            <span><b>Mothers Age</b>: <span id="mothersAge"></span></span>
+            <span><b>Mode Of Delivery</b>: <span id="modeOfDelivery"></span></span>
+            <span><b>Apgars (1min)</b>: <span id="apgarScoresOneMin"></span></span>
+            <span><b>Apgars (5min)</b>: <span id="apgarScoresFiveMin"></span></span>
+            <span><b>Birth Weight</b>: <span id="birthWeightInGrams"></span></span>
+            <span><b>Head Circumference</b>: <span id="headCircumferenceAtBirth">cm</span></span>
+            <span><b>Gestational Age</b>: <span id="gestationalAge"></span></span>
+            <br>
         </div>
         <p>Problem list</p>
-        <p>1) ELBW/VLBW/LBW. If the baby is less than 1000g then ELBW, 1000-1499 then VLBW and 1500-2500 LBW</p>
-        <p>2) Extremely premature (less than 28 weeks), Very premature (28- less than32 weeks); Premature (32-less than 37 weeks). (put GA in brackets)</p>
-        <p>3) Multiple pregnancy (if twin/triplet)</p>
-        <p>4) RVDe if RVD+ from additional birth details above. PCR Result</p>
-        <p>5) RDS requiring surfactant (from VON)</p>
-        <p>6) CLD if oxygen at 36 weeks (from VON)</p>
-        <p>7) NEC if NEC+ (from VON)</p>
-        <p>8) Ventilation (from question 2 above). Include day of life of starting and number of days and diagnosis</p>
-        <p>9) HIE and info from question 3 above</p>
-        <p>10) Neonatal jaundice – from question 1 above</p>
-        <p>11) Sepsis from question 4 above</p>
-        <p>12) Fetal Medicine Unit (info from 5 above)</p>
-        <p>13) Abnormal Head Ultrasound (info from 7 above)</p>
-        <p>14) Chromosomes done (info from 6 above)</p>
-        <p>15) Vaccine done (info from 8 above)</p>
-        <p>(Give options for additional problems with explanations)</p>
-        <p>.</p>
-        <p>.</p>
-        <p>.</p>
-        <p>.</p>
-        <p>.</p>
-        <p>.</p>
-        <p>.</p>
-        <p>.</p>
-        <p>.</p>
+        <span>
+            <p> • <span id="birthWeightCategory"></span></p>
+            <p> • <span id="prematureCategory"></span></p>
+            <p> • <span id="twinsOrMore"></span></p>
+            <p> • <span id="rvdValue"></span>RVDe if RVD+ from additional birth details above. PCR Result</p>
+            <p> • <span id="requiresSurfactant"></span>RDS requiring surfactant (from VON)</p>
+            <p> • CLD if oxygen at 36 weeks (from VON)</p>
+            <p> • NEC if NEC+ (from VON)</p>
+            <p> • Ventilation (from question 2 above). Include day of life of starting and number of days and diagnosis</p>
+        </span>
+        <span>
+            <p> • HIE and info from question 3 above</p>
+            <p> • Neonatal jaundice – from question 1 above</p>
+            <p> • Sepsis from question 4 above</p>
+            <p> • Fetal Medicine Unit (info from 5 above)</p>
+            <p> • Abnormal Head Ultrasound (info from 7 above)</p>
+            <p> • Chromosomes done (info from 6 above)</p>
+            <p> • Vaccine done (info from 8 above)</p>
+        </span>
+        <p>Notes: </p>
+            <br><br><br><br><br>
+            <br><br><br><br><br>
         <p>Date of Discharge/Transfer: <span id="dateOfDischarge"></span> <span id="placeOfTransfer"></span> <span id="weightAtDischarge"></span> <span id="headCircumferenceAtDischarge"></span></p>
         <p>Meds:_____________________</p>
-            <p>Feeds:____________________</p>
+        <p>Feeds:____________________</p>
         <br>
         <p>Follow up appointments: </p>
-        <p>Done by Dr</p>
+        <p>Done by: Dr</p>
         <br>
-        <p id="linkTest">Hello</p>
         
     </div>
     <div id="editor"></div>
-    <button class="btn btn-default" onclick="window.print()">Generate PDF</button>
+        <div>
+    <button style="display:block;" class="btn btn-default" onclick="window.print()">Print Document</button></div>
 <!--        <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>-->
         <script>
             var babyData = testData();
@@ -89,7 +89,12 @@
             document.getElementById("apgarScoresFiveMin").innerHTML = babyData.apgarScoresFiveMin;
             document.getElementById("birthWeightInGrams").innerHTML = babyData.birthWeightInGrams;
             document.getElementById("headCircumferenceAtBirth").innerHTML = babyData.headCircumferenceAtBirth;
-            document.getElementById("gestationalAge").innerHTML = babyData.gestationalAgeInWeeks + "weeks and " + babyData.gestationalAgePlusDays + "days";
+            var readableGestationalAge = babyData.gestationalAgeInWeeks + " weeks and " + babyData.gestationalAgePlusDays + " days";
+            document.getElementById("gestationalAge").innerHTML = readableGestationalAge;
+            document.getElementById("birthWeightCategory").innerHTML = (babyData.birthWeightInGrams < 1000) ? "ELBW" : (babyData.birthWeightInGrams < 1500) ? "VLBW" : "LBW";
+            var prematureCategory = (babyData.gestationalAgeInWeeks < 28) ? "Extremely Premature" : (babyData.gestationalAgeInWeeks < 32) ? "Very Premature" : (babyData.gestationalAgeInWeeks < 37) ? "Premature" : "";
+            document.getElementById("prematureCategory").innerHTML = prematureCategory + " (" + readableGestationalAge + ")";
+            document.getElementById("twinsOrMore").innerHTML = (babyData.multipleGestation == 1) ? "Multiple Pregnancy" : "";
 
         </script>
     </body>

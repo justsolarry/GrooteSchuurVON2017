@@ -34,22 +34,31 @@ $A4PageHeight: 297mm;
 
 .printRow{
     display:block;
-    width: $A4PageWidth;
-    height: 200px;
+    width: 208mm;
+    height: 150px;
+}
+
+.headingValues span{
+    padding-right: 10px;
+}
+
+.headingValues{
+    width: 208mm;
 }
 
 #dischargeTransferHTMLPrint {
     position: absolute;
     left: 0;
     top: 0;
-    width: $A4PageWidth; 
+    width: 210mm; 
     height: $A4PageHeight;
     border: 2px solid black;
+    display:block;
 } 
 
 .one-third{
     float:left;
-    width: 70mm;
+    width: 69mm;
     height:150px;
     display:inline-block;
 }
