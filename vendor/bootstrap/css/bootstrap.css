@@ -2442,9 +2442,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .input-group-lg > .input-group-btn > select.btn:not([size]):not([multiple]) {
   height: 3.166667rem;
 }
-
+/* Spacing between each form group */
 .form-group {
-  margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    /*min-width: 0px;*/
 }
 
 .form-text {

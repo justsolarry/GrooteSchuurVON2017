@@ -40,6 +40,18 @@ function validateMothersLastName()
   
 }
 
+function dateOfBirthCheck(){
+    var value1 = document.getElementById('dateOfBirth').value;
+    if(value1.length>0){
+            $('#dateOfBirth').addClass('addGreen')
+            $('#dateOfBirth').removeClass('addRed')
+       }
+    else if(value1.length==0){
+                $('#dateOfBirth').addClass('addRed')
+                $('#dateOfBirth').removeClass('addGreen')
+            }
+}
+
 function validatePatientsName()
 {
     var alphaExp = /^[a-zA-Z\s\-]*$/;
@@ -99,13 +111,32 @@ function validateBirthweight(){
             $('#birthWeightInGrams').addClass('addRed')
             $('#birthWeightInGrams').removeClass('addGreen')
         }
-        if(weight>400 && weight<1501){
+        if(weight>=401 && weight<=1500){ // IS A VON BABY
+            $('#birthWeightInGrams').removeClass('addRed')
+            $('#birthWeightInGrams').addClass('addGreen')
+            hideNotAVonBabyFields();  //hiding Not a VON baby fields
+        }
+        if(weight>=1501 && weight<=5000){ 
             $('#birthWeightInGrams').removeClass('addRed')
             $('#birthWeightInGrams').addClass('addGreen')
         }
-        if(weight>1500 && weight<5001){
-            $('#birthWeightInGrams').removeClass('addRed')
-            $('#birthWeightInGrams').addClass('addGreen')
+        if(weight>=1501 && weight<=7000){ //showing Not a VON baby fields
+            showNotAVonBabyFields();
+        }
+        if(weight<=1500 || weight>=7001){
+            
+           }
+        if(weight>0 && weight<1400){
+            $('#hiddenFieldROPDate').slideDown('slow');//displaying ROPScreenDate
+        }
+        if(weight>=1400){ //hiding ROPScreenDate if 
+            $('#hiddenFieldROPDate').slideUp('slow');
+        }
+        if(weight>1800){ //showing HIE in additional fields section
+            $('.HIEDiv').slideDown('slow');
+        }
+        if(weight<=1800){ //hiding HIE in additional fields section
+            $('.HIEDiv').slideUp('slow');
         }
     }
     
@@ -191,21 +222,22 @@ function validatePatientMedicalRecordNumber(){
 }
 function validateGestationalAgeInWeeks()
 {
-    var gestationalAgeInWeeks = document.getElementById('gestationalAgeInWeeksID').value;
+    var gestationalAgeInWeeks = document.getElementById('gestationalAgeInWeeks').value;
   if ((gestationalAgeInWeeks.length) ==0){
     toastr.error('Gestational Age - Value cannot be empty');
-        $('#gestationalAgeInWeeksID').addClass('addRed')
+        $('#gestationalAgeInWeeks').addClass('addRed')
   }
     else if (gestationalAgeInWeeks > 46 || gestationalAgeInWeeks < 15)
   {
       toastr.error('Gestational Age - Invalid value, must be from 15-46 weeks');
-        $('#gestationalAgeInWeeksID').addClass('addRed')
+        $('#gestationalAgeInWeeks').addClass('addRed')
   }
     else{
-        $('#gestationalAgeInWeeksID').removeClass('addRed')
+        $('#gestationalAgeInWeeks').removeClass('addRed')
     }
   
 }
+
 //dayofAdmission is calculated
 function validateHeadCircumference() {
     var headCircumference =document.getElementById('headCircumference').value;
@@ -311,3 +343,4 @@ $("#patientMedicalRecordNumber").on( "keyup", function( event ) {
         } );
  
 } );
+

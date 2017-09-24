@@ -1,3 +1,11 @@
+textarea{
+}
+input[type="search"]:disabled {
+    background: #A9A9A9;
+}
+.calendarField{
+    cursor: pointer;
+}
 /* START adding units*/
 .panel-body .addingCalendar:after{
     position:relative;
@@ -6,15 +14,30 @@
     float:right;
     font-family: FontAwesome;
 }
-.panel-body .addingUnits:after {
+.panel-body .addingCalendarInner:after{
     position:relative;
-    right:260px;
+    right:295px;
     top:5px;
     float:right;
-    
+    font-family: FontAwesome;
+}
+.panel-body .addingUnits:after {
+    position:relative;
+    right:280px;
+    top:5px;
+    float:right; 
+}
+.panel-body .addingUnitsInner:after {
+    position:relative;
+    right:295px;
+    top:5px;
+    float:right; 
 }
 .unitsGrams:after{
     content:"grams";
+}
+.unitsHours:after{
+    content:"hours";
 }
 .unitsWeeks:after{
     content:"weeks";
@@ -63,24 +86,19 @@
     margin-left:450px;
     width:450px;
     height:32px; 
-    /*background-color:skyblue;*/ 
-}
-.fixingInputAlignmentForSurgery{
-    margin-left:150px;
-    width:900px;
-    height:32px; 
-    /*background-color:skyblue;*/
-}
-
-.fixingInputAlignmentForBacterialSepsis{
-    margin-left:400px;
-    width:450px;
-    height:32px; 
+    /*background-color:skyblue; */
 }
 
 .fixingInputAlignmentInner{
-    margin-left:400px;
-    width:450px;
+    margin-left:350px;
+    width:60%;
+    height:32px; 
+    /*background-color:skyblue;*/
+    
+}
+.fixingInputAlignmentInnerInner{
+    margin-left:300px;
+    width:60%;
     height:32px; 
     /*background-color:skyblue;*/
     
@@ -118,7 +136,7 @@
     float: left;
     clear: left;
     height:32px;
-    width: 390px;
+    width: 45%;
     text-align: right;
     padding-right:10px;
     font-family: Helvetica, Arial, sans-serif;
@@ -126,13 +144,13 @@
    /*background-color: green;*/
 }
 
-.fixingLabelAlignmentForSurgeryRecords{
+.fixingLabelAlignmentInnerInner{
     display: inline-block;
     float: left;
     clear: left;
     height:32px;
-    width: 170px;
-    text-align: left;
+    width: 40%;
+    text-align: right;
     padding-right:10px;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 100;
@@ -175,6 +193,7 @@
 #hiddenFieldCongenitalInfectionOrganisms,
 #hiddenFieldPIHWhereOccurred,
 #hiddenFieldFetalMedicineUnitFlaggedGroup,
+#hiddenFieldFetalMedicineUnitFlaggedGroup,
 #hiddenFieldJaundiceNeedingPhototherapy,
 #hiddenFieldInvasiveVentilation,
 #hiddenFieldHIVStatus,
@@ -182,12 +201,28 @@
 #hiddenFieldRVD,
 #hiddenFieldhypoxicIschaemicEncephalopathy,
 #hiddenFieldSepsisDuringAdmission,
+#hiddenFieldImmunizations652Date,
+#hiddenFieldCFM48Hours,
+#hiddenFieldCongenitalCode1SecondPart,
+#hiddenFieldAppointmentPCRDate,
+#hiddenFieldSurfactantAtAnyTime,
+#hiddenFieldAbnormalHeadUltrasound,
+#hiddenFieldChromosomesDone,
 #hiddenFieldImmunizations652,
-#hiddenFieldCFM48Hours
+#hiddenFieldTwinAB,
+#hiddenFieldTripletABC,
+.modeOfDeliveryAdditionalDiv,
+.day28DateDiv,
+.sixWeeksOldDateDiv
+
 {
     display:none;
 }
 
+/* Hiding not a VON baby fields */
+.babyLengthDiv{
+    display:none;
+}
 /*Hiding surgery field 2-10*/
 #hiddenFieldSurgery2,
 #hiddenFieldSurgery3,
@@ -280,6 +315,7 @@
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
+    margin: 8px 0px;
     /* START changing the location of the icon*/
     right:80px;
     top:4px;
@@ -465,7 +501,7 @@
 }
 /* Each section name */
 .progressBarUL li a{
-    font-family: "Julius sans one";
+    font-family: "Proxima Nova Alt Light","Avenir LT Std 35 Light","Circular Std Book";
     width:95%;
     border-radius: 5px;
     
@@ -482,7 +518,7 @@ div ul li .firstATag{
     border:2px solid white;
     position:absolute;
     border-radius: 50%;
-    background-color: black;
+    background-color: orange;
     cursor: pointer;
 }
 /*pseudo for the circle line*/
@@ -614,7 +650,7 @@ div ul li .firstATag:after{
 /* radio buttons */
 .radioFloatLeft{ /*for less than 3/4 radio */
     float:left;
-    margin: 0 0;
+    margin: 0 0.1rem;
     margin-top: 0px;
     line-height: 32px;
     
@@ -623,7 +659,7 @@ div ul li .firstATag:after{
 
 .radioFloatLeftInner{ /*for less than 3/4 radio */
     float:left;
-    margin: 0 0px;
+    margin: 0 0.1rem;
     margin-top: -5px;
     right:500px;
     line-height: 32px;
@@ -651,14 +687,27 @@ input[type="radio"]{
 	background: #222222 url("../images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #eeeeee;
-    cursor: pointer;
+    width: 6em;
 }
 
-.radioText:hover{
+.radioTextForHospitalResponse{
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:100;
+    border-radius: 4px;
+    padding :0px 10px;
+    border: 1px solid #444444;
+	background: #222222 url("../images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #eeeeee;
+    width: 9em;
+}
+.radioText:hover, .radioTextForHospitalResponse:hover{
     border: 1px solid #0b93d5;
 	background: #003147 url("../images/ui-bg_highlight-soft_33_003147_1x100.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #ffffff;
+    cursor: pointer;
+    
 }
 input[type="radio"]:checked~label {
     border: 1px solid #26b3f7;
@@ -816,7 +865,6 @@ input[type="radio"]:checked~label {
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    width:100%;
     overflow: auto;
 }
 .inner-panel-primary {
@@ -844,7 +892,7 @@ input[type="radio"]:checked~label {
 }
 
 .inner-panel-body {
-    padding: 35px;
+    padding: 25px;
 }
 
 /* END Inner Panel*/
@@ -853,10 +901,9 @@ input[type="radio"]:checked~label {
 .InnerInnerPanel {
     background-color: transparent;
     border: 1px solid #337ab7;
-    border-radius: 4px;
+    border-radius: 0px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    width:100%;
     overflow: auto;
 }
 .inner-inner-panel-primary {
@@ -865,7 +912,7 @@ input[type="radio"]:checked~label {
     font-size: 14px;
     line-height: 1.42857143;
     color:#999999;
-    width:880px;
+    width:100%;
 }
 .inner-inner-panel-primary>.inner-inner-panel-heading {
     color: #fff;
@@ -886,7 +933,7 @@ input[type="radio"]:checked~label {
     color: #42DCA3 !important;
 }
 .inner-inner-panel-body {
-    padding: 35px;
+    padding: 25px;
 }
 /*END Inner inner panel*/
 /* START Centering the drop down select */
