@@ -1,5 +1,11 @@
 textarea{
 }
+input[type="search"]:disabled {
+    background: #A9A9A9;
+}
+.calendarField{
+    cursor: pointer;
+}
 /* START adding units*/
 .panel-body .addingCalendar:after{
     position:relative;
@@ -80,15 +86,8 @@ textarea{
     margin-left:450px;
     width:450px;
     height:32px; 
-    /*background-color:skyblue;*/ 
+    /*background-color:skyblue; */
 }
-.fixingInputAlignmentForSurgery{
-    margin-left:150px;
-    width:900px;
-    height:32px; 
-    /*background-color:skyblue;*/
-}
-
 
 .fixingInputAlignmentInner{
     margin-left:350px;
@@ -158,19 +157,6 @@ textarea{
    /*background-color: green;*/
 }
 
-.fixingLabelAlignmentForSurgeryRecords{
-    display: inline-block;
-    float: left;
-    clear: left;
-    height:32px;
-    width: 170px;
-    text-align: left;
-    padding-right:10px;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 100;
-   /*background-color: green;*/
-}
-
 .fixingDischargeTransferButtonAlignment{
     background-color: orange;
     left:50%;
@@ -214,13 +200,17 @@ textarea{
 #hiddenFieldRVD,
 #hiddenFieldhypoxicIschaemicEncephalopathy,
 #hiddenFieldSepsisDuringAdmission,
-#hiddenFieldImmunizations652,
+#hiddenFieldImmunizations652Date,
 #hiddenFieldCFM48Hours,
 #hiddenFieldCongenitalCode1SecondPart,
 #hiddenFieldAppointmentPCRDate,
 #hiddenFieldSurfactantAtAnyTime,
 #hiddenFieldAbnormalHeadUltrasound,
-#hiddenFieldChromosomesDone
+#hiddenFieldChromosomesDone,
+#hiddenFieldImmunizations652,
+#hiddenFieldTwinAB,
+#hiddenFieldTripletABC,
+.modeOfDeliveryAdditionalDiv
 {
     display:none;
 }
@@ -507,7 +497,7 @@ textarea{
 }
 /* Each section name */
 .progressBarUL li a{
-    font-family: "Julius sans one";
+    font-family: "Proxima Nova Alt Light","Avenir LT Std 35 Light","Circular Std Book";
     width:95%;
     border-radius: 5px;
     
@@ -693,15 +683,27 @@ input[type="radio"]{
 	background: #222222 url("../images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #eeeeee;
-    cursor: pointer;
     width: 6em;
 }
 
-.radioText:hover{
+.radioTextForHospitalResponse{
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:100;
+    border-radius: 4px;
+    padding :0px 10px;
+    border: 1px solid #444444;
+	background: #222222 url("../images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #eeeeee;
+    width: 9em;
+}
+.radioText:hover, .radioTextForHospitalResponse:hover{
     border: 1px solid #0b93d5;
 	background: #003147 url("../images/ui-bg_highlight-soft_33_003147_1x100.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #ffffff;
+    cursor: pointer;
+    
 }
 input[type="radio"]:checked~label {
     border: 1px solid #26b3f7;
@@ -895,7 +897,7 @@ input[type="radio"]:checked~label {
 .InnerInnerPanel {
     background-color: transparent;
     border: 1px solid #337ab7;
-    border-radius: 4px;
+    border-radius: 0px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     overflow: auto;

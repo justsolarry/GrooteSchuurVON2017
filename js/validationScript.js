@@ -40,6 +40,18 @@ function validateMothersLastName()
   
 }
 
+function dateOfBirthCheck(){
+    var value1 = document.getElementById('dateOfBirth').value;
+    if(value1.length>0){
+            $('#dateOfBirth').addClass('addGreen')
+            $('#dateOfBirth').removeClass('addRed')
+       }
+    else if(value1.length==0){
+                $('#dateOfBirth').addClass('addRed')
+                $('#dateOfBirth').removeClass('addGreen')
+            }
+}
+
 function validatePatientsName()
 {
     var alphaExp = /^[a-zA-Z\s\-]*$/;
@@ -102,6 +114,7 @@ function validateBirthweight(){
         if(weight>=401 && weight<=1500){ // IS A VON BABY
             $('#birthWeightInGrams').removeClass('addRed')
             $('#birthWeightInGrams').addClass('addGreen')
+            hideNotAVonBabyFields();  //hiding Not a VON baby fields
         }
         if(weight>=1501 && weight<=5000){ 
             $('#birthWeightInGrams').removeClass('addRed')
@@ -111,7 +124,7 @@ function validateBirthweight(){
             showNotAVonBabyFields();
         }
         if(weight<=1500 || weight>=7001){
-            hideNotAVonBabyFields();  //hiding Not a VON baby fields
+            
            }
         if(weight>0 && weight<1400){
             $('#hiddenFieldROPDate').slideDown('slow');//displaying ROPScreenDate
@@ -224,6 +237,7 @@ function validateGestationalAgeInWeeks()
     }
   
 }
+
 //dayofAdmission is calculated
 function validateHeadCircumference() {
     var headCircumference =document.getElementById('headCircumference').value;
