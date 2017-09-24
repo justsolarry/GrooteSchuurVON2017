@@ -937,11 +937,18 @@ $(document).ready(function() {
            $(".viewAllEntriesMenuButton").addClass("activeMenuButton");
        }
     /*END Menu Controls*/
+    
+    
+    
+    
+    
+    
     /*Using the hide function wasn't optimal as it shows up when you load the page. Used display:none instead in CSS*/
     /*$("#sidebar-container").hide(); //hide your div initially*/
     
     
     $(window).scroll(function() {
+        var all_answered_Search = true;
         var patientFormLocation = $("#PatientFormID").offset().top;
         var generalDataItemsFormLocation = $("#generalDataItemsID").offset().top;
         var transferFormLocation = $("#TransferFormID").offset().top;
@@ -1014,12 +1021,12 @@ $(document).ready(function() {
         else if(generalDataItemsFormLocation>0){
             //START old checks
             if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
-            if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
-                $('.generalDataItemsProgressBar').removeClass('glowingButton')
-               }
-            if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
-                $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
-               }
+                if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
+                    $('.generalDataItemsProgressBar').removeClass('glowingButton')
+                   }
+                if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
+                    $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
+                   }
             
             $('.patientFormProgressBar').addClass('glowingButton');
             /* Toggling Buttons */
@@ -1029,30 +1036,30 @@ $(document).ready(function() {
             /* Toggling different Color */
             /*Checking if the fields match green or red and change colours*/
             /*Does it have either of the classes? If not, then its blank*/
-            if(
-                (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) ||
-                (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) ||
-                (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) ||
-                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) ||
-                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen')) ||
-                (!$('#dateOfBirth').hasClass('addRed') && !$('#dateOfBirth').hasClass('addGreen')) 
-                /*($('input:radio[name=outbornBirth]:checked').length==0)*/
-              ){
-                            $('#patientFormCircle').css('background-color', 'orange');
-               }
-            else if($('#birthWeightInGrams').hasClass('addGreen') &&
-                    $('#mothersFirstName').hasClass('addGreen') &&
-                    $('#mothersLastName').hasClass('addGreen') &&
-                    $('#patientsName').hasClass('addGreen') &&
-                    $('#patientMedicalRecordNumber').hasClass('addGreen') &&
-                    $('#dateOfBirth').hasClass('addGreen')
-                    /*$('input:radio[name=outbornBirth]:checked').length>0*/
-                   ){
-                            $('#patientFormCircle').css('background-color', 'green');
-            }
-            else{
-                            $('#patientFormCircle').css('background-color', 'red');
-            }
+//            if(
+//                (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) ||
+//                (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) ||
+//                (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) ||
+//                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) ||
+//                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen')) ||
+//                (!$('#dateOfBirth').hasClass('addRed') && !$('#dateOfBirth').hasClass('addGreen')) 
+//                /*($('input:radio[name=outbornBirth]:checked').length==0)*/
+//              ){
+//                            $('#patientFormCircle').css('background-color', 'orange');
+//               }
+//            else if($('#birthWeightInGrams').hasClass('addGreen') &&
+//                    $('#mothersFirstName').hasClass('addGreen') &&
+//                    $('#mothersLastName').hasClass('addGreen') &&
+//                    $('#patientsName').hasClass('addGreen') &&
+//                    $('#patientMedicalRecordNumber').hasClass('addGreen') &&
+//                    $('#dateOfBirth').hasClass('addGreen')
+//                    /*$('input:radio[name=outbornBirth]:checked').length>0*/
+//                   ){
+//                            $('#patientFormCircle').css('background-color', 'green');
+//            }
+//            else{
+//                            $('#patientFormCircle').css('background-color', 'red');
+//            }
             
         }
             if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156

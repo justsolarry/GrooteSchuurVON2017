@@ -222,18 +222,18 @@ function validatePatientMedicalRecordNumber(){
 }
 function validateGestationalAgeInWeeks()
 {
-    var gestationalAgeInWeeks = document.getElementById('gestationalAgeInWeeksID').value;
+    var gestationalAgeInWeeks = document.getElementById('gestationalAgeInWeeks').value;
   if ((gestationalAgeInWeeks.length) ==0){
     toastr.error('Gestational Age - Value cannot be empty');
-        $('#gestationalAgeInWeeksID').addClass('addRed')
+        $('#gestationalAgeInWeeks').addClass('addRed')
   }
     else if (gestationalAgeInWeeks > 46 || gestationalAgeInWeeks < 15)
   {
       toastr.error('Gestational Age - Invalid value, must be from 15-46 weeks');
-        $('#gestationalAgeInWeeksID').addClass('addRed')
+        $('#gestationalAgeInWeeks').addClass('addRed')
   }
     else{
-        $('#gestationalAgeInWeeksID').removeClass('addRed')
+        $('#gestationalAgeInWeeks').removeClass('addRed')
     }
   
 }

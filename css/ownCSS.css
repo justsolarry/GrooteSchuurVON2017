@@ -16,7 +16,7 @@ input[type="search"]:disabled {
 }
 .panel-body .addingCalendarInner:after{
     position:relative;
-    right:285px;
+    right:295px;
     top:5px;
     float:right;
     font-family: FontAwesome;
@@ -29,7 +29,7 @@ input[type="search"]:disabled {
 }
 .panel-body .addingUnitsInner:after {
     position:relative;
-    right:285px;
+    right:295px;
     top:5px;
     float:right; 
 }
@@ -193,6 +193,7 @@ input[type="search"]:disabled {
 #hiddenFieldCongenitalInfectionOrganisms,
 #hiddenFieldPIHWhereOccurred,
 #hiddenFieldFetalMedicineUnitFlaggedGroup,
+#hiddenFieldFetalMedicineUnitFlaggedGroup,
 #hiddenFieldJaundiceNeedingPhototherapy,
 #hiddenFieldInvasiveVentilation,
 #hiddenFieldHIVStatus,
@@ -210,7 +211,10 @@ input[type="search"]:disabled {
 #hiddenFieldImmunizations652,
 #hiddenFieldTwinAB,
 #hiddenFieldTripletABC,
-.modeOfDeliveryAdditionalDiv
+.modeOfDeliveryAdditionalDiv,
+.day28DateDiv,
+.sixWeeksOldDateDiv
+
 {
     display:none;
 }
@@ -514,7 +518,7 @@ div ul li .firstATag{
     border:2px solid white;
     position:absolute;
     border-radius: 50%;
-    background-color: black;
+    background-color: orange;
     cursor: pointer;
 }
 /*pseudo for the circle line*/
