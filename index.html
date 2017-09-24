@@ -13,6 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="css/ownCSS.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -153,73 +154,72 @@
 
                     <div id="col-md-8-div-1" class="col-md-9">
                         <form id="firstForm" class="general-form">
-
-
-
                             <div class="panel panel-primary">
-                                <!--<div class="panel-heading">
-                                        Respiratory Support
-                                    </div>-->
                                 <div class="panel-body">
                                     <div class="form-group input-group">
-                                        <label class="fixingLabelAlignment">Birth Weight : </label>
+                                        <label class="fixingLabelAlignment" for="birthWeightInGrams">Birth Weight : </label>
                                         <div class="fixingInputAlignment">
                                             <span class="addingUnits unitsGrams">
                                                 <input id="birthWeightInGrams" class="form-control" onchange="validateBirthweight()" type="search" placeholder="eg. 1500" maxlength="4">
                                             </span>
-
-                                            <!--<span class="input-group-addon" style="border-radius: 0 5px 5px 0; height: 32px;position:relative;width: 70px;right:10px">grams</span>-->
-                                            <!--<span class="input-group-addon" style="border-radius: 0 5px 5px 0; height: 32px;position:relative;width: 70px;right:10px">grams</span>-->
                                         </div>
                                     </div>
 
 
-                                    <div class="form-group input-group">
-                                        <label class="fixingLabelAlignment">Mother's First Name : </label>
+                                    <div class="form-group input-group mothersFirstNameDiv">
+                                        <label class="fixingLabelAlignment" for="mothersFirstName">Mother's First Name : </label>
                                         <div class="fixingInputAlignment">
                                             <input id="mothersFirstName" name="mothersFirstName" onchange="validateMothersFirstName()" class="form-control" type="search" placeholder="eg. Mary">
                                         </div>
 
                                     </div>
-                                    <div class="form-group input-group">
-                                        <label class="fixingLabelAlignment">Mother's Last Name : </label>
+                                    <div class="form-group input-group mothersLastNameDiv">
+                                        <label class="fixingLabelAlignment" for="mothersLastName">Mother's Last Name : </label>
                                         <div class="fixingInputAlignment">
                                             <input id="mothersLastName" name="mothersLastName" onchange="validateMothersLastName()" class="form-control" type="search" placeholder="eg. Brown">
                                         </div>
 
                                     </div>
-                                    <div class="form-group input-group ">
-                                        <label class="fixingLabelAlignment">Patient's Name : </label>
+                                    <div class="form-group input-group patientsNameDiv">
+                                        <label class="fixingLabelAlignment" for="patientsName">Patient's Name : </label>
                                         <div class="fixingInputAlignment ">
                                             <input id="patientsName" name="patientsName" onchange="validatePatientsName()" class="form-control " type="search" placeholder="Baby Mary Brown">
                                         </div>
 
                                     </div>
-                                    <div class="form-group input-group">
-                                        <label class="fixingLabelAlignment">Patient's Medical Record Number : </label>
+                                    <div class="form-group input-group patientMedicalRecordNumberDiv">
+                                        <label class="fixingLabelAlignment" for="patientMedicalRecordNumber">Patient's Medical Record Number : </label>
                                         <div class="fixingInputAlignment">
                                             <input id="patientMedicalRecordNumber" name="patientMedicalRecordNumber" onchange="validatePatientMedicalRecordNumber()" class="form-control" type="search" placeholder="eg. 15494922" maxlength="9">
 
                                         </div>
 
                                     </div>
-                                    <div class="form-group input-group">
-                                        <label class="fixingLabelAlignment">Date of Birth : </label>
+                                    <div class="form-group input-group dateOfBirthDiv">
+                                        <label class="fixingLabelAlignment" for="dateOfBirth">Date of Birth : </label>
                                         <div class="fixingInputAlignment">
                                             <span class="addingCalendar addingCalendarIcon">
-                                            <input type="search" placeholder="dd-mm-yyyy" name="dateOfBirth" onchange="adding28Days()"  id="dateOfBirth" class="form-control calendarField"/>
+                                            <input type="search" placeholder="dd-mm-yyyy" name="dateOfBirth" onchange="dateOfBirthCheck();adding28Days();makingSixWeekDate();making40dayDate();"  id="dateOfBirth" class="form-control calendarField" readonly='true'/>
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="form-group input-group">
-                                        <label class="fixingLabelAlignment">Day of 28 : </label>
+                                    <div class="form-group input-group day28DateDiv">
+                                        <label class="fixingLabelAlignment" for="day28Date">Day of 28 : </label>
                                         <div class="fixingInputAlignment">
                                             <span class="addingCalendar addingCalendarIcon">
-                                            <input type="text" placeholder="dd-mm-yyyy" name="day28Date" id="day28Date" class="form-control calendarField"/>
+                                            <input type="search" placeholder="dd-mm-yyyy" name="day28Date" id="day28Date" class="form-control calendarField" readonly='true'/>
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="form-group input-group">
+                                    <div class="form-group input-group sixWeeksOldDateDiv">
+                                        <label class="fixingLabelAlignment" for="sixWeeksOldDate">6 weeks old date : </label>
+                                        <div class="fixingInputAlignment">
+                                            <span class="addingCalendar addingCalendarIcon">
+                                            <input type="search" placeholder="dd-mm-yyyy" name="sixWeeksOldDate" id="sixWeeksOldDate" class="form-control calendarField" readonly='true'/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group input-group locationOFBirthInbornDiv">
                                         <label class="fixingLabelAlignment">Location of Birth :  </label>
                                         <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
@@ -238,10 +238,10 @@
                                     <div id="GroupingHiddenField1" class="InnerPanel inner-panel-primary">
                                         <div class="inner-panel-body">
                                             <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Date of Admission : </label>
+                                                <label class="fixingLabelAlignmentInner" for="dateOfAdmission">Date of Admission : </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <span class="addingCalendarInner addingCalendarIcon">
-                                                    <input type="text" placeholder="dd-mm-yyyy" name="dateOfAdmission" id="dateOfAdmission" class="form-control"/>
+                                                    <input type="text" placeholder="dd-mm-yyyy" name="dateOfAdmission" id="dateOfAdmission" class="form-control calendarField"/>
                                                 </span>
                                                 </div>
                                             </div>
@@ -249,7 +249,7 @@
                                             <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner">Transfer Code of Center from which Infant Transferred : </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                    <select name=transferCodePIW class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                                    <select name=transferCodePIW class="form-control" style="height:32px;width:80%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="13240">13240 - Mowbray Maternity Hospital</option>
                                                     <option value="14994">14994 - New Somerset Hospital</option>
@@ -270,7 +270,7 @@
                                     </div>
 
 
-                                    <div class="form-group input-group">
+                                    <div class="form-group input-group diedInDeliveryRoomDiv">
                                         <label class="fixingLabelAlignment">Died in Delivery Room : </label>
                                         <div class="fixingInputAlignment">
                                         <span class="radioFloatLeft">
@@ -334,7 +334,7 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-body">
                                         <div class="form-group input-group gestationalAgeInWeeksDiv">
-                                            <label class="fixingLabelAlignment">Gestational Age : </label>
+                                            <label class="fixingLabelAlignment" for="gestationalAgeInWeeks">Gestational Age : </label>
                                             <div class="fixingInputAlignment">
                                                 <span class="addingUnits unitsWeeks">
                                                     <input id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" type="search" onchange="validateGestationalAgeInWeeks()" placeholder="eg. 15">
@@ -367,7 +367,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group input-group headCircumferenceDiv">
-                                            <label class="fixingLabelAlignment">Head Circumference : </label>
+                                            <label class="fixingLabelAlignment" for="headCircumference">Head Circumference : </label>
                                             <div class="fixingInputAlignment">
                                                 <span class="addingUnits unitsCm">
                                                 <input id="headCircumference" name="headCircumference" onchange="validateHeadCircumference()"  class="form-control" type="search" placeholder="eg. 20" >
@@ -390,64 +390,70 @@
                                         </div>
                                         <div class="form-group input-group prenatalCareDiv">
                                             <label class="fixingLabelAlignment">Prenatal Care : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="prenatalCareYes" type="radio" name = prenatalCare value="1">
+                                                <input class="radioType" id="prenatalCareYes" type="radio" name = "prenatalCare" value="1">
                                                 <label class="radioText" for="prenatalCareYes">Yes</label>   
                                             </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="prenatalCareNo" type="radio" name = prenatalCare value="0">
+                                                <input class="radioType" id="prenatalCareNo" type="radio" name = "prenatalCare" value="0">
                                                 <label class="radioText" for="prenatalCareNo">No</label>
                                             </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="prenatalCareUnkown" type="radio" name = prenatalCare value="9">
+                                                <input class="radioType" id="prenatalCareUnkown" type="radio" name = "prenatalCare" value="9">
                                                 <label class="radioText" for="prenatalCareUnkown"> Unknown</label>
                                             </span>
+                                            
                                             <i class="fa fa-question-circle ownToolTip">
                                                         <span class="ownToolTipText">1</span>
                                              </i>
-
+                                            </div>
                                         </div>
                                         <div class="form-group input-group antenatalSteroidsDiv">
                                             <label class="fixingLabelAlignment">Antenatal Steroids : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="antenatalSteroidsYes" type="radio" name = antenatalSteroids value="1">
+                                                <input class="radioType" id="antenatalSteroidsYes" type="radio" name = "antenatalSteroids" value="1">
                                                     <label class="radioText" for="antenatalSteroidsYes">Yes</label>
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="antenatalSteroidsNo" type="radio" name = antenatalSteroids value="0"> 
+                                                <input class="radioType" id="antenatalSteroidsNo" type="radio" name = "antenatalSteroids" value="0"> 
                                                 <label class="radioText" for="antenatalSteroidsNo">No</label>
                                                     
 
                                                 </span>
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="antenatalSteroidsUnknown" type="radio" name = antenatalSteroids value="9">
+                                                <input class="radioType" id="antenatalSteroidsUnknown" type="radio" name = "antenatalSteroids" value="9">
                                                     <label class="radioText" for="antenatalSteroidsUnknown"> Unknown</label>
                                                 </span>
                                             <i class="fa fa-question-circle ownToolTip">
                                                         <span class="ownToolTipText">1</span>
                                              </i>
-                                        </div>
+                                            </div>
+                                    </div>
+                                        
                                         <div class="form-group input-group antenatalMagnesiumSulfateDiv">
                                             <label class="fixingLabelAlignment">Antenatal Magnesium Sulfate : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="antenatalMagnesiumSulfateYes" type="radio" name = antenatalMagnesiumSulfate value="1">
+                                                <input class="radioType" id="antenatalMagnesiumSulfateYes" type="radio" name = "antenatalMagnesiumSulfate" value="1">
                                                     <label class="radioText" for="antenatalMagnesiumSulfateYes"> Yes</label>
                                                     
 
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="antenatalMagnesiumSulfateNo" type="radio" name = antenatalMagnesiumSulfate value="0">
+                                                <input class="radioType" id="antenatalMagnesiumSulfateNo" type="radio" name = "antenatalMagnesiumSulfate" value="0">
                                                     <label class="radioText" for="antenatalMagnesiumSulfateNo"> No</label>
                                                     
 
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="antenatalMagnesiumSulfateUnknown" type="radio" name = antenatalMagnesiumSulfate value="9">
+                                                <input class="radioType" id="antenatalMagnesiumSulfateUnknown" type="radio" name = "antenatalMagnesiumSulfate" value="9">
                                                     <label class="radioText" for="antenatalMagnesiumSulfateUnknown"> Unknown</label>
                                                     
 
@@ -455,9 +461,11 @@
                                             <i class="fa fa-question-circle ownToolTip">
                                                         <span class="ownToolTipText"> 1</span>
                                              </i>
+                                            </div>
                                         </div>
                                         <div class="form-group input-group chorioamnionitisDiv">
                                             <label class="fixingLabelAlignment">Chorioamnionitis : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="chorioamnionitisYes" type="radio" name = chorioamnionitis value="1">
                                                     <label class="radioText" for="chorioamnionitisYes"> Yes</label>
@@ -478,9 +486,11 @@
                                             <i class="fa fa-question-circle ownToolTip">
                                                         <span class="ownToolTipText">1</span>
                                              </i>
+                                            </div>
                                         </div>
                                         <div class="form-group input-group maternalHypertensionDiv">
                                             <label class="fixingLabelAlignment">Maternal Hypertension, Chronic/Pregnancy-Induced : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="maternalHypertensionYes" type="radio" name = maternalHypertension value="1">
                                                     <label class="radioText" for="maternalHypertensionYes"> Yes</label>
@@ -498,9 +508,11 @@
                                                     
 
                                                 </span>
+                                            </div>
                                         </div>
                                         <div class="form-group input-group maternalDiabetesDiv">
                                             <label class="fixingLabelAlignment">Maternal Diabetes : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="maternalDiabetesYes" type="radio" name = maternalDiabetes value="1">
                                                     <label class="radioText" for="maternalDiabetesYes"> Yes</label>
@@ -514,54 +526,131 @@
                                                     <label class="radioText"><input class="radioType" id="maternalDiabetesUnknown" type="radio" name = maternalDiabetes value="9"> Unknown</label>
                                                     
                                                 </span>
+                                            </div>
                                         </div>
-                                        <div class="form-group input-group modeOfDeliveryDiv">
+                                        <div class="form-group input-group modeOfDeliveryVONDiv">
                                             <label class="fixingLabelAlignment">Mode of Delivery : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVaginal" type="radio" name = modeOfDelivery value="1">
-                                                    <label class="radioText" for="modeOfDeliveryVaginal"> Vaginal</label>
+                                                <input class="radioType" id="modeOfDeliveryVONVaginal" type="radio" name = modeOfDeliveryVON value="1">
+                                                    <label class="radioText" for="modeOfDeliveryVONVaginal"> Vaginal</label>
                                                     
 
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryCesareanSection" type="radio" name = modeOfDelivery value="0">
-                                                    <label class="radioText" for="modeOfDeliveryCesareanSection"> C-Section</label>
+                                                <input class="radioType" id="modeOfDeliveryVONCS" type="radio" name = modeOfDeliveryVON value="0">
+                                                    <label class="radioText" for="modeOfDeliveryVONCS"> C-Section</label>
                                                     
 
                                                 </span>
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryUnknown" type="radio" name = modeOfDelivery value="9">
-                                                    <label class="radioText" for="modeOfDeliveryUnknown"> Unknown</label>
+                                                <input class="radioType" id="modeOfDeliveryVONUnknown" type="radio" name = modeOfDeliveryVON value="9">
+                                                    <label class="radioText" for="modeOfDeliveryVONUnknown"> Unknown</label>
                                                     
 
                                                 </span>
+                                        </div>
+                                        </div>
+                                        <div class="form-group input-group modeOfDeliveryAdditionalDiv">
+                                            <label class="fixingLabelAlignment">Mode of Delivery : </label>
+                                            <div class="fixingInputAlignment">
+                                            <span class="radioFloatLeft">
+                                                <input class="radioType" id="modeOfDeliveryAdditionalVaginal" type="radio" name = modeOfDeliveryAdditional value="1">
+                                                    <label class="radioText" for="modeOfDeliveryAdditionalVaginal"> NVD</label>
+                                                    
+
+                                                </span>
+
+                                            <span class="radioFloatLeft">
+                                                <input class="radioType" id="modeOfDeliveryAdditionalCS" type="radio" name = modeOfDeliveryAdditional value="0">
+                                                    <label class="radioText" for="modeOfDeliveryAdditionalCS"> C-Section</label>
+                                                    
+
+                                                </span>
+                                            <span class="radioFloatLeft">
+                                                <input class="radioType" id="modeOfDeliveryAdditionalVacuum" type="radio" name = modeOfDeliveryAdditional value="9">
+                                                    <label class="radioText" for="modeOfDeliveryAdditionalVacuum"> Vacuum</label>
+                                                    
+
+                                                </span>
+                                        </div>
                                         </div>
                                         <div class="form-group input-group sexOfInfantDiv">
                                             <label class="fixingLabelAlignment">Sex of Infant : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="sexOfInfantMale" type="radio" name = sexOfInfant value="1">
                                                     <label class="radioText" for="sexOfInfantMale"> Male</label>
-                                                    
-
-                                                </span>
+                                            </span>
 
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="sexOfInfantFemale" type="radio" name = sexOfInfant value="0">
                                                     <label class="radioText" for="sexOfInfantFemale"> Female</label>
+                                            </span>
+
+                                            <span class="radioFloatLeft">
+                                                <input class="radioType" id="sexOfInfantUnknown" type="radio" name = sexOfInfant value="9">
+                                                    <label class="radioText" for="sexOfInfantUnknown"> Unknown</label>
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group input-group twinOrTripletDiv">
+                                            <label class="fixingLabelAlignment"></label>
+                                            <div class="fixingInputAlignment">
+                                            <span class="radioFloatLeft">
+                                                <input class="radioType" id="twinOrTripletTwin" type="radio" onchange="javascript:twinOrTripletCheck()" name = twinOrTriplet value="1">
+                                                    <label class="radioText" for="twinOrTripletTwin"> Twin</label>
                                                     
 
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="sexOfInfantUnknown" type="radio" name = sexOfInfant value="9">
-                                                    <label class="radioText" for="sexOfInfantUnknown"> Unknown</label>
+                                                <input class="radioType" id="twinOrTripletTriplet" type="radio" onchange="javascript:twinOrTripletCheck()" name = twinOrTriplet value="0">
+                                                    <label class="radioText" for="twinOrTripletTriplet"> Triplet</label>
                                                     
 
                                                 </span>
                                         </div>
+                                        </div>
+                                        <div id="hiddenFieldTwinAB">
+                                            <div class="form-group input-group twinABDiv">
+                                                <label class="fixingLabelAlignment"></label>
+                                                    <div class="fixingInputAlignment">
+                                                        <span class="radioFloatLeft">
+                                                            <input class="radioType" id="twinABA" type="radio" name = twinAB value="1">
+                                                                <label class="radioText" for="twinABA">Twin A</label>
+                                                        </span>
+                                                        <span class="radioFloatLeft">
+                                                            <input class="radioType" id="twinABB" type="radio" name = twinAB value="0">
+                                                                <label class="radioText" for="twinABB">Twin B</label>
+                                                        </span>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div id="hiddenFieldTripletABC">
+                                                <div class="form-group input-group tripletABCDiv">
+                                            <label class="fixingLabelAlignment"></label>
+                                                    <div class="fixingInputAlignment">
+                                            <span class="radioFloatLeft">
+                                                <input class="radioType" id="tripletABCA" type="radio" name = tripletABC value="1">
+                                                    <label class="radioText" for="tripletABCA">Triplet A</label>
+                                            </span>
+                                            <span class="radioFloatLeft">
+                                                <input class="radioType" id="tripletABCB" type="radio" name = tripletABC value="0">
+                                                    <label class="radioText" for="tripletABCB">Triplet B</label>
+                                            </span>
+                                            <span class="radioFloatLeft">
+                                                <input class="radioType" id="twinABBC" type="radio" name = tripletABC value="0">
+                                                    <label class="radioText" for="twinABBC">Triplet C</label>
+                                            </span>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        
                                         <div class="form-group input-group multipleGestationDiv">
                                             <label class="fixingLabelAlignment">Multiple Gestation : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="multipleGestationYes" onchange="javascript:numberOfInfantsDeliveredCheck();" type="radio" name = multipleGestation value="1">
                                                     <label class="radioText" for="multipleGestationYes"> Yes</label>
@@ -581,11 +670,12 @@
                                                     
 
                                                 </span>
+                                            </div>
                                         </div>
                                         <div class="form-group input-group numberOfInfantsDeliveredDiv">
                                             <label class="fixingLabelAlignment">Number of Infants Delivered : </label>
                                             <div class="fixingInputAlignment">
-                                                <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class=" ddList centerSelect form-control" style="height:32px;width:30%;">
                                                     <option disabled selected value="00">SELECT</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -605,7 +695,7 @@
                                         <div class="form-group input-group apgarScoresOneMinDiv">
                                             <label class="fixingLabelAlignment">APGAR Scores @ 1 minute : </label>
                                             <div class="fixingInputAlignment">
-                                                <select id="apgarScoresOneMin" name="apgarScoresOneMin" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                <select id="apgarScoresOneMin" name="apgarScoresOneMin" class=" ddList centerSelect form-control" style="height:32px;width:30%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
@@ -626,7 +716,7 @@
                                         <div class="form-group input-group apgarScoresFiveMinDiv">
                                             <label class="fixingLabelAlignment">APGAR Scores @ 5 minutes : </label>
                                             <div class="fixingInputAlignment">
-                                                <select id="apgarScoresFiveMin" name="apgarScoresFiveMin" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                <select id="apgarScoresFiveMin" name="apgarScoresFiveMin" class=" ddList centerSelect form-control" style="height:32px;width:30%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
@@ -646,6 +736,7 @@
                                         </div>
                                         <div class="form-group input-group temperatureMeasuredWithinFirstHourDiv">
                                             <label class="fixingLabelAlignment">Temperature Measured within the First Hour after Admission to YOUR NICU : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="temperatureMeasuredWithinFirstHourYes" onclick="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="1">
                                                     <label class="radioText" for="temperatureMeasuredWithinFirstHourYes"> Yes</label>
@@ -670,6 +761,7 @@
                                                     
 
                                                 </span>
+                                        </div>
                                         </div>
                                         <div id="hiddenFieldTemperatureFirstHour" class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
@@ -713,6 +805,7 @@
                                         </div>
                                         <div class="form-group input-group congenitalInfectionDiv">
                                             <label class="fixingLabelAlignment">Congenital Infection : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="congenitalInfectionYes" onclick="javascript:congenitalInfectionCheck();" type="radio" name = congenitalInfection value="1"> 
                                                     <label class="radioText" for="congenitalInfectionYes">Yes</label>
@@ -730,6 +823,7 @@
                                                     <label class="radioText" for="congenitalInfectionUnknown">Unknown</label>
                                                     
                                                 </span>
+                                        </div>
                                         </div>
                                         <div id="hiddenFieldCongenitalInfectionOrganisms" class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
@@ -758,6 +852,7 @@
                                         </div>
                                         <div class="form-group input-group surfactantAtAnyTimeDiv">
                                             <label class="fixingLabelAlignment">Surfactant at Any Time : </label>
+                                            <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="surfactantAtAnyTimeYes" onclick="javascript:surfactantAtAnyTimeCheck();" type="radio" name = surfactantAtAnyTime value="1"> 
                                                     <label class="radioText" for="surfactantAtAnyTimeYes">Yes</label>
@@ -776,19 +871,20 @@
                                                     
                                                 </span>
                                         </div>
+                                        </div>
                                         <div id="hiddenFieldSurfactantAtAnyTime" class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
                                                 <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInnerInner">Age at First Dose of Surfactant  :  </label>
-                                                        <div class="fixingInputAlignmentInnerInner">
+                                                        <label class="fixingLabelAlignmentInner" for="ageAtFirstSurfactantHours">Age at First Dose of Surfactant  :  </label>
+                                                        <div class="fixingInputAlignmentInner">
                                                             <span class="addingUnitsInner unitsHours">
                                                             <input id="ageAtFirstSurfactantHours" name="ageAtFirstSurfactantHours" class="form-control" type="search" placeholder="6" maxlength="4">
                                                         </span>
                                                         </div>
                                                     </div>
                                                 <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInnerInner">Minutes (0-59) : </label>
-                                                    <div class="fixingInputAlignmentInnerInner">
+                                                    <label class="fixingLabelAlignmentInner">Minutes (0-59) : </label>
+                                                    <div class="fixingInputAlignmentInner">
                                                         <select id="ageAtFirstSurfactantMinutes" name="ageAtFirstSurfactantMinutes" onchange="javascript:();" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                         <option disabled selected value>SELECT</option>
                                                         <option value="0">0</option>
@@ -1142,19 +1238,12 @@
                                                                 <label class="fixingLabelAlignmentInnerInner">Where Occurred?  : </label>
                                                                 <span class="radioFloatLeftInner">
                                                     
-                                                    <label class="radioText"><input class="radioType" id="PIHWhereOccurredYourHospital" type="radio" name = PIHWhereOccurred value="1"> Your Hospital</label>
+                                                    <label class="radioTextForHospitalResponse"><input class="radioType" id="PIHWhereOccurredYourHospital" type="radio" name = PIHWhereOccurred value="1"> Your Hospital</label>
                                                 </span>
 
                                                                 <span class="radioFloatLeftInner">
                                                     
-                                                    <label class="radioText"><input class="radioType" id="PIHWhereOccurredOtherHosptal" type="radio" name = PIHWhereOccurred value="2"> Other Hospital</label>
-                                                </span>
-
-                                                                <span class="radioFloatLeftInner">
-                                                    <label class="radioText"><input class="radioType" id="PIHWhereOccurredNA" type="radio" name = PIHWhereOccurred value="7"> N/A</label>
-                                                </span>
-                                                                <span class="radioFloatLeftInner">
-                                                    <label class="radioText"><input class="radioType" id="PIHWhereOccurredUnknown" type="radio" onchange="javascript:PIHWhereOccurredCheck();" name = PIHWhereOccurred value="9"> Unknown</label>
+                                                    <label class="radioTextForHospitalResponse"><input class="radioType" id="PIHWhereOccurredOtherHosptal" type="radio" name = PIHWhereOccurred value="2"> Other Hospital</label>
                                                 </span>
                                                             </div>
                                                         </div>
@@ -1802,28 +1891,18 @@
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="ropSurgeryWhereDoneYourHospital" type="radio" name = ropSurgeryWhereDone value="1">
-                                                    <label class="radioText" for="ropSurgeryWhereDoneYourHospital">Your Hospital</label>
+                                                    <label class="radioTextForHospitalResponse" for="ropSurgeryWhereDoneYourHospital">Your Hospital</label>
                                                     </span>
 
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="ropSurgeryWhereDoneOtherHospital" type="radio" name = ropSurgeryWhereDone value="2">
-                                                    <label class="radioText" for="ropSurgeryWhereDoneOtherHospital">Other Hospital</label>
+                                                    <label class="radioTextForHospitalResponse" for="ropSurgeryWhereDoneOtherHospital">Other Hospital</label>
                                                     </span>
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="ropSurgeryWhereDoneBoth" type="radio" name = ropSurgeryWhereDone value="3">
-                                                    <label class="radioText" for="ropSurgeryWhereDoneBoth">Both</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="ropSurgeryWhereDoneNA" type="radio" name = ropSurgeryWhereDone value="7">
-                                                    <label class="radioText" for="ropSurgeryWhereDoneNA">N/A</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="ropSurgeryWhereDoneUnknown" type="radio" name = ropSurgeryWhereDone value="9">
-                                                    <label class="radioText" for="ropSurgeryWhereDoneUnknown">Unknown</label>
+                                                    <label class="radioTextForHospitalResponse" for="ropSurgeryWhereDoneBoth">Both</label>
                                                     </span>
                                                     </div>
                                                 </div>
@@ -1914,411 +1993,112 @@
                                             <div class="inner-panel-heading">
                                                 Surgery Codes
                                             </div>
-                                            <div class="inner-panel-body">
-
-                                                <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentForSurgeryRecords">Surgery Code 1 :</label>
-                                                    <div class="fixingInputAlignmentForSurgery">
-                                                        <select id="firstSurgeryCode" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                  <option value="">--------HEAD & Neck--------</option>
-                                                  <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
-                                                  <option value="S103">S103 - Ophthalmologic Surgery</option>
-                                                  <option value="S107">S107 - Palliative or Definitive Repair of Choanal Atresia</option>
-                                                  <option value="S100">S100 - Other head and neck surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------THORAX--------</option>
-                                                  <option value="S203">S203 - Tracheoesophageal Atresia and/or fistula repair</option>
-                                                  <option value="S210">S210 - Bronchoscopy (With or without biopsy)</option>
-                                                  <option value="S200">S200 - Other thoracic surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------ABDOMEN--------</option>
-                                                  <option value="S301">S301 - Rectal biopsy with or without anoscopy</option>
-                                                  <option value="S303">S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option>
-                                                  <option value="S304">S304 - Fundoplication</option>
-                                                  <option value="S307">S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option>
-                                                  <option value="S308">S308 - Small bowel resection with or without primary anastomosis</option>
-                                                  <option value="S309">S309 - Large bowel resection</option>
-                                                  <option value="S310">S310 - Duodenal atresia/stenosis/web repair</option>
-                                                  <option value="S311">S311 - Jejunal, ileal, or colonic atresia repair</option>
-                                                  <option value="S312">S312 - Excision of Meckel's diverticulum</option>
-                                                  <option value="S313">S313 - Drainage of intra-abdominal abscess</option>
-                                                  <option value="S319">S319 - Repair of imperforate anus</option>
-                                                  <option value="S325">S325 - Repair of diaphragmatic hernia</option>
-                                                  <option value="S331">S331 - Ladd's or other procedure for correction of malrotation</option>
-                                                  <option value="S333">S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option>
-                                                  <option value="S338">S338 - Primary closure for gastroschisis</option>
-                                                  <option value="S340">S340 - Primary closure for omphalocele</option>
-                                                  <option value="S300">S300 - Other abdominal surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------GENITO-URINARY--------</option>
-                                                  <option value="S410">S410 - Inguinal hernia repair</option>
-                                                  <option value="">--------OPEN HEART/VASCULAR PROCEDURES--------</option>
-                                                  <option value="S502">S502 - Repair of coarctation of the aorta</option>
-                                                  <option value="S510">S510 - Truncus arteriosus repair</option>
-                                                  <option value="S511">S511 - Arterial switch</option>
-                                                  <option value="S514">S514 - Pulmonary artery banding</option>
-                                                  <option value="">--------CENTRAL NERVOUS SYSTEM--------</option>
-                                                  <option value="S901">S901 - Ventriculoperitoneal or other ventricular shunt</option>
-                                                  <option value="S904">S904 - Meningocele or myelomeningocele repair</option>
-                                                  <option value="S905">S905 - Encephalocele repair</option>
-                                                 <option value="77">N/A</option>
-                                                 <option value="99">Unknown</option>
-
-                                                </select>
-                                                        <label class="fixingLabelAlignmentForSurgeryRecords"></label>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        
-                                                        <input class="radioType" id="surgeryCode1YourHospital" type="radio" name = surgeryCode1 value="1">
-                                                            <label class="radioText" for="surgeryCode1YourHospital">Your Hospital</label>
-                                                    </span>
-
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        
-                                                        <input class="radioType" id="surgeryCode1OtherHospital" type="radio" name = surgeryCode1 value="2">
-                                                            <label class="radioText" for="surgeryCode1OtherHospital">Other Hospital</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        
-                                                        <input class="radioType" id="surgeryCode1Both" type="radio" name = surgeryCode1 value="3">
-                                                            <label class="radioText" for="surgeryCode1Both">Both</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        
-                                                        <input class="radioType" id="surgeryCode1NA" type="radio" name = surgeryCode1 value="7">
-                                                            <label class="radioText" for="surgeryCode1NA">N/A</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        
-                                                        <input class="radioType" id="surgeryCode1Unknown" type="radio" name = surgeryCode1 value="9">
-                                                            <label class="radioText" for="surgeryCode1Unknown">Unknown</label>
-                                                    </span>
+                                            <div id="mainPanelForSurgeryCodes" class="inner-panel-body">
+                                                <!-- START FIRST SURGERY CODE-->
+                                                <div id="surgeryDiv1" class="InnerInnerPanel inner-inner-panel-primary">
+                                                    <div class="inner-inner-panel-body">
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgery Code 1 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select id="surgeryCode1" name=surgeryCode1 class="form-control" style="height:32px;max-width:120%;width:70%;">
+                                                          <option disabled selected value>--------HEAD & Neck--------</option>
+                                                          <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
+                                                          <option value="S103">S103 - Ophthalmologic Surgery</option>
+                                                          <option value="S107">S107 - Palliative or Definitive Repair of Choanal Atresia</option>
+                                                          <option value="S100">S100 - Other head and neck surgery requiring general or spinal anesthesia</option>
+                                                          <option disabled selected value>--------THORAX--------</option>
+                                                          <option value="S203">S203 - Tracheoesophageal Atresia and/or fistula repair</option>
+                                                          <option value="S210">S210 - Bronchoscopy (With or without biopsy)</option>
+                                                          <option value="S200">S200 - Other thoracic surgery requiring general or spinal anesthesia</option>
+                                                          <option disabled selected value>--------ABDOMEN--------</option>
+                                                          <option value="S301">S301 - Rectal biopsy with or without anoscopy</option>
+                                                          <option value="S303">S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option>
+                                                          <option value="S304">S304 - Fundoplication</option>
+                                                          <option value="S307">S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option>
+                                                          <option value="S308">S308 - Small bowel resection with or without primary anastomosis</option>
+                                                          <option value="S309">S309 - Large bowel resection</option>
+                                                          <option value="S310">S310 - Duodenal atresia/stenosis/web repair</option>
+                                                          <option value="S311">S311 - Jejunal, ileal, or colonic atresia repair</option>
+                                                          <option value="S312">S312 - Excision of Meckel's diverticulum</option>
+                                                          <option value="S313">S313 - Drainage of intra-abdominal abscess</option>
+                                                          <option value="S319">S319 - Repair of imperforate anus</option>
+                                                          <option value="S325">S325 - Repair of diaphragmatic hernia</option>
+                                                          <option value="S331">S331 - Ladd's or other procedure for correction of malrotation</option>
+                                                          <option value="S333">S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option>
+                                                          <option value="S338">S338 - Primary closure for gastroschisis</option>
+                                                          <option value="S340">S340 - Primary closure for omphalocele</option>
+                                                          <option value="S300">S300 - Other abdominal surgery requiring general or spinal anesthesia</option>
+                                                          <option disabled selected value>--------GENITO-URINARY--------</option>
+                                                          <option value="S410">S410 - Inguinal hernia repair</option>
+                                                          <option disabled selected value>--------OPEN HEART/VASCULAR PROCEDURES--------</option>
+                                                          <option value="S502">S502 - Repair of coarctation of the aorta</option>
+                                                          <option value="S510">S510 - Truncus arteriosus repair</option>
+                                                          <option value="S511">S511 - Arterial switch</option>
+                                                          <option value="S514">S514 - Pulmonary artery banding</option>
+                                                          <option disabled selected value>--------CENTRAL NERVOUS SYSTEM--------</option>
+                                                          <option value="S901">S901 - Ventriculoperitoneal or other ventricular shunt</option>
+                                                          <option value="S904">S904 - Meningocele or myelomeningocele repair</option>
+                                                          <option value="S905">S905 - Encephalocele repair</option>
+                                                         <option value="77">N/A</option>
+                                                         <option value="99">Unknown</option>
+                                                        </select>
                                                     </div>
-                                                    <label class="fixingLabelAlignmentForSurgeryRecords">Surgical Site Infection 1 :</label>
-                                                    <div class="fixingInputAlignmentForSurgery">
-                                                        <span class="radioFloatLeft">
+                                                    </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner"></label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode1YourHospital" type="radio" name = surgeryCode1 value="1">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode1YourHospital">Your Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode1OtherHospital" type="radio" name = surgeryCode1 value="2">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode1OtherHospital">Other Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode1Both" type="radio" name = surgeryCode1 value="3">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode1Both">Both</label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgical Site Infection 1 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="surgicalInfection1Yes" type="radio" name = surgicalInfection1 value="1">
                                                             <label class="radioText" for="surgicalInfection1Yes">Yes</label>
                                                     </span>
 
-                                                        <span class="radioFloatLeft">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="surgicalInfection1No" type="radio" name = surgicalInfection1 value="0">
                                                             <label class="radioText" for="surgicalInfection1No">No</label>
                                                     </span>
-                                                        <span class="radioFloatLeft">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="surgicalInfection1NA" type="radio" name = surgicalInfection1 value="7">
                                                             <label class="radioText" for="surgicalInfection1NA">N/A</label>
                                                     </span>
-                                                        <span class="radioFloatLeft">
+                                                        <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="surgicalInfection1Unknown" type="radio" name = surgicalInfection1 value="9">
                                                             <label class="radioText" for="surgicalInfection1Unknown">Unknown</label>
                                                     </span>
                                                     </div>
-
-
-
-
-                                                    <div id="hiddenFieldSurgery2" class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentForSurgeryRecords">Surgery Code 2 :</label>
-                                                        <div class="fixingInputAlignmentForSurgery">
-                                                            <select name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                  <option value="">--------HEAD & Neck--------</option>
-                                                  <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
-                                                  <option value="S103">S103 - Ophthalmologic Surgery</option>
-                                                  <option value="S107">S107 - Palliative or Definitive Repair of Choanal Atresia</option>
-                                                  <option value="S100">S100 - Other head and neck surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------THORAX--------</option>
-                                                  <option value="S203">S203 - Tracheoesophageal Atresia and/or fistula repair</option>
-                                                  <option value="S210">S210 - Bronchoscopy (With or without biopsy)</option>
-                                                  <option value="S200">S200 - Other thoracic surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------ABDOMEN--------</option>
-                                                  <option value="S301">S301 - Rectal biopsy with or without anoscopy</option>
-                                                  <option value="S303">S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option>
-                                                  <option value="S304">S304 - Fundoplication</option>
-                                                  <option value="S307">S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option>
-                                                  <option value="S308">S308 - Small bowel resection with or without primary anastomosis</option>
-                                                  <option value="S309">S309 - Large bowel resection</option>
-                                                  <option value="S310">S310 - Duodenal atresia/stenosis/web repair</option>
-                                                  <option value="S311">S311 - Jejunal, ileal, or colonic atresia repair</option>
-                                                  <option value="S312">S312 - Excision of Meckel's diverticulum</option>
-                                                  <option value="S313">S313 - Drainage of intra-abdominal abscess</option>
-                                                  <option value="S319">S319 - Repair of imperforate anus</option>
-                                                  <option value="S325">S325 - Repair of diaphragmatic hernia</option>
-                                                  <option value="S331">S331 - Ladd's or other procedure for correction of malrotation</option>
-                                                  <option value="S333">S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option>
-                                                  <option value="S338">S338 - Primary closure for gastroschisis</option>
-                                                  <option value="S340">S340 - Primary closure for omphalocele</option>
-                                                  <option value="S300">S300 - Other abdominal surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------GENITO-URINARY--------</option>
-                                                  <option value="S410">S410 - Inguinal hernia repair</option>
-                                                  <option value="">--------OPEN HEART/VASCULAR PROCEDURES--------</option>
-                                                  <option value="S502">S502 - Repair of coarctation of the aorta</option>
-                                                  <option value="S510">S510 - Truncus arteriosus repair</option>
-                                                  <option value="S511">S511 - Arterial switch</option>
-                                                  <option value="S514">S514 - Pulmonary artery banding</option>
-                                                  <option value="">--------CENTRAL NERVOUS SYSTEM--------</option>
-                                                  <option value="S901">S901 - Ventriculoperitoneal or other ventricular shunt</option>
-                                                  <option value="S904">S904 - Meningocele or myelomeningocele repair</option>
-                                                  <option value="S905">S905 - Encephalocele repair</option>
-                                                 <option value="77">N/A</option>
-                                                 <option value="99">Unknown</option>
-
-                                                </select>
-                                                            <label class="fixingLabelAlignmentForSurgeryRecords"></label>
-                                                            <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Your Hospital</label>
-                                                        <input class="radioType" id="surgeryCode2YourHospital" type="radio" name = surgeryCode2 value="1">
-
-                                                    </span>
-
-                                                            <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Other Hospital</label>
-                                                        <input class="radioType" id="surgeryCode2OtherHospital" type="radio" name = surgeryCode2 value="2">
-
-                                                    </span>
-                                                            <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Both</label>
-                                                        <input class="radioType" id="surgeryCode2Both" type="radio" name = surgeryCode2 value="3">
-
-                                                    </span>
-                                                            <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">N/A</label>
-                                                        <input class="radioType" id="surgeryCode2NA" type="radio" name = surgeryCode2 value="7">
-
-                                                    </span>
-                                                            <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Unknown</label>
-                                                        <input class="radioType" id="surgeryCode2Unknown" type="radio" name = surgeryCode2 value="9">
-
-                                                    </span>
-                                                        </div>
-                                                        <label class="fixingLabelAlignmentForSurgeryRecords">Surgical Site Infection 2 :</label>
-                                                        <div class="fixingInputAlignmentForSurgery">
-                                                            <span class="radioFloatLeft">
-                                                        <label class="radioText">Yes</label>
-                                                        <input class="radioType" id="surgicalInfection2Yes" type="radio" name = surgicalInfection2 value="1">
-
-                                                    </span>
-
-                                                            <span class="radioFloatLeft">
-                                                        <label class="radioText">No</label>
-                                                        <input class="radioType" id="surgicalInfection2No" type="radio" name = surgicalInfection2 value="0">
-
-                                                    </span>
-                                                            <span class="radioFloatLeft">
-                                                        <label class="radioText">N/A</label>
-                                                        <input class="radioType" id="surgicalInfection2NA" type="radio" name = surgicalInfection2 value="7">
-
-                                                    </span>
-                                                            <span class="radioFloatLeft">
-                                                        <label class="radioText">Unknown</label>
-                                                        <input class="radioType" id="surgicalInfection2Unknown" type="radio" name = surgicalInfection2 value="9">
-
-                                                    </span>
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                                <div id="hiddenFieldSurgery3" class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentForSurgeryRecords">Surgery Code 3 :</label>
-                                                    <div class="fixingInputAlignmentForSurgery">
-                                                        <select name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                  <option value="">--------HEAD & Neck--------</option>
-                                                  <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
-                                                  <option value="S103">S103 - Ophthalmologic Surgery</option>
-                                                  <option value="S107">S107 - Palliative or Definitive Repair of Choanal Atresia</option>
-                                                  <option value="S100">S100 - Other head and neck surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------THORAX--------</option>
-                                                  <option value="S203">S203 - Tracheoesophageal Atresia and/or fistula repair</option>
-                                                  <option value="S210">S210 - Bronchoscopy (With or without biopsy)</option>
-                                                  <option value="S200">S200 - Other thoracic surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------ABDOMEN--------</option>
-                                                  <option value="S301">S301 - Rectal biopsy with or without anoscopy</option>
-                                                  <option value="S303">S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option>
-                                                  <option value="S304">S304 - Fundoplication</option>
-                                                  <option value="S307">S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option>
-                                                  <option value="S308">S308 - Small bowel resection with or without primary anastomosis</option>
-                                                  <option value="S309">S309 - Large bowel resection</option>
-                                                  <option value="S310">S310 - Duodenal atresia/stenosis/web repair</option>
-                                                  <option value="S311">S311 - Jejunal, ileal, or colonic atresia repair</option>
-                                                  <option value="S312">S312 - Excision of Meckel's diverticulum</option>
-                                                  <option value="S313">S313 - Drainage of intra-abdominal abscess</option>
-                                                  <option value="S319">S319 - Repair of imperforate anus</option>
-                                                  <option value="S325">S325 - Repair of diaphragmatic hernia</option>
-                                                  <option value="S331">S331 - Ladd's or other procedure for correction of malrotation</option>
-                                                  <option value="S333">S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option>
-                                                  <option value="S338">S338 - Primary closure for gastroschisis</option>
-                                                  <option value="S340">S340 - Primary closure for omphalocele</option>
-                                                  <option value="S300">S300 - Other abdominal surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------GENITO-URINARY--------</option>
-                                                  <option value="S410">S410 - Inguinal hernia repair</option>
-                                                  <option value="">--------OPEN HEART/VASCULAR PROCEDURES--------</option>
-                                                  <option value="S502">S502 - Repair of coarctation of the aorta</option>
-                                                  <option value="S510">S510 - Truncus arteriosus repair</option>
-                                                  <option value="S511">S511 - Arterial switch</option>
-                                                  <option value="S514">S514 - Pulmonary artery banding</option>
-                                                  <option value="">--------CENTRAL NERVOUS SYSTEM--------</option>
-                                                  <option value="S901">S901 - Ventriculoperitoneal or other ventricular shunt</option>
-                                                  <option value="S904">S904 - Meningocele or myelomeningocele repair</option>
-                                                  <option value="S905">S905 - Encephalocele repair</option>
-                                                 <option value="77">N/A</option>
-                                                 <option value="99">Unknown</option>
-                                                </select>
-                                                        <label class="fixingLabelAlignmentForSurgeryRecords"></label>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Your Hospital</label>
-                                                        <input class="radioType" id="surgeryCode3YourHospital" type="radio" name = surgeryCode3 value="1">
-
-                                                    </span>
-
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Other Hospital</label>
-                                                        <input class="radioType" id="surgeryCode3OtherHospital" type="radio" name = surgeryCode3 value="2">
-
-                                                    </span>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Both</label>
-                                                        <input class="radioType" id="surgeryCode3Both" type="radio" name = surgeryCode3 value="3">
-
-                                                    </span>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">N/A</label>
-                                                        <input class="radioType" id="surgeryCode3NA" type="radio" name = surgeryCode3 value="7">
-
-                                                    </span>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Unknown</label>
-                                                        <input class="radioType" id="surgeryCode3Unknown" type="radio" name = surgeryCode3 value="9">
-
-                                                    </span>
                                                     </div>
-                                                    <label class="fixingLabelAlignmentForSurgeryRecords">Surgical Site Infection 3 :</label>
-                                                    <div class="fixingInputAlignmentForSurgery">
-                                                        <span class="radioFloatLeft">
-                                                        <label class="radioText">Yes</label>
-                                                        <input class="radioType" id="surgicalInfection3Yes" type="radio" name = surgicalInfection3 value="1">
-
-                                                    </span>
-
-                                                        <span class="radioFloatLeft">
-                                                        <label class="radioText">No</label>
-                                                        <input class="radioType" id="surgicalInfection3No" type="radio" name = surgicalInfection3 value="0">
-
-                                                    </span>
-                                                        <span class="radioFloatLeft">
-                                                        <label class="radioText">N/A</label>
-                                                        <input class="radioType" id="surgicalInfection3NA" type="radio" name = surgicalInfection3 value="7">
-
-                                                    </span>
-                                                        <span class="radioFloatLeft">
-                                                        <label class="radioText">Unknown</label>
-                                                        <input class="radioType" id="surgicalInfection3Unknown" type="radio" name = surgicalInfection3 value="9">
-
-                                                    </span>
-                                                    </div>
+                                                    
                                                 </div>
-                                                <div id="hiddenFieldSurgery4" class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentForSurgeryRecords">Surgery Code 4 :</label>
-                                                    <div class="fixingInputAlignmentForSurgery">
-                                                        <select name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                  <option value="">--------HEAD & Neck--------</option>
-                                                  <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
-                                                  <option value="S103">S103 - Ophthalmologic Surgery</option>
-                                                  <option value="S107">S107 - Palliative or Definitive Repair of Choanal Atresia</option>
-                                                  <option value="S100">S100 - Other head and neck surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------THORAX--------</option>
-                                                  <option value="S203">S203 - Tracheoesophageal Atresia and/or fistula repair</option>
-                                                  <option value="S210">S210 - Bronchoscopy (With or without biopsy)</option>
-                                                  <option value="S200">S200 - Other thoracic surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------ABDOMEN--------</option>
-                                                  <option value="S301">S301 - Rectal biopsy with or without anoscopy</option>
-                                                  <option value="S303">S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option>
-                                                  <option value="S304">S304 - Fundoplication</option>
-                                                  <option value="S307">S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option>
-                                                  <option value="S308">S308 - Small bowel resection with or without primary anastomosis</option>
-                                                  <option value="S309">S309 - Large bowel resection</option>
-                                                  <option value="S310">S310 - Duodenal atresia/stenosis/web repair</option>
-                                                  <option value="S311">S311 - Jejunal, ileal, or colonic atresia repair</option>
-                                                  <option value="S312">S312 - Excision of Meckel's diverticulum</option>
-                                                  <option value="S313">S313 - Drainage of intra-abdominal abscess</option>
-                                                  <option value="S319">S319 - Repair of imperforate anus</option>
-                                                  <option value="S325">S325 - Repair of diaphragmatic hernia</option>
-                                                  <option value="S331">S331 - Ladd's or other procedure for correction of malrotation</option>
-                                                  <option value="S333">S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option>
-                                                  <option value="S338">S338 - Primary closure for gastroschisis</option>
-                                                  <option value="S340">S340 - Primary closure for omphalocele</option>
-                                                  <option value="S300">S300 - Other abdominal surgery requiring general or spinal anesthesia</option>
-                                                  <option value="">--------GENITO-URINARY--------</option>
-                                                  <option value="S410">S410 - Inguinal hernia repair</option>
-                                                  <option value="">--------OPEN HEART/VASCULAR PROCEDURES--------</option>
-                                                  <option value="S502">S502 - Repair of coarctation of the aorta</option>
-                                                  <option value="S510">S510 - Truncus arteriosus repair</option>
-                                                  <option value="S511">S511 - Arterial switch</option>
-                                                  <option value="S514">S514 - Pulmonary artery banding</option>
-                                                  <option value="">--------CENTRAL NERVOUS SYSTEM--------</option>
-                                                  <option value="S901">S901 - Ventriculoperitoneal or other ventricular shunt</option>
-                                                  <option value="S904">S904 - Meningocele or myelomeningocele repair</option>
-                                                  <option value="S905">S905 - Encephalocele repair</option>
-                                                 <option value="77">N/A</option>
-                                                 <option value="99">Unknown</option>
-
-                                                </select>
-                                                        <label class="fixingLabelAlignmentForSurgeryRecords"></label>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Your Hospital</label>
-                                                        <input class="radioType" id="surgeryCode4YourHospital" type="radio" name = surgeryCode4 value="1">
-
-                                                    </span>
-
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Other Hospital</label>
-                                                        <input class="radioType" id="surgeryCode4OtherHospital" type="radio" name = surgeryCode4 value="2">
-
-                                                    </span>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Both</label>
-                                                        <input class="radioType" id="surgeryCode4Both" type="radio" name = surgeryCode4 value="3">
-
-                                                    </span>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">N/A</label>
-                                                        <input class="radioType" id="surgeryCode4NA" type="radio" name = surgeryCode4 value="7">
-
-                                                    </span>
-                                                        <span class="radioFloatLeftForSurgery">
-                                                        <label class="radioText">Unknown</label>
-                                                        <input class="radioType" id="surgeryCode4Unknown" type="radio" name = surgeryCode4 value="9">
-
-                                                    </span>
-                                                    </div>
-                                                    <label class="fixingLabelAlignmentForSurgeryRecords">Surgical Site Infection 4 :</label>
-                                                    <div class="fixingInputAlignmentForSurgery">
-                                                        <span class="radioFloatLeft">
-                                                        <label class="radioText">Yes</label>
-                                                        <input class="radioType" id="surgicalInfection4Yes" type="radio" name = surgicalInfection4 value="1">
-
-                                                    </span>
-
-                                                        <span class="radioFloatLeft">
-                                                        <label class="radioText">No</label>
-                                                        <input class="radioType" id="surgicalInfection4No" type="radio" name = surgicalInfection4 value="0">
-
-                                                    </span>
-                                                        <span class="radioFloatLeft">
-                                                        <label class="radioText">N/A</label>
-                                                        <input class="radioType" id="surgicalInfection4Na" type="radio" name = surgicalInfection4 value="7">
-
-                                                    </span>
-                                                        <span class="radioFloatLeft">
-                                                        <label class="radioText">Unknown</label>
-                                                        <input class="radioType" id="surgicalInfection4Unknown" type="radio" name = surgicalInfection4 value="9">
-
-                                                    </span>
-                                                    </div>
-                                                </div>
+                                                
+                                                <!-- END FIRST SURGERY CODE-->
                                             </div>
                                             <!-- START Button to add new surgery fields-->
                                             <div class="form-group input-group">
-                                                <a href="javascript:addNewSurgeryField();" class="btn btn-default btn-lg page-scroll" style="position:relative;margin-top:100px; width:80%;">Add new Surgery</a>
+                                                <a href="javascript:addNewSurgeryField('surgeryDiv1');" class="btn btn-default btn-lg page-scroll" style="position:relative;margin-top:100px; width:80%;">Add new Surgery</a>
                                             </div>
                                             <!-- END Button to add new surgery fields-->
                                         </div>
@@ -2385,28 +2165,18 @@
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="pneumothoraxWhereOccuredYourHospital" type="radio" name = pneumothoraxWhereOccured value="1">
-                                                    <label class="radioText" for="pneumothoraxWhereOccuredYourHospital">Your Hospital</label>
+                                                    <label class="radioTextForHospitalResponse" for="pneumothoraxWhereOccuredYourHospital">Your Hospital</label>
                                                     </span>
 
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="pneumothoraxWhereOccuredOtherHospital" type="radio" name = pneumothoraxWhereOccured value="2">
-                                                    <label class="radioText" for="pneumothoraxWhereOccuredOtherHospital">Other Hospital</label>
+                                                    <label class="radioTextForHospitalResponse" for="pneumothoraxWhereOccuredOtherHospital">Other Hospital</label>
                                                     </span>
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="pneumothoraxWhereOccuredBoth" type="radio" name = pneumothoraxWhereOccured value="3">
-                                                    <label class="radioText" for="pneumothoraxWhereOccuredBoth">Both</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="pneumothoraxWhereOccuredNA" type="radio" name = pneumothoraxWhereOccured value="7">
-                                                    <label class="radioText" for="pneumothoraxWhereOccuredNA">N/A</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="pneumothoraxWhereOccuredUnknown" type="radio" name = pneumothoraxWhereOccured value="9">
-                                                    <label class="radioText" for="pneumothoraxWhereOccuredUnknown">Unknown</label>
+                                                    <label class="radioTextForHospitalResponse" for="pneumothoraxWhereOccuredBoth">Both</label>
                                                     </span>
                                                     </div>
                                                 </div>
@@ -2473,28 +2243,18 @@
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="necrotizingEnterocolitisWhereOccuredYourHospital" type="radio" name = necrotizingEnterocolitisWhereOccured value="1">
-                                                    <label class="radioText" for="necrotizingEnterocolitisWhereOccuredYourHospital">Your Hospital</label>
+                                                    <label class="radioTextForHospitalResponse" for="necrotizingEnterocolitisWhereOccuredYourHospital">Your Hospital</label>
                                                     </span>
 
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="necrotizingEnterocolitisWhereOccuredOtherHospital" type="radio" name = necrotizingEnterocolitisWhereOccured value="2">
-                                                    <label class="radioText" for="necrotizingEnterocolitisWhereOccuredOtherHospital">Other Hospital</label>
+                                                    <label class="radioTextForHospitalResponse" for="necrotizingEnterocolitisWhereOccuredOtherHospital">Other Hospital</label>
                                                     </span>
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="necrotizingEnterocolitisWhereOccuredBoth" type="radio" name = necrotizingEnterocolitisWhereOccured value="3">
-                                                    <label class="radioText" for="necrotizingEnterocolitisWhereOccuredBoth">Both</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="necrotizingEnterocolitisWhereOccuredNA" type="radio" name = necrotizingEnterocolitisWhereOccured value="7">
-                                                    <label class="radioText" for="necrotizingEnterocolitisWhereOccuredNA">N/A</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="necrotizingEnterocolitisWhereOccuredUnknown" type="radio" name = necrotizingEnterocolitisWhereOccured value="9">
-                                                    <label class="radioText" for="necrotizingEnterocolitisWhereOccuredUnknown">Unknown</label>
+                                                    <label class="radioTextForHospitalResponse" for="necrotizingEnterocolitisWhereOccuredBoth">Both</label>
                                                     </span>
                                                     </div>
                                                 </div>
@@ -2533,29 +2293,19 @@
                                                     <label class="fixingLabelAlignmentInnerInner">Where Given : </label>
                                                     <div class="fixingInputAlignmentInnerInner">
                                                         <span class="radioFloatLeftInner">
-                                                        <label class="radioText">Your Hospital</label>
+                                                        <label class="radioTextForHospitalResponse">Your Hospital</label>
                                                         <input class="radioType" id="focalIntestinalPerforationWhereOccuredYourHospital" type="radio" name = focalIntestinalPerforationWhereOccured value="1">
 
                                                     </span>
 
                                                         <span class="radioFloatLeftInner">
-                                                        <label class="radioText">Other Hospital</label>
+                                                        <label class="radioTextForHospitalResponse">Other Hospital</label>
                                                         <input class="radioType" id="focalIntestinalPerforationWhereOccuredOtherHospital" type="radio" name = focalIntestinalPerforationWhereOccured value="2">
 
                                                     </span>
                                                         <span class="radioFloatLeftInner">
-                                                        <label class="radioText">Both</label>
+                                                        <label class="radioTextForHospitalResponse">Both</label>
                                                         <input class="radioType" id="focalIntestinalPerforationWhereOccuredBoth" type="radio" name = focalIntestinalPerforationWhereOccured value="3">
-
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        <label class="radioText">N/A</label>
-                                                        <input class="radioType" id="focalIntestinalPerforationWhereOccuredNA" type="radio" name = focalIntestinalPerforationWhereOccured value="7">
-
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        <label class="radioText">Unknown</label>
-                                                        <input class="radioType" id="focalIntestinalPerforationWhereOccuredUnknown" type="radio" name = focalIntestinalPerforationWhereOccured value="9">
 
                                                     </span>
                                                     </div>
@@ -2601,37 +2351,26 @@
                                                             <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="bacterialSepsisWhereOccurredYourHospital" type="radio" name = bacterialSepsisWhereOccurred value="1">
-                                                                <label class="radioText" for="bacterialSepsisWhereOccurredYourHospital">Your Hospital</label>
+                                                                <label class="radioTextForHospitalResponse" for="bacterialSepsisWhereOccurredYourHospital">Your Hospital</label>
                                                     </span>
 
                                                             <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="bacterialSepsisWhereOccurredOtherHospital" type="radio" name = bacterialSepsisWhereOccurred value="2">
-                                                                <label class="radioText" for="bacterialSepsisWhereOccurredOtherHospital">Other Hospital</label>
+                                                                <label class="radioTextForHospitalResponse" for="bacterialSepsisWhereOccurredOtherHospital">Other Hospital</label>
                                                     </span>
                                                             <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="bacterialSepsisWhereOccurredBoth" type="radio" name = bacterialSepsisWhereOccurred value="3">
-                                                                <label class="radioText" for="bacterialSepsisWhereOccurredBoth">Both</label>
-                                                    </span>
-                                                            <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="bacterialSepsisWhereOccurredNA" type="radio" name = bacterialSepsisWhereOccurred value="7">
-                                                                <label class="radioText" for="bacterialSepsisWhereOccurredNA">N/A</label>
-                                                    </span>
-                                                            <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="bacterialSepsisWhereOccurredUnknown" type="radio" name = bacterialSepsisWhereOccurred value="9">
-                                                                <label class="radioText" for="bacterialSepsisWhereOccurredUnknown">Unknown</label>
+                                                                <label class="radioTextForHospitalResponse" for="bacterialSepsisWhereOccurredBoth">Both</label>
                                                     </span>
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes(3) : </label>
                                                         <div class="fixingInputAlignmentInner">
                                                             <select id="pathogenCode1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                                                <option disabled selected value="">SELECT</option>
+                                                                <option disabled selected value>SELECT</option>
                                                                     <option value="102">102 - Acinetobacter species including multidrug-resistant Acinetobacter</option>
                                                                     <option value="201">201 - Bacteroides species</option>
                                                                     <option value="501">501 - Enterobacter species [E. aerogenes, E. cloacae, and others] including Carbapenem-resistant Enterobacter</option>
@@ -2657,13 +2396,7 @@
                                                         </div>
                                                         
                                                     </div>
-
-
-
-
-
                                                 </div>
-
                                                 <div class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInner">Coagulase Negative Staph Infection :</label>
                                                     <div class="fixingInputAlignmentInner">
@@ -2696,32 +2429,21 @@
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="coagulaseNegativeWhereOccurredYourHospital" type="radio" name = coagulaseNegativeWhereOccurred value="1">
-                                                            <label class="radioText" for="coagulaseNegativeWhereOccurredYourHospital">Your Hospital</label>
+                                                            <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredYourHospital">Your Hospital</label>
                                                     </span>
 
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="coagulaseNegativeWhereOccurredOtherHospital" type="radio" name = coagulaseNegativeWhereOccurred value="2">
-                                                            <label class="radioText" for="coagulaseNegativeWhereOccurredOtherHospital">Other Hospital</label>
+                                                            <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredOtherHospital">Other Hospital</label>
                                                     </span>
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="coagulaseNegativeWhereOccurredBoth" type="radio" name = coagulaseNegativeWhereOccurred value="3">
-                                                            <label class="radioText" for="coagulaseNegativeWhereOccurredBoth">Both</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="coagulaseNegativeWhereOccurredNA" type="radio" name = coagulaseNegativeWhereOccurred value="7">
-                                                            <label class="radioText" for="coagulaseNegativeWhereOccurredNA">N/A</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="coagulaseNegativeWhereOccurredUnknown" type="radio" name = coagulaseNegativeWhereOccurred value="9">
-                                                            <label class="radioText" for="coagulaseNegativeWhereOccurredUnknown">Unknown</label>
+                                                            <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredBoth">Both</label>
                                                     </span>
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInner">Fungal Infection :</label>
                                                     <div class="fixingInputAlignmentInner">
@@ -2754,40 +2476,23 @@
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="fungalInfectionWhereOccurredYourHospital" type="radio" name = fungalInfectionWhereOccurred value="1">
-                                                            <label class="radioText" for="fungalInfectionWhereOccurredYourHospital">Your Hospital</label>
+                                                            <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredYourHospital">Your Hospital</label>
                                                     </span>
 
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="fungalInfectionWhereOccurredOtherHospital" type="radio" name = fungalInfectionWhereOccurred value="2">
-                                                            <label class="radioText" for="fungalInfectionWhereOccurredOtherHospital">Other Hospital</label>
+                                                            <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredOtherHospital">Other Hospital</label>
 
                                                     </span>
                                                         <span class="radioFloatLeftInner">
                                                         
                                                         <input class="radioType" id="fungalInfectionWhereOccurredBoth" type="radio" name = fungalInfectionWhereOccurred value="3">
-                                                                <label class="radioText" for="fungalInfectionWhereOccurredBoth">Both</label>
+                                                                <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredBoth">Both</label>
 
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="fungalInfectionWhereOccurredNA" type="radio" name = fungalInfectionWhereOccurred value="7">
-                                                            <label class="radioText" for="fungalInfectionWhereOccurredNA">N/A</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="fungalInfectionWhereOccurredUnknown" type="radio" name = fungalInfectionWhereOccurred value="9">
-                                                            <label class="radioText" for="fungalInfectionWhereOccurredUnknown">Unknown</label>
                                                     </span>
                                                     </div>
                                                 </div>
-
-
-
-
-
-
-
                                             </div>
                                         </div>
 
@@ -2887,7 +2592,7 @@
                                                 <div class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInnerInner">Birth Defect Codes(5) : </label>
                                                     <div class="fixingInputAlignmentInnerInner">
-                                                        <select id="birthDefectCode1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                        <select id="birthDefectCode1" name=birthDefectCode1 class="form-control" style="height:32px;width:70%;">
                                                             <option disabled selected value>SELECT</option>
                                                             <option disabled selected value>-----Central Nervous System Anomalies-----</option>
                                                             <option value="101">101 - Anencephaly</option>
@@ -3314,7 +3019,7 @@ Code Description
                                                     <label class="fixingLabelAlignmentInner">Date discharged home, died or first birthday date : </label>
                                                     <div class="fixingInputAlignmentInner">
                                                         <span class="addingCalendarInner addingCalendarIcon">
-                                                    <input type="text" name="dateDischargedHomeDiedOrBirthday" id="dateDischargedHomeDiedOrBirthday" class="form-control addRed" style="border-color: rgba(0, 0, 0, 0.15); box-shadow: 0 0 0"/>
+                                                    <input type="text" name="dateDischargedHomeDiedOrBirthday" id="dateDischargedHomeDiedOrBirthday" class="form-control calendarField" readonly='true'/>
                                                     </span>
                                                     </div>
                                                 </div>
@@ -3329,16 +3034,16 @@ Code Description
                                             </div>
                                         </div>
                                         <div class="form-group input-group dateOfInitialDispositionDiv">
-                                            <label class="fixingLabelAlignment">Date of Initial Disposition : </label>
+                                            <label class="fixingLabelAlignment" for="dateOfInitialDisposition">Date of Initial Disposition : </label>
                                             <div class="fixingInputAlignment">
                                                 <span class="addingCalendar addingCalendarIcon">
-                                                        <input type="text" name="dateOfInitialDisposition" id="dateOfInitialDisposition" class="form-control"/>
+                                                        <input type="text" name="dateOfInitialDisposition" id="dateOfInitialDisposition" placeholder="dd-mm-yyyy" class="form-control calendarField" readonly='true'/>
                                                     </span>
                                             </div>
 
                                         </div>
                                         <div class="form-group input-group weightAtInitialDispositionDiv">
-                                            <label class="fixingLabelAlignment">Weight at Initial Disposition : </label>
+                                            <label class="fixingLabelAlignment" for="weightAtInitialDisposition">Weight at Initial Disposition : </label>
                                             <div class="fixingInputAlignment">
                                                 <span class="addingUnits unitsGrams">
                                                     <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control" onchange="validateWeightAtInitialDisposition()" type="search" placeholder="eg. 1122">
@@ -3346,7 +3051,7 @@ Code Description
                                             </div>
                                         </div>
                                         <div class="form-group input-group headCircumferenceInitialDispositionDiv">
-                                            <label class="fixingLabelAlignment">Head Circumference at Initial Disposition : </label>
+                                            <label class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
                                             <div class="fixingInputAlignment">
                                                 <span class="addingUnits unitsCm">
                                                     <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="validateHeadCircumferenceInitialDisposition()"  class="form-control" type="search" placeholder="eg. 20" >
@@ -3356,14 +3061,12 @@ Code Description
                                         <div class="form-group input-group initialLengthOfStayDiv">
                                             <label class="fixingLabelAlignment">Initial Length of Stay : </label>
                                             <div class="fixingInputAlignment">
-                                                <span class="addingUnits unitsDays">
-                                        
-                                        <input id="initialLengthOfStay" name="initialLengthOfStay" class="form-control" onblur="validateBirthweight()" type="search" placeholder="eg. 1122">
-                                    
-                                    </span>
+                                                <span class="addingCalendar addingCalendarIcon">
+                                                        <input type="search" name="initialLengthOfStay" id="initialLengthOfStay" class="form-control calendarField" disabled readonly='true'/>
+                                                    </span>
                                             </div>
-                                        </div>
 
+                                        </div>
 
                                     </div>
                                 </div>
@@ -3417,7 +3120,7 @@ Code Description
                                         </div>
                                         <div class="inner-panel-body">
                                             <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Mother's Age  :  </label>
+                                                <label class="fixingLabelAlignmentInner" for="mothersAge">Mother's Age  :  </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <span class="addingUnitsInner unitsYears">
                                                             <input id="mothersAge" name="mothersAge" class="form-control" type="text" placeholder="6">
@@ -3506,7 +3209,7 @@ Code Description
                                                     <div class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInnerInner">Viral Load  :  </label>
                                                         <div class="fixingInputAlignmentInnerInner">
-                                                            <select id="viralLoad" name=viralLoad class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                            <select id="viralLoad" name=viralLoad class="form-control" style="height:32px;width:70%;">
                                                     <option disabled selected value >SELECT</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -3608,7 +3311,7 @@ Code Description
                                             <div id="hiddenFieldInvasiveVentilation" class="InnerInnerPanel inner-inner-primary-panel">
                                                 <div class="inner-inner-panel-body">
                                                     <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInnerInner">Day of Life Ventilation Started  :  </label>
+                                                        <label class="fixingLabelAlignmentInnerInner" for="dayOfLifeVentilationStarted">Day of Life Ventilation Started  :  </label>
                                                         <div class="fixingInputAlignmentInnerInner">
                                                             <span class="addingUnits unitsDays">
                                                             <input id="dayOfLifeVentilationStarted" name="dayOfLifeVentilationStarted" class="form-control" type="text" placeholder="6">
@@ -3616,7 +3319,7 @@ Code Description
                                                         </div>
                                                     </div>
                                                     <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInnerInner">Total Duration  :  </label>
+                                                        <label class="fixingLabelAlignmentInnerInner" for="dayOfLifeVentilationStartedDuration">Total Duration  :  </label>
                                                         <div class="fixingInputAlignmentInnerInner">
                                                             <span class="addingUnits unitsDays">
                                                             <input id="dayOfLifeVentilationStartedDuration" name="dayOfLifeVentilationStartedDuration" class="form-control" type="text" placeholder="6">
@@ -3624,7 +3327,7 @@ Code Description
                                                         </div>
                                                     </div>
                                                     <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInnerInner">Diagnosis  :  </label>
+                                                        <label class="fixingLabelAlignmentInnerInner" for="dayOfLifeVentilationStartedDiagnosis">Diagnosis  :  </label>
                                                         <div class="fixingInputAlignmentInnerInner">
 
                                                             <input id="dayOfLifeVentilationStartedDiagnosis" name="dayOfLifeVentilationStartedDiagnosis" class="form-control" type="text" placeholder="">
@@ -3884,7 +3587,7 @@ Code Description
                                             <div id="hiddenFieldFetalMedicineUnitFlaggedGroup" class="InnerInnerPanel inner-inner-panel-primary">
                                                 <div class="inner-inner-panel-body">
                                                     <div class="form-group input-group new-input-group">
-                                                        <label class="fixingLabelAlignmentInnerInner">Antenatal Scan : </label>
+                                                        <label class="fixingLabelAlignmentInnerInner" for="antenatalScan">Antenatal Scan : </label>
                                                         <div class="fixingInputAlignmentInnerInner">
                                                             <textarea id="antenatalScan" name="antenatalScan" class="form-controlTextArea" rows="4" cols="25"></textarea>
 
@@ -3911,7 +3614,7 @@ Code Description
                                             <div id="hiddenFieldChromosomesDone" class="InnerInnerPanel inner-inner-panel-primary">
                                                 <div class="inner-inner-panel-body">
                                                     <div class="form-group input-group new-input-group">
-                                                        <label class="fixingLabelAlignmentInnerInner">Results : </label>
+                                                        <label class="fixingLabelAlignmentInnerInner" for="chromosomesDoneResults">Results : </label>
                                                         <div class="fixingInputAlignmentInnerInner">
                                                             <textarea id="chromosomesDoneResults" name="chromosomesDoneResults" class="form-controlTextArea" rows="4" cols="25"></textarea>
 
@@ -3938,7 +3641,7 @@ Code Description
                                             <div id="hiddenFieldAbnormalHeadUltrasound" class="InnerInnerPanel inner-inner-panel-primary">
                                                 <div class="inner-inner-panel-body">
                                                     <div class="form-group input-group new-input-group">
-                                                        <label class="fixingLabelAlignmentInnerInner">Details : </label>
+                                                        <label class="fixingLabelAlignmentInnerInner" for="abnormalHeadUltrasoundResult">Details : </label>
                                                         <div class="fixingInputAlignmentInnerInner">
                                                             <textarea id="abnormalHeadUltrasoundResult" name="abnormalHeadUltrasoundResult" class="form-controlTextArea" rows="4" cols="25"></textarea>
 
@@ -3947,8 +3650,9 @@ Code Description
                                                 </div>
 
                                             </div>
-                                            <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Baby >40days old - received 6/52 immunizations   :  </label>
+                                            <div id="hiddenFieldImmunizations652">
+                                                <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner">Received 6/52 Immunizations   :  </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <span class="radioFloatLeftInner">
                                                 
@@ -3967,17 +3671,21 @@ Code Description
                                             </span>
                                                 </div>
                                             </div>
-                                            <div id="hiddenFieldImmunizations652" class="InnerInnerPanel inner-inner-panel-primary">
+                                            <div id="hiddenFieldImmunizations652Date" class="InnerInnerPanel inner-inner-panel-primary">
                                                 <div class="inner-inner-panel-body">
                                                     <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInnerInner">Date :  </label>
-                                                        <div class="fixingInputAlignmentInnerInner">
-                                                            <input id="immunizations652Date" name="immunizations652Date" class="form-control" type="date">
+                                                        <label class="fixingLabelAlignmentInner" for="immunizationDate">Date : </label>
+                                                        <div class="fixingInputAlignmentInner">
+                                                            <span class="addingCalendarInner addingCalendarIcon">
+                                                            <input type="search" placeholder="dd-mm-yyyy" id="immunizations652Date" name="immunizations652Date" onchange="duplicateToImmunizationDate();" class="form-control calendarField" readonly='true'/>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                             </div>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <!--END investigation and procedures-->
@@ -3998,34 +3706,34 @@ Code Description
                                         </div>
                                         <div class="inner-panel-body">
                                             <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Appointment Location  :  </label>
+                                                <label class="fixingLabelAlignmentInner" for="appointmentLocation">Appointment Location  :  </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <input id="appointmentLocation" name="appointmentLocation" class="form-control" type="search" placeholder="Helderberg Hospital">
                                                 </div>
                                             </div>
                                             <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Appointment Date : </label>
+                                                <label class="fixingLabelAlignmentInner" for="appointmentDate">Appointment Date : </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <span class="addingCalendarInner addingCalendarIcon">
-                                                    <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate" name="appointmentDate" class="form-control calendarField"/>
+                                                    <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate" name="appointmentDate" class="form-control calendarField" readonly='true'/>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Immunization Date : </label>
+                                                <label class="fixingLabelAlignmentInner" for="immunizationDate">Immunization Date : </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <span class="addingCalendarInner addingCalendarIcon">
-                                                    <input type="search" placeholder="dd-mm-yyyy" id="immunizationDate" name="immunizationDate" class="form-control calendarField"/>
+                                                    <input type="search" placeholder="dd-mm-yyyy" id="immunizationDate" name="immunizationDate" class="form-control calendarField" readonly='true'/>
                                                     </span>
                                                 </div>
                                             </div>
                                             <!--Still need to hide-->
                                             <div id="hiddenFieldAppointmentPCRDate">
                                                 <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Appointment 10/52 PCR test Date: </label>
+                                                    <label class="fixingLabelAlignmentInner" for="PCRDate">Appointment 10/52 PCR test Date: </label>
                                                     <div class="fixingInputAlignmentInner">
                                                         <span class="addingCalendarInner addingCalendarIcon">
-                                                        <input type="search" placeholder="dd-mm-yyyy" id="PCRDate" name="PCRDate" class="form-control calendarField"/>
+                                                        <input type="search" placeholder="dd-mm-yyyy" id="PCRDate" name="PCRDate" class="form-control calendarField" readonly='true'/>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -4034,10 +3742,10 @@ Code Description
 
                                             <div id="hiddenFieldROPDate">
                                                 <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">ROP Screen Date : </label>
+                                                    <label class="fixingLabelAlignmentInner" for="ROPDate">ROP Screen Date : </label>
                                                     <div class="fixingInputAlignmentInner">
                                                         <span class="addingCalendarInner addingCalendarIcon">
-                                                        <input type="search" placeholder="dd-mm-yyyy" id="ROPDate" name="ROPDate" class="form-control calendarField"/>
+                                                        <input type="search" placeholder="dd-mm-yyyy" id="ROPDate" name="ROPDate" class="form-control calendarField" readonly='true'/>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -4107,12 +3815,13 @@ Code Description
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.js"></script>
     <script src="js/toastr.js"></script>
+    <script src="js/jquery.popupoverlay.js"></script>
     <!-- Custom VON Team Scripts for this template -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
     <script type="text/javascript" src="js/ownScripts.js"></script>
+    <script type="text/javascript" src="js/EventListeners.js"></script>
     <script type="text/javascript" src="js/validationScript.js"></script>
-    <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
     <script src="js/noframework.waypoints.js"></script>
     <script src="js/db.js"></script>
