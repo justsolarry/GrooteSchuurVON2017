@@ -154,9 +154,9 @@
 
                     <div id="col-md-8-div-1" class="col-md-9">
                         <form id="firstForm" class="general-form">
-                            <div class="panel panel-primary">
+                            <div id="firstPanelID" class="panel panel-primary">
                                 <div class="panel-body">
-                                    <div class="form-group input-group">
+                                    <div class="form-group input-group birthWeightInGramsDiv">
                                         <label class="fixingLabelAlignment" for="birthWeightInGrams">Birth Weight : </label>
                                         <div class="fixingInputAlignment">
                                             <span class="addingUnits unitsGrams">
@@ -164,8 +164,6 @@
                                             </span>
                                         </div>
                                     </div>
-
-
                                     <div class="form-group input-group mothersFirstNameDiv">
                                         <label class="fixingLabelAlignment" for="mothersFirstName">Mother's First Name : </label>
                                         <div class="fixingInputAlignment">
@@ -245,11 +243,10 @@
                                                 </span>
                                                 </div>
                                             </div>
-
                                             <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner">Transfer Code of Center from which Infant Transferred : </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                    <select name=transferCodePIW class="form-control" style="height:32px;width:80%;">
+                                                    <select id="transferCodePIW" name=transferCodePIW class="form-control" style="height:32px;width:80%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="13240">13240 - Mowbray Maternity Hospital</option>
                                                     <option value="14994">14994 - New Somerset Hospital</option>
@@ -265,11 +262,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
-
-
                                     <div class="form-group input-group diedInDeliveryRoomDiv">
                                         <label class="fixingLabelAlignment">Died in Delivery Room : </label>
                                         <div class="fixingInputAlignment">
@@ -288,7 +281,24 @@
                                         </div>
                                         
                                     </div>
+                                    <div id="testingID" class="form-group input-group hide">
+                                        <label class="fixingLabelAlignment">testing : </label>
+                                        <div class="fixingInputAlignment">
+                                        <span class="radioFloatLeft">
+                                                <input class="radioType" id="abc" type="radio" name = testing value="1">
+                                                <label class="radioText" for="abc">Yes</label>
+                                            </span>
 
+                                        <span class="radioFloatLeft">
+                                                
+                                                        <input class="radioType" id="abcd" type="radio" name = testing value="0">
+                                                    <label class="radioText" for="abcd">No</label>
+                                                    
+
+                                                </span>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
 
 
@@ -523,7 +533,8 @@
                                                     <label class="radioText" for="maternalDiabetesNo"> No</label>
                                                 </span>
                                             <span class="radioFloatLeft">
-                                                    <label class="radioText"><input class="radioType" id="maternalDiabetesUnknown" type="radio" name = maternalDiabetes value="9"> Unknown</label>
+                                                <input class="radioType" id="maternalDiabetesUnknown" type="radio" name = maternalDiabetes value="9"> 
+                                                    <label class="radioText">Unknown</label>
                                                     
                                                 </span>
                                             </div>
@@ -666,7 +677,8 @@
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                    <label class="radioText"><input class="radioType" id="multipleGestationUnknown" onchange="javascript:numberOfInfantsDeliveredCheck();" type="radio" name = multipleGestation value="9"> Unknown</label>
+                                                <input class="radioType" id="multipleGestationUnknown" onchange="javascript:numberOfInfantsDeliveredCheck();" type="radio" name = multipleGestation value="9">
+                                                    <label class="radioText"> Unknown</label>
                                                     
 
                                                 </span>
@@ -1121,10 +1133,10 @@
                                                 </div>
                                                 <div id="hiddenFieldBacterialSepsisBefore" class="InnerInnerPanel inner-inner-panel-primary">
                                                     <div class="inner-inner-panel-body">
-                                                        <div class="form-group input-group">
-                                                            <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes(3) : </label>
+                                                        <div id="bacterialBeforeDiv1" class="form-group input-group">
+                                                            <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 1 : </label>
                                                             <div class="fixingInputAlignmentInnerInner">
-                                                                <select id="pathogenCodeBefore1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                                <select id="pathogenCodeBefore1" name="pathogenCodeBefore1" class="form-control" style="height:32px;width:70%;">
                                                                     <option disabled selected value="">SELECT</option>
                                                                     <option value="102">102 - Acinetobacter species including multidrug-resistant Acinetobacter</option>
                                                                     <option value="201">201 - Bacteroides species</option>
@@ -1152,6 +1164,9 @@
                                                         </div>
 
                                                     </div>
+                                                </div>
+                                                <div id="addNewBacterialFieldDiv" class="form-group input-group ">
+                                                    <a href="javascript:addNewBacterialFieldBefore('bacterialBeforeDiv1');" class="btn btn-default btn-lg page-scroll" style="position:relative;margin-top:100px; width:80%;">Add new Bacterial Code</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -2344,8 +2359,9 @@
                                                             </span>
                                                     </div>
                                                 </div>
-                                                <div id="hiddenFieldBacterialSepsis">
-                                                    <div class="form-group input-group">
+                                                <div id="hiddenFieldBacterialSepsis" class="InnerInnerPanel inner-inner-panel-primary">
+                                                    <div class="inner-inner-panel-primary">
+                                                        <div class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInner">Where Occurred : </label>
                                                         <div class="fixingInputAlignmentInner">
                                                             <span class="radioFloatLeftInner">
@@ -2366,10 +2382,10 @@
                                                     </span>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes(3) : </label>
+                                                    <div id="bacterialAfterDiv1" class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 1 : </label>
                                                         <div class="fixingInputAlignmentInner">
-                                                            <select id="pathogenCode1" name=state class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                            <select id="pathogenCodeAfter1" name=pathogenCodeAfter1 class="form-control" style="height:32px;width:70%;">
                                                                 <option disabled selected value>SELECT</option>
                                                                     <option value="102">102 - Acinetobacter species including multidrug-resistant Acinetobacter</option>
                                                                     <option value="201">201 - Bacteroides species</option>
@@ -2396,6 +2412,11 @@
                                                         </div>
                                                         
                                                     </div>
+                                                        <div id="addNewBacterialFieldAfterDiv" class="form-group input-group ">
+                                                            <a href="javascript:addNewBacterialFieldAfter('bacterialAfterDiv1');" class="btn btn-default btn-lg page-scroll" style="position:relative;margin-top:100px; width:80%;">Add new Bacterial Code</a>
+                                                        </div>
+                                                    </div>
+                                                    
                                                 </div>
                                                 <div class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInner">Coagulase Negative Staph Infection :</label>
@@ -2423,27 +2444,32 @@
                                                     </span>
                                                     </div>
                                                 </div>
-                                                <div id="hiddenFieldCoagulaseNegative" class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Where Occurred : </label>
-                                                    <div class="fixingInputAlignmentInner">
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="coagulaseNegativeWhereOccurredYourHospital" type="radio" name = coagulaseNegativeWhereOccurred value="1">
-                                                            <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredYourHospital">Your Hospital</label>
-                                                    </span>
+                                                <div id="hiddenFieldCoagulaseNegative" class="InnerInnerPanel inner-inner-panel-primary">
+                                                    <div class="inner-inner-panel-body">
+                                                        <div class="form-group input-group">
+                                                            <label class="fixingLabelAlignmentInner">Where Occurred : </label>
+                                                            <div class="fixingInputAlignmentInner">
+                                                                <span class="radioFloatLeftInner">
 
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="coagulaseNegativeWhereOccurredOtherHospital" type="radio" name = coagulaseNegativeWhereOccurred value="2">
-                                                            <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredOtherHospital">Other Hospital</label>
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="coagulaseNegativeWhereOccurredBoth" type="radio" name = coagulaseNegativeWhereOccurred value="3">
-                                                            <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredBoth">Both</label>
-                                                    </span>
+                                                                <input class="radioType" id="coagulaseNegativeWhereOccurredYourHospital" type="radio" name = coagulaseNegativeWhereOccurred value="1">
+                                                                    <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredYourHospital">Your Hospital</label>
+                                                            </span>
+
+                                                                <span class="radioFloatLeftInner">
+
+                                                                <input class="radioType" id="coagulaseNegativeWhereOccurredOtherHospital" type="radio" name = coagulaseNegativeWhereOccurred value="2">
+                                                                    <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredOtherHospital">Other Hospital</label>
+                                                            </span>
+                                                                <span class="radioFloatLeftInner">
+
+                                                                <input class="radioType" id="coagulaseNegativeWhereOccurredBoth" type="radio" name = coagulaseNegativeWhereOccurred value="3">
+                                                                    <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredBoth">Both</label>
+                                                            </span>
+                                                            </div>
+                                                        </div>  
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInner">Fungal Infection :</label>
                                                     <div class="fixingInputAlignmentInner">
@@ -2470,29 +2496,34 @@
                                                     </span>
                                                     </div>
                                                 </div>
-                                                <div id="hiddenFieldFungalInfection" class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Where Occurred : </label>
-                                                    <div class="fixingInputAlignmentInner">
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="fungalInfectionWhereOccurredYourHospital" type="radio" name = fungalInfectionWhereOccurred value="1">
-                                                            <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredYourHospital">Your Hospital</label>
-                                                    </span>
+                                                <div id="hiddenFieldFungalInfection" class="InnerInnerPanel inner-inner-panel-primary">
+                                                    <div class="inner-inner-panel-body">
+                                                            <div class="form-group input-group">
+                                                                <label class="fixingLabelAlignmentInner">Where Occurred : </label>
+                                                                <div class="fixingInputAlignmentInner">
+                                                                    <span class="radioFloatLeftInner">
 
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="fungalInfectionWhereOccurredOtherHospital" type="radio" name = fungalInfectionWhereOccurred value="2">
-                                                            <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredOtherHospital">Other Hospital</label>
+                                                                    <input class="radioType" id="fungalInfectionWhereOccurredYourHospital" type="radio" name = fungalInfectionWhereOccurred value="1">
+                                                                        <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredYourHospital">Your Hospital</label>
+                                                                </span>
 
-                                                    </span>
-                                                        <span class="radioFloatLeftInner">
-                                                        
-                                                        <input class="radioType" id="fungalInfectionWhereOccurredBoth" type="radio" name = fungalInfectionWhereOccurred value="3">
-                                                                <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredBoth">Both</label>
+                                                                    <span class="radioFloatLeftInner">
 
-                                                    </span>
+                                                                    <input class="radioType" id="fungalInfectionWhereOccurredOtherHospital" type="radio" name = fungalInfectionWhereOccurred value="2">
+                                                                        <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredOtherHospital">Other Hospital</label>
+
+                                                                </span>
+                                                                    <span class="radioFloatLeftInner">
+
+                                                                    <input class="radioType" id="fungalInfectionWhereOccurredBoth" type="radio" name = fungalInfectionWhereOccurred value="3">
+                                                                            <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredBoth">Both</label>
+
+                                                                </span>
+                                                                </div>
+                                                            </div>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                         </div>
 
@@ -3130,18 +3161,18 @@ Code Description
                                             <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner">Grav  :  </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                    <select id="grav" name=grav class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                    <select id="grav" name=grav class="form-control" style="height:32px;width:70%;">
                                                     <option disabled selected value>SELECT</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                     <option value="">Unknown</option>
                                                 </select>
                                                 </div>

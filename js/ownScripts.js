@@ -68,6 +68,7 @@ function inbornOutbornCheck() {
     if (document.getElementById('locationOFBirthInborn').checked) {
         $("#GroupingHiddenField1").slideUp("slow");
         $('#GroupingHiddenField1').removeClass('glowingHiddenFields')
+        $('#testingID').removeClass('hide')
     }
     if (document.getElementById('locationOFBirthOutborn').checked) {
         $("#GroupingHiddenField1").slideDown("slow");
@@ -505,21 +506,26 @@ function AfterInitialResuscitationCheck() {
 }
 function bacterialSepsisBeforeCheck() {
     var value1 = document.getElementById('hiddenFieldBacterialSepsisBefore');
+    var value2 = document.getElementById('addNewBacterialFieldDiv');
     if (document.getElementById('bacterialSepsisBeforeYes').checked) {
         $(value1).slideDown("slow");
         $(value1).addClass('glowingHiddenFields')
+        $(value2).slideDown("slow");
     }
     if (document.getElementById('bacterialSepsisBeforeNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
     }
     if (document.getElementById('bacterialSepsisBeforeNA').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
     }
     if (document.getElementById('bacterialSepsisBeforeUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
     }
 }
 
@@ -574,25 +580,66 @@ function immunizations652Check() {
         $(value1).removeClass('glowingHiddenFields')
     }
 }
-var counter = 1;
-    var limit = 5;
+var counterForSurgeryCode = 1;
+var limitForSurgeryCode = 5;
 /*Adding new surgery fields*/
 function addNewSurgeryField(divName){
     /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
 
-         if (counter == limit)  {
-              alert("You have reached the limit of adding " + counter + " inputs");
+         if (counterForSurgeryCode == limitForSurgeryCode)  {
+              alert("You have reached the limit of adding " + counterForSurgeryCode + " inputs");
          }
          else {
               var newdiv = document.createElement('div');
              // START inner HTML
-              newdiv.innerHTML = "<div id='surgeryDiv"+(counter+1)+"' class='InnerInnerPanel inner-inner-panel-primary'><div class='inner-inner-panel-body'><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgery Code "+(counter+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='surgeryCode"+(counter+1)+"' name=surgeryCode"+(counter+1)+" class='form-control' style='height:32px;max-width:120%;width:70%;'><option disabled selected value>--------HEAD & Neck--------</option><option value='S101'>S101 - Tracheostomy/Tracheotomy</option><option value='S103'>S103 - Ophthalmologic Surgery</option><option value='S107'>S107 - Palliative or Definitive Repair of Choanal Atresia</option><option value='S100'>S100 - Other head and neck surgery requiring general or spinal anesthesia</option><option disabled selected value>--------THORAX--------</option><option value='S203'>S203 - Tracheoesophageal Atresia and/or fistula repair</option><option value='S210'>S210 - Bronchoscopy (With or without biopsy)</option><option value='S200'>S200 - Other thoracic surgery requiring general or spinal anesthesia</option><option disabled selected value>--------ABDOMEN--------</option><option value='S301'>S301 - Rectal biopsy with or without anoscopy</option><option value='S303'>S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option><option value='S304'>S304 - Fundoplication</option><option value='S307'>S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option><option value='S308'>S308 - Small bowel resection with or without primary anastomosis</option><option value='S309'>S309 - Large bowel resection</option><option value='S310'>S310 - Duodenal atresia/stenosis/web repair</option><option value='S311'>S311 - Jejunal, ileal, or colonic atresia repair</option><option value='S312'>S312 - Excision of Meckel's diverticulum</option><option value='S313'>S313 - Drainage of intra-abdominal abscess</option><option value='S319'>S319 - Repair of imperforate anus</option><option value='S325'>S325 - Repair of diaphragmatic hernia</option><option value='S331'>S331 - Ladd's or other procedure for correction of malrotation</option><option value='S333'>S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option><option value='S338'>S338 - Primary closure for gastroschisis</option><option value='S340'>S340 - Primary closure for omphalocele</option><option value='S300'>S300 - Other abdominal surgery requiring general or spinal anesthesia</option><option disabled selected value>--------GENITO-URINARY--------</option><option value='S410'>S410 - Inguinal hernia repair</option><option disabled selected value>--------OPEN HEART/VASCULAR PROCEDURES--------</option><option value='S502'>S502 - Repair of coarctation of the aorta</option><option value='S510'>S510 - Truncus arteriosus repair</option><option value='S511'>S511 - Arterial switch</option><option value='S514'>S514 - Pulmonary artery banding</option><option disabled selected value>--------CENTRAL NERVOUS SYSTEM--------</option><option value='S901'>S901 - Ventriculoperitoneal or other ventricular shunt</option><option value='S904'>S904 - Meningocele or myelomeningocele repair</option><option value='S905'>S905 - Encephalocele repair</option><option value='77'>N/A</option><option value='99'>Unknown</option></select></div></label></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'></label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counter+1)+"YourHospital' type='radio' name = surgeryCode"+(counter+1)+" value='1'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counter+1)+"YourHospital'>Your Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counter+1)+"OtherHospital' type='radio' name = surgeryCode"+(counter+1)+" value='2'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counter+1)+"OtherHospital'>Other Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counter+1)+"Both' type='radio' name = surgeryCode"+(counter+1)+" value='3'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counter+1)+"Both'>Both</label></span></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgical Site Infection "+(counter+1)+" :</label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counter+1)+"Yes' type='radio' name = surgicalInfection"+(counter+1)+" value='1'><label class='radioText' for='surgicalInfection"+(counter+1)+"Yes'>Yes</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counter+1)+"No' type='radio' name = surgicalInfection"+(counter+1)+" value='0'><label class='radioText' for='surgicalInfection"+(counter+1)+"No'>No</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counter+1)+"NA' type='radio' name = surgicalInfection1 value='7'><label class='radioText' for='surgicalInfection"+(counter+1)+"NA'>N/A</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counter+1)+"Unknown' type='radio' name = surgicalInfection"+(counter+1)+" value='9'><label class='radioText' for='surgicalInfection"+(counter+1)+"Unknown'>Unknown</label></span></div></div></div>";
+              newdiv.innerHTML = "<div id='surgeryDiv"+(counterForSurgeryCode+1)+"' class='InnerInnerPanel inner-inner-panel-primary'><div class='inner-inner-panel-body'><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgery Code "+(counterForSurgeryCode+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='surgeryCode"+(counterForSurgeryCode+1)+"' name=surgeryCode"+(counterForSurgeryCode+1)+" class='form-control' style='height:32px;max-width:120%;width:70%;'><option disabled selected value>--------HEAD & Neck--------</option><option value='S101'>S101 - Tracheostomy/Tracheotomy</option><option value='S103'>S103 - Ophthalmologic Surgery</option><option value='S107'>S107 - Palliative or Definitive Repair of Choanal Atresia</option><option value='S100'>S100 - Other head and neck surgery requiring general or spinal anesthesia</option><option disabled selected value>--------THORAX--------</option><option value='S203'>S203 - Tracheoesophageal Atresia and/or fistula repair</option><option value='S210'>S210 - Bronchoscopy (With or without biopsy)</option><option value='S200'>S200 - Other thoracic surgery requiring general or spinal anesthesia</option><option disabled selected value>--------ABDOMEN--------</option><option value='S301'>S301 - Rectal biopsy with or without anoscopy</option><option value='S303'>S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option><option value='S304'>S304 - Fundoplication</option><option value='S307'>S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option><option value='S308'>S308 - Small bowel resection with or without primary anastomosis</option><option value='S309'>S309 - Large bowel resection</option><option value='S310'>S310 - Duodenal atresia/stenosis/web repair</option><option value='S311'>S311 - Jejunal, ileal, or colonic atresia repair</option><option value='S312'>S312 - Excision of Meckel's diverticulum</option><option value='S313'>S313 - Drainage of intra-abdominal abscess</option><option value='S319'>S319 - Repair of imperforate anus</option><option value='S325'>S325 - Repair of diaphragmatic hernia</option><option value='S331'>S331 - Ladd's or other procedure for correction of malrotation</option><option value='S333'>S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option><option value='S338'>S338 - Primary closure for gastroschisis</option><option value='S340'>S340 - Primary closure for omphalocele</option><option value='S300'>S300 - Other abdominal surgery requiring general or spinal anesthesia</option><option disabled selected value>--------GENITO-URINARY--------</option><option value='S410'>S410 - Inguinal hernia repair</option><option disabled selected value>--------OPEN HEART/VASCULAR PROCEDURES--------</option><option value='S502'>S502 - Repair of coarctation of the aorta</option><option value='S510'>S510 - Truncus arteriosus repair</option><option value='S511'>S511 - Arterial switch</option><option value='S514'>S514 - Pulmonary artery banding</option><option disabled selected value>--------CENTRAL NERVOUS SYSTEM--------</option><option value='S901'>S901 - Ventriculoperitoneal or other ventricular shunt</option><option value='S904'>S904 - Meningocele or myelomeningocele repair</option><option value='S905'>S905 - Encephalocele repair</option><option value='77'>N/A</option><option value='99'>Unknown</option></select></div></label></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'></label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counterForSurgeryCode+1)+"YourHospital' type='radio' name = surgeryCode"+(counterForSurgeryCode+1)+" value='1'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counterForSurgeryCode+1)+"YourHospital'>Your Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counterForSurgeryCode+1)+"OtherHospital' type='radio' name = surgeryCode"+(counterForSurgeryCode+1)+" value='2'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counterForSurgeryCode+1)+"OtherHospital'>Other Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counterForSurgeryCode+1)+"Both' type='radio' name = surgeryCode"+(counterForSurgeryCode+1)+" value='3'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counterForSurgeryCode+1)+"Both'>Both</label></span></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgical Site Infection "+(counterForSurgeryCode+1)+" :</label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"Yes' type='radio' name = surgicalInfection"+(counterForSurgeryCode+1)+" value='1'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"Yes'>Yes</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"No' type='radio' name = surgicalInfection"+(counterForSurgeryCode+1)+" value='0'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"No'>No</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"NA' type='radio' name = surgicalInfection1 value='7'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"NA'>N/A</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"Unknown' type='radio' name = surgicalInfection"+(counterForSurgeryCode+1)+" value='9'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"Unknown'>Unknown</label></span></div></div></div>";
              // END inner HTML
               document.getElementById(divName).appendChild(newdiv);
-              counter++;
+              counterForSurgeryCode++;
          }
     
 }
+
+var counterForBacterialFieldBefore = 1;
+var limitForBacterialFieldBefore = 3;
+/*Adding new surgery fields*/
+function addNewBacterialFieldBefore(divName){
+    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
+
+         if (counterForBacterialFieldBefore == limitForBacterialFieldBefore)  {
+              alert("You have reached the limit of adding " + counterForBacterialFieldBefore + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+             // START inner HTML
+              newdiv.innerHTML = "<div id='bacterialBeforeDiv"+(counterForBacterialFieldBefore+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Bacterial Pathogen Codes "+(counterForBacterialFieldBefore+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='pathogenCodeBefore"+(counterForBacterialFieldBefore+1)+"' name='pathogenCodeBefore"+(counterForBacterialFieldBefore+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value=''>SELECT</option><option value='102'>102 - Acinetobacter species including multidrug-resistant Acinetobacter</option><option value='201'>201 - Bacteroides species</option><option value='501'>501 - Enterobacter species [E. aerogenes, E. cloacae, and others] including Carbapenem-resistant Enterobacter</option><option value='502'>502 - Enterococcus species [E. faecalis (also known as Streptococcus faecalis), E. faecium, and others] including Vancomycin-resistant Enterococcus</option><option value='503'>503 - Escherichia coli including Carbapenem-resistant Escherichia coli</option><option value='801'>801 - Haemophilus species [H. influenzae and others]</option><option value='1101'>1101 - Klebsiella species [K. oxytoca, K. pneumoniae and others] including Carbapenem-resistant Klebsiella and Cephalosporin-resistant Klebsiella</option><option value='1201'>1201 - Listeria monocytogenes</option><option value='1301'>1301 - Moraxella species [M. catarrhalis (also known as Branhamella catarrhalis) and others]</option><option value='1401'>1401 - Neisseria species [N. meningitidis, N. gonorrhoeae and others] including drug- resistant N. gonorrhoeae</option><option value='1604'>1604 - Proteus species [P. mirabilis, P. vulgaris and others]</option><option value='1606'>1606 - Pseudomonas species [P. aeruginosa and others] including multidrug- resistant Pseudomonas aeruginosa</option><option value='1902'>1902 - Serratia species [S. liquefaciens, S. marcescens and others]</option><option value='1903'>1903 - Staphylococcus coagulase positive [aureus] including Methicillin- resistant Staphylococcus aureus and Vancomycin-resistant Staphylococcus aureus</option><option value='1904'>1904 - Stenotrophomonas maltophilia</option><option value='1905'>1905 - Group B Streptococcus or GBS [also known as Streptococcus agalactiae]</option><option value='1906'>1906 - Streptococcus anginosus [formerly Streptococcus milleri]</option><option value='1907'>1907 - Streptococcus pneumoniae</option><option value='1908'>1908 - Streptococcus pyogenes [Group A Streptococcus]</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
+             // END inner HTML
+              document.getElementById(divName).appendChild(newdiv);
+              counterForBacterialFieldBefore++;
+         }
+    
+}
+
+var counterForBacterialFieldAfter = 1;
+var limitForBacterialFieldAfter = 3;
+/*Adding new surgery fields*/
+function addNewBacterialFieldAfter(divName){
+    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
+
+         if (counterForBacterialFieldAfter == limitForBacterialFieldAfter)  {
+              alert("You have reached the limit of adding " + counterForBacterialFieldAfter + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+             // START inner HTML
+              newdiv.innerHTML = "<div id='bacterialAfterDiv"+(counterForBacterialFieldAfter+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInner'>Bacterial Pathogen Codes "+(counterForBacterialFieldAfter+1)+" :</label><div class='fixingInputAlignmentInner'><select id='pathogenCodeAfter"+(counterForBacterialFieldAfter+1)+"' name='pathogenCodeAfter"+(counterForBacterialFieldAfter+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value=''>SELECT</option><option value='102'>102 - Acinetobacter species including multidrug-resistant Acinetobacter</option><option value='201'>201 - Bacteroides species</option><option value='501'>501 - Enterobacter species [E. aerogenes, E. cloacae, and others] including Carbapenem-resistant Enterobacter</option><option value='502'>502 - Enterococcus species [E. faecalis (also known as Streptococcus faecalis), E. faecium, and others] including Vancomycin-resistant Enterococcus</option><option value='503'>503 - Escherichia coli including Carbapenem-resistant Escherichia coli</option><option value='801'>801 - Haemophilus species [H. influenzae and others]</option><option value='1101'>1101 - Klebsiella species [K. oxytoca, K. pneumoniae and others] including Carbapenem-resistant Klebsiella and Cephalosporin-resistant Klebsiella</option><option value='1201'>1201 - Listeria monocytogenes</option><option value='1301'>1301 - Moraxella species [M. catarrhalis (also known as Branhamella catarrhalis) and others]</option><option value='1401'>1401 - Neisseria species [N. meningitidis, N. gonorrhoeae and others] including drug- resistant N. gonorrhoeae</option><option value='1604'>1604 - Proteus species [P. mirabilis, P. vulgaris and others]</option><option value='1606'>1606 - Pseudomonas species [P. aeruginosa and others] including multidrug- resistant Pseudomonas aeruginosa</option><option value='1902'>1902 - Serratia species [S. liquefaciens, S. marcescens and others]</option><option value='1903'>1903 - Staphylococcus coagulase positive [aureus] including Methicillin- resistant Staphylococcus aureus and Vancomycin-resistant Staphylococcus aureus</option><option value='1904'>1904 - Stenotrophomonas maltophilia</option><option value='1905'>1905 - Group B Streptococcus or GBS [also known as Streptococcus agalactiae]</option><option value='1906'>1906 - Streptococcus anginosus [formerly Streptococcus milleri]</option><option value='1907'>1907 - Streptococcus pneumoniae</option><option value='1908'>1908 - Streptococcus pyogenes [Group A Streptococcus]</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
+             // END inner HTML
+              document.getElementById(divName).appendChild(newdiv);
+              counterForBacterialFieldAfter++;
+         }
+    
+}
+
 
 
 function temperatureMeasuredWithinFirstHourCheck() {

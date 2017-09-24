@@ -7,8 +7,41 @@ document.getElementById("patientMedicalRecordNumber").addEventListener("change",
 /*$("#dateOfBirth").click(checkingColour);*/
 $("input:radio[name=outbornBirth]").click(checkingColourPatientIdentification);
 $("input:radio[name=diedInDeliveryRoom]").click(checkingColourPatientIdentification);
-
+$("input:radio[name=testing]").click(checkingColourPatientIdentification);
+$("#transferCodePIW").change(checkingColourPatientIdentification);
 function checkingColourPatientIdentification(){
+    var rgroups = [];
+    $('#firstPanelID input:radio:visible').each(function(index, el){
+            var i;
+            for(i = 0; i < rgroups.length; i++)
+                if(rgroups[i] == $(el).attr('name'))
+                    return true;
+            rgroups.push($(el).attr('name'));
+        }
+    );
+    rgroups = rgroups.length;
+
+    var sgroups = [];
+    $('#firstPanelID select:visible').each(function(index, el){
+            var i;
+            for(i = 0; i < sgroups.length; i++)
+                if(sgroups[i] == $(el).attr('name'))
+                    return true;
+            sgroups.push($(el).attr('name'));
+        }
+    );
+    sgroups = sgroups.length;
+    //Adding radio and select group
+    tgroups = rgroups+sgroups;
+    if($('#firstPanelID input:radio:visible:checked').length < tgroups){
+        alert('You must fill in all the fields.');
+    }
+    else{
+        alert('Thanks!');
+    }
+    alert("number of radio groups: "+rgroups)
+    alert("number of select groups: "+sgroups)
+    alert("number of TOTAL groups: "+tgroups)
     if(
         (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) ||
         (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) ||
@@ -44,4 +77,14 @@ $("input[name='prenatalCare']").change(checkingColourGeneral)
 function checkingColourGeneral(){
     var visibleDIVs = $("#secondForm .form-group:not(.hide)");
     alert("hi");
+}*/
+
+/*document.getElementById("grav").addEventListener("change", checkingColourAdditional);
+
+function checkingColourAdditional(){
+    alert("hello")
+    if($('#grav').value){
+        alert("true");
+    }
+    else("false");
 }*/

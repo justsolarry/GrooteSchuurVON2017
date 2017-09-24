@@ -213,7 +213,8 @@ input[type="search"]:disabled {
 #hiddenFieldTripletABC,
 .modeOfDeliveryAdditionalDiv,
 .day28DateDiv,
-.sixWeeksOldDateDiv
+.sixWeeksOldDateDiv,
+#addNewBacterialFieldDiv
 
 {
     display:none;
@@ -317,7 +318,7 @@ input[type="search"]:disabled {
     border-bottom: 1px dotted black;
     margin: 8px 0px;
     /* START changing the location of the icon*/
-    right:80px;
+    right:50px;
     top:4px;
     /* END changing the location of the icon*/
 }
@@ -666,9 +667,11 @@ div ul li .firstATag:after{
     /*background: red;*/
 }
 input[type="radio"]{
+    visibility: hidden;
+}
+.hide{
     display:none;
 }
-
 .radioFloatLeftForSurgery{ /*for less than 3/4 radio */
     float:left;
     margin: 0 25px;
