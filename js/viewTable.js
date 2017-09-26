@@ -39,7 +39,7 @@ function fetchData(){
         "fixedColumns":   {
             "leftColumns": "2"
         },
-        "ajax": {"url":"http://test.localhost.com:5984/test1/_all_docs?include_docs=true",
+        "ajax": {"url":"http://196.24.190.72:5984/test1/_all_docs?include_docs=true",
                  "dataSrc": "rows", 
                  "xhrFields": {
                     withCredentials: true

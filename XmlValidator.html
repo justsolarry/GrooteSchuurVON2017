@@ -58,37 +58,6 @@
 </head>
 
 <body id="page-top">
-        <!-- Intro Header -->
-    <header class="masthead">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!--<h1 class="brand-heading" style="word-spacing: 22px;">Groote Schuur Hospital </h1>-->
-                        <label class="subHeadingTitle">View All Entries</label>
-                       <!-- <h5 style="font-family: 'Julius sans one'">Data Capture & Report Management System</h5>-->   
-                                <table id="jqGrid" class="display hover nowrap">
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Patient Medical Record #</th>
-                                    <th>ID</th>
-                                    <th>Birth Year</th>
-                                    <th>Birth Weight</th>
-                                    <th>Birth Date</th>
-                                    <th>Intial Disposition</th>
-                                    <th>Location</th>
-                                    <th>Day 28</th>
-                                    <th>Week 36</th>
-                                </tr>
-                                </thead>
-                                </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <!-- Navigation -->
     <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
         <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer">
@@ -118,38 +87,49 @@
         <a href="#" class="helpMenuButton">Help</a>
         <a href="#" class="loginMenuButton">Login</a>
     </div>
-    
-    <!-- END Menu -->
-
+    <br><br><br><br><br><br>
+    <div>
         
-    <script type="text/javascript"> 
-        //$(document).ready(function(){loadGrid()});
-        //
-        $(document).ready( function () {
-        fetchData();
-            
-    var table = $('#jqGrid').DataTable();
-    
-    table.rows().every( function ( rowIdx, tableLoop, rowLoop ) {       
-        var cell = table.cell({ row: rowIdx, column: 0 }).node();
-        $(cell).addClass('warning');        
-    });
-            
-    $("#jqGrid").on('click', 'tr', function () {
-        var row = $(this).attr('id');
-        displayData(row);
-    });        
-            
-    } );
-    </script>
+<p>Try to syntax-check correct XML : <input type="button" value="Check XML" onclick="validateXML('xmlContent')"></p>
+<textarea id="xmlContent" rows="10" style="width:80%" cols="20" name="xmlContent">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;note&gt;
+&lt;to&gt;Tove&lt;/to&gt;
+&lt;from&gt;Jani&lt;/from&gt; 
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;
+&lt;/note&gt;
+</textarea>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; VON 2017</p>
-        </div>
-    </footer>
-    
+    </div>
+
+    <script>
+        function validateXML(txt)
+{
+
+
+  try
+  {
+  var text=document.getElementById(txt).value;
+  var parser=new DOMParser();
+  var xmlDoc=parser.parseFromString(text,"application/xml");
+  }
+  catch(err)
+  {
+  alert(err.message)
+  }
+
+if (xmlDoc.getElementsByTagName("parsererror").length>0)
+   {
+   checkErrorXML(xmlDoc.getElementsByTagName("parsererror")[0]);
+   alert(xt)
+   }
+ else
+   {
+   alert("No errors found");
+   }
+}
+</script>
     
     <script src="vendor/tether/tether.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.js"></script>

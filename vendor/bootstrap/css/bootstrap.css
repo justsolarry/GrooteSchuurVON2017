@@ -204,13 +204,15 @@ progress {
 textarea {
   overflow: auto;
 }
-
+/*MAIN CHANGES ARE HERE*/
 [type="checkbox"],
 [type="radio"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
+    
 }
+
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
@@ -218,13 +220,15 @@ textarea {
 }
 
 [type="search"] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
+    -webkit-appearance: searchfield;
 }
-
+.calendarField::-webkit-search-cancel-button{
+    position:relative;
+    right:20px; 
+}
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
+  -webkit-appearance: searchfield-cancel-button;
 }
 
 ::-webkit-file-upload-button {
@@ -2319,6 +2323,55 @@ select.form-control:focus::-ms-value {
   display: block;
 }
 
+
+
+.form-controlTextArea {
+    float:left;
+    height:64px;
+    margin-right: 10px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px !important;
+  /*background-color:teal;*/
+    
+}
+
+.form-controlTextArea::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+
+.form-controlTextArea:focus {
+  color: #464a4c;
+  background-color: #fff;
+  border-color: #5cb3fd;
+  outline: none;
+}
+
+.form-controlTextArea::-webkit-input-placeholder {
+  color: #A5B4BE;
+  opacity: 1;
+}
+
+.form-controlTextArea::-moz-placeholder {
+  color: #A5B4BE;
+  opacity: 1;
+}
+
+.form-controlTextArea:-ms-input-placeholder {
+  color: #A5B4BE;
+  opacity: 1;
+}
+
+.form-controlTextArea::placeholder {
+  color: #A5B4BE;
+  opacity: 1;
+}
+
+
 .col-form-label {
   padding-top: calc(0.5rem - 1px * 2);
   padding-bottom: calc(0.5rem - 1px * 2);
@@ -2389,9 +2442,10 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .input-group-lg > .input-group-btn > select.btn:not([size]):not([multiple]) {
   height: 3.166667rem;
 }
-
+/* Spacing between each form group */
 .form-group {
-  margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .form-text {
@@ -2519,6 +2573,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     border-color: #d9534f;
     border-width: 2px;
     box-shadow:0 0 20px #d9534f;
+}
+.addGreen{
+    /*border-color: #d9534f;
+    border-width: 2px;
+    box-shadow:0 0 20px #d9534f;*/
 }
 
 .has-danger .form-control {
@@ -3483,16 +3542,7 @@ tbody.collapse.show {
   width: 40%;
     */
 }
-/* The first label inside the DIV input-group class*/
-.input-group .fixingLabelAlignment{
-    float: left;
-    clear: left;
-    text-align: right;
-    font-size:18px;
-    padding-right:10px;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 100;
-}
+
 
 .input-group .form-control {
   
