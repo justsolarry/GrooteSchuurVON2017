@@ -40,6 +40,18 @@ function validateMothersLastName()
   
 }
 
+function dateOfBirthCheck(){
+    var value1 = document.getElementById('dateOfBirth').value;
+    if(value1.length>0){
+            $('#dateOfBirth').addClass('addGreen')
+            $('#dateOfBirth').removeClass('addRed')
+       }
+    else if(value1.length==0){
+                $('#dateOfBirth').addClass('addRed')
+                $('#dateOfBirth').removeClass('addGreen')
+            }
+}
+
 function validatePatientsName()
 {
     var alphaExp = /^[a-zA-Z\s\-]*$/;
@@ -102,6 +114,7 @@ function validateBirthweight(){
         if(weight>=401 && weight<=1500){ // IS A VON BABY
             $('#birthWeightInGrams').removeClass('addRed')
             $('#birthWeightInGrams').addClass('addGreen')
+            hideNotAVonBabyFields();  //hiding Not a VON baby fields
         }
         if(weight>=1501 && weight<=5000){ 
             $('#birthWeightInGrams').removeClass('addRed')
@@ -109,10 +122,8 @@ function validateBirthweight(){
         }
         if(weight>=1501 && weight<=7000){ //showing Not a VON baby fields
             showNotAVonBabyFields();
-            notAVonBabyFlag();
         }
         if(weight<=1500 || weight>=7001){
-            hideNotAVonBabyFields();  //hiding Not a VON baby fields
             
            }
         if(weight>0 && weight<1400){
@@ -211,21 +222,22 @@ function validatePatientMedicalRecordNumber(){
 }
 function validateGestationalAgeInWeeks()
 {
-    var gestationalAgeInWeeks = document.getElementById('gestationalAgeInWeeksID').value;
+    var gestationalAgeInWeeks = document.getElementById('gestationalAgeInWeeks').value;
   if ((gestationalAgeInWeeks.length) ==0){
     toastr.error('Gestational Age - Value cannot be empty');
-        $('#gestationalAgeInWeeksID').addClass('addRed')
+        $('#gestationalAgeInWeeks').addClass('addRed')
   }
     else if (gestationalAgeInWeeks > 46 || gestationalAgeInWeeks < 15)
   {
       toastr.error('Gestational Age - Invalid value, must be from 15-46 weeks');
-        $('#gestationalAgeInWeeksID').addClass('addRed')
+        $('#gestationalAgeInWeeks').addClass('addRed')
   }
     else{
-        $('#gestationalAgeInWeeksID').removeClass('addRed')
+        $('#gestationalAgeInWeeks').removeClass('addRed')
     }
   
 }
+
 //dayofAdmission is calculated
 function validateHeadCircumference() {
     var headCircumference =document.getElementById('headCircumference').value;
