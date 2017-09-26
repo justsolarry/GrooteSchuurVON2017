@@ -181,6 +181,38 @@ function pneumothoraxCheck() {
         $(value1).removeClass('glowingHiddenFields')
     }
 }
+function endotrachealTubeVentCheck(){
+    if (document.getElementById('endotrachealTubeVentYes').checked) {
+        $('#nasalCPAPAfterInitialNo').attr("checked",true);
+    }
+}
+function diedWithin12HoursCheck() {
+    var value1 = document.getElementById('RespiratorySupportAfterInitialResuscitationDiv');
+    if (document.getElementById('diedWithin12HoursYes').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+        /*$('#oxygenAfterInitialResuscitationNA').attr("checked",true);
+        $('#conventionalVentilationAfterInitialNA').attr("checked",true);
+        $('#highFrequencyAfterInitialNA').attr("checked",true);
+        $('#highFlowAfterInitialNA').attr("checked",true);
+        $('#nasalVentilationAfterInitialNA').attr("checked",true);
+        $('#nasalCPAPAfterInitialNA').attr("checked",true);
+        $('#nasalCPAPOrNasalVentAfterInitialNA').attr("checked",true);*/
+        
+    }
+    if (document.getElementById('diedWithin12HoursNo').checked) {
+        $(value1).slideDown("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('diedWithin12HoursNA').checked) {
+        $(value1).slideDown("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('diedWithin12HoursUnknown').checked) {
+        $(value1).slideDown("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
 
 function necrotizingEnterocolitisCheck() {
     var value1 = document.getElementById('hiddenFieldnecrotizingEnterocolitis');
@@ -680,6 +712,28 @@ function addNewBirthDefect(divName){
          }
     
 }
+
+var counterForBacterialCodeDuringAdmission = 1;
+var limitForBacterialCodeDuringAdmission = 3;
+/*Adding new surgery fields*/
+function addNewBacterialCodeDuringAdmission(divName){
+    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
+
+         if (counterForBacterialCodeDuringAdmission == limitForBacterialCodeDuringAdmission)  {
+              alert("You have reached the limit of adding " + counterForBacterialCodeDuringAdmission + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+             // START inner HTML
+              newdiv.innerHTML = "<div id='bacterialCodeDuringAdmissionDiv"+(counterForBacterialCodeDuringAdmission+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Bacterial Code "+(counterForBacterialCodeDuringAdmission+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='bacterialCodeDuringAdmission"+(counterForBacterialCodeDuringAdmission+1)+"' name='bacterialCodeDuringAdmission"+(counterForBacterialCodeDuringAdmission+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value>SELECT</option><option value='102'>102 - Acinetobacter species including multidrug-resistant Acinetobacter</option><option value='201'>201 - Bacteroides species</option><option value='501'>501 - Enterobacter species [E. aerogenes, E. cloacae, and others] including Carbapenem-resistant Enterobacter</option><option value='502'>502 - Enterococcus species [E. faecalis (also known as Streptococcus faecalis), E. faecium, and others] including Vancomycin-resistant Enterococcus</option><option value='503'>503 - Escherichia coli including Carbapenem-resistant Escherichia coli</option><option value='801'>801 - Haemophilus species [H. influenzae and others]</option><option value='1101'>1101 - Klebsiella species [K. oxytoca, K. pneumoniae and others] including Carbapenem-resistant Klebsiella and Cephalosporin-resistant Klebsiella</option><option value='1201'>1201 - Listeria monocytogenes</option><option value='1301'>1301 - Moraxella species [M. catarrhalis (also known as Branhamella catarrhalis) and others]</option><option value='1401'>1401 - Neisseria species [N. meningitidis, N. gonorrhoeae and others] including drug- resistant N. gonorrhoeae</option><option value='1604'>1604 - Proteus species [P. mirabilis, P. vulgaris and others]</option><option value='1606'>1606 - Pseudomonas species [P. aeruginosa and others] including multidrug- resistant Pseudomonas aeruginosa</option><option value='1902'>1902 - Serratia species [S. liquefaciens, S. marcescens and others]</option><option value='1903'>1903 - Staphylococcus coagulase positive [aureus] including Methicillin- resistant Staphylococcus aureus and Vancomycin-resistant Staphylococcus aureus</option><option value='1904'>1904 - Stenotrophomonas maltophilia</option><option value='1905'>1905 - Group B Streptococcus or GBS [also known as Streptococcus agalactiae]</option><option value='1906'>1906 - Streptococcus anginosus [formerly Streptococcus milleri]</option><option value='1907'>1907 - Streptococcus pneumoniae</option><option value='1908'>1908 - Streptococcus pyogenes [Group A Streptococcus]</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
+             // END inner HTML
+              document.getElementById(divName).appendChild(newdiv);
+              counterForBacterialCodeDuringAdmission++;
+         }
+    
+}
+
+
 function temperatureMeasuredWithinFirstHourCheck() {
     var value1 = document.getElementById('hiddenFieldTemperatureFirstHour');
     if (document.getElementById('temperatureMeasuredWithinFirstHourYes').checked) {
@@ -823,15 +877,29 @@ function sepsisDuringAdmissionCheck() {
     var strUser = e.options[e.selectedIndex].value;
     
     var hiddenField = document.getElementById('hiddenFieldSepsisDuringAdmission');
-    if (strUser==1 || strUser==2 ){
-    
+    var hiddenField1 = document.getElementById('organismCodeDuringAdmissionDiv');
+    var button = document.getElementById('addNewOrganismCodeDuringAdmissionDiv');
+    if (strUser==1){
         $(hiddenField).slideDown("slow");
         $(hiddenField).addClass('glowingHiddenFields');
+        $(hiddenField1).slideDown("slow");
+        $(button).slideDown("slow");
+    } 
+    else if(strUser==2){
+        $(hiddenField).slideDown("slow");
+        $(hiddenField).addClass('glowingHiddenFields');    
+        $(hiddenField1).slideUp("slow");
+        $(button).slideUp("slow");
     }
     else{
         $(hiddenField).slideUp("slow");
-        $(hiddenField).removeClass('glowingHiddenFields');
+        $(hiddenField).removeclass('glowingHiddenFields');
+        $(hiddenField1).slideUp("slow");
+        $(button).slideUp("slow");
     }
+    
+        
+    
 }
 
 function congenitalCode1FirstPartCheck(){
@@ -1033,7 +1101,6 @@ $(document).ready(function() {
     
     
     $(window).scroll(function() {
-        var all_answered_Search = true;
         var patientFormLocation = $("#PatientFormID").offset().top;
         var generalDataItemsFormLocation = $("#generalDataItemsID").offset().top;
         var transferFormLocation = $("#TransferFormID").offset().top;
@@ -1053,59 +1120,7 @@ $(document).ready(function() {
            $("#sidebar-container").fadeIn(500);
            }
         //Patient Form Section
-        if(generalDataItemsFormLocation==0){
-            // START patient to additional
-            if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the patient form 1076
-            
-            if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
-                $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
-               }
-            
-            $('.patientFormProgressBar').addClass('glowingButton');
-            /* Toggling Buttons */
-            $('#patientFormCircle').addClass('glowingButton');
-            $('#generalDataItemsFormCircle').removeClass('glowingButton');
-            $('#dischargeCircle').removeClass('glowingButton');
-            console.log("length of radio "+($('input[name=locationOFBirthInborn]:checked').length));
-            /* Toggling different Color */
-            /*Checking if the fields match green or red and change colours*/
-            /*Does it have either of the classes? If not, then its ORANGE */
-            if(
-                (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) &&
-                (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) &&
-                (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) &&
-                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) &&
-                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen'))
-              ){
-               $('#patientFormCircle').css('background-color', 'black');
-               }
-            else if($('#birthWeightInGrams').hasClass('addRed') ||
-                    $('#mothersFirstName').hasClass('addRed') ||
-                    $('#mothersLastName').hasClass('addRed') ||
-                    $('#patientsName').hasClass('addRed') ||
-                    $('#patientMedicalRecordNumber').hasClass('addRed')
-                   ){
-                $('#patientFormCircle').css('background-color', 'red');
-            }
-            else{
-                $('#patientFormCircle').css('background-color', 'green');
-            }
-            
-        }
-            // START additional and beyond
-            if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
-                if($('.patientFormProgressBar').hasClass('glowingButton')){
-                    $('.patientFormProgressBar').removeClass('glowingButton');
-                   }
-                $('.dischargeAndTransferProgressBar').addClass('glowingButton');
-                /* Toggling Buttons */
-                $('#patientFormCircle').removeClass('glowingButton');
-                $('#dischargeCircle').addClass('glowingButton');
-        }
-           }
-        else if(generalDataItemsFormLocation>0){
-            //START old checks
-            if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
+        if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
                 if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
                     $('.generalDataItemsProgressBar').removeClass('glowingButton')
                    }
@@ -1118,33 +1133,6 @@ $(document).ready(function() {
             $('#patientFormCircle').addClass('glowingButton');
             $('#generalDataItemsFormCircle').removeClass('glowingButton');
             $('#dischargeCircle').removeClass('glowingButton');
-            /* Toggling different Color */
-            /*Checking if the fields match green or red and change colours*/
-            /*Does it have either of the classes? If not, then its blank*/
-//            if(
-//                (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) ||
-//                (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) ||
-//                (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) ||
-//                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) ||
-//                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen')) ||
-//                (!$('#dateOfBirth').hasClass('addRed') && !$('#dateOfBirth').hasClass('addGreen')) 
-//                /*($('input:radio[name=outbornBirth]:checked').length==0)*/
-//              ){
-//                            $('#patientFormCircle').css('background-color', 'orange');
-//               }
-//            else if($('#birthWeightInGrams').hasClass('addGreen') &&
-//                    $('#mothersFirstName').hasClass('addGreen') &&
-//                    $('#mothersLastName').hasClass('addGreen') &&
-//                    $('#patientsName').hasClass('addGreen') &&
-//                    $('#patientMedicalRecordNumber').hasClass('addGreen') &&
-//                    $('#dateOfBirth').hasClass('addGreen')
-//                    /*$('input:radio[name=outbornBirth]:checked').length>0*/
-//                   ){
-//                            $('#patientFormCircle').css('background-color', 'green');
-//            }
-//            else{
-//                            $('#patientFormCircle').css('background-color', 'red');
-//            }
             
         }
             if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156
@@ -1163,21 +1151,21 @@ $(document).ready(function() {
                 $('#dischargeCircle').removeClass('glowingButton');
             }
             if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
-            if($('.patientFormProgressBar').hasClass('glowingButton')){
-                $('.patientFormProgressBar').removeClass('glowingButton');
-               }
-            if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
-                $('.generalDataItemsProgressBar').removeClass('glowingButton');
-               }
-            /*$('.patientFormProgressBar').removeClass('glowingButton')*/
-            $('.dischargeAndTransferProgressBar').addClass('glowingButton');
-            /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
-            /* Toggling Buttons */
-            $('#patientFormCircle').removeClass('glowingButton');
-            $('#generalDataItemsFormCircle').removeClass('glowingButton');
-            $('#dischargeCircle').addClass('glowingButton');
+                    if($('.patientFormProgressBar').hasClass('glowingButton')){
+                        $('.patientFormProgressBar').removeClass('glowingButton');
+                       }
+                    if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
+                        $('.generalDataItemsProgressBar').removeClass('glowingButton');
+                       }
+                    /*$('.patientFormProgressBar').removeClass('glowingButton')*/
+                    $('.dischargeAndTransferProgressBar').addClass('glowingButton');
+                    /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
+                    /* Toggling Buttons */
+                    $('#patientFormCircle').removeClass('glowingButton');
+                    $('#generalDataItemsFormCircle').removeClass('glowingButton');
+                    $('#dischargeCircle').addClass('glowingButton');
         }
-        }
+        
         
         
     });
@@ -1453,4 +1441,12 @@ $(function(){
         headCircumferenceDropDown.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+" cm"))
     }
 });
+
+$(function(){
+    var mothersAgeDropDown = $("#mothersAge");
+    for (i=8;i<=55;i++){
+        mothersAgeDropDown.append($('<option></option>').val(i).html(i+" Years Old"))
+    }
+});
+
 

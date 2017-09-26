@@ -214,8 +214,8 @@ input[type="search"]:disabled {
 .modeOfDeliveryAdditionalDiv,
 .day28DateDiv,
 .sixWeeksOldDateDiv,
-#addNewBacterialFieldDiv
-
+#addNewBacterialFieldDiv,
+#organismCodeDuringAdmissionDiv
 {
     display:none;
 }
@@ -668,9 +668,6 @@ div ul li .firstATag:after{
 }
 input[type="radio"]{
     visibility: hidden;
-}
-.hide{
-    display:none;
 }
 .radioFloatLeftForSurgery{ /*for less than 3/4 radio */
     float:left;
