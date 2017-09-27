@@ -87,7 +87,7 @@
                         <label class="subHeadingTitle">Neonatal Unit</label>
                         <h5 style="font-family: 'Julius sans one'">Data Capture & Report Management System</h5>
 
-                        <a class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="return test();">
+                        <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="return test();">
                         
                            Create New Entry <i class="fa fa-angle-double-down animated"></i>
                         </a>
@@ -3668,7 +3668,7 @@
     <script type="text/javascript" src="js/jquery.serializejson.js"></script>
     
 <script type="text/javascript">
-    /*$(document).ready(function() {
+    $(document).ready(function() {
         $('form').sisyphus(
             {
                 excludeFields: ["_id _rev"],
@@ -3686,7 +3686,8 @@
                     //toastr.success('Saved', 'Autosave', {timeOut: 750});
                     //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
                     var record = $('form').serializeJSON();
-                    //alert(JSON.stringify(record));
+                    //var record2 = mapToLang(record);
+                    alert(JSON.stringify(record));
                     updateDataInRecord(record);
                     
                 }
@@ -3699,9 +3700,9 @@
     function test(){
         //alert("Create Record in Database");
         createRecordInDatabase();
-    }*/
-        
-</script>-->
+    } 
+    
+</script>
 </body>
 
 </html>
