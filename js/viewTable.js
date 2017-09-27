@@ -33,7 +33,7 @@ today = mm + '/' + dd + '/' + yyyy;
 
 function fetchData(){
         //var dbData = retrieveAllDocs();
-        $('#jqGrid').DataTable( {
+    $('#jqGrid').DataTable( {
         "scrollX": true,
         "scrollCollapse": "true",
         "ajax": {"url":"http://test.localhost.com:5984/test1/_all_docs?include_docs=true",
@@ -44,11 +44,17 @@ function fetchData(){
                     "crossDomain": true
                 },
         "rowId": "doc._id",
-        columnDefs: [ {
-            orderable: false,
-            className: 'select-checkbox',
-            targets:   0
-        }, {
+    columnDefs: [ {
+   'targets': 0,
+   'searchable':false,
+   'orderable':false,
+   'className': 'dt-body-center',
+   'render': function (data, type, full, meta){
+       return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+   }
+        
+    }, 
+        {
             "targets": -1,
             "data": null,
             "defaultContent": "<button>Submit to VON</button>"
@@ -58,6 +64,7 @@ function fetchData(){
             selector: 'td:first-child'
         },
         //order: [[ 1, 'asc' ]],
+
         "columns": [
             {"data": null, defaultContent:""},
             {"data":"doc.patientMedicalRecordNumber"},
@@ -87,18 +94,6 @@ function fetchData(){
                 render: function (data, type, row) {
                             return birthLocation[data];
                       }  
-            },
-            {"data":null,
-                      render: function (data, type, row) {
-                            var dummyData = formatDate();
-                            return dummyData;
-                      } 
-            },
-            {"data":null,
-                    render: function (data, type, row) {
-                        var dummyData = formatDate();
-                            return dummyData;
-                      } 
             },
             {"data": null}
         ],

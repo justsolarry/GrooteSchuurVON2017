@@ -87,10 +87,10 @@
                         <label class="subHeadingTitle">Neonatal Unit</label>
                         <h5 style="font-family: 'Julius sans one'">Data Capture & Report Management System</h5>
 
-                        <a href="#PatientFormID" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="createRecordInDatabase()">
+                        <a class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="return test();">
+                        
                            Create New Entry <i class="fa fa-angle-double-down animated"></i>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                                         <label class="fixingLabelAlignment" for="birthWeightInGrams">Birth Weight : </label>
                                         <div class="fixingInputAlignment">
                                             <span class="addingUnits unitsGrams">
-                                                <input id="birthWeightInGrams" class="form-control" onchange="validateBirthweight()" type="search" placeholder="eg. 1500" maxlength="4">
+                                                <input id="birthWeightInGrams" name="birthWeightInGrams" class="form-control" onchange="validateBirthweight()" type="search" placeholder="eg. 1500" maxlength="4">
                                             </span>
                                         </div>
                                     </div>
@@ -332,7 +332,8 @@
                                         <div class="form-group input-group gestionalDaysDiv">
                                             <label class="fixingLabelAlignment"></label>
                                             <div class="fixingInputAlignment">
-                                                <select name=gestionalDays class="form-control" style="height:32px;width:40%;">
+                                                <select name="gestionalDays" id="gestionalDays"class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                    <option disabled selected value></option>
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="0">0 Days</option>
                                                     <option value="1">1 Day</option>
@@ -3663,12 +3664,14 @@
     </script>
     <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
     <script type="text/javascript" src="Calendar/jquery-ui.js"></script>
+    <script src="Calendar/jquery-ui.css"></script>
     <script type="text/javascript" src="js/jquery.serializejson.js"></script>
     
 <script type="text/javascript">
-    $(document).ready(function() {
+    /*$(document).ready(function() {
         $('form').sisyphus(
             {
+                excludeFields: ["_id _rev"],
                 locationBased: true,
                 timeout: 10,
                 //autoRelease: true,
@@ -3677,17 +3680,27 @@
                     var hours = date.getHours();
                     var minutes = date.getMinutes();
                     var seconds = date.getSeconds();
-                    toastr.options.showMethod = 'slideDown';
-                    toastr.success('Saved', 'Autosave', {timeOut: 750});
+                   
+                    //toastr.options.showMethod = 'slideDown';
+                    //repopulateForm(getCurrentId);
+                    //toastr.success('Saved', 'Autosave', {timeOut: 750});
                     //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
+                    var record = $('form').serializeJSON();
+                    //alert(JSON.stringify(record));
+                    updateDataInRecord(record);
                     
-                    //alert(JSON.stringify($('form').serializeJSON()));
                 }
 
             }
         );
         //alert(JSON.stringify($('form').serializeJSON()));
     });
+
+    function test(){
+        //alert("Create Record in Database");
+        createRecordInDatabase();
+    }*/
+        
 </script>-->
 </body>
 
