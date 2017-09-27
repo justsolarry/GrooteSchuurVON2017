@@ -42,7 +42,11 @@
 </head>
 
 <body id="page-top">
-
+    <!-- Clear Form Dialog -->
+    <div id="dialog-confirm" title="Clear the Form?">
+      <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
+    </div>
+    <!-- Clear Form Dialog -->
     <!-- Navigation -->
     <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
         <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer; display: inline">
@@ -100,28 +104,19 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-9">
-                        <h2 id="PatientFormID" style="padding-top: 50px;">Patient Identification Worksheet</h2>
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3"></div>
-
+                    <div class="col-md-3">
                     <!-- ***************  Side bar *************** -->
 
                     <div id="sidebar-container">
                         <div class="patientInfoPanel">
                             <div class="patientMedicalRecordDiv">
-                                <label class="patientInfoPanelPatientMedical">PATIENT'S MEDICAL RECORD NUMBER</label>
+                                <label class="patientInfoPanelPatientMedical">MEDICAL RECORD #</label>
                                 <!--<label id="patientInfoPanelPatientMedicalDisplay"></label>-->
-                                <input id="patientInfoPanelPatientMedicalDisplayID" class="patientMedicalRecordDivFormat" type="text" style="text-align: center">
+                                <input id="patientInfoPanelPatientMedicalDisplayID" class="patientMedicalRecordDivFormat" type="text" disabled>
                             </div>
                             <div class="patientNameRecordDiv">
                                 <label class="patientInfoPanelPatientName">PATIENT'S NAME</label>
-                                <input id="patientInfoPanelPatientNameDisplayID" class="patientMedicalRecordDivFormat" type="text">
+                                <input id="patientInfoPanelPatientNameDisplayID" class="patientMedicalRecordDivFormat" type="text" disabled>
                             </div>
 
                         </div>
@@ -144,15 +139,24 @@
                                 </li>
                             </ul>
                             <!-- Command buttons at the bottom of the progress bar forms -->
-                            <a href="javascript:void(0)" onclick="location.reload();" class="btn btn-default btn-lg" style="position:relative; width:80%; margin-bottom: 15px; bottom: 60px;">Clear Form</a>
-                            <a href="" class="btn btn-default btn-lg" style="position:relative; width:80%; bottom: 60px;">Print</a>
+                            <a id="clearFormButton" href="javascript:void(0)" onclick="clearFormDialog();" class="btn btn-default btn-lg" style="position:relative; width:80%; margin-bottom: 15px; bottom: 60px; font-size: 1em;">Clear Form</a>
+                            <a id="PrintDischargeButton" href="" class="btn btn-default btn-lg" style="position:relative; width:80%; bottom: 60px; font-size: 1em;">Print Discharge Form</a>
                         </div>
 
                     </div>
 
                     <!-- ***************  Side bar *************** -->
+                    </div>
+                    <div class="col-md-9">
+                        <h2 id="PatientFormID" style="padding-top: 50px;">Patient Identification Worksheet</h2>
+                    </div>
 
-                    <div id="col-md-8-div-1" class="col-md-9">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div id="col-md-8-div-1" class="col-md-9 mx-auto">
                         <form id="firstForm" class="general-form">
                             <div id="firstPanelID" class="panel panel-primary">
                                 <div class="panel-body">
@@ -181,7 +185,7 @@
                                     <div class="form-group input-group patientsNameDiv">
                                         <label class="fixingLabelAlignment" for="patientsName">Patient's Name : </label>
                                         <div class="fixingInputAlignment ">
-                                            <input id="patientsName" name="patientsName" onchange="validatePatientsName()" class="form-control " type="search" placeholder="Baby Mary Brown">
+                                            <input id="patientsName" name="patientsName" onchange="validatePatientsName()" class="form-control " type="search" disabled>
                                         </div>
 
                                     </div>
@@ -201,14 +205,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="form-group input-group day28DateDiv">
-                                        <label class="fixingLabelAlignment" for="day28Date">Day of 28 : </label>
-                                        <div class="fixingInputAlignment">
-                                            <span class="addingCalendar addingCalendarIcon">
-                                            <input type="search" placeholder="dd-mm-yyyy" name="day28Date" id="day28Date" class="form-control calendarField" readonly="true"/>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group input-group sixWeeksOldDateDiv">
                                         <label class="fixingLabelAlignment" for="sixWeeksOldDate">6 weeks old date : </label>
                                         <div class="fixingInputAlignment">
@@ -297,18 +294,13 @@
                             <!-- END Next Section Button-->
                         </form>
                     </div>
-
                 </div>
-
-
             </div>
 
         </section>
         <!-- END FIRST SECTION -->
         <!-- START SECOND SECTION -->
         <section id="download" class="content-section text-center">
-            <div class="download-section">
-                <!-- Adds in the picture -->
                 <div class="container-fluid">
 
                     <div class="row">
@@ -320,7 +312,7 @@
 
                     <div class="row">
                         <div class="col-md-3"></div>
-                        <div id="col-md-8-div-2" class="col-md-9">
+                        <div id="col-md-8-div-2" class="col-md-9 mx-auto">
                             <form id="secondForm" class="general-form">
                                 <!--STARTING Main Panel-->
                                 <div id="secondPanelID" class="panel panel-primary">
@@ -328,7 +320,7 @@
                                         <div class="form-group input-group gestationalAgeInWeeksDiv">
                                             <label class="fixingLabelAlignment" for="gestationalAgeInWeeks">Gestational Age : </label>
                                             <div class="fixingInputAlignment">
-                                                <select id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" style="height:32px;width:40%;"> 
+                                                <select id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" onchange="javascript:fixingInputAlignmentCheck()" style="height:32px;width:40%;"> 
                                                             <option disabled selected value>SELECT</option>
                                                             <option value="99">Unknown</option>
                                                 </select>
@@ -587,77 +579,26 @@
                                             </span>
                                             </div>
                                         </div>
-                                        <div class="form-group input-group twinOrTripletDiv">
-                                            <label class="fixingLabelAlignment"></label>
-                                            <div class="fixingInputAlignment">
-                                            <span class="radioFloatLeft">
-                                                <input class="radioType" id="twinOrTripletTwin" type="radio" onchange="javascript:twinOrTripletCheck()" name = twinOrTriplet value="1">
-                                                    <label class="radioText" for="twinOrTripletTwin"> Twin</label>
-                                                    
-
-                                                </span>
-
-                                            <span class="radioFloatLeft">
-                                                <input class="radioType" id="twinOrTripletTriplet" type="radio" onchange="javascript:twinOrTripletCheck()" name = twinOrTriplet value="0">
-                                                    <label class="radioText" for="twinOrTripletTriplet"> Triplet</label>
-                                                    
-
-                                                </span>
-                                        </div>
-                                        </div>
-                                        <div id="hiddenFieldTwinAB">
-                                            <div class="form-group input-group twinABDiv">
-                                                <label class="fixingLabelAlignment"></label>
-                                                    <div class="fixingInputAlignment">
-                                                        <span class="radioFloatLeft">
-                                                            <input class="radioType" id="twinABA" type="radio" name = twinAB value="1">
-                                                                <label class="radioText" for="twinABA">Twin A</label>
-                                                        </span>
-                                                        <span class="radioFloatLeft">
-                                                            <input class="radioType" id="twinABB" type="radio" name = twinAB value="0">
-                                                                <label class="radioText" for="twinABB">Twin B</label>
-                                                        </span>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                        <div id="hiddenFieldTripletABC">
-                                                <div class="form-group input-group tripletABCDiv">
-                                            <label class="fixingLabelAlignment"></label>
-                                                    <div class="fixingInputAlignment">
-                                            <span class="radioFloatLeft">
-                                                <input class="radioType" id="tripletABCA" type="radio" name = tripletABC value="1">
-                                                    <label class="radioText" for="tripletABCA">Triplet A</label>
-                                            </span>
-                                            <span class="radioFloatLeft">
-                                                <input class="radioType" id="tripletABCB" type="radio" name = tripletABC value="0">
-                                                    <label class="radioText" for="tripletABCB">Triplet B</label>
-                                            </span>
-                                            <span class="radioFloatLeft">
-                                                <input class="radioType" id="twinABBC" type="radio" name = tripletABC value="0">
-                                                    <label class="radioText" for="twinABBC">Triplet C</label>
-                                            </span>
-                                        </div>
-                                        </div>
-                                        </div>
+                                        
                                         <div class="form-group input-group multipleGestationDiv">
                                             <label class="fixingLabelAlignment">Multiple Gestation : </label>
                                             <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="multipleGestationYes" onchange="javascript:numberOfInfantsDeliveredCheck();" type="radio" name = multipleGestation value="1">
+                                                <input class="radioType" id="multipleGestationYes" onchange="javascript:multipleGestationCheck();" type="radio" name = multipleGestation value="1">
                                                     <label class="radioText" for="multipleGestationYes"> Yes</label>
                                                     
 
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="multipleGestationNo" onchange="javascript:numberOfInfantsDeliveredCheck();" type="radio" name = multipleGestation value="0"> 
+                                                <input class="radioType" id="multipleGestationNo" onchange="javascript:multipleGestationCheck();" type="radio" name = multipleGestation value="0"> 
                                                     <label class="radioText" for="multipleGestationNo">No</label>
                                                     
 
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="multipleGestationUnknown" onchange="javascript:numberOfInfantsDeliveredCheck();" type="radio" name = multipleGestation value="9">
+                                                <input class="radioType" id="multipleGestationUnknown" onchange="javascript:multipleGestationCheck();" type="radio" name = multipleGestation value="9">
                                                     <label class="radioText" for="multipleGestationUnknown"> Unknown</label>
                                                     
 
@@ -667,7 +608,7 @@
                                         <div class="form-group input-group numberOfInfantsDeliveredDiv">
                                             <label class="fixingLabelAlignment">Number of Infants Delivered : </label>
                                             <div class="fixingInputAlignment">
-                                                <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class=" ddList centerSelect form-control" style="height:32px;width:30%;">
+                                                <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class="form-control" onchange="javascript:numberOfInfantsDeliveredCheck();" style="height:32px;width:30%;">
                                                     <option disabled selected value="00">SELECT</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -727,7 +668,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group input-group temperatureMeasuredWithinFirstHourDiv">
-                                            <label class="fixingLabelAlignment">Temperature Measured within the First Hour after Admission to YOUR NICU : </label>
+                                            <label class="fixingLabelAlignment">Temperature Measured within the 1st Hour after Admission to your NICU : </label>
                                             <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="temperatureMeasuredWithinFirstHourYes" onclick="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="1">
@@ -843,15 +784,17 @@
                                         <div id="hiddenFieldSurfactantAtAnyTime" class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
                                                 <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInner" for="ageAtFirstSurfactantHours">Age at First Dose of Surfactant  :  </label>
-                                                        <div class="fixingInputAlignmentInner">
-                                                            <span class="addingUnitsInner unitsHours">
-                                                            <input id="ageAtFirstSurfactantHours" name="ageAtFirstSurfactantHours" class="form-control" type="search" placeholder="6" maxlength="4">
-                                                        </span>
-                                                        </div>
+                                                    <label class="fixingLabelAlignmentInner">Hours : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="ageAtFirstSurfactantHours" name="ageAtFirstSurfactantHours" class="form-control" style="height:32px;width:20%;">
+                                                        <option disabled selected value>SELECT</option>
+                                                        <option value="99">Unknown</option>
+                                                    </select>
                                                     </div>
+
+                                                </div>
                                                 <div class="form-group input-group">
-                                                    <label class="fixingLabelAlignmentInner">Minutes (0-59) : </label>
+                                                    <label class="fixingLabelAlignmentInner">Minutes : </label>
                                                     <div class="fixingInputAlignmentInner">
                                                         <select id="ageAtFirstSurfactantMinutes" name="ageAtFirstSurfactantMinutes" class="form-control" style="height:32px;width:20%;">
                                                         <option disabled selected value>SELECT</option>
@@ -1051,25 +994,25 @@
                                                             <div class="fixingInputAlignmentInnerInner">
                                                                 <select id="pathogenCodeBefore1" name="pathogenCodeBefore1" class="form-control" style="height:32px;width:70%;">
                                                                     <option disabled selected value="">SELECT</option>
-                                                                    <option value="102">102 - Acinetobacter species including multidrug-resistant Acinetobacter</option>
+                                                                    <option value="102">102 - Acinetobacter species</option>
                                                                     <option value="201">201 - Bacteroides species</option>
-                                                                    <option value="501">501 - Enterobacter species [E. aerogenes, E. cloacae, and others] including Carbapenem-resistant Enterobacter</option>
-                                                                    <option value="502">502 - Enterococcus species [E. faecalis (also known as Streptococcus faecalis), E. faecium, and others] including Vancomycin-resistant Enterococcus</option>
-                                                                    <option value="503">503 - Escherichia coli including Carbapenem-resistant Escherichia coli</option>
-                                                                    <option value="801">801 - Haemophilus species [H. influenzae and others]</option>
-                                                                    <option value="1101">1101 - Klebsiella species [K. oxytoca, K. pneumoniae and others] including Carbapenem-resistant Klebsiella and Cephalosporin-resistant Klebsiella</option>
+                                                                    <option value="501">501 - Enterobacter species</option>
+                                                                    <option value="502">502 - Enterococcus species</option>
+                                                                    <option value="503">503 - Escherichia coli</option>
+                                                                    <option value="801">801 - Haemophilus species</option>
+                                                                    <option value="1101">1101 - Klebsiella species</option>
                                                                     <option value="1201">1201 - Listeria monocytogenes</option>
-                                                                    <option value="1301">1301 - Moraxella species [M. catarrhalis (also known as Branhamella catarrhalis) and others]</option>
-                                                                    <option value="1401">1401 - Neisseria species [N. meningitidis, N. gonorrhoeae and others] including drug- resistant N. gonorrhoeae</option>
-                                                                    <option value="1604">1604 - Proteus species [P. mirabilis, P. vulgaris and others]</option>
-                                                                    <option value="1606">1606 - Pseudomonas species [P. aeruginosa and others] including multidrug- resistant Pseudomonas aeruginosa</option>
-                                                                    <option value="1902">1902 - Serratia species [S. liquefaciens, S. marcescens and others]</option>
-                                                                    <option value="1903">1903 - Staphylococcus coagulase positive [aureus] including Methicillin- resistant Staphylococcus aureus and Vancomycin-resistant Staphylococcus aureus</option>
+                                                                    <option value="1301">1301 - Moraxella species</option>
+                                                                    <option value="1401">1401 - Neisseria species</option>
+                                                                    <option value="1604">1604 - Proteus species</option>
+                                                                    <option value="1606">1606 - Pseudomonas species</option>
+                                                                    <option value="1902">1902 - Serratia species</option>
+                                                                    <option value="1903">1903 - Staphylococcus coagulase positive</option>
                                                                     <option value="1904">1904 - Stenotrophomonas maltophilia</option>
-                                                                    <option value="1905">1905 - Group B Streptococcus or GBS [also known as Streptococcus agalactiae]</option>
-                                                                    <option value="1906">1906 - Streptococcus anginosus [formerly Streptococcus milleri]</option>
+                                                                    <option value="1905">1905 - Group B Streptococcus or GBS</option>
+                                                                    <option value="1906">1906 - Streptococcus anginosus</option>
                                                                     <option value="1907">1907 - Streptococcus pneumoniae</option>
-                                                                    <option value="1908">1908 - Streptococcus pyogenes [Group A Streptococcus]</option>
+                                                                    <option value="1908">1908 - Streptococcus pyogenes</option>
                                                                     <option value="7777">N/A</option>
                                                                     <option value="9999">Unknown</option>
                                                                 </select>
@@ -1083,34 +1026,48 @@
                                                 
                                             </div>
                                         </div>
+                                        <div class="InnerPanel inner-panel-primary">
+                                            <div class="inner-panel-body">
+                                                <div class="form-group input-group day28DateDiv">
+                                            <label class="fixingLabelAlignmentInner" for="day28Date">Day of 28 : </label>
+                                            <div class="fixingInputAlignmentInner">
+                                                <span class="addingCalendarInner addingCalendarIcon">
+                                                <input type="search" name="day28Date" id="day28Date" class="form-control calendarField" readonly="true" disabled/>
+                                                </span>
+                                            </div>
+                                        </div>
                                         <div class="form-group input-group oxygenDay28Div">
-                                            <label class="fixingLabelAlignment">Oxygen on Day 28 > 21% : </label>
-                                            <span class="radioFloatLeft">
+                                            <label class="fixingLabelAlignmentInner">Oxygen on Day 28 > 21% : </label>
+                                            <span class="radioFloatLeftInner">
                                                 <input class="radioType" id="oxygenDay28Yes" type="radio" name = oxygenDay28 value="1">
                                                 <label class="radioText" for="oxygenDay28Yes">Yes</label>
                                             </span>
 
-                                            <span class="radioFloatLeft">
+                                            <span class="radioFloatLeftInner">
                                                 
                                                 <input class="radioType" id="oxygenDay28No" type="radio" name = oxygenDay28 value="0">
                                                 <label class="radioText" for="oxygenDay28No"> No</label>
                                                     
                                                 </span>
 
-                                            <span class="radioFloatLeft">
+                                            <span class="radioFloatLeftInner">
                                                 <input class="radioType" id="oxygenDay28NA" type="radio" name = oxygenDay28 value="7">
                                                 <label class="radioText" for="oxygenDay28NA"> N/A</label>
                                                     
                                                     
                                                 </span>
 
-                                            <span class="radioFloatLeft">
+                                            <span class="radioFloatLeftInner">
                                                 <input class="radioType" id="oxygenDay28Unknown" type="radio" name = oxygenDay28 value="9">
                                                 <label class="radioText" for="oxygenDay28Unknown"> Unknown</label>
                                                     
                                                     
                                                 </span>
                                         </div>
+                                            </div>  
+                                        </div>
+                                        
+                                        
                                         <div class="InnerPanel inner-panel-primary PIHDiv">
                                             <div class="inner-panel-heading">
                                                 Periventricular - Intraventricular Hemorrhage (PIH)
@@ -1150,7 +1107,7 @@
                                                         <div class="form-group input-group">
                                                             <label class="fixingLabelAlignmentInnerInner">Worst Grade of PIH (0-4) : </label>
                                                             <div class="fixingInputAlignmentInnerInner">
-                                                                <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                                <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" form-control" style="height:32px;width:20%;">
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -1164,17 +1121,20 @@
                                                         <div id="hiddenFieldPIHWhereOccurred">
                                                             <div class="form-group input-group">
                                                                 <label class="fixingLabelAlignmentInnerInner">Where Occurred?  : </label>
-                                                                <span class="radioFloatLeftInner">
-                                                    
-                                                    <label class="radioTextForHospitalResponse"> Your Hospital</label>
-                                                                    <input class="radioType" id="PIHWhereOccurredYourHospital" type="radio" name = PIHWhereOccurred value="1">
-                                                </span>
+                                                                <div class="fixingInputAlignmentInnerInner">
+                                                                    <span class="radioFloatLeftInner">
+                                                                        <input class="radioType" id="PIHWhereOccurredYourHospital" type="radio" name = PIHWhereOccurred value="1">
+                                                                        <label class="radioTextForHospitalResponse"  for="PIHWhereOccurredYourHospital"> Your Hospital</label>
 
-                                                                <span class="radioFloatLeftInner">
-                                                    
-                                                    <label class="radioTextForHospitalResponse"> Other Hospital</label>
-                                                                    <input class="radioType" id="PIHWhereOccurredOtherHosptal" type="radio" name = PIHWhereOccurred value="2">
-                                                </span>
+                                                                    </span>
+
+                                                                    <span class="radioFloatLeftInner">
+                                                                        <input class="radioType" id="PIHWhereOccurredOtherHosptal" type="radio" name = PIHWhereOccurred value="2">
+                                                                        <label class="radioTextForHospitalResponse" for="PIHWhereOccurredOtherHosptal"> Other Hospital</label>
+
+                                                                    </span>
+                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -2255,26 +2215,26 @@
                                                         <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 1 : </label>
                                                         <div class="fixingInputAlignmentInner">
                                                             <select id="pathogenCodeAfter1" name=pathogenCodeAfter1 class="form-control" style="height:32px;width:70%;">
-                                                                <option disabled selected value>SELECT</option>
-                                                                    <option value="102">102 - Acinetobacter species including multidrug-resistant Acinetobacter</option>
+                                                                    <option disabled selected value="">SELECT</option>
+                                                                    <option value="102">102 - Acinetobacter species</option>
                                                                     <option value="201">201 - Bacteroides species</option>
-                                                                    <option value="501">501 - Enterobacter species [E. aerogenes, E. cloacae, and others] including Carbapenem-resistant Enterobacter</option>
-                                                                    <option value="502">502 - Enterococcus species [E. faecalis (also known as Streptococcus faecalis), E. faecium, and others] including Vancomycin-resistant Enterococcus</option>
-                                                                    <option value="503">503 - Escherichia coli including Carbapenem-resistant Escherichia coli</option>
-                                                                    <option value="801">801 - Haemophilus species [H. influenzae and others]</option>
-                                                                    <option value="1101">1101 - Klebsiella species [K. oxytoca, K. pneumoniae and others] including Carbapenem-resistant Klebsiella and Cephalosporin-resistant Klebsiella</option>
+                                                                    <option value="501">501 - Enterobacter species</option>
+                                                                    <option value="502">502 - Enterococcus species</option>
+                                                                    <option value="503">503 - Escherichia coli</option>
+                                                                    <option value="801">801 - Haemophilus species</option>
+                                                                    <option value="1101">1101 - Klebsiella species</option>
                                                                     <option value="1201">1201 - Listeria monocytogenes</option>
-                                                                    <option value="1301">1301 - Moraxella species [M. catarrhalis (also known as Branhamella catarrhalis) and others]</option>
-                                                                    <option value="1401">1401 - Neisseria species [N. meningitidis, N. gonorrhoeae and others] including drug- resistant N. gonorrhoeae</option>
-                                                                    <option value="1604">1604 - Proteus species [P. mirabilis, P. vulgaris and others]</option>
-                                                                    <option value="1606">1606 - Pseudomonas species [P. aeruginosa and others] including multidrug- resistant Pseudomonas aeruginosa</option>
-                                                                    <option value="1902">1902 - Serratia species [S. liquefaciens, S. marcescens and others]</option>
-                                                                    <option value="1903">1903 - Staphylococcus coagulase positive [aureus] including Methicillin- resistant Staphylococcus aureus and Vancomycin-resistant Staphylococcus aureus</option>
+                                                                    <option value="1301">1301 - Moraxella species</option>
+                                                                    <option value="1401">1401 - Neisseria species</option>
+                                                                    <option value="1604">1604 - Proteus species</option>
+                                                                    <option value="1606">1606 - Pseudomonas species</option>
+                                                                    <option value="1902">1902 - Serratia species</option>
+                                                                    <option value="1903">1903 - Staphylococcus coagulase positive</option>
                                                                     <option value="1904">1904 - Stenotrophomonas maltophilia</option>
-                                                                    <option value="1905">1905 - Group B Streptococcus or GBS [also known as Streptococcus agalactiae]</option>
-                                                                    <option value="1906">1906 - Streptococcus anginosus [formerly Streptococcus milleri]</option>
+                                                                    <option value="1905">1905 - Group B Streptococcus or GBS</option>
+                                                                    <option value="1906">1906 - Streptococcus anginosus</option>
                                                                     <option value="1907">1907 - Streptococcus pneumoniae</option>
-                                                                    <option value="1908">1908 - Streptococcus pyogenes [Group A Streptococcus]</option>
+                                                                    <option value="1908">1908 - Streptococcus pyogenes</option>
                                                                     <option value="7777">N/A</option>
                                                                     <option value="9999">Unknown</option>
                                                             </select>
@@ -2452,14 +2412,16 @@
                                                 <div class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInnerInner">Worst Stage of ROP : </label>
                                                     <div class="fixingInputAlignmentInnerInner">
-                                                        <select name=state class=" ddList centerSelect form-control" style="height:32px;width:20%;">
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
+                                                        <select name=state class="form-control" style="height:32px;width:20%;">
+                                                            <option disabled selected value>SELECT</option>
+                                                            <option value="0">0</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="9">Unknown</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2499,7 +2461,7 @@
                                                             <option value="104">104 - Congenital Hydrocephalus</option>
                                                             <option value="105">105 - Holoprosencephaly</option>
                                                             <option value="106">106 - Encephalocele</option>
-                                                            <option value="901">901 - Other lethal or life threatening central nervous system anomaly not listed above (description required)</option>
+                                                            <option value="901">901 - Other lethal or life threatening</option>
                                                             <option disabled value>-----Congenital Heart Anomalies-----</option>
                                                             <option value="201">201 - TruncusArteriosus</option>
                                                             <option value="202">202 - TranspositionoftheGreatVessels</option>
@@ -2512,14 +2474,14 @@
                                                             <option value="209">209 - Hypoplastic Left Heart Syndrome</option>
                                                             <option value="210">210 - Interrupted Aortic Arch</option>
                                                             <option value="211">211 - Total Anomalous Pulmonary Venous Return</option>
-                                                            <option value="212">212 - Pentalogy of Cantrell (Thoraco-Abdominal Ectopia Cordis)</option>
-                                                            <option value="213">213 - Coarctation of the Aorta requiring surgical or medical intervention</option>
-                                                            <option value="214">214 - Atrial Septal Defect requiring surgical or medical intervention</option>
-                                                            <option value="215">215 - Ventricular Septal Defect requiring surgical or medical intervention</option>
-                                                            <option value="216">216 - Arrythmia requiring surgical or medical intervention</option>
-                                                            <option value="217">217 - Ebstein’s Anomaly requiring surgical or medical intervention</option>
-                                                            <option value="218">218 - Pulmonary Valvular Stenosis requiring surgical or medical intervention</option>
-                                                            <option value="902">902 - Other lethal or life threatening heart anomaly not listed above (description required)</option>
+                                                            <option value="212">212 - Pentalogy of Cantrell</option>
+                                                            <option value="213">213 - Coarctation of the Aorta</option>
+                                                            <option value="214">214 - Atrial Septal Defect</option>
+                                                            <option value="215">215 - Ventricular Septal Defect</option>
+                                                            <option value="216">216 - Arrythmia</option>
+                                                            <option value="217">217 - Ebstein’s Anomaly</option>
+                                                            <option value="218">218 - Pulmonary Valvular Stenosis</option>
+                                                            <option value="902">902 - Other lethal or life threatening</option>
                                                             <option disabled value>-----Gastro-Intestinal Anomalies-----</option>
                                                             <option value="301">301 - Cleft Palate</option>
                                                             <option value="302">302 - Tracheo-EsophagealFistula</option>
@@ -2533,30 +2495,30 @@
                                                             <option value="310">310 - Gastroschisis</option>
                                                             <option value="311">311 - Biliary Atresia</option>
                                                             <option value="312">312 - Malrotation</option>
-                                                            <option value="313">313 - Hirschsprung’s Disease requiring surgical or medical intervention</option>
-                                                            <option value="314">314 - Sacrococcygeal teratoma requiring surgical or medical intervention</option>
-                                                            <option value="903">903 - Other lethal or life threatening gastro-intestinal anomaly not listed above (description required)</option>
+                                                            <option value="313">313 - Hirschsprung’s Disease</option>
+                                                            <option value="314">314 - Sacrococcygeal teratoma</option>
+                                                            <option value="903">903 - Other lethal or life threatening</option>
                                                             <option disabled value>-----Genito-Urinary Anomalies-----</option>
                                                             <option value="401">401 - Bilateral Renal Agenesis</option>
                                                             <option value="402">402 - Bilateral Polycystic, Multicystic, or Dysplastic Kidneys</option>
                                                             <option value="403">403 - Obstructive Uropathy with Congenital Hydronephrosis</option>
                                                             <option value="404">404 - Exstrophy of the Urinary Bladder</option>
-                                                            <option value="904">904 - Other lethal or life threatening genito-urinary anomaly not listed above (description required) Chromosomal Anomalies</option>
+                                                            <option value="904">904 - Other lethal or life threatening</option>
                                                             
                                                             <option disabled value>-----Chromosomal Anomalies-----</option>
                                                             <option value="501">501 - Trisomy 13</option>
                                                             <option value="502">502 - Trisomy 18</option>
                                                             <option value="503">503 - Trisomy 21</option>
-                                                            <option value="504">504 - Other chromosomal anomaly not listed above (description required)</option>
+                                                            <option value="504">504 - Other chromosomal anomaly</option>
                                                             <option value="505">505 - Triploidy</option>
                                                           
                                                             <option disabled value>-----Other Congenital Anomalies-----</option>
-                                                            <option value="601">601 - Skeletal Dysplasia (description required)</option>
+                                                            <option value="601">601 - Skeletal Dysplasia</option>
                                                             <option value="602">602 - Congenital Diaphragmatic Hernia</option>
-                                                            <option value="603">603 - Hydrops Fetalis with anasarca and one or more of the following: ascites, pleural effusion, pericardial effusion</option>
-                                                            <option value="604">604 - Oligohydramnios Sequence including all 3 of the following: (1) Oligohydramnios documented by antenatal ultrasound 5 or more days prior to delivery, (2) evidence of fetal constraint on postnatal physical exam (such as Potter’s facies, contractures, or positional deformities of limbs), and (3) postnatal respiratory failure requiring endotracheal intubation and assisted ventilation.</option>
-                                                            <option value="605">605 - Inborn Error of Metabolism (description required)</option>
-                                                            <option value="606">606 - Myotonic Dystrophy requiring endotracheal intubation and assisted ventilation</option>
+                                                            <option value="603">603 - Hydrops Fetalis with anasarca</option>
+                                                            <option value="604">604 - Oligohydramnios Sequence</option>
+                                                            <option value="605">605 - Inborn Error of Metabolism</option>
+                                                            <option value="606">606 - Myotonic Dystrophy</option>
                                                             <option value="607">607 - Conjoined Twins</option>
                                                             <option value="608">608 - Tracheal Agenesis or Atresia</option>
                                                             <option value="609">609 - Thanatophoric Dysplasia Types 1 and 2</option>
@@ -2564,9 +2526,9 @@
                                                            
                                                             <option disabled value>-----Pulmonary Anomalies-----</option>
                                                             <option value="701">701 - Congenital Cystic Adenomatoid Malformation of the Lung</option>
-                                                            <option value="907">907 - Other lethal or life threatening pulmonary anomaly not listed above (description required)</option>
+                                                            <option value="907">907 - Other lethal or life threatening</option>
                                                             <option disabled value>-----Other Lethal or Life Threatening Anomalies-----</option>
-                                                            <option value="100">100 - Other lethal or life threatening anomalies not listed above (description required)</option>
+                                                            <option value="100">100 - Other lethal or life threatening</option>
 
                                                         </select>
                                                     </div>
@@ -2946,9 +2908,10 @@
                                         <div class="form-group input-group headCircumferenceInitialDispositionDiv">
                                             <label class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
                                             <div class="fixingInputAlignment">
-                                                <span class="addingUnits unitsCm">
-                                                    <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="validateHeadCircumferenceInitialDisposition()"  class="form-control" type="search" placeholder="eg. 20" >
-                                                </span>
+                                                <select id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" class="form-control" style="height:32px;width:40%;"> 
+                                                        <option disabled selected value>SELECT</option>
+                                                        <option value="999.9">Unknown</option>
+                                                    </select>
                                             </div>
                                         </div>
                                         <div class="form-group input-group initialLengthOfStayDiv">
@@ -2966,16 +2929,14 @@
                                 </div>
                             </form>
                             <!--ENDING Main Panel-->
-                            <!-- START Discharge or Transfer Button -->
+                            <!-- START Additional Button -->
                             <div class="form-group input-group">
-                                <a href="" class="btn btn-default btn-lg page-scroll" style="position:relative;margin-top:50px">Print Discharge Form</a>
+                                <a href="#TransferFormID" class="btn btn-circle page-scroll" style="position:relative"> <i class="fa fa-angle-down animated"></i></a>
                             </div>
-                            <!-- END Discharge or Transfer Button -->
+                            <!-- END Additional Button -->
                         </div>
                     </div>
                 </div>
-            </div>
-
             <!--<span id="transfer"></span>-->
         </section>
         <!-- END SECOND SECTION -->
@@ -2992,7 +2953,7 @@
 
                 <div class="row">
                     <div class="col-md-3"></div>
-                    <div id="col-md-8-div-4" class="col-md-9">
+                    <div id="col-md-8-div-3" class="col-md-9 mx-auto">
                         <form id="thirdForm" class="general-form">
 
                             <div id="thirdPanelID" class="panel panel-primary">
@@ -3007,7 +2968,65 @@
                                         <div class="inner-panel-heading">
                                             Additional Birth Details
                                         </div>
+                                        
                                         <div class="inner-panel-body">
+                                                <div id="twinOrTripletDiv" class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Twins/Triplets :</label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <span class="radioFloatLeftInner">
+                                                            <input class="radioType" id="twinOrTripletTwin" type="radio" onchange="javascript:twinOrTripletCheck()" name = twinOrTriplet value="1">
+                                                                <label class="radioText" for="twinOrTripletTwin"> Twin</label>
+
+
+                                                            </span>
+
+                                                        <span class="radioFloatLeftInner">
+                                                            <input class="radioType" id="twinOrTripletTriplet" type="radio" onchange="javascript:twinOrTripletCheck()" name = twinOrTriplet value="0">
+                                                                <label class="radioText" for="twinOrTripletTriplet"> Triplet</label>
+
+
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            <div id="hiddenFieldTwins" class="InnerInnerPanel inner-inner-panel-primary">
+                                                <div class="inner-inner-panel-body">
+                                                        <div class="form-group input-group twinABDiv">
+                                                            <label class="fixingLabelAlignmentInner">Twin A/B : </label>
+                                                                <div class="fixingInputAlignmentInner">
+                                                                    <span class="radioFloatLeftInner">
+                                                                        <input class="radioType" id="twinABA" type="radio" name = twinAB value="1">
+                                                                            <label class="radioText" for="twinABA">Twin A</label>
+                                                                    </span>
+                                                                    <span class="radioFloatLeftInner">
+                                                                        <input class="radioType" id="twinABB" type="radio" name = twinAB value="0">
+                                                                            <label class="radioText" for="twinABB">Twin B</label>
+                                                                    </span>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                                    <div id="hiddenFieldTriplets" class="InnerInnerPanel inner-inner-panel-primary">
+                                                        <div class="inner-inner-panel-body">
+                                                                    <div class="form-group input-group tripletABCDiv">
+                                                                        <label class="fixingLabelAlignmentInner">Triplet A/B/C : </label>
+                                                                                <div class="fixingInputAlignmentInner">
+                                                                        <span class="radioFloatLeftInner">
+                                                                            <input class="radioType" id="tripletABCA" type="radio" name = tripletABC value="1">
+                                                                                <label class="radioText" for="tripletABCA">Triplet A</label>
+                                                                        </span>
+                                                                        <span class="radioFloatLeftInner">
+                                                                            <input class="radioType" id="tripletABCB" type="radio" name = tripletABC value="0">
+                                                                                <label class="radioText" for="tripletABCB">Triplet B</label>
+                                                                        </span>
+                                                                        <span class="radioFloatLeftInner">
+                                                                            <input class="radioType" id="twinABBC" type="radio" name = tripletABC value="0">
+                                                                                <label class="radioText" for="twinABBC">Triplet C</label>
+                                                                        </span>
+                                                                    </div>
+                                                                    </div>
+                                                        </div>
+                                                    </div>
+                                        
                                             <div class="form-group input-group">
                                                 <label class="fixingLabelAlignmentInner" for="mothersAge">Mother's Age  :  </label>
                                                 <div class="fixingInputAlignmentInner">
@@ -3018,10 +3037,11 @@
                                                 </div>
                                             </div>
                                             <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Grav  :  </label>
+                                                <label class="fixingLabelAlignmentInner" for="grav">Grav  :  </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <select id="grav" name=grav class="form-control" style="height:32px;width:20%;">
                                                     <option disabled selected value>SELECT</option>
+                                                    <option value="99">Unknown</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -3032,26 +3052,27 @@
                                                     <option value="8">8</option>
                                                     <option value="9">9</option>
                                                     <option value="10">10</option>
-                                                    <option value="">Unknown</option>
+                                                    
                                                 </select>
                                                 </div>
                                             </div>
                                             <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Para  :  </label>
+                                                <label class="fixingLabelAlignmentInner" for="para">Para  :  </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <select id="para" name=para class="form-control" style="height:32px;width:20%;">
                                                     <option disabled selected value>SELECT</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
-                                                    <option value="">Unknown</option>
+                                                    <option value="99">Unknown</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    
                                                 </select>
                                                 </div>
                                             </div>
@@ -3069,7 +3090,7 @@
                                                 
                                             </span>
                                                     <span class="radioFloatLeftInner">
-                                                    <input class="radioType" id="RVDUnknown" onclick="javascript:RVDCheck()" type="radio" name = RVD value="0">
+                                                    <input class="radioType" id="RVDUnknown" onclick="javascript:RVDCheck()" type="radio" name = RVD value="9">
                                                 <label class="radioText" for="RVDUnknown"> Unknown</label>
                                                 
                                             </span>
@@ -3081,19 +3102,14 @@
                                                         <label class="fixingLabelAlignmentInnerInner">Viral Load  :  </label>
                                                         <div class="fixingInputAlignmentInnerInner">
                                                             <select id="viralLoad" name=viralLoad class="form-control" style="height:32px;width:70%;">
-                                                    <option disabled selected value >SELECT</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
-                                                    <option value="">Unknown</option>
-                                                </select>
+                                                                <option disabled selected value >SELECT</option>
+                                                                <option value="9">Unknown</option>
+                                                                <option value="1">0 - 100</option>
+                                                                <option value="2">100 - 1000</option>
+                                                                <option value="3">1000 - 10000</option>
+                                                                <option value="4">10000 ></option>
+
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group input-group">
@@ -3110,7 +3126,7 @@
                                                         
                                                     </span>
                                                             <span class="radioFloatLeftInner">
-                                                        <input class="radioType" id="babyPCRUnknown" type="radio" name = babyPCR value="0">
+                                                        <input class="radioType" id="babyPCRUnknown" type="radio" name = babyPCR value="9">
                                                         <label class="radioText" for="babyPCRUnknown"> Unknown</label>
                                                         
                                                     </span>
@@ -3226,10 +3242,11 @@
                                             <div id="hiddenFieldhypoxicIschaemicEncephalopathy" class="InnerInnerPanel inner-inner-panel-primary">
                                                 <div class="inner-inner-panel-body">
                                                     <div class="form-group input-group">
-                                                        <label class="fixingLabelAlignmentInnerInner">Highest HIE Score  :  </label>
+                                                        <label class="fixingLabelAlignmentInnerInner" for="hypoxicIschaemicEncephalopathyHighestScore">Highest HIE Score  :  </label>
                                                         <div class="fixingInputAlignmentInnerInner">
-                                                            <select name=hypoxicIschaemicEncephalopathyHighestScore class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                            <select id="hypoxicIschaemicEncephalopathyHighestScore" name=hypoxicIschaemicEncephalopathyHighestScore class="form-control" style="height:32px;width:70%;">
                                                         <option disabled selected value>SELECT</option>
+                                                        <option value="99">Unknown</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -3292,11 +3309,11 @@
                                                         <div class="form-group input-group">
                                                             <label class="fixingLabelAlignmentInnerInner"></label>
                                                             <div class="fixingInputAlignmentInnerInner">
-                                                                <select name="CFMHighestScore" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                                <select name="CFMHighestScore" class="form-control" style="height:32px;width:70%;">
                                                             <option disabled selected value>SELECT</option>
-                                                            <option value="">Normal</option>
-                                                            <option value="">Discontinues Normal</option>
-                                                            <option value="">Severely Abnormal</option>
+                                                            <option value="1">Normal</option>
+                                                            <option value="2">Discontinues Normal</option>
+                                                            <option value="3">Severely Abnormal</option>
                                                         </select>
                                                             </div>
                                                         </div>
@@ -3305,7 +3322,7 @@
 
                                             </div>
                                             <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner">Sepsis during Admission  :  </label>
+                                                <label class="fixingLabelAlignmentInner" for="sepsisDuringAdmission">Sepsis during Admission  :  </label>
                                                 <div class="fixingInputAlignmentInner">
                                                     <select id="sepsisDuringAdmission" name="sepsisDuringAdmission" onchange="javascript:sepsisDuringAdmissionCheck();" class="form-control" style="height:32px;width:40%;">
                                                         <option disabled selected value>SELECT</option>
@@ -3320,7 +3337,7 @@
                                                     <div class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInnerInner">Number of Episodes  :  </label>
                                                         <div class="fixingInputAlignmentInnerInner">
-                                                            <select id="numberOfEpisodes" name="numberOfEpisodes" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                                            <select id="numberOfEpisodes" name="numberOfEpisodes" class="form-control" style="height:32px;width:70%;">
                                                         <option disabled selected value>SELECT</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
@@ -3349,26 +3366,26 @@
                                                         <label class="fixingLabelAlignmentInnerInner">Bacterial Code 1 : </label>
                                                         <div class="fixingInputAlignmentInnerInner">
                                                             <select id="bacterialCodeDuringAdmission1" name=bacterialCodeDuringAdmission1 class="form-control" style="height:32px;width:70%;">
-                                                                    <option disabled selected value>SELECT</option>
-                                                                    <option value="102">102 - Acinetobacter species including multidrug-resistant Acinetobacter</option>
+                                                                    <option disabled selected value="">SELECT</option>
+                                                                    <option value="102">102 - Acinetobacter species</option>
                                                                     <option value="201">201 - Bacteroides species</option>
-                                                                    <option value="501">501 - Enterobacter species [E. aerogenes, E. cloacae, and others] including Carbapenem-resistant Enterobacter</option>
-                                                                    <option value="502">502 - Enterococcus species [E. faecalis (also known as Streptococcus faecalis), E. faecium, and others] including Vancomycin-resistant Enterococcus</option>
-                                                                    <option value="503">503 - Escherichia coli including Carbapenem-resistant Escherichia coli</option>
-                                                                    <option value="801">801 - Haemophilus species [H. influenzae and others]</option>
-                                                                    <option value="1101">1101 - Klebsiella species [K. oxytoca, K. pneumoniae and others] including Carbapenem-resistant Klebsiella and Cephalosporin-resistant Klebsiella</option>
+                                                                    <option value="501">501 - Enterobacter species</option>
+                                                                    <option value="502">502 - Enterococcus species</option>
+                                                                    <option value="503">503 - Escherichia coli</option>
+                                                                    <option value="801">801 - Haemophilus species</option>
+                                                                    <option value="1101">1101 - Klebsiella species</option>
                                                                     <option value="1201">1201 - Listeria monocytogenes</option>
-                                                                    <option value="1301">1301 - Moraxella species [M. catarrhalis (also known as Branhamella catarrhalis) and others]</option>
-                                                                    <option value="1401">1401 - Neisseria species [N. meningitidis, N. gonorrhoeae and others] including drug- resistant N. gonorrhoeae</option>
-                                                                    <option value="1604">1604 - Proteus species [P. mirabilis, P. vulgaris and others]</option>
-                                                                    <option value="1606">1606 - Pseudomonas species [P. aeruginosa and others] including multidrug- resistant Pseudomonas aeruginosa</option>
-                                                                    <option value="1902">1902 - Serratia species [S. liquefaciens, S. marcescens and others]</option>
-                                                                    <option value="1903">1903 - Staphylococcus coagulase positive [aureus] including Methicillin- resistant Staphylococcus aureus and Vancomycin-resistant Staphylococcus aureus</option>
+                                                                    <option value="1301">1301 - Moraxella species</option>
+                                                                    <option value="1401">1401 - Neisseria species</option>
+                                                                    <option value="1604">1604 - Proteus species</option>
+                                                                    <option value="1606">1606 - Pseudomonas species</option>
+                                                                    <option value="1902">1902 - Serratia species</option>
+                                                                    <option value="1903">1903 - Staphylococcus coagulase positive</option>
                                                                     <option value="1904">1904 - Stenotrophomonas maltophilia</option>
-                                                                    <option value="1905">1905 - Group B Streptococcus or GBS [also known as Streptococcus agalactiae]</option>
-                                                                    <option value="1906">1906 - Streptococcus anginosus [formerly Streptococcus milleri]</option>
+                                                                    <option value="1905">1905 - Group B Streptococcus or GBS</option>
+                                                                    <option value="1906">1906 - Streptococcus anginosus</option>
                                                                     <option value="1907">1907 - Streptococcus pneumoniae</option>
-                                                                    <option value="1908">1908 - Streptococcus pyogenes [Group A Streptococcus]</option>
+                                                                    <option value="1908">1908 - Streptococcus pyogenes</option>
                                                                     <option value="7777">N/A</option>
                                                                     <option value="9999">Unknown</option>
                                                             </select>
@@ -3488,7 +3505,7 @@
                                             </span>
                                                     <span class="radioFloatLeftInner">
                                                 
-                                                <input class="radioType" id="immunizations652Unknown" onclick="javascript:immunizations652Check()" type="radio" name = "immunizations652" value="0">
+                                                <input class="radioType" id="immunizations652Unknown" onclick="javascript:immunizations652Check()" type="radio" name = "immunizations652" value="9">
                                                     <label class="radioText" for="immunizations652Unknown">Unknown</label>
                                             </span>
                                                 </div>
@@ -3511,14 +3528,6 @@
                                         </div>
                                     </div>
                                     <!--END investigation and procedures-->
-
-
-
-
-
-                                    <!--START EXTRA OVERWEIGHT FIELDS-->
-
-                                    <!--END EXTRA OVERWEIGHT FIELDS-->
                                     <!--END additional fields-->
 
                                     <!--START APPOINTMENT-->
@@ -3580,7 +3589,7 @@
 
                             <!-- START Completed Button -->
                             <div class="form-group input-group">
-                                <a href="" onclick="" class="btn btn-default btn-lg page-scroll" style="position:relative;width:60%;margin-top:50px">Click to Finish</a>
+                                <a href="javascript:void(0)" onclick="javascript:successToastr()" class="btn btn-default btn-lg page-scroll" style="position:relative;width:60%;margin-top:50px">Click to Finish</a>
                             </div>
                             <!-- END Completed Button -->
 
