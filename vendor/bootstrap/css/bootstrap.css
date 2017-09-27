@@ -2300,9 +2300,13 @@ pre code {
   opacity: 1;
 }
 
-.form-control:disabled, .form-control[readonly] {
+.form-control:disabled{
   background-color: #eceeef;
   opacity: 1;
+}
+.form-control[readonly] {
+    background-color: white;
+    opacity: 1;
 }
 
 .form-control:disabled {
