@@ -68,6 +68,7 @@ function inbornOutbornCheck() {
     if (document.getElementById('locationOFBirthInborn').checked) {
         $("#GroupingHiddenField1").slideUp("slow");
         $('#GroupingHiddenField1').removeClass('glowingHiddenFields')
+        $('#testingID').removeClass('hide')
     }
     if (document.getElementById('locationOFBirthOutborn').checked) {
         $("#GroupingHiddenField1").slideDown("slow");
@@ -177,6 +178,45 @@ function pneumothoraxCheck() {
     }
     if (document.getElementById('pneumothoraxUnknown').checked) {
         $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+}
+function endotrachealTubeVentCheck(){
+    if (document.getElementById('endotrachealTubeVentYes').checked) {
+        $('#nasalCPAPOrNasalVentAfterInitialNo').attr("checked",true);
+        $('#nasalCPAPOrNasalVentAfterInitialNo').change();
+    }
+}
+function successToastr(){
+    toastr.success("Form is complete!")
+}
+function successReload(){
+    
+}
+function diedWithin12HoursCheck() {
+    var value1 = document.getElementById('RespiratorySupportAfterInitialResuscitationDiv');
+    if (document.getElementById('diedWithin12HoursYes').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields')
+        /*$('#oxygenAfterInitialResuscitationNA').attr("checked",true);
+        $('#conventionalVentilationAfterInitialNA').attr("checked",true);
+        $('#highFrequencyAfterInitialNA').attr("checked",true);
+        $('#highFlowAfterInitialNA').attr("checked",true);
+        $('#nasalVentilationAfterInitialNA').attr("checked",true);
+        $('#nasalCPAPAfterInitialNA').attr("checked",true);
+        $('#nasalCPAPOrNasalVentAfterInitialNA').attr("checked",true);*/
+        
+    }
+    if (document.getElementById('diedWithin12HoursNo').checked) {
+        $(value1).slideDown("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('diedWithin12HoursNA').checked) {
+        $(value1).slideDown("slow");
+        $(value1).removeClass('glowingHiddenFields')
+    }
+    if (document.getElementById('diedWithin12HoursUnknown').checked) {
+        $(value1).slideDown("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
 }
@@ -505,21 +545,26 @@ function AfterInitialResuscitationCheck() {
 }
 function bacterialSepsisBeforeCheck() {
     var value1 = document.getElementById('hiddenFieldBacterialSepsisBefore');
+    var value2 = document.getElementById('addNewBacterialFieldDiv');
     if (document.getElementById('bacterialSepsisBeforeYes').checked) {
         $(value1).slideDown("slow");
         $(value1).addClass('glowingHiddenFields')
+        $(value2).slideDown("slow");
     }
     if (document.getElementById('bacterialSepsisBeforeNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
     }
     if (document.getElementById('bacterialSepsisBeforeNA').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
     }
     if (document.getElementById('bacterialSepsisBeforeUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $(value2).slideUp("slow");
     }
 }
 
@@ -574,22 +619,121 @@ function immunizations652Check() {
         $(value1).removeClass('glowingHiddenFields')
     }
 }
-var counter = 1;
-    var limit = 5;
+var counterForSurgeryCode = 1;
+var limitForSurgeryCode = 5;
 /*Adding new surgery fields*/
 function addNewSurgeryField(divName){
-    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
-
-         if (counter == limit)  {
-              alert("You have reached the limit of adding " + counter + " inputs");
+         if (counterForSurgeryCode == limitForSurgeryCode)  {
+              alert("You have reached the limit of adding " + counterForSurgeryCode + " inputs");
          }
          else {
               var newdiv = document.createElement('div');
              // START inner HTML
-              newdiv.innerHTML = "<div id='surgeryDiv"+(counter+1)+"' class='InnerInnerPanel inner-inner-panel-primary'><div class='inner-inner-panel-body'><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgery Code "+(counter+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='surgeryCode"+(counter+1)+"' name=surgeryCode"+(counter+1)+" class='form-control' style='height:32px;max-width:120%;width:70%;'><option disabled selected value>--------HEAD & Neck--------</option><option value='S101'>S101 - Tracheostomy/Tracheotomy</option><option value='S103'>S103 - Ophthalmologic Surgery</option><option value='S107'>S107 - Palliative or Definitive Repair of Choanal Atresia</option><option value='S100'>S100 - Other head and neck surgery requiring general or spinal anesthesia</option><option disabled selected value>--------THORAX--------</option><option value='S203'>S203 - Tracheoesophageal Atresia and/or fistula repair</option><option value='S210'>S210 - Bronchoscopy (With or without biopsy)</option><option value='S200'>S200 - Other thoracic surgery requiring general or spinal anesthesia</option><option disabled selected value>--------ABDOMEN--------</option><option value='S301'>S301 - Rectal biopsy with or without anoscopy</option><option value='S303'>S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option><option value='S304'>S304 - Fundoplication</option><option value='S307'>S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option><option value='S308'>S308 - Small bowel resection with or without primary anastomosis</option><option value='S309'>S309 - Large bowel resection</option><option value='S310'>S310 - Duodenal atresia/stenosis/web repair</option><option value='S311'>S311 - Jejunal, ileal, or colonic atresia repair</option><option value='S312'>S312 - Excision of Meckel's diverticulum</option><option value='S313'>S313 - Drainage of intra-abdominal abscess</option><option value='S319'>S319 - Repair of imperforate anus</option><option value='S325'>S325 - Repair of diaphragmatic hernia</option><option value='S331'>S331 - Ladd's or other procedure for correction of malrotation</option><option value='S333'>S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option><option value='S338'>S338 - Primary closure for gastroschisis</option><option value='S340'>S340 - Primary closure for omphalocele</option><option value='S300'>S300 - Other abdominal surgery requiring general or spinal anesthesia</option><option disabled selected value>--------GENITO-URINARY--------</option><option value='S410'>S410 - Inguinal hernia repair</option><option disabled selected value>--------OPEN HEART/VASCULAR PROCEDURES--------</option><option value='S502'>S502 - Repair of coarctation of the aorta</option><option value='S510'>S510 - Truncus arteriosus repair</option><option value='S511'>S511 - Arterial switch</option><option value='S514'>S514 - Pulmonary artery banding</option><option disabled selected value>--------CENTRAL NERVOUS SYSTEM--------</option><option value='S901'>S901 - Ventriculoperitoneal or other ventricular shunt</option><option value='S904'>S904 - Meningocele or myelomeningocele repair</option><option value='S905'>S905 - Encephalocele repair</option><option value='77'>N/A</option><option value='99'>Unknown</option></select></div></label></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'></label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counter+1)+"YourHospital' type='radio' name = surgeryCode"+(counter+1)+" value='1'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counter+1)+"YourHospital'>Your Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counter+1)+"OtherHospital' type='radio' name = surgeryCode"+(counter+1)+" value='2'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counter+1)+"OtherHospital'>Other Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counter+1)+"Both' type='radio' name = surgeryCode"+(counter+1)+" value='3'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counter+1)+"Both'>Both</label></span></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgical Site Infection "+(counter+1)+" :</label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counter+1)+"Yes' type='radio' name = surgicalInfection"+(counter+1)+" value='1'><label class='radioText' for='surgicalInfection"+(counter+1)+"Yes'>Yes</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counter+1)+"No' type='radio' name = surgicalInfection"+(counter+1)+" value='0'><label class='radioText' for='surgicalInfection"+(counter+1)+"No'>No</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counter+1)+"NA' type='radio' name = surgicalInfection1 value='7'><label class='radioText' for='surgicalInfection"+(counter+1)+"NA'>N/A</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counter+1)+"Unknown' type='radio' name = surgicalInfection"+(counter+1)+" value='9'><label class='radioText' for='surgicalInfection"+(counter+1)+"Unknown'>Unknown</label></span></div></div></div>";
+              newdiv.innerHTML = "<div id='surgeryDiv"+(counterForSurgeryCode+1)+"' class='InnerInnerPanel inner-inner-panel-primary'><div class='inner-inner-panel-body'><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgery Code "+(counterForSurgeryCode+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='surgeryCode"+(counterForSurgeryCode+1)+"' name=surgeryCode"+(counterForSurgeryCode+1)+" class='form-control' style='height:32px;max-width:120%;width:70%;'><option disabled selected value>SELECT</option><option disabled  value>--------HEAD & Neck--------</option><option value='S101'>S101 - Tracheostomy/Tracheotomy</option><option value='S103'>S103 - Ophthalmologic Surgery</option><option value='S107'>S107 - Palliative or Definitive Repair of Choanal Atresia</option><option value='S100'>S100 - Other head and neck surgery requiring general or spinal anesthesia</option><option disabled  value>--------THORAX--------</option><option value='S203'>S203 - Tracheoesophageal Atresia and/or fistula repair</option><option value='S210'>S210 - Bronchoscopy (With or without biopsy)</option><option value='S200'>S200 - Other thoracic surgery requiring general or spinal anesthesia</option><option disabled  value>--------ABDOMEN--------</option><option value='S301'>S301 - Rectal biopsy with or without anoscopy</option><option value='S303'>S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option><option value='S304'>S304 - Fundoplication</option><option value='S307'>S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option><option value='S308'>S308 - Small bowel resection with or without primary anastomosis</option><option value='S309'>S309 - Large bowel resection</option><option value='S310'>S310 - Duodenal atresia/stenosis/web repair</option><option value='S311'>S311 - Jejunal, ileal, or colonic atresia repair</option><option value='S312'>S312 - Excision of Meckel's diverticulum</option><option value='S313'>S313 - Drainage of intra-abdominal abscess</option><option value='S319'>S319 - Repair of imperforate anus</option><option value='S325'>S325 - Repair of diaphragmatic hernia</option><option value='S331'>S331 - Ladd's or other procedure for correction of malrotation</option><option value='S333'>S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option><option value='S338'>S338 - Primary closure for gastroschisis</option><option value='S340'>S340 - Primary closure for omphalocele</option><option value='S300'>S300 - Other abdominal surgery requiring general or spinal anesthesia</option><option disabled  value>--------GENITO-URINARY--------</option><option value='S410'>S410 - Inguinal hernia repair</option><option disabled  value>--------OPEN HEART/VASCULAR PROCEDURES--------</option><option value='S502'>S502 - Repair of coarctation of the aorta</option><option value='S510'>S510 - Truncus arteriosus repair</option><option value='S511'>S511 - Arterial switch</option><option value='S514'>S514 - Pulmonary artery banding</option><option disabled  value>--------CENTRAL NERVOUS SYSTEM--------</option><option value='S901'>S901 - Ventriculoperitoneal or other ventricular shunt</option><option value='S904'>S904 - Meningocele or myelomeningocele repair</option><option value='S905'>S905 - Encephalocele repair</option><option value='77'>N/A</option><option value='99'>Unknown</option></select></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'></label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counterForSurgeryCode+1)+"YourHospital' type='radio' name = surgeryCode"+(counterForSurgeryCode+1)+" value='1'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counterForSurgeryCode+1)+"YourHospital'>Your Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counterForSurgeryCode+1)+"OtherHospital' type='radio' name = surgeryCode"+(counterForSurgeryCode+1)+" value='2'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counterForSurgeryCode+1)+"OtherHospital'>Other Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counterForSurgeryCode+1)+"Both' type='radio' name = surgeryCode"+(counterForSurgeryCode+1)+" value='3'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counterForSurgeryCode+1)+"Both'>Both</label></span></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgical Site Infection "+(counterForSurgeryCode+1)+" :</label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"Yes' type='radio' name = surgicalInfection"+(counterForSurgeryCode+1)+" value='1'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"Yes'>Yes</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"No' type='radio' name = surgicalInfection"+(counterForSurgeryCode+1)+" value='0'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"No'>No</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"NA' type='radio' name = surgicalInfection1 value='7'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"NA'>N/A</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"Unknown' type='radio' name = surgicalInfection"+(counterForSurgeryCode+1)+" value='9'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"Unknown'>Unknown</label></span></div></div></div>";
              // END inner HTML
               document.getElementById(divName).appendChild(newdiv);
-              counter++;
+              counterForSurgeryCode++;
+         }
+    
+}
+
+var counterForBacterialFieldBefore = 1;
+var limitForBacterialFieldBefore = 3;
+/*Adding new surgery fields*/
+function addNewBacterialFieldBefore(divName){
+    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
+
+         if (counterForBacterialFieldBefore == limitForBacterialFieldBefore)  {
+              alert("You have reached the limit of adding " + counterForBacterialFieldBefore + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+             // START inner HTML
+              newdiv.innerHTML = "<div id='bacterialBeforeDiv"+(counterForBacterialFieldBefore+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Bacterial Pathogen Codes "+(counterForBacterialFieldBefore+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='pathogenCodeBefore"+(counterForBacterialFieldBefore+1)+"' name='pathogenCodeBefore"+(counterForBacterialFieldBefore+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value=''>SELECT</option><option value='102'>102 - Acinetobacter species</option><option value='201'>201 - Bacteroides species</option><option value='501'>501 - Enterobacter species</option><option value='502'>502 - Enterococcus species</option><option value='503'>503 - Escherichia coli</option><option value='801'>801 - Haemophilus species</option><option value='1101'>1101 - Klebsiella species</option><option value='1201'>1201 - Listeria monocytogenes</option><option value='1301'>1301 - Moraxella species</option><option value='1401'>1401 - Neisseria species</option><option value='1604'>1604 - Proteus species</option><option value='1606'>1606 - Pseudomonas species</option><option value='1902'>1902 - Serratia species</option><option value='1903'>1903 - Staphylococcus coagulase positive</option><option value='1904'>1904 - Stenotrophomonas maltophilia</option><option value='1905'>1905 - Group B Streptococcus or GBS</option><option value='1906'>1906 - Streptococcus anginosus</option><option value='1907'>1907 - Streptococcus pneumoniae</option><option value='1908'>1908 - Streptococcus pyogenes</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
+             // END inner HTML
+              document.getElementById(divName).appendChild(newdiv);
+              counterForBacterialFieldBefore++;
+         }
+    
+}
+
+var counterForBacterialFieldAfter = 1;
+var limitForBacterialFieldAfter = 3;
+/*Adding new surgery fields*/
+function addNewBacterialFieldAfter(divName){
+    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
+
+         if (counterForBacterialFieldAfter == limitForBacterialFieldAfter)  {
+              alert("You have reached the limit of adding " + counterForBacterialFieldAfter + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+             // START inner HTML
+              newdiv.innerHTML = "<div id='bacterialAfterDiv"+(counterForBacterialFieldAfter+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInner'>Bacterial Pathogen Codes "+(counterForBacterialFieldAfter+1)+" :</label><div class='fixingInputAlignmentInner'><select id='pathogenCodeAfter"+(counterForBacterialFieldAfter+1)+"' name='pathogenCodeAfter"+(counterForBacterialFieldAfter+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value=''>SELECT</option><option value='102'>102 - Acinetobacter species</option><option value='201'>201 - Bacteroides species</option><option value='501'>501 - Enterobacter species</option><option value='502'>502 - Enterococcus species</option><option value='503'>503 - Escherichia coli</option><option value='801'>801 - Haemophilus species</option><option value='1101'>1101 - Klebsiella species</option><option value='1201'>1201 - Listeria monocytogenes</option><option value='1301'>1301 - Moraxella species</option><option value='1401'>1401 - Neisseria species</option><option value='1604'>1604 - Proteus species</option><option value='1606'>1606 - Pseudomonas species</option><option value='1902'>1902 - Serratia species</option><option value='1903'>1903 - Staphylococcus coagulase positive [aureus]</option><option value='1904'>1904 - Stenotrophomonas maltophilia</option><option value='1905'>1905 - Group B Streptococcus or GBS</option><option value='1906'>1906 - Streptococcus anginosus</option><option value='1907'>1907 - Streptococcus pneumoniae</option><option value='1908'>1908 - Streptococcus pyogenes</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
+             // END inner HTML
+              document.getElementById(divName).appendChild(newdiv);
+              counterForBacterialFieldAfter++;
+         }
+    
+}
+
+var counterForCongenitalCode = 1;
+var limitForCongenitalCode = 3;
+/*Adding new surgery fields*/
+function addNewCongenitalCode(divName){
+    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
+
+         if (counterForCongenitalCode == limitForCongenitalCode)  {
+              alert("You have reached the limit of adding " + counterForCongenitalCode + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+             // START inner HTML
+              newdiv.innerHTML = "<div id='congenitalCodeDiv"+(counterForCongenitalCode+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInner'>Congenital Infection code "+(counterForCongenitalCode+1)+" :</label><div class='fixingInputAlignmentInner'><select id='congenitalCode"+(counterForCongenitalCode+1)+"' name='congenitalCode"+(counterForCongenitalCode+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value>SELECT</option><option value='101'>101 - Toxoplasmosis (Toxoplasma gondii)</option><option value='102'>102 - Rubella virus</option><option value='103'>103 - Syphilis (Treponema pallidum)</option><option value='104'>104 - Cytomegalovirus</option><option value='105'>105 - Herpessimplex</option><option value='106'>106 - Parvovirus B19</option><option value='107'>107 - Zika virus</option><option value='108'>108 - Varicella zoster virus</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
+             // END inner HTML
+              document.getElementById(divName).appendChild(newdiv);
+              counterForCongenitalCode++;
+         }
+    
+}
+
+
+var counterForBirthDefect = 1;
+var limitForBirthDefect = 5;
+/*Adding new surgery fields*/
+function addNewBirthDefect(divName){
+    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
+
+         if (counterForBirthDefect == limitForBirthDefect)  {
+              alert("You have reached the limit of adding " + counterForBirthDefect + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+             // START inner HTML
+              newdiv.innerHTML = "<div id='birthDefectCodeDiv"+(counterForBirthDefect+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Birth Defect code "+(counterForBirthDefect+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='birthDefectCodeDiv"+(counterForBirthDefect+1)+"' name='birthDefectCodeDiv"+(counterForBirthDefect+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value>SELECT</option><option disabled value>-----Central Nervous System Anomalies-----</option><option value='101'>101 - Anencephaly</option><option value='102'>102 - Meningomyelocele</option><option value='103'>103 - Hydranencephaly</option><option value='104'>104 - Congenital Hydrocephalus</option><option value='105'>105 - Holoprosencephaly</option><option value='106'>106 - Encephalocele</option><option value='901'>901 - Other lethal or life threatening</option><option disabled value>-----Congenital Heart Anomalies-----</option><option value='201'>201 - TruncusArteriosus</option><option value='202'>202 - TranspositionoftheGreatVessels</option><option value='203'>203 - Tetralogy of Fallot with or without Pulmonary Atresia</option><option value='204'>204 - Single Ventricle</option><option value='205'>205 - Double Outlet Right Ventricle</option><option value='206'>206 - Complete Atrio-Ventricular Canal</option><option value='207'>207 - Pulmonary Atresia with Intact Ventricular Septum</option><option value='208'>208 - Tricuspid Atresia</option><option value='209'>209 - Hypoplastic Left Heart Syndrome</option><option value='210'>210 - Interrupted Aortic Arch</option><option value='211'>211 - Total Anomalous Pulmonary Venous Return</option><option value='212'>212 - Pentalogy of Cantrell</option><option value='213'>213 - Coarctation of the Aorta</option><option value='214'>214 - Atrial Septal Defect</option><option value='215'>215 - Ventricular Septal Defect</option><option value='216'>216 - Arrythmia</option><option value='217'>217 - Ebstein’s Anomaly</option><option value='218'>218 - Pulmonary Valvular Stenosis</option><option value='902'>902 - Other lethal or life threatening</option><option disabled value>-----Gastro-Intestinal Anomalies-----</option><option value='301'>301 - Cleft Palate</option><option value='302'>302 - Tracheo-EsophagealFistula</option><option value='303'>303 - Esophageal Atresia</option><option value='304'>304 - Duodenal Atresia</option><option value='305'>305 - Jejunal Atresia</option><option value='306'>306 - IlealAtresia</option><option value='307'>307 - Atresia of Large Bowel or Rectum</option><option value='308'>308 - ImperforateAnus</option><option value='309'>309 - Omphalocele</option><option value='310'>310 - Gastroschisis</option><option value='311'>311 - Biliary Atresia</option><option value='312'>312 - Malrotation</option><option value='313'>313 - Hirschsprung’s Disease</option><option value='314'>314 - Sacrococcygeal teratoma</option><option value='903'>903 - Other lethal or life threatening</option><option disabled value>-----Genito-Urinary Anomalies-----</option><option value='401'>401 - Bilateral Renal Agenesis</option><option value='402'>402 - Bilateral Polycystic, Multicystic, or Dysplastic Kidneys</option><option value='403'>403 - Obstructive Uropathy with Congenital Hydronephrosis</option><option value='404'>404 - Exstrophy of the Urinary Bladder</option><option value='904'>904 - Other lethal or life threatening</option><option disabled value>-----Chromosomal Anomalies-----</option><option value='501'>501 - Trisomy 13</option><option value='502'>502 - Trisomy 18</option><option value='503'>503 - Trisomy 21</option><option value='504'>504 - Other chromosomal anomaly</option><option value='505'>505 - Triploidy</option><option disabled value>-----Other Congenital Anomalies-----</option><option value='601'>601 - Skeletal Dysplasia</option><option value='602'>602 - Congenital Diaphragmatic Hernia</option><option value='603'>603 - Hydrops Fetalis with anasarca</option><option value='604'>604 - Oligohydramnios Sequence</option><option value='605'>605 - Inborn Error of Metabolism</option><option value='606'>606 - Myotonic Dystrophy</option><option value='607'>607 - Conjoined Twins</option><option value='608'>608 - Tracheal Agenesis or Atresia</option><option value='609'>609 - Thanatophoric Dysplasia Types 1 and 2</option><option value='610'>610 - Hemoglobin Barts</option><option disabled value>-----Pulmonary Anomalies-----</option><option value='701'>701 - Congenital Cystic Adenomatoid Malformation of the Lung</option><option value='907'>907 - Other lethal or life threatening</option><option disabled value>-----Other Lethal or Life Threatening Anomalies-----</option><option value='100'>100 - Other lethal or life threatening</option></select></div></div>";
+             // END inner HTML
+              document.getElementById(divName).appendChild(newdiv);
+              counterForBirthDefect++;
+         }
+    
+}
+
+var counterForBacterialCodeDuringAdmission = 1;
+var limitForBacterialCodeDuringAdmission = 3;
+/*Adding new surgery fields*/
+function addNewBacterialCodeDuringAdmission(divName){
+    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
+
+         if (counterForBacterialCodeDuringAdmission == limitForBacterialCodeDuringAdmission)  {
+              alert("You have reached the limit of adding " + counterForBacterialCodeDuringAdmission + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+             // START inner HTML
+              newdiv.innerHTML = "<div id='bacterialCodeDuringAdmissionDiv"+(counterForBacterialCodeDuringAdmission+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Bacterial Code "+(counterForBacterialCodeDuringAdmission+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='bacterialCodeDuringAdmission"+(counterForBacterialCodeDuringAdmission+1)+"' name='bacterialCodeDuringAdmission"+(counterForBacterialCodeDuringAdmission+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value=''>SELECT</option><option value='102'>102 - Acinetobacter species</option><option value='201'>201 - Bacteroides species</option><option value='501'>501 - Enterobacter species</option><option value='502'>502 - Enterococcus species</option><option value='503'>503 - Escherichia coli</option><option value='801'>801 - Haemophilus species</option><option value='1101'>1101 - Klebsiella species</option><option value='1201'>1201 - Listeria monocytogenes</option><option value='1301'>1301 - Moraxella species</option><option value='1401'>1401 - Neisseria species</option><option value='1604'>1604 - Proteus species</option><option value='1606'>1606 - Pseudomonas species</option><option value='1902'>1902 - Serratia species</option><option value='1903'>1903 - Staphylococcus coagulase positive</option><option value='1904'>1904 - Stenotrophomonas maltophilia</option><option value='1905'>1905 - Group B Streptococcus or GBS</option><option value='1906'>1906 - Streptococcus anginosus</option><option value='1907'>1907 - Streptococcus pneumoniae</option><option value='1908'>1908 - Streptococcus pyogenes</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
+             // END inner HTML
+              document.getElementById(divName).appendChild(newdiv);
+              counterForBacterialCodeDuringAdmission++;
          }
     
 }
@@ -685,6 +829,18 @@ function dispositionAfterReadmissionCheck() {
         $(partD).addClass('glowingHiddenFields');
     }
 }
+
+function fixingInputAlignmentCheck(){
+    var e = document.getElementById("gestationalAgeInWeeks");
+    var strUser = e.options[e.selectedIndex].value;
+    if(strUser==99){
+       $('.gestionalDaysDiv').slideUp('slow)');
+       }
+    else{
+        $('.gestionalDaysDiv').slideDown('slow)');
+    }
+}
+
 function ultimateDispositionCheck() {
     var e = document.getElementById("ultimateDisposition");
     var strUser = e.options[e.selectedIndex].value;
@@ -738,19 +894,33 @@ function sepsisDuringAdmissionCheck() {
     var strUser = e.options[e.selectedIndex].value;
     
     var hiddenField = document.getElementById('hiddenFieldSepsisDuringAdmission');
-    if (strUser==1 || strUser==2 ){
-    
+    var hiddenField1 = document.getElementById('organismCodeDuringAdmissionDiv');
+    var button = document.getElementById('addNewOrganismCodeDuringAdmissionDiv');
+    if (strUser==1){
         $(hiddenField).slideDown("slow");
         $(hiddenField).addClass('glowingHiddenFields');
+        $(hiddenField1).slideDown("slow");
+        $(button).slideDown("slow");
+    } 
+    else if(strUser==2){
+        $(hiddenField).slideDown("slow");
+        $(hiddenField).addClass('glowingHiddenFields');    
+        $(hiddenField1).slideUp("slow");
+        $(button).slideUp("slow");
     }
     else{
         $(hiddenField).slideUp("slow");
-        $(hiddenField).removeClass('glowingHiddenFields');
+        $(hiddenField).removeclass('glowingHiddenFields');
+        $(hiddenField1).slideUp("slow");
+        $(button).slideUp("slow");
     }
+    
+        
+    
 }
 
 function congenitalCode1FirstPartCheck(){
-    var e = document.getElementById("congenitalCodeFirstPart1");
+    var e = document.getElementById("congenitalCode1");
     var strUser = e.options[e.selectedIndex].value;
     var hiddenField = document.getElementById('hiddenFieldCongenitalCode1SecondPart');
     if (strUser==1 ){
@@ -759,7 +929,7 @@ function congenitalCode1FirstPartCheck(){
     }
 }
 
-function numberOfInfantsDeliveredCheck() {
+function multipleGestationCheck() {
     if (document.getElementById('multipleGestationYes').checked) {
         $("#numberOfInfantsDelivered").val('2').change();
         $('#numberOfInfantsDelivered option').prop("disabled", false);
@@ -778,6 +948,27 @@ function numberOfInfantsDeliveredCheck() {
     }
 }
 
+function numberOfInfantsDeliveredCheck(){
+    var e = document.getElementById("numberOfInfantsDelivered");
+    var strUser = e.options[e.selectedIndex].value;
+    var hiddenField = document.getElementById('twinOrTripletDiv');
+    if(strUser==2){
+        $(hiddenField).slideDown("slow");
+        $(hiddenField).addClass('glowingHiddenFields');
+        $('#twinOrTripletTwin').attr("checked",true);
+        $('#twinOrTripletTwin').change();
+    }
+    else if(strUser==3){
+        $(hiddenField).slideDown("slow");
+        $(hiddenField).addClass('glowingHiddenFields');
+    }
+    else{
+        $(hiddenField).slideUp("slow");
+        $(hiddenField).removeClass('glowingHiddenFields');
+    }
+}
+
+
 function duplicateToImmunizationDate(){
     var d = $('#immunizations652Date').datepicker('getDate');
     $('#immunizationDate').datepicker('setDate', d);
@@ -785,21 +976,20 @@ function duplicateToImmunizationDate(){
     
 }
 function twinOrTripletCheck(){
-    var value1 = document.getElementById('hiddenFieldTwinAB');
-    var value2 = document.getElementById('hiddenFieldTripletABC');
+    var hiddenFieldTwins = document.getElementById('hiddenFieldTwins');
+    var hiddenFieldTwinsTriplets = document.getElementById('hiddenFieldTriplets');
     if (document.getElementById('twinOrTripletTwin').checked) {
-        $(value1).slideDown("slow");
-        $(value1).addClass('glowingHiddenFields')
-        $(value2).slideUp("slow");
-        $(value2).removeClass('glowingHiddenFields')
+        $(hiddenFieldTwins).slideDown("slow");
+        $(hiddenFieldTwins).addClass('glowingHiddenFields')
+        $(hiddenFieldTwinsTriplets).slideUp("slow");
+        $(hiddenFieldTwinsTriplets).removeClass("glowingHiddenFields");
+        
     }
     if (document.getElementById('twinOrTripletTriplet').checked) {
-        $(value2).slideDown("slow");
-        $(value2).addClass('glowingHiddenFields')
-        $(value1).slideUp("slow");
-        $(value1).removeClass('glowingHiddenFields')
-        
-        
+        $(hiddenFieldTwins).slideUp("slow");
+        $(hiddenFieldTwins).removeClass('glowingHiddenFields')
+        $(hiddenFieldTwinsTriplets).slideDown("slow");
+        $(hiddenFieldTwinsTriplets).addClass("glowingHiddenFields");
     }
 }
 function showNotAVonBabyFields(){
@@ -948,7 +1138,6 @@ $(document).ready(function() {
     
     
     $(window).scroll(function() {
-        var all_answered_Search = true;
         var patientFormLocation = $("#PatientFormID").offset().top;
         var generalDataItemsFormLocation = $("#generalDataItemsID").offset().top;
         var transferFormLocation = $("#TransferFormID").offset().top;
@@ -968,59 +1157,7 @@ $(document).ready(function() {
            $("#sidebar-container").fadeIn(500);
            }
         //Patient Form Section
-        if(generalDataItemsFormLocation==0){
-            // START patient to additional
-            if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the patient form 1076
-            
-            if($('.dischargeAndTransferProgressBar').hasClass('glowingButton')){
-                $('.dischargeAndTransferProgressBar').removeClass('glowingButton')
-               }
-            
-            $('.patientFormProgressBar').addClass('glowingButton');
-            /* Toggling Buttons */
-            $('#patientFormCircle').addClass('glowingButton');
-            $('#generalDataItemsFormCircle').removeClass('glowingButton');
-            $('#dischargeCircle').removeClass('glowingButton');
-            console.log("length of radio "+($('input[name=locationOFBirthInborn]:checked').length));
-            /* Toggling different Color */
-            /*Checking if the fields match green or red and change colours*/
-            /*Does it have either of the classes? If not, then its ORANGE */
-            if(
-                (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) &&
-                (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) &&
-                (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) &&
-                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) &&
-                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen'))
-              ){
-               $('#patientFormCircle').css('background-color', 'black');
-               }
-            else if($('#birthWeightInGrams').hasClass('addRed') ||
-                    $('#mothersFirstName').hasClass('addRed') ||
-                    $('#mothersLastName').hasClass('addRed') ||
-                    $('#patientsName').hasClass('addRed') ||
-                    $('#patientMedicalRecordNumber').hasClass('addRed')
-                   ){
-                $('#patientFormCircle').css('background-color', 'red');
-            }
-            else{
-                $('#patientFormCircle').css('background-color', 'green');
-            }
-            
-        }
-            // START additional and beyond
-            if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
-                if($('.patientFormProgressBar').hasClass('glowingButton')){
-                    $('.patientFormProgressBar').removeClass('glowingButton');
-                   }
-                $('.dischargeAndTransferProgressBar').addClass('glowingButton');
-                /* Toggling Buttons */
-                $('#patientFormCircle').removeClass('glowingButton');
-                $('#dischargeCircle').addClass('glowingButton');
-        }
-           }
-        else if(generalDataItemsFormLocation>0){
-            //START old checks
-            if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
+        if($(window).scrollTop() > patientFormLocation-100 && $(window).scrollTop() < generalDataItemsFormLocation-100) { //scrolled past the patient form 1076
                 if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
                     $('.generalDataItemsProgressBar').removeClass('glowingButton')
                    }
@@ -1033,33 +1170,6 @@ $(document).ready(function() {
             $('#patientFormCircle').addClass('glowingButton');
             $('#generalDataItemsFormCircle').removeClass('glowingButton');
             $('#dischargeCircle').removeClass('glowingButton');
-            /* Toggling different Color */
-            /*Checking if the fields match green or red and change colours*/
-            /*Does it have either of the classes? If not, then its blank*/
-//            if(
-//                (!$('#birthWeightInGrams').hasClass('addRed') && !$('#birthWeightInGrams').hasClass('addGreen')) ||
-//                (!$('#mothersFirstName').hasClass('addRed') && !$('#mothersFirstName').hasClass('addGreen')) ||
-//                (!$('#mothersLastName').hasClass('addRed') && !$('#mothersLastName').hasClass('addGreen')) ||
-//                (!$('#patientsName').hasClass('addRed') && !$('#patientsName').hasClass('addGreen')) ||
-//                (!$('#patientMedicalRecordNumber').hasClass('addRed') && !$('#patientMedicalRecordNumber').hasClass('addGreen')) ||
-//                (!$('#dateOfBirth').hasClass('addRed') && !$('#dateOfBirth').hasClass('addGreen')) 
-//                /*($('input:radio[name=outbornBirth]:checked').length==0)*/
-//              ){
-//                            $('#patientFormCircle').css('background-color', 'orange');
-//               }
-//            else if($('#birthWeightInGrams').hasClass('addGreen') &&
-//                    $('#mothersFirstName').hasClass('addGreen') &&
-//                    $('#mothersLastName').hasClass('addGreen') &&
-//                    $('#patientsName').hasClass('addGreen') &&
-//                    $('#patientMedicalRecordNumber').hasClass('addGreen') &&
-//                    $('#dateOfBirth').hasClass('addGreen')
-//                    /*$('input:radio[name=outbornBirth]:checked').length>0*/
-//                   ){
-//                            $('#patientFormCircle').css('background-color', 'green');
-//            }
-//            else{
-//                            $('#patientFormCircle').css('background-color', 'red');
-//            }
             
         }
             if($(window).scrollTop() > generalDataItemsFormLocation-100 && $(window).scrollTop() < transferFormLocation-100) { //scrolled past the general data items form 2156
@@ -1078,21 +1188,21 @@ $(document).ready(function() {
                 $('#dischargeCircle').removeClass('glowingButton');
             }
             if($(window).scrollTop() > transferFormLocation-100) { //scrolled past the general data items form 2156
-            if($('.patientFormProgressBar').hasClass('glowingButton')){
-                $('.patientFormProgressBar').removeClass('glowingButton');
-               }
-            if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
-                $('.generalDataItemsProgressBar').removeClass('glowingButton');
-               }
-            /*$('.patientFormProgressBar').removeClass('glowingButton')*/
-            $('.dischargeAndTransferProgressBar').addClass('glowingButton');
-            /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
-            /* Toggling Buttons */
-            $('#patientFormCircle').removeClass('glowingButton');
-            $('#generalDataItemsFormCircle').removeClass('glowingButton');
-            $('#dischargeCircle').addClass('glowingButton');
+                    if($('.patientFormProgressBar').hasClass('glowingButton')){
+                        $('.patientFormProgressBar').removeClass('glowingButton');
+                       }
+                    if($('.generalDataItemsProgressBar').hasClass('glowingButton')){
+                        $('.generalDataItemsProgressBar').removeClass('glowingButton');
+                       }
+                    /*$('.patientFormProgressBar').removeClass('glowingButton')*/
+                    $('.dischargeAndTransferProgressBar').addClass('glowingButton');
+                    /*$('.dischargeAndTransferProgressBar').removeClass('glowingButton')*/
+                    /* Toggling Buttons */
+                    $('#patientFormCircle').removeClass('glowingButton');
+                    $('#generalDataItemsFormCircle').removeClass('glowingButton');
+                    $('#dischargeCircle').addClass('glowingButton');
         }
-        }
+        
         
         
     });
@@ -1142,7 +1252,7 @@ var patientsName = document.getElementById("patientsName");
 var patientsNameInSideBar = document.getElementById("patientInfoPanelPatientNameDisplayID");
 /*combining the names*/
 /*var fullName = document.getElementById("mothersFirstName") + document.getElementById("mothersLastName");*/
-$("#mothersFirstName").keyup(function() {
+$("#mothersLastName").keyup(function() {
     
     patientsName.value = "Baby "+this.value;
     patientsNameInSideBar.value = "Baby "+this.value;
@@ -1171,7 +1281,6 @@ $("#patientMedicalRecordNumber").keyup(function() {
 $( function() {
     
     $( "#dateOfBirth" ).datepicker({
-        showButtonPanel: true,
         numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '0',
@@ -1184,7 +1293,7 @@ $( function() {
 $( function() {
     
     $( "#dateOfAdmission" ).datepicker({
-        showButtonPanel: true,
+        numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '0',
         minDate: '-18M'
@@ -1196,7 +1305,7 @@ $( function() {
 $( function() {
     
     $( "#dateOfInitialDisposition" ).datepicker({
-        showButtonPanel: true,
+        numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '0',
         minDate: '-18M'
@@ -1208,7 +1317,7 @@ $( function() {
 $( function() {
     
     $( "#appointmentDate" ).datepicker({
-        showButtonPanel: true,
+        numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '+12M',
         minDate: '+1D'
@@ -1220,7 +1329,7 @@ $( function() {
 $( function() {
     
     $( "#immunizationDate" ).datepicker({
-        showButtonPanel: true,
+        numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '+12M',
         minDate: '0'
@@ -1232,7 +1341,7 @@ $( function() {
 $( function() {
     
     $( "#PCRDate" ).datepicker({
-        showButtonPanel: true,
+        numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '+12M',
         minDate: '+1D'
@@ -1244,7 +1353,7 @@ $( function() {
 $( function() {
     
     $( "#ROPDate" ).datepicker({
-        showButtonPanel: true,
+        numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '+12M',
         minDate: '+1D'
@@ -1256,7 +1365,7 @@ $( function() {
 $( function() {
     
     $( "#immunizations652Date" ).datepicker({
-        showButtonPanel: true,
+        numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '0',
         minDate: '-12M'
@@ -1268,7 +1377,7 @@ $( function() {
 $( function() {
     
     $( "#initialLengthOfStay" ).datepicker({
-        showButtonPanel: true,
+        numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '+18M',
         minDate: '0'/*,
@@ -1349,3 +1458,71 @@ $( function() {
     });
   } );
 /* END DATES*/
+/*START - Function to display automated SELECT drop downs */
+$(function(){
+    var idValue = $("#gestationalAgeInWeeks");
+    for (i=22;i<=46;i++){
+        idValue.append($('<option></option>').val(i).html(i+" weeks"))
+    }
+});
+$(function(){
+    var idValue = $("#temperatureAdmission");
+    for (i=25;i.toFixed(1)<=42;i+=0.2){
+        idValue.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+ ' &#8451'))
+    }
+});
+
+$(function(){
+    var idValue = $("#headCircumference");
+    for (i=20;i.toFixed(1)<=45;i+=0.2){
+        idValue.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+" cm"))
+    }
+});
+$(function(){
+    var idValue = $("#headCircumferenceInitialDisposition");
+    for (i=20;i.toFixed(1)<=45;i+=0.2){
+        idValue.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+" cm"))
+    }
+});
+
+$(function(){
+    var idValue = $("#mothersAge");
+    for (i=8;i<=55;i++){
+        idValue.append($('<option></option>').val(i).html(i+" Years Old"))
+    }
+});
+
+$(function(){
+    var idValue = $("#ageAtFirstSurfactantHours");
+    for (i=0;i<=60;i++){
+        idValue.append($('<option></option>').val(i).html(i+" Hours"))
+    }
+});
+/*END - Function to display automated SELECT drop downs */
+/*START - Function to display Diaglog Box to confirm clear form */
+function clearFormDialog() {
+    $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height: "auto",
+      width: 400,
+      modal: true,
+      buttons: {
+        "Clear Form": function() {
+          $( this ).dialog( "close" );
+            /*toastr.success("Form cleared Successfully!")*/
+            location.reload();
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  } ;
+/*END - Function to display Diaglog Box to confirm clear form */
+/*START - Function to check if each label is too big or not */
+$('label.fixingLabelAlignment').each(function(){
+    if($(this).text().length > 50){
+        $(this).css('font-size', '1.2em');
+    }
+});
+/*END - Function to check if each label is too big or not */

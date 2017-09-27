@@ -1,0 +1,104 @@
+<!--Notes: Natural Language formatting (bullets points)-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test Environment</title>
+    <script src="js/recordTestDataObject.js"></script>
+    <link href="dischargeStyle.scss" rel="stylesheet"/>   
+      
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+      
+    <link href="css/ownCSS.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    
+    
+      
+      
+<!--    <link href="css/grayscale.css" rel="stylesheet">-->
+    <link href="css/toastr.css" rel="stylesheet" />
+      
+  </head>
+    <body>
+    <div id="dischargeTransferHTMLPrint">
+        
+        <div class="printRow">
+            <span class="one-third">
+                <br><br>
+                <img src="img/westernCapeLogo.png" alt="Western Cape" width="90%">
+            </span>
+            <span class="one-third">
+                <h3>Discharge/Transfer Letter</h3>
+            </span>
+            <span class="one-third" style="float:right">
+                <br><br>
+                <p>Neonatal Unit<br>
+                Groote Schuur Hospital<br>
+                021-404-6069</p>
+            </span>
+        </div>
+        
+        <hr>
+        
+        <div class="headingValues">
+            <span><b>Baby of</b>: <span id="mothersNameAndSurname"></span></span>
+            <span><b>Folder Number</b>: ______</span>        
+            <span><b>DOB</b>: <span id="dateOfBirth"></span></span>
+            <span><b>Gender</b>: <span id="sexOfInfant"></span></span>
+            <span><b>Mothers Age</b>: <span id="mothersAge"></span></span>
+            <span><b>Mode Of Delivery</b>: <span id="modeOfDelivery"></span></span>
+            <span><b>Apgars (1min)</b>: <span id="apgarScoresOneMin"></span></span>
+            <span><b>Apgars (5min)</b>: <span id="apgarScoresFiveMin"></span></span>
+            <span><b>Birth Weight</b>: <span id="birthWeightInGrams"></span></span>
+            <span><b>Head Circumference</b>: <span id="headCircumferenceAtBirth">cm</span></span>
+            <span><b>Gestational Age</b>: <span id="gestationalAge"></span></span>
+            <br>
+        </div>
+        <div style="display:block;">
+            <p>Problem list</p>
+            <span style="width:100mm; float:left">
+                <p><span id="birthWeightCategory"></span></p>
+                <p><span id="prematureCategory"></span></p>
+                <p><span id="twinsOrMore"></span></p>
+                <p><span id="rvdValue"></span> • RVDe if RVD+ from additional birth details above. PCR Result</p>
+                <p><span id="requiresSurfactant"></span>• RDS requiring surfactant (from VON)</p>
+                <p><span id="cld"></span></p>
+                <p><span id="necPlus"></span>NEC+ </p>
+                <p> • Ventilation (from question 2 above). Include day of life of starting and number of days and diagnosis</p>
+            </span>
+            <span style="width:100mm; float:right">
+                <p> • HIE and info from question 3 above</p>
+                <p> • Neonatal jaundice – from question 1 above</p>
+                <p> • Sepsis from question 4 above</p>
+                <p> • Fetal Medicine Unit (info from 5 above)</p>
+                <p> • Abnormal Head Ultrasound (info from 7 above)</p>
+                <p> • Chromosomes done (info from 6 above)</p>
+                <p> • Vaccine done (info from 8 above)</p>
+            </span>
+        </div>
+        <div style="clear:both; display:block;">
+        <p>Notes: </p>
+            <br><br><br><br><br>
+            <br><br><br><br><br>
+        </div>
+        <p>Date of Discharge/Transfer: <span id="dateOfDischarge"></span> <span id="placeOfTransfer"></span> <span id="weightAtDischarge"></span> <span id="headCircumferenceAtDischarge"></span></p>
+        <p>Meds:_____________________</p>
+        <p>Feeds:____________________</p>
+        <br>
+        <p>Follow up appointments: </p>
+        <p>Done by: Dr</p>
+        <br>
+        
+    </div>
+    <div id="editor"></div>
+        <div>
+    <button style="position: absolute;z-index:10; right:220mm" class="btn btn-default" onclick="window.print()">Print Document</button></div>
+<!--        <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>-->
+        <script src="js/moment.js"></script>
+        <script src="js/dischargeFormPopulation.js"></script>
+        
+    </body>
+</html>
