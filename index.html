@@ -22,8 +22,9 @@
     <!-- Custom styles for this template -->
     <link href="css/grayscale.css" rel="stylesheet">
     <link href="css/toastr.css" rel="stylesheet" />
-    
-
+    <!--Calendar CSS-->
+    <link rel="stylesheet" href="/Calendar/jquery-ui.css">
+   
     <!-- Temporary navbar container fix -->
     <style>
         .navbar-toggler {
@@ -81,10 +82,10 @@
                         <label class="subHeadingTitle">Neonatal Unit</label>
                         <h5 style="font-family: 'Julius sans one'">Data Capture & Report Management System</h5>
 
-                        <a href="#PatientFormID" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;">
+                        <a class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="return test();">
+                        
                            Create New Entry <i class="fa fa-angle-double-down animated"></i>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -160,7 +161,7 @@
                                         <label class="fixingLabelAlignment">Birth Weight : </label>
                                         <div class="fixingInputAlignment">
                                             <span class="addingUnits unitsGrams">
-                                                <input id="birthWeightInGrams" class="form-control" onblur="validateBirthweight()" type="text" placeholder="1500">
+                                                <input id="birthWeightInGrams" name="birthWeightInGrams" class="form-control" onchange="validateBirthweight()" type="search" placeholder="eg. 1500" maxlength="4">
                                             </span>
 
                                             <!--<span class="input-group-addon" style="border-radius: 0 5px 5px 0; height: 32px;position:relative;width: 70px;right:10px">grams</span>-->
@@ -378,7 +379,9 @@
                                         <div class="form-group input-group gestationalAgeDaysDiv">
                                             <label class="fixingLabelAlignment"></label>
                                             <div class="fixingInputAlignment">
-                                                <select name=gestionalDays class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                <select name="gestionalDays" id="gestionalDays"class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                    <option disabled selected value></option>
+                                                    <option disabled selected value>SELECT</option>
                                                     <option value="0">0 Days</option>
                                                     <option value="1">1 Day</option>
                                                     <option value="2">2 Days</option>
@@ -4215,6 +4218,7 @@
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.js"></script>
     <script src="js/toastr.js"></script>
+    <!--<script src="js/jquery.popupoverlay.js"></script>-->
     <!-- Custom VON Team Scripts for this template -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
@@ -4226,11 +4230,15 @@
     <script src= "js/db.js"></script>
     <script>checkForPopulation()</script>
     <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
+    <script type="text/javascript" src="Calendar/jquery-ui.js"></script>
+    <script src="Calendar/jquery-ui.css"></script>
+    <script type="text/javascript" src="js/jquery.serializejson.js"></script>
     
 <script type="text/javascript">
-    $(document).ready(function() {
+    /*$(document).ready(function() {
         $('form').sisyphus(
             {
+                excludeFields: ["_id _rev"],
                 locationBased: true,
                 timeout: 10,
                 //autoRelease: true,
@@ -4239,14 +4247,26 @@
                     var hours = date.getHours();
                     var minutes = date.getMinutes();
                     var seconds = date.getSeconds();
-                    toastr.options.showMethod = 'slideDown';
-                    toastr.success('Saved', 'Autosave', {timeOut: 750});
+                   
+                    //toastr.options.showMethod = 'slideDown';
+                    //repopulateForm(getCurrentId);
+                    //toastr.success('Saved', 'Autosave', {timeOut: 750});
                     //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
+                    var record = $('form').serializeJSON();
+                    //alert(JSON.stringify(record));
+                    updateDataInRecord(record);
+                    
                 }
             }
         );
     });
-</script>
+
+    function test(){
+        //alert("Create Record in Database");
+        createRecordInDatabase();
+    }*/
+        
+</script>-->
 </body>
 
 </html>

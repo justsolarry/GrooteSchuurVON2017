@@ -78,8 +78,7 @@
                                     <th>Birth Date</th>
                                     <th>Intial Disposition</th>
                                     <th>Location</th>
-                                    <th>Day 28</th>
-                                    <th>Week 36</th>
+                                    <th>Submit to VON</th>
                                 </tr>
                                 </thead>
                                 </table>
@@ -134,12 +133,35 @@
         $(cell).addClass('warning');        
     });
             
-    $("#jqGrid").on('click', 'tr', function () {
-        var row = $(this).attr('id');
-        displayData(row);
-    });        
+    $("#jqGrid").on('click', 'button', function () {
+        row = $(this).parents('tr').attr('id');
+        button=true;
+    });  
+    
+    $("#jqGrid").on('click', 'checkbox', function () {
+        row = $(this).parents('tr').attr('id');
+        //displayData(row);
+        button=true;
+    });  
             
-    } );
+    $("#jqGrid").on('click', 'tr', function () {
+        row = $(this).attr('id');
+        if(button===true){
+           //submit to von    
+            //alert(row+"'s button has been clicked");
+            button=false;
+            
+        }else{
+          //alert(row+" has been clicked");
+          displayData(row);
+        }
+        
+    });   
+    
+            
+   });
+        
+        
     </script>
 
     <!-- Footer -->
