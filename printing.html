@@ -5,7 +5,22 @@
   <head>
     <title>Test Environment</title>
     <script src="js/recordTestDataObject.js"></script>
-    <link href="dischargeStyle.scss" rel="stylesheet"/>    
+    <link href="dischargeStyle.scss" rel="stylesheet"/>   
+      
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+      
+    <link href="css/ownCSS.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    
+    
+      
+      
+<!--    <link href="css/grayscale.css" rel="stylesheet">-->
+    <link href="css/toastr.css" rel="stylesheet" />
+      
   </head>
     <body>
     <div id="dischargeTransferHTMLPrint">
@@ -82,25 +97,8 @@
         <div>
     <button style="position: absolute;z-index:10; right:220mm" class="btn btn-default" onclick="window.print()">Print Document</button></div>
 <!--        <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>-->
-        <script>
-            var babyData = testData();
-            
-            var sex = babyData.sexOfInfant;
-            document.getElementById("sexOfInfant").innerHTML = (sex == 0) ? "male" : (sex == 1) ? "female" : "Unknown";
-            var delivery = babyData.modeOfDelivery;
-            document.getElementById("modeOfDelivery").innerHTML = (delivery == 0) ? "Vaginal" : (delivery == 1) ? "Cesarian" : "Unknown";
-            document.getElementById("apgarScoresOneMin").innerHTML = babyData.apgarScoresOneMin;
-            document.getElementById("apgarScoresFiveMin").innerHTML = babyData.apgarScoresFiveMin;
-            document.getElementById("birthWeightInGrams").innerHTML = babyData.birthWeightInGrams;
-            document.getElementById("headCircumferenceAtBirth").innerHTML = babyData.headCircumferenceAtBirth;
-            var readableGestationalAge = babyData.gestationalAgeInWeeks + " weeks and " + babyData.gestationalAgePlusDays + " days";
-            document.getElementById("gestationalAge").innerHTML = readableGestationalAge;
-            document.getElementById("birthWeightCategory").innerHTML = (babyData.birthWeightInGrams < 1000) ? " • ELBW" : (babyData.birthWeightInGrams < 1500) ? " • VLBW" : (babyData.birthWeightInGrams < 2501) ? " • LBW" : "";
-            var prematureCategory = (babyData.gestationalAgeInWeeks < 28) ? "Extremely Premature" : (babyData.gestationalAgeInWeeks < 32) ? "Very Premature" : (babyData.gestationalAgeInWeeks < 37) ? "Premature" : "";
-            document.getElementById("prematureCategory").innerHTML = "• " + prematureCategory + " (" + readableGestationalAge + ")";
-            document.getElementById("twinsOrMore").innerHTML = (babyData.multipleGestation == 1) ? " • Multiple Pregnancy" : "";
-            document.getElementById("cld").innerHTML = (babyData.oxygenAt36Weeks == 1) ? " • CLD" : "";
-            document.getElementById("necPlus").innerHTML = (babyData.necSurgery == 1) ? " • NEC" : "";
-        </script>
+        <script src="js/moment.js"></script>
+        <script src="js/dischargeFormPopulation.js"></script>
+        
     </body>
 </html>
