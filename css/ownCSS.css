@@ -125,7 +125,7 @@ input[type="search"]:disabled {
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 100;
     display: inline-block;
-    height:32px;
+    line-height:32px;
     width: 450px;
     /*background-color:green;*/
 }
@@ -155,12 +155,6 @@ input[type="search"]:disabled {
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 100;
    /*background-color: green;*/
-}
-
-.fixingDischargeTransferButtonAlignment{
-    background-color: orange;
-    left:50%;
-    margin-left:50%;
 }
 
 /* Hiding Fields*/
@@ -212,29 +206,19 @@ input[type="search"]:disabled {
 #hiddenFieldTwinAB,
 #hiddenFieldTripletABC,
 .modeOfDeliveryAdditionalDiv,
-.day28DateDiv,
 .sixWeeksOldDateDiv,
 #addNewBacterialFieldDiv,
-#organismCodeDuringAdmissionDiv
+#organismCodeDuringAdmissionDiv,
+#dialog-confirm,
+#hiddenFieldTwins,
+#hiddenFieldTriplets,
+#twinOrTripletDiv
 {
     display:none;
 }
 
 /* Hiding not a VON baby fields */
 .babyLengthDiv{
-    display:none;
-}
-/*Hiding surgery field 2-10*/
-#hiddenFieldSurgery2,
-#hiddenFieldSurgery3,
-#hiddenFieldSurgery4,
-#hiddenFieldSurgery5,
-#hiddenFieldSurgery6,
-#hiddenFieldSurgery7,
-#hiddenFieldSurgery8,
-#hiddenFieldSurgery9,
-#hiddenFieldSurgery10
-{
     display:none;
 }
 
@@ -261,9 +245,6 @@ input[type="search"]:disabled {
 
 }
 */
-
-
-
 .inputFieldResize
 {
     width:200px;
@@ -315,7 +296,6 @@ input[type="search"]:disabled {
 .ownToolTip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
     margin: 8px 0px;
     /* START changing the location of the icon*/
     right:50px;
@@ -456,7 +436,7 @@ input[type="search"]:disabled {
     top: 20px;
     border: 1px solid gray;
     margin: 10px 10px;
-    height:200px;
+    height:180px;
     border-radius: 4px;
 }
 .patientMedicalRecordDiv{
@@ -467,12 +447,41 @@ input[type="search"]:disabled {
 }
 .patientInfoPanelPatientMedical,.patientInfoPanelPatientName{
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 1em;
     color: dimgray;
     display:block;
+    text-align: left;
+    padding-left: 2em;
+    line-height: 2em;
+}
+.patientInfoPanelPatientMedical:before{
+    position:relative;
+    right:240px;
+    float:right;
+    font-family: FontAwesome;
+    content: "\f2bb";
+    line-height: 2em;
+}
+.patientInfoPanelPatientName:before{
+    position:relative;
+    right:240px;
+    float:right;
+    font-family: FontAwesome;
+    content: "\f2c0";
+    line-height: 2em;
 }
 .patientInfoPanelPatientMedicalDisplay, .patientInfoPanelPatientNameDisplay{
     display:block;
+}
+.patientMedicalRecordDivFormat{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: transparent;
+    border-style: none;
+    color: #D7DBDD;
+    display:block;
+    text-align: left;
+    padding-left: 35px;
+    /*text-align: center;*/
 }
 .progressBarUL{
     list-style: none;
@@ -505,7 +514,7 @@ input[type="search"]:disabled {
     font-family: "Proxima Nova Alt Light","Avenir LT Std 35 Light","Circular Std Book";
     width:95%;
     border-radius: 5px;
-    
+    border: 1px solid;
 }
 /* circles */
 /* ".progressBarUL li span"  It was previously this but to decrease specifity value we made it this so the black doesn't take priority over the colour classes we are adding.*/
@@ -524,8 +533,6 @@ div ul li .firstATag{
 }
 /*pseudo for the circle line*/
 div ul li .firstATag:before{
-    
-    
     z-index: 9998;
     content:'';
     position:absolute;
@@ -533,7 +540,6 @@ div ul li .firstATag:before{
     left:-20px;
     width:0px;
     height:100%;
-    
 }
 /* numbers */
 div ul li .firstATag:after{
@@ -550,7 +556,17 @@ div ul li .firstATag:after{
     position:absolute;
     
 }
+#clearFormButton:after{
+    font-family: FontAwesome;
+    content: "\f014";
+    margin-left:0.5em;
+}
 
+#PrintDischargeButton:after{
+    font-family: FontAwesome;
+    content: "\f02f";
+    margin-left:0.5em;
+}
 .progressBarUL #listItem2 span:before{
 /*    background-color: green;*/
     
@@ -715,28 +731,6 @@ input[type="radio"]:checked~label {
     font-weight: normal;
     color: #ffffff;
 }
-.radioTextMoreThanTwoVerticalAlign{
-    display:block;
-    text-align:left;
-    margin-left:470px;
-}
-.bottom-block{
-    display:block;
-    background: red;
-    position:relative;
-    width:100px;
-    height:100px;
-}
-#dischargeOrTransferDIV{
-    background: red;
-}
-#dischargeOrTransferDIV label{
-    background:yellow;
-}
-#dischargeOrTransferDIV a{
-    margin:15px;
-}
-
 /* START Menu CSS */
 /* The side navigation menu */
 .sidenav {
@@ -936,18 +930,8 @@ input[type="radio"]:checked~label {
     padding: 25px;
 }
 /*END Inner inner panel*/
-/* START Centering the drop down select */
-.tempforSize {display: inline-block !important;}
-/* END Centering the drop down select */
 
-.patientMedicalRecordDivFormat{
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: transparent;
-    border-style: none;
-    color:white;
-    display:block;
-    text-align: center;
-}
+
 /* START Settings for all the dates*/
 
 /* END Settings for all the dates*/
