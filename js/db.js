@@ -226,8 +226,8 @@ function createRecordInDatabase(medicalRecordId){
 }
 
 function getRecordFromDatabase(medicalRecordId){
-    createHTTPGETConnection(medicalRecordId)
-    return tempBabyData;
+    var record = createHTTPGETConnection(medicalRecordId)
+    return record;
 }
 
 function writeDataToRecord(medicalRecordId){
@@ -274,19 +274,20 @@ function createHTTPPOSTConnection(medicalRecordId){ // must change to pass in va
 function createHTTPGETConnection(medicalRecordId){
 
   var http = new XMLHttpRequest();
-  var url = "http://196.24.190.72:5984/test1/" + medicalRecordId; //server will change -> config file?
+  var url = "http://196.24.167.213:5984/test1/" + medicalRecordId; //server will change -> config file?
+  var babyData = {};
   http.open("GET", url, false);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         babyData = this.responseText;
         
-        toastr.info("successful connection to database");
+        //toastr.info("successful connection to database");
        
-        tempBabyData = JSON.parse(babyData);
+        babyData = JSON.parse(babyData);
         //console.log(this.responseText);
     }
   }
   http.send();
-    
+  return babyData;
     
 }

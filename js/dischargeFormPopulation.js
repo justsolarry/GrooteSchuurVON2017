@@ -3,7 +3,10 @@
 //HIE
 
 
-var babyData = testData();
+var babyData = getRecordFromDatabase(10);
+    //
+    //getRecordFromDatabase(9);
+    //
 
 var dischargeOrTransferedText = (babyData.initialDisposition == 2) ? "Transfer" : "Discharge";
 console.log(dischargeOrTransferedText);
@@ -23,7 +26,7 @@ document.getElementById("apgarScoresOneMin").innerHTML = babyData.apgarScoresOne
 document.getElementById("apgarScoresFiveMin").innerHTML = babyData.apgarScoresFiveMin;
 document.getElementById("birthWeightInGrams").innerHTML = babyData.birthWeightInGrams;
 document.getElementById("headCircumferenceAtBirth").innerHTML = babyData.headCircumferenceAtBirth + "cm";
-var readableGestationalAge = babyData.gestationalAgeInWeeks + " weeks and " + babyData.gestationalAgePlusDays + " days";
+var readableGestationalAge = babyData.gestationalAgeInWeeks + " weeks and " + babyData.gestationalDays + " days";
 document.getElementById("gestationalAge").innerHTML = readableGestationalAge;
 //Header End
 
