@@ -32,8 +32,7 @@ function mapToNaturalLanguage(record){
     case 99999999:
         center = "Unknown"
         break;
-    default:
-}
+    }
     addedRecord.transferCenterName = center;
     if (record.transferCenterPIW)
     return record;
