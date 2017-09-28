@@ -31,7 +31,7 @@
                 <img src="img/westernCapeLogo.png" alt="Western Cape" width="90%">
             </span>
             <span class="one-third">
-                <h3>Discharge/Transfer Letter</h3>
+                <h3><span id="dischargeOrTransfer"></span> Letter</h3>
             </span>
             <span class="one-third" style="float:right">
                 <br><br>
@@ -45,7 +45,7 @@
         
         <div class="headingValues">
             <span><b>Baby of</b>: <span id="mothersNameAndSurname"></span></span>
-            <span><b>Folder Number</b>: ______</span>        
+            <span><b>Folder Number: </b><span id="patientMedicalRecordNumber"></span></span>        
             <span><b>DOB</b>: <span id="dateOfBirth"></span></span>
             <span><b>Gender</b>: <span id="sexOfInfant"></span></span>
             <span><b>Mothers Age</b>: <span id="mothersAge"></span></span>
@@ -53,41 +53,40 @@
             <span><b>Apgars (1min)</b>: <span id="apgarScoresOneMin"></span></span>
             <span><b>Apgars (5min)</b>: <span id="apgarScoresFiveMin"></span></span>
             <span><b>Birth Weight</b>: <span id="birthWeightInGrams"></span></span>
-            <span><b>Head Circumference</b>: <span id="headCircumferenceAtBirth">cm</span></span>
+            <span><b>Head Circumference</b>: <span id="headCircumferenceAtBirth"></span></span>
             <span><b>Gestational Age</b>: <span id="gestationalAge"></span></span>
             <br>
         </div>
         <div style="display:block;">
             <p>Problem list</p>
             <span style="width:100mm; float:left">
-                <p><span id="birthWeightCategory"></span></p>
-                <p><span id="prematureCategory"></span></p>
-                <p><span id="twinsOrMore"></span></p>
-                <p><span id="rvdValue"></span></p>
-                <p><span id="surfactantAtAnyTime"></span></p>
-                <p><span id="cld"></span></p>
-                <p><span id="necPlus"></span></p>
-                <p><span id="ventilation" ></span></p>
+                <p><span id="birthWeightCategory"></span> <input class="form-control" type="text" placeholder="additional comments"></p>
+                <p><span id="prematureCategory"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="twinsOrMore"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="rvdValue"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="surfactantAtAnyTime"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="cld"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="necPlus"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="ventilation" ></span><input class="form-control" type="text" placeholder=""></p>
 
             </span>
             <span style="width:100mm; ">
-                <p><span id="hypoxicIschemicEncephalopathyHighestScore"></span></p>
-                <p><span id="jaundiceNeedingPhototherapy"></span></p>
-                <p><span id="sepsisDuringAdmission"></span></p>
-                <p><span id="fetalMedicineUnitFlagged"></span></p>
-                <p><span id="abnormalHeadUltrasound"></span></p>
-                <p><span id="chromosomesDone"></span></p>
-                <p><span id="immunizations652"></span></p>
+                <p><span id="hypoxicIschemicEncephalopathyHighestScore"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="jaundiceNeedingPhototherapy"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="sepsisDuringAdmission"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="fetalMedicineUnitFlagged"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="abnormalHeadUltrasound"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="chromosomesDone"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="immunizations652"></span><input class="form-control" type="text" placeholder=""></p>
             </span>
         </div>
         <div style="clear:both; display:block;">
-        <p>Notes: </p>
-            <br><br><br><br><br>
-            <br><br><br><br><br>
+        <p>Additional Problems/Notes: </p>
+            <input class="form-control" type="text" placeholder="" style="height:100px;width:80%">
         </div>
-        <p>Date of Discharge/Transfer: <span id="dateOfDischarge"></span> <span id="placeOfTransfer"></span> <span id="weightAtDischarge"></span> <span id="headCircumferenceAtDischarge"></span></p>
-        <p>Meds:_____________________</p>
-        <p>Feeds:____________________</p>
+        <p>Date of <span id="dischargeOrTransferDate"></span>: <span id="dateOfDischarge"></span> <span id="placeOfTransfer"></span> <span id="weightAtDischarge"></span> <span id="headCircumferenceAtDischarge"></span></p>
+        <p>Meds:<input class="form-control" type="text" placeholder="_____________________"></p>
+        <p>Feeds:<input class="form-control" type="text" placeholder="____________________"></p>
         <br>
         <p>Follow up appointments: </p>
         <p>Done by: Dr</p>
