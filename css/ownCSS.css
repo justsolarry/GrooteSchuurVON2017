@@ -103,6 +103,13 @@ input[type="search"]:disabled,.fixingInputAlignmentInner input[type="text"]:disa
     /*background-color:skyblue;*/
     
 }
+.fixingInputAlignmentInnerInner{
+    margin-left:300px;
+    width:60%;
+    height:32px; 
+    /*background-color:skyblue;*/
+    
+}
 .fixingLabelLongText{
     float: left;
     clear: left;
@@ -941,3 +948,4 @@ th{
 table{
     color:black;
 }
+
