@@ -1,18 +1,4 @@
-/* START Adding event listener to Patient Identification page*/
-/*document.getElementById("birthWeightInGrams").addEventListener("change", checkingColourPatientIdentification);
-document.getElementById("mothersFirstName").addEventListener("change", checkingColourPatientIdentification);
-document.getElementById("mothersLastName").addEventListener("change", checkingColourPatientIdentification);
-document.getElementById("patientsName").addEventListener("change", checkingColourPatientIdentification);
-document.getElementById("patientMedicalRecordNumber").addEventListener("change", checkingColourPatientIdentification);*/
-/*document.getElementById("dateOfBirth").addEventListener("change", checkingColour);*/
-/*$("#dateOfBirth").click(checkingColour);*/
-/*$("input:radio[name=outbornBirth]").click(checkingColourPatientIdentification);
-$("input:radio[name=diedInDeliveryRoom]").click(checkingColourPatientIdentification);
-$("input:radio[name=testing]").click(checkingColourPatientIdentification);
-$("#transferCodePIW").change(checkingColourPatientIdentification);*/
-/* END Adding event listener to Patient Identification page*/
 
-/* START adding event listeners to the radios in second form*/
 $("#firstPanelID input[type=search]").on('change',InputsPatientForm,ColourPatientForm);
 $("#firstPanelID input:radio").on('click',RadiosPatientForm,ColourPatientForm);
 $('#firstPanelID select').on('change', SelectsPatientForm,ColourPatientForm);
@@ -21,9 +7,13 @@ $("#secondPanelID input[type=search]").on('change',InputsGeneralForm,ColourGener
 $("#secondPanelID input:radio").on('click',RadiosGeneralForm,ColourGeneralForm);
 $('#secondPanelID select').on('change', SelectsGeneralForm,ColourGeneralForm);
 
-/*$("#thirdPanelID input[type=search]").on('change',InputsAdditionalForm,ColourAdditionalForm);
+$("#thirdPanelID input[type=search]").on('change',InputsAdditionalForm,ColourAdditionalForm);
 $("#thirdPanelID input:radio").on('click',RadiosAdditionalForm,ColourAdditionalForm);
-$('#thirdPanelID select').on('change', SelectsAdditionalForm,ColourAdditionalForm);*/
+$('#thirdPanelID select').on('change', SelectsAdditionalForm,ColourAdditionalForm);
+//buttons within the third panel
+/*$("addNewBacterialCodeDuringAdmissionID").on('click',RadiosAdditionalForm,ColourAdditionalForm);*/
+/*$("#bacterialCodeDuringAdmissionDiv2").on("click",$("#bacterialCodeDuringAdmission2"),testing);
+$("#bacterialCodeDuringAdmissionDiv3").on("click",$("#bacterialCodeDuringAdmission3"),testing);*/
 
 function InputsPatientForm(e){
     var inputsAllSelected = 0;
@@ -54,12 +44,12 @@ function RadiosPatientForm(){
         }
     );
     rgroups = rgroups.length;
-//    alert("Number of completed groups : " +$('#secondPanelID input:radio:visible:checked').length + "number of radio groups: "+rgroups)
+    console.log("1 - Number of completed groups : " +$('#secondPanelID input:radio:visible:checked').length + "number of radio groups: "+rgroups)
     if($('#firstPanelID input:radio:visible:checked').length < rgroups){
-//        alert('Second Panel - You must fill in all the fields.');
+        console.log('Second Panel - You must fill in all the fields.');
     }
     else{
-//        alert('Second Panel - COMPLETE!');
+        console.log('Second Panel - COMPLETE!');
         var radioAllCheckedInGeneral=true;
     }
     /* END Check for radio buttons*/
@@ -84,7 +74,7 @@ function ColourPatientForm(){
     console.log("select : T/F "+ selectTrueFalse)
     if(/*inputTrueFalse===1 &&*/ radioTrueFalse === true && selectTrueFalse===true){ //if true , make the circle green
         $('#patientFormCircle').css('background-color', 'green');
-        toastr.success("General Data Form is all Correct!");
+        toastr.success("Patient Data Form is all Correct!");
     }
     else if(radioTrueFalse===false || selectTrueFalse===false){
         $('#patientFormCircle').css('background-color', 'orange');
@@ -134,7 +124,7 @@ function RadiosGeneralForm(){
         }
     );
     rgroups = rgroups.length;
-    console.log("Number of completed groups : " +$('#secondPanelID input:radio:visible:checked').length + " number of radio groups: "+rgroups)
+    console.log("2- Number of completed groups : " +$('#secondPanelID input:radio:visible:checked').length + " number of radio groups: "+rgroups)
     if($('#secondPanelID input:radio:visible:checked').length < rgroups){
         console.log('Second Panel - You must fill in all the fields.');
     }
@@ -203,7 +193,7 @@ function InputsAdditionalForm(e){
     return (inputsAllSelected)
 }
 function RadiosAdditionalForm(){
-    /* START Check for radio buttons*/
+     /*START Check for radio buttons */
     var radioAllCheckedInGeneral = false;
     var rgroups = [];
     $('#thirdPanelID input:radio:visible').each(function(index, el){
@@ -215,31 +205,34 @@ function RadiosAdditionalForm(){
         }
     );
     rgroups = rgroups.length;
-    console.log("Number of completed groups : " +$('#thirdPanelID input:radio:visible:checked').length + " number of radio groups: "+rgroups)
+    console.log("3- Number of completed groups : " +$('#thirdPanelID input:radio:visible:checked').length + " number of radio groups: "+rgroups)
     if($('#thirdPanelID input:radio:visible:checked').length < rgroups){
-        console.log('Third Panel - You must fill in all the fields.');
+        console.log('Third Panel - Not complete');
     }
     else{
         console.log('Third Panel - COMPLETE!');
         var radioAllCheckedInGeneral=true;
     }
-    /* END Check for radio buttons*/
+    /* END Check for radio buttons */
     return(radioAllCheckedInGeneral)
 }
 function SelectsAdditionalForm(e){
     var selectsAllSelected = true;
+    var counter = 0;
     $('#thirdPanelID select:visible').each(function(i) {
         if( !$(this).val() ) {
-            selectsAllSelected = false;        
+            selectsAllSelected = false;   
+            counter++;
         };
     });
-    console.log("value of selects is :" + selectsAllSelected);
+    console.log(" number of selects left : "+counter);
     return(selectsAllSelected)
+    
 }
 function ColourAdditionalForm(){
-    var inputTrueFalse = InputsGeneralForm();
-    var radioTrueFalse = RadiosGeneralForm(); //taking the return value fromt he function>> either true/false
-    var selectTrueFalse = SelectsGeneralForm();
+    var inputTrueFalse = InputsAdditionalForm();
+    var radioTrueFalse = RadiosAdditionalForm(); //taking the return value fromt he function>> either true/false
+    var selectTrueFalse = SelectsAdditionalForm();
     console.log("input (-1/0/1): "+ inputTrueFalse)
     console.log("radio : T/F "+ radioTrueFalse)
     console.log("select : T/F "+ selectTrueFalse)
@@ -262,4 +255,9 @@ function ColourAdditionalForm(){
     else if( radioTrueFalse === false || selectTrueFalse===false){
                 $('#generalDataItemsFormCircle').css('background-color', 'orange');
             }*/
+}
+
+
+function testing(){
+    alert("came through in testing")
 }
