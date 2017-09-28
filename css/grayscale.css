@@ -148,14 +148,13 @@ a {
     background: rgba(255, 255, 255, 0.1); }
 
 .content-section {
-  padding-top: 100px; }
+  padding: 100px 0 }
 
 .download-section {
   width: 100%;
-  padding: 50px 0;
+  padding: 100px 0;
   color: white;
   /*background: url(../img/intro-bg.jpg) no-repeat center center scroll ;*/
-
   background-color: #353535;
   -webkit-background-size: cover;
   -moz-background-size: cover;
