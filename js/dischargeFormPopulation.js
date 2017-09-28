@@ -5,6 +5,7 @@
 var babyData = testData();
 //Header
 document.getElementById("mothersNameAndSurname").innerHTML = babyData.mothersFirstName + " " + babyData.mothersLastName;
+document.getElementById("patientMedicalRecordNumber").innerHTML = babyData.patientMedicalRecordNumber;
 document.getElementById("dateOfBirth").innerHTML = moment(babyData.dateOfBirth).format("MMM Do YYYY");
 var sex = babyData.sexOfInfant;
 document.getElementById("sexOfInfant").innerHTML = (sex == 0) ? "male" : (sex == 1) ? "female" : "Unknown";
@@ -24,10 +25,13 @@ document.getElementById("gestationalAge").innerHTML = readableGestationalAge;
 document.getElementById("birthWeightCategory").innerHTML = (babyData.birthWeightInGrams < 1000) ? " • ELBW" : (babyData.birthWeightInGrams < 1500) ? " • VLBW" : (babyData.birthWeightInGrams < 2501) ? " • LBW" : "";
 var prematureCategory = (babyData.gestationalAgeInWeeks < 28) ? "Extremely Premature" : (babyData.gestationalAgeInWeeks < 32) ? "Very Premature" : (babyData.gestationalAgeInWeeks < 37) ? "Premature" : "";
 document.getElementById("prematureCategory").innerHTML = "• " + prematureCategory + " (" + readableGestationalAge + ")";
-document.getElementById("twinsOrMore").innerHTML = (babyData.multipleGestation == 1) ? " • Multiple Pregnancy" : "";
-document.getElementById("rvdValue").innerHTML = (babyData.RVDYes == 1) ? (babyData.babyPCRPositive == 1) ? " • RVD+ and PCR+" : " • RVD+" : ""; 
+var multipleGestationIdentifier = (babyData.twinAB == 1) ? "Twin A" : (babyData.twinAB == 0) ? "Twin B" : (babyData.tripletABC == 0) ? "Triplet A" : (babyData.tripletABC == 1) ? "Triplet B" : (babyData.tripletABC == 2) ? "Triplet C": (babyData.quadrupletABCD == 0) ? "Quadruplet A" : (babyData.quadrupletABCD == 1) ? "Quadruplet B" : (babyData.quadrupletABCD == C) ? "Quadruplet C" : (babyData.quadrupletABCD == 3) ? "Quadruplet D" : "";
+document.getElementById("twinsOrMore").innerHTML = (babyData.multipleGestation == 1) ? " • Multiple Pregnancy: " + multipleGestationIdentifier : "";
+document.getElementById("rvdValue").innerHTML = (babyData.RVDYes == 1) ? (babyData.babyPCRPositive == 1) ? " • RVDe and PCR+" : " • RVD+ and PCR-" : ""; 
+document.getElementById("surfactantAtAnyTime").innerHTML = (babyData.surfactantAtAnyTime == 1) ? " • RDS requiring surfactant" : "";
+var typeOfOxygenSupport = (babyData.conventionalAt36Weeks == 1) ? "Conventional" : (babyData.highFrequencyVentilationAt36Weeks == 1) ? "High Frequency Ventilation" : (babyData.highFlowNasalCannulaAt36Weeks == 1) ? "High Flow Nasal Cannula" : (babyData.nasalIMVAt36Weeks == 1) ? "Nasal IMV" : (babyData.nasalCpapAt36Weeks == 1) ? "Nasal CPAP" : "";
 document.getElementById("cld").innerHTML = (babyData.oxygenAt36Weeks == 1) ? " • CLD" : "";
-document.getElementById("necPlus").innerHTML = (babyData.necSurgery == 1) ? " • NEC+" : "";
+document.getElementById("necPlus").innerHTML = (babyData.necrotizingEnterocolitis == 1) ? " • NEC+" : "";
 
 document.getElementById("ventilation").innerHTML = (babyData.invasiveVentilation == 1) ? " • Invasive ventilation, started at " + babyData.dayOfLifeVentilationStarted + " days old for " + babyData.dayOfLifeVentilationStartedDuration + " days. Diagnosis: " +  babyData.dayOfLifeVentilationStartedDiagnosis  : "";
 //Problem List Left Pane End
