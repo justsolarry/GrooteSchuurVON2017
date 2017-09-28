@@ -243,10 +243,12 @@ function createXmlForEachRecord(BabyData){
      + nasalCPAPafterResuscitation + nasalCPAPnoETT +  surfactant +  surfactantAtAnyTime +  ageAtSurfactantInHours + ageAtSurfactantPlusMinutes + inhaledNitricOxide
      + inhaledNitricOxideWhereGiven +  oxygenAt36Weeks + ventilationAt36Weeks +    highFrequencyVentilationAt36Weeks +  highFlowNasalCannulaAt36weeks
      + nasalIMVAt36Weeks + nasalCpapAt36Weeks + steroidsForCLD + steroidsForCLDWhereGiven + indomethacin + ibuprofen + Acetaminophen + probiotics + ropTreatmentWithVegfDrug
-     + caffeine + vitaminA + ropSurgery + ropSurgeryWhereDone + pdaSurgery + necSurgery +  otherSurgery +  firstSurgeryCode +  firstSurgeryLocation
-     + secondSurgery +  secondarySurgeryLocation + thirdSurgery +  thirdSurgeryLocation + fourthSurgery + fourthSurgeryLocation + fifthSurgery + fifthSurgeryLocation
-     + sixthSurgery + sixthSurgeryLocation +  seventhSurgery +  seventhSurgeryLocation +  eighthSurgery + eighthSurgeryLocation
-     + ninethSurgery +  ninethSurgeryLocation +  tenthSurgery +  tenthSurgeryLocation + otherSurgeryDescription +  respiratoryDistressSyndrome
+     + caffeine + vitaminA + ropSurgery + ropSurgeryWhereDone + pdaSurgery + necSurgery +  otherSurgery +  firstSurgeryCode +  firstSurgeryLocation 
+     + firstSurgerySiteInfection
+     + secondSurgery +  secondarySurgeryLocation + secondarySurgerySiteInfection + thirdSurgery +  thirdSurgeryLocation + thirdSurgerySiteInfection 
+     + fourthSurgery + fourthSurgeryLocation + fourthSurgerySiteInfection + fifthSurgery + fifthSurgeryLocation + fifthSurgerySiteInfection
+     + sixthSurgery + sixthSurgeryLocation + sixthSurgerySiteInfection +  seventhSurgery +  seventhSurgeryLocation + seventhSurgerySiteInfection +  eighthSurgery + eighthSurgeryLocation + eighthSurgerySiteInfection
+     + ninethSurgery +  ninethSurgeryLocation + ninethSurgerySiteInfection + tenthSurgery +  tenthSurgeryLocation + tenthSurgerySiteInfection + otherSurgeryDescription +  respiratoryDistressSyndrome
      + pneumothorax + pneumothoraxWhereOccured +  patentDuctusArteriosus +  necrotizingEnterocolitis+  necrotizingEnterocolitisWhereOccured+ focalIntestinalPerforation
      + focalIntestinalPerforationWhereOccured + bacterialPathogenAfterDay3 + bacterialPathogenAfterDay3WhereOccured
      +  bacterialPathogenAfterDay3Pathogen1 + bacterialPathogenAfterDay3Pathogen2 + bacterialPathogenAfterDay3Pathogen3 + coagulaseNegativeStaphInfection

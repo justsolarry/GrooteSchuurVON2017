@@ -3,8 +3,9 @@
       <head>
     <title>Test Environment</title>
       
+
           <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+<!--    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">-->
 <!--    <link href="css/ownCSS.css" rel="stylesheet">-->
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
     <!-- Custom fonts for this template -->
@@ -13,13 +14,14 @@
     <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
     <link href="css/hover.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/grayscale.css" rel="stylesheet">
+<!--    <link href="css/grayscale.css" rel="stylesheet">-->
     <link href="css/toastr.css" rel="stylesheet" />
+    <link href="css/dischargeStyle.scss" rel="stylesheet"/>     
       
       <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/tether/tether.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+<!--    <script src="vendor/bootstrap/js/bootstrap.js"></script>-->
 
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.js"></script>
@@ -38,11 +40,14 @@
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
     <script src="js/noframework.waypoints.js"></script>
+<!--
       
       <script src="js/transferToVon.js"></script>
       <script src="js/db.js"></script>
       <script src="js/generateVonXml.js"></script>
       <script src="js/toastr.js"></script>
+          
+-->
 <!--    <script src="js/jspdf.js"></script>-->
           <script src="js/generatePDF.js"></script>
           <script src="js/recordTestDataObject.js"></script>
@@ -50,9 +55,28 @@
           <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
           
+          
   </head>
     <body>
     <div id="dischargeTransferHTMLPrint">
+        <div class="printRow">
+            <span class="one-third" class="blue">
+                <br>
+                <p>Western Cape Logo</p>
+            </span>
+            <span class="one-third">
+                <h3>Discharge/Transfer Letter</h3>
+            </span>
+            <span class="one-third">
+                <br>
+                <p class="blue">Neonatal Unit</p>
+                <p>Groote Schuur Hospital</p>
+                <p>021-404-6069</p>
+            </span>
+        </div>
+        
+        <hr>
+        
         <h1>Discharge/Transfer Letter</h1>
         <br>
         <div>
@@ -109,10 +133,12 @@
         <p>Follow up appointments: </p>
         <p>Done by Dr</p>
         <br>
+        <p id="linkTest">Hello</p>
         
     </div>
     <div id="editor"></div>
-    <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>
+    <button class="btn btn-default" onclick="window.print()">Generate PDF</button>
+<!--        <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>-->
         <script>
             var babyData = testData();
             
