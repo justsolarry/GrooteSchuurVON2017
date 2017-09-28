@@ -1,9 +1,9 @@
 textarea{
 }
-input[type="search"]:disabled {
+input[type="search"]:disabled,.fixingInputAlignmentInner input[type="text"]:disabled {
     background: #A9A9A9;
 }
-.calendarField{
+.calendarField, .addingCalendar , .addingCalendarInner{
     cursor: pointer;
 }
 /* START adding units*/
@@ -219,6 +219,7 @@ input[type="search"]:disabled {
 #dialog-confirm,
 #hiddenFieldTwins,
 #hiddenFieldTriplets,
+#hiddenFieldQuadruplets,
 #twinOrTripletDiv
 {
     display:none;
@@ -677,10 +678,7 @@ div ul li .firstATag:after{
     margin: 0 0.1rem;
     margin-top: 0px;
     line-height: 32px;
-    
-    
 }
-
 .radioFloatLeftInner{ /*for less than 3/4 radio */
     float:left;
     margin: 0 0.1rem;
