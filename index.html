@@ -173,6 +173,11 @@
                                         <div class="fixingInputAlignment">
                                             <input type="hidden" id="_id" name="_id">
                                             <input type="hidden" id="_rev" name="_rev">
+                                            <input type="hidden" id="form1" name="form1">
+                                            <input type="hidden" id="form2" name="form2">
+                                            <input type="hidden" id="form3" name="form3">
+                                            <input type="hidden" id="error" name="error">
+                                            <input type="hidden" id="session" value=false>
                                             <input id="mothersFirstName" name="mothersFirstName" onchange="validateMothersFirstName()" class="form-control" type="search" placeholder="Mary">
                                         </div>
 
@@ -349,7 +354,7 @@
                                         <div class="form-group input-group gestionalDaysDiv">
                                             <label class="fixingLabelAlignment">Gestational Age (Days) :</label>
                                             <div class="fixingInputAlignment">
-                                                <select name="gestionalDays" id="gestionalDays"class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                                <select name="gestationalDays" id="gestionalDays"class=" ddList centerSelect form-control" style="height:32px;width:20%;">
                                                     <option disabled selected value></option>
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="0">0 Days</option>
@@ -366,7 +371,7 @@
                                         <div class="form-group input-group headCircumferenceDiv">
                                             <label class="fixingLabelAlignment" for="headCircumference">Head Circumference : </label>
                                             <div class="fixingInputAlignment">
-                                                    <select id="headCircumference" name="headCircumference" class="form-control" style="height:32px;width:40%;"> 
+                                                    <select id="headCircumference" name="headCircumferenceAtBirth" class="form-control" style="height:32px;width:40%;"> 
                                                         <option disabled selected value>SELECT</option>
                                                         <option value="999.9">Unknown</option>
                                                     </select>
@@ -529,20 +534,20 @@
                                             <label class="fixingLabelAlignment">Mode of Delivery : </label>
                                             <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVONVaginal" type="radio" name = modeOfDeliveryVON value="1">
+                                                <input class="radioType" id="modeOfDeliveryVONVaginal" type="radio" name = modeOfDelivery value="1">
                                                     <label class="radioText" for="modeOfDeliveryVONVaginal"> Vaginal</label>
                                                     
 
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVONCS" type="radio" name = modeOfDeliveryVON value="0">
+                                                <input class="radioType" id="modeOfDeliveryVONCS" type="radio" name = modeOfDelivery value="0">
                                                     <label class="radioText" for="modeOfDeliveryVONCS"> C-Section</label>
                                                     
 
                                                 </span>
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVONUnknown" type="radio" name = modeOfDeliveryVON value="9">
+                                                <input class="radioType" id="modeOfDeliveryVONUnknown" type="radio" name = modeOfDelivery value="9">
                                                     <label class="radioText" for="modeOfDeliveryVONUnknown"> Unknown</label>
                                                     
 
@@ -3685,7 +3690,7 @@
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.js"></script>
 
-
+    <script type="text/javascript" src="js/mapToNaturalLanguage.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.js"></script>
@@ -3708,10 +3713,12 @@
     <script src="Calendar/jquery-ui.css"></script>
     <script type="text/javascript" src="js/jquery.serializejson.js"></script>
     
+    
 <script type="text/javascript">
+    var session = document.getElementById('session').value;
     $(document).ready(function() {
-        $('form').sisyphus(
-            {
+    if(session){
+            $('form').sisyphus({
                 excludeFields: ["_id _rev"],
                 locationBased: true,
                 timeout: 10,
@@ -3727,21 +3734,33 @@
                     //toastr.success('Saved', 'Autosave', {timeOut: 750});
                     //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
                     var record = $('form').serializeJSON();
+                    //record.transferCenterCode = 99999999;
+                    record = mapToNaturalLanguage(record);
                     //var record2 = mapToLang(record);
-                    alert(JSON.stringify(record));
+                    //alert(JSON.stringify(record));
                     updateDataInRecord(record);
                     
                 }
 
-            }
-        );
-        //alert(JSON.stringify($('form').serializeJSON()));
+            });
+       
+       }
+      else{
+          checkSession();
+      }
+
     });
 
     function test(){
         //alert("Create Record in Database");
-        createRecordInDatabase();
+        if(session == null || session == ""){
+          createSession();  
+        }
+        if(session){
+            createRecordInDatabase();
+        }  
     } 
+    
     
 </script>
 </body>
