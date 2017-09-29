@@ -176,7 +176,8 @@
                                             <input type="hidden" id="form1" name="form1">
                                             <input type="hidden" id="form2" name="form2">
                                             <input type="hidden" id="form3" name="form3">
-                                            <input type="hidden" id="error" name="error">                            
+                                            <input type="hidden" id="error" name="error">
+                                            <input type="hidden" id="session" value=false>
                                             <input id="mothersFirstName" name="mothersFirstName" onchange="validateMothersFirstName()" class="form-control" type="search" placeholder="Mary">
                                         </div>
 
@@ -3714,9 +3715,10 @@
     
     
 <script type="text/javascript">
+    var session = document.getElementById('session').value;
     $(document).ready(function() {
-        $('form').sisyphus(
-            {
+    if(session){
+            $('form').sisyphus({
                 excludeFields: ["_id _rev"],
                 locationBased: true,
                 timeout: 10,
@@ -3740,15 +3742,25 @@
                     
                 }
 
-            }
-        );
-        //alert(JSON.stringify($('form').serializeJSON()));
+            });
+       
+       }
+      else{
+          checkSession();
+      }
+
     });
 
     function test(){
         //alert("Create Record in Database");
-        createRecordInDatabase();
+        if(session == null || session == ""){
+          createSession();  
+        }
+        if(session){
+            createRecordInDatabase();
+        }  
     } 
+    
     
 </script>
 </body>

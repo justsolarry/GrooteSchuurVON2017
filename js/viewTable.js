@@ -90,13 +90,18 @@ function fetchData(){
             "className":"left",
             "render":function(data, type, full, meta){
             var state = full.form1 + full.form2 + full.form3 + !(full.error);
-                if(state!=null){
-                if(state){
-                    return "Complete"
-                }else{
+                
+                
+                if(full.error){
+                    return "Errors"
+                }
+                else if(!state){
                     return "Incomplete"
                 }
-            }
+                else if(state){
+                    return "Complete"
+                }
+            
 
             }
             },
@@ -247,7 +252,7 @@ function fetchData(){
                 action: function () {
     var checkedRows = [];
                     
-    alert("Open clicked");
+    
     $('#jqGrid').find('input[type="checkbox"]:checked').each(function () {
        //this is the current checkbox
         row = $(this).parents('tr').attr('id');

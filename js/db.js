@@ -29,7 +29,7 @@ function createHTTPAuthPOSTConnection(userPasswordObject){
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
   var babyData = {};
-  var url = "http://196.24.190.72:5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
+  var url = "http://localhost:5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
@@ -45,7 +45,7 @@ function retrieveAllDocs(){
 
 
 function createSession(){ 
-    
+        
   var http = new XMLHttpRequest();
   var url = "http://localhost:5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
@@ -53,21 +53,21 @@ function createSession(){
     if(http.readyState == 4 && http.status == 200) {
         //document.cookie=http.getResponseHeader('Set-Cookie');
         alert("Logged in");
+        document.getElementById('session').value = true;
         //window.location.href = 'landing.html'; 
         
     }
   }
+  
   var user = prompt('Username');
   var password = prompt('Password');
   
   var u = {};
   u.name = user;
   u.password = password;
-    
+
   http.open("POST", url, true);
-  http.setRequestHeader("Content-type", "application/json");
-  http.setRequestHeader('Access-Control-Allow-Origin', '*');
-  
+  http.setRequestHeader("Content-type", "application/json");  
   http.send(JSON.stringify(u));
   
 }
@@ -96,8 +96,25 @@ function _logout(){
      
 }
 
-function session(){
+function changePassword(userData){
+  var http = new XMLHttpRequest();
     
+  var url = "http://localhost:5984/_session"; //admin:vonadmin123@
+  http.withCredentials = true;
+    
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        //document.cookie=http.getResponseHeader('Set-Cookie');
+        alert("Logged in");
+        window.location.href = 'index.html'; 
+    }
+  }
+  
+  http.open("DELETE", url, true);
+  http.setRequestHeader("Content-type", "application/json");
+  //http.setRequestHeader('Access-Control-Allow-Origin', '*');
+  
+  http.send(JSON.stringify(userObject));
 }
 
 function newUser(){
@@ -318,6 +335,7 @@ function createHTTPGETConnection(medicalRecordId){
   var url = "http://localhost:5984/test1/" + medicalRecordId; //server will change -> config file?
   var record;
   http.open("GET", url, false);
+  http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         record = JSON.parse(this.responseText);
