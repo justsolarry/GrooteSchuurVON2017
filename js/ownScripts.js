@@ -199,8 +199,6 @@ function successReload(){
 function diedWithin12HoursCheck() {
     var value1 = document.getElementById('RespiratorySupportAfterInitialResuscitationDiv');
     if (document.getElementById('diedWithin12HoursYes').checked) {
-        $('#RespiratorySupportAfterInitialResuscitationDiv').slideUp("slow");
-        $('#RespiratorySupportAfterInitialResuscitationDiv').removeClass('glowingHiddenFields');
         $('.RespiratorySupportAt36WeeksDiv').slideUp("slow");
         $('.RespiratorySupportAt36WeeksDiv').removeClass('glowingHiddenFields')
         $('.afterDay3OfLifeDiv').slideUp("slow");
@@ -215,24 +213,18 @@ function diedWithin12HoursCheck() {
         
     }
     if (document.getElementById('diedWithin12HoursNo').checked) {
-        $('#RespiratorySupportAfterInitialResuscitationDiv').slideDown("slow");
-        $('#RespiratorySupportAfterInitialResuscitationDiv').addClass('glowingHiddenFields');
         $('.RespiratorySupportAt36WeeksDiv').slideDown("slow");
         $('.RespiratorySupportAt36WeeksDiv').addClass('glowingHiddenFields');
         $('.afterDay3OfLifeDiv').slideDown("slow");
         $('.afterDay3OfLifeDiv').addClass('glowingHiddenFields')
     }
     if (document.getElementById('diedWithin12HoursNA').checked) {
-        $('#RespiratorySupportAfterInitialResuscitationDiv').slideDown("slow");
-        $('#RespiratorySupportAfterInitialResuscitationDiv').addClass('glowingHiddenFields');
         $('.RespiratorySupportAt36WeeksDiv').slideDown("slow");
         $('.RespiratorySupportAt36WeeksDiv').addClass('glowingHiddenFields');
         $('.afterDay3OfLifeDiv').slideDown("slow");
         $('.afterDay3OfLifeDiv').addClass('glowingHiddenFields')
     }
     if (document.getElementById('diedWithin12HoursUnknown').checked) {
-        $('#RespiratorySupportAfterInitialResuscitationDiv').slideDown("slow");
-        $('#RespiratorySupportAfterInitialResuscitationDiv').addClass('glowingHiddenFields');
         $('.RespiratorySupportAt36WeeksDiv').slideDown("slow");
         $('.RespiratorySupportAt36WeeksDiv').addClass('glowingHiddenFields');
         $('.afterDay3OfLifeDiv').slideDown("slow");
@@ -638,10 +630,32 @@ function immunizations652Check() {
     if (document.getElementById('immunizations652No').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $('#immunizations652Date').datepicker('setDate', null);
+        //if no is selected - set the immunization date to 6 weeks from the date of birth.
+        
+        /* Calculations to check if baby is less than 6 weeks old from current date*/
+        /*var currentDate = new Date(); // current date
+        var sixWeeksOldDate   = $('#sixWeeksOldDate').datepicker('getDate'); //dob 
+        var days   = (sixWeeksOldDate - currentDate)/1000/60/60/24; // number days old
+        alert(days)*/
+        /*if(days>=0){
+            
+            toastr.error("Immunization date - Not Valid")
+            $('#immunizationDate').datepicker('setDate', null);
+           }
+        else{*/
+            toastr.success("Immunization date - setting it")
+            var arg = 43;
+            var d = $('#dateOfBirth').datepicker('getDate');
+            d.setDate(d.getDate() + arg);
+            $('#immunizationDate').datepicker('setDate', d);
+//        }
     }
     if (document.getElementById('immunizations652Unknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $('#immunizations652Date').datepicker('setDate', null);
+        $('#immunizationDate').datepicker('setDate', null);
     }
 }
 var counterForSurgeryCode = 1;
@@ -1010,12 +1024,11 @@ function numberOfInfantsDeliveredCheck(){
 }
 
 
-function duplicateToImmunizationDate(){
+/*function duplicateToImmunizationDate(){
     var d = $('#immunizations652Date').datepicker('getDate');
     $('#immunizationDate').datepicker('setDate', d);
-    document.getElementById("immunizationDate").disabled = true;
     
-}
+}*/
 function twinOrTripletOrQuadrupletCheck(){
     var hiddenFieldTwins = document.getElementById('hiddenFieldTwins');
     var hiddenFieldTriplets = document.getElementById('hiddenFieldTriplets');
@@ -1308,18 +1321,23 @@ $(function () {
         maxDate: '0',
         minDate: '-18M',
         onSelect:function () {
-            dateOfBirthCheck();
-            adding28Days();
-            makingSixWeekDate();
+            dateOfBirthCheck(); //checking if the user has inputted a value
+            adding28Days(); //making 28 day date
+            makingSixWeekDate(); //making 6 week date and checks if the baby is <42 days
             making40dayDate();
             //adding key listener functions for progress bar checks
             InputsPatientForm();
             ColourPatientForm();
             
             var minDate = $(this).datepicker('getDate');
-            minDate.setDate(minDate.getDate()); //add two days
+            minDate.setDate(minDate.getDate());
             $("#dateOfInitialDisposition").datepicker("option", "minDate", minDate);
             $("#dateOfAdmission").datepicker("option", "minDate", minDate);
+            
+            var arg = 40;
+            var minDateOf40 = $('#dateOfBirth').datepicker('getDate');
+            minDateOf40.setDate(minDateOf40.getDate() + arg);
+            $("#immunizations652Date").datepicker("option", "minDate", minDateOf40);
         }
     }, datepickersOpt));
     $('#dateOfBirthCalendar').on("click", function (e) {
@@ -1373,6 +1391,19 @@ $(function () {
         $('#dateDischargedHomeDiedOrBirthday').focus();
     });
     
+    $("#immunizations652Date").datepicker($.extend({
+        maxDate: '0',
+        onSelect: function () {
+            calculate4WeeksAfterGivenImmunizationDate();
+            //adding key listener functions for progress bar checks
+            InputsPatientForm();
+            ColourPatientForm();
+        }
+    }, datepickersOpt));
+    $('#immunizations652DateCalendar').on("click", function (e) {
+        $('#immunizations652DateCalendar').focus();
+    });
+    
 });
 /* END Date of Birth*/
 /* START Date of Appointment Date*/
@@ -1397,7 +1428,7 @@ $( function() {
         numberOfMonths: 2,
         dateFormat: 'dd-mm-yy',
         maxDate: '+12M',
-        minDate: '0'
+        minDate: '-2M'
         
     });   
         $('#immunizationDateCalendar').on("click", function(e){
@@ -1435,18 +1466,6 @@ $( function() {
         });
   } );
 /* END Date of ROP Date*/
-/* START Date of immunizations652Date*/
-$( function() {
-    
-    $( "#immunizations652Date" ).datepicker({
-        numberOfMonths: 2,
-        dateFormat: 'dd-mm-yy',
-        maxDate: '0',
-        minDate: '-12M'
-        
-    });   
-  } );
-/* END Date of immunizations652Date*/
 /* START Date initial length of stay*/
 $( function() {
     
@@ -1460,6 +1479,13 @@ $( function() {
     });   
   } );
 /* END Date initial length of stay*/
+
+function calculate4WeeksAfterGivenImmunizationDate(){
+    var arg = 28; //4 weeks
+    var d = $('#immunizations652Date').datepicker('getDate'); //get the date that they manually inputted
+    d.setDate(d.getDate() + arg); //add 4 weeks onto the date
+    $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+}
 function adding28Days(){
     var arg = 28;
     var d = $('#dateOfBirth').datepicker('getDate');
@@ -1477,16 +1503,9 @@ function makingSixWeekDate(){
     var dob   = $('#dateOfBirth').datepicker('getDate'); //dob 
     var days   = (currentDate - dob)/1000/60/60/24; // number days old
     if(days<42){
-        var d = $('#sixWeeksOldDate').datepicker('getDate');
-        $('#immunizationDate').datepicker('setDate', d);
-        //disable the immunization date and not allow them to edit.
-        document.getElementById("immunizationDate").disabled = true;
         toastr.success("Current baby is younger than 42 days - Immunization date already set")
        }
     else{
-        //let the user enter the immunization date
-         $("#immunizationDate").val("");
-        document.getElementById("immunizationDate").disabled = false;
         toastr.success("Current baby is older than 42 days - Immunization date will need to be set")
     }
 }
