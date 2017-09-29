@@ -40,7 +40,7 @@ function validateMothersLastName()
   
 }
 
-function dateOfBirthCheck(){
+function validateDateOfBirthCheck(){
     var value1 = document.getElementById('dateOfBirth').value;
     if(value1.length>0){
             $('#dateOfBirth').addClass('addGreen')
@@ -49,6 +49,39 @@ function dateOfBirthCheck(){
     else if(value1.length==0){
                 $('#dateOfBirth').addClass('addRed')
                 $('#dateOfBirth').removeClass('addGreen')
+            }
+}
+function validateAppointmentDate(){
+    var value1 = document.getElementById('appointmentDate').value;
+    if(value1.length>0){
+            $('#appointmentDate').addClass('addGreen')
+            $('#appointmentDate').removeClass('addRed')
+       }
+    else if(value1.length==0){
+                $('#appointmentDate').addClass('addRed')
+                $('#appointmentDate').removeClass('addGreen')
+            }
+}
+function validateROPDate(){
+    var value1 = document.getElementById('ROPDate').value;
+    if(value1.length>0){
+            $('#ROPDate').addClass('addGreen')
+            $('#ROPDate').removeClass('addRed')
+       }
+    else if(value1.length==0){
+                $('#ROPDate').addClass('addRed')
+                $('#ROPDate').removeClass('addGreen')
+            }
+}
+function validatePCRDate(){
+    var value1 = document.getElementById('PCRDate').value;
+    if(value1.length>0){
+            $('#PCRDate').addClass('addGreen')
+            $('#PCRDate').removeClass('addRed')
+       }
+    else if(value1.length==0){
+                $('#PCRDate').addClass('addRed')
+                $('#PCRDate').removeClass('addGreen')
             }
 }
 function dateOfAdmissionCheck(){

@@ -626,36 +626,19 @@ function immunizations652Check() {
     if (document.getElementById('immunizations652Yes').checked) {
         $(value1).slideDown("slow");
         $(value1).addClass('glowingHiddenFields')
+        $('#immunizationDate').datepicker('setDate', null);
     }
     if (document.getElementById('immunizations652No').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
         $('#immunizations652Date').datepicker('setDate', null);
-        //if no is selected - set the immunization date to 6 weeks from the date of birth.
+        toastr.success("Immunization date - setting it")
+        var arg = 43;
+        var d = $('#dateOfBirth').datepicker('getDate');
+        d.setDate(d.getDate() + arg);
+        $('#immunizationDate').datepicker('setDate', d);
         
-        /* Calculations to check if baby is less than 6 weeks old from current date*/
-        /*var currentDate = new Date(); // current date
-        var sixWeeksOldDate   = $('#sixWeeksOldDate').datepicker('getDate'); //dob 
-        var days   = (sixWeeksOldDate - currentDate)/1000/60/60/24; // number days old
-        alert(days)*/
-        /*if(days>=0){
-            
-            toastr.error("Immunization date - Not Valid")
-            $('#immunizationDate').datepicker('setDate', null);
-           }
-        else{*/
-            toastr.success("Immunization date - setting it")
-            var arg = 43;
-            var d = $('#dateOfBirth').datepicker('getDate');
-            d.setDate(d.getDate() + arg);
-            $('#immunizationDate').datepicker('setDate', d);
-//        }
-    }
-    if (document.getElementById('immunizations652Unknown').checked) {
-        $(value1).slideUp("slow");
-        $(value1).removeClass('glowingHiddenFields')
-        $('#immunizations652Date').datepicker('setDate', null);
-        $('#immunizationDate').datepicker('setDate', null);
+        calculate4WeeksAfterGivenImmunizationDateCheckedNo();
     }
 }
 var counterForSurgeryCode = 1;
@@ -1321,10 +1304,10 @@ $(function () {
         maxDate: '0',
         minDate: '-18M',
         onSelect:function () {
-            dateOfBirthCheck(); //checking if the user has inputted a value
+            validateDateOfBirthCheck(); //checking if the user has inputted a value
             adding28Days(); //making 28 day date
             makingSixWeekDate(); //making 6 week date and checks if the baby is <42 days
-            making40dayDate();
+            making40dayDate();//if baby is > or < 40 , show or hide that div
             //adding key listener functions for progress bar checks
             InputsPatientForm();
             ColourPatientForm();
@@ -1404,23 +1387,50 @@ $(function () {
         $('#immunizations652DateCalendar').focus();
     });
     
+    $("#appointmentDate").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateAppointmentDate();
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar').on("click", function (e) {
+        $('#appointmentDate').focus();
+    });
+    
+    $("#ROPDate").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateROPDate();
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#ROPDateCalendar').on("click", function (e) {
+        $('#ROPDate').focus();
+    });
+    
+    $("#PCRDate").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validatePCRDate();
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#PCRDateCalendar').on("click", function (e) {
+        $('#PCRDate').focus();
+    });
+    
 });
 /* END Date of Birth*/
-/* START Date of Appointment Date*/
-$( function() {
-    
-    $( "#appointmentDate" ).datepicker({
-        numberOfMonths: 2,
-        dateFormat: 'dd-mm-yy',
-        maxDate: '+12M',
-        minDate: '+1D'
-        
-    });   
-    $('#appointmentDateCalendar').on("click", function(e){
-            $('#appointmentDate').focus();
-        });
-  } );
-/* END Date of Appointment Date*/
 /* START Date of Immunization Date*/
 $( function() {
     
@@ -1436,36 +1446,6 @@ $( function() {
         });
   } );
 /* END Date of Immunization Date*/
-/* START Date of PCR Date*/
-$( function() {
-    
-    $( "#PCRDate" ).datepicker({
-        numberOfMonths: 2,
-        dateFormat: 'dd-mm-yy',
-        maxDate: '+12M',
-        minDate: '+1D'
-        
-    }); 
-    $('#PCRDateCalendar').on("click", function(e){
-            $('#PCRDate').focus();
-        });
-  } );
-/* END Date of PCR Date*/
-/* START Date of ROP Date*/
-$( function() {
-    
-    $( "#ROPDate" ).datepicker({
-        numberOfMonths: 2,
-        dateFormat: 'dd-mm-yy',
-        maxDate: '+12M',
-        minDate: '+1D'
-        
-    });   
-    $('#ROPDateCalendar').on("click", function(e){
-            $('#ROPDate').focus();
-        });
-  } );
-/* END Date of ROP Date*/
 /* START Date initial length of stay*/
 $( function() {
     
@@ -1483,8 +1463,30 @@ $( function() {
 function calculate4WeeksAfterGivenImmunizationDate(){
     var arg = 28; //4 weeks
     var d = $('#immunizations652Date').datepicker('getDate'); //get the date that they manually inputted
-    d.setDate(d.getDate() + arg); //add 4 weeks onto the date
-    $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+    var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 4 weeks onto the date
+    var currentDate = new Date();
+    var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
+    if(days>0){
+       $('#immunizationDate').val("Immunization Due");
+       }
+    else{
+        $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+    }
+    
+}
+function calculate4WeeksAfterGivenImmunizationDateCheckedNo(){
+    var arg = 42; //4 weeks
+    var d = $('#dateOfBirth').datepicker('getDate'); //get the date that they manually inputted
+    var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 4 weeks onto the date
+    var currentDate = new Date();
+    var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
+    if(days>0){
+       $('#immunizationDate').val("Immunization Due");
+       }
+    else{
+        $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+    }
+    
 }
 function adding28Days(){
     var arg = 28;
@@ -1502,8 +1504,9 @@ function makingSixWeekDate(){
     var currentDate = new Date(); // current date
     var dob   = $('#dateOfBirth').datepicker('getDate'); //dob 
     var days   = (currentDate - dob)/1000/60/60/24; // number days old
-    if(days<42){
+    if(days<40){
         toastr.success("Current baby is younger than 42 days - Immunization date already set")
+        $('#immunizationDate').datepicker('setDate', d);
        }
     else{
         toastr.success("Current baby is older than 42 days - Immunization date will need to be set")

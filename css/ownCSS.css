@@ -511,6 +511,9 @@ input[type="search"]:disabled,.fixingInputAlignmentInner input[type="text"]:disa
     margin-top: 50px;
     margin-bottom: 80px;
     position:relative;
+    @media (max-height: 769px) {
+        margin-bottom: 60px;
+    }
     
 }
 /* Each section name */
@@ -570,36 +573,6 @@ div ul li .firstATag:after{
     font-family: FontAwesome;
     content: "\f02f";
     margin-left:0.5em;
-}
-.progressBarUL #listItem2 span:before{
-/*    background-color: green;*/
-    
-    /* start glow*/
-    /*-webkit-animation: glowing 1500ms infinite;
-  -moz-animation: glowing 1500ms infinite;
-  -o-animation: glowing 1500ms infinite;
-  animation: glowing 1500ms infinite;*/
-    /* end glow */
-}
-.progressBarUL li:nth-child(2) span:before{
-/*    background-color: green;*/
-    
-    /* start glow*/
-    /*-webkit-animation: glowing 1500ms infinite;
-  -moz-animation: glowing 1500ms infinite;
-  -o-animation: glowing 1500ms infinite;
-  animation: glowing 1500ms infinite;*/
-    /* end glow */
-}
-.progressBarUL li:nth-child(3) span:before{
-/*    background-color: green;*/
-    
-    /* start glow*/
-    /*-webkit-animation: glowing 1500ms infinite;
-  -moz-animation: glowing 1500ms infinite;
-  -o-animation: glowing 1500ms infinite;
-  animation: glowing 1500ms infinite;*/
-    /* end glow */
 }
 /* End */
 
