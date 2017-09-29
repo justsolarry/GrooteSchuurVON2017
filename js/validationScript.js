@@ -51,6 +51,28 @@ function dateOfBirthCheck(){
                 $('#dateOfBirth').removeClass('addGreen')
             }
 }
+function dateOfAdmissionCheck(){
+    var value1 = document.getElementById('dateOfAdmission').value;
+    if(value1.length>0){
+            $('#dateOfAdmission').addClass('addGreen')
+            $('#dateOfAdmission').removeClass('addRed')
+       }
+    else if(value1.length==0){
+                $('#dateOfAdmission').addClass('addRed')
+                $('#dateOfAdmission').removeClass('addGreen')
+            }
+}
+function dateOfInitialDispositionCheck(){
+    var value1 = document.getElementById('dateOfInitialDisposition').value;
+    if(value1.length>0){
+            $('#dateOfInitialDisposition').addClass('addGreen')
+            $('#dateOfInitialDisposition').removeClass('addRed')
+       }
+    else if(value1.length==0){
+                $('#dateOfInitialDisposition').addClass('addRed')
+                $('#dateOfInitialDisposition').removeClass('addGreen')
+            }
+}
 
 function validatePatientsName()
 {
@@ -148,33 +170,62 @@ function validateWeightAtInitialDisposition(){
         $('#weightAtInitialDisposition').addClass('addRed')
     }
     else{
-        if(isNaN(weight)){
-            toastr.error('Weight at Initial Disposition - Numbers only');
-            $('#weightAtInitialDisposition').addClass('addRed')
-            $('#weightAtInitialDisposition').removeClass('addGreen')
-        }
-        if (weight < 1){
-            toastr.error('Weight at Initial Disposition - Value cannot be zero or negative');
-            $('#weightAtInitialDisposition').addClass('addRed')
-            $('#weightAtInitialDisposition').removeClass('addGreen')
-        }
-        if (weight >0  && weight < 50){
-            toastr.error('Weight at Initial Disposition - Value must be in grams, not kilograms');
-            $('#weightAtInitialDisposition').addClass('addRed')
-            $('#weightAtInitialDisposition').removeClass('addGreen')
-        }
-        if (weight >50  && weight < 401){
+        if (weight <= 400){
             toastr.error('Weight at Initial Disposition - Value too Low');
             $('#weightAtInitialDisposition').addClass('addRed')
             $('#weightAtInitialDisposition').removeClass('addGreen')
         }
-        if (weight > 5000 && weight<7000){
+        if(weight>=401 && weight<=5000){
+            $('#weightAtInitialDisposition').removeClass('addRed')
+            $('#weightAtInitialDisposition').addClass('addGreen')
+        }
+        if (weight>=5001 && weight<=6999){
             toastr.warning('Weight at Initial Disposition - Are you sure?'); 
             $('#weightAtInitialDisposition').removeClass('addRed')
             $('#weightAtInitialDisposition').addClass('addGreen')
         }
         if (weight >=7000 ){
             toastr.error('Weight at Initial Disposition - Value too High'); 
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+    }
+    
+}
+function validateWeightAtDispositionAfterReadmission(){
+    var weight = document.getElementById('weightAtDispositionAfterReadmission').value;
+    if(weight.length==0){
+        toastr.error('Weight at Disposition after Readmission - Value cannot be empty');
+        $('#weightAtInitialDisposition').addClass('addRed')
+    }
+    else{
+        if(isNaN(weight)){
+            toastr.error('Weight at Disposition after Readmission - Numbers only');
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+        if (weight < 1){
+            toastr.error('Weight at Disposition after Readmission - Value cannot be zero or negative');
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+        if (weight >0  && weight < 50){
+            toastr.error('Weight at Disposition after Readmission - Value must be in grams, not kilograms');
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+        if (weight >50  && weight < 401){
+            toastr.error('Weight at Disposition after Readmission - Value too Low');
+            $('#weightAtInitialDisposition').addClass('addRed')
+            $('#weightAtInitialDisposition').removeClass('addGreen')
+        }
+        if (weight > 5000 && weight<7000){
+            toastr.warning('Weight at Disposition after Readmission - Are you sure?'); 
+            $('#weightAtInitialDisposition').removeClass('addRed')
+            $('#weightAtInitialDisposition').addClass('addGreen')
+        }
+        if (weight >=7000 ){
+            toastr.error('Weight at Disposition after Readmission - Value too High'); 
             $('#weightAtInitialDisposition').addClass('addRed')
             $('#weightAtInitialDisposition').removeClass('addGreen')
         }
@@ -219,6 +270,26 @@ function validatePatientMedicalRecordNumber(){
         
     }
     
+}
+function validateAppointmentLocation()
+{
+    var alphaExp = /^[a-zA-Z\s\-]*$/;
+    var value1 = document.getElementById('appointmentLocation').value;
+  if ((value1.length) ==0){
+    toastr.error("Appointment Location - Value cannot be empty");
+    $('#appointmentLocation').addClass('addRed')
+      $('#appointmentLocation').removeClass('addGreen')
+  }
+    else if (value1.match(alphaExp)){
+             $('#appointmentLocation').removeClass('addRed')
+                $('#appointmentLocation').addClass('addGreen')
+             }
+    else{
+        toastr.error("Appointment Location - - Only letters allowed");
+        $('#appointmentLocation').addClass('addRed')
+        $('#appointmentLocation').removeClass('addGreen')
+    }
+  
 }
 function validateGestationalAgeInWeeks()
 {
@@ -295,6 +366,31 @@ function validateApgarScore5min(ap5){
 
 
 $("#birthWeightInGrams").on( "keyup", function( event ) {
+    
+    // 1.
+    var selection = window.getSelection().toString();
+    if ( selection !== '' ) {
+        return;
+    }
+    // 2.
+    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+        return;
+    }
+    // 1
+        var $this = $( this );
+        var input = $this.val();
+        // 2
+        var input = input.replace(/[\D\s\._\-]+/g, "");
+        // 3
+        input = input ? parseInt( input, 10 ) : 0;
+        // 4
+        $this.val( function() {
+            return ( input === 0 ) ? "" : input.toString();
+        } );
+ 
+} );
+
+$("#weightAtInitialDisposition").on( "keyup", function( event ) {
     
     // 1.
     var selection = window.getSelection().toString();
