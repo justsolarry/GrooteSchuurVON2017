@@ -29,7 +29,7 @@ function createHTTPAuthPOSTConnection(userPasswordObject){
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
   var babyData = {};
-  var url = "http://localhost:5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
+  var url = "http://196.24.190.72:5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {

@@ -69,7 +69,7 @@ function fetchData(){
         select: {
             style:    'multi',
             selector: 'td:first-child'
-        },*/
+        },
         //order: [[ 1, 'asc' ]],
 
         "columns": [
