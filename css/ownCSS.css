@@ -509,7 +509,7 @@ input[type="search"]:disabled,.fixingInputAlignmentInner input[type="text"]:disa
 /* each item in the list */
 .progressBarUL li{
     margin-top: 50px;
-    margin-bottom: 110px;
+    margin-bottom: 80px;
     position:relative;
     
 }
