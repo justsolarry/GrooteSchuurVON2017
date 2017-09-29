@@ -31,6 +31,7 @@ function retrieveAllDocs(){
   var babyData = {};
   var url = "http://localhost:5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
   http.open("GET", url, false);
+  http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         babyData = JSON.parse(this.responseText);
@@ -43,36 +44,34 @@ function retrieveAllDocs(){
 }
 
 
-function _submit(){
- 
-  var user = document.getElementById('username').value;
-  var pwd = document.getElementById('password').value;
+function createSession(){ 
     
-  var userObject = {};
-  userObject.username = user;
-  userObject.password = pwd;
-   
   var http = new XMLHttpRequest();
-    
-  
   var url = "http://localhost:5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
-    
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         //document.cookie=http.getResponseHeader('Set-Cookie');
         alert("Logged in");
-        window.location.href = 'landing.html'; 
+        //window.location.href = 'landing.html'; 
+        
     }
   }
+  var user = prompt('Username');
+  var password = prompt('Password');
   
+  var u = {};
+  u.name = user;
+  u.password = password;
+    
   http.open("POST", url, true);
   http.setRequestHeader("Content-type", "application/json");
-  //http.setRequestHeader('Access-Control-Allow-Origin', '*');
+  http.setRequestHeader('Access-Control-Allow-Origin', '*');
   
-  http.send(JSON.stringify(userObject));
-     
+  http.send(JSON.stringify(u));
+  
 }
+
 
 function _logout(){
    
@@ -111,9 +110,7 @@ function newUser(){
     }
 
   var http = new XMLHttpRequest();
-  
   var url = "http://localhost:5984/_users/org.couchdb.user:test"; //admin:vonadmin123@
-  
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         //window.location = "index.html";  
@@ -125,10 +122,8 @@ function newUser(){
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.withCredentials = true;
-  
-  alert(JSON.stringify(userObject));  
-  http.send(JSON.stringify(userObject));
-
+  //alert(JSON.stringify(userObject));  
+  http.send();
 }
 
 function displayData(id){
@@ -176,7 +171,7 @@ function repopulateForm(babyData){
                     //alert(index);
                     //document.getElementsByName('outbornBirth')[1].checked = true;                    
                 if(elements.length > 1 && index<10 && !isNaN(index)){
-                        alert("in loop for check")
+
                         elements[babyData[key]].checked = true;
                     
                         elements[0].value = index;
@@ -302,7 +297,7 @@ function createHTTPPOSTConnection(babyDataObject){ // must change to pass in val
   var rev = {};
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
-  
+  http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         rev = this.responseText;
