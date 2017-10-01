@@ -1,5 +1,10 @@
-function diedInDeliveryRoomCheck(){
-    if (document.getElementById('diedInDeliveryRoomYes').checked) { //hiding the unnecessary fields
+function checkingWhatTypeOfFormToDisplay(){
+    var weight = document.getElementById('birthWeightInGrams').value;
+    //Von baby  and died > show death form
+    if((weight>=401 && weight<=1500) && document.getElementById('diedInDeliveryRoomYes').checked){ // Von baby and died > Show death form
+        $("#generalDataItemsID").html("DELIVERY ROOM DEATH FORM");
+        $("#dayButtonID").text("Delivery Room Death Form");
+            hideNotAVonBabyFields();  //hiding Not a VON baby fields
         $(".gestationalAgeInWeeksDiv").slideDown("slow");
         $(".gestionalDaysDiv").slideDown("slow");
         $(".headCircumferenceDiv").slideDown("slow");
@@ -54,22 +59,35 @@ function diedInDeliveryRoomCheck(){
         $(".headCircumferenceInitialDispositionDiv").slideUp("slow");
         $(".initialLengthOfStayDiv").slideUp("slow");
         $(".day28DateDiv").slideUp("slow");
-        
-        var value1 = document.getElementById('birthWeightInGrams').value;
-        if(value1 >=1501){ //if baby is not a VON baby and died, display error
-            toastr.error("Baby is not eligible for the database")
         }
-    }
-    if (document.getElementById('diedInDeliveryRoomNo').checked) { //revealing the fields
-        hideNotAVonBabyFields();
-    }
+    //Von baby and alive > show von form
+    else if((weight>=401 && weight<=1500) && document.getElementById('diedInDeliveryRoomNo').checked){
+            $("#generalDataItemsID").html("GENERAL DATA ITEMS");
+            $("#dayButtonID").text("General Data Items");
+            hideNotAVonBabyFields();
+            }
+    //Not a von baby and died > show error
+    else if((weight>=1501 && weight<=7000) && document.getElementById('diedInDeliveryRoomYes').checked){
+            toastr.error("Baby is NOT valid for form entry")
+            }
+    //Not a von baby and alive > Not VON form
+    else if((weight>=1501 && weight<=7000) && document.getElementById('diedInDeliveryRoomNo').checked){
+                $("#generalDataItemsID").html("GENERAL DATA ITEMS");
+                $("#dayButtonID").text("General Data Items");
+                
+                showNotAVonBabyFields();
+            }
+    
 }
-
 function inbornOutbornCheck() {
     if (document.getElementById('locationOFBirthInborn').checked) {
         $("#GroupingHiddenField1").slideUp("slow");
         $('#GroupingHiddenField1').removeClass('glowingHiddenFields')
-        $('#testingID').removeClass('hide')
+        $("#GroupingHiddenField1 input:radio").attr("checked", false);
+        $('#GroupingHiddenField1 select').prop('selectedIndex',0);
+        $('#GroupingHiddenField1 input').val('');
+        $('#GroupingHiddenField1 input').change();
+        lengthOfStayCheck();
     }
     if (document.getElementById('locationOFBirthOutborn').checked) {
         $("#GroupingHiddenField1").slideDown("slow");
@@ -281,6 +299,7 @@ function fetalMedicineUnitFlaggedCheck() {
     if (document.getElementById('fetalMedicineUnitFlaggedNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $('#antenatalScan').val('');
     }
 }
 
@@ -556,29 +575,208 @@ function AfterInitialResuscitationCheck() {
 }
 function bacterialSepsisBeforeCheck() {
     var value1 = document.getElementById('hiddenFieldBacterialSepsisBefore');
-    var value2 = document.getElementById('addNewBacterialFieldDiv');
+    //removeNewBacterialFieldDiv
     if (document.getElementById('bacterialSepsisBeforeYes').checked) {
         $(value1).slideDown("slow");
         $(value1).addClass('glowingHiddenFields')
-        $(value2).slideDown("slow");
     }
     if (document.getElementById('bacterialSepsisBeforeNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
-        $(value2).slideUp("slow");
     }
     if (document.getElementById('bacterialSepsisBeforeNA').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
-        $(value2).slideUp("slow");
     }
     if (document.getElementById('bacterialSepsisBeforeUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
-        $(value2).slideUp("slow");
     }
 }
-
+function numberOfBacterialSepsisBeforeCheck(){
+   var e = document.getElementById("numberOfBacterialSepsisBefore");
+    var strUser = e.options[e.selectedIndex].value;
+    /*if case for Home, died, hospitalized - Show parts D */
+    if (strUser==1){
+        $('#bacterialBeforeDiv1').slideDown("slow");
+        $('#bacterialBeforeDiv2').slideUp("slow");
+        $('#bacterialBeforeDiv3').slideUp("slow");
+        $('#hiddenFieldBacterialSepsisBefore').addClass('glowingHiddenFields');
+    }
+    else if(strUser==2){
+        $('#bacterialBeforeDiv1').slideDown("slow");
+        $('#bacterialBeforeDiv2').slideDown("slow");
+        $('#bacterialBeforeDiv3').slideUp("slow");
+        $('#hiddenFieldBacterialSepsisBefore').addClass('glowingHiddenFields');
+    }
+    else if(strUser==3){
+        $('#bacterialBeforeDiv1').slideDown("slow");
+        $('#bacterialBeforeDiv2').slideDown("slow");
+        $('#bacterialBeforeDiv3').slideDown("slow");
+        $('#hiddenFieldBacterialSepsisBefore').addClass('glowingHiddenFields');
+    }
+}
+function numberOfBacterialSepsisAfterCheck(){
+   var e = document.getElementById("numberOfBacterialSepsisAfter");
+    var strUser = e.options[e.selectedIndex].value;
+    /*if case for Home, died, hospitalized - Show parts D */
+    if (strUser==1){
+        $('#bacterialAfterDiv1').slideDown("slow");
+        $('#bacterialAfterDiv2').slideUp("slow");
+        $('#bacterialAfterDiv3').slideUp("slow");
+        $('#hiddenFieldBacterialSepsis').addClass('glowingHiddenFields');
+    }
+    else if(strUser==2){
+        $('#bacterialAfterDiv1').slideDown("slow");
+        $('#bacterialAfterDiv2').slideDown("slow");
+        $('#bacterialAfterDiv3').slideUp("slow");
+        $('#hiddenFieldBacterialSepsis').addClass('glowingHiddenFields');
+    }
+    else if(strUser==3){
+        $('#bacterialAfterDiv1').slideDown("slow");
+        $('#bacterialAfterDiv2').slideDown("slow");
+        $('#bacterialAfterDiv3').slideDown("slow");
+        $('#hiddenFieldBacterialSepsis').addClass('glowingHiddenFields');
+    }
+}
+function numberOfBacterialCodesDuringAdmissionCheck(){
+   var e = document.getElementById("numberOfBacterialCodesDuringAdmission");
+    var strUser = e.options[e.selectedIndex].value;
+    /*if case for Home, died, hospitalized - Show parts D */
+    if (strUser==1){
+        $('#bacterialCodeDuringAdmissionDiv1').slideDown("slow");
+        $('#bacterialCodeDuringAdmissionDiv2').slideUp("slow");
+        $('#bacterialCodeDuringAdmissionDiv3').slideUp("slow");
+        $('#hiddenFieldBacterialSepsisBefore').addClass('glowingHiddenFields');
+    }
+    else if(strUser==2){
+        $('#bacterialCodeDuringAdmissionDiv1').slideDown("slow");
+        $('#bacterialCodeDuringAdmissionDiv2').slideDown("slow");
+        $('#bacterialCodeDuringAdmissionDiv3').slideUp("slow");
+        $('#hiddenFieldBacterialSepsisBefore').addClass('glowingHiddenFields');
+    }
+    else if(strUser==3){
+        $('#bacterialCodeDuringAdmissionDiv1').slideDown("slow");
+        $('#bacterialCodeDuringAdmissionDiv2').slideDown("slow");
+        $('#bacterialCodeDuringAdmissionDiv3').slideDown("slow");
+        $('#hiddenFieldBacterialSepsisBefore').addClass('glowingHiddenFields');
+    }
+}
+function numberOfCongenitalInfectionsCheck(){
+   var e = document.getElementById("numberOfCongenitalInfections");
+    var strUser = e.options[e.selectedIndex].value;
+    /*if case for Home, died, hospitalized - Show parts D */
+    if (strUser==1){
+        $('#congenitalCodeDiv1').slideDown("slow");
+        $('#congenitalCodeDiv2').slideUp("slow");
+        $('#congenitalCodeDiv3').slideUp("slow");
+        $('#hiddenFieldCongenitalInfectionOrganisms').addClass('glowingHiddenFields');
+    }
+    else if(strUser==2){
+        $('#congenitalCodeDiv1').slideDown("slow");
+        $('#congenitalCodeDiv2').slideDown("slow");
+        $('#congenitalCodeDiv3').slideUp("slow");
+        $('#hiddenFieldCongenitalInfectionOrganisms').addClass('glowingHiddenFields');
+    }
+    else if(strUser==3){
+        $('#congenitalCodeDiv1').slideDown("slow");
+        $('#congenitalCodeDiv2').slideDown("slow");
+        $('#congenitalCodeDiv3').slideDown("slow");
+        $('#hiddenFieldCongenitalInfectionOrganisms').addClass('glowingHiddenFields');
+    }
+}
+function numberOfBirthDefectsCheck(){
+   var e = document.getElementById("numberOfBirthDefects");
+    var strUser = e.options[e.selectedIndex].value;
+    /*if case for Home, died, hospitalized - Show parts D */
+    if (strUser==1){
+        $('#birthDefectCodeDiv1').slideDown("slow");
+        $('#birthDefectCodeDiv2').slideUp("slow");
+        $('#birthDefectCodeDiv3').slideUp("slow");
+        $('#birthDefectCodeDiv4').slideUp("slow");
+        $('#birthDefectCodeDiv5').slideUp("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    else if(strUser==2){
+        $('#birthDefectCodeDiv1').slideDown("slow");
+        $('#birthDefectCodeDiv2').slideDown("slow");
+        $('#birthDefectCodeDiv3').slideUp("slow");
+        $('#birthDefectCodeDiv4').slideUp("slow");
+        $('#birthDefectCodeDiv5').slideUp("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    else if(strUser==3){
+        $('#birthDefectCodeDiv1').slideDown("slow");
+        $('#birthDefectCodeDiv2').slideDown("slow");
+        $('#birthDefectCodeDiv3').slideDown("slow");
+        $('#birthDefectCodeDiv4').slideUp("slow");
+        $('#birthDefectCodeDiv5').slideUp("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    else if(strUser==4){
+        $('#birthDefectCodeDiv1').slideDown("slow");
+        $('#birthDefectCodeDiv2').slideDown("slow");
+        $('#birthDefectCodeDiv3').slideDown("slow");
+        $('#birthDefectCodeDiv4').slideDown("slow");
+        $('#birthDefectCodeDiv5').slideUp("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    else if(strUser==5){
+        $('#birthDefectCodeDiv1').slideDown("slow");
+        $('#birthDefectCodeDiv2').slideDown("slow");
+        $('#birthDefectCodeDiv3').slideDown("slow");
+        $('#birthDefectCodeDiv4').slideDown("slow");
+        $('#birthDefectCodeDiv5').slideDown("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    
+}
+function numberOfSurgeryCodesCheck(){
+   var e = document.getElementById("numberOfSurgeryCodes");
+    var strUser = e.options[e.selectedIndex].value;
+    /*if case for Home, died, hospitalized - Show parts D */
+    if (strUser==1){
+        $('#surgeryDiv1').slideDown("slow");
+        $('#surgeryDiv2').slideUp("slow");
+        $('#surgeryDiv3').slideUp("slow");
+        $('#surgeryDiv4').slideUp("slow");
+        $('#surgeryDiv5').slideUp("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    else if(strUser==2){
+        $('#surgeryDiv1').slideDown("slow");
+        $('#surgeryDiv2').slideDown("slow");
+        $('#surgeryDiv3').slideUp("slow");
+        $('#surgeryDiv4').slideUp("slow");
+        $('#surgeryDiv5').slideUp("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    else if(strUser==3){
+        $('#surgeryDiv1').slideDown("slow");
+        $('#surgeryDiv2').slideDown("slow");
+        $('#surgeryDiv3').slideDown("slow");
+        $('#surgeryDiv4').slideUp("slow");
+        $('#surgeryDiv5').slideUp("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    else if(strUser==4){
+        $('#surgeryDiv1').slideDown("slow");
+        $('#surgeryDiv2').slideDown("slow");
+        $('#surgeryDiv3').slideDown("slow");
+        $('#surgeryDiv4').slideDown("slow");
+        $('#surgeryDiv5').slideUp("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    else if(strUser==5){
+        $('#surgeryDiv1').slideDown("slow");
+        $('#surgeryDiv2').slideDown("slow");
+        $('#surgeryDiv3').slideDown("slow");
+        $('#surgeryDiv4').slideDown("slow");
+        $('#surgeryDiv5').slideDown("slow");
+        $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
+    }
+    
+}
 function cranialImagingCheck() {
     var value1 = document.getElementById('hiddenFieldCranialImaging');
     if (document.getElementById('cranialImagingYes').checked) {
@@ -626,36 +824,19 @@ function immunizations652Check() {
     if (document.getElementById('immunizations652Yes').checked) {
         $(value1).slideDown("slow");
         $(value1).addClass('glowingHiddenFields')
+        $('#immunizationDate').datepicker('setDate', null);
     }
     if (document.getElementById('immunizations652No').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
         $('#immunizations652Date').datepicker('setDate', null);
-        //if no is selected - set the immunization date to 6 weeks from the date of birth.
+        toastr.success("Immunization date - setting it")
+        var arg = 43;
+        var d = $('#dateOfBirth').datepicker('getDate');
+        d.setDate(d.getDate() + arg);
+        $('#immunizationDate').datepicker('setDate', d);
         
-        /* Calculations to check if baby is less than 6 weeks old from current date*/
-        /*var currentDate = new Date(); // current date
-        var sixWeeksOldDate   = $('#sixWeeksOldDate').datepicker('getDate'); //dob 
-        var days   = (sixWeeksOldDate - currentDate)/1000/60/60/24; // number days old
-        alert(days)*/
-        /*if(days>=0){
-            
-            toastr.error("Immunization date - Not Valid")
-            $('#immunizationDate').datepicker('setDate', null);
-           }
-        else{*/
-            toastr.success("Immunization date - setting it")
-            var arg = 43;
-            var d = $('#dateOfBirth').datepicker('getDate');
-            d.setDate(d.getDate() + arg);
-            $('#immunizationDate').datepicker('setDate', d);
-//        }
-    }
-    if (document.getElementById('immunizations652Unknown').checked) {
-        $(value1).slideUp("slow");
-        $(value1).removeClass('glowingHiddenFields')
-        $('#immunizations652Date').datepicker('setDate', null);
-        $('#immunizationDate').datepicker('setDate', null);
+        calculate4WeeksAfterGivenImmunizationDateCheckedNo();
     }
 }
 var counterForSurgeryCode = 1;
@@ -872,7 +1053,7 @@ function dispositionAfterReadmissionCheck() {
     }
 }
 
-function fixingInputAlignmentCheck(){
+function checkGestationalAgeInWeeks(){
     var e = document.getElementById("gestationalAgeInWeeks");
     var strUser = e.options[e.selectedIndex].value;
     if(strUser==99){
@@ -999,7 +1180,6 @@ function numberOfInfantsDeliveredCheck(){
         $(hiddenField).addClass('glowingHiddenFields');
         $('#twinOrTripletOrQuadrupletTwin').attr("checked",true);
         $('#twinOrTripletOrQuadrupletTwin').change();
-        $('#hiddenFieldTwins').slideUp("slow");
         
     }
     else if(strUser==3){
@@ -1022,13 +1202,6 @@ function numberOfInfantsDeliveredCheck(){
         $('#hiddenFieldQuadruplets').slideUp("slow");
     }
 }
-
-
-/*function duplicateToImmunizationDate(){
-    var d = $('#immunizations652Date').datepicker('getDate');
-    $('#immunizationDate').datepicker('setDate', d);
-    
-}*/
 function twinOrTripletOrQuadrupletCheck(){
     var hiddenFieldTwins = document.getElementById('hiddenFieldTwins');
     var hiddenFieldTriplets = document.getElementById('hiddenFieldTriplets');
@@ -1119,7 +1292,6 @@ function showNotAVonBabyFields(){
     /*$("#download").slideUp('slow');
     $("#listItem2").slideUp('slow');*/
 }
-
 function hideNotAVonBabyFields(){
     
     $(".gestationalAgeInWeeksDiv").slideDown("slow");
@@ -1321,10 +1493,12 @@ $(function () {
         maxDate: '0',
         minDate: '-18M',
         onSelect:function () {
-            dateOfBirthCheck(); //checking if the user has inputted a value
+            validateFreeText('dateOfBirth'); //checking if the user has inputted a value
             adding28Days(); //making 28 day date
             makingSixWeekDate(); //making 6 week date and checks if the baby is <42 days
-            making40dayDate();
+            making40dayDate();//if baby is > or < 40 , show or hide that div
+            checkingOlder28Days();
+            countingDaysInWeeksForRespiratory();
             //adding key listener functions for progress bar checks
             InputsPatientForm();
             ColourPatientForm();
@@ -1348,7 +1522,8 @@ $(function () {
         maxDate: '0',
         minDate: '-18M',
         onSelect: function () {
-            dateOfAdmissionCheck();
+            validateFreeText('dateOfAdmission');
+            lengthOfStayCheck();
             //adding key listener functions for progress bar checks
             InputsPatientForm();
             ColourPatientForm();
@@ -1365,8 +1540,8 @@ $(function () {
         maxDate: '0',
         minDate: '-18M',
         onSelect: function () {
-            dateOfInitialDispositionCheck();
-            lengthOfStayCheck();
+            validateFreeText('dateOfInitialDisposition');
+            lengthOfStayCheck(); //display length of stay
             //adding key listener functions for progress bar checks
             InputsPatientForm();
             ColourPatientForm();
@@ -1404,23 +1579,50 @@ $(function () {
         $('#immunizations652DateCalendar').focus();
     });
     
+    $("#appointmentDate").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar').on("click", function (e) {
+        $('#appointmentDate').focus();
+    });
+    
+    $("#ROPDate").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('ROPDate');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#ROPDateCalendar').on("click", function (e) {
+        $('#ROPDate').focus();
+    });
+    
+    $("#PCRDate").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('PCRDate');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#PCRDateCalendar').on("click", function (e) {
+        $('#PCRDate').focus();
+    });
+    
 });
 /* END Date of Birth*/
-/* START Date of Appointment Date*/
-$( function() {
-    
-    $( "#appointmentDate" ).datepicker({
-        numberOfMonths: 2,
-        dateFormat: 'dd-mm-yy',
-        maxDate: '+12M',
-        minDate: '+1D'
-        
-    });   
-    $('#appointmentDateCalendar').on("click", function(e){
-            $('#appointmentDate').focus();
-        });
-  } );
-/* END Date of Appointment Date*/
 /* START Date of Immunization Date*/
 $( function() {
     
@@ -1436,36 +1638,6 @@ $( function() {
         });
   } );
 /* END Date of Immunization Date*/
-/* START Date of PCR Date*/
-$( function() {
-    
-    $( "#PCRDate" ).datepicker({
-        numberOfMonths: 2,
-        dateFormat: 'dd-mm-yy',
-        maxDate: '+12M',
-        minDate: '+1D'
-        
-    }); 
-    $('#PCRDateCalendar').on("click", function(e){
-            $('#PCRDate').focus();
-        });
-  } );
-/* END Date of PCR Date*/
-/* START Date of ROP Date*/
-$( function() {
-    
-    $( "#ROPDate" ).datepicker({
-        numberOfMonths: 2,
-        dateFormat: 'dd-mm-yy',
-        maxDate: '+12M',
-        minDate: '+1D'
-        
-    });   
-    $('#ROPDateCalendar').on("click", function(e){
-            $('#ROPDate').focus();
-        });
-  } );
-/* END Date of ROP Date*/
 /* START Date initial length of stay*/
 $( function() {
     
@@ -1483,8 +1655,30 @@ $( function() {
 function calculate4WeeksAfterGivenImmunizationDate(){
     var arg = 28; //4 weeks
     var d = $('#immunizations652Date').datepicker('getDate'); //get the date that they manually inputted
-    d.setDate(d.getDate() + arg); //add 4 weeks onto the date
-    $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+    var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 4 weeks onto the date
+    var currentDate = new Date();
+    var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
+    if(days>0){
+       $('#immunizationDate').val("Immunization Due");
+       }
+    else{
+        $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+    }
+    
+}
+function calculate4WeeksAfterGivenImmunizationDateCheckedNo(){
+    var arg = 42; //4 weeks
+    var d = $('#dateOfBirth').datepicker('getDate'); //get the date that they manually inputted
+    var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 4 weeks onto the date
+    var currentDate = new Date();
+    var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
+    if(days>0){
+       $('#immunizationDate').val("Immunization Due");
+       }
+    else{
+        $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+    }
+    
 }
 function adding28Days(){
     var arg = 28;
@@ -1493,6 +1687,26 @@ function adding28Days(){
     $('#day28Date').datepicker('setDate', d);
     toastr.success("28 Day Date Set")
 };
+
+function countingDaysInWeeksForRespiratory(){
+    var dob   = $('#dateOfBirth').datepicker('getDate');
+    var currentDate = new Date();
+    var days = (currentDate-dob)/1000/60/60/24;
+    var gestationalWeeks = ($('#gestationalAgeInWeeks').val()*7);
+    var gestationalDays = ($('#gestionalDays').val()*1);
+    var totalDays = (days+gestationalWeeks+gestationalDays)*1;
+    /*alert("dobDays: "+days)
+    alert("weeks: "+gestationalWeeks)
+    alert("days: "+gestationalDays)
+    alert("total: "+totalDays)*/
+    
+    if(totalDays > 252) {//36 weeks * 7 days
+        $('.RespiratorySupportAt36WeeksDiv').slideDown('slow'); //show
+    }
+    else{
+        $('.RespiratorySupportAt36WeeksDiv').slideUp('slow');
+    }
+}
 function makingSixWeekDate(){
     var arg = 42;
     var d = $('#dateOfBirth').datepicker('getDate');
@@ -1502,8 +1716,9 @@ function makingSixWeekDate(){
     var currentDate = new Date(); // current date
     var dob   = $('#dateOfBirth').datepicker('getDate'); //dob 
     var days   = (currentDate - dob)/1000/60/60/24; // number days old
-    if(days<42){
+    if(days<40){
         toastr.success("Current baby is younger than 42 days - Immunization date already set")
+        $('#immunizationDate').datepicker('setDate', d);
        }
     else{
         toastr.success("Current baby is older than 42 days - Immunization date will need to be set")
@@ -1526,20 +1741,46 @@ function making40dayDate(){
     }
 }
 function lengthOfStayCheck(){
+    
     var dob   = $('#dateOfBirth').datepicker('getDate');
     var admission   = $('#dateOfAdmission').datepicker('getDate');
     var initialDisposition   = $('#dateOfInitialDisposition').datepicker('getDate');
     var dobValue   = $('#dateOfBirth').val();
     var admissionValue   = $('#dateOfAdmission').val();
     var initialDispositionValue   = $('#dateOfInitialDisposition').val();
-    var days   = (initialDisposition - dob)/1000/60/60/24;
-    if((initialDispositionValue.length>0 && admissionValue.length>0)||(initialDispositionValue.length>0 && dobValue.length>0 )){
+    var daysDOB   = (initialDisposition - dob)/1000/60/60/24;
+    var daysAdmission   = (initialDisposition - admission)/1000/60/60/24;
+    //if DOB and inborn, take DOB
+    if($('#locationOFBirthInborn').attr("checked",true) && (dobValue.length)>0 && (admissionValue.length)==0){
+        $('#initialLengthOfStay').val(daysDOB);
+        //If the initial disposition date is less than 2 days then make the day 3 of line panel N/A
+        if(daysDOB<=2){
+            $('#bacterialSepsisNA').attr("checked",true);
+            $('#coagulaseNegativeNA').attr("checked",true);
+            $('#fungalInfectionNA').attr("checked",true);
+           }
+       }
+    else if($('#locationOFBirthOutborn').attr("checked",true)&& (dobValue.length)>0 && (admissionValue.length)>0){
+            $('#initialLengthOfStay').val(daysAdmission);
+            //If the initial disposition date is less than 2 days then make the day 3 of line panel N/A
+            if(daysAdmission<=2){
+                $('#bacterialSepsisNA').attr("checked",true);
+                $('#coagulaseNegativeNA').attr("checked",true);
+                $('#fungalInfectionNA').attr("checked",true);
+               }
+            }
+}
+function checkingOlder28Days(){
+    var dob   = $('#dateOfBirth').datepicker('getDate');
+    var dobValue   = $('#dateOfBirth').val();
+    var currentDate = new Date();
+    var days   = (currentDate - dob)/1000/60/60/24;
+    if(dobValue.length>0 ){
         if(days>=0 && days<=27){
-            youngerThan28DaysHidePanels();
-            $('#initialLengthOfStay').val(days);
+            hideYoungerThan28DaysHidePanels();
         }
         else{
-            $('#initialLengthOfStay').val(days);
+            showYoungerThan28DaysHidePanels();
         }
        }
 }
@@ -1547,22 +1788,30 @@ function totalLengthOfStayCheck(){
     var dob   = $('#dateOfBirth').datepicker('getDate');
     var admission   = $('#dateOfAdmission').datepicker('getDate');
     var initialDisposition   = $('#dateOfInitialDisposition').datepicker('getDate');
+    //get the number from the first form
+    var valueOfInitialLengthOfStay = $('#initialLengthOfStay').val();
+    //take the date discharged home and minus it from the initial disposition date
+    var dateDischargedHomeDiedOrBirthday   = $('#dateDischargedHomeDiedOrBirthday').datepicker('getDate');
+    var totalDays = (dateDischargedHomeDiedOrBirthday - initialDisposition)/1000/60/60/24;
+    //add these 2 numbers together
+    var addingTotalDays = parseInt(valueOfInitialLengthOfStay)+parseInt(totalDays);
+    /*alert("First number: "+valueOfInitialLengthOfStay)
+    alert("second number: "+totalDays)
+    alert("final number: "+addingTotalDays)*/
     var dobValue   = $('#dateOfBirth').val();
     var admissionValue   = $('#dateOfAdmission').val();
     var initialDispositionValue   = $('#dateOfInitialDisposition').val();
     var days   = (initialDisposition - dob)/1000/60/60/24;
+    
     if((initialDispositionValue.length>0 && admissionValue.length>0)||(initialDispositionValue.length>0 && dobValue.length>0 )){
-        if(days>=0 && days<=27){
-            youngerThan28DaysHidePanels();
-            $('#initialLengthOfStay').val(days);
-        }
-        else{
-            $('#initialLengthOfStay').val(days);
-        }
+        $('#totalLengthOfStay').val(addingTotalDays);
        }
 }
-function youngerThan28DaysHidePanels(){
+function hideYoungerThan28DaysHidePanels(){
     $('.day28DateDiv').slideUp('slow')
+}
+function showYoungerThan28DaysHidePanels(){
+    $('.day28DateDiv').slideDown('slow')
 }
 /*28 day date*/
 $( function() {
@@ -1668,7 +1917,9 @@ function clearFormDialog() {
 /*START - Function to check if each label is too big or not */
 $('label.fixingLabelAlignment').each(function(){
     if($(this).text().length > 50){
-        $(this).css('font-size', '1.2em');
+        $(this).css('font-size', '1.1em');
+        /*$(this).siblings('.fixingInputAlignment').css({"height": '64px'});*/
+        
     }
 });
 /*END - Function to check if each label is too big or not */
