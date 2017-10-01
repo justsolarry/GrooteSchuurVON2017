@@ -74,7 +74,7 @@
         <a href="index.html" class="createNewEntryMenuButton">Create New Entry</a>
         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
         <a href="#" class="helpMenuButton">Help</a>
-        <a href="#" class="loginMenuButton">Login</a>
+        <a href="#" class="loginMenuButton">Change Password</a>
     </div>
     <!-- END Menu -->
     <!-- Intro Header -->
@@ -4707,7 +4707,8 @@
     <script src="js/noframework.waypoints.js"></script>
     <script src="js/db.js"></script>
     <script>
-        checkForPopulation()
+    
+
     </script>
     <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
     <script type="text/javascript" src="Calendar/jquery-ui.js"></script>
@@ -4718,7 +4719,9 @@
 <script type="text/javascript">
     var session = document.getElementById('session').value;
     $(document).ready(function() {
+    configureDB();
     if(session){
+            checkForPopulation();
             $('form').sisyphus({
                 excludeFields: ["_id _rev"],
                 locationBased: true,

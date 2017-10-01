@@ -1,6 +1,16 @@
+var ip = "";
+
+function configureDB(){
+    ip = prompt("Enter IP address of record database (Leave empty if local)");
+    
+    if(ip == "" || ip == null){
+        ip = "localhost";
+       }
+}
+
 function createHTTPAuthPOSTConnection(userPasswordObject){
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/test1"; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/test1"; //server will change //test server https://www.posttestserver.com/
   http.open("POST", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.onreadystatechange = function() {
@@ -14,7 +24,7 @@ function createHTTPAuthPOSTConnection(userPasswordObject){
 
 /*function createHTTPGETConnection(){
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/test1/2"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/test1/2"; //admin:vonadmin123@
   http.open("GET", url, false);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
@@ -29,7 +39,7 @@ function createHTTPAuthPOSTConnection(userPasswordObject){
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
   var babyData = {};
-  var url = "http://localhost:5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
@@ -47,7 +57,7 @@ function retrieveAllDocs(){
 function createSession(){ 
         
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/_session"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
@@ -77,7 +87,7 @@ function _logout(){
    
   var http = new XMLHttpRequest();
     
-  var url = "http://localhost:5984/_session"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
     
   http.onreadystatechange = function() {
@@ -99,7 +109,7 @@ function _logout(){
 function changePassword(userData){
   var http = new XMLHttpRequest();
     
-  var url = "http://localhost:5984/_session"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
     
   http.onreadystatechange = function() {
@@ -127,7 +137,7 @@ function newUser(){
     }
 
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/_users/org.couchdb.user:test"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/_users/org.couchdb.user:test"; //admin:vonadmin123@
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         //window.location = "index.html";  
@@ -272,7 +282,7 @@ function updateDataInRecord(medicalRecord){
 //This function is used to create a new record in the database
 function createHTTPPOSTConnectionRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.onreadystatechange = function() {
@@ -288,7 +298,7 @@ function createHTTPPOSTConnectionRecord(babyDataObject){
 function createHTTPPOSTConnectionNewRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
   var id = babyDataObject._id;
-  var url = "http://localhost:5984/test1/"+id; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/test1/"+id; //server will change //test server https://www.posttestserver.com/
   
   http.open("PUT", url, false);
   http.setRequestHeader("Content-type", "application/json"); 
@@ -309,7 +319,7 @@ function createHTTPPOSTConnectionNewRecord(babyDataObject){
 function createHTTPPOSTConnection(babyDataObject){ // must change to pass in values
   var http = new XMLHttpRequest();
   //alert("BabyDataObject in POSTConnention"+JSON.stringify(babyDataObject));
-  var url = "http://localhost:5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
+  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
   var rev = {};
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
@@ -331,7 +341,7 @@ function createHTTPPOSTConnection(babyDataObject){ // must change to pass in val
 function createHTTPGETConnection(medicalRecordId){
 
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/test1/" + medicalRecordId; //server will change -> config file?
+  var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
   var record;
   http.open("GET", url, false);
   http.withCredentials = true;
