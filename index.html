@@ -5,40 +5,23 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
+    <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
 
-    <title>Groote Schuur Neonatal data management application</title>
+    <title>Groote Schuur Neonatal Data Management Application</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="css/ownCSS.css" rel="stylesheet">
-    <link href="css/fonts.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
-    <link href="css/hover.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom fonts -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- Custom styles -->
     <link href="css/grayscale.css" rel="stylesheet">
     <link href="css/toastr.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet">
     <!--Calendar CSS-->
-    <link rel="stylesheet" href="Calendar/jquery-ui.css">
-    <link rel="stylesheet" href="Calendar/jquery-ui.theme.css">
-    <!-- Temporary navbar container fix -->
-    <style>
-        .navbar-toggler {
-            z-index: 1;
-        }
-        
-        @media (max-width: 576px) {
-            nav>.container {
-                width: 100%;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="calendar/jquery-ui.css">
 </head>
 
 <body id="page-top">
@@ -74,7 +57,7 @@
         <a href="index.html" class="createNewEntryMenuButton">Create New Entry</a>
         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
         <a href="#" class="helpMenuButton">Help</a>
-        <a href="#" class="loginMenuButton">Login</a>
+        <a href="#" class="loginMenuButton">Change Password</a>
     </div>
     <!-- END Menu -->
     <!-- Intro Header -->
@@ -87,10 +70,10 @@
                         <label class="subHeadingTitle">Neonatal Unit</label>
                         <h5 style="font-family: 'Julius sans one'">Data Capture & Report Management System</h5>
 
-                        <a href="#PatientFormID" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;">
+                        <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="return test();">
+                        
                            Create New Entry <i class="fa fa-angle-double-down animated"></i>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -171,6 +154,13 @@
                                     <div class="form-group input-group mothersFirstNameDiv">
                                         <label class="fixingLabelAlignment" for="mothersFirstName">Mother's First Name : </label>
                                         <div class="fixingInputAlignment">
+                                            <input type="hidden" id="_id" name="_id">
+                                            <input type="hidden" id="_rev" name="_rev">
+                                            <input type="hidden" id="form1" name="form1">
+                                            <input type="hidden" id="form2" name="form2">
+                                            <input type="hidden" id="form3" name="form3">
+                                            <input type="hidden" id="error" name="error">
+                                            <input type="hidden" id="session" value=false>
                                             <input id="mothersFirstName" name="mothersFirstName" onchange="validateNoNumbers('mothersFirstName')" class="form-control" type="search" placeholder="eg. Mary">
                                         </div>
 
@@ -363,7 +353,7 @@
                                         <div class="form-group input-group headCircumferenceDiv">
                                             <label class="fixingLabelAlignment" for="headCircumference">Head Circumference : </label>
                                             <div class="fixingInputAlignment">
-                                                    <select id="headCircumference" name="headCircumference" class="form-control" style="height:32px;width:40%;"> 
+                                                    <select id="headCircumference" name="headCircumferenceAtBirth" class="form-control" style="height:32px;width:40%;"> 
                                                         <option disabled selected value>SELECT</option>
                                                         <option value="999.9">Unknown</option>
                                                     </select>
@@ -526,20 +516,20 @@
                                             <label class="fixingLabelAlignment">Mode of Delivery : </label>
                                             <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVONVaginal" type="radio" name = modeOfDeliveryVON value="1">
+                                                <input class="radioType" id="modeOfDeliveryVONVaginal" type="radio" name = modeOfDelivery value="1">
                                                     <label class="radioText" for="modeOfDeliveryVONVaginal"> Vaginal</label>
                                                     
 
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVONCS" type="radio" name = modeOfDeliveryVON value="0">
+                                                <input class="radioType" id="modeOfDeliveryVONCS" type="radio" name = modeOfDelivery value="0">
                                                     <label class="radioText" for="modeOfDeliveryVONCS"> C-Section</label>
                                                     
 
                                                 </span>
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVONUnknown" type="radio" name = modeOfDeliveryVON value="9">
+                                                <input class="radioType" id="modeOfDeliveryVONUnknown" type="radio" name = modeOfDelivery value="9">
                                                     <label class="radioText" for="modeOfDeliveryVONUnknown"> Unknown</label>
                                                     
 
@@ -4641,90 +4631,27 @@
             </div>
         </section>
         <!-- END THIRD SECTION (TRANSFER) -->
-        <!-- Contact Section -->
-        <!-- XXXX
-    <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 offset-md-2">
-
-                <h2>Third Form</h2>
-                <p>Feel free to leave us a comment on the <a href="http://startbootstrap.com/template-overviews/grayscale/">Grayscale template overview page</a> on Start Bootstrap to give some feedback about this theme!</p>
-                <ul class="list-inline banner-social-buttons">
-                    <li class="list-inline-item">
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        
     </section>
-                -->
-    </section>
-
-    <!-- Footer -->
-    <!--xxxx
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; VON 2017</p>
-        </div>
-    </footer>
-    -->
     <!-- Electron JQUERY support-->
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tether.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/tether/tether.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.js"></script>
-
-
-
-    <!-- Custom scripts for this template -->
-    <script src="js/grayscale.js"></script>
-    <script src="js/toastr.js"></script>
-    <script src="js/jquery.popupoverlay.js"></script>
-    <!-- Custom VON Team Scripts for this template -->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js">
-    </script>
-    <script type="text/javascript" src="js/ownScripts.js"></script>
-    <script type="text/javascript" src="js/EventListeners.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- Custom library scripts -->
+    <script type="text/javascript" src="js/grayscale.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <!-- Custom VON Team Scripts -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/eventListeners.js"></script>
     <script type="text/javascript" src="js/validationScript.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-    <script src="js/noframework.waypoints.js"></script>
-    <script src="js/db.js"></script>
-    <script>
-        checkForPopulation()
-    </script>
+    <script type="text/javascript" src="js/databaseReadWrite.js"></script>
     <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
-    <!--Calendar-->
-    <script type="text/javascript" src="Calendar/jquery-ui.js"></script>
-    <!--<script type="text/javascript">
-    $(document).ready(function() {
-        $('form').sisyphus(
-            {
-                locationBased: true,
-                timeout: 10,
-                //autoRelease: true,
-                onSave: function() {
-                    var date = new Date();
-                    var hours = date.getHours();
-                    var minutes = date.getMinutes();
-                    var seconds = date.getSeconds();
-                    toastr.options.showMethod = 'slideDown';
-                    toastr.success('Saved', 'Autosave', {timeOut: 750});
-                    //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
-                }
-            }
-        );
-    });
-</script>-->
+    <script type="text/javascript" src="calendar/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.serializejson.js"></script>
+    <!--<script type="text/javascript" src="js/autosave.js"></script>-->
 </body>
 
 </html>
