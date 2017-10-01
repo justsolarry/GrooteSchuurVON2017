@@ -258,6 +258,7 @@ function createRecordInDatabase(){
 
 function getRecordFromDatabase(medicalRecordId){
     var record = createHTTPGETConnection(medicalRecordId)
+    console.log(record);
     return record;
 }
 
@@ -356,6 +357,7 @@ function createHTTPGETConnection(medicalRecordId){
     }
   }
   http.send();
+    console.log("got here");
   return record;
 }
 
