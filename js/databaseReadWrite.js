@@ -1,4 +1,4 @@
-var ip = config.ipAddress;
+var ip = dbConfig.ipAddress;
 
 function configureDB(){
     if(ip == "" || ip == null){
@@ -257,6 +257,7 @@ function createRecordInDatabase(){
 
 function getRecordFromDatabase(medicalRecordId){
     var record = createHTTPGETConnection(medicalRecordId)
+    console.log(record);
     return record;
 }
 
@@ -339,7 +340,8 @@ function createHTTPPOSTConnection(babyDataObject){ // must change to pass in val
 function createHTTPGETConnection(medicalRecordId){
 
   var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
+  var url = "http://"+dbConfig.ipAddress+":5984/test1/" + medicalRecordId; //server will change -> config file?
+    console.log(url);
   var record;
   http.open("GET", url, false);
   http.withCredentials = true;
@@ -354,6 +356,7 @@ function createHTTPGETConnection(medicalRecordId){
     }
   }
   http.send();
+    console.log("got here");
   return record;
 }
 

@@ -1,13 +1,16 @@
 //Notes:    Must update database to reflect the records state of published
 
-function sendDataToVon(listOfMedicalRecordIds){
-    for (i = 0; i < listOfMedicalRecordIds.length; i++) {
-        var record = getRecordFromDatabase(listOfMedicalRecordIds[i]);
+function sendDataToVon(returnedRecord){
+   // for (i = 0; i < listOfMedicalRecordIds.length; i++) {
+        console.log("test");
+        var record = returnedRecord;
+        console.log("Most recent record" + JSON.stringify(record));
         var xmlRecord = create2018Xml(record);
         console.log(xmlRecord);
-        transferXmlToVon(xmlRecord); 
+        
+        //transferXmlToVon(xmlRecord); 
         console.log("Data for record: "+ listOfMedicalRecordIds[i] + "transfered")
-    }
+   // }
 }
 
 function transferXmlToVon(xmlFile)

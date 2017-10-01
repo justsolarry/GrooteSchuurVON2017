@@ -30,11 +30,12 @@
     <script type="text/javascript" src="js/scripts.js"></script>
     <script type="text/javascript" src="js/eventListeners.js"></script>
     <script type="text/javascript" src="js/validationScript.js"></script>
+    <script type="application/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/databaseReadWrite.js"></script>
     <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
     <script type="text/javascript" src="calendar/jquery-ui.js"></script>
     <script type="text/javascript" src="js/jquery.serializejson.js"></script>
-      <script type="application/javascript" src="js/config.js"></script>
+
       
       <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -66,8 +67,8 @@
   </head>
   <body>
     <h1>Test Data Transfer Environment</h1>
-      <script>var listOfIds = [1,2,3]; </script>
-      <button class="btn btn-default" onclick="sendDataToVon(listOfIds)">Press Me To submit data to Test Von Environment</button>
+      <script>var listOfIds = 1; </script>
+      <button class="btn btn-default" onclick="sendDataToVon(getRecordFromDatabase(listOfIds))">Press Me To generate xml</button>
 <!--      List of ids will get passed in-->
         <br>
       <xmp id="xmlContent"></xmp>
