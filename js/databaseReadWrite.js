@@ -1,9 +1,11 @@
-var ip = "";
-
+var ip = dbConfig.ipAddress;
+function configureDB(){
     ip = dbConfig.ipAddress;
     if(ip == "" || ip == null){
         ip = "localhost";
        }
+}
+    
 
 
 
@@ -251,7 +253,7 @@ function createRecordInDatabase(){
     var nextId = dbSize+1;
     //alert(nextId);
     medicalRecordObject._id = nextId;
-    //alert(JSON.stringify(medicalRecordObject));
+    alert(JSON.stringify(medicalRecordObject));
     createHTTPPOSTConnectionNewRecord(medicalRecordObject);
     window.location = "index.html?id="+nextId+"#PatientFormID";     
 }
@@ -272,6 +274,7 @@ function removeDataFromDatabase(medicalRecordId, listOfDataPoints){
 }
 
 function updateDataInRecord(medicalRecord){ 
+   // alert(JSON.stringify(medicalRecord))
   createHTTPPOSTConnection(medicalRecord);
   var record = getRecordFromDatabase(medicalRecord._id);
   //alert("Rev: "+JSON.stringify(record)._rev);
