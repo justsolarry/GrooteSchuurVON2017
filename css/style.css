@@ -1,6 +1,18 @@
+/*Temporary navbar container fix*/
+.navbar-toggler {
+            z-index: 1;
+        }
+        
+        @media (max-width: 576px) {
+            nav>.container {
+                width: 100%;
+            }
+        }
+/*Temporary navbar container fix*/
 .general-form{ 
     margin:0 auto;
 }
+
 textarea{
 }
 input[type="radio"]{
@@ -682,7 +694,7 @@ input[type="radio"]{
     border-radius: 4px;
     padding :0px 10px;
     border: 1px solid #444444;
-	background: #222222 url("../images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
+	background: #222222 url("../calendar/images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #eeeeee;
     width: 6em;
@@ -694,14 +706,14 @@ input[type="radio"]{
     border-radius: 4px;
     padding :0px 10px;
     border: 1px solid #444444;
-	background: #222222 url("../images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
+	background: #222222 url("../calendar/images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #eeeeee;
     width: 9em;
 }
 .radioText:hover, .radioTextForHospitalResponse:hover{
     border: 1px solid #0b93d5;
-	background: #003147 url("../images/ui-bg_highlight-soft_33_003147_1x100.png") 50% 50% repeat-x;
+	background: #003147 url("../calendar/images/ui-bg_highlight-soft_33_003147_1x100.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #ffffff;
     cursor: pointer;
@@ -709,7 +721,7 @@ input[type="radio"]{
 }
 input[type="radio"]:checked~label {
     border: 1px solid #26b3f7;
-    background: #0972a5 url(/themeroller/images/ui-bg_highlight-hard_20_0972a5_1x100.png) 50% 50% repeat-x;
+    background: #0972a5 url(../calendar/images/ui-bg_highlight-hard_20_0972a5_1x100.png) 50% 50% repeat-x;
     font-weight: normal;
     color: #ffffff;
 }
