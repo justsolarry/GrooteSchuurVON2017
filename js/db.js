@@ -258,8 +258,7 @@ function createRecordInDatabase(){
 }
 
 function getRecordFromDatabase(medicalRecordId){
-    var record;
-    record = createHTTPGETConnection(medicalRecordId);
+    var record = createHTTPGETConnection(medicalRecordId)
     return record;
 }
 
