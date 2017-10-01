@@ -1,6 +1,16 @@
+var ip = "";
+
+function configureDB(){
+    ip = prompt("Enter IP address of record database (Leave empty if local)");
+    
+    if(ip == "" || ip == null){
+        ip = "localhost";
+       }
+}
+
 function createHTTPAuthPOSTConnection(userPasswordObject){
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/test1"; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/test1"; //server will change //test server https://www.posttestserver.com/
   http.open("POST", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.onreadystatechange = function() {
@@ -12,9 +22,9 @@ function createHTTPAuthPOSTConnection(userPasswordObject){
   http.send(JSON.stringify(babyDataObject));
 }
 
-function createHTTPGETConnection(){
+/*function createHTTPGETConnection(){
   var http = new XMLHttpRequest();
-  var url = "http://localhost:5984/test1/2"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/test1/2"; //admin:vonadmin123@
   http.open("GET", url, false);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
@@ -24,13 +34,14 @@ function createHTTPGETConnection(){
     }
   }
   http.send();
-}
+}*/
 
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
   var babyData = {};
-  var url = "http://196.24.190.72:5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
   http.open("GET", url, false);
+  http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         babyData = JSON.parse(this.responseText);
@@ -43,42 +54,40 @@ function retrieveAllDocs(){
 }
 
 
-function _submit(){
- 
-  var user = document.getElementById('username').value;
-  var pwd = document.getElementById('password').value;
-    
-  var userObject = {};
-  userObject.username = user;
-  userObject.password = pwd;
-   
+function createSession(){ 
+        
   var http = new XMLHttpRequest();
-    
-  
-  var url = "http://test.localhost.com:5984/_session"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
-    
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         //document.cookie=http.getResponseHeader('Set-Cookie');
         alert("Logged in");
-        window.location.href = 'landing.html'; 
+        document.getElementById('session').value = true;
+        //window.location.href = 'landing.html'; 
+        
     }
   }
   
-  http.open("POST", url, true);
-  http.setRequestHeader("Content-type", "application/json");
-  //http.setRequestHeader('Access-Control-Allow-Origin', '*');
+  var user = prompt('Username');
+  var password = prompt('Password');
   
-  http.send(JSON.stringify(userObject));
-     
+  var u = {};
+  u.name = user;
+  u.password = password;
+
+  http.open("POST", url, true);
+  http.setRequestHeader("Content-type", "application/json");  
+  http.send(JSON.stringify(u));
+  
 }
+
 
 function _logout(){
    
   var http = new XMLHttpRequest();
     
-  var url = "http://test.localhost.com:5984/_session"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
     
   http.onreadystatechange = function() {
@@ -97,8 +106,25 @@ function _logout(){
      
 }
 
-function session(){
+function changePassword(userData){
+  var http = new XMLHttpRequest();
     
+  var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
+  http.withCredentials = true;
+    
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        //document.cookie=http.getResponseHeader('Set-Cookie');
+        alert("Logged in");
+        window.location.href = 'index.html'; 
+    }
+  }
+  
+  http.open("DELETE", url, true);
+  http.setRequestHeader("Content-type", "application/json");
+  //http.setRequestHeader('Access-Control-Allow-Origin', '*');
+  
+  http.send(JSON.stringify(userObject));
 }
 
 function newUser(){
@@ -111,9 +137,7 @@ function newUser(){
     }
 
   var http = new XMLHttpRequest();
-  
-  var url = "http://localhost:5984/_users/org.couchdb.user:test"; //admin:vonadmin123@
-  
+  var url = "http://"+ip+":5984/_users/org.couchdb.user:test"; //admin:vonadmin123@
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         //window.location = "index.html";  
@@ -125,81 +149,73 @@ function newUser(){
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.withCredentials = true;
-  
-  alert(JSON.stringify(userObject));  
-  http.send(JSON.stringify(userObject));
-
+  //alert(JSON.stringify(userObject));  
+  http.send();
 }
 
 function displayData(id){
-  alert("Row "+id+" has been clicked.");
+  //alert("Row "+id+" has been clicked.");
     
-  var http = new XMLHttpRequest();
-  var url = "http://196.24.190.72:5984/test1/"+id; //admin:vonadmin123@
-  http.open("GET", url, false);
-  http.withCredentials = true;
-  http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        babyData = JSON.parse(this.responseText);
-        console.log(this.responseText);
-        //document.getElementById("demo").innerHTML = myObject;
-        window.location = "index.html?id="+id+"#PatientFormID";        
-    }
-  }
-  http.send();
+  window.location = "index.html?id="+id+"#PatientFormID";  
 }
 
-function displayForm(id){
-  alert("Row "+id+"'s data to display.");
+function fetchRowData(id){
     
-  var http = new XMLHttpRequest();
-  var url = "http://196.24.190.72:5984/test1/"+id; //admin:vonadmin123@
-  http.open("GET", url, false);
-  http.withCredentials = true;
-  http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        babyData = JSON.parse(this.responseText);
-        console.log(this.responseText);
-        
-        repopulateForm(babyData);
-                
-    }
-  }
-  http.send();
+  //alert("Row "+id+"'s data to display.");
+  
+  var retrievedRecord = getRecordFromDatabase(id);
+  
+  repopulateForm(retrievedRecord);
+  
+  //alert("BabyData"+JSON.stringify(retrievedRecord));
+    
+  //window.location = "index.html?id="+id+"#PatientFormID";  
+    
+}
+
+function getCurrentId(){
+   var _url = window.location.href;
+   alert("URL"+_url);
+   url = new URL(_url);
+   var id = url.searchParams.get("id");
+   alert(id);
+   return id;
 }
 
 function repopulateForm(babyData){
         for (var key in babyData) {
-            if (babyData.hasOwnProperty(key)) {
-            //alert(key + " -> " + babyData[key]);
-                //alert("Running:"+key);
-                if(document.getElementById(key) != null){
-                    
-                    //alert(key+"| |"+JSON.stringify(document.getElementById(key)));
-                    //var field = document.getElementsByName(key);
-                    
-                    //alert(field[0].type);
-                    /*if(document.getElementById(key).type === 'radio'){
-                        if(document.getElementById(key).value === babyData[key]){
-                          document.getElementById(key).checked = true;   
-                        }
-                    }
-                    else{
-                        document.getElementById(key).value = babyData[key];
-                    }*/
-                    
-                    var elements = document.getElementsByName(key);
-                    alert(JSON.stringify(elements));
-                    
-                    
+            if (babyData.hasOwnProperty(key)) {                
+                if(document.getElementById(key) !== null){
+                                        
+                    document.getElementById(key).value = babyData[key]; 
+
                 }
+                
+                var elements = document.getElementsByName(key);
+                    //alert("Elements "+key+" "+JSON.stringify(elements));
+                var index = babyData[key];
+        
+                    //alert(index);
+                    //document.getElementsByName('outbornBirth')[1].checked = true;                    
+                if(elements.length > 1 && index<10 && !isNaN(index)){
+
+                        elements[babyData[key]].checked = true;
+                    
+                        elements[0].value = index;
+                        //alert("The element"+JSON.stringify(document.getElementsByName(key)[index]));
+                        //$("input[name="+key+"][value="+index+"]").prop('checked', true);
+                        /*if(elements[babyData[key]].type == 'radio'){
+                            elements[babyData[key]].checked = true;
+                        }*/
+                        
+                }                            
             }
         }
 }
 
 function getUrl(){
    var _url = window.location.href;
-   alert(_url);
+   alert("URL"+_url);
    url = new URL(_url);
    var id = url.searchParams.get("id");
    alert(id);
@@ -211,7 +227,7 @@ function checkForPopulation(){
     if (url.includes("?")) {
        _url = new URL(url);
        var id = _url.searchParams.get("id");
-        displayForm(id);
+       fetchRowData(id);
         //alert("There are params"+id)
     } 
     else {}
@@ -219,10 +235,26 @@ function checkForPopulation(){
 
 var tempBabyData = {idMisMatch: true}; 
 
-function createRecordInDatabase(medicalRecordId){
+/*function createRecordInDatabase(){
+    var data = retrieveAllDocs();
+    var id = data.rows.length+1;
+    console.log(data.rows.length);
     var medicalRecordObject = {};
-    medicalRecordObject._id = medicalRecordId;
+    medicalRecordObject._id = id;
     createHTTPPOSTConnectionRecord(medicalRecordObject);
+}*/
+
+function createRecordInDatabase(){
+    var medicalRecordObject = {};
+    var allRecords = retrieveAllDocs();
+    var dbSize = allRecords.rows.length;
+    //alert(dbSize);
+    var nextId = dbSize+1;
+    //alert(nextId);
+    medicalRecordObject._id = nextId;
+    //alert(JSON.stringify(medicalRecordObject));
+    createHTTPPOSTConnectionNewRecord(medicalRecordObject);
+    window.location = "index.html?id="+nextId+"#PatientFormID";     
 }
 
 function getRecordFromDatabase(medicalRecordId){
@@ -230,21 +262,27 @@ function getRecordFromDatabase(medicalRecordId){
     return record;
 }
 
-function writeDataToRecord(medicalRecordId){
-  createHTTPPOSTConnection(medicalRecordId);
-}
+/*function writeDataToRecord(medicalRecord){
+  var rev = createHTTPPOSTConnection(medicalRecord._id);
+  document.getElementById(_rev) = rev;
+}*/
 
 function removeDataFromDatabase(medicalRecordId, listOfDataPoints){
   
 }
 
-function updateDataInRecord(medicalRecordId){
+function updateDataInRecord(medicalRecord){ 
+  createHTTPPOSTConnection(medicalRecord);
+  var record = getRecordFromDatabase(medicalRecord._id);
+  //alert("Rev: "+JSON.stringify(record)._rev);
+  document.getElementById("_rev").value = record._rev;
+  //alert(JSON.stringify(document.getElementById("_rev").value));//.value = rev;
+}
 
-  }
-
+//This function is used to create a new record in the database
 function createHTTPPOSTConnectionRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
-  var url = "http://196.42.86.86:5984/test1/"; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.onreadystatechange = function() {
@@ -256,38 +294,67 @@ function createHTTPPOSTConnectionRecord(babyDataObject){
   http.send(JSON.stringify(babyDataObject));
 }
 
-function createHTTPPOSTConnection(medicalRecordId){ // must change to pass in values
+//This function is used to create a new record in the database
+function createHTTPPOSTConnectionNewRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
-  var url = "http://196.42.86.86:5984/test1/" + babyDataObject._id; //server will change //test server https://www.posttestserver.com/
-  http.open("PUT", url, true);
-  http.setRequestHeader("Content-type", "application/json");
+  var id = babyDataObject._id;
+  var url = "http://"+ip+":5984/test1/"+id; //server will change //test server https://www.posttestserver.com/
+  
+  http.open("PUT", url, false);
+  http.setRequestHeader("Content-type", "application/json"); 
+  http.withCredentials = true;
   http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        document.getElementById("demo").innerHTML = this.responseText;
+    if(http.status === 204) {
+        //alert("In redirect");
+        //window.location = "index.html?id="+id+"#PatientFormID";    
     }
   }
-  document.getElementById("xmlContent").innerHTML = JSON.stringify(babyDataObject);
+  
+  http.send(JSON.stringify({}));
+  
+  //alert(babyDataObject);
+  
+}
+
+function createHTTPPOSTConnection(babyDataObject){ // must change to pass in values
+  var http = new XMLHttpRequest();
+  //alert("BabyDataObject in POSTConnention"+JSON.stringify(babyDataObject));
+  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
+  var rev = {};
+  http.open("PUT", url, true);
+  http.setRequestHeader("Content-type", "application/json");
+  http.withCredentials = true;
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        rev = this.responseText;
+        return rev;
+        
+        //document.getElementById("demo").innerHTML = this.responseText;
+    }
+  }
+  //document.getElementById("xmlContent").innerHTML = JSON.stringify(babyDataObject);
   http.send(JSON.stringify(babyDataObject));
+  
 }
 
 
 function createHTTPGETConnection(medicalRecordId){
 
   var http = new XMLHttpRequest();
-  var url = "http://196.24.167.213:5984/test1/" + medicalRecordId; //server will change -> config file?
-  var babyData = {};
+  var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
+  var record;
   http.open("GET", url, false);
+  http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        babyData = this.responseText;
-        
+        record = JSON.parse(this.responseText);
+        console.log(record);
         //toastr.info("successful connection to database");
        
-        babyData = JSON.parse(babyData);
+        //tempBabyData = JSON.parse(babyData);
         //console.log(this.responseText);
     }
   }
   http.send();
-  return babyData;
-    
+  return record;
 }

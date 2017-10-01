@@ -74,7 +74,7 @@
         <a href="index.html" class="createNewEntryMenuButton">Create New Entry</a>
         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
         <a href="#" class="helpMenuButton">Help</a>
-        <a href="#" class="loginMenuButton">Login</a>
+        <a href="#" class="loginMenuButton">Change Password</a>
     </div>
     <!-- END Menu -->
     <!-- Intro Header -->
@@ -87,10 +87,10 @@
                         <label class="subHeadingTitle">Neonatal Unit</label>
                         <h5 style="font-family: 'Julius sans one'">Data Capture & Report Management System</h5>
 
-                        <a href="#PatientFormID" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;">
+                        <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="return test();">
+                        
                            Create New Entry <i class="fa fa-angle-double-down animated"></i>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -171,6 +171,13 @@
                                     <div class="form-group input-group mothersFirstNameDiv">
                                         <label class="fixingLabelAlignment" for="mothersFirstName">Mother's First Name : </label>
                                         <div class="fixingInputAlignment">
+                                            <input type="hidden" id="_id" name="_id">
+                                            <input type="hidden" id="_rev" name="_rev">
+                                            <input type="hidden" id="form1" name="form1">
+                                            <input type="hidden" id="form2" name="form2">
+                                            <input type="hidden" id="form3" name="form3">
+                                            <input type="hidden" id="error" name="error">
+                                            <input type="hidden" id="session" value=false>
                                             <input id="mothersFirstName" name="mothersFirstName" onchange="validateNoNumbers('mothersFirstName')" class="form-control" type="search" placeholder="eg. Mary">
                                         </div>
 
@@ -363,7 +370,7 @@
                                         <div class="form-group input-group headCircumferenceDiv">
                                             <label class="fixingLabelAlignment" for="headCircumference">Head Circumference : </label>
                                             <div class="fixingInputAlignment">
-                                                    <select id="headCircumference" name="headCircumference" class="form-control" style="height:32px;width:40%;"> 
+                                                    <select id="headCircumference" name="headCircumferenceAtBirth" class="form-control" style="height:32px;width:40%;"> 
                                                         <option disabled selected value>SELECT</option>
                                                         <option value="999.9">Unknown</option>
                                                     </select>
@@ -526,20 +533,20 @@
                                             <label class="fixingLabelAlignment">Mode of Delivery : </label>
                                             <div class="fixingInputAlignment">
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVONVaginal" type="radio" name = modeOfDeliveryVON value="1">
+                                                <input class="radioType" id="modeOfDeliveryVONVaginal" type="radio" name = modeOfDelivery value="1">
                                                     <label class="radioText" for="modeOfDeliveryVONVaginal"> Vaginal</label>
                                                     
 
                                                 </span>
 
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVONCS" type="radio" name = modeOfDeliveryVON value="0">
+                                                <input class="radioType" id="modeOfDeliveryVONCS" type="radio" name = modeOfDelivery value="0">
                                                     <label class="radioText" for="modeOfDeliveryVONCS"> C-Section</label>
                                                     
 
                                                 </span>
                                             <span class="radioFloatLeft">
-                                                <input class="radioType" id="modeOfDeliveryVONUnknown" type="radio" name = modeOfDeliveryVON value="9">
+                                                <input class="radioType" id="modeOfDeliveryVONUnknown" type="radio" name = modeOfDelivery value="9">
                                                     <label class="radioText" for="modeOfDeliveryVONUnknown"> Unknown</label>
                                                     
 
@@ -4684,7 +4691,7 @@
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.js"></script>
 
-
+    <script type="text/javascript" src="js/mapToNaturalLanguage.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.js"></script>
@@ -4700,15 +4707,23 @@
     <script src="js/noframework.waypoints.js"></script>
     <script src="js/db.js"></script>
     <script>
-        checkForPopulation()
+    
+
     </script>
     <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
-    <!--Calendar-->
     <script type="text/javascript" src="Calendar/jquery-ui.js"></script>
-    <!--<script type="text/javascript">
+    <script src="Calendar/jquery-ui.css"></script>
+    <script type="text/javascript" src="js/jquery.serializejson.js"></script>
+    
+    
+<script type="text/javascript">
+    var session = document.getElementById('session').value;
     $(document).ready(function() {
-        $('form').sisyphus(
-            {
+    configureDB();
+    if(session){
+            checkForPopulation();
+            $('form').sisyphus({
+                excludeFields: ["_id _rev"],
                 locationBased: true,
                 timeout: 10,
                 //autoRelease: true,
@@ -4717,14 +4732,41 @@
                     var hours = date.getHours();
                     var minutes = date.getMinutes();
                     var seconds = date.getSeconds();
-                    toastr.options.showMethod = 'slideDown';
-                    toastr.success('Saved', 'Autosave', {timeOut: 750});
+                   
+                    //toastr.options.showMethod = 'slideDown';
+                    //repopulateForm(getCurrentId);
+                    //toastr.success('Saved', 'Autosave', {timeOut: 750});
                     //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
+                    var record = $('form').serializeJSON();
+                    //record.transferCenterCode = 99999999;
+                    record = mapToNaturalLanguage(record);
+                    //var record2 = mapToLang(record);
+                    //alert(JSON.stringify(record));
+                    updateDataInRecord(record);
+                    
                 }
-            }
-        );
+
+            });
+       
+       }
+      else{
+          checkSession();
+      }
+
     });
-</script>-->
+
+    function test(){
+        //alert("Create Record in Database");
+        if(session == null || session == ""){
+          createSession();  
+        }
+        if(session){
+            createRecordInDatabase();
+        }  
+    } 
+    
+    
+</script>
 </body>
 
 </html>
