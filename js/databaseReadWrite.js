@@ -1,11 +1,11 @@
 var ip = "";
 
-function configureDB(){
     ip = dbConfig.ipAddress;
     if(ip == "" || ip == null){
         ip = "localhost";
        }
-}
+
+
 
 function createHTTPAuthPOSTConnection(userPasswordObject){
   var http = new XMLHttpRequest();
@@ -340,6 +340,7 @@ function createHTTPPOSTConnection(babyDataObject){ // must change to pass in val
 function createHTTPGETConnection(medicalRecordId){
 
   var http = new XMLHttpRequest();
+    console.log(ip);
   var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
   var record;
   http.open("GET", url, false);

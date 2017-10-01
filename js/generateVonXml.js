@@ -29,9 +29,9 @@ function create2018Xml(babyData){
     return xmlDocument;
 }
 
-function createXmlForEachRecord(BabyData){
+function createXmlForEachRecord(babyData){
     
-    babyData = JSON.parse(babyData);  
+    //babyData = JSON.parse(babyData);  
     
     var id = "<ID>"+babyData.patientMedicalRecordNumber+"</ID>\n";  //required
     var birthYear = "<BYEAR>"+babyData.birthYear+"</BYEAR>\n";    //required
