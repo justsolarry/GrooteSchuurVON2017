@@ -12,6 +12,17 @@ var birthLocation = {
                 1: "Outborn"
 }
 
+var yesNo = {
+        0: "No",
+        1: "Yes",
+        9: "Unknown"
+}
+
+var sepsisValues = {
+        1: "Confirmed",
+        2: "Suspected",
+        3: "No"
+}
 
 function formatDate(){
 var today = new Date();
@@ -33,13 +44,10 @@ today = mm + '/' + dd + '/' + yyyy;
 
 function fetchData(){
         //var dbData = retrieveAllDocs();
-        $('#jqGrid').DataTable( {
+    $('#jqGrid').DataTable( {
         "scrollX": true,
-        "scrollCollapse": "true",
-        "fixedColumns":   {
-            "leftColumns": "2"
-        },
-        "ajax": {"url":"http://196.24.190.72:5984/test1/_all_docs?include_docs=true",
+        //"scrollCollapse": "true",
+        "ajax": {"url":"http://test.localhost.com:5984/test1/_all_docs?include_docs=true",
                  "dataSrc": "rows", 
                  "xhrFields": {
                     withCredentials: true
@@ -47,30 +55,91 @@ function fetchData(){
                     "crossDomain": true
                 },
         "rowId": "doc._id",
-        columnDefs: [ {
-            orderable: false,
-            className: 'select-checkbox',
-            targets:   0
-        } ],
-        /*select: {
-            style:    'os',
+        
+    columnDefs: [ {
+   'targets': 0,
+   'searchable':false,
+   'orderable':false,
+   'className': 'dt-body-center',
+   'render': function (data, type, full, meta){
+       return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+   }
+        
+    }],
+        select: {
+            style:    'multi',
             selector: 'td:first-child'
-        },*/
+        },
         //order: [[ 1, 'asc' ]],
+
         "columns": [
             {"data": null, defaultContent:""},
-            {"data":"doc.patientMedicalRecordNumber"},
-            {"data":"doc.birthDate",
-                render: function (data, type, row) {
-                            var dummyData = formatDate();
-                            return dummyData;
-                      } 
-             
+            {"data":"doc.patientMedicalRecordNumber",
+             "render": function (data, type, row) {
+                            if(data=="" || data==null){
+                                return "-";
+                               }
+                            else{
+                               return data;
+                            }
+                            
+                      }
+            },
+            { "data": "doc._id" },
+            {"data":"LastName",
+            "className":"left",
+            "render":function(data, type, full, meta){
+            var state = full.form1 + full.form2 + full.form3 + !(full.error);
+                
+                
+                if(full.error){
+                    return "Errors"
+                }
+                else if(!state){
+                    return "Incomplete"
+                }
+                else if(state){
+                    return "Complete"
+                }
+            
+
+            }
+            },
+            { "data": "doc.dateOfBirth", 
+             render: function (data, type, row) {
+                            if(data=="" || data==null){
+                                return "-";
+                               }
+                            else{
+                               var splitDate = data.split('-');
+                               return(splitDate[2]);
+                            }
+                            
+                      }
+            },
+            { "data": "doc.birthWeightInGrams",
+             "render": function (data, type, row) {
+                            if(data=="" || data==null){
+                                return "-";
+                               }
+                            else{
+                               return data;
+                            }
+                            
+                      }
             },
             //{"data":"doc.recordStatus"},
-            { "data": "doc._id" },
-            { "data": "doc.birthYear" },
-            { "data": "doc.birthWeightInGrams"},
+            {"data":"doc.dateOfBirth",
+             "render": function (data, type, row) {
+                            if(data=="" || data==null){
+                                return "-";
+                               }
+                            else{
+                               return data;
+                            }
+                            
+                      }
+            },
             { "data":  "doc.initialDisposition",
                render: function (data, type, row) {
                             if(data!=null){
@@ -84,33 +153,132 @@ function fetchData(){
             },
             {"data":"doc.outbornBirth",
                 render: function (data, type, row) {
-                            return birthLocation[data];
+                            if(data == "" || data == null){
+                                return "-"
+                            }else{
+                                return birthLocation[data];
+                            }
+                            
                       }  
             },
-            {"data":null,
-                      render: function (data, type, row) {
-                            var dummyData = formatDate();
-                            return dummyData;
-                      } 
+            {"data":"doc.invasiveVentilation",
+                render: function (data, type, row) {
+                            if(data == "" || data == null){
+                                return "-"
+                            }else{
+                                return yesNo[data];
+                            }
+                            
+                      }  
             },
-            {"data":null,
-                    render: function (data, type, row) {
-                        var dummyData = formatDate();
-                            return dummyData;
-                      } 
-            }
+            {"data":"doc.hypoxicIschaemicEncephalopathy",
+                render: function (data, type, row) {
+                            if(data == "" || data == null){
+                                return "-"
+                            }else{
+                                return yesNo[data];
+                            }
+                            
+                      }  
+            },
+            {"data":"doc.jaundiceNeedingPhototherapy",
+                render: function (data, type, row) {
+                            if(data == "" || data == null){
+                                return "-"
+                            }else{
+                                return yesNo[data];
+                            }
+                            
+                      }  
+            },
+            {"data":"doc.sepsisDuringAdmission",
+                render: function (data, type, row) {
+                            if(data == "" || data == null){
+                                return "-"
+                            }else{
+                                return sepsisValues[data];
+                            }
+                            
+                      }  
+            },
+                      {"data":"doc.fetalMedicineUnitFlagged",
+                render: function (data, type, row) {
+                            if(data == "" || data == null){
+                                return "-"
+                            }else{
+                                return yesNo[data];
+                            }
+                            
+                      }  
+            },
+                      {"data":"doc.abnormalHeadUltrasound",
+                render: function (data, type, row) {
+                            if(data == "" || data == null){
+                                return "-"
+                            }else{
+                                return yesNo[data];
+                            }
+                            
+                      }  
+            },
+            {"data":"doc.chromosomesDone",
+                render: function (data, type, row) {
+                            if(data == "" || data == null){
+                                return "-"
+                            }else{
+                                return yesNo[data];
+                            }
+                            
+                      }  
+            },
+            
+            {"data":"doc.immunizations652",
+                render: function (data, type, row) {
+                            if(data == "" || data == null){
+                                return "-"
+                            }else{
+                                return yesNo[data];
+                            }
+                            
+                      }  
+            },
+            
         ],
-     //"dom": 'Afrtip',
-     /*"buttons": [        {
-            extend: 'csv',
-            text: 'Copy all data',
-            exportOptions: {
-                modifier: {
-                    search: 'none'
+        buttons: [
+            {   
+                extend: 'csv',
+                text: 'Open record',
+                className: 'open',
+                action: function () {
+    var checkedRows = [];
+                    
+    
+    $('#jqGrid').find('input[type="checkbox"]:checked').each(function () {
+       //this is the current checkbox
+        row = $(this).parents('tr').attr('id');
+        checkedRows.push(row);
+        });
+    if(checkedRows.length > 1){
+        toastr.error("Can only open one form at a time");
+    }else{
+      displayData(checkedRows[0]);  
+    }
+    }
+            },
+            {
+                text: 'Submit selected records',
+                className:'submit',
+                action: function ( e, dt, node, config ) {
+                    alert( 'Button activated' );
+                    
                 }
             }
-        }]*/
-        
-    } );
+            
+        ],
+     "dom": 'Bfrtip',
+    
+    });
 }
+
+
 
