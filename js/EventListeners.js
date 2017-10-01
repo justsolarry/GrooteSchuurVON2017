@@ -10,6 +10,7 @@ $('#secondPanelID select').on('change', SelectsGeneralForm,ColourGeneralForm);
 $("#thirdPanelID input[type=search]").on('change',InputsAdditionalForm,ColourAdditionalForm);
 $("#thirdPanelID input:radio").on('click',RadiosAdditionalForm,ColourAdditionalForm);
 $('#thirdPanelID select').on('change', SelectsAdditionalForm,ColourAdditionalForm);
+$('#thirdPanelID textarea').on('change', textareaAdditionalForm,ColourAdditionalForm);
 //buttons within the third panel
 /*$("addNewBacterialCodeDuringAdmissionID").on('click',RadiosAdditionalForm,ColourAdditionalForm);*/
 /*$("#bacterialCodeDuringAdmissionDiv2").on("click",$("#bacterialCodeDuringAdmission2"),testing);
@@ -232,6 +233,19 @@ function SelectsAdditionalForm(e){
     return(selectsAllSelected)
     
 }
+function textareaAdditionalForm(e){
+    var completeIncompleteCounter = 0;
+    $('#thirdPanelID textarea:visible').each(function(i) {
+        if(!$(this).hasClass("addGreen") && !$(this).hasClass("addRed")){
+           completeIncompleteCounter += 0;
+           }
+        else if($(this).hasClass("addGreen"))
+            {
+                 completeIncompleteCounter += 1;
+            }
+    });
+    return (completeIncompleteCounter);
+}
 function ColourAdditionalForm(){
     //pulling the function's array data
     var data = InputsAdditionalForm();
@@ -240,15 +254,18 @@ function ColourAdditionalForm(){
     //pulling the functions return values
     var radioTrueFalse = RadiosAdditionalForm(); //taking the return value fromt he function>> either true/false
     var selectTrueFalse = SelectsAdditionalForm();
+    var textareaTrueFalse = textareaAdditionalForm();
     //getting the length of all the visible and enabled search input fields
     var lengthOfInput = $('#thirdPanelID input[type=search]:visible:enabled').length;
+    var lengthOfTextArea = $('#thirdPanelID textarea:visible').length;
     //debugging
     console.log("Number of visible input fields: "+($('#thirdPanelID input[type=search]:visible:enabled').length) )
     console.log("input completeIncomplete: "+ completeIncompleteCounter)
     console.log("input error: "+ errorCounter)
     console.log("radio : T/F "+ radioTrueFalse)
     console.log("select : T/F "+ selectTrueFalse)
-    if((lengthOfInput===completeIncompleteCounter) && radioTrueFalse === true && selectTrueFalse===true){ //if true , make the circle green
+    console.log("textarea : T/F "+ textareaTrueFalse + " length of text area: "+lengthOfTextArea)
+    if((lengthOfInput===completeIncompleteCounter) && (lengthOfTextArea===textareaTrueFalse) && radioTrueFalse === true && selectTrueFalse===true){ //if true , make the circle green
         $('#dischargeCircle').css('background-color', 'green');
         toastr.success("Additional Data Form is all Correct!");
     }
@@ -256,7 +273,7 @@ function ColourAdditionalForm(){
         $('#dischargeCircle').css('background-color', 'red');
         toastr.warning("Errors!");
     }
-    else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
+    else if((completeIncompleteCounter<lengthOfInput)|| (textareaTrueFalse<lengthOfTextArea) ||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#dischargeCircle').css('background-color', 'orange');
         toastr.warning("Fields aren't complete");
     }
