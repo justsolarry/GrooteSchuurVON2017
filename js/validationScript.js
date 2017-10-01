@@ -1,131 +1,40 @@
-function validateMothersFirstName()
+function validateNoNumbers(ID)
 {
     var alphaExp = /^[a-zA-Z\s\-]*$/;
-    var value1 = document.getElementById('mothersFirstName').value;
+    var value1 = document.getElementById(ID).value;
+    var replaceString = "";
+    if(ID==='mothersFirstName'){
+       var replaceString = "Mothers First Name "
+       }
+    else if(ID==='mothersLastName'){
+            var replaceString = "Mothers Last Name "
+            }
   if ((value1.length) ==0){
-    toastr.error("Mother's First Name - Value cannot be empty");
-    $('#mothersFirstName').addClass('addRed')
-      $('#mothersFirstName').removeClass('addGreen')
+    toastr.error(replaceString+" - Value cannot be empty");
+    $('#'+ID).addClass('addRed')
+      $('#'+ID).removeClass('addGreen')
   }
     else if (value1.match(alphaExp)){
-             $('#mothersFirstName').removeClass('addRed')
-                $('#mothersFirstName').addClass('addGreen')
+             $('#'+ID).removeClass('addRed')
+            $('#'+ID).addClass('addGreen')
              }
     else{
-        toastr.error("Mother's First Name - Only letters allowed");
-        $('#mothersFirstName').addClass('addRed')
-        $('#mothersFirstName').removeClass('addGreen')
+        toastr.error(replaceString+" - Only letters allowed");
+        $('#'+ID).addClass('addRed')
+        $('#'+ID).removeClass('addGreen')
     }
   
 }
-
-function validateMothersLastName()
-{
-    var alphaExp = /^[a-zA-Z\s\-]*$/;
-    var value1 = document.getElementById('mothersLastName').value;
-  if ((value1.length) ==0){
-    toastr.error("Mother's Last Name - Value cannot be empty");
-    $('#mothersLastName').addClass('addRed')
-      $('#mothersLastName').removeClass('addGreen')
-  }
-    else if (value1.match(alphaExp)){
-             $('#mothersLastName').removeClass('addRed')
-            $('#mothersLastName').addClass('addGreen')
-             }
-    else{
-        toastr.error("Mother's Last Name - Only letters allowed");
-        $('#mothersLastName').addClass('addRed')
-        $('#mothersLastName').removeClass('addGreen')
-    }
-  
-}
-
-function validateDateOfBirthCheck(){
-    var value1 = document.getElementById('dateOfBirth').value;
+function validateFreeText(ID){
+    var value1 = document.getElementById(ID).value;
     if(value1.length>0){
-            $('#dateOfBirth').addClass('addGreen')
-            $('#dateOfBirth').removeClass('addRed')
+            $('#'+ID).addClass('addGreen')
+            $('#'+ID).removeClass('addRed')
        }
     else if(value1.length==0){
-                $('#dateOfBirth').addClass('addRed')
-                $('#dateOfBirth').removeClass('addGreen')
+                $('#'+ID).removeClass('addRed')
+                $('#'+ID).removeClass('addGreen')
             }
-}
-function validateAppointmentDate(){
-    var value1 = document.getElementById('appointmentDate').value;
-    if(value1.length>0){
-            $('#appointmentDate').addClass('addGreen')
-            $('#appointmentDate').removeClass('addRed')
-       }
-    else if(value1.length==0){
-                $('#appointmentDate').addClass('addRed')
-                $('#appointmentDate').removeClass('addGreen')
-            }
-}
-function validateROPDate(){
-    var value1 = document.getElementById('ROPDate').value;
-    if(value1.length>0){
-            $('#ROPDate').addClass('addGreen')
-            $('#ROPDate').removeClass('addRed')
-       }
-    else if(value1.length==0){
-                $('#ROPDate').addClass('addRed')
-                $('#ROPDate').removeClass('addGreen')
-            }
-}
-function validatePCRDate(){
-    var value1 = document.getElementById('PCRDate').value;
-    if(value1.length>0){
-            $('#PCRDate').addClass('addGreen')
-            $('#PCRDate').removeClass('addRed')
-       }
-    else if(value1.length==0){
-                $('#PCRDate').addClass('addRed')
-                $('#PCRDate').removeClass('addGreen')
-            }
-}
-function dateOfAdmissionCheck(){
-    var value1 = document.getElementById('dateOfAdmission').value;
-    if(value1.length>0){
-            $('#dateOfAdmission').addClass('addGreen')
-            $('#dateOfAdmission').removeClass('addRed')
-       }
-    else if(value1.length==0){
-                $('#dateOfAdmission').addClass('addRed')
-                $('#dateOfAdmission').removeClass('addGreen')
-            }
-}
-function dateOfInitialDispositionCheck(){
-    var value1 = document.getElementById('dateOfInitialDisposition').value;
-    if(value1.length>0){
-            $('#dateOfInitialDisposition').addClass('addGreen')
-            $('#dateOfInitialDisposition').removeClass('addRed')
-       }
-    else if(value1.length==0){
-                $('#dateOfInitialDisposition').addClass('addRed')
-                $('#dateOfInitialDisposition').removeClass('addGreen')
-            }
-}
-
-function validatePatientsName()
-{
-    var alphaExp = /^[a-zA-Z\s\-]*$/;
-    var value1 = document.getElementById('patientsName').value;
-  if ((value1.length) ==0){
-    toastr.error("Patient's Name - Value cannot be empty");
-    $('#patientsName').addClass('addRed')
-      $('#patientsName').removeClass('addGreen')
-  }
-    else if (value1.match(alphaExp)){
-             $('#patientsName').removeClass('addRed')
-            $('#patientsName').addClass('addGreen')
-             }
-    else{
-        toastr.error("Patient's Name - Only letters allowed");
-        $('#patientsName').addClass('addRed')
-        $('#patientsName').removeClass('addGreen')
-    }
-  
 }
 
 function validateBirthweight(){
@@ -169,18 +78,11 @@ function validateBirthweight(){
         if(weight>=401 && weight<=1500){ // IS A VON BABY
             $('#birthWeightInGrams').removeClass('addRed')
             $('#birthWeightInGrams').addClass('addGreen')
-            hideNotAVonBabyFields();  //hiding Not a VON baby fields
         }
         if(weight>=1501 && weight<=5000){ 
             $('#birthWeightInGrams').removeClass('addRed')
             $('#birthWeightInGrams').addClass('addGreen')
         }
-        if(weight>=1501 && weight<=7000){ //showing Not a VON baby fields
-            showNotAVonBabyFields();
-        }
-        if(weight<=1500 || weight>=7001){
-            
-           }
         if(weight>0 && weight<1400){
             $('#hiddenFieldROPDate').slideDown('slow');//displaying ROPScreenDate
         }
@@ -196,31 +98,39 @@ function validateBirthweight(){
     }
     
 }
-function validateWeightAtInitialDisposition(){
-    var weight = document.getElementById('weightAtInitialDisposition').value;
+function validateWeight(ID){
+    var weight = document.getElementById(ID).value;
+    var replaceString = "";
+    if(ID==='weightAtDispositionAfterReadmission'){
+       var replaceString = "Weight at Disposition after Readmission "
+       }
+    else if(ID==='weightAtInitialDisposition'){
+            var replaceString = "Weight at Initial Disposition "
+            }
+    
     if(weight.length==0){
-        toastr.error('Weight at Initial Disposition - Value cannot be empty');
-        $('#weightAtInitialDisposition').addClass('addRed')
+        toastr.error(replaceString+' - Value cannot be empty');
+        $('#'+ID).addClass('addRed')
     }
     else{
         if (weight <= 400){
-            toastr.error('Weight at Initial Disposition - Value too Low');
-            $('#weightAtInitialDisposition').addClass('addRed')
-            $('#weightAtInitialDisposition').removeClass('addGreen')
+            toastr.error(replaceString+' - Value too Low');
+            $('#'+ID).addClass('addRed')
+            $('#'+ID).removeClass('addGreen')
         }
         if(weight>=401 && weight<=5000){
-            $('#weightAtInitialDisposition').removeClass('addRed')
-            $('#weightAtInitialDisposition').addClass('addGreen')
+            $('#'+ID).removeClass('addRed')
+            $('#'+ID).addClass('addGreen')
         }
         if (weight>=5001 && weight<=6999){
-            toastr.warning('Weight at Initial Disposition - Are you sure?'); 
-            $('#weightAtInitialDisposition').removeClass('addRed')
-            $('#weightAtInitialDisposition').addClass('addGreen')
+            toastr.warning(replaceString+' - Are you sure?'); 
+            $('#'+ID).removeClass('addRed')
+            $('#'+ID).addClass('addGreen')
         }
         if (weight >=7000 ){
-            toastr.error('Weight at Initial Disposition - Value too High'); 
-            $('#weightAtInitialDisposition').addClass('addRed')
-            $('#weightAtInitialDisposition').removeClass('addGreen')
+            toastr.error(replaceString+' - Value too High'); 
+            $('#'+ID).addClass('addRed')
+            $('#'+ID).removeClass('addGreen')
         }
     }
     
@@ -343,60 +253,6 @@ function validateGestationalAgeInWeeks()
 }
 
 //dayofAdmission is calculated
-function validateHeadCircumference() {
-    var headCircumference =document.getElementById('headCircumference').value;
-    
-    if(headCircumference.length==0){
-       toastr.error('Head Circumference - Value cannot be empty');
-        $('#headCircumference').addClass('addRed');
-        $('#headCircumference').removeClass('addGreen');
-       }
-    else
-    if(headCircumference>= 10 && headCircumference<=70){
-        $('#headCircumference').addClass('addGreen');
-        $('#headCircumference').removeClass('addRed');
-       }
-    else{
-        toastr.error('Head Circumference - Invalid value, must be from 10.0-70.0cm');
-        $('#headCircumference').addClass('addRed');
-        $('#headCircumference').removeClass('addGreen');
-    }
-}
-function validateHeadCircumferenceInitialDisposition() {
-    var headCircumference =document.getElementById('headCircumferenceInitialDisposition').value;
-    
-    if(headCircumference.length==0){
-       toastr.error('Head Circumference - Value cannot be empty');
-        $('#headCircumferenceInitialDisposition').addClass('addRed');
-        $('#headCircumferenceInitialDisposition').removeClass('addGreen');
-       }
-    else
-    if(headCircumference>= 10 && headCircumference<=70){
-        $('#headCircumferenceInitialDisposition').addClass('addGreen');
-        $('#headCircumferenceInitialDisposition').removeClass('addRed');
-       }
-    else{
-        toastr.error('Head Circumference - Invalid value, must be from 10.0-70.0cm');
-        $('#headCircumferenceInitialDisposition').addClass('addRed');
-        $('#headCircumferenceInitialDisposition').removeClass('addGreen');
-    }
-}
-function validateNumberOfInfants(nbirths){
-  if (!(nbirths > 0 || nbirths < 11 || nbirths == null)){
-    alert("Please insert number of infants delivered between 1 and 10");
-  }
-}
-function validateApgarScore1min(ap1){
-  if (!(ap1 > -1 || ap1 < 11 || ap1 == null)){
-    alert("Please insert apgar score for 1 minute; range: 0 - 10");
-  }
-}
-function validateApgarScore5min(ap5){
-  if (!(ap5 > -1 || ap5 < 11 || ap5 == null)){
-    alert("Please insert apgar score for 5 minute; range: 0 - 10");
-  }
-}
-
 
 $("#birthWeightInGrams").on( "keyup", function( event ) {
     

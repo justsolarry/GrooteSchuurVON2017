@@ -164,28 +164,28 @@
                                         <label class="fixingLabelAlignment" for="birthWeightInGrams">Birth Weight : </label>
                                         <div class="fixingInputAlignment">
                                             <span class="addingUnits unitsGrams">
-                                                <input id="birthWeightInGrams" class="form-control" onchange="validateBirthweight()" type="search" placeholder="eg. 1500" maxlength="4">
+                                                <input id="birthWeightInGrams" class="form-control" onchange="validateBirthweight();checkingWhatTypeOfFormToDisplay();" type="search" placeholder="eg. 1500" maxlength="4">
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-group input-group mothersFirstNameDiv">
                                         <label class="fixingLabelAlignment" for="mothersFirstName">Mother's First Name : </label>
                                         <div class="fixingInputAlignment">
-                                            <input id="mothersFirstName" name="mothersFirstName" onchange="validateMothersFirstName()" class="form-control" type="search" placeholder="eg. Mary">
+                                            <input id="mothersFirstName" name="mothersFirstName" onchange="validateNoNumbers('mothersFirstName')" class="form-control" type="search" placeholder="eg. Mary">
                                         </div>
 
                                     </div>
                                     <div class="form-group input-group mothersLastNameDiv">
                                         <label class="fixingLabelAlignment" for="mothersLastName">Mother's Last Name : </label>
                                         <div class="fixingInputAlignment">
-                                            <input id="mothersLastName" name="mothersLastName" onchange="validateMothersLastName()" class="form-control" type="search" placeholder="eg. Brown">
+                                            <input id="mothersLastName" name="mothersLastName" onchange="validateNoNumbers('mothersLastName')" class="form-control" type="search" placeholder="eg. Brown">
                                         </div>
 
                                     </div>
                                     <div class="form-group input-group patientsNameDiv">
                                         <label class="fixingLabelAlignment" for="patientsName">Patient's Name : </label>
                                         <div class="fixingInputAlignment ">
-                                            <input id="patientsName" name="patientsName" onchange="validatePatientsName()" class="form-control " type="search" disabled>
+                                            <input id="patientsName" name="patientsName" class="form-control " type="search" disabled>
                                         </div>
 
                                     </div>
@@ -263,13 +263,13 @@
                                         <label class="fixingLabelAlignment">Died in Delivery Room : </label>
                                         <div class="fixingInputAlignment">
                                         <span class="radioFloatLeft">
-                                                <input class="radioType" id="diedInDeliveryRoomYes" type="radio" name = diedInDeliveryRoom value="1" onclick="javascript:diedInDeliveryRoomCheck()">
+                                                <input class="radioType" id="diedInDeliveryRoomYes" type="radio" name = diedInDeliveryRoom value="1" onclick="javascript:checkingWhatTypeOfFormToDisplay()">
                                                 <label class="radioText" for="diedInDeliveryRoomYes">Yes</label>
                                             </span>
 
                                         <span class="radioFloatLeft">
                                                 
-                                                        <input class="radioType" id="diedInDeliveryRoomNo" type="radio" name = diedInDeliveryRoom value="0" onclick="javascript:diedInDeliveryRoomCheck()">
+                                                        <input class="radioType" id="diedInDeliveryRoomNo" type="radio" name = diedInDeliveryRoom value="0" onclick="javascript:checkingWhatTypeOfFormToDisplay()">
                                                     <label class="radioText" for="diedInDeliveryRoomNo">No</label>
                                                     
 
@@ -337,7 +337,7 @@
                                         <div class="form-group input-group gestationalAgeInWeeksDiv">
                                             <label class="fixingLabelAlignment" for="gestationalAgeInWeeks">Gestational Age (Weeks) : </label>
                                             <div class="fixingInputAlignment">
-                                                <select id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" onchange="javascript:fixingInputAlignmentCheck()" style="height:32px;width:40%;"> 
+                                                <select id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" onchange="javascript:checkGestationalAgeInWeeks();countingDaysInWeeksForRespiratory();" style="height:32px;width:40%;"> 
                                                             <option disabled selected value>SELECT</option>
                                                             <option value="99">Unknown</option>
                                                 </select>
@@ -347,7 +347,7 @@
                                         <div class="form-group input-group gestionalDaysDiv">
                                             <label class="fixingLabelAlignment">Gestational Age (Days) :</label>
                                             <div class="fixingInputAlignment">
-                                                <select name=gestionalDays class="form-control" style="height:32px;width:40%;">
+                                                <select id="gestionalDays" name=gestionalDays class="form-control" onchange="countingDaysInWeeksForRespiratory();" style="height:32px;width:40%;">
                                                     <option disabled selected value>SELECT</option>
                                                     <option value="0">0 Days</option>
                                                     <option value="1">1 Day</option>
@@ -679,7 +679,7 @@
                                         </div>
                                         <div class="form-group input-group temperatureMeasuredWithinFirstHourDiv">
                                             <label class="fixingLabelAlignment">Temperature Measured within the 1st Hour after Admission to your NICU : </label>
-                                            <div class="fixingInputAlignment">
+                                            <div class="fixingInputAlignment" style="height:64px;">
                                             <span class="radioFloatLeft">
                                                 <input class="radioType" id="temperatureMeasuredWithinFirstHourYes" onclick="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="1">
                                                     <label class="radioText" for="temperatureMeasuredWithinFirstHourYes"> Yes</label>
@@ -745,6 +745,17 @@
                                         </div>
                                         <div id="hiddenFieldCongenitalInfectionOrganisms" class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Number of Codes : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="numberOfCongenitalInfections" name="numberOfCongenitalInfections" class="form-control" onchange="javascript:numberOfCongenitalInfectionsCheck();" style="height:32px;width:30%;">
+                                                            <option disabled selected value>SELECT</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div id="congenitalCodeDiv1" class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInner">Congenital Infection code 1 : </label>
                                                     <div class="fixingInputAlignmentInner">
@@ -764,8 +775,43 @@
                                                     </div>
 
                                                 </div>
-                                                <div id="congenitalCodeButton" class="form-group input-group ">
-                                                    <a href="javascript:addNewCongenitalCode('congenitalCodeDiv1');" class="btn btn-default btn-lg page-scroll" style="position:relative; width:80%;">Add new Congenital Code</a>
+                                                <div id="congenitalCodeDiv2" class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Congenital Infection code 2 : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="congenitalCode2" name="congenitalCode2" class="form-control" style="height:32px;width:70%;">
+                                                        <option disabled selected value>SELECT</option>
+                                                        <option value="101">101 - Toxoplasmosis (Toxoplasma gondii)</option>
+                                                        <option value="102">102 - Rubella virus</option>
+                                                        <option value="103">103 - Syphilis (Treponema pallidum)</option>
+                                                        <option value="104">104 - Cytomegalovirus</option>
+                                                        <option value="105">105 - Herpessimplex</option>
+                                                        <option value="106">106 - Parvovirus B19</option>
+                                                        <option value="107">107 - Zika virus</option>
+                                                        <option value="108">108 - Varicella zoster virus</option>
+                                                        <option value="7777">N/A</option>
+                                                        <option value="9999">Unknown</option>
+                                                    </select>
+                                                    </div>
+
+                                                </div>
+                                                <div id="congenitalCodeDiv3" class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Congenital Infection code 3 : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="congenitalCode3" name="congenitalCode3" class="form-control" style="height:32px;width:70%;">
+                                                        <option disabled selected value>SELECT</option>
+                                                        <option value="101">101 - Toxoplasmosis (Toxoplasma gondii)</option>
+                                                        <option value="102">102 - Rubella virus</option>
+                                                        <option value="103">103 - Syphilis (Treponema pallidum)</option>
+                                                        <option value="104">104 - Cytomegalovirus</option>
+                                                        <option value="105">105 - Herpessimplex</option>
+                                                        <option value="106">106 - Parvovirus B19</option>
+                                                        <option value="107">107 - Zika virus</option>
+                                                        <option value="108">108 - Varicella zoster virus</option>
+                                                        <option value="7777">N/A</option>
+                                                        <option value="9999">Unknown</option>
+                                                    </select>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -999,6 +1045,17 @@
                                                 </div>
                                                 <div id="hiddenFieldBacterialSepsisBefore" class="InnerInnerPanel inner-inner-panel-primary">
                                                     <div class="inner-inner-panel-body">
+                                                        <div class="form-group input-group">
+                                                            <label class="fixingLabelAlignmentInner">Number of Codes : </label>
+                                                            <div class="fixingInputAlignmentInner">
+                                                                <select id="numberOfBacterialSepsisBefore" name="numberOfBacterialSepsisBefore" class="form-control" onchange="javascript:numberOfBacterialSepsisBeforeCheck();" style="height:32px;width:30%;">
+                                                                    <option disabled selected value>SELECT</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                         <div id="bacterialBeforeDiv1" class="form-group input-group">
                                                             <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 1 : </label>
                                                             <div class="fixingInputAlignmentInnerInner">
@@ -1028,9 +1085,64 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div id="addNewBacterialFieldDiv" class="form-group input-group ">
-                                                    <a href="javascript:addNewBacterialFieldBefore('bacterialBeforeDiv1');" class="btn btn-default btn-lg page-scroll" style="position:relative; width:80%;">Add new Bacterial Code</a>
-                                                </div>
+                                                        <div id="bacterialBeforeDiv2" class="form-group input-group">
+                                                            <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 2 : </label>
+                                                            <div class="fixingInputAlignmentInnerInner">
+                                                                <select id="pathogenCodeBefore2" name="pathogenCodeBefore2" class="form-control" style="height:32px;width:70%;">
+                                                                    <option disabled selected value="">SELECT</option>
+                                                                    <option value="102">102 - Acinetobacter species</option>
+                                                                    <option value="201">201 - Bacteroides species</option>
+                                                                    <option value="501">501 - Enterobacter species</option>
+                                                                    <option value="502">502 - Enterococcus species</option>
+                                                                    <option value="503">503 - Escherichia coli</option>
+                                                                    <option value="801">801 - Haemophilus species</option>
+                                                                    <option value="1101">1101 - Klebsiella species</option>
+                                                                    <option value="1201">1201 - Listeria monocytogenes</option>
+                                                                    <option value="1301">1301 - Moraxella species</option>
+                                                                    <option value="1401">1401 - Neisseria species</option>
+                                                                    <option value="1604">1604 - Proteus species</option>
+                                                                    <option value="1606">1606 - Pseudomonas species</option>
+                                                                    <option value="1902">1902 - Serratia species</option>
+                                                                    <option value="1903">1903 - Staphylococcus coagulase positive</option>
+                                                                    <option value="1904">1904 - Stenotrophomonas maltophilia</option>
+                                                                    <option value="1905">1905 - Group B Streptococcus or GBS</option>
+                                                                    <option value="1906">1906 - Streptococcus anginosus</option>
+                                                                    <option value="1907">1907 - Streptococcus pneumoniae</option>
+                                                                    <option value="1908">1908 - Streptococcus pyogenes</option>
+                                                                    <option value="7777">N/A</option>
+                                                                    <option value="9999">Unknown</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div id="bacterialBeforeDiv3" class="form-group input-group">
+                                                            <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 3 : </label>
+                                                            <div class="fixingInputAlignmentInnerInner">
+                                                                <select id="pathogenCodeBefore3" name="pathogenCodeBefore3" class="form-control" style="height:32px;width:70%;">
+                                                                    <option disabled selected value="">SELECT</option>
+                                                                    <option value="102">102 - Acinetobacter species</option>
+                                                                    <option value="201">201 - Bacteroides species</option>
+                                                                    <option value="501">501 - Enterobacter species</option>
+                                                                    <option value="502">502 - Enterococcus species</option>
+                                                                    <option value="503">503 - Escherichia coli</option>
+                                                                    <option value="801">801 - Haemophilus species</option>
+                                                                    <option value="1101">1101 - Klebsiella species</option>
+                                                                    <option value="1201">1201 - Listeria monocytogenes</option>
+                                                                    <option value="1301">1301 - Moraxella species</option>
+                                                                    <option value="1401">1401 - Neisseria species</option>
+                                                                    <option value="1604">1604 - Proteus species</option>
+                                                                    <option value="1606">1606 - Pseudomonas species</option>
+                                                                    <option value="1902">1902 - Serratia species</option>
+                                                                    <option value="1903">1903 - Staphylococcus coagulase positive</option>
+                                                                    <option value="1904">1904 - Stenotrophomonas maltophilia</option>
+                                                                    <option value="1905">1905 - Group B Streptococcus or GBS</option>
+                                                                    <option value="1906">1906 - Streptococcus anginosus</option>
+                                                                    <option value="1907">1907 - Streptococcus pneumoniae</option>
+                                                                    <option value="1908">1908 - Streptococcus pyogenes</option>
+                                                                    <option value="7777">N/A</option>
+                                                                    <option value="9999">Unknown</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 
@@ -1158,7 +1270,9 @@
                                         </div>
                                         <div class="form-group input-group diedWithin12HoursDiv">
                                             <label class="fixingLabelAlignment">Died Within 12 Hours of Admission to your NICU : </label>
-                                            <span class="radioFloatLeft">
+                                            <div class="fixingInputAlignment">
+                                                    <span class="radioFloatLeft">
+                                                
                                                 <input class="radioType" id="diedWithin12HoursYes" onclick="javascript:diedWithin12HoursCheck();" type="radio" name = diedWithin12Hours value="1">
                                                     <label class="radioText" for="diedWithin12HoursYes"> Yes</label>
                                                     
@@ -1183,6 +1297,8 @@
                                                     
 
                                                 </span>
+                                                </div>
+                                            
                                         </div>
                                         <div id="RespiratorySupportAfterInitialResuscitationDiv" class="InnerPanel inner-panel-primary RespiratorySupportAfterInitialResuscitationDiv">
                                             <div class="inner-panel-heading">
@@ -1618,6 +1734,17 @@
                                                     </span>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInner">Number of Codes : </label>
+                                                        <div class="fixingInputAlignmentInner">
+                                                            <select id="numberOfBacterialSepsisAfter" name="numberOfBacterialSepsisAfter" class="form-control" onchange="javascript:numberOfBacterialSepsisAfterCheck();" style="height:32px;width:30%;">
+                                                                <option disabled selected value>SELECT</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                     <div id="bacterialAfterDiv1" class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 1 : </label>
                                                         <div class="fixingInputAlignmentInner">
@@ -1646,11 +1773,65 @@
                                                                     <option value="9999">Unknown</option>
                                                             </select>
                                                         </div>
-                                                        
                                                     </div>
-                                                        <div id="addNewBacterialFieldAfterDiv" class="form-group input-group ">
-                                                            <a href="javascript:addNewBacterialFieldAfter('bacterialAfterDiv1');" class="btn btn-default btn-lg page-scroll" style="position:relative;width:80%;">Add new Bacterial Code</a>
+                                                        <div id="bacterialAfterDiv2" class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 2 : </label>
+                                                        <div class="fixingInputAlignmentInner">
+                                                            <select id="pathogenCodeAfter2" name=pathogenCodeAfter2 class="form-control" style="height:32px;width:70%;">
+                                                                    <option disabled selected value="">SELECT</option>
+                                                                    <option value="102">102 - Acinetobacter species</option>
+                                                                    <option value="201">201 - Bacteroides species</option>
+                                                                    <option value="501">501 - Enterobacter species</option>
+                                                                    <option value="502">502 - Enterococcus species</option>
+                                                                    <option value="503">503 - Escherichia coli</option>
+                                                                    <option value="801">801 - Haemophilus species</option>
+                                                                    <option value="1101">1101 - Klebsiella species</option>
+                                                                    <option value="1201">1201 - Listeria monocytogenes</option>
+                                                                    <option value="1301">1301 - Moraxella species</option>
+                                                                    <option value="1401">1401 - Neisseria species</option>
+                                                                    <option value="1604">1604 - Proteus species</option>
+                                                                    <option value="1606">1606 - Pseudomonas species</option>
+                                                                    <option value="1902">1902 - Serratia species</option>
+                                                                    <option value="1903">1903 - Staphylococcus coagulase positive</option>
+                                                                    <option value="1904">1904 - Stenotrophomonas maltophilia</option>
+                                                                    <option value="1905">1905 - Group B Streptococcus or GBS</option>
+                                                                    <option value="1906">1906 - Streptococcus anginosus</option>
+                                                                    <option value="1907">1907 - Streptococcus pneumoniae</option>
+                                                                    <option value="1908">1908 - Streptococcus pyogenes</option>
+                                                                    <option value="7777">N/A</option>
+                                                                    <option value="9999">Unknown</option>
+                                                            </select>
                                                         </div>
+                                                    </div>
+                                                        <div id="bacterialAfterDiv3" class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 3 : </label>
+                                                        <div class="fixingInputAlignmentInner">
+                                                            <select id="pathogenCodeAfter3" name=pathogenCodeAfter3 class="form-control" style="height:32px;width:70%;">
+                                                                    <option disabled selected value="">SELECT</option>
+                                                                    <option value="102">102 - Acinetobacter species</option>
+                                                                    <option value="201">201 - Bacteroides species</option>
+                                                                    <option value="501">501 - Enterobacter species</option>
+                                                                    <option value="502">502 - Enterococcus species</option>
+                                                                    <option value="503">503 - Escherichia coli</option>
+                                                                    <option value="801">801 - Haemophilus species</option>
+                                                                    <option value="1101">1101 - Klebsiella species</option>
+                                                                    <option value="1201">1201 - Listeria monocytogenes</option>
+                                                                    <option value="1301">1301 - Moraxella species</option>
+                                                                    <option value="1401">1401 - Neisseria species</option>
+                                                                    <option value="1604">1604 - Proteus species</option>
+                                                                    <option value="1606">1606 - Pseudomonas species</option>
+                                                                    <option value="1902">1902 - Serratia species</option>
+                                                                    <option value="1903">1903 - Staphylococcus coagulase positive</option>
+                                                                    <option value="1904">1904 - Stenotrophomonas maltophilia</option>
+                                                                    <option value="1905">1905 - Group B Streptococcus or GBS</option>
+                                                                    <option value="1906">1906 - Streptococcus anginosus</option>
+                                                                    <option value="1907">1907 - Streptococcus pneumoniae</option>
+                                                                    <option value="1908">1908 - Streptococcus pyogenes</option>
+                                                                    <option value="7777">N/A</option>
+                                                                    <option value="9999">Unknown</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                     </div>
                                                     
                                                 </div>
@@ -2052,7 +2233,20 @@
                                                 Surgery Codes
                                             </div>
                                             <div id="mainPanelForSurgeryCodes" class="inner-panel-body">
-                                                <!-- START FIRST SURGERY CODE-->
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Number of Codes : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="numberOfSurgeryCodes" name="numberOfSurgeryCodes" class="form-control" onchange="javascript:numberOfSurgeryCodesCheck();" style="height:32px;width:30%;">
+                                                            <option disabled selected value>SELECT</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- START SURGERY CODE-->
                                                 <div id="surgeryDiv1" class="InnerInnerPanel inner-inner-panel-primary">
                                                     <div class="inner-inner-panel-body">
                                                         <div class="form-group input-group">
@@ -2152,14 +2346,405 @@
                                                     </div>
                                                     
                                                 </div>
+                                                <div id="surgeryDiv2" class="InnerInnerPanel inner-inner-panel-primary">
+                                                    <div class="inner-inner-panel-body">
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgery Code 2 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select id="surgeryCode2" name=surgeryCode2 class="form-control" style="height:32px;max-width:120%;width:70%;">
+                                                          <option disabled selected value>SELECT</option>
+                                                          <option disabled value>--------HEAD & Neck--------</option>
+                                                          <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
+                                                          <option value="S103">S103 - Ophthalmologic Surgery</option>
+                                                          <option value="S107">S107 - Palliative or Definitive Repair of Choanal Atresia</option>
+                                                          <option value="S100">S100 - Other head and neck surgery</option>
+                                                          <option disabled value>--------THORAX--------</option>
+                                                          <option value="S203">S203 - Tracheoesophageal Atresia and/or fistula repair</option>
+                                                          <option value="S210">S210 - Bronchoscopy (With or without biopsy)</option>
+                                                          <option value="S200">S200 - Other thoracic surgery</option>
+                                                          <option disabled value>--------ABDOMEN--------</option>
+                                                          <option value="S301">S301 - Rectal biopsy with or without anoscopy</option>
+                                                          <option value="S303">S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option>
+                                                          <option value="S304">S304 - Fundoplication</option>
+                                                          <option value="S307">S307 - Jejunostomy, ileostomy, colostomy for intestinal diversion</option>
+                                                          <option value="S308">S308 - Small bowel resection with or without primary anastomosis</option>
+                                                          <option value="S309">S309 - Large bowel resection</option>
+                                                          <option value="S310">S310 - Duodenal atresia/stenosis/web repair</option>
+                                                          <option value="S311">S311 - Jejunal, ileal, or colonic atresia repair</option>
+                                                          <option value="S312">S312 - Excision of Meckel's diverticulum</option>
+                                                          <option value="S313">S313 - Drainage of intra-abdominal abscess</option>
+                                                          <option value="S319">S319 - Repair of imperforate anus</option>
+                                                          <option value="S325">S325 - Repair of diaphragmatic hernia</option>
+                                                          <option value="S331">S331 - Ladd's or other procedure for correction of malrotation</option>
+                                                          <option value="S333">S333 - Primary peritoneal drainage for NEC/intestinal perforation</option>
+                                                          <option value="S338">S338 - Primary closure for gastroschisis</option>
+                                                          <option value="S340">S340 - Primary closure for omphalocele</option>
+                                                          <option value="S300">S300 - Other abdominal surgery requiring general or spinal anesthesia</option>
+                                                          <option disabled value>--------GENITO-URINARY--------</option>
+                                                          <option value="S410">S410 - Inguinal hernia repair</option>
+                                                          <option disabled value>--------OPEN HEART/VASCULAR PROCEDURES--------</option>
+                                                          <option value="S502">S502 - Repair of coarctation of the aorta</option>
+                                                          <option value="S510">S510 - Truncus arteriosus repair</option>
+                                                          <option value="S511">S511 - Arterial switch</option>
+                                                          <option value="S514">S514 - Pulmonary artery banding</option>
+                                                          <option disabled value>--------CENTRAL NERVOUS SYSTEM--------</option>
+                                                          <option value="S901">S901 - Ventriculoperitoneal or other ventricular shunt</option>
+                                                          <option value="S904">S904 - Meningocele or myelomeningocele repair</option>
+                                                          <option value="S905">S905 - Encephalocele repair</option>
+                                                         <option value="77">N/A</option>
+                                                         <option value="99">Unknown</option>
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner"></label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode2YourHospital" type="radio" name = surgeryCode2 value="1">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode2YourHospital">Your Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode2OtherHospital" type="radio" name = surgeryCode2 value="2">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode2OtherHospital">Other Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode2Both" type="radio" name = surgeryCode2 value="3">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode2Both">Both</label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgical Site Infection 2 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection2Yes" type="radio" name = surgicalInfection2 value="1">
+                                                            <label class="radioText" for="surgicalInfection2Yes">Yes</label>
+                                                    </span>
+
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection2No" type="radio" name = surgicalInfection2 value="0">
+                                                            <label class="radioText" for="surgicalInfection2No">No</label>
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection2NA" type="radio" name = surgicalInfection2 value="7">
+                                                            <label class="radioText" for="surgicalInfection2NA">N/A</label>
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection2Unknown" type="radio" name = surgicalInfection2 value="9">
+                                                            <label class="radioText" for="surgicalInfection2Unknown">Unknown</label>
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div id="surgeryDiv3" class="InnerInnerPanel inner-inner-panel-primary">
+                                                    <div class="inner-inner-panel-body">
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgery Code 3 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select id="surgeryCode3" name=surgeryCode3 class="form-control" style="height:32px;max-width:120%;width:70%;">
+                                                          <option disabled selected value>SELECT</option>
+                                                          <option disabled value>--------HEAD & Neck--------</option>
+                                                          <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
+                                                          <option value="S103">S103 - Ophthalmologic Surgery</option>
+                                                          <option value="S107">S107 - Palliative or Definitive Repair of Choanal Atresia</option>
+                                                          <option value="S100">S100 - Other head and neck surgery</option>
+                                                          <option disabled value>--------THORAX--------</option>
+                                                          <option value="S203">S203 - Tracheoesophageal Atresia and/or fistula repair</option>
+                                                          <option value="S210">S210 - Bronchoscopy (With or without biopsy)</option>
+                                                          <option value="S200">S200 - Other thoracic surgery</option>
+                                                          <option disabled value>--------ABDOMEN--------</option>
+                                                          <option value="S301">S301 - Rectal biopsy with or without anoscopy</option>
+                                                          <option value="S303">S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option>
+                                                          <option value="S304">S304 - Fundoplication</option>
+                                                          <option value="S307">S307 - Jejunostomy, ileostomy, colostomy for intestinal diversion</option>
+                                                          <option value="S308">S308 - Small bowel resection with or without primary anastomosis</option>
+                                                          <option value="S309">S309 - Large bowel resection</option>
+                                                          <option value="S310">S310 - Duodenal atresia/stenosis/web repair</option>
+                                                          <option value="S311">S311 - Jejunal, ileal, or colonic atresia repair</option>
+                                                          <option value="S312">S312 - Excision of Meckel's diverticulum</option>
+                                                          <option value="S313">S313 - Drainage of intra-abdominal abscess</option>
+                                                          <option value="S319">S319 - Repair of imperforate anus</option>
+                                                          <option value="S325">S325 - Repair of diaphragmatic hernia</option>
+                                                          <option value="S331">S331 - Ladd's or other procedure for correction of malrotation</option>
+                                                          <option value="S333">S333 - Primary peritoneal drainage for NEC/intestinal perforation</option>
+                                                          <option value="S338">S338 - Primary closure for gastroschisis</option>
+                                                          <option value="S340">S340 - Primary closure for omphalocele</option>
+                                                          <option value="S300">S300 - Other abdominal surgery requiring general or spinal anesthesia</option>
+                                                          <option disabled value>--------GENITO-URINARY--------</option>
+                                                          <option value="S410">S410 - Inguinal hernia repair</option>
+                                                          <option disabled value>--------OPEN HEART/VASCULAR PROCEDURES--------</option>
+                                                          <option value="S502">S502 - Repair of coarctation of the aorta</option>
+                                                          <option value="S510">S510 - Truncus arteriosus repair</option>
+                                                          <option value="S511">S511 - Arterial switch</option>
+                                                          <option value="S514">S514 - Pulmonary artery banding</option>
+                                                          <option disabled value>--------CENTRAL NERVOUS SYSTEM--------</option>
+                                                          <option value="S901">S901 - Ventriculoperitoneal or other ventricular shunt</option>
+                                                          <option value="S904">S904 - Meningocele or myelomeningocele repair</option>
+                                                          <option value="S905">S905 - Encephalocele repair</option>
+                                                         <option value="77">N/A</option>
+                                                         <option value="99">Unknown</option>
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner"></label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode3YourHospital" type="radio" name = surgeryCode3 value="1">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode3YourHospital">Your Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode3OtherHospital" type="radio" name = surgeryCode3 value="2">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode3OtherHospital">Other Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode3Both" type="radio" name = surgeryCode3 value="3">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode3Both">Both</label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgical Site Infection 3 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection3Yes" type="radio" name = surgicalInfection3 value="1">
+                                                            <label class="radioText" for="surgicalInfection3Yes">Yes</label>
+                                                    </span>
+
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection3No" type="radio" name = surgicalInfection3 value="0">
+                                                            <label class="radioText" for="surgicalInfection3No">No</label>
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection3NA" type="radio" name = surgicalInfection3 value="7">
+                                                            <label class="radioText" for="surgicalInfection3NA">N/A</label>
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection3Unknown" type="radio" name = surgicalInfection3 value="9">
+                                                            <label class="radioText" for="surgicalInfection3Unknown">Unknown</label>
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div id="surgeryDiv4" class="InnerInnerPanel inner-inner-panel-primary">
+                                                    <div class="inner-inner-panel-body">
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgery Code 4 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select id="surgeryCode4" name=surgeryCode4 class="form-control" style="height:32px;max-width:120%;width:70%;">
+                                                          <option disabled selected value>SELECT</option>
+                                                          <option disabled value>--------HEAD & Neck--------</option>
+                                                          <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
+                                                          <option value="S103">S103 - Ophthalmologic Surgery</option>
+                                                          <option value="S107">S107 - Palliative or Definitive Repair of Choanal Atresia</option>
+                                                          <option value="S100">S100 - Other head and neck surgery</option>
+                                                          <option disabled value>--------THORAX--------</option>
+                                                          <option value="S203">S203 - Tracheoesophageal Atresia and/or fistula repair</option>
+                                                          <option value="S210">S210 - Bronchoscopy (With or without biopsy)</option>
+                                                          <option value="S200">S200 - Other thoracic surgery</option>
+                                                          <option disabled value>--------ABDOMEN--------</option>
+                                                          <option value="S301">S301 - Rectal biopsy with or without anoscopy</option>
+                                                          <option value="S303">S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option>
+                                                          <option value="S304">S304 - Fundoplication</option>
+                                                          <option value="S307">S307 - Jejunostomy, ileostomy, colostomy for intestinal diversion</option>
+                                                          <option value="S308">S308 - Small bowel resection with or without primary anastomosis</option>
+                                                          <option value="S309">S309 - Large bowel resection</option>
+                                                          <option value="S310">S310 - Duodenal atresia/stenosis/web repair</option>
+                                                          <option value="S311">S311 - Jejunal, ileal, or colonic atresia repair</option>
+                                                          <option value="S312">S312 - Excision of Meckel's diverticulum</option>
+                                                          <option value="S313">S313 - Drainage of intra-abdominal abscess</option>
+                                                          <option value="S319">S319 - Repair of imperforate anus</option>
+                                                          <option value="S325">S325 - Repair of diaphragmatic hernia</option>
+                                                          <option value="S331">S331 - Ladd's or other procedure for correction of malrotation</option>
+                                                          <option value="S333">S333 - Primary peritoneal drainage for NEC/intestinal perforation</option>
+                                                          <option value="S338">S338 - Primary closure for gastroschisis</option>
+                                                          <option value="S340">S340 - Primary closure for omphalocele</option>
+                                                          <option value="S300">S300 - Other abdominal surgery requiring general or spinal anesthesia</option>
+                                                          <option disabled value>--------GENITO-URINARY--------</option>
+                                                          <option value="S410">S410 - Inguinal hernia repair</option>
+                                                          <option disabled value>--------OPEN HEART/VASCULAR PROCEDURES--------</option>
+                                                          <option value="S502">S502 - Repair of coarctation of the aorta</option>
+                                                          <option value="S510">S510 - Truncus arteriosus repair</option>
+                                                          <option value="S511">S511 - Arterial switch</option>
+                                                          <option value="S514">S514 - Pulmonary artery banding</option>
+                                                          <option disabled value>--------CENTRAL NERVOUS SYSTEM--------</option>
+                                                          <option value="S901">S901 - Ventriculoperitoneal or other ventricular shunt</option>
+                                                          <option value="S904">S904 - Meningocele or myelomeningocele repair</option>
+                                                          <option value="S905">S905 - Encephalocele repair</option>
+                                                         <option value="77">N/A</option>
+                                                         <option value="99">Unknown</option>
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner"></label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode4YourHospital" type="radio" name = surgeryCode4 value="1">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode4YourHospital">Your Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode4OtherHospital" type="radio" name = surgeryCode4 value="2">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode4OtherHospital">Other Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode4Both" type="radio" name = surgeryCode4 value="3">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode4Both">Both</label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgical Site Infection 4 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection4Yes" type="radio" name = surgicalInfection4 value="1">
+                                                            <label class="radioText" for="surgicalInfection4Yes">Yes</label>
+                                                    </span>
+
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection4No" type="radio" name = surgicalInfection4 value="0">
+                                                            <label class="radioText" for="surgicalInfection4No">No</label>
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection4NA" type="radio" name = surgicalInfection4 value="7">
+                                                            <label class="radioText" for="surgicalInfection4NA">N/A</label>
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection4Unknown" type="radio" name = surgicalInfection4 value="9">
+                                                            <label class="radioText" for="surgicalInfection4Unknown">Unknown</label>
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div id="surgeryDiv5" class="InnerInnerPanel inner-inner-panel-primary">
+                                                    <div class="inner-inner-panel-body">
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgery Code 5 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select id="surgeryCode5" name=surgeryCode5 class="form-control" style="height:32px;max-width:120%;width:70%;">
+                                                          <option disabled selected value>SELECT</option>
+                                                          <option disabled value>--------HEAD & Neck--------</option>
+                                                          <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
+                                                          <option value="S103">S103 - Ophthalmologic Surgery</option>
+                                                          <option value="S107">S107 - Palliative or Definitive Repair of Choanal Atresia</option>
+                                                          <option value="S100">S100 - Other head and neck surgery</option>
+                                                          <option disabled value>--------THORAX--------</option>
+                                                          <option value="S203">S203 - Tracheoesophageal Atresia and/or fistula repair</option>
+                                                          <option value="S210">S210 - Bronchoscopy (With or without biopsy)</option>
+                                                          <option value="S200">S200 - Other thoracic surgery</option>
+                                                          <option disabled value>--------ABDOMEN--------</option>
+                                                          <option value="S301">S301 - Rectal biopsy with or without anoscopy</option>
+                                                          <option value="S303">S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option>
+                                                          <option value="S304">S304 - Fundoplication</option>
+                                                          <option value="S307">S307 - Jejunostomy, ileostomy, colostomy for intestinal diversion</option>
+                                                          <option value="S308">S308 - Small bowel resection with or without primary anastomosis</option>
+                                                          <option value="S309">S309 - Large bowel resection</option>
+                                                          <option value="S310">S310 - Duodenal atresia/stenosis/web repair</option>
+                                                          <option value="S311">S311 - Jejunal, ileal, or colonic atresia repair</option>
+                                                          <option value="S312">S312 - Excision of Meckel's diverticulum</option>
+                                                          <option value="S313">S313 - Drainage of intra-abdominal abscess</option>
+                                                          <option value="S319">S319 - Repair of imperforate anus</option>
+                                                          <option value="S325">S325 - Repair of diaphragmatic hernia</option>
+                                                          <option value="S331">S331 - Ladd's or other procedure for correction of malrotation</option>
+                                                          <option value="S333">S333 - Primary peritoneal drainage for NEC/intestinal perforation</option>
+                                                          <option value="S338">S338 - Primary closure for gastroschisis</option>
+                                                          <option value="S340">S340 - Primary closure for omphalocele</option>
+                                                          <option value="S300">S300 - Other abdominal surgery requiring general or spinal anesthesia</option>
+                                                          <option disabled value>--------GENITO-URINARY--------</option>
+                                                          <option value="S410">S410 - Inguinal hernia repair</option>
+                                                          <option disabled value>--------OPEN HEART/VASCULAR PROCEDURES--------</option>
+                                                          <option value="S502">S502 - Repair of coarctation of the aorta</option>
+                                                          <option value="S510">S510 - Truncus arteriosus repair</option>
+                                                          <option value="S511">S511 - Arterial switch</option>
+                                                          <option value="S514">S514 - Pulmonary artery banding</option>
+                                                          <option disabled value>--------CENTRAL NERVOUS SYSTEM--------</option>
+                                                          <option value="S901">S901 - Ventriculoperitoneal or other ventricular shunt</option>
+                                                          <option value="S904">S904 - Meningocele or myelomeningocele repair</option>
+                                                          <option value="S905">S905 - Encephalocele repair</option>
+                                                         <option value="77">N/A</option>
+                                                         <option value="99">Unknown</option>
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner"></label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode5YourHospital" type="radio" name = surgeryCode5 value="1">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode5YourHospital">Your Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode5OtherHospital" type="radio" name = surgeryCode5 value="2">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode5OtherHospital">Other Hospital</label>
+                                                        </span>
+                                                            <span class="radioFloatLeftInner">
+
+                                                            <input class="radioType" id="surgeryCode5Both" type="radio" name = surgeryCode5 value="3">
+                                                                <label class="radioTextForHospitalResponse" for="surgeryCode5Both">Both</label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                        <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Surgical Site Infection 5 :</label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection5Yes" type="radio" name = surgicalInfection5 value="1">
+                                                            <label class="radioText" for="surgicalInfection5Yes">Yes</label>
+                                                    </span>
+
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection5No" type="radio" name = surgicalInfection5 value="0">
+                                                            <label class="radioText" for="surgicalInfection5No">No</label>
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection5NA" type="radio" name = surgicalInfection5 value="7">
+                                                            <label class="radioText" for="surgicalInfection5NA">N/A</label>
+                                                    </span>
+                                                        <span class="radioFloatLeftInner">
+                                                        
+                                                        <input class="radioType" id="surgicalInfection5Unknown" type="radio" name = surgicalInfection5 value="9">
+                                                            <label class="radioText" for="surgicalInfection5Unknown">Unknown</label>
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- END SURGERY CODE-->
                                                 
-                                                <!-- END FIRST SURGERY CODE-->
                                             </div>
-                                            <!-- START Button to add new surgery fields-->
-                                            <div class="form-group input-group">
-                                                <a href="javascript:addNewSurgeryField('surgeryDiv1');" class="btn btn-default btn-lg page-scroll" style="position:relative; width:80%;">Add new Surgery</a>
-                                            </div>
-                                            <!-- END Button to add new surgery fields-->
                                         </div>
                                         <div class="form-group input-group respiratoryDistressSyndromeDiv">
                                             <label class="fixingLabelAlignment">Respiratory Distress Syndrome :</label>
@@ -2464,6 +3049,19 @@
                                         </div>
                                         <div id="hiddenFieldBirthDefectCodes" class="InnerPanel inner-panel-primary">
                                             <div class="inner-panel-body">
+                                                <div class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInner">Number of Codes : </label>
+                                                    <div class="fixingInputAlignmentInner">
+                                                        <select id="numberOfBirthDefects" name="numberOfBirthDefects" class="form-control" onchange="javascript:numberOfBirthDefectsCheck();" style="height:32px;width:30%;">
+                                                            <option disabled selected value>SELECT</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div id="birthDefectCodeDiv1" class="form-group input-group">
                                                     <label class="fixingLabelAlignmentInnerInner">Birth Defect code 1 : </label>
                                                     <div class="fixingInputAlignmentInnerInner">
@@ -2549,8 +3147,345 @@
                                                     </div>
 
                                                 </div>
-                                                <div id="birthDefectButton" class="form-group input-group ">
-                                                    <a href="javascript:addNewBirthDefect('birthDefectCodeDiv1');" class="btn btn-default btn-lg page-scroll" style="position:relative; width:80%;">Add new Congenital Code</a>
+                                                <div id="birthDefectCodeDiv2" class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Birth Defect code 2 : </label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select id="birthDefectCode2" name=birthDefectCode2 class="form-control" style="height:32px;width:70%;">
+                                                            <option disabled selected value>SELECT</option>
+                                                            <option disabled value>-----Central Nervous System Anomalies-----</option>
+                                                            <option value="101">101 - Anencephaly</option>
+                                                            <option value="102">102 - Meningomyelocele</option>
+                                                            <option value="103">103 - Hydranencephaly</option>
+                                                            <option value="104">104 - Congenital Hydrocephalus</option>
+                                                            <option value="105">105 - Holoprosencephaly</option>
+                                                            <option value="106">106 - Encephalocele</option>
+                                                            <option value="901">901 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Congenital Heart Anomalies-----</option>
+                                                            <option value="201">201 - TruncusArteriosus</option>
+                                                            <option value="202">202 - TranspositionoftheGreatVessels</option>
+                                                            <option value="203">203 - Tetralogy of Fallot with or without Pulmonary Atresia</option>
+                                                            <option value="204">204 - Single Ventricle</option>
+                                                            <option value="205">205 - Double Outlet Right Ventricle</option>
+                                                            <option value="206">206 - Complete Atrio-Ventricular Canal</option>
+                                                            <option value="207">207 - Pulmonary Atresia with Intact Ventricular Septum</option>
+                                                            <option value="208">208 - Tricuspid Atresia</option>
+                                                            <option value="209">209 - Hypoplastic Left Heart Syndrome</option>
+                                                            <option value="210">210 - Interrupted Aortic Arch</option>
+                                                            <option value="211">211 - Total Anomalous Pulmonary Venous Return</option>
+                                                            <option value="212">212 - Pentalogy of Cantrell</option>
+                                                            <option value="213">213 - Coarctation of the Aorta</option>
+                                                            <option value="214">214 - Atrial Septal Defect</option>
+                                                            <option value="215">215 - Ventricular Septal Defect</option>
+                                                            <option value="216">216 - Arrythmia</option>
+                                                            <option value="217">217 - Ebstein’s Anomaly</option>
+                                                            <option value="218">218 - Pulmonary Valvular Stenosis</option>
+                                                            <option value="902">902 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Gastro-Intestinal Anomalies-----</option>
+                                                            <option value="301">301 - Cleft Palate</option>
+                                                            <option value="302">302 - Tracheo-EsophagealFistula</option>
+                                                            <option value="303">303 - Esophageal Atresia</option>
+                                                            <option value="304">304 - Duodenal Atresia</option>
+                                                            <option value="305">305 - Jejunal Atresia</option>
+                                                            <option value="306">306 - IlealAtresia</option>
+                                                            <option value="307">307 - Atresia of Large Bowel or Rectum</option>
+                                                            <option value="308">308 - ImperforateAnus</option>
+                                                            <option value="309">309 - Omphalocele</option>
+                                                            <option value="310">310 - Gastroschisis</option>
+                                                            <option value="311">311 - Biliary Atresia</option>
+                                                            <option value="312">312 - Malrotation</option>
+                                                            <option value="313">313 - Hirschsprung’s Disease</option>
+                                                            <option value="314">314 - Sacrococcygeal teratoma</option>
+                                                            <option value="903">903 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Genito-Urinary Anomalies-----</option>
+                                                            <option value="401">401 - Bilateral Renal Agenesis</option>
+                                                            <option value="402">402 - Bilateral Polycystic, Multicystic, or Dysplastic Kidneys</option>
+                                                            <option value="403">403 - Obstructive Uropathy with Congenital Hydronephrosis</option>
+                                                            <option value="404">404 - Exstrophy of the Urinary Bladder</option>
+                                                            <option value="904">904 - Other lethal or life threatening</option>
+                                                            
+                                                            <option disabled value>-----Chromosomal Anomalies-----</option>
+                                                            <option value="501">501 - Trisomy 13</option>
+                                                            <option value="502">502 - Trisomy 18</option>
+                                                            <option value="503">503 - Trisomy 21</option>
+                                                            <option value="504">504 - Other chromosomal anomaly</option>
+                                                            <option value="505">505 - Triploidy</option>
+                                                          
+                                                            <option disabled value>-----Other Congenital Anomalies-----</option>
+                                                            <option value="601">601 - Skeletal Dysplasia</option>
+                                                            <option value="602">602 - Congenital Diaphragmatic Hernia</option>
+                                                            <option value="603">603 - Hydrops Fetalis with anasarca</option>
+                                                            <option value="604">604 - Oligohydramnios Sequence</option>
+                                                            <option value="605">605 - Inborn Error of Metabolism</option>
+                                                            <option value="606">606 - Myotonic Dystrophy</option>
+                                                            <option value="607">607 - Conjoined Twins</option>
+                                                            <option value="608">608 - Tracheal Agenesis or Atresia</option>
+                                                            <option value="609">609 - Thanatophoric Dysplasia Types 1 and 2</option>
+                                                            <option value="610">610 - Hemoglobin Barts</option>
+                                                           
+                                                            <option disabled value>-----Pulmonary Anomalies-----</option>
+                                                            <option value="701">701 - Congenital Cystic Adenomatoid Malformation of the Lung</option>
+                                                            <option value="907">907 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Other Lethal or Life Threatening Anomalies-----</option>
+                                                            <option value="100">100 - Other lethal or life threatening</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div id="birthDefectCodeDiv3" class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Birth Defect code 3 : </label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select id="birthDefectCode3" name=birthDefectCode3 class="form-control" style="height:32px;width:70%;">
+                                                            <option disabled selected value>SELECT</option>
+                                                            <option disabled value>-----Central Nervous System Anomalies-----</option>
+                                                            <option value="101">101 - Anencephaly</option>
+                                                            <option value="102">102 - Meningomyelocele</option>
+                                                            <option value="103">103 - Hydranencephaly</option>
+                                                            <option value="104">104 - Congenital Hydrocephalus</option>
+                                                            <option value="105">105 - Holoprosencephaly</option>
+                                                            <option value="106">106 - Encephalocele</option>
+                                                            <option value="901">901 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Congenital Heart Anomalies-----</option>
+                                                            <option value="201">201 - TruncusArteriosus</option>
+                                                            <option value="202">202 - TranspositionoftheGreatVessels</option>
+                                                            <option value="203">203 - Tetralogy of Fallot with or without Pulmonary Atresia</option>
+                                                            <option value="204">204 - Single Ventricle</option>
+                                                            <option value="205">205 - Double Outlet Right Ventricle</option>
+                                                            <option value="206">206 - Complete Atrio-Ventricular Canal</option>
+                                                            <option value="207">207 - Pulmonary Atresia with Intact Ventricular Septum</option>
+                                                            <option value="208">208 - Tricuspid Atresia</option>
+                                                            <option value="209">209 - Hypoplastic Left Heart Syndrome</option>
+                                                            <option value="210">210 - Interrupted Aortic Arch</option>
+                                                            <option value="211">211 - Total Anomalous Pulmonary Venous Return</option>
+                                                            <option value="212">212 - Pentalogy of Cantrell</option>
+                                                            <option value="213">213 - Coarctation of the Aorta</option>
+                                                            <option value="214">214 - Atrial Septal Defect</option>
+                                                            <option value="215">215 - Ventricular Septal Defect</option>
+                                                            <option value="216">216 - Arrythmia</option>
+                                                            <option value="217">217 - Ebstein’s Anomaly</option>
+                                                            <option value="218">218 - Pulmonary Valvular Stenosis</option>
+                                                            <option value="902">902 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Gastro-Intestinal Anomalies-----</option>
+                                                            <option value="301">301 - Cleft Palate</option>
+                                                            <option value="302">302 - Tracheo-EsophagealFistula</option>
+                                                            <option value="303">303 - Esophageal Atresia</option>
+                                                            <option value="304">304 - Duodenal Atresia</option>
+                                                            <option value="305">305 - Jejunal Atresia</option>
+                                                            <option value="306">306 - IlealAtresia</option>
+                                                            <option value="307">307 - Atresia of Large Bowel or Rectum</option>
+                                                            <option value="308">308 - ImperforateAnus</option>
+                                                            <option value="309">309 - Omphalocele</option>
+                                                            <option value="310">310 - Gastroschisis</option>
+                                                            <option value="311">311 - Biliary Atresia</option>
+                                                            <option value="312">312 - Malrotation</option>
+                                                            <option value="313">313 - Hirschsprung’s Disease</option>
+                                                            <option value="314">314 - Sacrococcygeal teratoma</option>
+                                                            <option value="903">903 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Genito-Urinary Anomalies-----</option>
+                                                            <option value="401">401 - Bilateral Renal Agenesis</option>
+                                                            <option value="402">402 - Bilateral Polycystic, Multicystic, or Dysplastic Kidneys</option>
+                                                            <option value="403">403 - Obstructive Uropathy with Congenital Hydronephrosis</option>
+                                                            <option value="404">404 - Exstrophy of the Urinary Bladder</option>
+                                                            <option value="904">904 - Other lethal or life threatening</option>
+                                                            
+                                                            <option disabled value>-----Chromosomal Anomalies-----</option>
+                                                            <option value="501">501 - Trisomy 13</option>
+                                                            <option value="502">502 - Trisomy 18</option>
+                                                            <option value="503">503 - Trisomy 21</option>
+                                                            <option value="504">504 - Other chromosomal anomaly</option>
+                                                            <option value="505">505 - Triploidy</option>
+                                                          
+                                                            <option disabled value>-----Other Congenital Anomalies-----</option>
+                                                            <option value="601">601 - Skeletal Dysplasia</option>
+                                                            <option value="602">602 - Congenital Diaphragmatic Hernia</option>
+                                                            <option value="603">603 - Hydrops Fetalis with anasarca</option>
+                                                            <option value="604">604 - Oligohydramnios Sequence</option>
+                                                            <option value="605">605 - Inborn Error of Metabolism</option>
+                                                            <option value="606">606 - Myotonic Dystrophy</option>
+                                                            <option value="607">607 - Conjoined Twins</option>
+                                                            <option value="608">608 - Tracheal Agenesis or Atresia</option>
+                                                            <option value="609">609 - Thanatophoric Dysplasia Types 1 and 2</option>
+                                                            <option value="610">610 - Hemoglobin Barts</option>
+                                                           
+                                                            <option disabled value>-----Pulmonary Anomalies-----</option>
+                                                            <option value="701">701 - Congenital Cystic Adenomatoid Malformation of the Lung</option>
+                                                            <option value="907">907 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Other Lethal or Life Threatening Anomalies-----</option>
+                                                            <option value="100">100 - Other lethal or life threatening</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div id="birthDefectCodeDiv4" class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Birth Defect code 4 : </label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select id="birthDefectCode4" name=birthDefectCode1 class="form-control" style="height:32px;width:70%;">
+                                                            <option disabled selected value>SELECT</option>
+                                                            <option disabled value>-----Central Nervous System Anomalies-----</option>
+                                                            <option value="101">101 - Anencephaly</option>
+                                                            <option value="102">102 - Meningomyelocele</option>
+                                                            <option value="103">103 - Hydranencephaly</option>
+                                                            <option value="104">104 - Congenital Hydrocephalus</option>
+                                                            <option value="105">105 - Holoprosencephaly</option>
+                                                            <option value="106">106 - Encephalocele</option>
+                                                            <option value="901">901 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Congenital Heart Anomalies-----</option>
+                                                            <option value="201">201 - TruncusArteriosus</option>
+                                                            <option value="202">202 - TranspositionoftheGreatVessels</option>
+                                                            <option value="203">203 - Tetralogy of Fallot with or without Pulmonary Atresia</option>
+                                                            <option value="204">204 - Single Ventricle</option>
+                                                            <option value="205">205 - Double Outlet Right Ventricle</option>
+                                                            <option value="206">206 - Complete Atrio-Ventricular Canal</option>
+                                                            <option value="207">207 - Pulmonary Atresia with Intact Ventricular Septum</option>
+                                                            <option value="208">208 - Tricuspid Atresia</option>
+                                                            <option value="209">209 - Hypoplastic Left Heart Syndrome</option>
+                                                            <option value="210">210 - Interrupted Aortic Arch</option>
+                                                            <option value="211">211 - Total Anomalous Pulmonary Venous Return</option>
+                                                            <option value="212">212 - Pentalogy of Cantrell</option>
+                                                            <option value="213">213 - Coarctation of the Aorta</option>
+                                                            <option value="214">214 - Atrial Septal Defect</option>
+                                                            <option value="215">215 - Ventricular Septal Defect</option>
+                                                            <option value="216">216 - Arrythmia</option>
+                                                            <option value="217">217 - Ebstein’s Anomaly</option>
+                                                            <option value="218">218 - Pulmonary Valvular Stenosis</option>
+                                                            <option value="902">902 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Gastro-Intestinal Anomalies-----</option>
+                                                            <option value="301">301 - Cleft Palate</option>
+                                                            <option value="302">302 - Tracheo-EsophagealFistula</option>
+                                                            <option value="303">303 - Esophageal Atresia</option>
+                                                            <option value="304">304 - Duodenal Atresia</option>
+                                                            <option value="305">305 - Jejunal Atresia</option>
+                                                            <option value="306">306 - IlealAtresia</option>
+                                                            <option value="307">307 - Atresia of Large Bowel or Rectum</option>
+                                                            <option value="308">308 - ImperforateAnus</option>
+                                                            <option value="309">309 - Omphalocele</option>
+                                                            <option value="310">310 - Gastroschisis</option>
+                                                            <option value="311">311 - Biliary Atresia</option>
+                                                            <option value="312">312 - Malrotation</option>
+                                                            <option value="313">313 - Hirschsprung’s Disease</option>
+                                                            <option value="314">314 - Sacrococcygeal teratoma</option>
+                                                            <option value="903">903 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Genito-Urinary Anomalies-----</option>
+                                                            <option value="401">401 - Bilateral Renal Agenesis</option>
+                                                            <option value="402">402 - Bilateral Polycystic, Multicystic, or Dysplastic Kidneys</option>
+                                                            <option value="403">403 - Obstructive Uropathy with Congenital Hydronephrosis</option>
+                                                            <option value="404">404 - Exstrophy of the Urinary Bladder</option>
+                                                            <option value="904">904 - Other lethal or life threatening</option>
+                                                            
+                                                            <option disabled value>-----Chromosomal Anomalies-----</option>
+                                                            <option value="501">501 - Trisomy 13</option>
+                                                            <option value="502">502 - Trisomy 18</option>
+                                                            <option value="503">503 - Trisomy 21</option>
+                                                            <option value="504">504 - Other chromosomal anomaly</option>
+                                                            <option value="505">505 - Triploidy</option>
+                                                          
+                                                            <option disabled value>-----Other Congenital Anomalies-----</option>
+                                                            <option value="601">601 - Skeletal Dysplasia</option>
+                                                            <option value="602">602 - Congenital Diaphragmatic Hernia</option>
+                                                            <option value="603">603 - Hydrops Fetalis with anasarca</option>
+                                                            <option value="604">604 - Oligohydramnios Sequence</option>
+                                                            <option value="605">605 - Inborn Error of Metabolism</option>
+                                                            <option value="606">606 - Myotonic Dystrophy</option>
+                                                            <option value="607">607 - Conjoined Twins</option>
+                                                            <option value="608">608 - Tracheal Agenesis or Atresia</option>
+                                                            <option value="609">609 - Thanatophoric Dysplasia Types 1 and 2</option>
+                                                            <option value="610">610 - Hemoglobin Barts</option>
+                                                           
+                                                            <option disabled value>-----Pulmonary Anomalies-----</option>
+                                                            <option value="701">701 - Congenital Cystic Adenomatoid Malformation of the Lung</option>
+                                                            <option value="907">907 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Other Lethal or Life Threatening Anomalies-----</option>
+                                                            <option value="100">100 - Other lethal or life threatening</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div id="birthDefectCodeDiv5" class="form-group input-group">
+                                                    <label class="fixingLabelAlignmentInnerInner">Birth Defect code 5 : </label>
+                                                    <div class="fixingInputAlignmentInnerInner">
+                                                        <select id="birthDefectCode5" name=birthDefectCode5 class="form-control" style="height:32px;width:70%;">
+                                                            <option disabled selected value>SELECT</option>
+                                                            <option disabled value>-----Central Nervous System Anomalies-----</option>
+                                                            <option value="101">101 - Anencephaly</option>
+                                                            <option value="102">102 - Meningomyelocele</option>
+                                                            <option value="103">103 - Hydranencephaly</option>
+                                                            <option value="104">104 - Congenital Hydrocephalus</option>
+                                                            <option value="105">105 - Holoprosencephaly</option>
+                                                            <option value="106">106 - Encephalocele</option>
+                                                            <option value="901">901 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Congenital Heart Anomalies-----</option>
+                                                            <option value="201">201 - TruncusArteriosus</option>
+                                                            <option value="202">202 - TranspositionoftheGreatVessels</option>
+                                                            <option value="203">203 - Tetralogy of Fallot with or without Pulmonary Atresia</option>
+                                                            <option value="204">204 - Single Ventricle</option>
+                                                            <option value="205">205 - Double Outlet Right Ventricle</option>
+                                                            <option value="206">206 - Complete Atrio-Ventricular Canal</option>
+                                                            <option value="207">207 - Pulmonary Atresia with Intact Ventricular Septum</option>
+                                                            <option value="208">208 - Tricuspid Atresia</option>
+                                                            <option value="209">209 - Hypoplastic Left Heart Syndrome</option>
+                                                            <option value="210">210 - Interrupted Aortic Arch</option>
+                                                            <option value="211">211 - Total Anomalous Pulmonary Venous Return</option>
+                                                            <option value="212">212 - Pentalogy of Cantrell</option>
+                                                            <option value="213">213 - Coarctation of the Aorta</option>
+                                                            <option value="214">214 - Atrial Septal Defect</option>
+                                                            <option value="215">215 - Ventricular Septal Defect</option>
+                                                            <option value="216">216 - Arrythmia</option>
+                                                            <option value="217">217 - Ebstein’s Anomaly</option>
+                                                            <option value="218">218 - Pulmonary Valvular Stenosis</option>
+                                                            <option value="902">902 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Gastro-Intestinal Anomalies-----</option>
+                                                            <option value="301">301 - Cleft Palate</option>
+                                                            <option value="302">302 - Tracheo-EsophagealFistula</option>
+                                                            <option value="303">303 - Esophageal Atresia</option>
+                                                            <option value="304">304 - Duodenal Atresia</option>
+                                                            <option value="305">305 - Jejunal Atresia</option>
+                                                            <option value="306">306 - IlealAtresia</option>
+                                                            <option value="307">307 - Atresia of Large Bowel or Rectum</option>
+                                                            <option value="308">308 - ImperforateAnus</option>
+                                                            <option value="309">309 - Omphalocele</option>
+                                                            <option value="310">310 - Gastroschisis</option>
+                                                            <option value="311">311 - Biliary Atresia</option>
+                                                            <option value="312">312 - Malrotation</option>
+                                                            <option value="313">313 - Hirschsprung’s Disease</option>
+                                                            <option value="314">314 - Sacrococcygeal teratoma</option>
+                                                            <option value="903">903 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Genito-Urinary Anomalies-----</option>
+                                                            <option value="401">401 - Bilateral Renal Agenesis</option>
+                                                            <option value="402">402 - Bilateral Polycystic, Multicystic, or Dysplastic Kidneys</option>
+                                                            <option value="403">403 - Obstructive Uropathy with Congenital Hydronephrosis</option>
+                                                            <option value="404">404 - Exstrophy of the Urinary Bladder</option>
+                                                            <option value="904">904 - Other lethal or life threatening</option>
+                                                            
+                                                            <option disabled value>-----Chromosomal Anomalies-----</option>
+                                                            <option value="501">501 - Trisomy 13</option>
+                                                            <option value="502">502 - Trisomy 18</option>
+                                                            <option value="503">503 - Trisomy 21</option>
+                                                            <option value="504">504 - Other chromosomal anomaly</option>
+                                                            <option value="505">505 - Triploidy</option>
+                                                          
+                                                            <option disabled value>-----Other Congenital Anomalies-----</option>
+                                                            <option value="601">601 - Skeletal Dysplasia</option>
+                                                            <option value="602">602 - Congenital Diaphragmatic Hernia</option>
+                                                            <option value="603">603 - Hydrops Fetalis with anasarca</option>
+                                                            <option value="604">604 - Oligohydramnios Sequence</option>
+                                                            <option value="605">605 - Inborn Error of Metabolism</option>
+                                                            <option value="606">606 - Myotonic Dystrophy</option>
+                                                            <option value="607">607 - Conjoined Twins</option>
+                                                            <option value="608">608 - Tracheal Agenesis or Atresia</option>
+                                                            <option value="609">609 - Thanatophoric Dysplasia Types 1 and 2</option>
+                                                            <option value="610">610 - Hemoglobin Barts</option>
+                                                           
+                                                            <option disabled value>-----Pulmonary Anomalies-----</option>
+                                                            <option value="701">701 - Congenital Cystic Adenomatoid Malformation of the Lung</option>
+                                                            <option value="907">907 - Other lethal or life threatening</option>
+                                                            <option disabled value>-----Other Lethal or Life Threatening Anomalies-----</option>
+                                                            <option value="100">100 - Other lethal or life threatening</option>
+
+                                                        </select>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -2861,7 +3796,7 @@
                                                     <label class="fixingLabelAlignmentInner" for="weightAtDispositionAfterReadmission">Weight at Disposition after Readmission : </label>
                                                     <div class="fixingInputAlignmentInner">
                                                         <span class="addingUnits unitsGrams">
-                                                            <input id="weightAtDispositionAfterReadmission" name="weightAtDispositionAfterReadmission" class="form-control" onchange="validateWeightAtInitialDisposition()" type="search" placeholder="eg. 1122" maxlength="4">
+                                                            <input id="weightAtDispositionAfterReadmission" name="weightAtDispositionAfterReadmission" class="form-control" onchange="validateWeight('weightAtDispositionAfterReadmission')" type="search" placeholder="eg. 1122" maxlength="4">
                                                         </span>
                                                     </div>
                                                 </div>
@@ -2897,7 +3832,7 @@
                                                     <label class="fixingLabelAlignmentInner">Date discharged home, died or first birthday date : </label>
                                                     <div class="fixingInputAlignmentInner">
                                                         <span id="dateDischargedHomeDiedOrBirthdayCalendar" class="addingCalendarInner addingCalendarIcon">
-                                                            <input type="text" name="dateDischargedHomeDiedOrBirthday" id="dateDischargedHomeDiedOrBirthday" class="form-control calendarField" readonly="true"/>
+                                                            <input type="search" name="dateDischargedHomeDiedOrBirthday" id="dateDischargedHomeDiedOrBirthday" class="form-control calendarField" readonly="true"/>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -2914,7 +3849,7 @@
                                             <label class="fixingLabelAlignment" for="weightAtInitialDisposition">Weight at Initial Disposition : </label>
                                             <div class="fixingInputAlignment">
                                                 <span class="addingUnits unitsGrams">
-                                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control" onchange="validateWeightAtInitialDisposition()" type="search" placeholder="eg. 1122" maxlength="4">
+                                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control" onchange="validateWeight('weightAtInitialDisposition')" type="search" placeholder="eg. 1122" maxlength="4">
                                                 </span>
                                             </div>
                                         </div>
@@ -3258,7 +4193,7 @@
                                                         <label class="fixingLabelAlignmentInnerInner" for="dayOfLifeVentilationStartedDiagnosis">Diagnosis  :  </label>
                                                         <div class="fixingInputAlignmentInnerInner">
 
-                                                            <input id="dayOfLifeVentilationStartedDiagnosis" name="dayOfLifeVentilationStartedDiagnosis" class="form-control" type="text" placeholder="">
+                                                            <input id="dayOfLifeVentilationStartedDiagnosis" name="dayOfLifeVentilationStartedDiagnosis" class="form-control" type="search" onchange="validateFreeText('dayOfLifeVentilationStartedDiagnosis')" placeholder="">
 
                                                         </div>
                                                     </div>
@@ -3403,6 +4338,17 @@
                                                             </span>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInner">Number of Codes : </label>
+                                                        <div class="fixingInputAlignmentInner">
+                                                            <select id="numberOfBacterialCodesDuringAdmission" name="numberOfBacterialCodesDuringAdmission" class="form-control" onchange="javascript:numberOfBacterialCodesDuringAdmissionCheck();" style="height:32px;width:30%;">
+                                                                <option disabled selected value>SELECT</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                     <div id="bacterialCodeDuringAdmissionDiv1" class="form-group input-group">
                                                         <label class="fixingLabelAlignmentInnerInner">Bacterial Code 1 : </label>
                                                         <div class="fixingInputAlignmentInnerInner">
@@ -3434,8 +4380,67 @@
                                                         
                                                         
                                                     </div>
-                                                    <div id="addNewBacterialCodeDuringAdmissionDiv" class="form-group input-group ">
-                                                        <a id ="addNewBacterialCodeDuringAdmissionID" href="javascript:addNewBacterialCodeDuringAdmission('bacterialCodeDuringAdmissionDiv1');" class="btn btn-default btn-lg page-scroll" style="position:relative; width:80%;">Add new Bacterial Code</a>
+                                                    <div id="bacterialCodeDuringAdmissionDiv2" class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Bacterial Code 2 : </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <select id="bacterialCodeDuringAdmission2" name=bacterialCodeDuringAdmission2 class="form-control" style="height:32px;width:70%;">
+                                                                    <option disabled selected value="">SELECT</option>
+                                                                    <option value="102">102 - Acinetobacter species</option>
+                                                                    <option value="201">201 - Bacteroides species</option>
+                                                                    <option value="501">501 - Enterobacter species</option>
+                                                                    <option value="502">502 - Enterococcus species</option>
+                                                                    <option value="503">503 - Escherichia coli</option>
+                                                                    <option value="801">801 - Haemophilus species</option>
+                                                                    <option value="1101">1101 - Klebsiella species</option>
+                                                                    <option value="1201">1201 - Listeria monocytogenes</option>
+                                                                    <option value="1301">1301 - Moraxella species</option>
+                                                                    <option value="1401">1401 - Neisseria species</option>
+                                                                    <option value="1604">1604 - Proteus species</option>
+                                                                    <option value="1606">1606 - Pseudomonas species</option>
+                                                                    <option value="1902">1902 - Serratia species</option>
+                                                                    <option value="1903">1903 - Staphylococcus coagulase positive</option>
+                                                                    <option value="1904">1904 - Stenotrophomonas maltophilia</option>
+                                                                    <option value="1905">1905 - Group B Streptococcus or GBS</option>
+                                                                    <option value="1906">1906 - Streptococcus anginosus</option>
+                                                                    <option value="1907">1907 - Streptococcus pneumoniae</option>
+                                                                    <option value="1908">1908 - Streptococcus pyogenes</option>
+                                                                    <option value="7777">N/A</option>
+                                                                    <option value="9999">Unknown</option>
+                                                            </select>
+                                                        </div>
+                                                        
+                                                        
+                                                    </div>
+                                                    <div id="bacterialCodeDuringAdmissionDiv3" class="form-group input-group">
+                                                        <label class="fixingLabelAlignmentInnerInner">Bacterial Code 3 : </label>
+                                                        <div class="fixingInputAlignmentInnerInner">
+                                                            <select id="bacterialCodeDuringAdmission3" name=bacterialCodeDuringAdmission3 class="form-control" style="height:32px;width:70%;">
+                                                                    <option disabled selected value="">SELECT</option>
+                                                                    <option value="102">102 - Acinetobacter species</option>
+                                                                    <option value="201">201 - Bacteroides species</option>
+                                                                    <option value="501">501 - Enterobacter species</option>
+                                                                    <option value="502">502 - Enterococcus species</option>
+                                                                    <option value="503">503 - Escherichia coli</option>
+                                                                    <option value="801">801 - Haemophilus species</option>
+                                                                    <option value="1101">1101 - Klebsiella species</option>
+                                                                    <option value="1201">1201 - Listeria monocytogenes</option>
+                                                                    <option value="1301">1301 - Moraxella species</option>
+                                                                    <option value="1401">1401 - Neisseria species</option>
+                                                                    <option value="1604">1604 - Proteus species</option>
+                                                                    <option value="1606">1606 - Pseudomonas species</option>
+                                                                    <option value="1902">1902 - Serratia species</option>
+                                                                    <option value="1903">1903 - Staphylococcus coagulase positive</option>
+                                                                    <option value="1904">1904 - Stenotrophomonas maltophilia</option>
+                                                                    <option value="1905">1905 - Group B Streptococcus or GBS</option>
+                                                                    <option value="1906">1906 - Streptococcus anginosus</option>
+                                                                    <option value="1907">1907 - Streptococcus pneumoniae</option>
+                                                                    <option value="1908">1908 - Streptococcus pyogenes</option>
+                                                                    <option value="7777">N/A</option>
+                                                                    <option value="9999">Unknown</option>
+                                                            </select>
+                                                        </div>
+                                                        
+                                                        
                                                     </div>
                                                 </div>
 
@@ -3469,7 +4474,7 @@
                                                     <div class="form-group input-group new-input-group">
                                                         <label class="fixingLabelAlignmentInnerInner" for="antenatalScan">Antenatal Scan : </label>
                                                         <div class="fixingInputAlignmentInnerInner">
-                                                            <textarea id="antenatalScan" name="antenatalScan" class="form-controlTextArea" rows="4" cols="25"></textarea>
+                                                            <textarea id="antenatalScan" name="antenatalScan" onchange="validateFreeText('antenatalScan')" class="form-controlTextArea" rows="4" cols="25"></textarea>
 
                                                         </div>
                                                     </div>
@@ -3496,7 +4501,7 @@
                                                     <div class="form-group input-group new-input-group">
                                                         <label class="fixingLabelAlignmentInnerInner" for="chromosomesDoneResults">Results : </label>
                                                         <div class="fixingInputAlignmentInnerInner">
-                                                            <textarea id="chromosomesDoneResults" name="chromosomesDoneResults" class="form-controlTextArea" rows="4" cols="25"></textarea>
+                                                            <textarea id="chromosomesDoneResults" name="chromosomesDoneResults" onchange="validateFreeText('antenatalScan')" class="form-controlTextArea" rows="4" cols="25"></textarea>
 
                                                         </div>
                                                     </div>
@@ -3523,7 +4528,7 @@
                                                     <div class="form-group input-group new-input-group">
                                                         <label class="fixingLabelAlignmentInnerInner" for="abnormalHeadUltrasoundResult">Details : </label>
                                                         <div class="fixingInputAlignmentInnerInner">
-                                                            <textarea id="abnormalHeadUltrasoundResult" name="abnormalHeadUltrasoundResult" class="form-controlTextArea" rows="4" cols="25"></textarea>
+                                                            <textarea id="abnormalHeadUltrasoundResult" name="abnormalHeadUltrasoundResult" onchange="validateFreeText('antenatalScan')" class="form-controlTextArea" rows="4" cols="25"></textarea>
 
                                                         </div>
                                                     </div>
