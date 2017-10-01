@@ -1,6 +1,7 @@
- var session = document.getElementById('session').value;
-$(document).ready(function() {
-    configureDB();
+var session = document.getElementById('session').value;
+
+    function autosave(){
+            configureDB();
     if(session){
             checkForPopulation();
             $('form').sisyphus({
@@ -20,7 +21,8 @@ $(document).ready(function() {
                     //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
                     var record = $('form').serializeJSON();
                     //record.transferCenterCode = 99999999;
-                    record = mapToNaturalLanguage(record);
+                    /*alert(JSON.stringify(record))*/
+                    /*record = mapToNaturalLanguage(record);*/
                     //var record2 = mapToLang(record);
                     //alert(JSON.stringify(record));
                     updateDataInRecord(record);
@@ -34,8 +36,7 @@ $(document).ready(function() {
           checkSession();
       }
 
-    });
-
+    }
     function test(){
         //alert("Create Record in Database");
         if(session == null || session == ""){

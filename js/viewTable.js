@@ -44,10 +44,11 @@ today = mm + '/' + dd + '/' + yyyy;
 
 function fetchData(){
         //var dbData = retrieveAllDocs();
+    
     $('#jqGrid').DataTable( {
         "scrollX": true,
         //"scrollCollapse": "true",
-        "ajax": {"url":"http://test.localhost.com:5984/test1/_all_docs?include_docs=true",
+        "ajax": {"url":"http://192.168.1.83:5984/test1/_all_docs?include_docs=true",
                  "dataSrc": "rows", 
                  "xhrFields": {
                     withCredentials: true
@@ -269,7 +270,15 @@ function fetchData(){
                 text: 'Submit selected records',
                 className:'submit',
                 action: function ( e, dt, node, config ) {
-                    alert( 'Button activated' );
+                        var checkedRows = [];
+                    
+    
+    $('#jqGrid').find('input[type="checkbox"]:checked').each(function () {
+       //this is the current checkbox
+        row = $(this).parents('tr').attr('id');
+        checkedRows.push(row);
+        });
+                    sendDataToVon(checkedRows)
                     
                 }
             }
