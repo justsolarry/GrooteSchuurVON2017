@@ -1,6 +1,7 @@
-var ip = dbConfig.ipAddress;
+var ip = "";
 
 function configureDB(){
+    ip = dbConfig.ipAddress;
     if(ip == "" || ip == null){
         ip = "localhost";
        }
