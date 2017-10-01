@@ -1,8 +1,7 @@
 var ip = "";
 
 function configureDB(){
-    ip = prompt("Enter IP address of record database (Leave empty if local)");
-    
+    ip = dbConfig.ipAddress;
     if(ip == "" || ip == null){
         ip = "localhost";
        }
