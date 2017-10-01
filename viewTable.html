@@ -7,7 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
     <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
+
+    
+    <title>Groote Schuur Neonatal data management application</title>
+
     <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="css/ownCSS.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+    <link href="css/hover.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/toastr.css" rel="stylesheet" />
+    
+        <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Custom fonts -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -29,34 +46,26 @@
     <link href="css/viewTable.css" rel=stylesheet/>
     
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.4.0/b-html5-1.4.0/b-print-1.4.0/datatables.min.js"></script>
-    
-    <title>Groote Schuur Neonatal data management application</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="css/ownCSS.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
-    <link href="css/hover.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/grayscale.css" rel="stylesheet">
-    <link href="css/toastr.css" rel="stylesheet" />
-
-    <!-- Temporary navbar container fix -->
-    <style>
-        .navbar-toggler {
-            z-index: 1;
-        }
-        
-        @media (max-width: 576px) {
-            nav>.container {
-                width: 100%;
-            }
-        }
-    </style>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tether.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- Custom library scripts -->
+    <script type="text/javascript" src="js/grayscale.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <!-- Custom VON Team Scripts -->
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/eventListeners.js"></script>
+    <script type="text/javascript" src="js/validationScript.js"></script>
+    <script type="text/javascript" src="js/databaseReadWrite.js"></script>
+    <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
+    <script type="text/javascript" src="calendar/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.serializejson.js"></script>
+    <script type="text/javascript" src="js/autosave.js"></script>
 
 
 </head>
@@ -133,8 +142,11 @@
     </div>
     
     <!-- END Menu -->
+    
+<a href="#" onclick="createAndOpenFile()" download="file.xml">Donwload</a>
 
-        
+    <xmp id="xmlContent"></xmp>    
+    
     <script type="text/javascript"> 
         //$(document).ready(function(){loadGrid()});
         //
@@ -177,20 +189,15 @@
         
     </script>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; VON 2017</p>
-        </div>
-    </footer>
-       
     <script src="vendor/tether/tether.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="js/saveVONXmlFile.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.js"></script>
 
     <script src="js/grayscale.min.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/viewTable.js"></script>
     <script src="js/databaseReadWrite.js"></script>
     <script src="js/grayscale.js"></script>
