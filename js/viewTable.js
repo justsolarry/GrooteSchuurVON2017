@@ -44,11 +44,11 @@ today = mm + '/' + dd + '/' + yyyy;
 
 function fetchData(){
         //var dbData = retrieveAllDocs();
-    
+    var _url = "http://"+ip+":5984/"+dbName+"/_all_docs?include_docs=true",
     $('#jqGrid').DataTable( {
         "scrollX": true,
         //"scrollCollapse": "true",
-        "ajax": {"url":"http://localhost:5984/test1/_all_docs?include_docs=true",
+        "ajax": {"url":_url,
                  "dataSrc": "rows", 
                     "crossDomain": true
                 },

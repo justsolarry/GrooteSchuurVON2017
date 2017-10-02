@@ -1,16 +1,25 @@
 var ip = "";
+var dbName = "";
 function configureDB(){
+    
     ip = dbConfig.ipAddress;
+    dbName = dbConfig.dbName;
     if(ip == "" || ip == null){
         ip = "localhost";
        }
+    
+    if(dbName == "" || dbName == null){
+        dbName = "test1";
+       }
+    
+    //createSession();
 }
     
 
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
   var babyData = {};
-  var url = "http://"+ip+":5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/"+dbName+"/_all_docs?include_docs=true"; //admin:vonadmin123@
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
@@ -29,6 +38,7 @@ function createSession(){
   var http = new XMLHttpRequest();
   var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
+  http.open("POST", url, true);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         alert("Logged in");
@@ -43,7 +53,7 @@ function createSession(){
   u.name = user;
   u.password = password;
 
-  http.open("POST", url, true);
+  
   http.setRequestHeader("Content-type", "application/json");  
   http.send(JSON.stringify(u));
   
@@ -235,7 +245,7 @@ function updateDataInRecord(medicalRecord){
 //This function is used to create a new record in the database
 function createHTTPPOSTConnectionRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.onreadystatechange = function() {
@@ -251,7 +261,7 @@ function createHTTPPOSTConnectionRecord(babyDataObject){
 function createHTTPPOSTConnectionNewRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
   var id = babyDataObject._id;
-  var url = "http://"+ip+":5984/test1/"+id; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/"+dbName+"/"+id; //server will change //test server https://www.posttestserver.com/
   
   http.open("PUT", url, false);
   http.setRequestHeader("Content-type", "application/json"); 
@@ -272,7 +282,7 @@ function createHTTPPOSTConnectionNewRecord(babyDataObject){
 function createHTTPPOSTConnection(babyDataObject){ // must change to pass in values
   var http = new XMLHttpRequest();
   //alert("BabyDataObject in POSTConnention"+JSON.stringify(babyDataObject));
-  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
+  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
   var rev = {};
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
@@ -294,7 +304,7 @@ function createHTTPPOSTConnection(babyDataObject){ // must change to pass in val
 function createHTTPGETConnection(medicalRecordId){
   var http = new XMLHttpRequest();
     console.log(ip);
-  var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
+  var url = "http://"+ip+":5984/"+dbName+"/" + medicalRecordId; //server will change -> config file?
   var record;
   http.open("GET", url, false);
   http.withCredentials = true;
@@ -315,7 +325,7 @@ function createHTTPGETConnection(medicalRecordId){
 
 function createHTTPGETConnectionMaxId(){
   var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1/_design/lastId/_view/maxId"; //server will change -> config file?
+  var url = "http://"+ip+":5984/"+dbName+"/_design/lastId/_view/maxId"; //server will change -> config file?
   var record;
   http.open("GET", url, false);
   http.withCredentials = true;
@@ -333,7 +343,7 @@ function createHTTPGETConnectionMaxId(){
 function createHTTPDELETEConnection(medicalRecordId){
   var http = new XMLHttpRequest();
   var record = getRecordFromDatabase(medicalRecordId);
-  var url = "http://"+ip+":5984/test1/" + medicalRecordId+"?rev="+record._rev; //server will change -> config file?
+  var url = "http://"+ip+":5984/"+dbName+"/" + medicalRecordId+"?rev="+record._rev; //server will change -> config file?
   var record;
   http.open("DELETE", url, false);
   http.withCredentials = true;
