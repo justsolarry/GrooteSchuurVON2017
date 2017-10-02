@@ -839,125 +839,6 @@ function immunizations652Check() {
         calculate4WeeksAfterGivenImmunizationDateCheckedNo();
     }
 }
-var counterForSurgeryCode = 1;
-var limitForSurgeryCode = 5;
-/*Adding new surgery fields*/
-function addNewSurgeryField(divName){
-         if (counterForSurgeryCode == limitForSurgeryCode)  {
-              alert("You have reached the limit of adding " + counterForSurgeryCode + " inputs");
-         }
-         else {
-              var newdiv = document.createElement('div');
-             // START inner HTML
-              newdiv.innerHTML = "<div id='surgeryDiv"+(counterForSurgeryCode+1)+"' class='InnerInnerPanel inner-inner-panel-primary'><div class='inner-inner-panel-body'><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgery Code "+(counterForSurgeryCode+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='surgeryCode"+(counterForSurgeryCode+1)+"' name=surgeryCode"+(counterForSurgeryCode+1)+" class='form-control' style='height:32px;max-width:120%;width:70%;'><option disabled selected value>SELECT</option><option disabled  value>--------HEAD & Neck--------</option><option value='S101'>S101 - Tracheostomy/Tracheotomy</option><option value='S103'>S103 - Ophthalmologic Surgery</option><option value='S107'>S107 - Palliative or Definitive Repair of Choanal Atresia</option><option value='S100'>S100 - Other head and neck surgery requiring general or spinal anesthesia</option><option disabled  value>--------THORAX--------</option><option value='S203'>S203 - Tracheoesophageal Atresia and/or fistula repair</option><option value='S210'>S210 - Bronchoscopy (With or without biopsy)</option><option value='S200'>S200 - Other thoracic surgery requiring general or spinal anesthesia</option><option disabled  value>--------ABDOMEN--------</option><option value='S301'>S301 - Rectal biopsy with or without anoscopy</option><option value='S303'>S303 - Laparotomy (diagnostic or exploratory, with/without biopsy)</option><option value='S304'>S304 - Fundoplication</option><option value='S307'>S307 - Jejunostomy, ileostomy, enterostomy, colostomy for intestinal diversion</option><option value='S308'>S308 - Small bowel resection with or without primary anastomosis</option><option value='S309'>S309 - Large bowel resection</option><option value='S310'>S310 - Duodenal atresia/stenosis/web repair</option><option value='S311'>S311 - Jejunal, ileal, or colonic atresia repair</option><option value='S312'>S312 - Excision of Meckel's diverticulum</option><option value='S313'>S313 - Drainage of intra-abdominal abscess</option><option value='S319'>S319 - Repair of imperforate anus</option><option value='S325'>S325 - Repair of diaphragmatic hernia</option><option value='S331'>S331 - Ladd's or other procedure for correction of malrotation</option><option value='S333'>S333 - Primary peritoneal drainage for NEC, suspected NEC or intestinal perforation</option><option value='S338'>S338 - Primary closure for gastroschisis</option><option value='S340'>S340 - Primary closure for omphalocele</option><option value='S300'>S300 - Other abdominal surgery requiring general or spinal anesthesia</option><option disabled  value>--------GENITO-URINARY--------</option><option value='S410'>S410 - Inguinal hernia repair</option><option disabled  value>--------OPEN HEART/VASCULAR PROCEDURES--------</option><option value='S502'>S502 - Repair of coarctation of the aorta</option><option value='S510'>S510 - Truncus arteriosus repair</option><option value='S511'>S511 - Arterial switch</option><option value='S514'>S514 - Pulmonary artery banding</option><option disabled  value>--------CENTRAL NERVOUS SYSTEM--------</option><option value='S901'>S901 - Ventriculoperitoneal or other ventricular shunt</option><option value='S904'>S904 - Meningocele or myelomeningocele repair</option><option value='S905'>S905 - Encephalocele repair</option><option value='77'>N/A</option><option value='99'>Unknown</option></select></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'></label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counterForSurgeryCode+1)+"YourHospital' type='radio' name = surgeryCode"+(counterForSurgeryCode+1)+" value='1'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counterForSurgeryCode+1)+"YourHospital'>Your Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counterForSurgeryCode+1)+"OtherHospital' type='radio' name = surgeryCode"+(counterForSurgeryCode+1)+" value='2'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counterForSurgeryCode+1)+"OtherHospital'>Other Hospital</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgeryCode"+(counterForSurgeryCode+1)+"Both' type='radio' name = surgeryCode"+(counterForSurgeryCode+1)+" value='3'><label class='radioTextForHospitalResponse' for='surgeryCode"+(counterForSurgeryCode+1)+"Both'>Both</label></span></div></div><div class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Surgical Site Infection "+(counterForSurgeryCode+1)+" :</label><div class='fixingInputAlignmentInnerInner'><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"Yes' type='radio' name = surgicalInfection"+(counterForSurgeryCode+1)+" value='1'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"Yes'>Yes</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"No' type='radio' name = surgicalInfection"+(counterForSurgeryCode+1)+" value='0'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"No'>No</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"NA' type='radio' name = surgicalInfection1 value='7'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"NA'>N/A</label></span><span class='radioFloatLeftInner'><input class='radioType' id='surgicalInfection"+(counterForSurgeryCode+1)+"Unknown' type='radio' name = surgicalInfection"+(counterForSurgeryCode+1)+" value='9'><label class='radioText' for='surgicalInfection"+(counterForSurgeryCode+1)+"Unknown'>Unknown</label></span></div></div></div>";
-             // END inner HTML
-              document.getElementById(divName).appendChild(newdiv);
-              counterForSurgeryCode++;
-         }
-    
-}
-
-var counterForBacterialFieldBefore = 1;
-var limitForBacterialFieldBefore = 3;
-/*Adding new surgery fields*/
-function addNewBacterialFieldBefore(divName){
-    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
-
-         if (counterForBacterialFieldBefore == limitForBacterialFieldBefore)  {
-              alert("You have reached the limit of adding " + counterForBacterialFieldBefore + " inputs");
-         }
-         else {
-              var newdiv = document.createElement('div');
-             // START inner HTML
-              newdiv.innerHTML = "<div id='bacterialBeforeDiv"+(counterForBacterialFieldBefore+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Bacterial Pathogen Codes "+(counterForBacterialFieldBefore+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='pathogenCodeBefore"+(counterForBacterialFieldBefore+1)+"' name='pathogenCodeBefore"+(counterForBacterialFieldBefore+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value=''>SELECT</option><option value='102'>102 - Acinetobacter species</option><option value='201'>201 - Bacteroides species</option><option value='501'>501 - Enterobacter species</option><option value='502'>502 - Enterococcus species</option><option value='503'>503 - Escherichia coli</option><option value='801'>801 - Haemophilus species</option><option value='1101'>1101 - Klebsiella species</option><option value='1201'>1201 - Listeria monocytogenes</option><option value='1301'>1301 - Moraxella species</option><option value='1401'>1401 - Neisseria species</option><option value='1604'>1604 - Proteus species</option><option value='1606'>1606 - Pseudomonas species</option><option value='1902'>1902 - Serratia species</option><option value='1903'>1903 - Staphylococcus coagulase positive</option><option value='1904'>1904 - Stenotrophomonas maltophilia</option><option value='1905'>1905 - Group B Streptococcus or GBS</option><option value='1906'>1906 - Streptococcus anginosus</option><option value='1907'>1907 - Streptococcus pneumoniae</option><option value='1908'>1908 - Streptococcus pyogenes</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
-             // END inner HTML
-              document.getElementById(divName).appendChild(newdiv);
-              counterForBacterialFieldBefore++;
-         }
-    
-}
-
-var counterForBacterialFieldAfter = 1;
-var limitForBacterialFieldAfter = 3;
-/*Adding new surgery fields*/
-function addNewBacterialFieldAfter(divName){
-    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
-
-         if (counterForBacterialFieldAfter == limitForBacterialFieldAfter)  {
-              alert("You have reached the limit of adding " + counterForBacterialFieldAfter + " inputs");
-         }
-         else {
-              var newdiv = document.createElement('div');
-             // START inner HTML
-              newdiv.innerHTML = "<div id='bacterialAfterDiv"+(counterForBacterialFieldAfter+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInner'>Bacterial Pathogen Codes "+(counterForBacterialFieldAfter+1)+" :</label><div class='fixingInputAlignmentInner'><select id='pathogenCodeAfter"+(counterForBacterialFieldAfter+1)+"' name='pathogenCodeAfter"+(counterForBacterialFieldAfter+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value=''>SELECT</option><option value='102'>102 - Acinetobacter species</option><option value='201'>201 - Bacteroides species</option><option value='501'>501 - Enterobacter species</option><option value='502'>502 - Enterococcus species</option><option value='503'>503 - Escherichia coli</option><option value='801'>801 - Haemophilus species</option><option value='1101'>1101 - Klebsiella species</option><option value='1201'>1201 - Listeria monocytogenes</option><option value='1301'>1301 - Moraxella species</option><option value='1401'>1401 - Neisseria species</option><option value='1604'>1604 - Proteus species</option><option value='1606'>1606 - Pseudomonas species</option><option value='1902'>1902 - Serratia species</option><option value='1903'>1903 - Staphylococcus coagulase positive [aureus]</option><option value='1904'>1904 - Stenotrophomonas maltophilia</option><option value='1905'>1905 - Group B Streptococcus or GBS</option><option value='1906'>1906 - Streptococcus anginosus</option><option value='1907'>1907 - Streptococcus pneumoniae</option><option value='1908'>1908 - Streptococcus pyogenes</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
-             // END inner HTML
-              document.getElementById(divName).appendChild(newdiv);
-              counterForBacterialFieldAfter++;
-         }
-    
-}
-
-var counterForCongenitalCode = 1;
-var limitForCongenitalCode = 3;
-/*Adding new surgery fields*/
-function addNewCongenitalCode(divName){
-    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
-
-         if (counterForCongenitalCode == limitForCongenitalCode)  {
-              alert("You have reached the limit of adding " + counterForCongenitalCode + " inputs");
-         }
-         else {
-              var newdiv = document.createElement('div');
-             // START inner HTML
-              newdiv.innerHTML = "<div id='congenitalCodeDiv"+(counterForCongenitalCode+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInner'>Congenital Infection code "+(counterForCongenitalCode+1)+" :</label><div class='fixingInputAlignmentInner'><select id='congenitalCode"+(counterForCongenitalCode+1)+"' name='congenitalCode"+(counterForCongenitalCode+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value>SELECT</option><option value='101'>101 - Toxoplasmosis (Toxoplasma gondii)</option><option value='102'>102 - Rubella virus</option><option value='103'>103 - Syphilis (Treponema pallidum)</option><option value='104'>104 - Cytomegalovirus</option><option value='105'>105 - Herpessimplex</option><option value='106'>106 - Parvovirus B19</option><option value='107'>107 - Zika virus</option><option value='108'>108 - Varicella zoster virus</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
-             // END inner HTML
-              document.getElementById(divName).appendChild(newdiv);
-              counterForCongenitalCode++;
-         }
-    
-}
-
-
-var counterForBirthDefect = 1;
-var limitForBirthDefect = 5;
-/*Adding new surgery fields*/
-function addNewBirthDefect(divName){
-    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
-
-         if (counterForBirthDefect == limitForBirthDefect)  {
-              alert("You have reached the limit of adding " + counterForBirthDefect + " inputs");
-         }
-         else {
-              var newdiv = document.createElement('div');
-             // START inner HTML
-              newdiv.innerHTML = "<div id='birthDefectCodeDiv"+(counterForBirthDefect+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Birth Defect code "+(counterForBirthDefect+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='birthDefectCodeDiv"+(counterForBirthDefect+1)+"' name='birthDefectCodeDiv"+(counterForBirthDefect+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value>SELECT</option><option disabled value>-----Central Nervous System Anomalies-----</option><option value='101'>101 - Anencephaly</option><option value='102'>102 - Meningomyelocele</option><option value='103'>103 - Hydranencephaly</option><option value='104'>104 - Congenital Hydrocephalus</option><option value='105'>105 - Holoprosencephaly</option><option value='106'>106 - Encephalocele</option><option value='901'>901 - Other lethal or life threatening</option><option disabled value>-----Congenital Heart Anomalies-----</option><option value='201'>201 - TruncusArteriosus</option><option value='202'>202 - TranspositionoftheGreatVessels</option><option value='203'>203 - Tetralogy of Fallot with or without Pulmonary Atresia</option><option value='204'>204 - Single Ventricle</option><option value='205'>205 - Double Outlet Right Ventricle</option><option value='206'>206 - Complete Atrio-Ventricular Canal</option><option value='207'>207 - Pulmonary Atresia with Intact Ventricular Septum</option><option value='208'>208 - Tricuspid Atresia</option><option value='209'>209 - Hypoplastic Left Heart Syndrome</option><option value='210'>210 - Interrupted Aortic Arch</option><option value='211'>211 - Total Anomalous Pulmonary Venous Return</option><option value='212'>212 - Pentalogy of Cantrell</option><option value='213'>213 - Coarctation of the Aorta</option><option value='214'>214 - Atrial Septal Defect</option><option value='215'>215 - Ventricular Septal Defect</option><option value='216'>216 - Arrythmia</option><option value='217'>217 - Ebstein’s Anomaly</option><option value='218'>218 - Pulmonary Valvular Stenosis</option><option value='902'>902 - Other lethal or life threatening</option><option disabled value>-----Gastro-Intestinal Anomalies-----</option><option value='301'>301 - Cleft Palate</option><option value='302'>302 - Tracheo-EsophagealFistula</option><option value='303'>303 - Esophageal Atresia</option><option value='304'>304 - Duodenal Atresia</option><option value='305'>305 - Jejunal Atresia</option><option value='306'>306 - IlealAtresia</option><option value='307'>307 - Atresia of Large Bowel or Rectum</option><option value='308'>308 - ImperforateAnus</option><option value='309'>309 - Omphalocele</option><option value='310'>310 - Gastroschisis</option><option value='311'>311 - Biliary Atresia</option><option value='312'>312 - Malrotation</option><option value='313'>313 - Hirschsprung’s Disease</option><option value='314'>314 - Sacrococcygeal teratoma</option><option value='903'>903 - Other lethal or life threatening</option><option disabled value>-----Genito-Urinary Anomalies-----</option><option value='401'>401 - Bilateral Renal Agenesis</option><option value='402'>402 - Bilateral Polycystic, Multicystic, or Dysplastic Kidneys</option><option value='403'>403 - Obstructive Uropathy with Congenital Hydronephrosis</option><option value='404'>404 - Exstrophy of the Urinary Bladder</option><option value='904'>904 - Other lethal or life threatening</option><option disabled value>-----Chromosomal Anomalies-----</option><option value='501'>501 - Trisomy 13</option><option value='502'>502 - Trisomy 18</option><option value='503'>503 - Trisomy 21</option><option value='504'>504 - Other chromosomal anomaly</option><option value='505'>505 - Triploidy</option><option disabled value>-----Other Congenital Anomalies-----</option><option value='601'>601 - Skeletal Dysplasia</option><option value='602'>602 - Congenital Diaphragmatic Hernia</option><option value='603'>603 - Hydrops Fetalis with anasarca</option><option value='604'>604 - Oligohydramnios Sequence</option><option value='605'>605 - Inborn Error of Metabolism</option><option value='606'>606 - Myotonic Dystrophy</option><option value='607'>607 - Conjoined Twins</option><option value='608'>608 - Tracheal Agenesis or Atresia</option><option value='609'>609 - Thanatophoric Dysplasia Types 1 and 2</option><option value='610'>610 - Hemoglobin Barts</option><option disabled value>-----Pulmonary Anomalies-----</option><option value='701'>701 - Congenital Cystic Adenomatoid Malformation of the Lung</option><option value='907'>907 - Other lethal or life threatening</option><option disabled value>-----Other Lethal or Life Threatening Anomalies-----</option><option value='100'>100 - Other lethal or life threatening</option></select></div></div>";
-             // END inner HTML
-              document.getElementById(divName).appendChild(newdiv);
-              counterForBirthDefect++;
-         }
-    
-}
-
-var counterForBacterialCodeDuringAdmission = 1;
-var limitForBacterialCodeDuringAdmission = 3;
-/*Adding new surgery fields*/
-function addNewBacterialCodeDuringAdmission(divName){
-    /*$(document.getElementById('#hiddenFieldSurgery2')).slideUp("slow");*/
-
-         if (counterForBacterialCodeDuringAdmission == limitForBacterialCodeDuringAdmission)  {
-              alert("You have reached the limit of adding " + counterForBacterialCodeDuringAdmission + " inputs");
-         }
-         else {
-              var newdiv = document.createElement('div');
-             // START inner HTML
-              newdiv.innerHTML = "<div id='bacterialCodeDuringAdmissionDiv"+(counterForBacterialCodeDuringAdmission+1)+"' class='form-group input-group'><label class='fixingLabelAlignmentInnerInner'>Bacterial Code "+(counterForBacterialCodeDuringAdmission+1)+" :</label><div class='fixingInputAlignmentInnerInner'><select id='bacterialCodeDuringAdmission"+(counterForBacterialCodeDuringAdmission+1)+"' name='bacterialCodeDuringAdmission"+(counterForBacterialCodeDuringAdmission+1)+"' class='form-control' style='height:32px;width:70%;'><option disabled selected value=''>SELECT</option><option value='102'>102 - Acinetobacter species</option><option value='201'>201 - Bacteroides species</option><option value='501'>501 - Enterobacter species</option><option value='502'>502 - Enterococcus species</option><option value='503'>503 - Escherichia coli</option><option value='801'>801 - Haemophilus species</option><option value='1101'>1101 - Klebsiella species</option><option value='1201'>1201 - Listeria monocytogenes</option><option value='1301'>1301 - Moraxella species</option><option value='1401'>1401 - Neisseria species</option><option value='1604'>1604 - Proteus species</option><option value='1606'>1606 - Pseudomonas species</option><option value='1902'>1902 - Serratia species</option><option value='1903'>1903 - Staphylococcus coagulase positive</option><option value='1904'>1904 - Stenotrophomonas maltophilia</option><option value='1905'>1905 - Group B Streptococcus or GBS</option><option value='1906'>1906 - Streptococcus anginosus</option><option value='1907'>1907 - Streptococcus pneumoniae</option><option value='1908'>1908 - Streptococcus pyogenes</option><option value='7777'>N/A</option><option value='9999'>Unknown</option></select></div></div>";
-             // END inner HTML
-              document.getElementById(divName).appendChild(newdiv);
-              counterForBacterialCodeDuringAdmission++;
-         }
-    
-}
-
 
 function temperatureMeasuredWithinFirstHourCheck() {
     var value1 = document.getElementById('hiddenFieldTemperatureFirstHour');
@@ -1494,6 +1375,7 @@ $(function () {
         minDate: '-18M',
         onSelect:function () {
             validateFreeText('dateOfBirth'); //checking if the user has inputted a value
+            lengthOfStayCheck();
             adding28Days(); //making 28 day date
             makingSixWeekDate(); //making 6 week date and checks if the baby is <42 days
             making40dayDate();//if baby is > or < 40 , show or hide that div
@@ -1560,6 +1442,7 @@ $(function () {
         minDate: '-18M',
         onSelect: function () {
             totalLengthOfStayCheck();
+            totalLengthOfStayCheckGreaterThan28();
         }
     }, datepickersOpt));
     $('#dateDischargedHomeDiedOrBirthdayCalendar').on("click", function (e) {
@@ -1569,7 +1452,8 @@ $(function () {
     $("#immunizations652Date").datepicker($.extend({
         maxDate: '0',
         onSelect: function () {
-            calculate4WeeksAfterGivenImmunizationDate();
+            calculate4WeeksAfterGivenImmunizationDate(); //setting the 28 day oxygen
+            totalLengthOfStayCheckGreaterThan36weeks(); //setting the 36 weeks
             //adding key listener functions for progress bar checks
             InputsPatientForm();
             ColourPatientForm();
@@ -1741,17 +1625,20 @@ function making40dayDate(){
     }
 }
 function lengthOfStayCheck(){
-    
+    //getting actual dates from the dates
     var dob   = $('#dateOfBirth').datepicker('getDate');
     var admission   = $('#dateOfAdmission').datepicker('getDate');
     var initialDisposition   = $('#dateOfInitialDisposition').datepicker('getDate');
+    //getting values of the dates
     var dobValue   = $('#dateOfBirth').val();
     var admissionValue   = $('#dateOfAdmission').val();
     var initialDispositionValue   = $('#dateOfInitialDisposition').val();
+    //calculating the number of days
     var daysDOB   = (initialDisposition - dob)/1000/60/60/24;
     var daysAdmission   = (initialDisposition - admission)/1000/60/60/24;
     //if DOB and inborn, take DOB
-    if($('#locationOFBirthInborn').attr("checked",true) && (dobValue.length)>0 && (admissionValue.length)==0){
+    //if inborn AND dob > and intial > and admission = 0 
+    if($('#locationOFBirthInborn').is(':checked') && (dobValue.length)>0 && (initialDispositionValue.length)>0 && (admissionValue.length)==0){
         $('#initialLengthOfStay').val(daysDOB);
         //If the initial disposition date is less than 2 days then make the day 3 of line panel N/A
         if(daysDOB<=2){
@@ -1759,8 +1646,14 @@ function lengthOfStayCheck(){
             $('#coagulaseNegativeNA').attr("checked",true);
             $('#fungalInfectionNA').attr("checked",true);
            }
+        else{
+            $('#bacterialSepsisNA').attr("checked",false);
+            $('#coagulaseNegativeNA').attr("checked",false);
+            $('#fungalInfectionNA').attr("checked",false);
+        }
        }
-    else if($('#locationOFBirthOutborn').attr("checked",true)&& (dobValue.length)>0 && (admissionValue.length)>0){
+    //if outborn AND dob > and admission >0 and intial
+    else if($('#locationOFBirthOutborn').is(':checked')&& (dobValue.length)>0 && (initialDispositionValue.length)>0 && (admissionValue.length)>0){
             $('#initialLengthOfStay').val(daysAdmission);
             //If the initial disposition date is less than 2 days then make the day 3 of line panel N/A
             if(daysAdmission<=2){
@@ -1768,6 +1661,11 @@ function lengthOfStayCheck(){
                 $('#coagulaseNegativeNA').attr("checked",true);
                 $('#fungalInfectionNA').attr("checked",true);
                }
+            else{
+                $('#bacterialSepsisNA').attr("checked",false);
+                $('#coagulaseNegativeNA').attr("checked",false);
+                $('#fungalInfectionNA').attr("checked",false);
+            }
             }
 }
 function checkingOlder28Days(){
@@ -1783,6 +1681,38 @@ function checkingOlder28Days(){
             showYoungerThan28DaysHidePanels();
         }
        }
+}
+function totalLengthOfStayCheckGreaterThan28(){
+    //if days is less than 28
+    if($('#totalLengthOfStay').val()<28){
+        //checking 28 day NA buttons
+        $('#oxygenDay28NA').attr("checked",true);
+       }
+    else{
+        //Setting 28 day oxygen buttons to unchecked
+        $('#oxygenDay28NA').attr("checked",false);
+    }
+}
+function totalLengthOfStayCheckGreaterThan36weeks(){
+    //if days is less than 36 weeks
+    if($('#totalLengthOfStay').val()<(36*7)){
+        //checking 36 week NA buttons
+        $('#oxygenAt36WeeksNA').attr("checked",true);
+        $('#conventionalAt36WeeksNA').attr("checked",true);
+        $('#highFrequencyVentilationAt36WeeksNA').attr("checked",true);
+        $('#highFlowNasalCannulaAt36WeeksNA').attr("checked",true);
+        $('#nasalIMVAt36WeeksNA').attr("checked",true);
+        $('#nasalCpapAt36WeeksNA').attr("checked",true);
+       }
+    else{
+        //Setting week 36 buttons to unchecked
+        $('#oxygenAt36WeeksNA').attr("checked",false);
+        $('#conventionalAt36WeeksNA').attr("checked",false);
+        $('#highFrequencyVentilationAt36WeeksNA').attr("checked",false);
+        $('#highFlowNasalCannulaAt36WeeksNA').attr("checked",false);
+        $('#nasalIMVAt36WeeksNA').attr("checked",false);
+        $('#nasalCpapAt36WeeksNA').attr("checked",false);
+    }
 }
 function totalLengthOfStayCheck(){
     var dob   = $('#dateOfBirth').datepicker('getDate');
