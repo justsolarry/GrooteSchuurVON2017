@@ -1,9 +1,8 @@
 var session = document.getElementById('session').value;
 
     function autosave(){
-            configureDB();
-    if(session){
-            checkForPopulation();
+    //if(session){
+            //checkForPopulation();
             $('form').sisyphus({
                 excludeFields: ["_id _rev"],
                 locationBased: true,
@@ -21,8 +20,7 @@ var session = document.getElementById('session').value;
                     //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
                     var record = $('form').serializeJSON();
                     //record.transferCenterCode = 99999999;
-                    /*alert(JSON.stringify(record))*/
-                    /*record = mapToNaturalLanguage(record);*/
+                    //record = mapToNaturalLanguage(record);
                     //var record2 = mapToLang(record);
                     //alert(JSON.stringify(record));
                     updateDataInRecord(record);
@@ -31,13 +29,13 @@ var session = document.getElementById('session').value;
 
             });
        
-       }
-      else{
-          checkSession();
-      }
+       //}
+      //else{
+    //      checkSession();
+     // }
 
     }
-    function test(){
+    function createRecord(){
         //alert("Create Record in Database");
         if(session == null || session == ""){
           createSession();  

@@ -86,19 +86,19 @@ function ColourPatientForm(){
     if((lengthOfInput===completeIncompleteCounter) && radioTrueFalse === true && selectTrueFalse===true){ //if true , make the circle green
         $('#patientFormCircle').css('background-color', 'green');
         $('#form1').val(true);
-        $('error').val(false);
-        toastr.success("Patient Data Form is all Correct!");
+        $('#error').val(false);
+        //toastr.success("Patient Data Form is all Correct!");
     }
     else if(errorCounter>0){
         $('#patientFormCircle').css('background-color', 'red');
         $('#error').val(true);
-        toastr.warning("Errors!");
+        //toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#patientFormCircle').css('background-color', 'orange');
         $('#form1').val(false);
-        $('error').val(false);
-        toastr.warning("Fields aren't complete");
+        $('#error').val(false);
+        //toastr.warning("Fields aren't complete");
     }
     
 }
@@ -173,19 +173,19 @@ function ColourGeneralForm(){
     if((lengthOfInput===completeIncompleteCounter) && radioTrueFalse === true && selectTrueFalse===true){ //if true , make the circle green
         $('#generalDataItemsFormCircle').css('background-color', 'green');
         $('#form2').val(true);
-        $('error').val(false);
-        toastr.success("General Data Form is all Correct!");
+        $('#error').val(false);
+        //toastr.success("General Data Form is all Correct!");
     }
     else if(errorCounter>0){
         $('#generalDataItemsFormCircle').css('background-color', 'red');
         $('#error').val(true);
-        toastr.warning("Errors!");
+        //toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#generalDataItemsFormCircle').css('background-color', 'orange');
         $('#form2').val(false);
-        $('error').val(false);
-        toastr.warning("Fields aren't complete");
+        $('#error').val(false);
+        //toastr.warning("Fields aren't complete");
     }
 }
 
@@ -278,18 +278,18 @@ function ColourAdditionalForm(){
     if((lengthOfInput===completeIncompleteCounter) && (lengthOfTextArea===textareaTrueFalse) && radioTrueFalse === true && selectTrueFalse===true){ //if true , make the circle green
         $('#dischargeCircle').css('background-color', 'green');
         $('#form3').val(true);
-        $('error').val(false);
-        toastr.success("Additional Data Form is all Correct!");
+        $('#error').val(false);
+        //toastr.success("Additional Data Form is all Correct!");
     }
     else if(errorCounter>0){
         $('#dischargeCircle').css('background-color', 'red');
-        $('error').val(true);
-        toastr.warning("Errors!");
+        $('#error').val(true);
+        //toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)|| (textareaTrueFalse<lengthOfTextArea) ||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#dischargeCircle').css('background-color', 'orange');
         $('#form3').val(false);
-        $('error').val(true);
-        toastr.warning("Fields aren't complete");
+        $('#error').val(true);
+        //toastr.warning("Fields aren't complete");
     }
 }

@@ -48,11 +48,8 @@ function fetchData(){
     $('#jqGrid').DataTable( {
         "scrollX": true,
         //"scrollCollapse": "true",
-        "ajax": {"url":"http://192.168.1.83:5984/test1/_all_docs?include_docs=true",
+        "ajax": {"url":"http://localhost:5984/test1/_all_docs?include_docs=true",
                  "dataSrc": "rows", 
-                 "xhrFields": {
-                    withCredentials: true
-                 },
                     "crossDomain": true
                 },
         "rowId": "doc._id",
@@ -278,10 +275,28 @@ function fetchData(){
         row = $(this).parents('tr').attr('id');
         checkedRows.push(row);
         });
-                    sendDataToVon(checkedRows)
                     
+                    sendDataToVon(checkedRows);
+                }
+            },
+            {
+                text: 'Delete records',
+                className:'submit',
+                action: function ( e, dt, node, config ) {
+                var checkedRows = [];
+                    
+                $('#jqGrid').find('input[type="checkbox"]:checked').each(function () {
+                //this is the current checkbox
+                row = $(this).parents('tr').attr('id');
+                checkedRows.push(row);
+                });
+                var deleteChosenRecords = confirm("You are about to delete "+checkedRows.length+" record(s). Are you sure you want to continue?");
+                    if(deleteChosenRecords){
+                      deleteRecords(checkedRows);   
+                    }   
                 }
             }
+            
             
         ],
      "dom": 'Bfrtip',
