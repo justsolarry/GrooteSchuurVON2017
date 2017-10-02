@@ -1,7 +1,6 @@
-var ip = "";
-
+var ip = "localhost";
 function configureDB(){
-    ip = dbConfig.ipAddress;
+    ip = "";
     if(ip == "" || ip == null){
         ip = "localhost";
        }
@@ -21,20 +20,6 @@ function createHTTPAuthPOSTConnection(userPasswordObject){
   http.send(JSON.stringify(babyDataObject));
 }
 
-/*function createHTTPGETConnection(){
-  var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1/2"; //admin:vonadmin123@
-  http.open("GET", url, false);
-  http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        babyData = this.responseText;
-        console.log(this.responseText);
-        //document.getElementById("demo").innerHTML = myObject;
-    }
-  }
-  http.send();
-}*/
-
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
   var babyData = {};
@@ -51,7 +36,6 @@ function retrieveAllDocs(){
   http.send();
   return babyData;
 }
-
 
 function createSession(){ 
         
@@ -184,32 +168,32 @@ function getCurrentId(){
 function repopulateForm(babyData){
         for (var key in babyData) {
             if (babyData.hasOwnProperty(key)) {                
-                if(document.getElementById(key) !== null){
-                                        
+                if(document.getElementById(key) !== null){                
                     document.getElementById(key).value = babyData[key]; 
-
                 }
                 
                 var elements = document.getElementsByName(key);
-                    //alert("Elements "+key+" "+JSON.stringify(elements));
-                var index = babyData[key];
-        
-                    //alert(index);
-                    //document.getElementsByName('outbornBirth')[1].checked = true;                    
-                if(elements.length > 1 && index<10 && !isNaN(index)){
-
-                        elements[babyData[key]].checked = true;
                     
+                var index = babyData[key];
+                   
+                if(elements.length > 1 && index<10 && !isNaN(index)){
+                        //elements[babyData[key]].checked = true;
+                        elements[0].selectedIndex = index;
+                        
                         elements[0].value = index;
-                        //alert("The element"+JSON.stringify(document.getElementsByName(key)[index]));
-                        //$("input[name="+key+"][value="+index+"]").prop('checked', true);
-                        /*if(elements[babyData[key]].type == 'radio'){
-                            elements[babyData[key]].checked = true;
-                        }*/
+                    
+                        //eventFire(elements[0], 'click');
+                        
+                        if(elements[index] != null){
+                           elements[index].checked = true;
+                           //eventFire(elements[index], 'click');
+                        }
+
                         
                 }                            
             }
         }
+      //re-run all scripts
 }
 
 function getUrl(){
@@ -399,4 +383,14 @@ function mapToNaturalLanguage(record){
     return record;
 }
 
+
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
+}
 

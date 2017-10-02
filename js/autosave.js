@@ -1,8 +1,9 @@
- var session = document.getElementById('session').value;
-$(document).ready(function() {
+var session = document.getElementById('session').value;
+
+    function autosave(){
     configureDB();
-    if(session){
-            checkForPopulation();
+    //if(session){
+            //checkForPopulation();
             $('form').sisyphus({
                 excludeFields: ["_id _rev"],
                 locationBased: true,
@@ -29,14 +30,13 @@ $(document).ready(function() {
 
             });
        
-       }
-      else{
-          checkSession();
-      }
+       //}
+      //else{
+    //      checkSession();
+     // }
 
-    });
-
-    function test(){
+    }
+    function createRecord(){
         //alert("Create Record in Database");
         if(session == null || session == ""){
           createSession();  

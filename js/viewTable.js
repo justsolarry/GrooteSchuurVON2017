@@ -47,11 +47,8 @@ function fetchData(){
     $('#jqGrid').DataTable( {
         "scrollX": true,
         //"scrollCollapse": "true",
-        "ajax": {"url":"http://test.localhost.com:5984/test1/_all_docs?include_docs=true",
+        "ajax": {"url":"http://localhost:5984/test1/_all_docs?include_docs=true",
                  "dataSrc": "rows", 
-                 "xhrFields": {
-                    withCredentials: true
-                 },
                     "crossDomain": true
                 },
         "rowId": "doc._id",
