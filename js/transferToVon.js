@@ -1,4 +1,5 @@
 //Notes:    Must update database to reflect the records state of published
+            //Delete 2nd method
 
 function sendDataToVon(listOfMedicalRecordIds){
     var numberOfMedicalRecordsToTransfer = listOfMedicalRecordIds.length;
