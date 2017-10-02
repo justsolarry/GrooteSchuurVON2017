@@ -148,23 +148,25 @@ function getCurrentId(){
 
 function repopulateForm(babyData){
         for (var key in babyData) {
-            if (babyData.hasOwnProperty(key)) {                
+            if (babyData.hasOwnProperty(key)) {
+                
                 if(document.getElementById(key) !== null){                
                     document.getElementById(key).value = babyData[key]; 
                 }
                 
-                var elements = document.getElementsByName(key);
+                var domElements = document.getElementsByName(key);
                 
                 var index = babyData[key];
                    
-                if(elements.length > 1 && index<10 && !isNaN(index)){
-                        elements.selectedIndex = index;
+                if(domElements.length > 1 && index<10 && !isNaN(index)){
+                    
+                        domElements.selectedIndex = index;
                         
-                        if(elements[index] != null){
-                            for(i=0; i<elements.length; i++){
-                                if(elements[i].value == index){
-                                  eventFire(elements[i], 'click')
-                                   //   elements[i].checked = true;
+                        if(domElements[index] != null){
+                            for(i=0; i<domElements.length; i++){
+                                if(domElements[i].value == index){
+                                  eventFire(domElements[i], 'click')
+                                   //   domElements[i].checked = true;
                                 }
                             }
                         }   
@@ -208,10 +210,8 @@ function createRecordInDatabase(){
     var medicalRecordObject = {};
     var maxId = createHTTPGETConnectionMaxId();
     maxId = maxId.rows[0].value;
-    alert(maxId);
     var nextId = maxId+1;
     medicalRecordObject._id = nextId;
-    alert(JSON.stringify(medicalRecordObject));
     createHTTPPOSTConnectionNewRecord(medicalRecordObject);
     window.location = "index.html?id="+nextId+"#PatientFormID";     
 }
