@@ -2,32 +2,28 @@
 //          Additional 2018 surgery fields
 
 function create2018Xml(babyData){
-    var fileNum = 1;
-    var date = new Date(); // Format 2011-05-10T16:49:06.547125-04:00
-    fileDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() +"-02:00";
-    var ApplicationName = "Groote Schuur Internal Application";
-    var versionNumber = "0.0";
-    var hospitalNum = "1052";
+//    var date = new Date(); // Format 2011-05-10T16:49:06.547125-04:00
+//    fileDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() +"-02:00";
 
-//    var xmlHeader = `<tblVtOxUd FILENUM="` + 
-//        fileNum +
-//        `" FILEDATE="`+ 
-//        fileDate +
-//        `" APPLICATION="`+ 
-//        ApplicationName +
-//        `" VERSION="`+
-//        versionNumber +
-//        `" ALLRECORDS="false">
-//        <row>\n`;
-
-    var xmlHeader = "<tblInfantVON>\n"
-    var hospitalNumber = "<HOSPNO>"+ hospitalNum +"</HOSPNO>\n"; //required
-
-
-    var xmlDocument = xmlHeader + hospitalNumber + createXmlForEachRecord(babyData)  + "</tblInfantVON>";
+    var xmlDocument = '<?xml version="1.0"?>' +  createInfantCoreRecord(babyData) + createXmlForEachRecord(babyData);
     document.getElementById("xmlContent").innerHTML += xmlDocument;
 
     return xmlDocument;
+}
+function createInfantCoreRecord(babyData){
+    var hospitalNum = "1052";
+    var hospitalNumber = "<HOSPNO>"+ hospitalNum +"</HOSPNO>\n"; 
+    var patientFirstName = "<PATIENTFIRSTNAME>Baby</PATIENTFIRSTNAME>\n";
+    var patientLastName = "<PATIENTFIRSTNAME>" + babyData.mothersLastName + "</PATIENTLASTNAME>\n";
+    var mothersFirstName = "<MOTHERFIRSTNAME>" + babyData.mothersFirstName + "</MOTHERFIRSTNAME>\n";
+    var mothersLastName = "<MOTHERLASTNAME>" + babyData.mothersLastName + "</MOTHERLASTNAME>\n";
+    var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";
+    var dateOfBirth = "<DOB>"+ babyData.dateOfBirth + "</DOB>\n";
+    var dateOfAdmission = "<DOA>" + babyData.dateOfBirth + "</DOA>\n";
+    var dateOfDischarge = "<DID>" + babyData.dateOfDischarge + "</DID>\n";
+    return "<tblInfantCore>\n" + hospitalNumber + patientFirstName + patientLastName 
+        + mothersFirstName + mothersLastName + medicalRecordNumber + dateOfBirth
+        + dateOfAdmission + dateOfDischarge + "</tblInfantCore>\n";
 }
 
 function createXmlForEachRecord(babyData){
@@ -264,7 +260,7 @@ function createXmlForEachRecord(babyData){
      + daysOfAssistedVentilation + ecmoAtHospital + hypothermicTherapy + coolingMethod + hypoxicIschemicEncephalopathy
      + hieSeverity + meconiumAspirationSyndrome + trachealSuctioningAttempted + seizures + medicalRecordNumber;
     
-    console.log(xmlDocument);
+    //console.log(xmlDocument);
         
     return xmlDocument;
 }
