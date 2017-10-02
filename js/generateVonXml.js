@@ -9,21 +9,22 @@ function create2018Xml(babyData){
     var versionNumber = "0.0";
     var hospitalNum = "1052";
 
-    var xmlHeader = `<tblVtOxUd FILENUM="` + 
-        fileNum +
-        `" FILEDATE="`+ 
-        fileDate +
-        `" APPLICATION="`+ 
-        ApplicationName +
-        `" VERSION="`+
-        versionNumber +
-        `" ALLRECORDS="false">
-        <row>\n`;
+//    var xmlHeader = `<tblVtOxUd FILENUM="` + 
+//        fileNum +
+//        `" FILEDATE="`+ 
+//        fileDate +
+//        `" APPLICATION="`+ 
+//        ApplicationName +
+//        `" VERSION="`+
+//        versionNumber +
+//        `" ALLRECORDS="false">
+//        <row>\n`;
 
+    var xmlHeader = "<tblInfantVON>\n"
     var hospitalNumber = "<HOSPNO>"+ hospitalNum +"</HOSPNO>\n"; //required
 
 
-    var xmlDocument = xmlHeader + hospitalNumber + createXmlForEachRecord(babyData)  + "</row>\n</tblVtOxUd>";
+    var xmlDocument = xmlHeader + hospitalNumber + createXmlForEachRecord(babyData)  + "</tblInfantVON>";
     document.getElementById("xmlContent").innerHTML += xmlDocument;
 
     return xmlDocument;
@@ -33,7 +34,7 @@ function createXmlForEachRecord(babyData){
     
     //babyData = JSON.parse(babyData);  
     
-    var id = "<ID>"+babyData.patientMedicalRecordNumber+"</ID>\n";  //required
+    //var id = "<ID>"+babyData.patientMedicalRecordNumber+"</ID>\n";  //required
     var birthYear = "<BYEAR>"+babyData.birthYear+"</BYEAR>\n";    //required
     var deleteEntry = "<DELETED>0</DELETED>\n"; //(1 to delete record although only under rare circumstances)
     var birthWeightInGrams = (babyData.birthWeightInGrams != undefined) ? "<BWGT>"+babyData.birthWeightInGrams+"</BWGT>\n" : ""; // != undefined
@@ -230,8 +231,9 @@ function createXmlForEachRecord(babyData){
     var meconiumAspirationSyndrome = (babyData.meconiumAspirationSyndrome != undefined) ? "<MECASP>"+babyData.meconiumAspirationSyndrome+"</MECASP>\n" : "";
     var trachealSuctioningAttempted = (babyData.trachealSuctioningAttempted != undefined) ? "<TRCSUCMA>"+babyData.trachealSuctioningAttempted+"</TRCSUCMA>\n" : "";
     var seizures = (babyData.seizures != undefined) ? "<SEIZURE>"+babyData.seizures+"</SEIZURE>\n" : "";
+    var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";  //required
 
-    var xmlDocument = "" + id + birthYear + deleteEntry + birthWeightInGrams + gestationalAgeInWeeks + gestationalAgePlusDays
+    var xmlDocument = "" + birthYear + deleteEntry + birthWeightInGrams + gestationalAgeInWeeks + gestationalAgePlusDays
      + diedInDeliveryRoom + outbornBirth + dayOfAdmission + transferCenterCode + headCircumferenceAtBirth + notHispanic + prenatalCare + antenatalSteroids + antenatalMagnesiumSulfate
      + chorioamnionitis + maternalHypertension +  maternalDiabetes + modeOfDelivery + sexOfInfant + multipleGestation + numberOfBirthsDelivered + congenitalInfection
      + congenitalInfectionOrg1 + congenitalInfectionOrg1 + congenitalInfectionOrg2 + congenitalInfectionOrg3 + apgarScoresOneMin + apgarScoresFiveMin
@@ -260,7 +262,7 @@ function createXmlForEachRecord(babyData){
      + headCircumferenceAtInitialDisposition + initialLengthOfStay + reasonForTransfer + newTransferCenterCode + postTransferDisposition
      + dispositionAfterReadmission + weightAtDispositionAfterReadmission + ultimateDisposition + totalLengthOfStay + durationOfAssistedVentilation
      + daysOfAssistedVentilation + ecmoAtHospital + hypothermicTherapy + coolingMethod + hypoxicIschemicEncephalopathy
-     + hieSeverity + meconiumAspirationSyndrome + trachealSuctioningAttempted + seizures;
+     + hieSeverity + meconiumAspirationSyndrome + trachealSuctioningAttempted + seizures + medicalRecordNumber;
     
     console.log(xmlDocument);
         
