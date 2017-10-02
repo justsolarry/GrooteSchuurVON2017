@@ -259,7 +259,7 @@ function createRecordInDatabase(){
 }
 
 function getRecordFromDatabase(medicalRecordId){
-    var record = createHTTPGETConnection(medicalRecordId)
+    var record = createHTTPGETConnection(medicalRecordId);
     console.log(record);
     return record;
 }
@@ -346,13 +346,13 @@ function createHTTPGETConnection(medicalRecordId){
   var http = new XMLHttpRequest();
     console.log(ip);
   var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
-  var record;
+  var _record;
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        record = JSON.parse(this.responseText);
-        console.log(record);
+        _record = JSON.parse(this.responseText);
+        console.log("found");
         //toastr.info("successful connection to database");
        
         //tempBabyData = JSON.parse(babyData);
@@ -360,8 +360,8 @@ function createHTTPGETConnection(medicalRecordId){
     }
   }
   http.send();
-    console.log("got here");
-  return record;
+    console.log(_record);
+  return _record;
 }
 
 
