@@ -266,10 +266,36 @@ function fetchData(){
                 text: 'Submit selected records',
                 className:'submit',
                 action: function ( e, dt, node, config ) {
-                    alert( 'Button activated' );
+                        var checkedRows = [];
                     
+    
+    $('#jqGrid').find('input[type="checkbox"]:checked').each(function () {
+       //this is the current checkbox
+        row = $(this).parents('tr').attr('id');
+        checkedRows.push(row);
+        });
+                    
+                    sendDataToVon(checkedRows);
+                }
+            },
+            {
+                text: 'Delete records',
+                className:'submit',
+                action: function ( e, dt, node, config ) {
+                var checkedRows = [];
+                    
+                $('#jqGrid').find('input[type="checkbox"]:checked').each(function () {
+                //this is the current checkbox
+                row = $(this).parents('tr').attr('id');
+                checkedRows.push(row);
+                });
+                var deleteChosenRecords = confirm("You are about to delete "+checkedRows.length+" record(s). Are you sure you want to continue?");
+                    if(deleteChosenRecords){
+                      deleteRecords(checkedRows);   
+                    }   
                 }
             }
+            
             
         ],
      "dom": 'Bfrtip',

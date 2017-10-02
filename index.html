@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="calendar/jquery-ui.css">
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="configureDB()">
     <!-- Clear Form Dialog -->
     <div id="dialog-confirm" title="Clear the Form?">
       <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
@@ -4653,8 +4653,8 @@
     <script type="text/javascript" src="js/autosave.js"></script>
     <script>
         $(document).ready(function() {
+            autosave();
             checkForPopulation();
-            //autosave();
        });
     </script>
 </body>

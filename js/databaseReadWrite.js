@@ -1,23 +1,9 @@
-var ip = "localhost";
+var ip = "";
 function configureDB(){
-    ip = "";
+    ip = dbConfig.ipAddress;
     if(ip == "" || ip == null){
         ip = "localhost";
        }
-}
-
-function createHTTPAuthPOSTConnection(userPasswordObject){
-  var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1"; //server will change //test server https://www.posttestserver.com/
-  http.open("POST", url, true);
-  http.setRequestHeader("Content-type", "application/json");
-  http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        document.getElementById("demo").innerHTML = this.responseText;
-    }
-  }
-  document.getElementById("xmlContent").innerHTML = JSON.stringify(babyDataObject);
-  http.send(JSON.stringify(babyDataObject));
 }
 
 function retrieveAllDocs(){    
@@ -44,11 +30,8 @@ function createSession(){
   http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        //document.cookie=http.getResponseHeader('Set-Cookie');
         alert("Logged in");
-        document.getElementById('session').value = true;
-        //window.location.href = 'landing.html'; 
-        
+        document.getElementById('session').value = true;        
     }
   }
   
@@ -75,7 +58,6 @@ function _logout(){
     
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        //document.cookie=http.getResponseHeader('Set-Cookie');
         alert("Logged in");
         window.location.href = 'index.html'; 
     }
@@ -83,8 +65,6 @@ function _logout(){
   
   http.open("DELETE", url, true);
   http.setRequestHeader("Content-type", "application/json");
-  //http.setRequestHeader('Access-Control-Allow-Origin', '*');
-  
   http.send(JSON.stringify(userObject));
      
 }
@@ -104,14 +84,12 @@ function changePassword(userData){
   }
   
   http.open("DELETE", url, true);
-  http.setRequestHeader("Content-type", "application/json");
-  //http.setRequestHeader('Access-Control-Allow-Origin', '*');
-  
+  http.setRequestHeader("Content-type", "application/json");  
   http.send(JSON.stringify(userObject));
+    
 }
 
 function newUser(){
-    
     var userObject = {
     "name": "test",
     "type": "user",
@@ -123,7 +101,6 @@ function newUser(){
   var url = "http://"+ip+":5984/_users/org.couchdb.user:test"; //admin:vonadmin123@
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        //window.location = "index.html";  
         alert("User posted");
     }
     
@@ -132,27 +109,20 @@ function newUser(){
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.withCredentials = true;
-  //alert(JSON.stringify(userObject));  
   http.send();
 }
 
 function displayData(id){
-  //alert("Row "+id+" has been clicked.");
     
-  window.location = "index.html?id="+id+"#PatientFormID";  
+  window.location = "index.html?id="+id+"#PatientFormID"; 
+    
 }
 
 function fetchRowData(id){
-    
-  //alert("Row "+id+"'s data to display.");
   
   var retrievedRecord = getRecordFromDatabase(id);
   
   repopulateForm(retrievedRecord);
-  
-  //alert("BabyData"+JSON.stringify(retrievedRecord));
-    
-  //window.location = "index.html?id="+id+"#PatientFormID";  
     
 }
 
@@ -173,27 +143,23 @@ function repopulateForm(babyData){
                 }
                 
                 var elements = document.getElementsByName(key);
-                    
+                
                 var index = babyData[key];
                    
                 if(elements.length > 1 && index<10 && !isNaN(index)){
-                        //elements[babyData[key]].checked = true;
-                        elements[0].selectedIndex = index;
-                        
-                        elements[0].value = index;
-                    
-                        //eventFire(elements[0], 'click');
+                        elements.selectedIndex = index;
                         
                         if(elements[index] != null){
-                           elements[index].checked = true;
-                           //eventFire(elements[index], 'click');
-                        }
-
-                        
+                            for(i=0; i<elements.length; i++){
+                                if(elements[i].value == index){
+                                  eventFire(elements[i], 'click')
+                                   //   elements[i].checked = true;
+                                }
+                            }
+                        }   
                 }                            
             }
         }
-      //re-run all scripts
 }
 
 function getUrl(){
@@ -229,11 +195,10 @@ var tempBabyData = {idMisMatch: true};
 
 function createRecordInDatabase(){
     var medicalRecordObject = {};
-    var allRecords = retrieveAllDocs();
-    var dbSize = allRecords.rows.length;
-    //alert(dbSize);
-    var nextId = dbSize+1;
-    //alert(nextId);
+    var maxId = createHTTPGETConnectionMaxId();
+    maxId = maxId.rows[0].value;
+    alert(maxId);
+    var nextId = maxId+1;
     medicalRecordObject._id = nextId;
     //alert(JSON.stringify(medicalRecordObject));
     createHTTPPOSTConnectionNewRecord(medicalRecordObject);
@@ -250,8 +215,10 @@ function getRecordFromDatabase(medicalRecordId){
   document.getElementById(_rev) = rev;
 }*/
 
-function removeDataFromDatabase(medicalRecordId, listOfDataPoints){
-  
+function deleteRecords(listOfMedicalRecordIds){
+  for(i=0;i<listOfMedicalRecordIds.length;i++){
+      createHTTPDELETEConnection(listOfMedicalRecordIds[i]);
+  }
 }
 
 function updateDataInRecord(medicalRecord){ 
@@ -322,7 +289,6 @@ function createHTTPPOSTConnection(babyDataObject){ // must change to pass in val
 
 
 function createHTTPGETConnection(medicalRecordId){
-
   var http = new XMLHttpRequest();
   var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
   var record;
@@ -340,6 +306,39 @@ function createHTTPGETConnection(medicalRecordId){
   }
   http.send();
   return record;
+}
+
+function createHTTPGETConnectionMaxId(){
+  var http = new XMLHttpRequest();
+  var url = "http://"+ip+":5984/test1/_design/lastId/_view/maxId"; //server will change -> config file?
+  var record;
+  http.open("GET", url, false);
+  http.withCredentials = true;
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        record = JSON.parse(this.responseText);
+        console.log(record);
+    }
+  }
+  http.send();
+  return record;
+}
+
+
+function createHTTPDELETEConnection(medicalRecordId){
+  var http = new XMLHttpRequest();
+  var record = getRecordFromDatabase(medicalRecordId);
+  var url = "http://"+ip+":5984/test1/" + medicalRecordId+"?rev="+record._rev; //server will change -> config file?
+  var record;
+  http.open("DELETE", url, false);
+  http.withCredentials = true;
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        toastr.info("Record deleted from database");
+        window.location.reload();
+    }
+  }
+  http.send();
 }
 
 
@@ -382,7 +381,6 @@ function mapToNaturalLanguage(record){
     if (record.transferCenterPIW)
     return record;
 }
-
 
 function eventFire(el, etype){
   if (el.fireEvent) {
