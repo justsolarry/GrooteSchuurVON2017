@@ -1,6 +1,6 @@
           
-//$A4PageWidth: 210mm; 
-$A4PageWidthLess1mmBorder: 208mm;
+$A4PageWidth: 210mm; 
+$A4PageWidthLess1mmBorderAnd5mmPadding: 198mm;
 $A4PageWidthOneThird: 70mm;
 $A4PageHeight: 297mm;
 
@@ -16,10 +16,14 @@ $A4PageHeight: 297mm;
         position: absolute;
         left: 0;
         top: 0;
-        width: $A4PageWidthLess1mmBorder; 
+        width: $A4PageWidthLess1mmBorderAnd5mmPadding; 
         height: $A4PageHeight;
         border: 1mm solid black;
         margin:0;
+        
+        background: white;
+        color: black;
+        padding: 0mm 5mm;
     }    
     .one-third{
         width: 70mm;
@@ -28,9 +32,13 @@ $A4PageHeight: 297mm;
     }
 }
 
-//#dischargeTransferHTMLPrint, #dischargeTransferHTMLPrint * {
-//visibility: hidden;
-//}
+body{
+    background: #222225;
+}
+
+.headingValues span{
+    display:inline-block;
+}
 
 .printRow{
     display:block;
@@ -47,13 +55,14 @@ $A4PageHeight: 297mm;
 }
 
 #dischargeTransferHTMLPrint {
-    position: absolute;
-    left: 0;
-    top: 0;
+    margin: 100px auto;
     width: 210mm; 
     height: $A4PageHeight;
     border: 2px solid black;
     display:block;
+    background: white;
+    color: black;
+    padding: 5mm;
 } 
 
 .one-third{

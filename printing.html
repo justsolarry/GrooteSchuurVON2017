@@ -3,88 +3,114 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Test Environment</title>
-    <script src="js/recordTestDataObject.js"></script>
-    <link href="dischargeStyle.scss" rel="stylesheet"/>   
+    <title>Print Record</title> 
       
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-      
-    <link href="css/ownCSS.css" rel="stylesheet">
+    <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
+    <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom fonts -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/fonts.css" rel="stylesheet">
-    
-    
-      
-      
-<!--    <link href="css/grayscale.css" rel="stylesheet">-->
+    <link href="css/hover.css" rel="stylesheet">
+    <link href="scss/dischargeTransferStyle.scss" rel="stylesheet"/>  
     <link href="css/toastr.css" rel="stylesheet" />
+    
+    
+    
       
   </head>
+    
     <body>
+        
+        <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
+        <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer; display: inline">
+            Menu <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">Vermont Oxford Network</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                </ul>
+            </div>
+        </div>
+    </nav>
+        
     <div id="dischargeTransferHTMLPrint">
         
-        <div class="printRow">
-            <span class="one-third">
-                <br><br>
-                <img src="img/westernCapeLogo.png" alt="Western Cape" width="90%">
-            </span>
-            <span class="one-third">
-                <h3><span id="dischargeOrTransfer"></span> Letter</h3>
-            </span>
-            <span class="one-third" style="float:right">
-                <br><br>
-                <p>Neonatal Unit<br>
-                Groote Schuur Hospital<br>
-                021-404-6069</p>
-            </span>
-        </div>
+        <center>
+        
+            <div class="printRow">
+                <span class="one-third">
+                    <br><br>
+                    <img src="img/westernCapeLogo.png" alt="Western Cape" width="90%">
+                </span>
+                <span class="one-third">
+                    <h3><span id="dischargeOrTransferPrint"></span> Letter</h3>
+                </span>
+                <span class="one-third" style="float:right">
+                    <br><br>
+                    <p>Neonatal Unit<br>
+                    Groote Schuur Hospital<br>
+                    021-404-6069</p>
+                </span>
+            </div>
+        
+       </center>
+
         
         <hr>
-        
+        <center>
         <div class="headingValues">
-            <span><b>Baby of</b>: <span id="mothersNameAndSurname"></span></span>
-            <span><b>Folder Number: </b><span id="patientMedicalRecordNumber"></span></span>        
-            <span><b>DOB</b>: <span id="dateOfBirth"></span></span>
-            <span><b>Gender</b>: <span id="sexOfInfant"></span></span>
-            <span><b>Mothers Age</b>: <span id="mothersAge"></span></span>
-            <span><b>Mode Of Delivery</b>: <span id="modeOfDelivery"></span></span>
-            <span><b>Apgars (1min)</b>: <span id="apgarScoresOneMin"></span></span>
-            <span><b>Apgars (5min)</b>: <span id="apgarScoresFiveMin"></span></span>
-            <span><b>Birth Weight</b>: <span id="birthWeightInGrams"></span></span>
-            <span><b>Head Circumference</b>: <span id="headCircumferenceAtBirth"></span></span>
-            <span><b>Gestational Age</b>: <span id="gestationalAge"></span></span>
+            <span><b>Baby of</b>: <span id="mothersNameAndSurnamePrint"></span></span>
+            <span><b>Folder Number: </b><span id="patientMedicalRecordNumberPrint"></span></span>        
+            <span><b>DOB</b>: <span id="dateOfBirthPrint"></span></span>
+            <span><b>Gender</b>: <span id="sexOfInfantPrint"></span></span>
+            <span><b>Mothers Age</b>: <span id="mothersAgePrint"></span></span>
+            <span><b>Mode Of Delivery</b>: <span id="modeOfDeliveryPrint"></span></span>
+            <span><b>Apgars (1min)</b>: <span id="apgarScoresOneMinPrint"></span></span>
+            <span><b>Apgars (5min)</b>: <span id="apgarScoresFiveMinPrint"></span></span>
+            <span><b>Birth Weight</b>: <span id="birthWeightInGramsPrint"></span></span>
+            <span><b>Head Circumference</b>: <span id="headCircumferenceAtBirthPrint"></span></span>
+            <span><b>Gestational Age</b>: <span id="gestationalAgePrint"></span></span>
             <br>
         </div>
+        </center>
         <div style="display:block;">
             <p>Problem list</p>
             <span style="width:100mm; float:left">
-                <p><span id="birthWeightCategory"></span><input class="form-control" type="text" placeholder="additional comments"></p>
-                <p><span id="prematureCategory"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="twinsOrMore"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="rvdValue"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="surfactantAtAnyTime"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="cld"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="necPlus"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="ventilation" ></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="birthWeightCategoryPrint"></span><input class="form-control" type="text" placeholder="additional comments"></p>
+                <p><span id="prematureCategoryPrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="twinsOrMorePrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="rvdValuePrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="surfactantAtAnyTimePrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="cldPrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="necPlusPrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="ventilationPrint" ></span><input class="form-control" type="text" placeholder=""></p>
 
             </span>
             <span style="width:100mm; ">
-                <p><span id="hypoxicIschemicEncephalopathyHighestScore"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="jaundiceNeedingPhototherapy"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="sepsisDuringAdmission"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="fetalMedicineUnitFlagged"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="abnormalHeadUltrasound"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="chromosomesDone"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="immunizations652"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="hypoxicIschemicEncephalopathyHighestScorePrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="jaundiceNeedingPhototherapyPrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="sepsisDuringAdmissionPrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="fetalMedicineUnitFlaggedPrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="abnormalHeadUltrasoundPrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="chromosomesDonePrint"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="immunizations652Print"></span><input class="form-control" type="text" placeholder=""></p>
             </span>
         </div>
         <div style="clear:both; display:block;">
         <p>Additional Problems/Notes: </p>
             <input class="form-control" type="text" placeholder="" style="height:100px;width:80%">
         </div>
-        <p>Date of <span id="dischargeOrTransferDate"></span>: <span id="dateOfDischarge"></span> <span id="placeOfTransfer"></span> <span id="weightAtDischarge"></span> <span id="headCircumferenceAtDischarge"></span></p>
+        <p>Date of <span id="dischargeOrTransferDatePrint"></span>: <span id="dateOfDischargePrint"></span> <span id="placeOfTransferPrint"></span> <span id="weightAtDischargePrint"></span> <span id="headCircumferenceAtDischargePrint"></span></p>
         <p>Meds:<input class="form-control" type="text" placeholder="_____________________"></p>
         <p>Feeds:<input class="form-control" type="text" placeholder="____________________"></p>
         <br>
@@ -95,13 +121,26 @@
     </div>
     <div id="editor"></div>
         <div>
-    <button style="position: absolute;z-index:10; right:220mm" class="btn btn-default" onclick="window.print()">Print Document</button></div>
+    <button style="z-index:10"  class="btn btn-default" onclick="window.print()">Print Document</button></div>
 <!--        <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>-->
         
-        <script src="js/db.js"></script>
-        <script src="js/moment.js"></script>
-        <script src="js/dischargeFormPopulation.js"></script>
-        
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script src="js/databaseReadWrite.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/dischargeFormPopulation.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tether.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- Custom library scripts -->
+    <script type="text/javascript" src="js/grayscale.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <!-- Custom VON Team Scripts -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+    
+
         
     </body>
 </html>
