@@ -1,16 +1,25 @@
 var ip = "";
+var dbName = "";
 function configureDB(){
+    
     ip = dbConfig.ipAddress;
+    dbName = dbConfig.dbName;
     if(ip == "" || ip == null){
         ip = "localhost";
        }
+    
+    if(dbName == "" || dbName == null){
+        dbName = "test1";
+       }
+    
+    //createSession();
 }
     
 
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
   var babyData = {};
-  var url = "http://"+ip+":5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/"+dbName+"/_all_docs?include_docs=true"; //admin:vonadmin123@
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
@@ -29,6 +38,7 @@ function createSession(){
   var http = new XMLHttpRequest();
   var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
+  http.open("POST", url, true);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         alert("Logged in");
@@ -43,7 +53,7 @@ function createSession(){
   u.name = user;
   u.password = password;
 
-  http.open("POST", url, true);
+  
   http.setRequestHeader("Content-type", "application/json");  
   http.send(JSON.stringify(u));
   
@@ -138,23 +148,25 @@ function getCurrentId(){
 
 function repopulateForm(babyData){
         for (var key in babyData) {
-            if (babyData.hasOwnProperty(key)) {                
+            if (babyData.hasOwnProperty(key)) {
+                
                 if(document.getElementById(key) !== null){                
                     document.getElementById(key).value = babyData[key]; 
                 }
                 
-                var elements = document.getElementsByName(key);
+                var domElements = document.getElementsByName(key);
                 
                 var index = babyData[key];
                    
-                if(elements.length > 1 && index<10 && !isNaN(index)){
-                        elements.selectedIndex = index;
+                if(domElements.length > 1 && index<10 && !isNaN(index)){
+                    
+                        domElements.selectedIndex = index;
                         
-                        if(elements[index] != null){
-                            for(i=0; i<elements.length; i++){
-                                if(elements[i].value == index){
-                                  eventFire(elements[i], 'click')
-                                   //   elements[i].checked = true;
+                        if(domElements[index] != null){
+                            for(i=0; i<domElements.length; i++){
+                                if(domElements[i].value == index){
+                                  eventFire(domElements[i], 'click')
+                                   //   domElements[i].checked = true;
                                 }
                             }
                         }   
@@ -198,10 +210,8 @@ function createRecordInDatabase(){
     var medicalRecordObject = {};
     var maxId = createHTTPGETConnectionMaxId();
     maxId = maxId.rows[0].value;
-    alert(maxId);
     var nextId = maxId+1;
     medicalRecordObject._id = nextId;
-    alert(JSON.stringify(medicalRecordObject));
     createHTTPPOSTConnectionNewRecord(medicalRecordObject);
     window.location = "index.html?id="+nextId+"#PatientFormID";     
 }
@@ -237,7 +247,7 @@ function updateDataInRecord(medicalRecord){
 //This function is used to create a new record in the database
 function createHTTPPOSTConnectionRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.onreadystatechange = function() {
@@ -253,7 +263,7 @@ function createHTTPPOSTConnectionRecord(babyDataObject){
 function createHTTPPOSTConnectionNewRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
   var id = babyDataObject._id;
-  var url = "http://"+ip+":5984/test1/"+id; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/"+dbName+"/"+id; //server will change //test server https://www.posttestserver.com/
   
   http.open("PUT", url, false);
   http.setRequestHeader("Content-type", "application/json"); 
@@ -274,7 +284,7 @@ function createHTTPPOSTConnectionNewRecord(babyDataObject){
 function createHTTPPOSTConnection(babyDataObject){ // must change to pass in values
   var http = new XMLHttpRequest();
   //alert("BabyDataObject in POSTConnention"+JSON.stringify(babyDataObject));
-  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
+  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
   var rev = {};
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
@@ -296,8 +306,8 @@ function createHTTPPOSTConnection(babyDataObject){ // must change to pass in val
 function createHTTPGETConnection(medicalRecordId){
   var http = new XMLHttpRequest();
     console.log(ip);
-  var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
-  var _record;
+  var url = "http://"+ip+":5984/"+dbName+"/" + medicalRecordId; //server will change -> config file?
+  var record;
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
@@ -317,7 +327,7 @@ function createHTTPGETConnection(medicalRecordId){
 
 function createHTTPGETConnectionMaxId(){
   var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1/_design/lastId/_view/maxId"; //server will change -> config file?
+  var url = "http://"+ip+":5984/"+dbName+"/_design/lastId/_view/maxId"; //server will change -> config file?
   var record;
   http.open("GET", url, false);
   http.withCredentials = true;
@@ -335,7 +345,7 @@ function createHTTPGETConnectionMaxId(){
 function createHTTPDELETEConnection(medicalRecordId){
   var http = new XMLHttpRequest();
   var record = getRecordFromDatabase(medicalRecordId);
-  var url = "http://"+ip+":5984/test1/" + medicalRecordId+"?rev="+record._rev; //server will change -> config file?
+  var url = "http://"+ip+":5984/"+dbName+"/" + medicalRecordId+"?rev="+record._rev; //server will change -> config file?
   var record;
   http.open("DELETE", url, false);
   http.withCredentials = true;

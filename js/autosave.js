@@ -35,6 +35,7 @@ var session = document.getElementById('session').value;
      // }
 
     }
+
     function createRecord(){
         //alert("Create Record in Database");
         if(session == null || session == ""){
