@@ -48,7 +48,7 @@ function fetchData(){
     $('#jqGrid').DataTable( {
         "scrollX": true,
         //"scrollCollapse": "true",
-        "ajax": {"url":"http://localhost:5984/test1/_all_docs?include_docs=true",
+        "ajax": {"url":"http://" + dbConfig.ipAddress + ":5984/test1/_all_docs?include_docs=true",
                  "dataSrc": "rows", 
                     "crossDomain": true
                 },
@@ -276,7 +276,7 @@ function fetchData(){
         checkedRows.push(row);
         });
                     
-                    sendDataToVon(checkedRows);
+                    sendDataToVon([10]); 
                 }
             },
             {
