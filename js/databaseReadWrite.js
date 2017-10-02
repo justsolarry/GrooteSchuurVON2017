@@ -5,6 +5,7 @@ function configureDB(){
         ip = "localhost";
        }
 }
+    
 
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
@@ -200,13 +201,14 @@ function createRecordInDatabase(){
     alert(maxId);
     var nextId = maxId+1;
     medicalRecordObject._id = nextId;
-    //alert(JSON.stringify(medicalRecordObject));
+    alert(JSON.stringify(medicalRecordObject));
     createHTTPPOSTConnectionNewRecord(medicalRecordObject);
     window.location = "index.html?id="+nextId+"#PatientFormID";     
 }
 
 function getRecordFromDatabase(medicalRecordId){
     var record = createHTTPGETConnection(medicalRecordId)
+    console.log(record);
     return record;
 }
 
@@ -222,6 +224,7 @@ function deleteRecords(listOfMedicalRecordIds){
 }
 
 function updateDataInRecord(medicalRecord){ 
+   // alert(JSON.stringify(medicalRecord))
   createHTTPPOSTConnection(medicalRecord);
   var record = getRecordFromDatabase(medicalRecord._id);
   //alert("Rev: "+JSON.stringify(record)._rev);
@@ -290,6 +293,7 @@ function createHTTPPOSTConnection(babyDataObject){ // must change to pass in val
 
 function createHTTPGETConnection(medicalRecordId){
   var http = new XMLHttpRequest();
+    console.log(ip);
   var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
   var record;
   http.open("GET", url, false);
@@ -305,6 +309,7 @@ function createHTTPGETConnection(medicalRecordId){
     }
   }
   http.send();
+    console.log("got here");
   return record;
 }
 

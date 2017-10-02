@@ -44,6 +44,7 @@ today = mm + '/' + dd + '/' + yyyy;
 
 function fetchData(){
         //var dbData = retrieveAllDocs();
+    
     $('#jqGrid').DataTable( {
         "scrollX": true,
         //"scrollCollapse": "true",
