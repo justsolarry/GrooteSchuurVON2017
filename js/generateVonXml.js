@@ -2,32 +2,38 @@
 //          Additional 2018 surgery fields
 
 function create2018Xml(babyData){
-    var fileNum = 1;
-    var date = new Date(); // Format 2011-05-10T16:49:06.547125-04:00
-    fileDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() +"-02:00";
-    var ApplicationName = "Groote Schuur Internal Application";
-    var versionNumber = "0.0";
-    var hospitalNum = "1052";
-
-//    var xmlHeader = `<tblVtOxUd FILENUM="` + 
-//        fileNum +
-//        `" FILEDATE="`+ 
-//        fileDate +
-//        `" APPLICATION="`+ 
-//        ApplicationName +
-//        `" VERSION="`+
-//        versionNumber +
-//        `" ALLRECORDS="false">
-//        <row>\n`;
-
-    var xmlHeader = "<tblInfantVON>\n"
-    var hospitalNumber = "<HOSPNO>"+ hospitalNum +"</HOSPNO>\n"; //required
-
-
-    var xmlDocument = xmlHeader + hospitalNumber + createXmlForEachRecord(babyData)  + "</tblInfantVON>";
+//    var date = new Date(); // Format 2011-05-10T16:49:06.547125-04:00
+//    fileDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() +"-02:00";
+    
+    var xmlDocument = '<?xml version="1.0"?>\n' +  createInfantCoreRecord(babyData) + createXmlForEachRecord(babyData);
     document.getElementById("xmlContent").innerHTML += xmlDocument;
 
     return xmlDocument;
+}
+function createInfantCoreRecord(babyData){
+    var hospitalNum = "1052";
+    var hospitalNumber = "<HOSPNO>"+ hospitalNum +"</HOSPNO>\n"; 
+    var patientFirstName = "<PATIENTFIRSTNAME>Baby</PATIENTFIRSTNAME>\n";
+    var patientLastName = "<PATIENTLASTNAME>" + babyData.mothersLastName + "</PATIENTLASTNAME>\n";
+    var mothersFirstName = "<MOTHERFIRSTNAME>" + babyData.mothersFirstName + "</MOTHERFIRSTNAME>\n";
+    var mothersLastName = "<MOTHERLASTNAME>" + babyData.mothersLastName + "</MOTHERLASTNAME>\n";
+    var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";
+    console.log("breaking on date");
+    var dateOfBirth = "<DOB>"+ formatDate(babyData.dateOfBirth) + "</DOB>\n";
+    console.log("breaking on date");
+    var dateOfAdmission = "<DOA>" + formatDate(babyData.dateOfBirth) + "</DOA>\n";
+    //var dateOfDischarge = "<DID>" + babyData.dateOfDischarge + "</DID>\n";
+    return "<tblInfantCore>\n" + hospitalNumber + patientFirstName + patientLastName 
+        + mothersFirstName + mothersLastName + medicalRecordNumber + dateOfBirth
+        + dateOfAdmission + "</tblInfantCore>\n";
+}
+
+function formatDate(date){
+    console.log(date);
+    date = new Date(date); // Format 2011-05-10T16:49:06.547125-04:00
+    console.log("after: " + date);
+    var fileDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() +"-02:00";
+    return fileDate;
 }
 
 function createXmlForEachRecord(babyData){
@@ -233,7 +239,7 @@ function createXmlForEachRecord(babyData){
     var seizures = (babyData.seizures != undefined) ? "<SEIZURE>"+babyData.seizures+"</SEIZURE>\n" : "";
     var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";  //required
 
-    var xmlDocument = "" + birthYear + deleteEntry + birthWeightInGrams + gestationalAgeInWeeks + gestationalAgePlusDays
+    var xmlDocument = "<tblInfantVON>\n" + birthYear + deleteEntry + birthWeightInGrams + gestationalAgeInWeeks + gestationalAgePlusDays
      + diedInDeliveryRoom + outbornBirth + dayOfAdmission + transferCenterCode + headCircumferenceAtBirth + notHispanic + prenatalCare + antenatalSteroids + antenatalMagnesiumSulfate
      + chorioamnionitis + maternalHypertension +  maternalDiabetes + modeOfDelivery + sexOfInfant + multipleGestation + numberOfBirthsDelivered + congenitalInfection
      + congenitalInfectionOrg1 + congenitalInfectionOrg1 + congenitalInfectionOrg2 + congenitalInfectionOrg3 + apgarScoresOneMin + apgarScoresFiveMin
@@ -262,9 +268,9 @@ function createXmlForEachRecord(babyData){
      + headCircumferenceAtInitialDisposition + initialLengthOfStay + reasonForTransfer + newTransferCenterCode + postTransferDisposition
      + dispositionAfterReadmission + weightAtDispositionAfterReadmission + ultimateDisposition + totalLengthOfStay + durationOfAssistedVentilation
      + daysOfAssistedVentilation + ecmoAtHospital + hypothermicTherapy + coolingMethod + hypoxicIschemicEncephalopathy
-     + hieSeverity + meconiumAspirationSyndrome + trachealSuctioningAttempted + seizures + medicalRecordNumber;
+     + hieSeverity + meconiumAspirationSyndrome + trachealSuctioningAttempted + seizures + medicalRecordNumber + "</tblInfantVON>\n";
     
-    console.log(xmlDocument);
+    //console.log(xmlDocument);
         
     return xmlDocument;
 }
