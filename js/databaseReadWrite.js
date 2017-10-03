@@ -1,46 +1,25 @@
-var ip = dbConfig.ipAddress;
+var ip = "";
+var dbName = "";
 function configureDB(){
+    
     ip = dbConfig.ipAddress;
+    dbName = dbConfig.dbName;
     if(ip == "" || ip == null){
         ip = "localhost";
        }
+    
+    if(dbName == "" || dbName == null){
+        dbName = "test1";
+       }
+    
+    //createSession();
 }
     
-
-
-
-function createHTTPAuthPOSTConnection(userPasswordObject){
-  var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1"; //server will change //test server https://www.posttestserver.com/
-  http.open("POST", url, true);
-  http.setRequestHeader("Content-type", "application/json");
-  http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        document.getElementById("demo").innerHTML = this.responseText;
-    }
-  }
-  document.getElementById("xmlContent").innerHTML = JSON.stringify(babyDataObject);
-  http.send(JSON.stringify(babyDataObject));
-}
-
-/*function createHTTPGETConnection(){
-  var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1/2"; //admin:vonadmin123@
-  http.open("GET", url, false);
-  http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        babyData = this.responseText;
-        console.log(this.responseText);
-        //document.getElementById("demo").innerHTML = myObject;
-    }
-  }
-  http.send();
-}*/
 
 function retrieveAllDocs(){    
   var http = new XMLHttpRequest();
   var babyData = {};
-  var url = "http://"+ip+":5984/test1/_all_docs?include_docs=true"; //admin:vonadmin123@
+  var url = "http://"+ip+":5984/"+dbName+"/_all_docs?include_docs=true"; //admin:vonadmin123@
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
@@ -54,19 +33,16 @@ function retrieveAllDocs(){
   return babyData;
 }
 
-
 function createSession(){ 
         
   var http = new XMLHttpRequest();
   var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
   http.withCredentials = true;
+  http.open("POST", url, true);
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        //document.cookie=http.getResponseHeader('Set-Cookie');
         alert("Logged in");
-        document.getElementById('session').value = true;
-        //window.location.href = 'landing.html'; 
-        
+        document.getElementById('session').value = true;        
     }
   }
   
@@ -77,7 +53,7 @@ function createSession(){
   u.name = user;
   u.password = password;
 
-  http.open("POST", url, true);
+  
   http.setRequestHeader("Content-type", "application/json");  
   http.send(JSON.stringify(u));
   
@@ -93,7 +69,6 @@ function _logout(){
     
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        //document.cookie=http.getResponseHeader('Set-Cookie');
         alert("Logged in");
         window.location.href = 'index.html'; 
     }
@@ -101,8 +76,6 @@ function _logout(){
   
   http.open("DELETE", url, true);
   http.setRequestHeader("Content-type", "application/json");
-  //http.setRequestHeader('Access-Control-Allow-Origin', '*');
-  
   http.send(JSON.stringify(userObject));
      
 }
@@ -122,14 +95,12 @@ function changePassword(userData){
   }
   
   http.open("DELETE", url, true);
-  http.setRequestHeader("Content-type", "application/json");
-  //http.setRequestHeader('Access-Control-Allow-Origin', '*');
-  
+  http.setRequestHeader("Content-type", "application/json");  
   http.send(JSON.stringify(userObject));
+    
 }
 
 function newUser(){
-    
     var userObject = {
     "name": "test",
     "type": "user",
@@ -141,7 +112,6 @@ function newUser(){
   var url = "http://"+ip+":5984/_users/org.couchdb.user:test"; //admin:vonadmin123@
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        //window.location = "index.html";  
         alert("User posted");
     }
     
@@ -150,27 +120,20 @@ function newUser(){
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.withCredentials = true;
-  //alert(JSON.stringify(userObject));  
   http.send();
 }
 
 function displayData(id){
-  //alert("Row "+id+" has been clicked.");
     
-  window.location = "index.html?id="+id+"#PatientFormID";  
+  window.location = "index.html?id="+id+"#PatientFormID"; 
+    
 }
 
 function fetchRowData(id){
-    
-  //alert("Row "+id+"'s data to display.");
   
   var retrievedRecord = getRecordFromDatabase(id);
   
   repopulateForm(retrievedRecord);
-  
-  //alert("BabyData"+JSON.stringify(retrievedRecord));
-    
-  //window.location = "index.html?id="+id+"#PatientFormID";  
     
 }
 
@@ -185,30 +148,28 @@ function getCurrentId(){
 
 function repopulateForm(babyData){
         for (var key in babyData) {
-            if (babyData.hasOwnProperty(key)) {                
-                if(document.getElementById(key) !== null){
-                                        
+            if (babyData.hasOwnProperty(key)) {
+                
+                if(document.getElementById(key) !== null){                
                     document.getElementById(key).value = babyData[key]; 
-
                 }
                 
-                var elements = document.getElementsByName(key);
-                    //alert("Elements "+key+" "+JSON.stringify(elements));
+                var domElements = document.getElementsByName(key);
+                
                 var index = babyData[key];
-        
-                    //alert(index);
-                    //document.getElementsByName('outbornBirth')[1].checked = true;                    
-                if(elements.length > 1 && index<10 && !isNaN(index)){
-
-                        elements[babyData[key]].checked = true;
+                   
+                if(domElements.length > 1 && index<10 && !isNaN(index)){
                     
-                        elements[0].value = index;
-                        //alert("The element"+JSON.stringify(document.getElementsByName(key)[index]));
-                        //$("input[name="+key+"][value="+index+"]").prop('checked', true);
-                        /*if(elements[babyData[key]].type == 'radio'){
-                            elements[babyData[key]].checked = true;
-                        }*/
+                        domElements.selectedIndex = index;
                         
+                        if(domElements[index] != null){
+                            for(i=0; i<domElements.length; i++){
+                                if(domElements[i].value == index){
+                                  eventFire(domElements[i], 'click')
+                                   //   domElements[i].checked = true;
+                                }
+                            }
+                        }   
                 }                            
             }
         }
@@ -247,19 +208,19 @@ var tempBabyData = {idMisMatch: true};
 
 function createRecordInDatabase(){
     var medicalRecordObject = {};
-    var allRecords = retrieveAllDocs();
-    var dbSize = allRecords.rows.length;
-    //alert(dbSize);
-    var nextId = dbSize+1;
-    //alert(nextId);
+    var maxId = createHTTPGETConnectionMaxId();
+    maxId = maxId.rows[0].value;
+    var nextId = maxId+1;
     medicalRecordObject._id = nextId;
-    alert(JSON.stringify(medicalRecordObject));
     createHTTPPOSTConnectionNewRecord(medicalRecordObject);
     window.location = "index.html?id="+nextId+"#PatientFormID";     
 }
 
 function getRecordFromDatabase(medicalRecordId){
+    var record = createHTTPGETConnection(medicalRecordId);
+    console.log(record);
     var record = createHTTPGETConnection(medicalRecordId)
+    console.log(record);
     return record;
 }
 
@@ -268,8 +229,10 @@ function getRecordFromDatabase(medicalRecordId){
   document.getElementById(_rev) = rev;
 }*/
 
-function removeDataFromDatabase(medicalRecordId, listOfDataPoints){
-  
+function deleteRecords(listOfMedicalRecordIds){
+  for(i=0;i<listOfMedicalRecordIds.length;i++){
+      createHTTPDELETEConnection(listOfMedicalRecordIds[i]);
+  }
 }
 
 function updateDataInRecord(medicalRecord){ 
@@ -284,7 +247,7 @@ function updateDataInRecord(medicalRecord){
 //This function is used to create a new record in the database
 function createHTTPPOSTConnectionRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
   http.onreadystatechange = function() {
@@ -300,7 +263,7 @@ function createHTTPPOSTConnectionRecord(babyDataObject){
 function createHTTPPOSTConnectionNewRecord(babyDataObject){ 
   var http = new XMLHttpRequest();
   var id = babyDataObject._id;
-  var url = "http://"+ip+":5984/test1/"+id; //server will change //test server https://www.posttestserver.com/
+  var url = "http://"+ip+":5984/"+dbName+"/"+id; //server will change //test server https://www.posttestserver.com/
   
   http.open("PUT", url, false);
   http.setRequestHeader("Content-type", "application/json"); 
@@ -321,7 +284,7 @@ function createHTTPPOSTConnectionNewRecord(babyDataObject){
 function createHTTPPOSTConnection(babyDataObject){ // must change to pass in values
   var http = new XMLHttpRequest();
   //alert("BabyDataObject in POSTConnention"+JSON.stringify(babyDataObject));
-  var url = "http://"+ip+":5984/test1/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
+  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
   var rev = {};
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
@@ -341,17 +304,16 @@ function createHTTPPOSTConnection(babyDataObject){ // must change to pass in val
 
 
 function createHTTPGETConnection(medicalRecordId){
-
   var http = new XMLHttpRequest();
     console.log(ip);
-  var url = "http://"+ip+":5984/test1/" + medicalRecordId; //server will change -> config file?
+  var url = "http://"+ip+":5984/"+dbName+"/" + medicalRecordId; //server will change -> config file?
   var record;
   http.open("GET", url, false);
   http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        record = JSON.parse(this.responseText);
-        console.log(record);
+        _record = JSON.parse(this.responseText);
+        console.log("found");
         //toastr.info("successful connection to database");
        
         //tempBabyData = JSON.parse(babyData);
@@ -359,7 +321,41 @@ function createHTTPGETConnection(medicalRecordId){
     }
   }
   http.send();
+    console.log("got here");
   return record;
+}
+
+function createHTTPGETConnectionMaxId(){
+  var http = new XMLHttpRequest();
+  var url = "http://"+ip+":5984/"+dbName+"/_design/lastId/_view/maxId"; //server will change -> config file?
+  var record;
+  http.open("GET", url, false);
+  http.withCredentials = true;
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        record = JSON.parse(this.responseText);
+        console.log(record);
+    }
+  }
+  http.send();
+  return record;
+}
+
+
+function createHTTPDELETEConnection(medicalRecordId){
+  var http = new XMLHttpRequest();
+  var record = getRecordFromDatabase(medicalRecordId);
+  var url = "http://"+ip+":5984/"+dbName+"/" + medicalRecordId+"?rev="+record._rev; //server will change -> config file?
+  var record;
+  http.open("DELETE", url, false);
+  http.withCredentials = true;
+  http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        toastr.info("Record deleted from database");
+        window.location.reload();
+    }
+  }
+  http.send();
 }
 
 
@@ -403,4 +399,13 @@ function mapToNaturalLanguage(record){
     return record;
 }
 
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
+}
 

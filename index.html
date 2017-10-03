@@ -1,66 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
-      <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
-      <title>Groote Schuur Neonatal Data Management Application</title>
-      <!-- Bootstrap core CSS -->
-      <link href="css/bootstrap.css" rel="stylesheet">
-      <!-- Custom fonts -->
-      <link href="css/font-awesome.css" rel="stylesheet">
-      <!-- Custom styles -->
-      <link href="css/grayscale.css" rel="stylesheet">
-      <link href="css/toastr.css" rel="stylesheet" />
-      <link href="css/style.css" rel="stylesheet">
-      <link href="css/fonts.css" rel="stylesheet">
-      <link href="css/hover.css" rel="stylesheet">
-      <!--Calendar CSS-->
-      <link rel="stylesheet" href="calendar/jquery-ui.css">
-   </head>
-   <body id="page-top">
-      <!-- Clear Form Dialog -->
-      <div id="dialog-confirm" title="Clear the Form?">
-         <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
-      </div>
-      <!-- Clear Form Dialog -->
-      <!-- Navigation -->
-      <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
-         <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer; display: inline">
-         Menu <i class="fa fa-bars"></i>
-         </button>
-         <div class="container">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
+    <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
+
+    <title>Groote Schuur Neonatal Data Management Application</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom fonts -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/toastr.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet">
+    <!--Calendar CSS-->
+    <link rel="stylesheet" href="calendar/jquery-ui.css">
+</head>
+
+<body id="page-top">
+    <!-- Clear Form Dialog -->
+    <div id="dialog-confirm" title="Clear the Form?">
+      <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
+    </div>
+    <!-- Clear Form Dialog -->
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
+        <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer; display: inline">
+            Menu <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="container">
             <a class="navbar-brand" href="#page-top">Vermont Oxford Network</a>
             <div class="collapse navbar-collapse">
                <ul class="navbar-nav ml-auto">
                </ul>
             </div>
-         </div>
-      </nav>
-      <!-- START Menu -->
-      <div id="mySidenav" class="sidenav">
-         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-         <a onclick="createRecord()" class="createNewEntryMenuButton">Create New Entry</a> 
-         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
-         <a href="#" class="helpMenuButton">Help</a>
-         <a href="#" class="loginMenuButton">Change Password</a>
-      </div>
-      <!-- END Menu -->
-      <!-- Intro Header -->
-      <header class="masthead">
-         <div class="intro-body">
+        </div>
+    </nav>
+    <!-- START Menu -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html" class="createNewEntryMenuButton">Create New Entry</a>
+        <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
+        <a href="#" class="helpMenuButton">Help</a>
+        <a href="#" class="loginMenuButton">Change Password</a>
+    </div>
+    <!-- END Menu -->
+    <!-- Intro Header -->
+    <header class="masthead">
+        <div class="intro-body">
             <div class="container">
-               <div class="row">
-                  <div class="col-md-12">
-                     <h1 class="brand-heading" style="word-spacing: 22px;">Groote Schuur Hospital </h1>
-                     <label class="subHeadingTitle">Neonatal Unit</label>
-                     <h5 style="font-family: 'Julius sans one'">Data Capture & Discharge Management System</h5>
-                     <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="return test();">
-                     Create New Entry <i class="fa fa-angle-double-down animated"></i>
-                     </a>
-                  </div>
-               </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="brand-heading" style="word-spacing: 22px;">Groote Schuur Hospital </h1>
+                        <label class="subHeadingTitle">Neonatal Unit</label>
+                        <h5 style="font-family: 'Julius sans one'">Data Capture & Report Management System</h5>
+
+                        <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="return test();">
+                        
+                           Create New Entry <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
          </div>
       </header>
@@ -194,22 +202,19 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInner">Transfer Code of Center from which Infant Transferred : </label>
-                                       <div class="fixingInputAlignmentInner">
-                                          <select id="transferCodePIW" name=transferCodePIW class="form-control" style="height:32px;width:80%;">
-                                             <option disabled selected value>SELECT</option>
-                                             <option value="13240">13240 - Mowbray Maternity Hospital</option>
-                                             <option value="14994">14994 - New Somerset Hospital</option>
-                                             <option value="16011">16011 - Tygerberg Hospital</option>
-                                             <option value="8005432">8005432 - Khayelitsha District Hospital</option>
-                                             <option value="8005433">8005433 - Mitchell's Plein District Hospital</option>
-                                             <option value="8005435">8005435 - Red Cross Children's Hospital</option>
-                                             <option value="97777777">97777777 - Birth at Home or in Transit</option>
-                                             <option value="77777777">N/A</option>
-                                             <option value="99999999">Unknown</option>
-                                          </select>
-                                       </div>
+                                    <div class="form-group input-group mothersFirstNameDiv">
+                                        <label class="fixingLabelAlignment" for="mothersFirstName">Mother's First Name : </label>
+                                        <div class="fixingInputAlignment">
+                                            <input type="hidden" id="_id" name="_id">
+                                            <input type="hidden" id="_rev" name="_rev">
+                                            <input type="hidden" id="form1" name="form1">
+                                            <input type="hidden" id="form2" name="form2">
+                                            <input type="hidden" id="form3" name="form3">
+                                            <input type="hidden" id="error" name="error">
+                                            <input type="hidden" id="session" value=true>
+                                            <input id="mothersFirstName" name="mothersFirstName" onchange="validateNoNumbers('mothersFirstName')" class="form-control" type="search" placeholder="eg. Mary">
+                                        </div>
+
                                     </div>
                                  </div>
                               </div>
@@ -729,30 +734,23 @@
                                           </select>
                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="InnerPanel inner-panel-primary InitialResuscitationDiv">
-                                 <div class="inner-panel-heading">
-                                    Initial Resuscitation
-                                 </div>
-                                 <!-- START Subheadings-->
-                                 <div class="inner-panel-body">
-                                    <div class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInner">Oxygen : </label>
-                                       <div class="fixingInputAlignmentInner">
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAtInitialResuscitationYes" type="radio" name = oxygenAtInitialResuscitation value="1">
-                                          <label class="radioText" for="oxygenAtInitialResuscitationYes"> Yes</label>
-                                          </span>
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAtInitialResuscitationNo" type="radio" name = oxygenAtInitialResuscitation value="0">
-                                          <label class="radioText" for="oxygenAtInitialResuscitationNo"> No</label>
-                                          </span>
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAtInitialResuscitationUnknown" type="radio" name = oxygenAtInitialResuscitation value="9">
-                                          <label class="radioText" for="oxygenAtInitialResuscitationUnknown"> Unknown</label>
-                                          </span>
-                                       </div>
+                                    <div class="form-group input-group diedInDeliveryRoomDiv">
+                                        <label class="fixingLabelAlignment">Died in Delivery Room : </label>
+                                        <div class="fixingInputAlignment">
+                                        <span class="radioFloatLeft">
+                                                <input class="radioType" id="diedInDeliveryRoomYes" type="radio" name = diedInDeliveryRoom value="1" onclick="javascript:checkingWhatTypeOfFormToDisplay()">
+                                                <label class="radioText" for="diedInDeliveryRoomYes">Yes</label>
+                                            </span>
+
+                                        <span class="radioFloatLeft">
+                                                
+                                                        <input class="radioType" id="diedInDeliveryRoomNo" type="radio" name = diedInDeliveryRoom value="0" onclick="javascript:checkingWhatTypeOfFormToDisplay()">
+                                                    <label class="radioText" for="diedInDeliveryRoomNo">No</label>
+                                                    
+
+                                                </span>
+                                        </div>
+                                        
                                     </div>
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Face Mask Vent : </label>
@@ -4030,6 +4028,133 @@
                   </div>
                </div>
             </div>
+        </section>
+        <!-- END THIRD SECTION (TRANSFER) -->
+        
+    </section>
+    <!-- Electron JQUERY support-->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tether.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- Custom library scripts -->
+    <script type="text/javascript" src="js/grayscale.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <!-- Custom VON Team Scripts -->
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/eventListeners.js"></script>
+    <script type="text/javascript" src="js/validationScript.js"></script>
+    <script type="text/javascript" src="js/databaseReadWrite.js"></script>
+    <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
+    <script type="text/javascript" src="calendar/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.serializejson.js"></script>
+    <script type="text/javascript" src="js/autosave.js"></script>
+    <!--<script>
+        $(document).ready(function() {
+            autosave();
+    });
+    </script>-->
+</body>
+
+</html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
+      <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
+      <title>Groote Schuur Neonatal Data Management Application</title>
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.css" rel="stylesheet">
+      <!-- Custom fonts -->
+      <link href="css/font-awesome.css" rel="stylesheet">
+      <!-- Custom styles -->
+      <link href="css/grayscale.css" rel="stylesheet">
+      <link href="css/toastr.css" rel="stylesheet" />
+      <link href="css/style.css" rel="stylesheet">
+      <link href="css/fonts.css" rel="stylesheet">
+      <link href="css/hover.css" rel="stylesheet">
+      <!--Calendar CSS-->
+      <link rel="stylesheet" href="calendar/jquery-ui.css">
+   </head>
+   <body id="page-top">
+      <!-- Clear Form Dialog -->
+      <div id="dialog-confirm" title="Clear the Form?">
+         <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
+      </div>
+      <!-- Clear Form Dialog -->
+      <!-- Navigation -->
+      <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
+         <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer; display: inline">
+         Menu <i class="fa fa-bars"></i>
+         </button>
+         <div class="container">
+         </div>
+      </nav>
+      <!-- START Menu -->
+      <div id="mySidenav" class="sidenav">
+         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <a onclick="createRecord()" class="createNewEntryMenuButton">Create New Entry</a> 
+         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
+         <a href="#" class="helpMenuButton">Help</a>
+         <a href="#" class="loginMenuButton">Change Password</a>
+      </div>
+      <!-- END Menu -->
+      <!-- Intro Header -->
+      <header class="masthead">
+         <div class="intro-body">
+               <div class="row">
+                  <div class="col-md-12">
+                     <h1 class="brand-heading" style="word-spacing: 22px;">Groote Schuur Hospital </h1>
+                     <label class="subHeadingTitle">Neonatal Unit</label>
+                     <h5 style="font-family: 'Julius sans one'">Data Capture & Discharge Management System</h5>
+                     <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="return test();">
+                     Create New Entry <i class="fa fa-angle-double-down animated"></i>
+                     </a>
+                  </div>
+               </div>
+                                    <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner">Transfer Code of Center from which Infant Transferred : </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <select id="transferCodePIW" name=transferCodePIW class="form-control" style="height:32px;width:80%;">
+                                             <option disabled selected value>SELECT</option>
+                                             <option value="13240">13240 - Mowbray Maternity Hospital</option>
+                                             <option value="14994">14994 - New Somerset Hospital</option>
+                                             <option value="16011">16011 - Tygerberg Hospital</option>
+                                             <option value="8005432">8005432 - Khayelitsha District Hospital</option>
+                                             <option value="8005433">8005433 - Mitchell's Plein District Hospital</option>
+                                             <option value="8005435">8005435 - Red Cross Children's Hospital</option>
+                                             <option value="97777777">97777777 - Birth at Home or in Transit</option>
+                                             <option value="77777777">N/A</option>
+                                             <option value="99999999">Unknown</option>
+                                          </select>
+                                       </div>
+                                 </div>
+                              </div>
+                              <div class="InnerPanel inner-panel-primary InitialResuscitationDiv">
+                                 <div class="inner-panel-heading">
+                                    Initial Resuscitation
+                                 </div>
+                                 <!-- START Subheadings-->
+                                 <div class="inner-panel-body">
+                                    <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner">Oxygen : </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <span class="radioFloatLeftInner">
+                                          <input class="radioType" id="oxygenAtInitialResuscitationYes" type="radio" name = oxygenAtInitialResuscitation value="1">
+                                          <label class="radioText" for="oxygenAtInitialResuscitationYes"> Yes</label>
+                                          </span>
+                                          <span class="radioFloatLeftInner">
+                                          <input class="radioType" id="oxygenAtInitialResuscitationNo" type="radio" name = oxygenAtInitialResuscitation value="0">
+                                          <label class="radioText" for="oxygenAtInitialResuscitationNo"> No</label>
+                                          </span>
+                                          <span class="radioFloatLeftInner">
+                                          <input class="radioType" id="oxygenAtInitialResuscitationUnknown" type="radio" name = oxygenAtInitialResuscitation value="9">
+                                          <label class="radioText" for="oxygenAtInitialResuscitationUnknown"> Unknown</label>
+                                          </span>
+                                       </div>
          </section>
          <!-- END THIRD SECTION (TRANSFER) -->
       </section>
@@ -4068,4 +4193,3 @@
          });
          </script>
    </body>
-</html>
