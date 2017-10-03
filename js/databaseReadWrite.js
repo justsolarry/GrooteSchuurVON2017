@@ -220,7 +220,6 @@ function getRecordFromDatabase(medicalRecordId){
     var record = createHTTPGETConnection(medicalRecordId);
     console.log(record);
     var record = createHTTPGETConnection(medicalRecordId)
-    console.log(record);
     return record;
 }
 
@@ -395,7 +394,7 @@ function mapToNaturalLanguage(record){
         break;
     }
     addedRecord.transferCenterName = center;
-    if (record.transferCenterPIW)
+    //if (record.transferCenterPIW)
     return record;
 }
 
