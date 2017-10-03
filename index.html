@@ -41,7 +41,7 @@
       <!-- START Menu -->
       <div id="mySidenav" class="sidenav">
          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-         <a href="index.html" class="createNewEntryMenuButton">Create New Entry</a>
+         <a onclick="createRecord()" class="createNewEntryMenuButton">Create New Entry</a> 
          <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
          <a href="#" class="helpMenuButton">Help</a>
          <a href="#" class="loginMenuButton">Change Password</a>
@@ -133,7 +133,7 @@
                                     <input type="hidden" id="form2" name="form2">
                                     <input type="hidden" id="form3" name="form3">
                                     <input type="hidden" id="error" name="error">
-                                    <input type="hidden" id="session" value=true>
+                                    <input type="hidden" id="session" value="false">
                                     <input id="mothersFirstName" name="mothersFirstName" onchange="validateNoNumbers('mothersFirstName')" class="form-control" type="search" placeholder="eg. Mary">
                                  </div>
                               </div>
@@ -4050,6 +4050,7 @@
       <script type="text/javascript" src="js/toastr.js"></script>
       <!-- Custom VON Team Scripts -->
       <script type="text/javascript" src="js/config.js"></script>
+      <script type="text/javascript" src="js/autosave.js"></script> 
       <script type="text/javascript" src="js/scripts.js"></script>
       <script type="text/javascript" src="js/eventListeners.js"></script>
       <script type="text/javascript" src="js/validationScript.js"></script>
@@ -4058,10 +4059,13 @@
       <script type="text/javascript" src="calendar/jquery-ui.js"></script>
       <script type="text/javascript" src="js/jquery.serializejson.js"></script>
       <script type="text/javascript" src="js/autosave.js"></script>
-      <!--<script>
+      <script>
          $(document).ready(function() {
-             autosave();
+             if(session){ 
+               autosave(); 
+               checkForPopulation(); 
+            } 
          });
-         </script>-->
+         </script>
    </body>
 </html>
