@@ -11,12 +11,8 @@ $("#thirdPanelID input[type=search]").on('change',InputsAdditionalForm,ColourAdd
 $("#thirdPanelID input:radio").on('click',RadiosAdditionalForm,ColourAdditionalForm);
 $('#thirdPanelID select').on('change', SelectsAdditionalForm,ColourAdditionalForm);
 $('#thirdPanelID textarea').on('change', textareaAdditionalForm,ColourAdditionalForm);
-//buttons within the third panel
-/*$("addNewBacterialCodeDuringAdmissionID").on('click',RadiosAdditionalForm,ColourAdditionalForm);*/
-/*$("#bacterialCodeDuringAdmissionDiv2").on("click",$("#bacterialCodeDuringAdmission2"),testing);
-$("#bacterialCodeDuringAdmissionDiv3").on("click",$("#bacterialCodeDuringAdmission3"),testing);*/
 
-function InputsPatientForm(e){
+function InputsPatientForm(){
     var completeIncompleteCounter = 0;
     var errorCounter = 0;
     $('#firstPanelID input[type=search]:visible:enabled').each(function(i) {
@@ -34,6 +30,7 @@ function InputsPatientForm(e){
     return [completeIncompleteCounter,errorCounter];
 }
 function RadiosPatientForm(){
+//    alert("in event listener");
     /* START Check for radio buttons*/
     var radioAllChecked = false;
     var rgroups = [];
@@ -43,8 +40,7 @@ function RadiosPatientForm(){
                 if(rgroups[i] == $(el).attr('name'))
                     return true;
             rgroups.push($(el).attr('name'));
-        }
-    );
+        });
     rgroups = rgroups.length;
     console.log("1 - Number of completed groups : " +$('#firstPanelID input:radio:visible:checked').length + " number of radio groups: "+rgroups)
     if($('#firstPanelID input:radio:visible:checked').length < rgroups){
@@ -57,7 +53,7 @@ function RadiosPatientForm(){
     /* END Check for radio buttons*/
     return(radioAllChecked)
 }
-function SelectsPatientForm(e){
+function SelectsPatientForm(){
     var selectsAllSelected = true;
     $('#firstPanelID select:visible').each(function(i) {
         if( !$(this).val() ) {
@@ -92,18 +88,18 @@ function ColourPatientForm(){
     else if(errorCounter>0){
         $('#patientFormCircle').css('background-color', 'red');
         $('#error').val(true);
-        toastr.warning("Errors!");
+//        toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#patientFormCircle').css('background-color', 'orange');
         $('#form1').val(false);
         $('error').val(false);
-        toastr.warning("Fields aren't complete");
+//        toastr.warning("Fields aren't complete");
     }
     
 }
 
-function InputsGeneralForm(e){
+function InputsGeneralForm(){
     var completeIncompleteCounter = 0;
     var errorCounter = 0;
     $('#secondPanelID input[type=search]:visible:enabled').each(function(i) {
@@ -121,6 +117,7 @@ function InputsGeneralForm(e){
     return [completeIncompleteCounter,errorCounter];
 }
 function RadiosGeneralForm(){
+//    alert("in event listener");
     /* START Check for radio buttons*/
     var radioAllChecked = false;
     var rgroups = [];
@@ -144,7 +141,8 @@ function RadiosGeneralForm(){
     /* END Check for radio buttons*/
     return(radioAllChecked)
 }
-function SelectsGeneralForm(e){
+function SelectsGeneralForm(){
+    
     var selectsAllSelected = true;
     $('#secondPanelID select:visible').each(function(i) {
         if( !$(this).val() ) {
@@ -179,17 +177,17 @@ function ColourGeneralForm(){
     else if(errorCounter>0){
         $('#generalDataItemsFormCircle').css('background-color', 'red');
         $('#error').val(true);
-        toastr.warning("Errors!");
+//        toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#generalDataItemsFormCircle').css('background-color', 'orange');
         $('#form2').val(false);
         $('error').val(false);
-        toastr.warning("Fields aren't complete");
+//        toastr.warning("Fields aren't complete");
     }
 }
 
-function InputsAdditionalForm(e){
+function InputsAdditionalForm(){
     var completeIncompleteCounter = 0;
     var errorCounter = 0;
     $('#thirdPanelID input[type=search]:visible:enabled').each(function(i) {
@@ -230,7 +228,7 @@ function RadiosAdditionalForm(){
     /* END Check for radio buttons*/
     return(radioAllChecked)
 }
-function SelectsAdditionalForm(e){
+function SelectsAdditionalForm(){
     var selectsAllSelected = true;
     var counter = 0;
     $('#thirdPanelID select:visible').each(function(i) {
@@ -243,7 +241,7 @@ function SelectsAdditionalForm(e){
     return(selectsAllSelected)
     
 }
-function textareaAdditionalForm(e){
+function textareaAdditionalForm(){
     var completeIncompleteCounter = 0;
     $('#thirdPanelID textarea:visible').each(function(i) {
         if(!$(this).hasClass("addGreen") && !$(this).hasClass("addRed")){
@@ -284,12 +282,12 @@ function ColourAdditionalForm(){
     else if(errorCounter>0){
         $('#dischargeCircle').css('background-color', 'red');
         $('error').val(true);
-        toastr.warning("Errors!");
+//        toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)|| (textareaTrueFalse<lengthOfTextArea) ||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#dischargeCircle').css('background-color', 'orange');
         $('#form3').val(false);
         $('error').val(true);
-        toastr.warning("Fields aren't complete");
+//        toastr.warning("Fields aren't complete");
     }
 }
