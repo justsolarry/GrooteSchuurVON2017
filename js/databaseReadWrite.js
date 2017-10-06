@@ -1,5 +1,5 @@
-var ip = "";
-var dbName = "";
+var ip = "localhost";
+var dbName = "test1";
 function configureDB(){
     
     ip = dbConfig.ipAddress;
@@ -283,7 +283,8 @@ function createHTTPPOSTConnectionNewRecord(babyDataObject){
 function createHTTPPOSTConnection(babyDataObject){ // must change to pass in values
   var http = new XMLHttpRequest();
   //alert("BabyDataObject in POSTConnention"+JSON.stringify(babyDataObject));
-  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
+  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; 
+  console.log(url);
   var rev = {};
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");

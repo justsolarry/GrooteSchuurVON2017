@@ -247,6 +247,8 @@ function fetchData(){
                     $('#recordTable').find('input[type="checkbox"]:checked').each(function () {
                     //this is the current checkbox
                     row = $(this).parents('tr').attr('id');
+                    status = $(this).parents('tr').find('td').eq(4).text();
+                    alert(status);
                     checkedRows.push(row);
                     });
                     
