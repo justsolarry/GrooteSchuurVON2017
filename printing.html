@@ -3,31 +3,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Print Record</title> 
       
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
     <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
+      
+    <title>Groote Schuur Neonatal Data Management Application - Print</title>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Custom fonts -->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- Custom styles -->
-    <link href="css/grayscale.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/fonts.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet">
     <link href="scss/dischargeTransferStyle.scss" rel="stylesheet"/>  
     <link href="css/toastr.css" rel="stylesheet" />
-    
-    
+    <link href="css/grayscale.css" rel="stylesheet">
+      
+      <!-- Electron JQUERY support-->
+      <script>
+         if (typeof module === 'object') {
+             window.module = module;
+             module = undefined;
+         }
+      </script>
     
       
   </head>
     
-    <body>
+    <body onload="configureDB(); checkId();">
         
         <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
         <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer; display: inline">
@@ -35,13 +42,26 @@
         </button>
 
         <div class="container">
-            <a class="navbar-brand" href="#page-top">Vermont Oxford Network</a>
+            <a class="navbar-brand" href="index.html">Vermont Oxford Network</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
+                    <button style="z-index:10"  class="btn btn-default" onclick="window.print()">Print Document</button>
                 </ul>
             </div>
         </div>
     </nav>
+        
+      <!-- START Menu -->
+      <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <a onclick="createRecord()" class="createNewEntryMenuButton">Create New Entry</a> 
+         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
+<!--         <a href="#" class="helpMenuButton">Help</a>-->
+           
+    
+<!--         <a href="#" class="loginMenuButton">Change Password</a>-->
+      </div>
+      <!-- END Menu -->
         
     <div id="dischargeTransferHTMLPrint">
         
@@ -114,15 +134,14 @@
         <p>Meds:<input class="form-control" type="text" placeholder="_____________________"></p>
         <p>Feeds:<input class="form-control" type="text" placeholder="____________________"></p>
         <br>
-        <p>Follow up appointments: </p>
+        <p>Follow up appointments: <span id="followUpAppointmentPrint"></span></p>
         <p>Done by: Dr</p>
         <br>
         
     </div>
     <div id="editor"></div>
         <div>
-    <button style="z-index:10"  class="btn btn-default" onclick="window.print()">Print Document</button></div>
-<!--        <button class="btn btn-default" onclick="savePdf()">Generate PDF</button>-->
+    <button style="z-index:10;margin:10px auto;"  class="btn btn-default" onclick="window.print()">Print Document</button></div>
         
         <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script type="text/javascript" src="js/config.js"></script>
@@ -139,8 +158,6 @@
     <script type="text/javascript" src="js/toastr.js"></script>
     <!-- Custom VON Team Scripts -->
     <script type="text/javascript" src="js/scripts.js"></script>
-    
 
-        
     </body>
 </html>
