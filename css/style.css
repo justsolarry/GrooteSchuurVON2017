@@ -1,3 +1,8 @@
+.stop-scrolling{
+    height:100%;
+    overflow:hidden;
+}
+
 /*----------------------------------------------------*/
 /*Temporary navbar container fix*/
 .navbar-toggler {

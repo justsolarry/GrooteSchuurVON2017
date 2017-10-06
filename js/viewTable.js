@@ -69,17 +69,23 @@ function fetchData(){
             {
                     "render":function(data, type, row, meta){
                         
-                        var state = row.doc.form1 && row.doc.form2 && row.doc.form3 && !row.doc.error;
+                        var state = row.doc.formComplete;
+                        var state2 = row.doc.form1 && row.doc.form2 && row.doc.form3;
+                        var error = row.doc.error;
                         
-                        if(row.error){
-                            return "Errors"
+                        console.log(error+" "+typeof(error));
+                        
+                        
+                        if(error == "true"){
+                           return "Error"
                         }
-                        else if(!state){
-                            return "Incomplete"
-                        }
-                        else if(state){
+                        if(state || state2){
                             return "Complete"
                         }
+                        else{
+                            return "Incomplete"
+                        }
+                        
                     }
             },
             {"data": "doc.dateOfBirth", 
@@ -188,7 +194,7 @@ function fetchData(){
                             
                       }  
             },
-                      {"data":"doc.abnormalHeadUltrasound",
+            {"data":"doc.abnormalHeadUltrasound",
                 render: function (data, type, row) {
                             if(data == "" || data == null){
                                 return "-"
@@ -243,16 +249,31 @@ function fetchData(){
                 className:'submit',
                 action: function () {
                     var checkedRows = [];
-    
+                    var statuses = [];
+                    var allComplete = true;
+                    
                     $('#recordTable').find('input[type="checkbox"]:checked').each(function () {
                     //this is the current checkbox
                     row = $(this).parents('tr').attr('id');
-                    status = $(this).parents('tr').find('td').eq(4).text();
-                    alert(status);
+                    status = $(this).parents('tr').find('td').eq(3).text();
                     checkedRows.push(row);
+                    statuses.push(status);
                     });
                     
-                    sendDataToVon([10]); 
+                    for(i=0; i<statuses.length; i++){
+                        if(statuses[i] == "Incomplete" || statuses[i]=="Error"){
+                           allComplete = false;
+                        }
+                    }
+                    download("Von.xml",sendDataToVon(checkedRows)); 
+/*                    
+                    if(allComplete){
+                        sendDataToVon(checkedRows); 
+                    }  
+                    else{
+                        toastr.error("You cannot submit incomplete or erraneous records");
+                    }*/
+                    
                 }
             },
             {
@@ -285,7 +306,6 @@ function CheckRowClick(){
             //var checkbox = $(this).parents('tr').attr()
         });   
 }
-
 
 
 

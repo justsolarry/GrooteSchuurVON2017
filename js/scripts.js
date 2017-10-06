@@ -340,6 +340,14 @@ function successToastr(){
     }
     
 }
+
+function formComplete(){     
+    if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
+       toastr.success("All Forms are complete!")
+        $('#formComplete').val(true)
+       }
+}
+
 function successReload(){
     
 }

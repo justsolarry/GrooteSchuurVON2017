@@ -1,18 +1,27 @@
-//Notes: Needs testing (how is rvd stored? etc) 
-//Day of ventilation diagnosis length
-//HIE
 
+function printForm(id){    
+//    if (document.getElementById('formComplete').value)
+//        {
+            window.location = "printing.html?id="+id;
+//        } else {
+//            toastr.error("Form incomplete");
+//        }
+}
 
-var babyData = getRecordFromDatabase(10);
-    //
-    //getRecordFromDatabase(9);
-    //
+function checkId(){
+    var url = window.location.href;
+    if (url.includes("?")) {
+       _url = new URL(url);
+       var id = _url.searchParams.get("id");
+        
+       populatePrintingFields(id);
+    
+    } 
 
-//var input = document.createElement("input");
-//input.type = "text";
-//input.name = "member";
-//var inputBlock = '<input class="form-control" type="text" placeholder=""></p>';
-//document.getElementById("sexOfInfantPrint").appendChild(input);
+}
+
+function populatePrintingFields(id){
+var babyData = getRecordFromDatabase(id);
 
 var dischargeOrTransferedText = (babyData.initialDisposition == 2) ? "Transfer" : "Discharge";
 console.log(dischargeOrTransferedText);
@@ -32,7 +41,7 @@ document.getElementById("apgarScoresOneMinPrint").innerHTML = babyData.apgarScor
 document.getElementById("apgarScoresFiveMinPrint").innerHTML = babyData.apgarScoresFiveMin;
 document.getElementById("birthWeightInGramsPrint").innerHTML = babyData.birthWeightInGrams;
 document.getElementById("headCircumferenceAtBirthPrint").innerHTML = babyData.headCircumferenceAtBirth + "cm";
-var readableGestationalAge = babyData.gestationalAgeInWeeks + " weeks and " + babyData.gestationalDays + " days";
+var readableGestationalAge = babyData.gestationalAgeInWeeks + " weeks and " + babyData.gestionalDays + " days";
 document.getElementById("gestationalAgePrint").innerHTML = readableGestationalAge;
 //Header End
 
@@ -43,7 +52,7 @@ var prematureCategory = (babyData.gestationalAgeInWeeks < 28) ? "Extremely Prema
 document.getElementById("prematureCategoryPrint").innerHTML = "• " + prematureCategory + " (" + readableGestationalAge + ")";
 var multipleGestationIdentifier = (babyData.twinAB == 1) ? "Twin A" : (babyData.twinAB == 2) ? "Twin B" : (babyData.tripletABC == 1) ? "Triplet A" : (babyData.tripletABC == 2) ? "Triplet B" : (babyData.tripletABC == 3) ? "Triplet C": (babyData.quadrupletABCD == 1) ? "Quadruplet A" : (babyData.quadrupletABCD == 2) ? "Quadruplet B" : (babyData.quadrupletABCD == 3) ? "Quadruplet C" : (babyData.quadrupletABCD == 4) ? "Quadruplet D" : "";
 document.getElementById("twinsOrMorePrint").innerHTML = (babyData.multipleGestation == 1) ? " • Multiple Pregnancy: " + multipleGestationIdentifier : "";
-document.getElementById("rvdValuePrint").innerHTML = (babyData.RVDYes == 1) ? (babyData.babyPCRPositive == 1) ? " • RVDe and PCR+" : " • RVD+ and PCR-" : ""; 
+document.getElementById("rvdValuePrint").innerHTML = (babyData.RVD == 1) ? (babyData.babyPCR == 1) ? " • RVDe and PCR+" : " • RVD+ and PCR-" : ""; 
 document.getElementById("surfactantAtAnyTimePrint").innerHTML = (babyData.surfactantAtAnyTime == 1) ? " • RDS requiring surfactant" : "";
 var typeOfOxygenSupport = (babyData.conventionalAt36Weeks == 1) ? "Conventional" : (babyData.highFrequencyVentilationAt36Weeks == 1) ? "High Frequency Ventilation" : (babyData.highFlowNasalCannulaAt36Weeks == 1) ? "High Flow Nasal Cannula" : (babyData.nasalIMVAt36Weeks == 1) ? "Nasal IMV" : (babyData.nasalCpapAt36Weeks == 1) ? "Nasal CPAP" : "";
 document.getElementById("cldPrint").innerHTML = (babyData.oxygenAt36Weeks == 1) ? " • CLD" : "";
@@ -81,3 +90,5 @@ document.getElementById("weightAtDischargePrint").innerHTML = "Weight: " + babyD
 document.getElementById("headCircumferenceAtDischargePrint").innerHTML = "HC: " + babyData.headCircumferenceInitialDisposition + "cm";
 //Footer Discharge Info End
 
+document.getElementById("followUpAppointmentPrint").innerHTML = babyData.appointmentLocation + " " + babyData.appointmentDate;
+}

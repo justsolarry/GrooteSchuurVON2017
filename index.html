@@ -19,7 +19,7 @@
       <!--Calendar CSS-->
       <link rel="stylesheet" href="calendar/jquery-ui.css">
    </head>
-   <body id="page-top">
+   <body id="page-top" class="stop-scrolling" onload="configureDB()">
       <!-- Clear Form Dialog -->
       <div id="dialog-confirm" title="Clear the Form?">
          <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
@@ -36,25 +36,27 @@
                <ul class="navbar-nav ml-auto">
                </ul>
             </div>
-        </div>
-    </nav>
-    <!-- START Menu -->
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a onclick="createRecord()" class="createNewEntryMenuButton">Create New Entry</a>
-        <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
-    </div>
-    <!-- END Menu -->
-    <!-- Intro Header -->
-    <header class="masthead">
-        <div class="intro-body">
+         </div>
+      </nav>
+      <!-- START Menu -->
+      <div id="mySidenav" class="sidenav">
+         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <a onclick="createRecord()" class="createNewEntryMenuButton">Create New Entry</a> 
+         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
+<!--         <a href="#" class="helpMenuButton">Help</a>-->
+<!--         <a href="#" class="loginMenuButton">Change Password</a>-->
+      </div>
+      <!-- END Menu -->
+      <!-- Intro Header -->
+      <header class="masthead">
+         <div class="intro-body">
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
                      <h1 class="brand-heading" style="word-spacing: 22px;">Groote Schuur Hospital </h1>
                      <label class="subHeadingTitle">Neonatal Unit</label>
                      <h5 style="font-family: 'Julius sans one'">Data Capture & Discharge Management System</h5>
-                     <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="createRecord();">
+                     <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="createRecordInDatabase()">
                      Create New Entry <i class="fa fa-angle-double-down animated"></i>
                      </a>
                   </div>
@@ -98,7 +100,7 @@
                            </ul>
                            <!-- Command buttons at the bottom of the progress bar forms -->
                            <a id="clearFormButton" href="javascript:void(0)" onclick="clearFormDialog();" class="btn btn-default btn-lg" style="position:relative; width:80%; margin-bottom: 15px; bottom: 60px; font-size: 1em;">Clear Form</a>
-                           <a id="PrintDischargeButton" href="" class="btn btn-default btn-lg" style="position:relative; width:80%; bottom: 60px; font-size: 1em;">Print Discharge Form</a>
+                           <a id="PrintDischargeButton" href="javascript:void(0)" onclick="printForm(document.getElementById('_id').value);" class="btn btn-default btn-lg" style="position:relative; width:80%; bottom: 60px; font-size: 1em;">Print Discharge Form</a>
                         </div>
                      </div>
                      <!-- ***************  Side bar *************** -->
@@ -118,7 +120,7 @@
                                  <label class="fixingLabelAlignment" for="birthWeightInGrams">Birth Weight : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="addingUnits unitsGrams">
-                                    <input id="birthWeightInGrams" class="form-control" onchange="validateBirthweight();checkingWhatTypeOfFormToDisplay();" type="search" placeholder="eg. 1500" maxlength="4">
+                                    <input id="birthWeightInGrams" name="birthWeightInGrams" class="form-control" onchange="validateBirthweight();checkingWhatTypeOfFormToDisplay();" type="search" placeholder="eg. 1500" maxlength="4">
                                     </span>
                                  </div>
                               </div>
@@ -127,6 +129,7 @@
                                  <div class="fixingInputAlignment">
                                     <input type="hidden" id="_id" name="_id">
                                     <input type="hidden" id="_rev" name="_rev">
+                                    <input type="hidden" id="formComplete" name="formComplete">
                                     <input type="hidden" id="form1" name="form1">
                                     <input type="hidden" id="form2" name="form2">
                                     <input type="hidden" id="form3" name="form3">
@@ -4047,6 +4050,7 @@
       <script type="text/javascript" src="js/grayscale.js"></script>
       <script type="text/javascript" src="js/toastr.js"></script>
       <!-- Custom VON Team Scripts -->
+       <script type="text/javascript" src ="js/dischargeFormPopulation.js"></script>
       <script type="text/javascript" src="js/config.js"></script>
       <script type="text/javascript" src="js/autosave.js"></script> 
       <script type="text/javascript" src="js/scripts.js"></script>

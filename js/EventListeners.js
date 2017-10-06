@@ -92,7 +92,6 @@ function ColourPatientForm(){
     }
     else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#patientFormCircle').css('background-color', 'orange');
-        $('#form1').val(false);
         $('#error').val(false);
         //toastr.warning("Fields aren't complete");
     }
@@ -181,7 +180,6 @@ function ColourGeneralForm(){
     }
     else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#generalDataItemsFormCircle').css('background-color', 'orange');
-        $('#form2').val(false);
         $('#error').val(false);
         //toastr.warning("Fields aren't complete");
     }
@@ -286,7 +284,6 @@ function ColourAdditionalForm(){
     }
     else if((completeIncompleteCounter<lengthOfInput)|| (textareaTrueFalse<lengthOfTextArea) ||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#dischargeCircle').css('background-color', 'orange');
-        $('#form3').val(false);
         $('#error').val(true);
         //toastr.warning("Fields aren't complete");
     }

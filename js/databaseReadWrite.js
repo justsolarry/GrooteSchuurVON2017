@@ -1,5 +1,5 @@
-var ip = "localhost";
-var dbName = "test1";
+var ip = "";
+var dbName = "";
 function configureDB(){
     
     ip = dbConfig.ipAddress;
@@ -165,8 +165,8 @@ function repopulateForm(babyData){
                         if(domElements[index] != null){
                             for(i=0; i<domElements.length; i++){
                                 if(domElements[i].value == index){
-                                  eventFire(domElements[i], 'click')
-                                   //   domElements[i].checked = true;
+                                  //eventFire(domElements[i], 'click')
+                                  domElements[i].checked = true;
                                 }
                             }
                         }   
@@ -189,7 +189,9 @@ function checkForPopulation(){
     if (url.includes("?")) {
        _url = new URL(url);
        var id = _url.searchParams.get("id");
+        $('body').removeClass('stop-scrolling');
        fetchRowData(id);
+    
         //alert("There are params"+id)
     } 
     else {}
@@ -207,6 +209,7 @@ var tempBabyData = {idMisMatch: true};
 }*/
 
 function createRecordInDatabase(){
+    $('body').removeClass('stop-scrolling');
     var medicalRecordObject = {};
     var maxId = createHTTPGETConnectionMaxId();
     maxId = maxId.rows[0].value;
@@ -220,6 +223,7 @@ function getRecordFromDatabase(medicalRecordId){
     var record = createHTTPGETConnection(medicalRecordId);
     console.log(record);
     var record = createHTTPGETConnection(medicalRecordId)
+    console.log(record);
     return record;
 }
 
@@ -270,7 +274,9 @@ function createHTTPPOSTConnectionNewRecord(babyDataObject){
   http.onreadystatechange = function() {
     if(http.status === 204) {
         //alert("In redirect");
-        //window.location = "index.html?id="+id+"#PatientFormID";    
+        window.location = "index.html?id="+id+"#PatientFormID";    
+    }else{
+        toastr.error("Database not connected.");
     }
   }
   
@@ -283,8 +289,7 @@ function createHTTPPOSTConnectionNewRecord(babyDataObject){
 function createHTTPPOSTConnection(babyDataObject){ // must change to pass in values
   var http = new XMLHttpRequest();
   //alert("BabyDataObject in POSTConnention"+JSON.stringify(babyDataObject));
-  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; 
-  console.log(url);
+  var url = "http://"+ip+":5984/"+dbName+"/"+babyDataObject._id; //server will change //test server https://www.posttestserver.com/ 
   var rev = {};
   http.open("PUT", url, true);
   http.setRequestHeader("Content-type", "application/json");
@@ -395,7 +400,6 @@ function mapToNaturalLanguage(record){
         break;
     }
     addedRecord.transferCenterName = center;
-    //if (record.transferCenterPIW)
     return record;
 }
 

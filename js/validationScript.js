@@ -190,7 +190,7 @@ function validatePatientMedicalRecordNumber(){
     }
     else{
        if((MedicalRecordNumber.length)!=9){
-        toastr.error('Medical Record Number - Must have 8 numbers');
+        toastr.error('Medical Record Number - Must have 9 numbers');
         $('#patientMedicalRecordNumber').addClass('addRed')
            $('#patientMedicalRecordNumber').removeClass('addGreen')
         }

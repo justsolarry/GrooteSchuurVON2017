@@ -1,6 +1,3 @@
-//Notes:    Must update database to reflect the records state of published
-            //Delete 2nd method
-
 function sendDataToVon(listOfMedicalRecordIds){
     var numberOfMedicalRecordsToTransfer = listOfMedicalRecordIds.length;
     var entireXmlDocument = "";
@@ -10,5 +7,5 @@ function sendDataToVon(listOfMedicalRecordIds){
         var xmlRecord = create2018Xml(jsonRecord);
         entireXmlDocument += xmlRecord;
     }
-    return entireXmlDocument;
+    return '<?xml version="1.0"?>\n' +  entireXmlDocument;
 }
