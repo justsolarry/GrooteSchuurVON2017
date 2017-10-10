@@ -19,7 +19,7 @@
       <!--Calendar CSS-->
       <link rel="stylesheet" href="calendar/jquery-ui.css">
    </head>
-   <body id="page-top" class="stop-scrolling" onload="configureDB()">
+   <body id="page-top" onload="configureDB()">
       <!-- Clear Form Dialog -->
       <div id="dialog-confirm" title="Clear the Form?">
          <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
@@ -56,7 +56,7 @@
                      <h1 class="brand-heading" style="word-spacing: 22px;">Groote Schuur Hospital </h1>
                      <label class="subHeadingTitle">Neonatal Unit</label>
                      <h5 style="font-family: 'Julius sans one'">Data Capture & Discharge Management System</h5>
-                     <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="createRecordInDatabase()">
+                     <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="createRecord()">
                      Create New Entry <i class="fa fa-angle-double-down animated"></i>
                      </a>
                   </div>
