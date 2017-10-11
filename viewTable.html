@@ -7,13 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
     <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
-
     
-    <title>Groote Schuur Neonatal Data Management Application - View Records</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    
+    <title>Groote Schuur Neonatal data management application</title>
     
      <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="js/datatables/datatables.min.css"/>
+    
+    <!-- Bootstrap core CSS -->
+    
     <!-- Custom fonts -->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- Custom styles -->
@@ -104,8 +109,7 @@
     <!-- START Menu -->
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="javascript:void(0)" onclick="createRecordInDatabase()" class="createNewEntryMenuButton">Create New Entry</a>  
-<!--        onclick="createRecordInDatabase()"-->
+        <a href="javascript:void(0)" onclick="createRecordInDatabase()" class="createNewEntryMenuButton">Create New Entry</a>
         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
 <!--    <a href="#" class="helpMenuButton">Help</a>-->
     </div>
@@ -135,7 +139,6 @@
     <script type="text/javascript"> 
     $(document).ready( function () {
     fetchData();  
-    checkRowClick();
     });    
     </script>
     
@@ -146,29 +149,19 @@
     pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     pom.setAttribute('download', filename);
 
-    if (document.createEvent) {
-        var event = document.createEvent('MouseEvents');
-        event.initEvent('click', true, true);
-        pom.dispatchEvent(event);
-    }
-    else {
-        pom.click();
-    }
-}
-          
-      </script>
-
     <script src="js/saveVONXmlFile.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script type="text/javascript" src="js/tether.js"></script>
     <script type="text/javascript" src="js/jquery.easing.js"></script>
     <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <!-- Custom library scripts -->
     <script type="text/javascript" src="js/grayscale.js"></script>
     <script type="text/javascript" src="js/toastr.js"></script>
-
+    
+    <script type="text/javascript" src="js/datatables/datatables.min.js"></script>
+    
+    <script src="js/grayscale.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <script type="text/javascript" src="js/eventListeners.js"></script>
     <script type="text/javascript" src="js/config.js"></script>

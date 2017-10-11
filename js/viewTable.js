@@ -34,7 +34,10 @@ function fetchData(){
         //"scrollCollapse": "true",
         "ajax": {"url":_url,
                  "dataSrc": "rows", 
-                    "crossDomain": true
+                    "crossDomain": true,
+                     xhrFields: {
+                       withCredentials: true
+                    },
                 },
         "rowId": "doc._id",
         
@@ -260,20 +263,10 @@ function fetchData(){
                     statuses.push(status);
                     });
                     
-                    for(i=0; i<statuses.length; i++){
-                        if(statuses[i] == "Incomplete" || statuses[i]=="Error"){
-                           allComplete = false;
-                        }
-                    }
-                    download("Von.xml",sendDataToVon(checkedRows)); 
-/*                    
-                    if(allComplete){
-                        sendDataToVon(checkedRows); 
-                    }  
-                    else{
-                        toastr.error("You cannot submit incomplete or erraneous records");
-                    }*/
+                    status = $(this).parents('tr').children(":third").text();
+                    alert(status);
                     
+                    sendDataToVon(checkedRows); 
                 }
             },
             {
@@ -285,6 +278,7 @@ function fetchData(){
                 $('#recordTable').find('input[type="checkbox"]:checked').each(function () {
                 //this is the current checkbox
                 row = $(this).parents('tr').attr('id');
+                
                 checkedRows.push(row);
                 });
                 var deleteChosenRecords = confirm("You are about to delete "+checkedRows.length+" record(s). Are you sure you want to continue?");

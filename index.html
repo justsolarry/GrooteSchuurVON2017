@@ -19,7 +19,8 @@
       <!--Calendar CSS-->
       <link rel="stylesheet" href="calendar/jquery-ui.css">
    </head>
-   <body id="page-top" class="stop-scrolling" onload="configureDB()">
+    <!--class="stop-scrolling"-->
+   <body id="page-top" onload="configureDB()">
       <!-- Clear Form Dialog -->
       <div id="dialog-confirm" title="Clear the Form?">
          <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
@@ -56,7 +57,7 @@
                      <h1 class="brand-heading" style="word-spacing: 22px;">Groote Schuur Hospital </h1>
                      <label class="subHeadingTitle">Neonatal Unit</label>
                      <h5 style="font-family: 'Julius sans one'">Data Capture & Discharge Management System</h5>
-                     <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="createRecordInDatabase()">
+                     <a href="#" class="btn btn-default page-scroll btn-lg display: inline-block" id="createNewEntryButton" style="margin-top: 70px;" onclick="createRecord()">
                      Create New Entry <i class="fa fa-angle-double-down animated"></i>
                      </a>
                   </div>
@@ -95,7 +96,7 @@
                               </li>
                               <li id="listItem3" class="nav-item">
                                  <a id="dischargeCircle" class="firstATag" href="#TransferFormID"></a>
-                                 <a id="dischargeButtonID" class="nav-link dischargeAndTransferProgressBar" href="#TransferFormID">Additional Info</a>
+                                 <a id="dischargeButtonID" class="nav-link dischargeAndTransferProgressBar" href="#TransferFormID" >Additional Info</a>
                               </li>
                            </ul>
                            <!-- Command buttons at the bottom of the progress bar forms -->
@@ -176,11 +177,11 @@
                                  <label class="fixingLabelAlignment">Location of Birth :  </label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input id="locationOFBirthInborn" type="radio" onclick="javascript:inbornOutbornCheck();" name = outbornBirth value="0">
+                                    <input id="locationOFBirthInborn" type="radio" onchange="javascript:inbornOutbornCheck();" name = outbornBirth value="0">
                                     <label class="radioText" for="locationOFBirthInborn">Inborn</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input id="locationOFBirthOutborn" type="radio" onclick="javascript:inbornOutbornCheck();" name = outbornBirth value="1">
+                                    <input id="locationOFBirthOutborn" type="radio" onchange="javascript:inbornOutbornCheck();" name = outbornBirth value="1">
                                     <label class="radioText" for="locationOFBirthOutborn">Outborn</label>
                                     </span>
                                  </div>
@@ -199,7 +200,7 @@
                                        <label class="fixingLabelAlignmentInner">Transfer Code of Center from which Infant Transferred : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="transferCodePIW" name=transferCodePIW class="form-control" style="height:32px;width:80%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="13240">13240 - Mowbray Maternity Hospital</option>
                                              <option value="14994">14994 - New Somerset Hospital</option>
                                              <option value="16011">16011 - Tygerberg Hospital</option>
@@ -218,11 +219,11 @@
                                  <label class="fixingLabelAlignment">Died in Delivery Room : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="diedInDeliveryRoomYes" type="radio" name = diedInDeliveryRoom value="1" onclick="javascript:checkingWhatTypeOfFormToDisplay()">
+                                    <input class="radioType" id="diedInDeliveryRoomYes" type="radio" name = diedInDeliveryRoom value="1" onchange="javascript:checkingWhatTypeOfFormToDisplay()">
                                     <label class="radioText" for="diedInDeliveryRoomYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="diedInDeliveryRoomNo" type="radio" name = diedInDeliveryRoom value="0" onclick="javascript:checkingWhatTypeOfFormToDisplay()">
+                                    <input class="radioType" id="diedInDeliveryRoomNo" type="radio" name = diedInDeliveryRoom value="0" onchange="javascript:checkingWhatTypeOfFormToDisplay()">
                                     <label class="radioText" for="diedInDeliveryRoomNo">No</label>
                                     </span>
                                  </div>
@@ -279,7 +280,7 @@
                                  <label class="fixingLabelAlignment" for="gestationalAgeInWeeks">Gestational Age (Weeks) : </label>
                                  <div class="fixingInputAlignment">
                                     <select id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" onchange="javascript:checkGestationalAgeInWeeks();countingDaysInWeeksForRespiratory();" style="height:32px;width:40%;">
-                                       <option disabled selected value>SELECT</option>
+                                       <option disabled selected value></option>
                                        <option value="99">Unknown</option>
                                     </select>
                                  </div>
@@ -288,7 +289,7 @@
                                  <label class="fixingLabelAlignment">Gestational Age (Days) :</label>
                                  <div class="fixingInputAlignment">
                                     <select id="gestionalDays" name=gestionalDays class="form-control" onchange="countingDaysInWeeksForRespiratory();" style="height:32px;width:40%;">
-                                       <option disabled selected value>SELECT</option>
+                                       <option disabled selected value></option>
                                        <option value="0">0 Days</option>
                                        <option value="1">1 Day</option>
                                        <option value="2">2 Days</option>
@@ -303,7 +304,7 @@
                                  <label class="fixingLabelAlignment" for="headCircumference">Head Circumference : </label>
                                  <div class="fixingInputAlignment">
                                     <select id="headCircumference" name="headCircumferenceAtBirth" class="form-control" style="height:32px;width:40%;">
-                                       <option disabled selected value>SELECT</option>
+                                       <option disabled selected value></option>
                                        <option value="999.9">Unknown</option>
                                     </select>
                                  </div>
@@ -312,7 +313,7 @@
                                  <label class="fixingLabelAlignment">Race of Mother : </label>
                                  <div class="fixingInputAlignment">
                                     <select id="raceOfMother" name=raceOfMother class="form-control" style="height:32px;width:40%;">
-                                       <option disabled selected value>SELECT</option>
+                                       <option disabled selected value></option>
                                        <option value="1">Black</option>
                                        <option value="7">Coloured</option>
                                        <option value="3">White</option>
@@ -508,7 +509,7 @@
                                  <label class="fixingLabelAlignment">Number of Infants Delivered : </label>
                                  <div class="fixingInputAlignment">
                                     <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class="form-control" onchange="javascript:numberOfInfantsDeliveredCheck();" style="height:32px;width:30%;">
-                                       <option disabled selected value="00">SELECT</option>
+                                       <option disabled selected value="00"></option>
                                        <option value="1">1</option>
                                        <option value="2">2</option>
                                        <option value="3">3</option>
@@ -528,7 +529,7 @@
                                  <label class="fixingLabelAlignment">APGAR Scores @ 1 minute : </label>
                                  <div class="fixingInputAlignment">
                                     <select id="apgarScoresOneMin" name="apgarScoresOneMin" class=" ddList centerSelect form-control" style="height:32px;width:30%;">
-                                       <option disabled selected value>SELECT</option>
+                                       <option disabled selected value></option>
                                        <option value="0">0</option>
                                        <option value="1">1</option>
                                        <option value="2">2</option>
@@ -549,7 +550,7 @@
                                  <label class="fixingLabelAlignment">APGAR Scores @ 5 minutes : </label>
                                  <div class="fixingInputAlignment">
                                     <select id="apgarScoresFiveMin" name="apgarScoresFiveMin" class=" ddList centerSelect form-control" style="height:32px;width:30%;">
-                                       <option disabled selected value>SELECT</option>
+                                       <option disabled selected value></option>
                                        <option value="0">0</option>
                                        <option value="1">1</option>
                                        <option value="2">2</option>
@@ -570,19 +571,19 @@
                                  <label class="fixingLabelAlignment">Temperature Measured within the 1st Hour after Admission to your NICU : </label>
                                  <div class="fixingInputAlignment" style="height:64px;">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="temperatureMeasuredWithinFirstHourYes" onclick="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="1">
+                                    <input class="radioType" id="temperatureMeasuredWithinFirstHourYes" onchange="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="1">
                                     <label class="radioText" for="temperatureMeasuredWithinFirstHourYes"> Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="temperatureMeasuredWithinFirstHourNo" onclick="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="0">
+                                    <input class="radioType" id="temperatureMeasuredWithinFirstHourNo" onchange="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="0">
                                     <label class="radioText" for="temperatureMeasuredWithinFirstHourNo"> No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="temperatureMeasuredWithinFirstHourNA" onclick="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="7">
+                                    <input class="radioType" id="temperatureMeasuredWithinFirstHourNA" onchange="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="7">
                                     <label class="radioText" for="temperatureMeasuredWithinFirstHourNA"> N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="temperatureMeasuredWithinFirstHourUnknown" onclick="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="9">
+                                    <input class="radioType" id="temperatureMeasuredWithinFirstHourUnknown" onchange="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="9">
                                     <label class="radioText" for="temperatureMeasuredWithinFirstHourUnknown"> Unknown</label>
                                     </span>
                                  </div>
@@ -593,7 +594,7 @@
                                        <label class="fixingLabelAlignmentInner">Temperature : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="temperatureAdmission" name="temperatureAdmission" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="777.7">N/A</option>
                                              <option value="999.9">Unknown</option>
                                           </select>
@@ -605,15 +606,15 @@
                                  <label class="fixingLabelAlignment">Congenital Infection : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="congenitalInfectionYes" onclick="javascript:congenitalInfectionCheck();" type="radio" name = congenitalInfection value="1"> 
+                                    <input class="radioType" id="congenitalInfectionYes" onchange="javascript:congenitalInfectionCheck();" type="radio" name = congenitalInfection value="1"> 
                                     <label class="radioText" for="congenitalInfectionYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="congenitalInfectionNo" onclick="javascript:congenitalInfectionCheck();"  type="radio" name = congenitalInfection value="0"> 
+                                    <input class="radioType" id="congenitalInfectionNo" onchange="javascript:congenitalInfectionCheck();"  type="radio" name = congenitalInfection value="0"> 
                                     <label class="radioText" for="congenitalInfectionNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="congenitalInfectionUnknown" onclick="javascript:congenitalInfectionCheck();" type="radio" name = congenitalInfection value="9"> 
+                                    <input class="radioType" id="congenitalInfectionUnknown" onchange="javascript:congenitalInfectionCheck();" type="radio" name = congenitalInfection value="9"> 
                                     <label class="radioText" for="congenitalInfectionUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -624,7 +625,7 @@
                                        <label class="fixingLabelAlignmentInner">Number of Codes : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="numberOfCongenitalInfections" name="numberOfCongenitalInfections" class="form-control" onchange="javascript:numberOfCongenitalInfectionsCheck();" style="height:32px;width:30%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="1">1</option>
                                              <option value="2">2</option>
                                              <option value="3">3</option>
@@ -635,7 +636,7 @@
                                        <label class="fixingLabelAlignmentInner">Congenital Infection code 1 : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="congenitalCode1" name="congenitalCode1" class="form-control" style="height:32px;width:70%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="101">101 - Toxoplasmosis (Toxoplasma gondii)</option>
                                              <option value="102">102 - Rubella virus</option>
                                              <option value="103">103 - Syphilis (Treponema pallidum)</option>
@@ -653,7 +654,7 @@
                                        <label class="fixingLabelAlignmentInner">Congenital Infection code 2 : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="congenitalCode2" name="congenitalCode2" class="form-control" style="height:32px;width:70%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="101">101 - Toxoplasmosis (Toxoplasma gondii)</option>
                                              <option value="102">102 - Rubella virus</option>
                                              <option value="103">103 - Syphilis (Treponema pallidum)</option>
@@ -671,7 +672,7 @@
                                        <label class="fixingLabelAlignmentInner">Congenital Infection code 3 : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="congenitalCode3" name="congenitalCode3" class="form-control" style="height:32px;width:70%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="101">101 - Toxoplasmosis (Toxoplasma gondii)</option>
                                              <option value="102">102 - Rubella virus</option>
                                              <option value="103">103 - Syphilis (Treponema pallidum)</option>
@@ -691,15 +692,15 @@
                                  <label class="fixingLabelAlignment">Surfactant at Any Time : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="surfactantAtAnyTimeYes" onclick="javascript:surfactantAtAnyTimeCheck();" type="radio" name = surfactantAtAnyTime value="1"> 
+                                    <input class="radioType" id="surfactantAtAnyTimeYes" onchange="javascript:surfactantAtAnyTimeCheck();" type="radio" name = surfactantAtAnyTime value="1"> 
                                     <label class="radioText" for="surfactantAtAnyTimeYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="surfactantAtAnyTimeNo" onclick="javascript:surfactantAtAnyTimeCheck();"  type="radio" name = surfactantAtAnyTime value="0"> 
+                                    <input class="radioType" id="surfactantAtAnyTimeNo" onchange="javascript:surfactantAtAnyTimeCheck();"  type="radio" name = surfactantAtAnyTime value="0"> 
                                     <label class="radioText" for="surfactantAtAnyTimeNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="surfactantAtAnyTimeUnknown" onclick="javascript:surfactantAtAnyTimeCheck();" type="radio" name = surfactantAtAnyTime value="9"> 
+                                    <input class="radioType" id="surfactantAtAnyTimeUnknown" onchange="javascript:surfactantAtAnyTimeCheck();" type="radio" name = surfactantAtAnyTime value="9"> 
                                     <label class="radioText" for="surfactantAtAnyTimeUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -710,7 +711,7 @@
                                        <label class="fixingLabelAlignmentInner">Hours : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="ageAtFirstSurfactantHours" name="ageAtFirstSurfactantHours" class="form-control" style="height:32px;width:20%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
                                        </div>
@@ -719,7 +720,7 @@
                                        <label class="fixingLabelAlignmentInner">Minutes : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="ageAtFirstSurfactantMinutes" name="ageAtFirstSurfactantMinutes" class="form-control" style="height:32px;width:20%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="0">0</option>
                                              <option value="15">15</option>
                                              <option value="30">30</option>
@@ -776,7 +777,7 @@
                                        <label class="fixingLabelAlignmentInner">Endotracheal Tube Vent  : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" onclick="javascript:endotrachealTubeVentCheck();" id="endotrachealTubeVentYes" type="radio" name = endotrachealTubeVent value="1">
+                                          <input class="radioType" onchange="javascript:endotrachealTubeVentCheck();" id="endotrachealTubeVentYes" type="radio" name = endotrachealTubeVent value="1">
                                           <label class="radioText" for="endotrachealTubeVentYes"> Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
@@ -848,19 +849,19 @@
                                        <label class="fixingLabelAlignmentInner">Bacterial Sepsis and/or Meningitis on or before Day 3:</label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="bacterialSepsisBeforeYes" onclick="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="1">
+                                          <input class="radioType" id="bacterialSepsisBeforeYes" onchange="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="1">
                                           <label class="radioText" for="bacterialSepsisBeforeYes"> Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="bacterialSepsisBeforeNo" onclick="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="0">
+                                          <input class="radioType" id="bacterialSepsisBeforeNo" onchange="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="0">
                                           <label class="radioText" for="bacterialSepsisBeforeNo"> No</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="bacterialSepsisBeforeNA" onclick="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="7">
+                                          <input class="radioType" id="bacterialSepsisBeforeNA" onchange="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="7">
                                           <label class="radioText" for="bacterialSepsisBeforeNA"> N/A</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="bacterialSepsisBeforeUnknown" onclick="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="9">
+                                          <input class="radioType" id="bacterialSepsisBeforeUnknown" onchange="javascript:bacterialSepsisBeforeCheck();" type="radio" name = bacterialSepsisBefore value="9">
                                           <label class="radioText" for="bacterialSepsisBeforeUnknown"> Unknown</label>
                                           </span>
                                        </div>
@@ -871,7 +872,7 @@
                                              <label class="fixingLabelAlignmentInner">Number of Codes : </label>
                                              <div class="fixingInputAlignmentInner">
                                                 <select id="numberOfBacterialSepsisBefore" name="numberOfBacterialSepsisBefore" class="form-control" onchange="javascript:numberOfBacterialSepsisBeforeCheck();" style="height:32px;width:30%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option value="1">1</option>
                                                    <option value="2">2</option>
                                                    <option value="3">3</option>
@@ -882,7 +883,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 1 : </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="pathogenCodeBefore1" name="pathogenCodeBefore1" class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value="">SELECT</option>
+                                                   <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
                                                    <option value="201">201 - Bacteroides species</option>
                                                    <option value="501">501 - Enterobacter species</option>
@@ -911,7 +912,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 2 : </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="pathogenCodeBefore2" name="pathogenCodeBefore2" class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value="">SELECT</option>
+                                                   <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
                                                    <option value="201">201 - Bacteroides species</option>
                                                    <option value="501">501 - Enterobacter species</option>
@@ -940,7 +941,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 3 : </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="pathogenCodeBefore3" name="pathogenCodeBefore3" class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value="">SELECT</option>
+                                                   <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
                                                    <option value="201">201 - Bacteroides species</option>
                                                    <option value="501">501 - Enterobacter species</option>
@@ -1008,19 +1009,19 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Cranial Imaging(US/CT/MRI) on or before day 28  : </label>
                                        <span class="radioFloatLeftInner">
-                                       <input class="radioType" id="cranialImagingYes" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="1">
+                                       <input class="radioType" id="cranialImagingYes" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="1">
                                        <label class="radioText" for="cranialImagingYes"> Yes</label>
                                        </span>
                                        <span class="radioFloatLeftInner">
-                                       <input class="radioType" id="cranialImagingNo" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="0">
+                                       <input class="radioType" id="cranialImagingNo" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="0">
                                        <label class="radioText" for="cranialImagingNo"> No</label>
                                        </span>
                                        <span class="radioFloatLeftInner">
-                                       <input class="radioType" id="cranialImagingNA" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="7">
+                                       <input class="radioType" id="cranialImagingNA" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="7">
                                        <label class="radioText" for="cranialImagingNA"> N/A</label>
                                        </span>
                                        <span class="radioFloatLeftInner">
-                                       <input class="radioType" id="cranialImagingUnknown" type="radio" onclick="javascript:cranialImagingCheck();" name = cranialImaging value="9">
+                                       <input class="radioType" id="cranialImagingUnknown" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="9">
                                        <label class="radioText" for="cranialImagingUnknown"> Unknown</label>
                                        </span>
                                     </div>
@@ -1030,7 +1031,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Worst Grade of PIH (0-4) : </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" form-control" style="height:32px;width:20%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option value="0">0</option>
                                                    <option value="1">1</option>
                                                    <option value="2">2</option>
@@ -1064,19 +1065,19 @@
                                  <label class="fixingLabelAlignment">Died Within 12 Hours of Admission to your NICU : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="diedWithin12HoursYes" onclick="javascript:diedWithin12HoursCheck();" type="radio" name = diedWithin12Hours value="1">
+                                    <input class="radioType" id="diedWithin12HoursYes" onchange="javascript:diedWithin12HoursCheck();" type="radio" name = diedWithin12Hours value="1">
                                     <label class="radioText" for="diedWithin12HoursYes"> Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="diedWithin12HoursNo" type="radio" onclick="javascript:diedWithin12HoursCheck();" name = diedWithin12Hours value="0">
+                                    <input class="radioType" id="diedWithin12HoursNo" type="radio" onchange="javascript:diedWithin12HoursCheck();" name = diedWithin12Hours value="0">
                                     <label class="radioText" for="diedWithin12HoursNo"> No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="diedWithin12HoursNA" type="radio" onclick="javascript:diedWithin12HoursCheck();" name = diedWithin12Hours value="7">
+                                    <input class="radioType" id="diedWithin12HoursNA" type="radio" onchange="javascript:diedWithin12HoursCheck();" name = diedWithin12Hours value="7">
                                     <label class="radioText" for="diedWithin12HoursNA"> N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="diedWithin12HoursUnknown" onclick="javascript:diedWithin12HoursCheck();" type="radio" name = diedWithin12Hours value="9">
+                                    <input class="radioType" id="diedWithin12HoursUnknown" onchange="javascript:diedWithin12HoursCheck();" type="radio" name = diedWithin12Hours value="9">
                                     <label class="radioText" for="diedWithin12HoursUnknown"> Unknown</label>
                                     </span>
                                  </div>
@@ -1091,19 +1092,19 @@
                                        <label class="fixingLabelAlignmentInner">Oxygen : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAfterInitialResuscitationYes" onclick="javascript:AfterInitialResuscitationCheck();" type="radio" name = oxygenAfterInitialResuscitation value="1">
+                                          <input class="radioType" id="oxygenAfterInitialResuscitationYes" onchange="javascript:AfterInitialResuscitationCheck();" type="radio" name = oxygenAfterInitialResuscitation value="1">
                                           <label class="radioText" for="oxygenAfterInitialResuscitationYes"> Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAfterInitialResuscitationNo" onclick="javascript:AfterInitialResuscitationCheck();" type="radio" name = oxygenAfterInitialResuscitation value="0">
+                                          <input class="radioType" id="oxygenAfterInitialResuscitationNo" onchange="javascript:AfterInitialResuscitationCheck();" type="radio" name = oxygenAfterInitialResuscitation value="0">
                                           <label class="radioText" for="oxygenAfterInitialResuscitationNo"> No</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAfterInitialResuscitationNA" onclick="javascript:AfterInitialResuscitationCheck();" type="radio" name = oxygenAfterInitialResuscitation value="7">
+                                          <input class="radioType" id="oxygenAfterInitialResuscitationNA" onchange="javascript:AfterInitialResuscitationCheck();" type="radio" name = oxygenAfterInitialResuscitation value="7">
                                           <label class="radioText" for="oxygenAfterInitialResuscitationNA"> N/A</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAfterInitialResuscitationUnknown" onclick="javascript:AfterInitialResuscitationCheck();" type="radio" name = oxygenAfterInitialResuscitation value="9">
+                                          <input class="radioType" id="oxygenAfterInitialResuscitationUnknown" onchange="javascript:AfterInitialResuscitationCheck();" type="radio" name = oxygenAfterInitialResuscitation value="9">
                                           <label class="radioText" for="oxygenAfterInitialResuscitationUnknown"> Unknown</label>
                                           </span>
                                        </div>
@@ -1248,19 +1249,19 @@
                                        <label class="fixingLabelAlignmentInner">Oxygen : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAt36WeeksYes" onclick="javascript:respiratory36WeeksOxygenCheck();" type="radio" name = oxygenAt36Weeks value="1">
+                                          <input class="radioType" id="oxygenAt36WeeksYes" onchange="javascript:respiratory36WeeksOxygenCheck();" type="radio" name = oxygenAt36Weeks value="1">
                                           <label class="radioText" for="oxygenAt36WeeksYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAt36WeeksNo" onclick="javascript:respiratory36WeeksOxygenCheck();" type="radio" name = oxygenAt36Weeks value="0">
+                                          <input class="radioType" id="oxygenAt36WeeksNo" onchange="javascript:respiratory36WeeksOxygenCheck();" type="radio" name = oxygenAt36Weeks value="0">
                                           <label class="radioText" for="oxygenAt36WeeksNo">No</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAt36WeeksNA" onclick="javascript:respiratory36WeeksOxygenCheck();" type="radio" name = oxygenAt36Weeks value="7">
+                                          <input class="radioType" id="oxygenAt36WeeksNA" onchange="javascript:respiratory36WeeksOxygenCheck();" type="radio" name = oxygenAt36Weeks value="7">
                                           <label class="radioText" for="oxygenAt36WeeksNA">N/A</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAt36WeeksUnknown" onclick="javascript:respiratory36WeeksOxygenCheck();" type="radio" name = oxygenAt36Weeks value="9">
+                                          <input class="radioType" id="oxygenAt36WeeksUnknown" onchange="javascript:respiratory36WeeksOxygenCheck();" type="radio" name = oxygenAt36Weeks value="9">
                                           <label class="radioText" for="oxygenAt36WeeksUnknown">Unknown</label>
                                           </span>
                                        </div>
@@ -1384,19 +1385,19 @@
                                        <label class="fixingLabelAlignmentInner">Bacterial Sepsis and/or Meningitis after Day 3 of Life :</label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="bacterialSepsisYes" onclick="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="1">
+                                          <input class="radioType" id="bacterialSepsisYes" onchange="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="1">
                                           <label class="radioText" for="bacterialSepsisYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="bacterialSepsisNo" onclick="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="0">
+                                          <input class="radioType" id="bacterialSepsisNo" onchange="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="0">
                                           <label class="radioText" for="bacterialSepsisNo">No</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="bacterialSepsisNA" onclick="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="7">
+                                          <input class="radioType" id="bacterialSepsisNA" onchange="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="7">
                                           <label class="radioText" for="bacterialSepsisNA">N/A</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="bacterialSepsisUnknown" onclick="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="9">
+                                          <input class="radioType" id="bacterialSepsisUnknown" onchange="javascript:bacterialSepsisCheck();" type="radio" name = bacterialSepsis value="9">
                                           <label class="radioText" for="bacterialSepsisUnknown">Unknown</label>
                                           </span>
                                        </div>
@@ -1424,7 +1425,7 @@
                                              <label class="fixingLabelAlignmentInner">Number of Codes : </label>
                                              <div class="fixingInputAlignmentInner">
                                                 <select id="numberOfBacterialSepsisAfter" name="numberOfBacterialSepsisAfter" class="form-control" onchange="javascript:numberOfBacterialSepsisAfterCheck();" style="height:32px;width:30%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option value="1">1</option>
                                                    <option value="2">2</option>
                                                    <option value="3">3</option>
@@ -1435,7 +1436,7 @@
                                              <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 1 : </label>
                                              <div class="fixingInputAlignmentInner">
                                                 <select id="pathogenCodeAfter1" name=pathogenCodeAfter1 class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value="">SELECT</option>
+                                                   <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
                                                    <option value="201">201 - Bacteroides species</option>
                                                    <option value="501">501 - Enterobacter species</option>
@@ -1464,7 +1465,7 @@
                                              <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 2 : </label>
                                              <div class="fixingInputAlignmentInner">
                                                 <select id="pathogenCodeAfter2" name=pathogenCodeAfter2 class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value="">SELECT</option>
+                                                   <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
                                                    <option value="201">201 - Bacteroides species</option>
                                                    <option value="501">501 - Enterobacter species</option>
@@ -1493,7 +1494,7 @@
                                              <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 3 : </label>
                                              <div class="fixingInputAlignmentInner">
                                                 <select id="pathogenCodeAfter3" name=pathogenCodeAfter3 class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value="">SELECT</option>
+                                                   <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
                                                    <option value="201">201 - Bacteroides species</option>
                                                    <option value="501">501 - Enterobacter species</option>
@@ -1524,19 +1525,19 @@
                                        <label class="fixingLabelAlignmentInner">Coagulase Negative Staph Infection :</label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="coagulaseNegativeYes" onclick="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="1">
+                                          <input class="radioType" id="coagulaseNegativeYes" onchange="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="1">
                                           <label class="radioText" for="coagulaseNegativeYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="coagulaseNegativeNo" onclick="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="0">
+                                          <input class="radioType" id="coagulaseNegativeNo" onchange="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="0">
                                           <label class="radioText" for="coagulaseNegativeNo">No</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="coagulaseNegativeNA" onclick="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="7">
+                                          <input class="radioType" id="coagulaseNegativeNA" onchange="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="7">
                                           <label class="radioText" for="coagulaseNegativeNA">N/A</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="coagulaseNegativeUnknown" onclick="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="9">
+                                          <input class="radioType" id="coagulaseNegativeUnknown" onchange="javascript:coagulaseNegativeCheck();" type="radio" name = coagulaseNegative value="9">
                                           <label class="radioText" for="coagulaseNegativeUnknown">Unknown</label>
                                           </span>
                                        </div>
@@ -1566,19 +1567,19 @@
                                        <label class="fixingLabelAlignmentInner">Fungal Infection :</label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="fungalInfectionYes" onclick="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="1">
+                                          <input class="radioType" id="fungalInfectionYes" onchange="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="1">
                                           <label class="radioText" for="fungalInfectionYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="fungalInfectionNo" onclick="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="0">
+                                          <input class="radioType" id="fungalInfectionNo" onchange="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="0">
                                           <label class="radioText" for="fungalInfectionNo">No</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="fungalInfectionNA" onclick="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="7">
+                                          <input class="radioType" id="fungalInfectionNA" onchange="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="7">
                                           <label class="radioText" for="fungalInfectionNA">N/A</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="fungalInfectionUnknown" onclick="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="9">
+                                          <input class="radioType" id="fungalInfectionUnknown" onchange="javascript:fungalInfectionCheck();" type="radio" name = fungalInfection value="9">
                                           <label class="radioText" for="fungalInfectionUnknown">Unknown</label>
                                           </span>
                                        </div>
@@ -1610,19 +1611,19 @@
                                  <label class="fixingLabelAlignment">Steroids for CLD :  </label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="steroidsForCLDYes" onclick="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="1">
+                                    <input class="radioType" id="steroidsForCLDYes" onchange="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="1">
                                     <label class="radioText" for="steroidsForCLDYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="steroidsForCLDNo" onclick="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="0">
+                                    <input class="radioType" id="steroidsForCLDNo" onchange="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="0">
                                     <label class="radioText" for="steroidsForCLDNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="steroidsForCLDNA" onclick="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="7">
+                                    <input class="radioType" id="steroidsForCLDNA" onchange="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="7">
                                     <label class="radioText" for="steroidsForCLDNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="steroidsForCLDUnknown" onclick="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="9">
+                                    <input class="radioType" id="steroidsForCLDUnknown" onchange="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="9">
                                     <label class="radioText" for="steroidsForCLDUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -1736,19 +1737,19 @@
                                  <label class="fixingLabelAlignment">ROP Surgery :  </label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ropSurgeryYes" onclick="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="1">
+                                    <input class="radioType" id="ropSurgeryYes" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="1">
                                     <label class="radioText" for="ropSurgeryYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ropSurgeryNo" onclick="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="0">
+                                    <input class="radioType" id="ropSurgeryNo" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="0">
                                     <label class="radioText" for="ropSurgeryNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ropSurgeryNA" onclick="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="7">
+                                    <input class="radioType" id="ropSurgeryNA" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="7">
                                     <label class="radioText" for="ropSurgeryNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ropSurgeryUnknown" onclick="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="9">
+                                    <input class="radioType" id="ropSurgeryUnknown" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="9">
                                     <label class="radioText" for="ropSurgeryUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -1778,19 +1779,19 @@
                                  <label class="fixingLabelAlignment">Surgery/Interventional Catheterization for Closure of PDA :  </label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pdaSurgeryYes" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="1">
+                                    <input class="radioType" id="pdaSurgeryYes" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="1">
                                     <label class="radioText" for="pdaSurgeryYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pdaSurgeryNo" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="0">
+                                    <input class="radioType" id="pdaSurgeryNo" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="0">
                                     <label class="radioText" for="pdaSurgeryNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pdaSurgeryNA" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="7">
+                                    <input class="radioType" id="pdaSurgeryNA" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="7">
                                     <label class="radioText" for="pdaSurgeryNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pdaSurgeryUnknown" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="9">
+                                    <input class="radioType" id="pdaSurgeryUnknown" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="9">
                                     <label class="radioText" for="pdaSurgeryUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -1799,19 +1800,19 @@
                                  <label class="fixingLabelAlignment">Surgery for NEC, Suspected NEC / Bowel Perforation :  </label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necSurgeryYes" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="1">
+                                    <input class="radioType" id="necSurgeryYes" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="1">
                                     <label class="radioText" for="necSurgeryYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necSurgeryNo" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="0">
+                                    <input class="radioType" id="necSurgeryNo" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="0">
                                     <label class="radioText" for="necSurgeryNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necSurgeryNA" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="7">
+                                    <input class="radioType" id="necSurgeryNA" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="7">
                                     <label class="radioText" for="necSurgeryNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necSurgeryUnknown" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="9">
+                                    <input class="radioType" id="necSurgeryUnknown" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="9">
                                     <label class="radioText" for="necSurgeryUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -1820,19 +1821,19 @@
                                  <label class="fixingLabelAlignment">Other Surgery :</label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="otherSurgeryYes" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="1">
+                                    <input class="radioType" id="otherSurgeryYes" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="1">
                                     <label class="radioText" for="otherSurgeryYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="otherSurgeryNo" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="0">
+                                    <input class="radioType" id="otherSurgeryNo" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="0">
                                     <label class="radioText" for="otherSurgeryNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="otherSurgeryNA" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="7">
+                                    <input class="radioType" id="otherSurgeryNA" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="7">
                                     <label class="radioText" for="otherSurgeryNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="otherSurgeryUnknown" onclick="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="9">
+                                    <input class="radioType" id="otherSurgeryUnknown" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="9">
                                     <label class="radioText" for="otherSurgeryUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -1846,7 +1847,7 @@
                                        <label class="fixingLabelAlignmentInner">Number of Codes : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="numberOfSurgeryCodes" name="numberOfSurgeryCodes" class="form-control" onchange="javascript:numberOfSurgeryCodesCheck();" style="height:32px;width:30%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="1">1</option>
                                              <option value="2">2</option>
                                              <option value="3">3</option>
@@ -1862,7 +1863,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 1 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="surgeryCode1" name=surgeryCode1 class="form-control" style="height:32px;max-width:120%;width:70%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option disabled value>--------HEAD & Neck--------</option>
                                                    <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
                                                    <option value="S103">S103 - Ophthalmologic Surgery</option>
@@ -1952,7 +1953,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 2 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="surgeryCode2" name=surgeryCode2 class="form-control" style="height:32px;max-width:120%;width:70%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option disabled value>--------HEAD & Neck--------</option>
                                                    <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
                                                    <option value="S103">S103 - Ophthalmologic Surgery</option>
@@ -2042,7 +2043,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 3 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="surgeryCode3" name=surgeryCode3 class="form-control" style="height:32px;max-width:120%;width:70%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option disabled value>--------HEAD & Neck--------</option>
                                                    <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
                                                    <option value="S103">S103 - Ophthalmologic Surgery</option>
@@ -2132,7 +2133,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 4 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="surgeryCode4" name=surgeryCode4 class="form-control" style="height:32px;max-width:120%;width:70%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option disabled value>--------HEAD & Neck--------</option>
                                                    <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
                                                    <option value="S103">S103 - Ophthalmologic Surgery</option>
@@ -2222,7 +2223,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 5 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="surgeryCode5" name=surgeryCode5 class="form-control" style="height:32px;max-width:120%;width:70%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option disabled value>--------HEAD & Neck--------</option>
                                                    <option value="S101">S101 - Tracheostomy/Tracheotomy</option>
                                                    <option value="S103">S103 - Ophthalmologic Surgery</option>
@@ -2334,19 +2335,19 @@
                                  <label class="fixingLabelAlignment">Pneumothorax :</label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pneumothoraxYes" onclick="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="1">
+                                    <input class="radioType" id="pneumothoraxYes" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="1">
                                     <label class="radioText" for="pneumothoraxYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pneumothoraxNo" onclick="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="0">
+                                    <input class="radioType" id="pneumothoraxNo" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="0">
                                     <label class="radioText" for="pneumothoraxNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pneumothoraxNA" onclick="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="7">
+                                    <input class="radioType" id="pneumothoraxNA" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="7">
                                     <label class="radioText" for="pneumothoraxNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pneumothoraxUnknown" onclick="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="9">
+                                    <input class="radioType" id="pneumothoraxUnknown" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="9">
                                     <label class="radioText" for="pneumothoraxUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -2397,19 +2398,19 @@
                                  <label class="fixingLabelAlignment">Necrotizing Enterocolitis :</label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necrotizingEnterocolitisYes" onclick="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="1">
+                                    <input class="radioType" id="necrotizingEnterocolitisYes" onchange="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="1">
                                     <label class="radioText" for="necrotizingEnterocolitisYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necrotizingEnterocolitisNo" onclick="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="0">
+                                    <input class="radioType" id="necrotizingEnterocolitisNo" onchange="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="0">
                                     <label class="radioText" for="necrotizingEnterocolitisNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necrotizingEnterocolitisNA" onclick="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="7">
+                                    <input class="radioType" id="necrotizingEnterocolitisNA" onchange="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="7">
                                     <label class="radioText" for="necrotizingEnterocolitisNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necrotizingEnterocolitisUnknown" onclick="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="9">
+                                    <input class="radioType" id="necrotizingEnterocolitisUnknown" onchange="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="9">
                                     <label class="radioText" for="necrotizingEnterocolitisUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -2439,19 +2440,19 @@
                                  <label class="fixingLabelAlignment">Focal Intestinal Perforation :</label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="focalIntestinalPerforationYes" onclick="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="1">
+                                    <input class="radioType" id="focalIntestinalPerforationYes" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="1">
                                     <label class="radioText" for="focalIntestinalPerforationYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="focalIntestinalPerforationNo" onclick="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="0">
+                                    <input class="radioType" id="focalIntestinalPerforationNo" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="0">
                                     <label class="radioText" for="focalIntestinalPerforationNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="focalIntestinalPerforationNA" onclick="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="7">
+                                    <input class="radioType" id="focalIntestinalPerforationNA" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="7">
                                     <label class="radioText" for="focalIntestinalPerforationNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="focalIntestinalPerforationUnknown" onclick="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="9">
+                                    <input class="radioType" id="focalIntestinalPerforationUnknown" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="9">
                                     <label class="radioText" for="focalIntestinalPerforationUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -2502,19 +2503,19 @@
                                  <label class="fixingLabelAlignment">ROP, Retinal Examination :</label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ROPRetinalYes" onclick="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="1">
+                                    <input class="radioType" id="ROPRetinalYes" onchange="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="1">
                                     <label class="radioText" for="ROPRetinalYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ROPRetinalNo" onclick="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="0">
+                                    <input class="radioType" id="ROPRetinalNo" onchange="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="0">
                                     <label class="radioText" for="ROPRetinalNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ROPRetinalNA" onclick="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="7">
+                                    <input class="radioType" id="ROPRetinalNA" onchange="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="7">
                                     <label class="radioText" for="ROPRetinalNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ROPRetinalUnknown" onclick="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="9">
+                                    <input class="radioType" id="ROPRetinalUnknown" onchange="javascript:ROPRetinalCheck();" type="radio" name = ROPRetinal value="9">
                                     <label class="radioText" for="ROPRetinalUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -2525,7 +2526,7 @@
                                        <label class="fixingLabelAlignmentInnerInner">Worst Stage of ROP : </label>
                                        <div class="fixingInputAlignmentInnerInner">
                                           <select name=state class="form-control" style="height:32px;width:20%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="0">0</option>
                                              <option value="1">1</option>
                                              <option value="2">2</option>
@@ -2542,15 +2543,15 @@
                                  <label class="fixingLabelAlignment">Major Birth Defect :</label>
                                  <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="birthDefectYes" onclick="javascript:birthDefectCheck();" type="radio" name = birthDefect value="1">
+                                    <input class="radioType" id="birthDefectYes" onchange="javascript:birthDefectCheck();" type="radio" name = birthDefect value="1">
                                     <label class="radioText" for="birthDefectYes">Yes</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="birthDefectNo" onclick="javascript:birthDefectCheck();" type="radio" name = birthDefect value="0">
+                                    <input class="radioType" id="birthDefectNo" onchange="javascript:birthDefectCheck();" type="radio" name = birthDefect value="0">
                                     <label class="radioText" for="birthDefectNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="birthDefectUnknown" onclick="javascript:birthDefectCheck();" type="radio" name = birthDefect value="9">
+                                    <input class="radioType" id="birthDefectUnknown" onchange="javascript:birthDefectCheck();" type="radio" name = birthDefect value="9">
                                     <label class="radioText" for="birthDefectUnknown">Unknown</label>
                                     </span>
                                  </div>
@@ -2561,7 +2562,7 @@
                                        <label class="fixingLabelAlignmentInner">Number of Codes : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="numberOfBirthDefects" name="numberOfBirthDefects" class="form-control" onchange="javascript:numberOfBirthDefectsCheck();" style="height:32px;width:30%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="1">1</option>
                                              <option value="2">2</option>
                                              <option value="3">3</option>
@@ -2574,7 +2575,7 @@
                                        <label class="fixingLabelAlignmentInnerInner">Birth Defect code 1 : </label>
                                        <div class="fixingInputAlignmentInnerInner">
                                           <select id="birthDefectCode1" name=birthDefectCode1 class="form-control" style="height:32px;width:70%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option disabled value>-----Central Nervous System Anomalies-----</option>
                                              <option value="101">101 - Anencephaly</option>
                                              <option value="102">102 - Meningomyelocele</option>
@@ -2654,7 +2655,7 @@
                                        <label class="fixingLabelAlignmentInnerInner">Birth Defect code 2 : </label>
                                        <div class="fixingInputAlignmentInnerInner">
                                           <select id="birthDefectCode2" name=birthDefectCode2 class="form-control" style="height:32px;width:70%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option disabled value>-----Central Nervous System Anomalies-----</option>
                                              <option value="101">101 - Anencephaly</option>
                                              <option value="102">102 - Meningomyelocele</option>
@@ -2734,7 +2735,7 @@
                                        <label class="fixingLabelAlignmentInnerInner">Birth Defect code 3 : </label>
                                        <div class="fixingInputAlignmentInnerInner">
                                           <select id="birthDefectCode3" name=birthDefectCode3 class="form-control" style="height:32px;width:70%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option disabled value>-----Central Nervous System Anomalies-----</option>
                                              <option value="101">101 - Anencephaly</option>
                                              <option value="102">102 - Meningomyelocele</option>
@@ -2814,7 +2815,7 @@
                                        <label class="fixingLabelAlignmentInnerInner">Birth Defect code 4 : </label>
                                        <div class="fixingInputAlignmentInnerInner">
                                           <select id="birthDefectCode4" name=birthDefectCode1 class="form-control" style="height:32px;width:70%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option disabled value>-----Central Nervous System Anomalies-----</option>
                                              <option value="101">101 - Anencephaly</option>
                                              <option value="102">102 - Meningomyelocele</option>
@@ -2894,7 +2895,7 @@
                                        <label class="fixingLabelAlignmentInnerInner">Birth Defect code 5 : </label>
                                        <div class="fixingInputAlignmentInnerInner">
                                           <select id="birthDefectCode5" name=birthDefectCode5 class="form-control" style="height:32px;width:70%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option disabled value>-----Central Nervous System Anomalies-----</option>
                                              <option value="101">101 - Anencephaly</option>
                                              <option value="102">102 - Meningomyelocele</option>
@@ -2975,8 +2976,8 @@
                               <div class="form-group input-group enteralFeedingDiv">
                                  <label class="fixingLabelAlignment">Enteral Feeding at Discharge :</label>
                                  <div class="fixingInputAlignment">
-                                    <select name=enteralFeeding class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                       <option disabled selected value>SELECT</option>
+                                    <select id="enteralFeeding" name=enteralFeeding class=" form-control" style="height:32px;width:70%;">
+                                       <option disabled selected value></option>
                                        <option value="0">None</option>
                                        <option value="1">Human Milk Only</option>
                                        <option value="2">Formula Only</option>
@@ -2995,19 +2996,19 @@
                                        <label class="fixingLabelAlignmentInner">Oxygen : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAtDischargeYes" onclick="javascript:oxygenAtDischargeCheck();" type="radio" name = oxygenAtDischarge value="1">
+                                          <input class="radioType" id="oxygenAtDischargeYes" onchange="javascript:oxygenAtDischargeCheck();" type="radio" name = oxygenAtDischarge value="1">
                                           <label class="radioText" for="oxygenAtDischargeYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAtDischargeNo" onclick="javascript:oxygenAtDischargeCheck();" type="radio" name = oxygenAtDischarge value="0">
+                                          <input class="radioType" id="oxygenAtDischargeNo" onchange="javascript:oxygenAtDischargeCheck();" type="radio" name = oxygenAtDischarge value="0">
                                           <label class="radioText" for="oxygenAtDischargeNo">No</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAtDischargeNA" onclick="javascript:oxygenAtDischargeCheck();" type="radio" name = oxygenAtDischarge value="7">
+                                          <input class="radioType" id="oxygenAtDischargeNA" onchange="javascript:oxygenAtDischargeCheck();" type="radio" name = oxygenAtDischarge value="7">
                                           <label class="radioText" for="oxygenAtDischargeNA">N/A</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="oxygenAtDischargeUnknown" onclick="javascript:oxygenAtDischargeCheck();" type="radio" name = oxygenAtDischarge value="9">
+                                          <input class="radioType" id="oxygenAtDischargeUnknown" onchange="javascript:oxygenAtDischargeCheck();" type="radio" name = oxygenAtDischarge value="9">
                                           <label class="radioText" for="oxygenAtDischargeUnknown">Unknown</label>
                                           </span>
                                        </div>
@@ -3146,7 +3147,7 @@
                                  <label class="fixingLabelAlignment">Initial Disposition :</label>
                                  <div class="fixingInputAlignment">
                                     <select id="initialDisposition" name=initialDisposition onchange="javascript:initialDispositionCheck();" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
-                                       <option disabled selected value>SELECT</option>
+                                       <option disabled selected value></option>
                                        <option value="1">Home</option>
                                        <option value="3">Died</option>
                                        <option value="2">Transferred</option>
@@ -3165,7 +3166,7 @@
                                        <label class="fixingLabelAlignmentInner">Reason for Transfer : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select name=reasonForTransfer class=" ddList centerSelect form-control" style="height:32px;width:80%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="1">Growth/Discharge planning</option>
                                              <option value="2">Medical/Diagnostic Services</option>
                                              <option value="3">Surgery</option>
@@ -3181,7 +3182,7 @@
                                        <label class="fixingLabelAlignmentInner">Transfer Code of Center to Which infant Transferred : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select name=transferCode class=" ddList centerSelect form-control" style="height:32px;width:80%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="13240">13240 - Mowbray Maternity Hospital</option>
                                              <option value="14994">14994 - New Somerset Hospital</option>
                                              <option value="16011">16011 - Tygerberg Hospital</option>
@@ -3199,7 +3200,7 @@
                                        <label class="fixingLabelAlignmentInner">Post Transfer Disposition : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="postTransferDisposition" onchange="javascript:postTransferDispositionCheck();" name=postTransferDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="1">Home</option>
                                              <option value="2">Transferred Again to Another Hospital</option>
                                              <option value="3">Died</option>
@@ -3221,7 +3222,7 @@
                                        <label class="fixingLabelAlignmentInner">Disposition after Readmission : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="dispositionAfterReadmission" onchange="javascript:dispositionAfterReadmissionCheck();" name=dispositionAfterReadmission class=" ddList centerSelect form-control" style="height:32px;width:80%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="1">Home</option>
                                              <option value="3">Died</option>
                                              <option value="2">Transferred Again to Another Hospital</option>
@@ -3250,7 +3251,7 @@
                                        <label class="fixingLabelAlignmentInner">Ultimate Disposition : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="ultimateDisposition" onchange="javascript:ultimateDispositionCheck();" name=ultimateDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="1">Home</option>
                                              <option value="3">Died</option>
                                              <option value="5">Still Hospitalized as of First Birthday</option>
@@ -3294,7 +3295,7 @@
                                  <label class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
                                  <div class="fixingInputAlignment">
                                     <select id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" class="form-control" style="height:32px;width:40%;">
-                                       <option disabled selected value>SELECT</option>
+                                       <option disabled selected value></option>
                                        <option value="999.9">Unknown</option>
                                     </select>
                                  </div>
@@ -3329,7 +3330,7 @@
                      <form id="thirdForm" class="general-form">
                         <div id="thirdPanelID" class="panel panel-primary">
                            <div class="panel-body">
-                              <div class="form-group input-group" style="height: 1px;">
+                              <div class="form-group input-group" style="height: 1px; ">
                                  <label class="fixingLabelAlignment" style="height: 1px;"></label>
                                  <div class="fixingInputAlignment" style="height: 1px;">
                                  </div>
@@ -3424,7 +3425,7 @@
                                        <label class="fixingLabelAlignmentInner" for="mothersAge">Mother's Age  :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="mothersAge" name="mothersAge" class="form-control" style="height:32px;width:40%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
                                        </div>
@@ -3433,7 +3434,7 @@
                                        <label class="fixingLabelAlignmentInner">Baby Length : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="babyLength" name="babyLength" class="form-control" style="height:32px;width:40%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
                                        </div>
@@ -3442,7 +3443,7 @@
                                        <label class="fixingLabelAlignmentInner" for="grav">Grav  :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="grav" name=grav class="form-control" style="height:32px;width:20%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                              <option value="1">1</option>
                                              <option value="2">2</option>
@@ -3461,7 +3462,7 @@
                                        <label class="fixingLabelAlignmentInner" for="para">Para  :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="para" name=para class="form-control" style="height:32px;width:20%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                              <option value="1">1</option>
                                              <option value="2">2</option>
@@ -3480,15 +3481,15 @@
                                        <label class="fixingLabelAlignmentInner">RVD  :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="RVDYes" onclick="javascript:RVDCheck()" type="radio" name = RVD value="1">
+                                          <input class="radioType" id="RVDYes" onchange="javascript:RVDCheck()" type="radio" name = RVD value="1">
                                           <label class="radioText" for="RVDYes"> Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="RVDNo" onclick="javascript:RVDCheck()" type="radio" name = RVD value="0">
+                                          <input class="radioType" id="RVDNo" onchange="javascript:RVDCheck()" type="radio" name = RVD value="0">
                                           <label class="radioText" for="RVDNo"> No</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="RVDUnknown" onclick="javascript:RVDCheck()" type="radio" name = RVD value="9">
+                                          <input class="radioType" id="RVDUnknown" onchange="javascript:RVDCheck()" type="radio" name = RVD value="9">
                                           <label class="radioText" for="RVDUnknown"> Unknown</label>
                                           </span>
                                        </div>
@@ -3499,7 +3500,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Viral Load  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="viralLoad" name=viralLoad class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value >SELECT</option>
+                                                   <option disabled selected value ></option>
                                                    <option value="9">Unknown</option>
                                                    <option value="1">0 - 100</option>
                                                    <option value="2">100 - 1000</option>
@@ -3540,11 +3541,11 @@
                                        <label class="fixingLabelAlignmentInner">Jaundice needing Phototherapy  :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="jaundiceNeedingPhototherapyYes" onclick="javascript:jaundiceNeedingPhototherapyCheck()" type="radio" name = jaundiceNeedingPhototherapy value="1">
+                                          <input class="radioType" id="jaundiceNeedingPhototherapyYes" onchange="javascript:jaundiceNeedingPhototherapyCheck()" type="radio" name = jaundiceNeedingPhototherapy value="1">
                                           <label class="radioText" for="jaundiceNeedingPhototherapyYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="jaundiceNeedingPhototherapyNo" onclick="javascript:jaundiceNeedingPhototherapyCheck()" type="radio" name = jaundiceNeedingPhototherapy value="0">
+                                          <input class="radioType" id="jaundiceNeedingPhototherapyNo" onchange="javascript:jaundiceNeedingPhototherapyCheck()" type="radio" name = jaundiceNeedingPhototherapy value="0">
                                           <label class="radioText" for="jaundiceNeedingPhototherapyNo">No</label>
                                           </span>
                                        </div>
@@ -3570,11 +3571,11 @@
                                        <label class="fixingLabelAlignmentInner">Invasive Ventilation  :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="invasiveVentilationYes" onclick="javascript:invasiveVentilationCheck()" type="radio" name = invasiveVentilation value="1">
+                                          <input class="radioType" id="invasiveVentilationYes" onchange="javascript:invasiveVentilationCheck()" type="radio" name = invasiveVentilation value="1">
                                           <label class="radioText" for="invasiveVentilationYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="invasiveVentilationNo" onclick="javascript:invasiveVentilationCheck()" type="radio" name = invasiveVentilation value="0">
+                                          <input class="radioType" id="invasiveVentilationNo" onchange="javascript:invasiveVentilationCheck()" type="radio" name = invasiveVentilation value="0">
                                           <label class="radioText" for="invasiveVentilationNo">No</label>
                                           </span>
                                        </div>
@@ -3585,7 +3586,7 @@
                                              <label class="fixingLabelAlignmentInnerInner" for="dayOfLifeVentilationStarted">Day of Life Ventilation Started  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="dayOfLifeVentilationStarted" name="dayOfLifeVentilationStarted" class="form-control" style="height:32px;width:40%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                 </select>
                                              </div>
                                           </div>
@@ -3593,7 +3594,7 @@
                                              <label class="fixingLabelAlignmentInnerInner" for="dayOfLifeVentilationStartedDuration">Total Duration  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="dayOfLifeVentilationStartedDuration" name="dayOfLifeVentilationStartedDuration" class="form-control" style="height:32px;width:40%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                 </select>
                                              </div>
                                           </div>
@@ -3609,11 +3610,11 @@
                                        <label class="fixingLabelAlignmentInner">Hypoxic Ischaemic Encephalopathy (HIE)  :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="hypoxicIschaemicEncephalopathyYes" onclick="javascript:hypoxicIschaemicEncephalopathyCheck()" type="radio" name = hypoxicIschaemicEncephalopathy value="1">
+                                          <input class="radioType" id="hypoxicIschaemicEncephalopathyYes" onchange="javascript:hypoxicIschaemicEncephalopathyCheck()" type="radio" name = hypoxicIschaemicEncephalopathy value="1">
                                           <label class="radioText" for="hypoxicIschaemicEncephalopathyYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="hypoxicIschaemicEncephalopathyNo" onclick="javascript:hypoxicIschaemicEncephalopathyCheck()" type="radio" name = hypoxicIschaemicEncephalopathy value="0">
+                                          <input class="radioType" id="hypoxicIschaemicEncephalopathyNo" onchange="javascript:hypoxicIschaemicEncephalopathyCheck()" type="radio" name = hypoxicIschaemicEncephalopathy value="0">
                                           <label class="radioText" for="hypoxicIschaemicEncephalopathyNo">No</label>
                                           </span>
                                        </div>
@@ -3624,7 +3625,7 @@
                                              <label class="fixingLabelAlignmentInnerInner" for="hypoxicIschaemicEncephalopathyHighestScore">Highest HIE Score  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="hypoxicIschaemicEncephalopathyHighestScore" name=hypoxicIschaemicEncephalopathyHighestScore class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option value="99">Unknown</option>
                                                    <option value="1">1</option>
                                                    <option value="2">2</option>
@@ -3665,15 +3666,15 @@
                                              <label class="fixingLabelAlignmentInnerInner">CFM at 48 Hours :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <span class="radioFloatLeftInner">
-                                                <input class="radioType" id="CFM48HoursYes" onclick="javascript:CFM48HoursCheck()" type="radio" name = CFM48Hours value="1">
+                                                <input class="radioType" id="CFM48HoursYes" onchange="javascript:CFM48HoursCheck()" type="radio" name = CFM48Hours value="1">
                                                 <label class="radioText" for="CFM48HoursYes">Yes</label>
                                                 </span>
                                                 <span class="radioFloatLeftInner">
-                                                <input class="radioType" id="CFM48HoursNo" onclick="javascript:CFM48HoursCheck()" type="radio" name = CFM48Hours value="0">
+                                                <input class="radioType" id="CFM48HoursNo" onchange="javascript:CFM48HoursCheck()" type="radio" name = CFM48Hours value="0">
                                                 <label class="radioText" for="CFM48HoursNo">No</label>
                                                 </span>
                                                 <span class="radioFloatLeftInner">
-                                                <input class="radioType" id="CFM48HoursUnknown" onclick="javascript:CFM48HoursCheck()" type="radio" name = CFM48Hours value="9">
+                                                <input class="radioType" id="CFM48HoursUnknown" onchange="javascript:CFM48HoursCheck()" type="radio" name = CFM48Hours value="9">
                                                 <label class="radioText" for="CFM48HoursUnknown">Unknown</label>
                                                 </span>
                                              </div>
@@ -3683,7 +3684,7 @@
                                                 <label class="fixingLabelAlignmentInnerInner"></label>
                                                 <div class="fixingInputAlignmentInnerInner">
                                                    <select name="CFMHighestScore" class="form-control" style="height:32px;width:70%;">
-                                                      <option disabled selected value>SELECT</option>
+                                                      <option disabled selected value></option>
                                                       <option value="Normal">Normal</option>
                                                       <option value="Discontinues Normal">Discontinues Normal</option>
                                                       <option value="Severely Abnormal">Severely Abnormal</option>
@@ -3697,7 +3698,7 @@
                                        <label class="fixingLabelAlignmentInner" for="sepsisDuringAdmission">Sepsis during Admission  :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <select id="sepsisDuringAdmission" name="sepsisDuringAdmission" onchange="javascript:sepsisDuringAdmissionCheck();" class="form-control" style="height:32px;width:40%;">
-                                             <option disabled selected value>SELECT</option>
+                                             <option disabled selected value></option>
                                              <option value="1">Confirmed</option>
                                              <option value="2">Suspected</option>
                                              <option value="3">No</option>
@@ -3710,7 +3711,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Number of Episodes  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="numberOfEpisodes" name="numberOfEpisodes" class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option value="1">1</option>
                                                    <option value="2">2</option>
                                                    <option value="3">3</option>
@@ -3736,7 +3737,7 @@
                                              <label class="fixingLabelAlignmentInner">Number of Codes : </label>
                                              <div class="fixingInputAlignmentInner">
                                                 <select id="numberOfBacterialCodesDuringAdmission" name="numberOfBacterialCodesDuringAdmission" class="form-control" onchange="javascript:numberOfBacterialCodesDuringAdmissionCheck();" style="height:32px;width:30%;">
-                                                   <option disabled selected value>SELECT</option>
+                                                   <option disabled selected value></option>
                                                    <option value="1">1</option>
                                                    <option value="2">2</option>
                                                    <option value="3">3</option>
@@ -3747,7 +3748,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Bacterial Code 1 : </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="bacterialCodeDuringAdmission1" name=bacterialCodeDuringAdmission1 class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value="">SELECT</option>
+                                                   <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
                                                    <option value="201">201 - Bacteroides species</option>
                                                    <option value="501">501 - Enterobacter species</option>
@@ -3776,7 +3777,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Bacterial Code 2 : </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="bacterialCodeDuringAdmission2" name=bacterialCodeDuringAdmission2 class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value="">SELECT</option>
+                                                   <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
                                                    <option value="201">201 - Bacteroides species</option>
                                                    <option value="501">501 - Enterobacter species</option>
@@ -3805,7 +3806,7 @@
                                              <label class="fixingLabelAlignmentInnerInner">Bacterial Code 3 : </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="bacterialCodeDuringAdmission3" name=bacterialCodeDuringAdmission3 class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value="">SELECT</option>
+                                                   <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
                                                    <option value="201">201 - Bacteroides species</option>
                                                    <option value="501">501 - Enterobacter species</option>
@@ -3845,11 +3846,11 @@
                                        <label class="fixingLabelAlignmentInner">Fetal Medicine Unit (FMU) Scan  :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="fetalMedicineUnitFlaggedYes" onclick="javascript:fetalMedicineUnitFlaggedCheck()" type="radio" name = fetalMedicineUnitFlagged value="1">
+                                          <input class="radioType" id="fetalMedicineUnitFlaggedYes" onchange="javascript:fetalMedicineUnitFlaggedCheck()" type="radio" name = fetalMedicineUnitFlagged value="1">
                                           <label class="radioText" for="fetalMedicineUnitFlaggedYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="fetalMedicineUnitFlaggedNo" onclick="javascript:fetalMedicineUnitFlaggedCheck()" type="radio" name = fetalMedicineUnitFlagged value="0">
+                                          <input class="radioType" id="fetalMedicineUnitFlaggedNo" onchange="javascript:fetalMedicineUnitFlaggedCheck()" type="radio" name = fetalMedicineUnitFlagged value="0">
                                           <label class="radioText" for="fetalMedicineUnitFlaggedNo">No</label>
                                           </span>
                                        </div>
@@ -3868,11 +3869,11 @@
                                        <label class="fixingLabelAlignmentInner">Chromosomes Done :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="chromosomesDoneYes" type="radio" onclick="javascript:chromosomesDoneCheck()" name = chromosomesDone value="1">
+                                          <input class="radioType" id="chromosomesDoneYes" type="radio" onchange="javascript:chromosomesDoneCheck()" name = chromosomesDone value="1">
                                           <label class="radioText" for="chromosomesDoneYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="chromosomesDoneNo" type="radio" onclick="javascript:chromosomesDoneCheck()" name = chromosomesDone value="0">
+                                          <input class="radioType" id="chromosomesDoneNo" type="radio" onchange="javascript:chromosomesDoneCheck()" name = chromosomesDone value="0">
                                           <label class="radioText" for="chromosomesDoneNo">No</label>
                                           </span>
                                        </div>
@@ -3891,11 +3892,11 @@
                                        <label class="fixingLabelAlignmentInner">Abnormal head ultrasound :  </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="abnormalHeadUltrasoundYes" onclick="javascript:abnormalHeadUltrasoundCheck()" type="radio" name = abnormalHeadUltrasound value="1">
+                                          <input class="radioType" id="abnormalHeadUltrasoundYes" onchange="javascript:abnormalHeadUltrasoundCheck()" type="radio" name = abnormalHeadUltrasound value="1">
                                           <label class="radioText" for="abnormalHeadUltrasoundYes">Yes</label>
                                           </span>
                                           <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="abnormalHeadUltrasoundNo" onclick="javascript:abnormalHeadUltrasoundCheck()" type="radio" name = abnormalHeadUltrasound value="0">
+                                          <input class="radioType" id="abnormalHeadUltrasoundNo" onchange="javascript:abnormalHeadUltrasoundCheck()" type="radio" name = abnormalHeadUltrasound value="0">
                                           <label class="radioText" for="abnormalHeadUltrasoundNo">No</label>
                                           </span>
                                        </div>
@@ -3915,11 +3916,11 @@
                                           <label class="fixingLabelAlignmentInner">Received 6/52 Immunizations   :  </label>
                                           <div class="fixingInputAlignmentInner">
                                              <span class="radioFloatLeftInner">
-                                             <input class="radioType" id="immunizations652Yes" onclick="javascript:immunizations652Check()" type="radio" name = immunizations652 value="1">
+                                             <input class="radioType" id="immunizations652Yes" onchange="javascript:immunizations652Check()" type="radio" name = immunizations652 value="1">
                                              <label class="radioText" for="immunizations652Yes">Yes</label>
                                              </span>
                                              <span class="radioFloatLeftInner">
-                                             <input class="radioType" id="immunizations652No" onclick="javascript:immunizations652Check()" type="radio" name = immunizations652 value="0">
+                                             <input class="radioType" id="immunizations652No" onchange="javascript:immunizations652Check()" type="radio" name = immunizations652 value="0">
                                              <label class="radioText" for="immunizations652No">No</label>
                                              </span>
                                           </div>
@@ -3942,11 +3943,11 @@
                                           <label class="fixingLabelAlignmentInner">Received 14/52 Immunizations   :  </label>
                                           <div class="fixingInputAlignmentInner">
                                              <span class="radioFloatLeftInner">
-                                             <input class="radioType" id="immunizations1452Yes" onclick="javascript:immunizations1452Check()" type="radio" name = immunizations652 value="1">
+                                             <input class="radioType" id="immunizations1452Yes" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations652 value="1">
                                              <label class="radioText" for="immunizations1452Yes">Yes</label>
                                              </span>
                                              <span class="radioFloatLeftInner">
-                                             <input class="radioType" id="immunizations1452No" onclick="javascript:immunizations1452Check()" type="radio" name = immunizations652 value="0">
+                                             <input class="radioType" id="immunizations1452No" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations652 value="0">
                                              <label class="radioText" for="immunizations1452No">No</label>
                                              </span>
                                           </div>
@@ -4031,43 +4032,42 @@
                   </div>
                </div>
             </div>
-         </section>
-         <!-- END THIRD SECTION (TRANSFER) -->
-      </section>
-      <!-- Electron JQUERY support-->
-      <script>
-         if (typeof module === 'object') {
-             window.module = module;
-             module = undefined;
-         }
-      </script>
-      <script type="text/javascript" src="js/jquery.js"></script>
-      <script type="text/javascript" src="js/tether.js"></script>
-      <script type="text/javascript" src="js/jquery.easing.js"></script>
-      <!-- Bootstrap core JavaScript -->
-      <script type="text/javascript" src="js/bootstrap.js"></script>
-      <!-- Custom library scripts -->
-      <script type="text/javascript" src="js/grayscale.js"></script>
-      <script type="text/javascript" src="js/toastr.js"></script>
-      <!-- Custom VON Team Scripts -->
-       <script type="text/javascript" src ="js/dischargeFormPopulation.js"></script>
-      <script type="text/javascript" src="js/config.js"></script>
-      <script type="text/javascript" src="js/autosave.js"></script> 
-      <script type="text/javascript" src="js/scripts.js"></script>
-      <script type="text/javascript" src="js/eventListeners.js"></script>
-      <script type="text/javascript" src="js/validationScript.js"></script>
-      <script type="text/javascript" src="js/databaseReadWrite.js"></script>
-      <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
-      <script type="text/javascript" src="calendar/jquery-ui.js"></script>
-      <script type="text/javascript" src="js/jquery.serializejson.js"></script>
-      <script type="text/javascript" src="js/autosave.js"></script>
-      <script>
-         $(document).ready(function() {
-             if(session){ 
-               autosave(); 
-               checkForPopulation(); 
-            } 
-         });
-         </script>
-   </body>
+        </section>
+        <!-- END THIRD SECTION (TRANSFER) -->
+        
+    </section>
+    <!-- Electron JQUERY support-->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tether.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- Custom library scripts -->
+    <script type="text/javascript" src="js/grayscale.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <!-- Custom VON Team Scripts -->
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/autosave.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/eventListeners.js"></script>
+    <script type="text/javascript" src="js/validationScript.js"></script>
+    <script type="text/javascript" src="js/databaseReadWrite.js"></script>
+    <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
+    <script type="text/javascript" src="calendar/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.serializejson.js"></script>
+    <script type="text/javascript" src="js/autosave.js"></script>
+    <script>
+        $(document).ready(function() {
+        var session = document.getElementById("session").value;
+            //if(session == true){
+               autosave();
+               checkForPopulation();
+            //}
+
+            
+       });
+    </script>
+</body>
+
 </html>
