@@ -55,7 +55,7 @@ body{
 }
 
 #dischargeTransferHTMLPrint {
-    margin: 100px auto;
+    margin: 100px auto 20px auto;
     width: 210mm; 
     height: $A4PageHeight;
     border: 2px solid black;
@@ -74,4 +74,22 @@ body{
 
 .blue{
     color:blue;
+}
+
+.immunizations652PrintHidden,
+.chromosomesDonePrintHidden,
+.abnormalHeadUltrasoundPrintHidden,
+.fetalMedicineUnitFlaggedPrintHidden,
+.sepsisDuringAdmissionPrintHidden,
+.jaundiceNeedingPhototherapyPrintHidden,
+.hypoxicIschemicEncephalopathyHighestScorePrintHidden,
+.ventilationPrintHidden,
+.necPlusPrintHidden,
+.cldPrintHidden,
+.surfactantAtAnyTimePrintHidden,
+.rvdValuePrintHidden,
+.twinsOrMorePrintHidden,
+.prematureCategoryPrintHidden,
+.birthWeightCategoryPrintHidden{
+    display: none;
 }
