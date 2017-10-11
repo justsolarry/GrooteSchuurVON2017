@@ -2,23 +2,18 @@
 <html lang="en">
 
 <head>
-
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
     <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
 
     
-    <title>Groote Schuur Neonatal data management application</title>
+    <title>Groote Schuur Neonatal Data Management Application - View Records</title>
     
+     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="js/datatables/datatables.min.css"/>
-    <script type="text/javascript" src="js/datatables/datatables.min.js"></script>
-    <!-- Bootstrap core CSS -->
-    
     <!-- Custom fonts -->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- Custom styles -->
@@ -27,14 +22,9 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/fonts.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet">
-
-    <link href="css/toastr.css" rel="stylesheet" />
     <link href="css/viewTable.css" rel=stylesheet/>
+   
     
-    <script src="js/databaseReadWrite.js"></script>
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-    
-
     <!-- Temporary navbar container fix -->
     <style>
         .navbar-toggler {
@@ -97,7 +87,7 @@
         </button>
 
         <div class="container">
-            <a class="navbar-brand" href="#page-top">Vermont Oxford Network</a>
+            <a class="navbar-brand" href="index.html">Vermont Oxford Network</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <!--<li class="nav-item">
@@ -114,16 +104,33 @@
     <!-- START Menu -->
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="javascript:" onclick="createRecordInDatabase()" class="createNewEntryMenuButton">Create New Entry</a>
+        <a href="javascript:void(0)" onclick="createRecordInDatabase()" class="createNewEntryMenuButton">Create New Entry</a>  
+<!--        onclick="createRecordInDatabase()"-->
         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
-        <a href="#" class="helpMenuButton">Help</a>
+<!--    <a href="#" class="helpMenuButton">Help</a>-->
     </div>
     
     <!-- END Menu -->
     
-<a href="#" onclick="createAndOpenFile()" download="file.xml">Donwload</a>
+<!--
+    <a href="#" onclick="createAndOpenFile()" download="file.xml">Donwload</a>
 
     <xmp id="xmlContent"></xmp>    
+    
+    
+-->
+    <!-- Electron JQUERY support-->
+    <script>
+         if (typeof module === 'object') {
+             window.module = module;
+             module = undefined;
+         }
+    </script>
+    <!--Scripts-->
+    <script type="text/javascript" src="js/jquery.js"></script>  
+    <script type="text/javascript" src="js/datatables/datatables.min.js"></script> 
+    <script type="text/javascript" src="js/databaseReadWrite.js"></script>
+    
     
     <script type="text/javascript"> 
     $(document).ready( function () {
@@ -131,13 +138,30 @@
     checkRowClick();
     });    
     </script>
+    
+     <script>
+          var fileName = "VONTransferFile" + ".xml";
+                function download(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
 
-    <script src="vendor/tether/tether.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+          
+      </script>
+
     <script src="js/saveVONXmlFile.js"></script>
 
     <!-- Plugin JavaScript -->
-       <script type="text/javascript" src="js/tether.js"></script>
+    <script type="text/javascript" src="js/tether.js"></script>
     <script type="text/javascript" src="js/jquery.easing.js"></script>
     <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -145,19 +169,16 @@
     <script type="text/javascript" src="js/grayscale.js"></script>
     <script type="text/javascript" src="js/toastr.js"></script>
 
-    <script src="js/grayscale.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <script type="text/javascript" src="js/eventListeners.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/viewTable.js"></script>
-    <script src="js/grayscale.js"></script>
-    <script src="js/toastr.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/viewTable.js"></script>
+    <script type="text/javascript" src="js/grayscale.js"></script>
     <!-- Custom VON Team Scripts for this template -->
  
-    <script type="text/javascript" src="js/ownScripts.js"></script>
     <script type="text/javascript" src="js/validationScript.js"></script>
-    <script src="js/transferToVon.js"></script>
-    <script src="js/generateVonXml.js"></script>
+    <script type="text/javascript" src="js/transferToVon.js"></script>
+    <script type="text/javascript" src="js/generateVonXml.js"></script>
    
 </body>
 </html>

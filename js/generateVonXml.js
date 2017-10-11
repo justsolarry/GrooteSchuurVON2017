@@ -1,12 +1,7 @@
-//Notes:    File numbering system
-//          Additional 2018 surgery fields
-
 function create2018Xml(babyData){
-//    var date = new Date(); // Format 2011-05-10T16:49:06.547125-04:00
-//    fileDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() +"-02:00";
     
-    var xmlDocument = '<?xml version="1.0"?>\n' +  createInfantCoreRecord(babyData) + createXmlForEachRecord(babyData);
-    document.getElementById("xmlContent").innerHTML += xmlDocument;
+    var xmlDocument = createInfantCoreRecord(babyData) + createXmlForEachRecord(babyData);
+    //document.getElementById("xmlContent").innerHTML += xmlDocument;
 
     return xmlDocument;
 }
@@ -18,10 +13,8 @@ function createInfantCoreRecord(babyData){
     var mothersFirstName = "<MOTHERFIRSTNAME>" + babyData.mothersFirstName + "</MOTHERFIRSTNAME>\n";
     var mothersLastName = "<MOTHERLASTNAME>" + babyData.mothersLastName + "</MOTHERLASTNAME>\n";
     var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";
-    console.log("breaking on date");
     var dateOfBirth = "<DOB>"+ formatDate(babyData.dateOfBirth) + "</DOB>\n";
-    console.log("breaking on date");
-    var dateOfAdmission = "<DOA>" + formatDate(babyData.dateOfBirth) + "</DOA>\n";
+    var dateOfAdmission = "<DOA>" + formatDate(babyData.dateOfAdmission) + "</DOA>\n";
     //var dateOfDischarge = "<DID>" + babyData.dateOfDischarge + "</DID>\n";
     return "<tblInfantCore>\n" + hospitalNumber + patientFirstName + patientLastName 
         + mothersFirstName + mothersLastName + medicalRecordNumber + dateOfBirth
@@ -37,12 +30,8 @@ function formatDate(date){
 }
 
 function createXmlForEachRecord(babyData){
-    
-    //babyData = JSON.parse(babyData);  
-    
-    //var id = "<ID>"+babyData.patientMedicalRecordNumber+"</ID>\n";  //required
-    var birthYear = "<BYEAR>"+babyData.birthYear+"</BYEAR>\n";    //required
-    var deleteEntry = "<DELETED>0</DELETED>\n"; //(1 to delete record although only under rare circumstances)
+    var birthYear = "<BYEAR>"+babyData.birthYear+"</BYEAR>\n";    
+//    var deleteEntry = "<DELETED>0</DELETED>\n"; //(1 to delete record although only under rare circumstances)
     var birthWeightInGrams = (babyData.birthWeightInGrams != undefined) ? "<BWGT>"+babyData.birthWeightInGrams+"</BWGT>\n" : ""; // != undefined
     var gestationalAgeInWeeks = (babyData.gestationalAgeInWeeks != undefined) ? "<GAWEEKS>"+babyData.gestationalAgeInWeeks+"</GAWEEKS>\n" : "";
     var gestationalAgePlusDays = (babyData.gestationalAgePlusDays != undefined) ? "<GADAYS>"+babyData.gestationalAgePlusDays+"</GADAYS>\n" : "";
@@ -239,55 +228,90 @@ function createXmlForEachRecord(babyData){
     var seizures = (babyData.seizures != undefined) ? "<SEIZURE>"+babyData.seizures+"</SEIZURE>\n" : "";
     var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";  //required
 
-    var xmlDocument = "<tblInfantVON>\n" + birthYear + deleteEntry + birthWeightInGrams + gestationalAgeInWeeks + gestationalAgePlusDays
-     + diedInDeliveryRoom + outbornBirth + dayOfAdmission + transferCenterCode + headCircumferenceAtBirth + notHispanic + prenatalCare + antenatalSteroids + antenatalMagnesiumSulfate
-     + chorioamnionitis + maternalHypertension +  maternalDiabetes + modeOfDelivery + sexOfInfant + multipleGestation + numberOfBirthsDelivered + congenitalInfection
-     + congenitalInfectionOrg1 + congenitalInfectionOrg1 + congenitalInfectionOrg2 + congenitalInfectionOrg3 + apgarScoresOneMin + apgarScoresFiveMin
-     + LaryngealMaskAirway + oxygenDuringInitialResuscitation + facemaskVentilation + endotrachealTubeVentilation + epinephrine
-     + cardiacCompression + nasalVentilation + nasalCpap + temperatureMeasuredAtAdmissionState + temperatureMeasuredAtAdmission + bacterialSepsis
-     + bacterialSepsisPathogen1 + bacterialSepsisPathogen2 + bacterialSepsisPathogen3
-     + oxygenOnDay28 + cranialImagning + periventricularHemorrhage + pihOccurance + diedWithin12Hours
-     + receivedOxygen + conventionalVentilation + highFrequencyVentilation + highFlowNasalCannula + nasalIMV
-     + nasalCPAPafterResuscitation + nasalCPAPnoETT +  surfactant +  surfactantAtAnyTime +  ageAtSurfactantInHours + ageAtSurfactantPlusMinutes + inhaledNitricOxide
-     + inhaledNitricOxideWhereGiven +  oxygenAt36Weeks + ventilationAt36Weeks +    highFrequencyVentilationAt36Weeks +  highFlowNasalCannulaAt36weeks
-     + nasalIMVAt36Weeks + nasalCpapAt36Weeks + steroidsForCLD + steroidsForCLDWhereGiven + indomethacin + ibuprofen + Acetaminophen + probiotics + ropTreatmentWithVegfDrug
-     + caffeine + vitaminA + ropSurgery + ropSurgeryWhereDone + pdaSurgery + necSurgery +  otherSurgery +  firstSurgeryCode +  firstSurgeryLocation 
-     + firstSurgerySiteInfection
-     + secondSurgery +  secondarySurgeryLocation + secondarySurgerySiteInfection + thirdSurgery +  thirdSurgeryLocation + thirdSurgerySiteInfection 
-     + fourthSurgery + fourthSurgeryLocation + fourthSurgerySiteInfection + fifthSurgery + fifthSurgeryLocation + fifthSurgerySiteInfection
-     + sixthSurgery + sixthSurgeryLocation + sixthSurgerySiteInfection +  seventhSurgery +  seventhSurgeryLocation + seventhSurgerySiteInfection +  eighthSurgery + eighthSurgeryLocation + eighthSurgerySiteInfection
-     + ninethSurgery +  ninethSurgeryLocation + ninethSurgerySiteInfection + tenthSurgery +  tenthSurgeryLocation + tenthSurgerySiteInfection + otherSurgeryDescription +  respiratoryDistressSyndrome
-     + pneumothorax + pneumothoraxWhereOccured +  patentDuctusArteriosus +  necrotizingEnterocolitis+  necrotizingEnterocolitisWhereOccured+ focalIntestinalPerforation
-     + focalIntestinalPerforationWhereOccured + bacterialPathogenAfterDay3 + bacterialPathogenAfterDay3WhereOccured
-     +  bacterialPathogenAfterDay3Pathogen1 + bacterialPathogenAfterDay3Pathogen2 + bacterialPathogenAfterDay3Pathogen3 + coagulaseNegativeStaphInfection
-     + coagulaseNegativeStaphInfectionWhereOccured + fungalInfection + fungalInfectionWhereOccured +  cysticPeriventricularLeukomalacia +  retinalExamination
-     + ropStage + majorBirthDefect + firstBirthDefectCode + secondBirthDefectCode + thirdBirthDefectCode + fourthBirthDefectCode + fifthBirthDefectCode
-     + birthDefectDescription + enteralfeeding + oxygenAtDischarge
-     + conventionalVentilationAtDischarge + highFrequencyVentilationAtDischarge + highFlowNasalCannulaAtDischarge
-     + nasalVentilationAtDischarge + nasalCpapAtDischarge + monitorAtDischarge + initialDisposition + weightAtInitialDisposition
-     + headCircumferenceAtInitialDisposition + initialLengthOfStay + reasonForTransfer + newTransferCenterCode + postTransferDisposition
-     + dispositionAfterReadmission + weightAtDispositionAfterReadmission + ultimateDisposition + totalLengthOfStay + durationOfAssistedVentilation
-     + daysOfAssistedVentilation + ecmoAtHospital + hypothermicTherapy + coolingMethod + hypoxicIschemicEncephalopathy
-     + hieSeverity + meconiumAspirationSyndrome + trachealSuctioningAttempted + seizures + medicalRecordNumber + "</tblInfantVON>\n";
-    
-    //console.log(xmlDocument);
+    var xmlDocument = "<tblInfantVON>\n" + birthYear 
+    + birthWeightInGrams + gestationalAgeInWeeks 
+    + gestationalAgePlusDays + diedInDeliveryRoom 
+    + outbornBirth + dayOfAdmission 
+    + transferCenterCode + headCircumferenceAtBirth 
+    + notHispanic + prenatalCare 
+    + antenatalSteroids + antenatalMagnesiumSulfate
+    + chorioamnionitis + maternalHypertension
+    +  maternalDiabetes + modeOfDelivery 
+    + sexOfInfant + multipleGestation 
+    + numberOfBirthsDelivered + congenitalInfection
+    + congenitalInfectionOrg1 + congenitalInfectionOrg1 
+    + congenitalInfectionOrg2 + congenitalInfectionOrg3 
+    + apgarScoresOneMin + apgarScoresFiveMin
+    + LaryngealMaskAirway + oxygenDuringInitialResuscitation 
+    + facemaskVentilation + endotrachealTubeVentilation 
+    + epinephrine + cardiacCompression 
+    + nasalVentilation + nasalCpap 
+    + temperatureMeasuredAtAdmissionState + temperatureMeasuredAtAdmission 
+    + bacterialSepsis + bacterialSepsisPathogen1 
+    + bacterialSepsisPathogen2 + bacterialSepsisPathogen3
+    + oxygenOnDay28 + cranialImagning 
+    + periventricularHemorrhage + pihOccurance 
+    + diedWithin12Hours + receivedOxygen 
+    + conventionalVentilation + highFrequencyVentilation 
+    + highFlowNasalCannula + nasalIMV
+    + nasalCPAPafterResuscitation + nasalCPAPnoETT 
+    + surfactant + surfactantAtAnyTime + ageAtSurfactantInHours 
+    + ageAtSurfactantPlusMinutes + inhaledNitricOxide
+    + inhaledNitricOxideWhereGiven + oxygenAt36Weeks 
+    + ventilationAt36Weeks + highFrequencyVentilationAt36Weeks 
+    + highFlowNasalCannulaAt36weeks + nasalIMVAt36Weeks 
+    + nasalCpapAt36Weeks + steroidsForCLD 
+    + steroidsForCLDWhereGiven + indomethacin 
+    + ibuprofen + Acetaminophen 
+    + probiotics + ropTreatmentWithVegfDrug
+    + caffeine + vitaminA 
+    + ropSurgery + ropSurgeryWhereDone 
+    + pdaSurgery + necSurgery 
+    + otherSurgery + firstSurgeryCode 
+    + firstSurgeryLocation + firstSurgerySiteInfection
+    + secondSurgery +  secondarySurgeryLocation 
+    + secondarySurgerySiteInfection + thirdSurgery 
+    + thirdSurgeryLocation + thirdSurgerySiteInfection 
+    + fourthSurgery + fourthSurgeryLocation 
+    + fourthSurgerySiteInfection + fifthSurgery 
+    + fifthSurgeryLocation + fifthSurgerySiteInfection
+    + sixthSurgery + sixthSurgeryLocation 
+    + sixthSurgerySiteInfection + seventhSurgery 
+    + seventhSurgeryLocation + seventhSurgerySiteInfection 
+    + eighthSurgery + eighthSurgeryLocation 
+    + eighthSurgerySiteInfection + ninethSurgery 
+    + ninethSurgeryLocation + ninethSurgerySiteInfection 
+    + tenthSurgery + tenthSurgeryLocation 
+    + tenthSurgerySiteInfection + otherSurgeryDescription 
+    + respiratoryDistressSyndrome + pneumothorax
+    + pneumothoraxWhereOccured + patentDuctusArteriosus
+    + necrotizingEnterocolitis + necrotizingEnterocolitisWhereOccured
+    + focalIntestinalPerforation + focalIntestinalPerforationWhereOccured
+    + bacterialPathogenAfterDay3 + bacterialPathogenAfterDay3WhereOccured
+    + bacterialPathogenAfterDay3Pathogen1 + bacterialPathogenAfterDay3Pathogen2 
+    + bacterialPathogenAfterDay3Pathogen3 + coagulaseNegativeStaphInfection
+    + coagulaseNegativeStaphInfectionWhereOccured + fungalInfection 
+    + fungalInfectionWhereOccured + cysticPeriventricularLeukomalacia 
+    + retinalExamination + ropStage 
+    + majorBirthDefect + firstBirthDefectCode 
+    + secondBirthDefectCode + thirdBirthDefectCode 
+    + fourthBirthDefectCode + fifthBirthDefectCode
+    + birthDefectDescription + enteralfeeding 
+    + oxygenAtDischarge + conventionalVentilationAtDischarge 
+    + highFrequencyVentilationAtDischarge + highFlowNasalCannulaAtDischarge
+    + nasalVentilationAtDischarge + nasalCpapAtDischarge 
+    + monitorAtDischarge + initialDisposition 
+    + weightAtInitialDisposition + headCircumferenceAtInitialDisposition 
+    + initialLengthOfStay + reasonForTransfer 
+    + newTransferCenterCode + postTransferDisposition
+    + dispositionAfterReadmission + weightAtDispositionAfterReadmission 
+    + ultimateDisposition + totalLengthOfStay 
+    + durationOfAssistedVentilation + daysOfAssistedVentilation 
+    + ecmoAtHospital + hypothermicTherapy 
+    + coolingMethod + hypoxicIschemicEncephalopathy
+    + hieSeverity + meconiumAspirationSyndrome 
+    + trachealSuctioningAttempted + seizures 
+    + medicalRecordNumber + "</tblInfantVON>\n";
         
     return xmlDocument;
 }
-
-
-
-
-
-/*
-<NEWRACE>3</NEWRACE>?? depricated?
-"<XFER_OUT>"1"</XFER_OUT>";
-"<ECMOWD>"7"</ECMOWD>";
-"<NTRCOXT>"7"</NTRCOXT>";
-"<NTRCOXWD>"7"</NTRCOXWD>";
-"<CARSRGP>"7"</CARSRGP>";
-"<CARSRGWD>"7"</CARSRGWD>";
-
-
-
-*/

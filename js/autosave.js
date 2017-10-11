@@ -20,7 +20,7 @@ var session = document.getElementById('session').value;
                     //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
                     var record = $('form').serializeJSON();
                     //record.transferCenterCode = 99999999;
-                    //record = mapToNaturalLanguage(record);
+                    record = mapToNaturalLanguage(record);
                     //var record2 = mapToLang(record);
                     //alert(JSON.stringify(record));
                     updateDataInRecord(record);

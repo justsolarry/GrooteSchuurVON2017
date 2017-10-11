@@ -165,8 +165,8 @@ function repopulateForm(babyData){
                         if(domElements[index] != null){
                             for(i=0; i<domElements.length; i++){
                                 if(domElements[i].value == index){
-                                  eventFire(domElements[i], 'click')
-                                   //   domElements[i].checked = true;
+                                  //eventFire(domElements[i], 'click')
+                                  domElements[i].checked = true;
                                 }
                             }
                         }   
@@ -189,7 +189,9 @@ function checkForPopulation(){
     if (url.includes("?")) {
        _url = new URL(url);
        var id = _url.searchParams.get("id");
+        $('body').removeClass('stop-scrolling');
        fetchRowData(id);
+    
         //alert("There are params"+id)
     } 
     else {}
@@ -207,6 +209,7 @@ var tempBabyData = {idMisMatch: true};
 }*/
 
 function createRecordInDatabase(){
+    $('body').removeClass('stop-scrolling');
     var medicalRecordObject = {};
     var maxId = createHTTPGETConnectionMaxId();
     maxId = maxId.rows[0].value;
@@ -271,7 +274,9 @@ function createHTTPPOSTConnectionNewRecord(babyDataObject){
   http.onreadystatechange = function() {
     if(http.status === 204) {
         //alert("In redirect");
-        //window.location = "index.html?id="+id+"#PatientFormID";    
+        window.location = "index.html?id="+id+"#PatientFormID";    
+    }else{
+        toastr.error("Database not connected.");
     }
   }
   
@@ -312,7 +317,7 @@ function createHTTPGETConnection(medicalRecordId){
   http.withCredentials = true;
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-        _record = JSON.parse(this.responseText);
+        record = JSON.parse(this.responseText);
         console.log("found");
         //toastr.info("successful connection to database");
        
@@ -395,7 +400,6 @@ function mapToNaturalLanguage(record){
         break;
     }
     addedRecord.transferCenterName = center;
-    if (record.transferCenterPIW)
     return record;
 }
 

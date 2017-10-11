@@ -1,6 +1,7 @@
 
 
 $(document).ready(function() {
+    loadDefaultValues(); //loading all the default values of the form
     toastr.options.closeButton = true;
     /*START Menu Controls*/
     $(".createNewEntryMenuButton").removeClass("activeMenuButton");
@@ -83,14 +84,7 @@ $(document).ready(function() {
                     $('#generalDataItemsFormCircle').removeClass('glowingButton');
                     $('#dischargeCircle').addClass('glowingButton');
         }
-        
-        
-        
     });
-    
-    
-    
-    
 });
 
 /* START Opening and Closing Menu Bar   */
@@ -122,7 +116,39 @@ $("#patientMedicalRecordNumber").keyup(function() {
     
 });
 /* END Auto filling of the patient identification panel above the progress bar */
-
+function loadDefaultValues(){
+    $('#diedInDeliveryRoomNo').attr("checked",true).change();
+    $('#chorioamnionitisNo').attr("checked",true).change();
+    $('#congenitalInfectionNo').attr("checked",true).change();
+    $('#temperatureMeasuredWithinFirstHourYes').attr("checked",true).change();
+    $('#bacterialSepsisBeforeNo').attr("checked",true).change();
+    $('#cranialImagingYes').attr("checked",true).change();
+    $('#diedWithin12HoursNo').attr("checked",true).change();
+    $('#steroidsForCLDNo').attr("checked",true).change();
+    $('#ibuprofenNo').attr("checked",true).change();
+    $('#acetaminophenNo').attr("checked",true).change();
+    $('#probioticsYes').attr("checked",true).change();
+    $('#ropTreatmentWithVegfDrugNo').attr("checked",true).change();
+    $('#caffeineYes').attr("checked",true).change();
+    $('#ropSurgeryNo').attr("checked",true).change();
+    $('#pdaSurgeryNo').attr("checked",true).change();
+    $('#necSurgeryNo').attr("checked",true).change();
+    $('#otherSurgeryNo').attr("checked",true).change();
+    $('#pneumothoraxNo').attr("checked",true).change();
+    $('#focalIntestinalPerforationNo').attr("checked",true).change();
+    $('#coagulaseNegativeNo').attr("checked",true).change();
+    $('#fungalInfectionNo').attr("checked",true).change();
+    $('#cysticPeriventricularNo').attr("checked",true).change();
+    $('#enteralFeeding option[value="3"]').attr("selected",true).change();
+    $('#oxygenAtDischargeNo').attr("checked",true).change();
+    $('#cenoventionalVentilationAtDischargeNo').attr("checked",true).change();
+    $('#highFrequencyVentilationAtDischargeNo').attr("checked",true).change();
+    $('#highFlowNasalCannulaAtDischargeNo').attr("checked",true).change();
+    $('#nasalVentilationAtDischargeNo').attr("checked",true).change();
+    $('#nasalCpapAtDischargeNo').attr("checked",true).change();
+    $('#monitorAtDischargeNo').attr("checked",true).change();
+    
+}
 function checkingWhatTypeOfFormToDisplay(){
     var weight = document.getElementById('birthWeightInGrams').value;
     //Von baby  and died > show death form
@@ -340,6 +366,14 @@ function successToastr(){
     }
     
 }
+
+function formComplete(){     
+    if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
+       toastr.success("All Forms are complete!")
+        $('#formComplete').val(true)
+       }
+}
+
 function successReload(){
     
 }
@@ -747,14 +781,20 @@ function bacterialSepsisBeforeCheck() {
     if (document.getElementById('bacterialSepsisBeforeNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $('#hiddenFieldBacterialSepsisBefore select').prop('selectedIndex',0);
+        $('#hiddenFieldBacterialSepsisBefore select').change();
     }
     if (document.getElementById('bacterialSepsisBeforeNA').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $('#hiddenFieldBacterialSepsisBefore select').prop('selectedIndex',0);
+        $('#hiddenFieldBacterialSepsisBefore select').change();
     }
     if (document.getElementById('bacterialSepsisBeforeUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        $('#hiddenFieldBacterialSepsisBefore select').prop('selectedIndex',0);
+        $('#hiddenFieldBacterialSepsisBefore select').change();
     }
 }
 function numberOfBacterialSepsisBeforeCheck(){
@@ -778,6 +818,12 @@ function numberOfBacterialSepsisBeforeCheck(){
         $('#bacterialBeforeDiv2').slideDown("slow");
         $('#bacterialBeforeDiv3').slideDown("slow");
         $('#hiddenFieldBacterialSepsisBefore').addClass('glowingHiddenFields');
+    }
+    else{
+        $('#bacterialBeforeDiv1').slideUp("slow");
+        $('#bacterialBeforeDiv2').slideUp("slow");
+        $('#bacterialBeforeDiv3').slideUp("slow");
+        $('#hiddenFieldBacterialSepsisBefore').removeClass('glowingHiddenFields');
     }
 }
 function numberOfBacterialSepsisAfterCheck(){
@@ -975,6 +1021,7 @@ function bacterialSepsisCheck() {
     if (document.getElementById('bacterialSepsisNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
+        
     }
     if (document.getElementById('bacterialSepsisUnknown').checked) {
         $(value1).slideUp("slow");
@@ -1159,11 +1206,9 @@ function PIHWhereOccurredCheck() {
     if (strUser==1 || strUser==2 || strUser==3 || strUser==4){
     
         $(hiddenField).slideDown("slow");
-        $(hiddenField).addClass('glowingHiddenFields');
     }
     else{
         $(hiddenField).slideUp("slow");
-        $(hiddenField).removeClass('glowingHiddenFields');
     }
 }
 function initialDispositionCheck() {
@@ -1499,9 +1544,13 @@ $(function () {
         maxDate: '0',
         minDate: '-18M',
         onSelect: function () {
+            validateFreeText('dateDischargedHomeDiedOrBirthday');
             totalLengthOfStayCheck();
             totalLengthOfStayCheckGreaterThan28();
             totalLengthOfStayCheckGreaterThan36weeks(); //setting the 36 weeks
+            
+            InputsGeneralForm();
+            ColourGeneralForm();
         }
     }, datepickersOpt));
     $('#dateDischargedHomeDiedOrBirthdayCalendar').on("click", function (e) {
