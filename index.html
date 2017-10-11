@@ -4032,43 +4032,42 @@
                   </div>
                </div>
             </div>
-         </section>
-         <!-- END THIRD SECTION (TRANSFER) -->
-      </section>
-      <!-- Electron JQUERY support-->
-      <script>
-         if (typeof module === 'object') {
-             window.module = module;
-             module = undefined;
-         }
-      </script>
-      <script type="text/javascript" src="js/jquery.js"></script>
-      <script type="text/javascript" src="js/tether.js"></script>
-      <script type="text/javascript" src="js/jquery.easing.js"></script>
-      <!-- Bootstrap core JavaScript -->
-      <script type="text/javascript" src="js/bootstrap.js"></script>
-      <!-- Custom library scripts -->
-      <script type="text/javascript" src="js/grayscale.js"></script>
-      <script type="text/javascript" src="js/toastr.js"></script>
-      <!-- Custom VON Team Scripts -->
-       <script type="text/javascript" src ="js/dischargeFormPopulation.js"></script>
-      <script type="text/javascript" src="js/config.js"></script>
-      <script type="text/javascript" src="js/autosave.js"></script> 
-      <script type="text/javascript" src="js/scripts.js"></script>
-      <script type="text/javascript" src="js/eventListeners.js"></script>
-      <script type="text/javascript" src="js/validationScript.js"></script>
-      <script type="text/javascript" src="js/databaseReadWrite.js"></script>
-      <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
-      <script type="text/javascript" src="calendar/jquery-ui.js"></script>
-      <script type="text/javascript" src="js/jquery.serializejson.js"></script>
-      <script type="text/javascript" src="js/autosave.js"></script>
-      <script>
-         $(document).ready(function() {
-             if(session){ 
-               //autosave(); 
-               checkForPopulation(); 
-            } 
-         });
-         </script>
-   </body>
+        </section>
+        <!-- END THIRD SECTION (TRANSFER) -->
+        
+    </section>
+    <!-- Electron JQUERY support-->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tether.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- Custom library scripts -->
+    <script type="text/javascript" src="js/grayscale.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <!-- Custom VON Team Scripts -->
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/autosave.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/eventListeners.js"></script>
+    <script type="text/javascript" src="js/validationScript.js"></script>
+    <script type="text/javascript" src="js/databaseReadWrite.js"></script>
+    <script type="text/javascript" src="js/sisyphus/sisyphus.min.js"></script>
+    <script type="text/javascript" src="calendar/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.serializejson.js"></script>
+    <script type="text/javascript" src="js/autosave.js"></script>
+    <script>
+        $(document).ready(function() {
+        var session = document.getElementById("session").value;
+            //if(session == true){
+               autosave();
+               checkForPopulation();
+            //}
+
+            
+       });
+    </script>
+</body>
+
 </html>

@@ -34,7 +34,10 @@ function fetchData(){
         //"scrollCollapse": "true",
         "ajax": {"url":_url,
                  "dataSrc": "rows", 
-                    "crossDomain": true
+                    "crossDomain": true,
+                     xhrFields: {
+                       withCredentials: true
+                    },
                 },
         "rowId": "doc._id",
         
