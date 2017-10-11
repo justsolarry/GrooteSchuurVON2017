@@ -72,17 +72,23 @@ function fetchData(){
             {
                     "render":function(data, type, row, meta){
                         
-                        var state = row.doc.form1 && row.doc.form2 && row.doc.form3 && !row.doc.error;
+                        var state = row.doc.formComplete;
+                        var state2 = row.doc.form1 && row.doc.form2 && row.doc.form3;
+                        var error = row.doc.error;
                         
-                        if(row.doc.error == true){
-                            return "Errors"
+                        console.log(error+" "+typeof(error));
+                        
+                        
+                        if(error == "true"){
+                           return "Error"
                         }
-                        else if(state != true){
-                            return "Incomplete"
-                        }
-                        else if(state == true){
+                        if(state || state2){
                             return "Complete"
                         }
+                        else{
+                            return "Incomplete"
+                        }
+                        
                     }
             },
             {"data": "doc.dateOfBirth", 

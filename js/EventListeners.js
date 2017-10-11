@@ -256,6 +256,7 @@ function textareaAdditionalForm(e){
     });
     return (completeIncompleteCounter);
 }
+
 function ColourAdditionalForm(){
     //pulling the function's array data
     var data = InputsAdditionalForm();
@@ -289,7 +290,7 @@ function ColourAdditionalForm(){
     else if((completeIncompleteCounter<lengthOfInput)|| (textareaTrueFalse<lengthOfTextArea) ||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#dischargeCircle').css('background-color', 'orange');
         $('#form3').val(false);
-        $('#error').val(true);
+        $('#error').val(false);
         //toastr.warning("Fields aren't complete");
     }
 }
