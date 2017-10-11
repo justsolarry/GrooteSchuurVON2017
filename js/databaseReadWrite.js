@@ -141,7 +141,9 @@ function checkForPopulation(){
     if (url.includes("?")) {
        _url = new URL(url);
        var id = _url.searchParams.get("id");
+        $('body').removeClass('stop-scrolling');
        fetchRowData(id);
+    
         //alert("There are params"+id)
     } 
     else {}
@@ -159,6 +161,7 @@ var tempBabyData = {idMisMatch: true};
 }*/
 
 function createRecordInDatabase(){
+    $('body').removeClass('stop-scrolling');
     var medicalRecordObject = {};
     var maxId = createHTTPGETConnectionMaxId();
     maxId = maxId.rows[0].value;
@@ -169,7 +172,10 @@ function createRecordInDatabase(){
 }
 
 function getRecordFromDatabase(medicalRecordId){
+    var record = createHTTPGETConnection(medicalRecordId);
+    console.log(record);
     var record = createHTTPGETConnection(medicalRecordId)
+    console.log(record);
     return record;
 }
 
@@ -218,7 +224,9 @@ function createHTTPPOSTConnectionNewRecord(babyDataObject){
   http.onreadystatechange = function() {
     if(http.status === 204) {
         //alert("In redirect");
-        //window.location = "index.html?id="+id+"#PatientFormID";    
+        window.location = "index.html?id="+id+"#PatientFormID";    
+    }else{
+        toastr.error("Database not connected.");
     }
   }
   
@@ -260,7 +268,7 @@ function createHTTPGETConnection(medicalRecordId){
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
         record = JSON.parse(this.responseText);
-        console.log(record);
+        console.log("found");
         //toastr.info("successful connection to database");
        
         //tempBabyData = JSON.parse(babyData);
@@ -342,7 +350,6 @@ function mapToNaturalLanguage(record){
         break;
     }
     addedRecord.transferCenterName = center;
-    //if (record.transferCenterPIW)
     return record;
 }
 

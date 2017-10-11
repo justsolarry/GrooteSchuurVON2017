@@ -1,0 +1,23 @@
+{
+  "name": "Groote-Schuur-Neonatal-Data-Capture-and-Report-Management-System",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "BuildWindows": "electron-packager . Groote-Schuur-Neonatal-Data-Capture-and-Report-Management-System --platform=win32 --arch=x64 --overwrite",
+    "build-osx": "electron-packager . Groote-Schuur-Neonatal-Data-Capture-and-Report-Management-System --platform=darwin --arch=x64 --version=9.0.0 --icon icon256.icns --overwrite"
+      
+  },
+  "repository": "",
+  "keywords": [
+    "Neonatal"
+  ],
+  "author": "Larry-Liu-Denham-Preen-Sabelo-Xulu",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.6.13",
+    "electron-packager": "^9.1.0"
+      
+  }
+}

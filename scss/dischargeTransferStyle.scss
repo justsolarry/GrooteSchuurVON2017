@@ -1,0 +1,95 @@
+          
+$A4PageWidth: 210mm; 
+$A4PageWidthLess1mmBorderAnd5mmPadding: 198mm;
+$A4PageWidthOneThird: 70mm;
+$A4PageHeight: 297mm;
+
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+        #dischargeTransferHTMLPrint, #dischargeTransferHTMLPrint * {
+        visibility: visible;
+    }
+    #dischargeTransferHTMLPrint {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $A4PageWidthLess1mmBorderAnd5mmPadding; 
+        height: $A4PageHeight;
+        border: 1mm solid black;
+        margin:0;
+        
+        background: white;
+        color: black;
+        padding: 0mm 5mm;
+    }    
+    .one-third{
+        width: 70mm;
+        height:150px;
+        display:inline;
+    }
+}
+
+body{
+    background: #222225;
+}
+
+.headingValues span{
+    display:inline-block;
+}
+
+.printRow{
+    display:block;
+    width: 208mm;
+    height: 150px;
+}
+
+.headingValues span{
+    padding-right: 10px;
+}
+
+.headingValues{
+    width: 208mm;
+}
+
+#dischargeTransferHTMLPrint {
+    margin: 100px auto 20px auto;
+    width: 210mm; 
+    height: $A4PageHeight;
+    border: 2px solid black;
+    display:block;
+    background: white;
+    color: black;
+    padding: 5mm;
+} 
+
+.one-third{
+    float:left;
+    width: 69mm;
+    height:150px;
+    display:inline-block;
+}
+
+.blue{
+    color:blue;
+}
+
+.immunizations652PrintHidden,
+.chromosomesDonePrintHidden,
+.abnormalHeadUltrasoundPrintHidden,
+.fetalMedicineUnitFlaggedPrintHidden,
+.sepsisDuringAdmissionPrintHidden,
+.jaundiceNeedingPhototherapyPrintHidden,
+.hypoxicIschemicEncephalopathyHighestScorePrintHidden,
+.ventilationPrintHidden,
+.necPlusPrintHidden,
+.cldPrintHidden,
+.surfactantAtAnyTimePrintHidden,
+.rvdValuePrintHidden,
+.twinsOrMorePrintHidden,
+.prematureCategoryPrintHidden,
+.birthWeightCategoryPrintHidden{
+    display: none;
+}

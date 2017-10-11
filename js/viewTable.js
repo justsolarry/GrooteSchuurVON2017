@@ -197,7 +197,7 @@ function fetchData(){
                             
                       }  
             },
-                      {"data":"doc.abnormalHeadUltrasound",
+            {"data":"doc.abnormalHeadUltrasound",
                 render: function (data, type, row) {
                             if(data == "" || data == null){
                                 return "-"
@@ -252,14 +252,21 @@ function fetchData(){
                 className:'submit',
                 action: function () {
                     var checkedRows = [];
-    
+                    var statuses = [];
+                    var allComplete = true;
+                    
                     $('#recordTable').find('input[type="checkbox"]:checked').each(function () {
                     //this is the current checkbox
                     row = $(this).parents('tr').attr('id');
+                    status = $(this).parents('tr').find('td').eq(3).text();
                     checkedRows.push(row);
+                    statuses.push(status);
                     });
                     
-                    sendDataToVon(checkedRows);
+                    status = $(this).parents('tr').children(":third").text();
+                    alert(status);
+                    
+                    sendDataToVon(checkedRows); 
                 }
             },
             {
@@ -271,6 +278,7 @@ function fetchData(){
                 $('#recordTable').find('input[type="checkbox"]:checked').each(function () {
                 //this is the current checkbox
                 row = $(this).parents('tr').attr('id');
+                
                 checkedRows.push(row);
                 });
                 var deleteChosenRecords = confirm("You are about to delete "+checkedRows.length+" record(s). Are you sure you want to continue?");
@@ -292,7 +300,6 @@ function CheckRowClick(){
             //var checkbox = $(this).parents('tr').attr()
         });   
 }
-
 
 
 

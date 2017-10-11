@@ -1,5 +1,4 @@
-function validateNoNumbers(ID)
-{
+function validateNoNumbers(ID){
     var alphaExp = /^[a-zA-Z\s\-]*$/;
     var value1 = document.getElementById(ID).value;
     var replaceString = "";
@@ -36,7 +35,6 @@ function validateFreeText(ID){
                 $('#'+ID).removeClass('addGreen')
             }
 }
-
 function validateBirthweight(){
     var weight = document.getElementById('birthWeightInGrams').value;
     if(weight.length==0){
@@ -192,7 +190,7 @@ function validatePatientMedicalRecordNumber(){
     }
     else{
        if((MedicalRecordNumber.length)!=9){
-        toastr.error('Medical Record Number - Must have 8 numbers');
+        toastr.error('Medical Record Number - Must have 9 numbers');
         $('#patientMedicalRecordNumber').addClass('addRed')
            $('#patientMedicalRecordNumber').removeClass('addGreen')
         }
@@ -214,8 +212,7 @@ function validatePatientMedicalRecordNumber(){
     }
     
 }
-function validateAppointmentLocation()
-{
+function validateAppointmentLocation(){
     var alphaExp = /^[a-zA-Z\s\-]*$/;
     var value1 = document.getElementById('appointmentLocation').value;
   if ((value1.length) ==0){
@@ -234,8 +231,7 @@ function validateAppointmentLocation()
     }
   
 }
-function validateGestationalAgeInWeeks()
-{
+function validateGestationalAgeInWeeks(){
     var gestationalAgeInWeeks = document.getElementById('gestationalAgeInWeeks').value;
   if ((gestationalAgeInWeeks.length) ==0){
     toastr.error('Gestational Age - Value cannot be empty');
@@ -252,8 +248,8 @@ function validateGestationalAgeInWeeks()
   
 }
 
-//dayofAdmission is calculated
-
+//START Functions that automaically certain strings while the user types
+//remove anything other than numbers
 $("#birthWeightInGrams").on( "keyup", function( event ) {
     
     // 1.
@@ -278,9 +274,8 @@ $("#birthWeightInGrams").on( "keyup", function( event ) {
         } );
  
 } );
-
+//remove anything other than numbers
 $("#weightAtInitialDisposition").on( "keyup", function( event ) {
-    
     // 1.
     var selection = window.getSelection().toString();
     if ( selection !== '' ) {
@@ -303,7 +298,31 @@ $("#weightAtInitialDisposition").on( "keyup", function( event ) {
         } );
  
 } );
-
+//remove anything other than numbers
+$("#weightAtDispositionAfterReadmission").on( "keyup", function( event ) {
+    // 1.
+    var selection = window.getSelection().toString();
+    if ( selection !== '' ) {
+        return;
+    }
+    // 2.
+    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+        return;
+    }
+    // 1
+        var $this = $( this );
+        var input = $this.val();
+        // 2
+        var input = input.replace(/[\D\s\._\-]+/g, "");
+        // 3
+        input = input ? parseInt( input, 10 ) : 0;
+        // 4
+        $this.val( function() {
+            return ( input === 0 ) ? "" : input.toString();
+        } );
+ 
+} );
+//remove anything other than numbers
 $("#patientMedicalRecordNumber").on( "keyup", function( event ) {
     
     // 1.
@@ -328,4 +347,4 @@ $("#patientMedicalRecordNumber").on( "keyup", function( event ) {
         } );
  
 } );
-
+//END Functions that automaically certain strings while the user types

@@ -158,7 +158,7 @@
                     debug: false,
 
                     showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
-                    showDuration: 300,
+                    showDuration: 500,
                     showEasing: 'swing', //swing and linear are built into jQuery
                     onShown: undefined,
                     hideMethod: 'fadeOut',
@@ -187,7 +187,7 @@
                     closeHtml: '<button type="button">&times;</button>',
                     closeClass: 'toast-close-button',
                     newestOnTop: true,
-                    preventDuplicates: false,
+                    preventDuplicates: true,
                     progressBar: false,
                     progressClass: 'toast-progress',
                     rtl: false
