@@ -1,5 +1,5 @@
 var dbConfig = {
-    ipAddress: "localhost",
+    ipAddress: "196.24.190.228",
     dbName: "test1"
 };
 

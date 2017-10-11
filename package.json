@@ -1,44 +1,23 @@
 {
-    "title": "Grayscale",
-    "name": "startbootstrap-grayscale",
-    "version": "4.0.0-alpha",
-    "description": "A grayscale one page HTML theme for Bootstrap.",
-    "keywords": [
-        "css",
-        "sass",
-        "html",
-        "responsive",
-        "theme",
-        "template"
-    ],
-    "homepage": "http://startbootstrap.com/template-overviews/grayscale",
-    "bugs": {
-        "url": "https://github.com/BlackrockDigital/startbootstrap-grayscale/issues",
-        "email": "feedback@startbootstrap.com"
-    },
-    "license": "MIT",
-    "author": "Start Bootstrap",
-    "contributors": [
-        "David Miller (http://davidmiller.io/)"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/BlackrockDigital/startbootstrap-grayscale.git"
-    },
-    "dependencies": {
-        "bootstrap": "^4.0.0-alpha.6",
-        "font-awesome": "4.7.0",
-        "jquery": "^3.2.1",
-        "jquery.easing": "^1.4.1",
-        "tether": "^1.4.0"
-    },
-    "devDependencies": {
-        "browser-sync": "^2.18.8",
-        "gulp": "^3.9.1",
-        "gulp-clean-css": "3.2.0",
-        "gulp-header": "1.8.8",
-        "gulp-rename": "^1.2.2",
-        "gulp-sass": "^3.1.0",
-        "gulp-uglify": "^2.1.2"
-    }
+  "name": "Groote-Schuur-Neonatal-Data-Capture-and-Report-Management-System",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "BuildWindows": "electron-packager . Groote-Schuur-Neonatal-Data-Capture-and-Report-Management-System --platform=win32 --arch=x64 --overwrite",
+    "build-osx": "electron-packager . Groote-Schuur-Neonatal-Data-Capture-and-Report-Management-System --platform=darwin --arch=x64 --version=9.0.0 --icon icon256.icns --overwrite"
+      
+  },
+  "repository": "",
+  "keywords": [
+    "Neonatal"
+  ],
+  "author": "Larry-Liu-Denham-Preen-Sabelo-Xulu",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.6.13",
+    "electron-packager": "^9.1.0"
+      
+  }
 }

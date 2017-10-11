@@ -34,7 +34,10 @@ function fetchData(){
         //"scrollCollapse": "true",
         "ajax": {"url":_url,
                  "dataSrc": "rows", 
-                    "crossDomain": true
+                    "crossDomain": true,
+                     xhrFields: {
+                       withCredentials: true
+                    },
                 },
         "rowId": "doc._id",
         
@@ -71,13 +74,13 @@ function fetchData(){
                         
                         var state = row.doc.form1 && row.doc.form2 && row.doc.form3 && !row.doc.error;
                         
-                        if(row.error){
+                        if(row.doc.error == true){
                             return "Errors"
                         }
-                        else if(!state){
+                        else if(state != true){
                             return "Incomplete"
                         }
-                        else if(state){
+                        else if(state == true){
                             return "Complete"
                         }
                     }
