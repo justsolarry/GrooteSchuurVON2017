@@ -106,44 +106,59 @@
         <div style="display:block;">
             <p>Problem list</p>
             <span style="width:100mm; float:left">
-                <p><span id="birthWeightCategoryPrint"></span><input class="form-control" type="text" placeholder="additional comments"></p>
-                <p><span id="prematureCategoryPrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="twinsOrMorePrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="rvdValuePrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="surfactantAtAnyTimePrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="cldPrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="necPlusPrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="ventilationPrint" ></span><input class="form-control" type="text" placeholder=""></p>
-
+                <p><span id="birthWeightCategoryPrint"></span>
+                    <textarea class="form-control birthWeightCategoryPrintHidden" id="birthWeightCategoryPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea>
+                <p><span id="prematureCategoryPrint"></span></p>
+                    <textarea class="form-control prematureCategoryPrintHidden" id="prematureCategoryPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea>
+                <p><span id="twinsOrMorePrint"></span></p>
+                    <textarea class="form-control twinsOrMorePrintHidden" id="twinsOrMorePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea>
+                <p><span id="rvdValuePrint"></span>
+                    <textarea class="form-control rvdValuePrintHidden" id="rvdValuePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="surfactantAtAnyTimePrint"></span>
+                    <textarea class="form-control surfactantAtAnyTimePrintHidden" id="surfactantAtAnyTimePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="cldPrint"></span>
+                    <textarea class="form-control cldPrintHidden" id="cldPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="necPlusPrint"></span>
+                    <textarea class="form-control necPlusPrintHidden" id="necPlusPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="ventilationPrint" ></span>
+                    <textarea class="form-control ventilationPrintHidden" id="ventilationPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
             </span>
             <span style="width:100mm; ">
-                <p><span id="hypoxicIschemicEncephalopathyHighestScorePrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="jaundiceNeedingPhototherapyPrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="sepsisDuringAdmissionPrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="fetalMedicineUnitFlaggedPrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="abnormalHeadUltrasoundPrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="chromosomesDonePrint"></span><input class="form-control" type="text" placeholder=""></p>
-                <p><span id="immunizations652Print"></span><input class="form-control" type="text" placeholder=""></p>
+                <p><span id="hypoxicIschemicEncephalopathyHighestScorePrint"></span><textarea class="form-control hypoxicIschemicEncephalopathyHighestScorePrintHidden" id="hypoxicIschemicEncephalopathyHighestScorePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="jaundiceNeedingPhototherapyPrint"></span>
+                    <textarea class="form-control jaundiceNeedingPhototherapyPrintHidden" id="jaundiceNeedingPhototherapyPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="sepsisDuringAdmissionPrint"></span>
+                    <textarea class="form-control sepsisDuringAdmissionPrintHidden" id="sepsisDuringAdmissionPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="fetalMedicineUnitFlaggedPrint"></span>
+                    <textarea class="form-control fetalMedicineUnitFlaggedPrintHidden" id="fetalMedicineUnitFlaggedPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="abnormalHeadUltrasoundPrint"></span>
+                    <textarea class="form-control abnormalHeadUltrasoundPrintHidden" id="abnormalHeadUltrasoundPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="chromosomesDonePrint"></span>
+                    <textarea class="form-control chromosomesDonePrintHidden" id="chromosomesDonePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="immunizations652Print"></span>
+                    <textarea class="form-control immunizations652PrintHidden" id="immunizations652PrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
             </span>
         </div>
         <div style="clear:both; display:block;">
-        <p>Additional Problems/Notes: </p>
-            <input class="form-control" type="text" placeholder="" style="height:100px;width:80%">
+        <p>Additional Problems / Notes: </p>
+            <textarea class="form-control" type="text" placeholder="" style="width:100%"></textarea>
         </div>
         <p>Date of <span id="dischargeOrTransferDatePrint"></span>: <span id="dateOfDischargePrint"></span> <span id="placeOfTransferPrint"></span> <span id="weightAtDischargePrint"></span> <span id="headCircumferenceAtDischargePrint"></span></p>
-        <p>Meds:<input class="form-control" type="text" placeholder="_____________________"></p>
-        <p>Feeds:<input class="form-control" type="text" placeholder="____________________"></p>
+        <textarea class="form-control" type="text" placeholder="Meds:" style="width:100%">Meds:</textarea>
+        <textarea class="form-control" type="text" placeholder="Feeds:" style="width:100%">Feeds:</textarea>
         <br>
         <p>Follow up appointments: <span id="followUpAppointmentPrint"></span></p>
-        <p>Done by: Dr</p>
-        <br>
-        
+        <p>Done by: <input type="text" placeholder="Dr" style="width:100%">
+        <br>    
     </div>
-    <div id="editor"></div>
-        <div>
-    <button style="z-index:10;margin:10px auto;"  class="btn btn-default" onclick="window.print()">Print Document</button></div>
         
-        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+        <div>  
+            <center>
+                <button style="z-index:10;margin:0px 0px 20px 0px;"  class="btn btn-default" onclick="window.print()">Print Document</button>
+            </center>
+        </div>
+        
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script type="text/javascript" src="js/config.js"></script>
     <script src="js/databaseReadWrite.js"></script>
     <script src="js/moment.js"></script>
@@ -158,6 +173,7 @@
     <script type="text/javascript" src="js/toastr.js"></script>
     <!-- Custom VON Team Scripts -->
     <script type="text/javascript" src="js/scripts.js"></script>
+    <script src="js/stretchy.js" async></script>
 
     </body>
 </html>
