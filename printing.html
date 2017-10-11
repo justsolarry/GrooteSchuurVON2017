@@ -40,7 +40,7 @@
         </button>
 
         <div class="container">
-            <a class="navbar-brand" href="index.html">Vermont Oxford Network</a>
+            <a class="navbar-brand" href="index.html"><span id="dischargeOrTransferPrintHeader"></span> Letter</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <button style="z-index:10"  class="btn btn-default" onclick="window.print()">Print Document</button>
@@ -71,7 +71,7 @@
                     <img src="img/westernCapeLogo.png" alt="Western Cape" width="90%">
                 </span>
                 <span class="one-third">
-                    <h3><span id="dischargeOrTransferPrint"></span> Letter</h3>
+                    <h3><span id="dischargeOrTransferPrintHeader"></span> Letter</h3>
                 </span>
                 <span class="one-third" style="float:right">
                     <br><br>
@@ -142,11 +142,11 @@
             <textarea class="form-control" type="text" placeholder="" style="width:100%"></textarea>
         </div>
         <p>Date of <span id="dischargeOrTransferDatePrint"></span>: <span id="dateOfDischargePrint"></span> <span id="placeOfTransferPrint"></span> <span id="weightAtDischargePrint"></span> <span id="headCircumferenceAtDischargePrint"></span></p>
-        <textarea class="form-control" type="text" placeholder="Meds:" style="width:100%">Meds:</textarea>
-        <textarea class="form-control" type="text" placeholder="Feeds:" style="width:100%">Feeds:</textarea>
+        <textarea class="" type="text" placeholder="Meds:" style="width:100%">Meds:</textarea>
+        <textarea class="" rows="4" type="text" placeholder="Feeds:" style="width:100%">Feeds:</textarea>
         <br>
         <p>Follow up appointments: <span id="followUpAppointmentPrint"></span></p>
-        <p>Done by: <input type="text" placeholder="Dr" style="width:100%">
+        <p>Done by: Dr <input type="text" placeholder="_________________________" style="width:100%">
         <br>    
     </div>
         
