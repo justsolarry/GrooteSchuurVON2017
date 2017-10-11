@@ -1,7 +1,6 @@
 var ip = "";
 var dbName = "";
 function configureDB(){
-    
     ip = dbConfig.ipAddress;
     dbName = dbConfig.dbName;
     if(ip == "" || ip == null){
@@ -11,7 +10,6 @@ function configureDB(){
     if(dbName == "" || dbName == null){
         dbName = "test1";
        }
-    
     //createSession();
 }
     
@@ -46,39 +44,23 @@ function createSession(){
     }
   }
   
-  var user = prompt('Username');
-  var password = prompt('Password');
+/*  var user = prompt('Username');
+  var password = prompt('Password');*/
   
-  var u = {};
+  var u = {
+      name: "",
+      password: ""
+  };
+/*
   u.name = user;
   u.password = password;
-
+*/
   
   http.setRequestHeader("Content-type", "application/json");  
   http.send(JSON.stringify(u));
   
 }
 
-
-function _logout(){
-   
-  var http = new XMLHttpRequest();
-    
-  var url = "http://"+ip+":5984/_session"; //admin:vonadmin123@
-  http.withCredentials = true;
-    
-  http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        alert("Logged in");
-        window.location.href = 'index.html'; 
-    }
-  }
-  
-  http.open("DELETE", url, true);
-  http.setRequestHeader("Content-type", "application/json");
-  http.send(JSON.stringify(userObject));
-     
-}
 
 function changePassword(userData){
   var http = new XMLHttpRequest();
@@ -100,28 +82,6 @@ function changePassword(userData){
     
 }
 
-function newUser(){
-    var userObject = {
-    "name": "test",
-    "type": "user",
-    "roles": [],
-    "password": "123456"
-    }
-
-  var http = new XMLHttpRequest();
-  var url = "http://"+ip+":5984/_users/org.couchdb.user:test"; //admin:vonadmin123@
-  http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        alert("User posted");
-    }
-    
-  }
-  
-  http.open("PUT", url, true);
-  http.setRequestHeader("Content-type", "application/json");
-  http.withCredentials = true;
-  http.send();
-}
 
 function displayData(id){
     
@@ -175,14 +135,6 @@ function repopulateForm(babyData){
         }
 }
 
-function getUrl(){
-   var _url = window.location.href;
-   alert("URL"+_url);
-   url = new URL(_url);
-   var id = url.searchParams.get("id");
-   alert(id);
-   return id;
-}
 
 function checkForPopulation(){
     var url = window.location.href;
@@ -239,12 +191,10 @@ function deleteRecords(listOfMedicalRecordIds){
 }
 
 function updateDataInRecord(medicalRecord){ 
-   // alert(JSON.stringify(medicalRecord))
   createHTTPPOSTConnection(medicalRecord);
   var record = getRecordFromDatabase(medicalRecord._id);
-  //alert("Rev: "+JSON.stringify(record)._rev);
-  document.getElementById("_rev").value = record._rev;
-  //alert(JSON.stringify(document.getElementById("_rev").value));//.value = rev;
+  return record._rev;
+    //document.getElementById("_rev").value = record._rev;
 }
 
 //This function is used to create a new record in the database

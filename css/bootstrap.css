@@ -2449,7 +2449,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 /* Spacing between each form group */
 .form-group {
     margin-top: 1rem;
+    
     margin-bottom: 1rem;
+    
     /*min-width: 0px;*/
 }
 

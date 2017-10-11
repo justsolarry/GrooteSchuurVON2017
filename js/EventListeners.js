@@ -81,6 +81,8 @@ function ColourPatientForm(){
     console.log("select : T/F "+ selectTrueFalse)
     if((lengthOfInput===completeIncompleteCounter) && radioTrueFalse === true && selectTrueFalse===true){ //if true , make the circle green
         $('#patientFormCircle').css('background-color', 'green');
+        toastr.success("Patient Identification Worksheet Complete!")
+         $('#firstPanelID').css('border','3px solid green');
         $('#form1').val(true);
         $('#error').val(false);
         //toastr.success("Patient Data Form is all Correct!");
@@ -88,6 +90,7 @@ function ColourPatientForm(){
     else if(errorCounter>0){
         $('#patientFormCircle').css('background-color', 'red');
         $('#error').val(true);
+        $('#firstPanelID').css('border','3px solid red');
         //toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
@@ -169,12 +172,15 @@ function ColourGeneralForm(){
     console.log("select : T/F "+ selectTrueFalse)
     if((lengthOfInput===completeIncompleteCounter) && radioTrueFalse === true && selectTrueFalse===true){ //if true , make the circle green
         $('#generalDataItemsFormCircle').css('background-color', 'green');
+        $('#secondPanelID').css('border','3px solid green');
+        toastr.success("General Data Items Form Complete!")
         $('#form2').val(true);
         $('#error').val(false);
         //toastr.success("General Data Form is all Correct!");
     }
     else if(errorCounter>0){
         $('#generalDataItemsFormCircle').css('background-color', 'red');
+        $('#secondPanelID').css('border','3px solid red');
         $('#error').val(true);
         //toastr.warning("Errors!");
     }
@@ -252,6 +258,7 @@ function textareaAdditionalForm(){
     });
     return (completeIncompleteCounter);
 }
+
 function ColourAdditionalForm(){
     //pulling the function's array data
     var data = InputsAdditionalForm();
@@ -273,18 +280,35 @@ function ColourAdditionalForm(){
     console.log("textarea : T/F "+ textareaTrueFalse + " length of text area: "+lengthOfTextArea)
     if((lengthOfInput===completeIncompleteCounter) && (lengthOfTextArea===textareaTrueFalse) && radioTrueFalse === true && selectTrueFalse===true){ //if true , make the circle green
         $('#dischargeCircle').css('background-color', 'green');
+        $('#thirdPanelID').css('border','3px solid green');
+        toastr.success("Additional Info Form Complete!")
         $('#form3').val(true);
         $('#error').val(false);
         //toastr.success("Additional Data Form is all Correct!");
     }
     else if(errorCounter>0){
         $('#dischargeCircle').css('background-color', 'red');
+        $('#thirdPanelID').css('border','3px solid red');
         $('#error').val(true);
         //toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)|| (textareaTrueFalse<lengthOfTextArea) ||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#dischargeCircle').css('background-color', 'orange');
-        $('#error').val(true);
+        $('#form3').val(false);
+        $('#error').val(false);
         //toastr.warning("Fields aren't complete");
     }
+}
+
+
+function checkingIncompleteForAdditional(){
+    $('#thirdPanelID select:visible').each(function(i) {
+        if( !$(this).val() ) {
+            $("#dischargeButtonID").attr("href", '#'+this.id);
+            return false;
+        }
+        else{
+            $("#dischargeButtonID").attr("href", '#TransferFormID');
+        }
+    });
 }
