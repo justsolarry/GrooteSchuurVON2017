@@ -242,16 +242,16 @@
                               <div class="form-group input-group initialLengthOfStayDiv">
                                  <label class="fixingLabelAlignment">Initial Length of Stay : </label>
                                  <div class="fixingInputAlignment">
-                                    <span id="initialLengthOfStayCalendar" class="addingCalendar addingCalendarIcon">
                                     <input type="search" name="initialLengthOfStay" id="initialLengthOfStay" class="form-control calendarField" disabled readonly="true"/>
-                                    </span>
                                  </div>
                               </div>
                            </div>
                         </div>
                         <!-- START Next Section Button-->
                         <div class="form-group input-group">
-                           <a href="#generalDataItemsID" class="btn btn-circle page-scroll" style="position:relative"> <i class="fa fa-angle-down animated"></i></a>
+                           <a href="#generalDataItemsID" class="btn btn-circle page-scroll" onclick="javascript:firstFormCheck()" style="position:relative"> 
+                               <i class="fa fa-angle-down animated"></i>
+                            </a>
                         </div>
                         <!-- END Next Section Button-->
                      </form>
@@ -3975,20 +3975,149 @@
                                     Follow Up Appointment
                                  </div>
                                  <div class="inner-panel-body">
-                                    <div class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInner" for="appointmentLocation">Appointment Location  :  </label>
+                                     <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="noOfAppointments">No. of Appointments  :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation" name="appointmentLocation" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <select id="noOfAppointments" name=noOfAppointments class="form-control" style="height:32px;width:20%;" onchange="noOfAppointmentsCheck()">
+                                             <option disabled selected value></option>
+                                             <option value="0">0</option>
+                                             <option value="1">1</option>
+                                             <option value="2">2</option>
+                                             <option value="3">3</option>
+                                             <option value="4">4</option>
+                                             <option value="5">5</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                     <div id="appointmentDiv1">
+                                        <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentLocation1">First Appointment Location :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <input id="appointmentLocation1" name="appointmentLocation1" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInner" for="appointmentDate">Appointment Date : </label>
+                                       <label class="fixingLabelAlignmentInner" for="appointmentDate1">First Appointment Date : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
-                                          <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate" name="appointmentDate" class="form-control calendarField" readonly="true"/>
+                                          <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate1" name="appointmentDate1" class="form-control calendarField" readonly="true"/>
                                           </span>
                                        </div>
                                     </div>
+                                     <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentTime1">First Appointment Time :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <select id="appointmentTime1" name=appointmentTime1 class="form-control" style="height:32px;width:20%;">
+                                             <option disabled selected value></option>
+                                             <option value="99">Unknown</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                     </div>
+                                    <div id="appointmentDiv2">
+                                        <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentLocation2">Second Appointment Location :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <input id="appointmentLocation2" name="appointmentLocation2" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                       </div>
+                                    </div>
+                                    <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentDate2">Second Appointment Date : </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                          <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate2" name="appointmentDate2" class="form-control calendarField" readonly="true"/>
+                                          </span>
+                                       </div>
+                                    </div>
+                                     <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentTime2">Second Appointment Time :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <select id="appointmentTime2" name=appointmentTime2 class="form-control" style="height:32px;width:20%;">
+                                             <option disabled selected value></option>
+                                             <option value="99">Unknown</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                     </div>
+                                     <div id="appointmentDiv3">
+                                         <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentLocation3">Third Appointment Location :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <input id="appointmentLocation3" name="appointmentLocation3" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                       </div>
+                                    </div>
+                                    <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentDate3">Third Appointment Date : </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                          <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate3" name="appointmentDate3" class="form-control calendarField" readonly="true"/>
+                                          </span>
+                                       </div>
+                                    </div>
+                                     <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentTime3">Third Appointment Time :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <select id="appointmentTime3" name=appointmentTime3 class="form-control" style="height:32px;width:20%;">
+                                             <option disabled selected value></option>
+                                             <option value="99">Unknown</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                     </div>
+                                     <div id="appointmentDiv4">
+                                         <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentLocation4">Fourth Appointment Location :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <input id="appointmentLocation4" name="appointmentLocation4" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                       </div>
+                                    </div>
+                                    <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentDate4">Fourth Appointment Date : </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                          <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate4" name="appointmentDate4" class="form-control calendarField" readonly="true"/>
+                                          </span>
+                                       </div>
+                                    </div>
+                                     <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentTime4">Fourth Appointment Time :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <select id="appointmentTime4" name=appointmentTime4 class="form-control" style="height:32px;width:20%;">
+                                             <option disabled selected value></option>
+                                             <option value="99">Unknown</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                     </div>
+                                     <div id="appointmentDiv5">
+                                         <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentLocation5">Fifth Appointment Location :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <input id="appointmentLocation5" name="appointmentLocation5" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                       </div>
+                                    </div>
+                                    <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentDate5">Fifth Appointment Date : </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                          <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate5" name="appointmentDate5" class="form-control calendarField" readonly="true"/>
+                                          </span>
+                                       </div>
+                                    </div>
+                                     <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner" for="appointmentTime5">Fifth Appointment Time :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <select id="appointmentTime5" name=appointmentTime5 class="form-control" style="height:32px;width:20%;">
+                                             <option disabled selected value></option>
+                                             <option value="99">Unknown</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                     </div>
+                                     
+                                     
+                                     
+                                     
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="immunizationDate">Immunization Date : </label>
                                        <div class="fixingInputAlignmentInner">

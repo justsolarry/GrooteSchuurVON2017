@@ -1,7 +1,8 @@
 
 
 $(document).ready(function() {
-    loadDefaultValues(); //loading all the default values of the form
+    loadDefaultValuesInFormForm(); //loading the default values in the patient form
+    loadDefaultPanelColours(); // loading blue panels
     toastr.options.closeButton = true;
     /*START Menu Controls*/
     $(".createNewEntryMenuButton").removeClass("activeMenuButton");
@@ -116,43 +117,51 @@ $("#patientMedicalRecordNumber").keyup(function() {
     
 });
 /* END Auto filling of the patient identification panel above the progress bar */
+function loadDefaultValuesInFormForm(){
+    $('#diedInDeliveryRoomNo').prop("checked",true).change();
+}
 function loadDefaultValues(){
-    $('#diedInDeliveryRoomNo').attr("checked",true).change();
-    $('#chorioamnionitisNo').attr("checked",true).change();
-    $('#congenitalInfectionNo').attr("checked",true).change();
-    $('#temperatureMeasuredWithinFirstHourYes').attr("checked",true).change();
-    $('#bacterialSepsisBeforeNo').attr("checked",true).change();
-    $('#cranialImagingYes').attr("checked",true).change();
-    $('#diedWithin12HoursNo').attr("checked",true).change();
-    $('#steroidsForCLDNo').attr("checked",true).change();
-    $('#ibuprofenNo').attr("checked",true).change();
-    $('#acetaminophenNo').attr("checked",true).change();
-    $('#probioticsYes').attr("checked",true).change();
-    $('#ropTreatmentWithVegfDrugNo').attr("checked",true).change();
-    $('#caffeineYes').attr("checked",true).change();
-    $('#ropSurgeryNo').attr("checked",true).change();
-    $('#pdaSurgeryNo').attr("checked",true).change();
-    $('#necSurgeryNo').attr("checked",true).change();
-    $('#otherSurgeryNo').attr("checked",true).change();
-    $('#pneumothoraxNo').attr("checked",true).change();
-    $('#focalIntestinalPerforationNo').attr("checked",true).change();
-    $('#coagulaseNegativeNo').attr("checked",true).change();
-    $('#fungalInfectionNo').attr("checked",true).change();
-    $('#cysticPeriventricularNo').attr("checked",true).change();
-    $('#enteralFeeding option[value="3"]').attr("selected",true).change();
-    $('#oxygenAtDischargeNo').attr("checked",true).change();
-    $('#cenoventionalVentilationAtDischargeNo').attr("checked",true).change();
-    $('#highFrequencyVentilationAtDischargeNo').attr("checked",true).change();
-    $('#highFlowNasalCannulaAtDischargeNo').attr("checked",true).change();
-    $('#nasalVentilationAtDischargeNo').attr("checked",true).change();
-    $('#nasalCpapAtDischargeNo').attr("checked",true).change();
-    $('#monitorAtDischargeNo').attr("checked",true).change();
-    
+    $('#chorioamnionitisNo').prop("checked",true).change();
+    $('#congenitalInfectionNo').prop("checked",true).change();
+    $('#temperatureMeasuredWithinFirstHourYes').prop("checked",true).change();
+    $('#bacterialSepsisBeforeNo').prop("checked",true).change();
+    $('#cranialImagingYes').prop("checked",true).change();
+    $('#diedWithin12HoursNo').prop("checked",true).change();
+    $('#steroidsForCLDNo').prop("checked",true).change();
+    $('#ibuprofenNo').prop("checked",true).change();
+    $('#acetaminophenNo').prop("checked",true).change();
+    $('#probioticsYes').prop("checked",true).change();
+    $('#ropTreatmentWithVegfDrugNo').prop("checked",true).change();
+    $('#caffeineYes').prop("checked",true).change();
+    $('#ropSurgeryNo').prop("checked",true).change();
+    $('#pdaSurgeryNo').prop("checked",true).change();
+    $('#necSurgeryNo').prop("checked",true).change();
+    $('#otherSurgeryNo').prop("checked",true).change();
+    $('#pneumothoraxNo').prop("checked",true).change();
+    $('#focalIntestinalPerforationNo').prop("checked",true).change();
+    $('#coagulaseNegativeNo').prop("checked",true).change();
+    $('#fungalInfectionNo').prop("checked",true).change();
+    $('#cysticPeriventricularNo').prop("checked",true).change();
+    $('#enteralFeeding option[value="3"]').prop("selected",true).change();
+    $('#oxygenAtDischargeNo').prop("checked",true).change();
+    $('#cenoventionalVentilationAtDischargeNo').prop("checked",true).change();
+    $('#highFrequencyVentilationAtDischargeNo').prop("checked",true).change();
+    $('#highFlowNasalCannulaAtDischargeNo').prop("checked",true).change();
+    $('#nasalVentilationAtDischargeNo').prop("checked",true).change();
+    $('#nasalCpapAtDischargeNo').prop("checked",true).change();
+    $('#monitorAtDischargeNo').prop("checked",true).change();
+}
+function loadDefaultPanelColours(){
+    $('#firstPanelID').css('border','3px solid #337ab7');
+    $('#secondPanelID').css('border','3px solid #337ab7');
+    $('#thirdPanelID').css('border','3px solid #337ab7');
 }
 function checkingWhatTypeOfFormToDisplay(){
     var weight = document.getElementById('birthWeightInGrams').value;
     //Von baby  and died > show death form
     if((weight>=401 && weight<=1500) && document.getElementById('diedInDeliveryRoomYes').checked){ // Von baby and died > Show death form
+        /*$("#secondForm").trigger('reset'); 
+        $("#thirdForm").trigger('reset'); */
         $("#generalDataItemsID").html("DELIVERY ROOM DEATH FORM");
         $("#dayButtonID").text("Delivery Room Death Form");
             hideNotAVonBabyFields();  //hiding Not a VON baby fields
@@ -216,6 +225,7 @@ function checkingWhatTypeOfFormToDisplay(){
             $("#generalDataItemsID").html("GENERAL DATA ITEMS");
             $("#dayButtonID").text("General Data Items");
             hideNotAVonBabyFields();
+            loadDefaultValues(); //loading all the default values of the form
             }
     //Not a von baby and died > show error
     else if((weight>=1501 && weight<=7000) && document.getElementById('diedInDeliveryRoomYes').checked){
@@ -366,14 +376,12 @@ function successToastr(){
     }
     
 }
-
 function formComplete(){     
     if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
        toastr.success("All Forms are complete!")
         $('#formComplete').val(true)
        }
 }
-
 function successReload(){
     
 }
@@ -781,20 +789,17 @@ function bacterialSepsisBeforeCheck() {
     if (document.getElementById('bacterialSepsisBeforeNo').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
-        $('#hiddenFieldBacterialSepsisBefore select').prop('selectedIndex',0);
-        $('#hiddenFieldBacterialSepsisBefore select').change();
+        $('#hiddenFieldBacterialSepsisBefore select').prop('selectedIndex',0).change();
     }
     if (document.getElementById('bacterialSepsisBeforeNA').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
-        $('#hiddenFieldBacterialSepsisBefore select').prop('selectedIndex',0);
-        $('#hiddenFieldBacterialSepsisBefore select').change();
+        $('#hiddenFieldBacterialSepsisBefore select').prop('selectedIndex',0).change();
     }
     if (document.getElementById('bacterialSepsisBeforeUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
-        $('#hiddenFieldBacterialSepsisBefore select').prop('selectedIndex',0);
-        $('#hiddenFieldBacterialSepsisBefore select').change();
+        $('#hiddenFieldBacterialSepsisBefore select').prop('selectedIndex',0).change();
     }
 }
 function numberOfBacterialSepsisBeforeCheck(){
@@ -940,6 +945,52 @@ function numberOfBirthDefectsCheck(){
         $('#hiddenFieldBirthDefectCodes').addClass('glowingHiddenFields');
     }
     
+}
+function noOfAppointmentsCheck(){
+    var e = document.getElementById("noOfAppointments");
+    var strUser = e.options[e.selectedIndex].value;
+    if (strUser==1){
+        $('#appointmentDiv1').slideDown("slow");
+        $('#appointmentDiv2').slideUp("slow");
+        $('#appointmentDiv3').slideUp("slow");
+        $('#appointmentDiv4').slideUp("slow");
+        $('#appointmentDiv5').slideUp("slow");
+    }
+    else if(strUser==2){
+        $('#appointmentDiv1').slideDown("slow");
+        $('#appointmentDiv2').slideDown("slow");
+        $('#appointmentDiv3').slideUp("slow");
+        $('#appointmentDiv4').slideUp("slow");
+        $('#appointmentDiv5').slideUp("slow");
+    }
+    else if(strUser==3){
+        $('#appointmentDiv1').slideDown("slow");
+        $('#appointmentDiv2').slideDown("slow");
+        $('#appointmentDiv3').slideDown("slow");
+        $('#appointmentDiv4').slideUp("slow");
+        $('#appointmentDiv5').slideUp("slow");
+    }
+    else if(strUser==4){
+        $('#appointmentDiv1').slideDown("slow");
+        $('#appointmentDiv2').slideDown("slow");
+        $('#appointmentDiv3').slideDown("slow");
+        $('#appointmentDiv4').slideDown("slow");
+        $('#appointmentDiv5').slideUp("slow");
+    }
+    else if(strUser==5){
+        $('#appointmentDiv1').slideDown("slow");
+        $('#appointmentDiv2').slideDown("slow");
+        $('#appointmentDiv3').slideDown("slow");
+        $('#appointmentDiv4').slideDown("slow");
+        $('#appointmentDiv5').slideDown("slow");
+    }
+    else{
+        $('#appointmentDiv1').slideUp("slow");
+        $('#appointmentDiv2').slideUp("slow");
+        $('#appointmentDiv3').slideUp("slow");
+        $('#appointmentDiv4').slideUp("slow");
+        $('#appointmentDiv5').slideUp("slow");
+    }
 }
 function numberOfSurgeryCodesCheck(){
    var e = document.getElementById("numberOfSurgeryCodes");
@@ -1268,19 +1319,19 @@ function congenitalCode1FirstPartCheck(){
 function multipleGestationCheck() {
     if (document.getElementById('multipleGestationYes').checked) {
         $("#numberOfInfantsDelivered").val('2').change();
-        $('#numberOfInfantsDelivered option').prop("disabled", false);
-        $('#numberOfInfantsDelivered option[value=00]').prop('disabled', true); //disables select
-        $('#numberOfInfantsDelivered option[value=1]').prop('disabled', true); //disables 1
-        $('#numberOfInfantsDelivered option[value=77]').prop('disabled', true); //disables 77
-        $('#numberOfInfantsDelivered option[value=99]').prop('disabled', true); //disables 99
+        $('#numberOfInfantsDelivered option').prop("disabled", false).change();
+        $('#numberOfInfantsDelivered option[value=00]').prop('disabled', true).change(); //disables select
+        $('#numberOfInfantsDelivered option[value=1]').prop('disabled', true).change(); //disables 1
+        $('#numberOfInfantsDelivered option[value=77]').prop('disabled', true).change(); //disables 77
+        $('#numberOfInfantsDelivered option[value=99]').prop('disabled', true).change(); //disables 99
     }
     if (document.getElementById('multipleGestationNo').checked) {
         $("#numberOfInfantsDelivered").val('1').change();
-        $('#numberOfInfantsDelivered option:not([value=1])').prop('disabled', true); //disable everything that isn't 1
+        $('#numberOfInfantsDelivered option:not([value=1])').prop('disabled', true).change(); //disable everything that isn't 1
     }
     if (document.getElementById('multipleGestationUnknown').checked) {
         $("#numberOfInfantsDelivered").val('99').change();
-        $('#numberOfInfantsDelivered option:not([value=99])').prop('disabled', true);
+        $('#numberOfInfantsDelivered option:not([value=99])').prop('disabled', true).change();
     }
 }
 function numberOfInfantsDeliveredCheck(){
@@ -1955,6 +2006,36 @@ $(function(){
     var idValue = $("#babyLength");
     for (i=20;i<=60;i++){
         idValue.append($('<option></option>').val(i).html(i+" cm"))
+    }
+});
+$(function(){
+    var idValue = $("#appointmentTime1");
+    for (i=7;i<=15;i++){
+        idValue.append($('<option></option>').val(i).html(i+":00"))
+    }
+});
+$(function(){
+    var idValue = $("#appointmentTime2");
+    for (i=7;i<=15;i++){
+        idValue.append($('<option></option>').val(i).html(i+":00"))
+    }
+});
+$(function(){
+    var idValue = $("#appointmentTime3");
+    for (i=7;i<=15;i++){
+        idValue.append($('<option></option>').val(i).html(i+":00"))
+    }
+});
+$(function(){
+    var idValue = $("#appointmentTime4");
+    for (i=7;i<=15;i++){
+        idValue.append($('<option></option>').val(i).html(i+":00"))
+    }
+});
+$(function(){
+    var idValue = $("#appointmentTime5");
+    for (i=7;i<=15;i++){
+        idValue.append($('<option></option>').val(i).html(i+":00"))
     }
 });
 /*END - Function to display automated SELECT drop downs */
