@@ -85,17 +85,20 @@ function ColourPatientForm(){
          $('#firstPanelID').css('border','3px solid green');
         $('#form1').val(true);
         $('#error').val(false);
+        $('#form1color').val("green");
         //toastr.success("Patient Data Form is all Correct!");
     }
     else if(errorCounter>0){
         $('#patientFormCircle').css('background-color', 'red');
         $('#error').val(true);
+        $('#form1color').val("red");
         $('#firstPanelID').css('border','3px solid red');
         //toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#patientFormCircle').css('background-color', 'orange');
         $('#error').val(false);
+        $('#form1color').val("orange");
         //toastr.warning("Fields aren't complete");
     }
     
@@ -175,6 +178,7 @@ function ColourGeneralForm(){
         $('#secondPanelID').css('border','3px solid green');
         toastr.success("General Data Items Form Complete!")
         $('#form2').val(true);
+        $('#form2color').val("green");
         $('#error').val(false);
         //toastr.success("General Data Form is all Correct!");
     }
@@ -182,11 +186,13 @@ function ColourGeneralForm(){
         $('#generalDataItemsFormCircle').css('background-color', 'red');
         $('#secondPanelID').css('border','3px solid red');
         $('#error').val(true);
+        $('#form2color').val("red");
         //toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#generalDataItemsFormCircle').css('background-color', 'orange');
         $('#error').val(false);
+        $('#form2color').val("orange");
         //toastr.warning("Fields aren't complete");
     }
 }
@@ -284,18 +290,21 @@ function ColourAdditionalForm(){
         toastr.success("Additional Info Form Complete!")
         $('#form3').val(true);
         $('#error').val(false);
+        $('#form3color').val("green");
         //toastr.success("Additional Data Form is all Correct!");
     }
     else if(errorCounter>0){
         $('#dischargeCircle').css('background-color', 'red');
         $('#thirdPanelID').css('border','3px solid red');
         $('#error').val(true);
+        $('#form3color').val("red");
         //toastr.warning("Errors!");
     }
     else if((completeIncompleteCounter<lengthOfInput)|| (textareaTrueFalse<lengthOfTextArea) ||radioTrueFalse===false || selectTrueFalse===false){ //fields aren't complete
         $('#dischargeCircle').css('background-color', 'orange');
         $('#form3').val(false);
         $('#error').val(false);
+        $('#form3color').val("orange");
         //toastr.warning("Fields aren't complete");
     }
 }
