@@ -3,11 +3,24 @@
 
 <head>
 
-    <meta charset="utf-8">
+       <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
+    <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
+      
+    <title>Groote Schuur Neonatal Data Management Application - Print</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom fonts -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet">
+    <link href="scss/dischargeTransferStyle.scss" rel="stylesheet"/>  
+    <link href="css/toastr.css" rel="stylesheet" />
+    <link href="css/grayscale.css" rel="stylesheet">
     <!-- The jQuery library is a prerequisite for all jqSuite products -->
     <script type="text/ecmascript" src="js/jquery-1.11.0.min.js"></script> 
     <!-- This is the Javascript file of jqGrid -->   
@@ -94,10 +107,10 @@
 <textarea id="xmlContent" rows="10" style="width:80%" cols="20" name="xmlContent">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;note&gt;
-&lt;to&gt;Tove&lt;/to&gt;
-&lt;from&gt;Jani&lt;/from&gt; 
+&lt;to&gt;Sabelo&lt;/to&gt;
+&lt;from&gt;Denham&lt;/from&gt; 
 &lt;heading&gt;Reminder&lt;/heading&gt;
-&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;
+&lt;body&gt;Don't forget me to use this validator!&lt;/body&gt;
 &lt;/note&gt;
 </textarea>
 
@@ -122,35 +135,31 @@
 if (xmlDoc.getElementsByTagName("parsererror").length>0)
    {
    checkErrorXML(xmlDoc.getElementsByTagName("parsererror")[0]);
-   alert(xt)
+   toastr.error(xt);
    }
  else
    {
-   alert("No errors found");
+   toastr.info("No errors found");
    }
 }
 </script>
     
-    <script src="vendor/tether/tether.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+ <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script src="js/databaseReadWrite.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/dischargeFormPopulation.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tether.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- Custom library scripts -->
+    <script type="text/javascript" src="js/grayscale.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <!-- Custom VON Team Scripts -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script src="js/stretchy.js" async></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.js"></script>
-
-    <script src="js/grayscale.min.js"></script>
-    <script src="js/viewTable.js"></script>
-    <script src="js/db.js"></script>
-    <script src="js/grayscale.js"></script>
-    <script src="js/toastr.js"></script>
-    <!-- Custom VON Team Scripts for this template -->
- 
-    <script type="text/javascript" src="js/ownScripts.js"></script>
-    <script type="text/javascript" src="js/validationScript.js"></script>
-    <script type="text/javascript" src="js/vue.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-    <script src="js/noframework.waypoints.js"></script>
-    <script src= "js/db.js"></script>
-   
-</body>
-
+    </body>
 </html>

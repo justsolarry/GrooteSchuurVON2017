@@ -34,7 +34,10 @@ function fetchData(){
         //"scrollCollapse": "true",
         "ajax": {"url":_url,
                  "dataSrc": "rows", 
-                    "crossDomain": true
+                    "crossDomain": true,
+                     xhrFields: {
+                       withCredentials: true
+                    },
                 },
         "rowId": "doc._id",
         
@@ -245,7 +248,7 @@ function fetchData(){
                         }
             },
             {
-                text: 'Submit selected records',
+                text: 'Export selected records',
                 className:'submit',
                 action: function () {
                     var checkedRows = [];
@@ -260,20 +263,9 @@ function fetchData(){
                     statuses.push(status);
                     });
                     
-                    for(i=0; i<statuses.length; i++){
-                        if(statuses[i] == "Incomplete" || statuses[i]=="Error"){
-                           allComplete = false;
-                        }
-                    }
-                    download("Von.xml",sendDataToVon(checkedRows)); 
-/*                    
-                    if(allComplete){
-                        sendDataToVon(checkedRows); 
-                    }  
-                    else{
-                        toastr.error("You cannot submit incomplete or erraneous records");
-                    }*/
+                    alert(status);
                     
+                    sendDataToVon(checkedRows); 
                 }
             },
             {
@@ -285,6 +277,7 @@ function fetchData(){
                 $('#recordTable').find('input[type="checkbox"]:checked').each(function () {
                 //this is the current checkbox
                 row = $(this).parents('tr').attr('id');
+                
                 checkedRows.push(row);
                 });
                 var deleteChosenRecords = confirm("You are about to delete "+checkedRows.length+" record(s). Are you sure you want to continue?");
@@ -296,16 +289,57 @@ function fetchData(){
         ],
      "dom": 'Bfrtip',
     });
+    
+    $('tbody').on('dblclick', 'tr', function () {
+        var row = $(this).attr('id');
+        displayData(row);
+    });
+    
+    $('tbody').on('dblclick', 'tr', function () {
+        var row = $(this).attr('id');
+        displayData(row);
+    });
+    
+    $('tbody').on('click', 'tr', function () {
+        var checkbox = $(this).find('input[type="checkbox"]');
+        if(checkbox.is(":checked")){
+           checkbox.attr('checked', false);
+        }else{
+           checkbox.attr('checked', true); 
+        }
+    });
+    
+    $('#select-all').on('click', function(){
+      var table = $('#recordTable').DataTable();
+      // Get all rows with search applied
+      var rows = table.rows({ 'search': 'applied' }).nodes();
+      // Check/uncheck checkboxes for all rows in the table
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+   });  
 }
 
-function CheckRowClick(){
-            $('tr').click(function () {
+/*function checkRowClick(){
+
+        $('tr').dblclick(function () {
                 //this is the current checkbox
             var row = $(this).parents('tr').attr('id');
             alert("row click checked");
+            displayData(row);
             //var checkbox = $(this).parents('tr').attr()
-        });   
-}
+        });  
+    
+     $('#select-all').on('click', function(){
+      var table = $('#recordTable').dataTable();
+      // Get all rows with search applied
+      var rows = table.rows({ 'search': 'applied' }).nodes();
+      // Check/uncheck checkboxes for all rows in the table
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+   });
+}*/
+
+
+
+
 
 
 

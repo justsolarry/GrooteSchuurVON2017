@@ -1,49 +1,40 @@
-var session = document.getElementById('session').value;
-
-    function autosave(){
+function autosave(){
+    console.log("Inside autosave");
+    
+    var worker = new Worker('js/saveRecord.js');
+    
     //if(session){
             //checkForPopulation();
+            var rev;
             $('form').sisyphus({
                 excludeFields: ["_id _rev"],
                 locationBased: true,
                 timeout: 10,
-                //autoRelease: true,
                 onSave: function() {
-                    var date = new Date();
-                    var hours = date.getHours();
-                    var minutes = date.getMinutes();
-                    var seconds = date.getSeconds();
-                   
-                    //toastr.options.showMethod = 'slideDown';
-                    //repopulateForm(getCurrentId);
-                    //toastr.success('Saved', 'Autosave', {timeOut: 750});
-                    //toastr.success('Autosaved at '+hours+":"+minutes+":"+seconds);
                     var record = $('form').serializeJSON();
-                    //record.transferCenterCode = 99999999;
-                    record = mapToNaturalLanguage(record);
-                    //var record2 = mapToLang(record);
-                    //alert(JSON.stringify(record));
-                    updateDataInRecord(record);
-                    
+                    worker.postMessage(record);
                 }
-
             });
-       
-       //}
-      //else{
-    //      checkSession();
+    
+    worker.onmessage= function(event) {
+        document.getElementById("_rev").value = event.data;
+	};
+        
+        //}
+       //else{
+      //    checkSession();
      // }
+    
+}
 
-    }
 
-    function createRecord(){
-        //alert("Create Record in Database");
+   function createRecord(){
         if(session == null || session == ""){
           createSession();  
         }
         if(session){
             createRecordInDatabase();
         }  
-    } 
+} 
     
     
