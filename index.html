@@ -88,15 +88,15 @@
                            <ul class="progressBarUL sidebar-nav">
                               <li class="nav-item">
                                  <a id="patientFormCircle" class="firstATag" href="#PatientFormID"></a>
-                                 <a id="patientButtonID" class="nav-link patientFormProgressBar" href="#PatientFormID">Patient Identification</a>
+                                 <a id="patientButtonID" class="nav-link patientFormProgressBar" href="#PatientFormID" onclick="javascript:firstFormCheck()">Patient Identification</a>
                               </li>
                               <li id="listItem2" class="nav-item">
                                  <a id="generalDataItemsFormCircle" class="firstATag" href="#generalDataItemsID"></a>
-                                 <a id="dayButtonID" class="nav-link generalDataItemsProgressBar" href="#generalDataItemsID">General Data Items</a>
+                                 <a id="dayButtonID" class="nav-link generalDataItemsProgressBar" href="#generalDataItemsID" onclick="javascript:secondFormCheck()">General Data Items</a>
                               </li>
                               <li id="listItem3" class="nav-item">
                                  <a id="dischargeCircle" class="firstATag" href="#TransferFormID"></a>
-                                 <a id="dischargeButtonID" class="nav-link dischargeAndTransferProgressBar" href="#TransferFormID" >Additional Info</a>
+                                 <a id="dischargeButtonID" class="nav-link dischargeAndTransferProgressBar" href="#TransferFormID" onclick="javascript:thirdFormCheck()">Additional Info</a>
                               </li>
                            </ul>
                            <!-- Command buttons at the bottom of the progress bar forms -->
@@ -134,10 +134,10 @@
                                     <input type="hidden" id="form1" name="form1">
                                     <input type="hidden" id="form2" name="form2">
                                     <input type="hidden" id="form3" name="form3">
-                                     <input type="hidden" id="form1color" name="form1color">
+                                    <input type="hidden" id="form1color" name="form1color">
                                     <input type="hidden" id="form2color" name="form2color">
                                     <input type="hidden" id="form3color" name="form3color">
-                                    <input type="hidded" id="error" name="error">
+                                    <input type="hidden" id="error" name="error">
                                     <input type="hidden" id="session" value="false">
                                     <input id="mothersFirstName" name="mothersFirstName" onchange="validateNoNumbers('mothersFirstName')" class="form-control" type="search" placeholder="eg. Mary">
                                  </div>
@@ -3309,7 +3309,7 @@
                      <!--ENDING Main Panel-->
                      <!-- START Additional Button -->
                      <div class="form-group input-group">
-                        <a href="#TransferFormID" class="btn btn-circle page-scroll" style="position:relative"> <i class="fa fa-angle-down animated"></i></a>
+                        <a href="#TransferFormID" class="btn btn-circle page-scroll" style="position:relative" onclick="javascript:secondFormCheck()"> <i class="fa fa-angle-down animated"></i></a>
                      </div>
                      <!-- END Additional Button -->
                   </div>
@@ -4157,7 +4157,7 @@
                         </div>
                         <!-- START Completed Button -->
                         <div class="form-group input-group">
-                           <a href="javascript:void(0)" onclick="javascript:successToastr()" class="btn btn-default btn-lg page-scroll" style="position:relative;width:60%;margin-top:50px">Click to Finish</a>
+                           <a href="javascript:void(0)" onclick="javascript:thirdFormCheck()" class="btn btn-default btn-lg page-scroll" style="position:relative;width:60%;margin-top:50px">Click to Finish</a>
                         </div>
                         <!-- END Completed Button -->
                      </form>
@@ -4190,7 +4190,7 @@
     <script type="text/javascript" src="js/jquery.serializejson.js"></script>
     <script type="text/javascript" src="js/autosave.js"></script>
     <script src="js/dischargeFormPopulation.js"></script>
-    <script>
+    <!--<script>
         $(document).ready(function() {
         var session = document.getElementById("session").value;
             //if(session == true){
@@ -4198,7 +4198,7 @@
                checkForPopulation();
             //}
        });
-    </script>
+    </script>-->
 </body>
 
 </html>

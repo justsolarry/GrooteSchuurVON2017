@@ -58,7 +58,11 @@ function SelectsPatientForm(){
     $('#firstPanelID select:visible').each(function(i) {
         if( !$(this).val() ) {
             selectsAllSelected = false;        
-        };
+        }
+        else{
+            $('#'+this.id).removeClass('glowingHiddenFieldsPermanent');
+        }
+        ;
     });
 //    alert("value of selects is :" + selectsAllSelected);
     return(selectsAllSelected)
@@ -153,7 +157,11 @@ function SelectsGeneralForm(){
     $('#secondPanelID select:visible').each(function(i) {
         if( !$(this).val() ) {
             selectsAllSelected = false;        
-        };
+        }
+        else{
+            $('#'+this.id).removeClass('glowingHiddenFieldsPermanent');
+        }
+        ;
     });
     console.log("value of selects is :" + selectsAllSelected);
     return(selectsAllSelected)
@@ -247,7 +255,11 @@ function SelectsAdditionalForm(){
         if( !$(this).val() ) {
             selectsAllSelected = false;   
             counter++;
-        };
+        }
+        else{
+            $('#'+this.id).removeClass('glowingHiddenFieldsPermanent');
+        }
+        ;
     });
     console.log(" number of selects left : "+counter);
     return(selectsAllSelected)
@@ -328,17 +340,51 @@ function firstFormCheck(){
     $('#firstPanelID input[type=search]:visible:enabled').each(function(i) {
         if(!$(this).hasClass("addGreen") && !$(this).hasClass("addRed")){
            $('#'+this.id).addClass('glowingHiddenFieldsPermanent');
+            toastr.warning("Patient Identification Worksheet has incomplete fields")
            }
     });
     $('#firstPanelID select:visible').each(function(i) {
-        if(!$(this).hasClass("addGreen") && !$(this).hasClass("addRed")){
-           $('#'+this.id).addClass('glowingHiddenFieldsPermanent');
-           }
+        if(!$(this).val() ) {
+            $('#'+this.id).addClass('glowingHiddenFieldsPermanent');
+            toastr.warning("Patient Identification Worksheet has incomplete fields")
+        }
     });
+    
     /*$('#firstPanelID input:radio:visible:not(:checked)').each(function(i) {
         $('#firstPanelID input[type="radio"]:not(:checked)~label').each(function(i) {
              $('#'+this.id).addClass('glowingHiddenFieldsPermanent');
             $('#'+this.id).css("color",'red')
         });
     });*/
+}
+
+function secondFormCheck(){
+    $('#secondPanelID input[type=search]:visible:enabled').each(function(i) {
+        if(!$(this).hasClass("addGreen") && !$(this).hasClass("addRed")){
+           $('#'+this.id).addClass('glowingHiddenFieldsPermanent');
+            toastr.warning("General Data Form has incomplete fields")
+           }
+    });
+    $('#secondPanelID select:visible').each(function(i) {
+        if(!$(this).val() ) {
+            $('#'+this.id).addClass('glowingHiddenFieldsPermanent');
+            toastr.warning("General Data Form has incomplete fields")
+        }
+    });
+}
+
+function thirdFormCheck(){
+    $('#thirdPanelID input[type=search]:visible:enabled').each(function(i) {
+        if(!$(this).hasClass("addGreen") && !$(this).hasClass("addRed")){
+           $('#'+this.id).addClass('glowingHiddenFieldsPermanent');
+            toastr.warning("Additional Information Form has incomplete fields")
+           }
+    });
+    $('#thirdPanelID select:visible').each(function(i) {
+        if(!$(this).val() ) {
+            $('#'+this.id).addClass('glowingHiddenFieldsPermanent');
+            toastr.warning("Additional Information Form has incomplete fields")
+        }
+    });
+    checkIfSuccessfullToastr();
 }
