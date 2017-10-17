@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
     loadDefaultValuesInFormForm(); //loading the default values in the patient form
     loadDefaultPanelColours(); // loading blue panels

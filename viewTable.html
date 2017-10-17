@@ -62,6 +62,7 @@
                                     <th>Patient Medical Record #</th>
                                     <th>ID</th>
                                     <th>Form status</th>
+                                    <th>VON status</th>
                                     <th>Birth Year</th>
                                     <th>Birth Weight</th>
                                     <th>Birth Date</th>
@@ -138,17 +139,26 @@
     
     <script type="text/javascript"> 
     $(document).ready( function () {
-    fetchData();          
+        fetchData();          
     });    
     </script>
     
      <script>
-          var fileName = "VONTransferFile" + ".xml";
-    function download(filename, text) {
-    var pom = document.createElement('a');
-    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    pom.setAttribute('download', filename);
-    }
+        function download(text) {
+            console.log("download function called")
+            var filename = "VONTransferFile" + ".xml";
+            var pom = document.createElement('a');
+            pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            pom.setAttribute('download', filename);
+            if (document.createEvent) {
+                var event = document.createEvent('MouseEvents');
+                event.initEvent('click', true, true);
+                pom.dispatchEvent(event);
+            }
+            else {
+                pom.click();
+            }
+        }
     </script>
     <script src="js/saveVONXmlFile.js"></script>
     <script type="text/javascript" src="js/tether.js"></script>

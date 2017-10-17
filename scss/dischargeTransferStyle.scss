@@ -9,6 +9,8 @@ $A4PageHeight: 297mm;
     body * {
         visibility: hidden;
     }
+    
+    .hideWhenPrinting{ visibility: hidden;}
         #dischargeTransferHTMLPrint, #dischargeTransferHTMLPrint * {
         visibility: visible;
     }
@@ -58,7 +60,7 @@ body{
     margin: 100px auto 20px auto;
     width: 210mm; 
     height: $A4PageHeight;
-    border: 2px solid black;
+//    border: 2px solid black;
     display:block;
     background: white;
     color: black;

@@ -1,5 +1,6 @@
-var ip = "";
-var dbName = "";
+var ip;
+var dbName;
+
 function configureDB(){
     ip = dbConfig.ipAddress;
     dbName = dbConfig.dbName;
@@ -122,6 +123,7 @@ function repopulateForm(babyData){
                 
                 if(document.getElementById(key) !== null){                
                     document.getElementById(key).value = babyData[key]; 
+                    
                 }
                 
                 var domElements = document.getElementsByName(key);
@@ -137,6 +139,7 @@ function repopulateForm(babyData){
                                 if(domElements[i].value == index){
                                   //eventFire(domElements[i], 'click')
                                   domElements[i].checked = true;
+                                  
                                 }
                             }
                         }   
