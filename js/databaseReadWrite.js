@@ -110,6 +110,16 @@ function repopulateForm(babyData){
         for (var key in babyData) {
             if (babyData.hasOwnProperty(key)) {
                 
+                if(key == 'form1color'){
+                    $('#patientFormCircle').css('background-color', babyData[key]);
+                }
+                if(key == 'form2color'){
+                    $('#generalDataItemsFormCircle').css('background-color', babyData[key]);
+                }
+                if(key == 'form3color'){
+                    $('#dischargeCircle').css('background-color', babyData[key]);
+                }
+                
                 if(document.getElementById(key) !== null){                
                     document.getElementById(key).value = babyData[key]; 
                 }
