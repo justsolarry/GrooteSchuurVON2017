@@ -1,5 +1,6 @@
-var ip = "";
-var dbName = "";
+var ip;
+var dbName;
+
 function configureDB(){
     ip = dbConfig.ipAddress;
     dbName = dbConfig.dbName;
