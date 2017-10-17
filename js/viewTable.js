@@ -248,7 +248,7 @@ function fetchData(){
                         }
             },
             {
-                text: 'Submit selected records',
+                text: 'Export selected records',
                 className:'submit',
                 action: function () {
                     var checkedRows = [];
@@ -263,7 +263,6 @@ function fetchData(){
                     statuses.push(status);
                     });
                     
-                    status = $(this).parents('tr').children(":third").text();
                     alert(status);
                     
                     sendDataToVon(checkedRows); 
@@ -290,16 +289,57 @@ function fetchData(){
         ],
      "dom": 'Bfrtip',
     });
+    
+    $('tbody').on('dblclick', 'tr', function () {
+        var row = $(this).attr('id');
+        displayData(row);
+    });
+    
+    $('tbody').on('dblclick', 'tr', function () {
+        var row = $(this).attr('id');
+        displayData(row);
+    });
+    
+    $('tbody').on('click', 'tr', function () {
+        var checkbox = $(this).find('input[type="checkbox"]');
+        if(checkbox.is(":checked")){
+           checkbox.attr('checked', false);
+        }else{
+           checkbox.attr('checked', true); 
+        }
+    });
+    
+    $('#select-all').on('click', function(){
+      var table = $('#recordTable').DataTable();
+      // Get all rows with search applied
+      var rows = table.rows({ 'search': 'applied' }).nodes();
+      // Check/uncheck checkboxes for all rows in the table
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+   });  
 }
 
-function CheckRowClick(){
-            $('tr').click(function () {
+/*function checkRowClick(){
+
+        $('tr').dblclick(function () {
                 //this is the current checkbox
             var row = $(this).parents('tr').attr('id');
             alert("row click checked");
+            displayData(row);
             //var checkbox = $(this).parents('tr').attr()
-        });   
-}
+        });  
+    
+     $('#select-all').on('click', function(){
+      var table = $('#recordTable').dataTable();
+      // Get all rows with search applied
+      var rows = table.rows({ 'search': 'applied' }).nodes();
+      // Check/uncheck checkboxes for all rows in the table
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+   });
+}*/
+
+
+
+
 
 
 

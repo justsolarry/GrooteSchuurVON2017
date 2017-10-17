@@ -28,13 +28,13 @@ function autosave(){
 }
 
 
-/*    function createRecord(){
+   function createRecord(){
         if(session == null || session == ""){
           createSession();  
         }
         if(session){
             createRecordInDatabase();
         }  
-} */
+} 
     
     

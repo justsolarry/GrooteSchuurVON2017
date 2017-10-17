@@ -16,6 +16,7 @@ function validateNoNumbers(ID){
     else if (value1.match(alphaExp)){
              $('#'+ID).removeClass('addRed')
             $('#'+ID).addClass('addGreen')
+            $('#'+ID).removeClass('glowingHiddenFieldsPermanent')
              }
     else{
         toastr.error(replaceString+" - Only letters allowed");
@@ -29,6 +30,7 @@ function validateFreeText(ID){
     if(value1.length>0){
             $('#'+ID).addClass('addGreen')
             $('#'+ID).removeClass('addRed')
+            $('#'+ID).removeClass('glowingHiddenFieldsPermanent')
        }
     else if(value1.length==0){
                 $('#'+ID).removeClass('addRed')
@@ -76,6 +78,7 @@ function validateBirthweight(){
         if(weight>=401 && weight<=1500){ // IS A VON BABY
             $('#birthWeightInGrams').removeClass('addRed')
             $('#birthWeightInGrams').addClass('addGreen')
+            $('#birthWeightInGrams').removeClass('glowingHiddenFieldsPermanent')
         }
         if(weight>=1501 && weight<=5000){ 
             $('#birthWeightInGrams').removeClass('addRed')
@@ -207,6 +210,7 @@ function validatePatientMedicalRecordNumber(){
         if(MedicalRecordNumber.length==9){
             $('#patientMedicalRecordNumber').removeClass('addRed')
             $('#patientMedicalRecordNumber').addClass('addGreen')
+            $('#patientMedicalRecordNumber').removeClass('glowingHiddenFieldsPermanent')
         } 
         
     }

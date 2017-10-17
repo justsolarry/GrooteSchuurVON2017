@@ -58,7 +58,7 @@
                                 <table id="recordTable" class="display hover nowrap">
                                 <thead>
                                 <tr>
-                                    <th></th>
+                                    <th><input type="checkbox" name="id[]" id="select-all" value="' + $('<div/>').text(data).html() + '"></th>
                                     <th>Patient Medical Record #</th>
                                     <th>ID</th>
                                     <th>Form status</th>
@@ -138,19 +138,20 @@
     
     <script type="text/javascript"> 
     $(document).ready( function () {
-    fetchData();  
+    fetchData();          
     });    
     </script>
     
      <script>
           var fileName = "VONTransferFile" + ".xml";
-                function download(filename, text) {
+    function download(filename, text) {
     var pom = document.createElement('a');
     pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     pom.setAttribute('download', filename);
-
+    }
+    </script>
     <script src="js/saveVONXmlFile.js"></script>
-
+    <script type="text/javascript" src="js/tether.js"></script>
     <!-- Plugin JavaScript -->
     <script type="text/javascript" src="js/jquery.easing.js"></script>
     <!-- Bootstrap core JavaScript -->
