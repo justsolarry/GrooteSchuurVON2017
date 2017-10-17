@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
     loadDefaultValues(); //loading all the default values of the form
     toastr.options.closeButton = true;
