@@ -27,20 +27,20 @@ var sepsisValues = {
 
 function fetchData(){
     
-    var _url = "http://"+ip+":5984/"+dbName+"/_all_docs?include_docs=true";
-    
+    var url = "http://"+ip+":5984/"+dbName+"/_all_docs?include_docs=true";
+ 
     $('#recordTable').DataTable({
         "scrollX": true,
         //"scrollCollapse": "true",
-        "ajax": {"url":_url,
+        "ajax": {"url": url,
                  "dataSrc": "rows", 
                     "crossDomain": true,
                      xhrFields: {
                        withCredentials: true
                     },
+                 
                 },
-        "rowId": "doc._id",
-        
+    "rowId": "doc._id",
     "columnDefs": [ {
    'targets': 0,
    'searchable':false,

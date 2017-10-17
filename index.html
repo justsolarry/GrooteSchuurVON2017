@@ -138,7 +138,7 @@
                                     <input type="hidden" id="form2color" name="form2color">
                                     <input type="hidden" id="form3color" name="form3color">
                                     <input type="hidden" id="error" name="error">
-                                    <input type="hidden" id="session" value="false">
+                                    <input type="hidden" id="session">
                                     <input id="mothersFirstName" name="mothersFirstName" onchange="validateNoNumbers('mothersFirstName')" class="form-control" type="search" placeholder="eg. Mary">
                                  </div>
                               </div>
@@ -4193,7 +4193,7 @@
     <!--<script>
         $(document).ready(function() {
         var session = document.getElementById("session").value;
-            //if(session == true){
+            if(session == true){
                autosave();
                checkForPopulation();
             //}
