@@ -1,7 +1,7 @@
 //Database configuration
 
 var dbConfig = {
-    ipAddress: "localhost",
+    ipAddress: "196.24.167.60",
     dbName: "test1"
 };
 

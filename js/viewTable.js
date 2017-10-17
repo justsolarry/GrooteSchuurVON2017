@@ -24,23 +24,28 @@ var sepsisValues = {
         3: "No"
 }
 
+var vonStatus = {
+        1: "VON",
+        0: "Non-VON"
+}
+
 
 function fetchData(){
     
-    var _url = "http://"+ip+":5984/"+dbName+"/_all_docs?include_docs=true";
-    
+    var url = "http://"+ip+":5984/"+dbName+"/_all_docs?include_docs=true";
+ 
     $('#recordTable').DataTable({
         "scrollX": true,
         //"scrollCollapse": "true",
-        "ajax": {"url":_url,
+        "ajax": {"url": url,
                  "dataSrc": "rows", 
                     "crossDomain": true,
                      xhrFields: {
                        withCredentials: true
                     },
+                 
                 },
-        "rowId": "doc._id",
-        
+    "rowId": "doc._id",
     "columnDefs": [ {
    'targets': 0,
    'searchable':false,
@@ -91,6 +96,23 @@ function fetchData(){
                         
                     }
             },
+            {"render": function (data, type, row, meta) {
+                            var babyWeight = row.doc.birthWeightInGrams
+                            if(babyWeight=="" || babyWeight==null){
+                                return "-";
+                               }
+                            else{
+                               if(babyWeight > 1500){
+                                   return vonStatus[0]
+                                  }
+                                else{
+                                   return vonStatus[1]
+                                }
+                               
+                            }
+                            
+                      }                
+            },
             {"data": "doc.dateOfBirth", 
              render: function (data, type, row) {
                             if(data=="" || data==null){
@@ -114,6 +136,7 @@ function fetchData(){
                             
                       }
             },
+            
             //{"data":"doc.recordStatus"},
             {"data":"doc.dateOfBirth",
              "render": function (data, type, row) {
@@ -251,6 +274,7 @@ function fetchData(){
                 text: 'Export selected records',
                 className:'submit',
                 action: function () {
+                    
                     var checkedRows = [];
                     var statuses = [];
                     var allComplete = true;
@@ -262,10 +286,11 @@ function fetchData(){
                     checkedRows.push(row);
                     statuses.push(status);
                     });
-                    
-                    alert(status);
-                    
-                    sendDataToVon(checkedRows); 
+                                
+                    //var xml = sendDataToVon(checkedRows);
+                    var xml = "This text";
+                    download(xml);
+                    toastr.info("File Download");
                 }
             },
             {

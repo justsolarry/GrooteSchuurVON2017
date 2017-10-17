@@ -17,10 +17,10 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/fonts.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet">
-    <link href="scss/dischargeTransferStyle.scss" rel="stylesheet"/>  
+    
     <link href="css/toastr.css" rel="stylesheet" />
     <link href="css/grayscale.css" rel="stylesheet">
-      
+    <link href="scss/dischargeTransferStyle.scss" rel="stylesheet"/>    
       <!-- Electron JQUERY support-->
       <script>
          if (typeof module === 'object') {
@@ -29,6 +29,36 @@
          }
       </script>
     
+      <style>
+      @media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .hideWhenPrinting{ visibility: hidden;}
+        #dischargeTransferHTMLPrint, #dischargeTransferHTMLPrint * {
+        visibility: visible;
+    }
+    #dischargeTransferHTMLPrint {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $A4PageWidthLess1mmBorderAnd5mmPadding; 
+        height: $A4PageHeight;
+/*        border: 1mm solid black;*/
+        margin:0;
+        
+        background: white;
+        color: black;
+        padding: 0mm 5mm;
+    }    
+    .one-third{
+        width: 64mm;
+        height:150px;
+        display:inline;
+    }
+}
+      </style>
       
   </head>
     
@@ -71,7 +101,7 @@
                     <img src="img/westernCapeLogo.png" alt="Western Cape" width="90%">
                 </span>
                 <span class="one-third">
-                    <h3><span id="dischargeOrTransferPrintHeader"></span> Letter</h3>
+                    <h3><span id="dischargeOrTransferPrint"></span> Letter</h3>
                 </span>
                 <span class="one-third" style="float:right">
                     <br><br>
@@ -150,7 +180,7 @@
         <br>    
     </div>
         
-        <div>  
+        <div class="hideWhenPrinting">  
             <center>
                 <button style="z-index:10;margin:0px 0px 20px 0px;"  class="btn btn-default" onclick="window.print()">Print Document</button>
             </center>
