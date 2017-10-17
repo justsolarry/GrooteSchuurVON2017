@@ -24,6 +24,11 @@ var sepsisValues = {
         3: "No"
 }
 
+var vonStatus = {
+        1: "VON",
+        0: "Non-VON"
+}
+
 
 function fetchData(){
     
@@ -91,6 +96,23 @@ function fetchData(){
                         
                     }
             },
+            {"render": function (data, type, row, meta) {
+                            var babyWeight = row.doc.birthWeightInGrams
+                            if(babyWeight=="" || babyWeight==null){
+                                return "-";
+                               }
+                            else{
+                               if(babyWeight > 1500){
+                                   return vonStatus[0]
+                                  }
+                                else{
+                                   return vonStatus[1]
+                                }
+                               
+                            }
+                            
+                      }                
+            },
             {"data": "doc.dateOfBirth", 
              render: function (data, type, row) {
                             if(data=="" || data==null){
@@ -114,6 +136,7 @@ function fetchData(){
                             
                       }
             },
+            
             //{"data":"doc.recordStatus"},
             {"data":"doc.dateOfBirth",
              "render": function (data, type, row) {
