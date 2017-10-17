@@ -4,6 +4,7 @@ $(document).ready(function() {
     loadDefaultValuesInFormForm(); //loading the default values in the patient form
     loadDefaultPanelColours(); // loading blue panels
     toastr.options.closeButton = true;
+    
     /*START Menu Controls*/
     $(".createNewEntryMenuButton").removeClass("activeMenuButton");
     $(".viewAllEntriesMenuButton").removeClass("activeMenuButton");
@@ -364,7 +365,7 @@ function endotrachealTubeVentCheck(){
         $('#nasalCPAPOrNasalVentAfterInitialNo').change();
     }
 }
-function successToastr(){
+function checkIfSuccessfullToastr(){
     if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
        toastr.success("All Forms are complete!")
        }
