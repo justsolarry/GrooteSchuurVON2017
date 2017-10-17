@@ -1,3 +1,6 @@
+select option:selected{
+    background: blue;
+}
 .stop-scrolling{
     height:100%;
     overflow:hidden;
@@ -241,7 +244,12 @@ input[type="search"]:disabled,.fixingInputAlignmentInner input[type="text"]:disa
 #bacterialCodeDuringAdmissionDiv2,
 #bacterialCodeDuringAdmissionDiv3,
 #hiddenFieldImmunizations1452,
-#hiddenFieldImmunizations1452Date
+#hiddenFieldImmunizations1452Date,
+#appointmentDiv1,
+#appointmentDiv2,
+#appointmentDiv3,
+#appointmentDiv4,
+#appointmentDiv5
 {
     display:none;
 }
@@ -604,6 +612,29 @@ div ul li .firstATag:after{
   50% { box-shadow: 0 0 20px #bdc3c7; }
   100% {box-shadow: 0 0 3px #bdc3c7; }
 }
+@-webkit-keyframes glowingHiddenOrange {
+  0% {  -webkit-box-shadow: 0 0 3px orange; }
+  50% {  -webkit-box-shadow: 0 0 20px orange; }
+  100% {  -webkit-box-shadow: 0 0 3px orange; }
+}
+
+@-moz-keyframes glowingHiddenOrange {
+  0% {  -moz-box-shadow: 0 0 3px orange; }
+  50% {  -moz-box-shadow: 0 0 20px orange; }
+  100% {  -moz-box-shadow: 0 0 3px orange; }
+}
+
+@-o-keyframes glowingHiddenOrange {
+  0% {  box-shadow: 0 0 3px orange; }
+  50% { box-shadow: 0 0 20px orange; }
+  100% {box-shadow: 0 0 3px orange; }
+}
+/* this one*/
+@keyframes glowingHiddenOrange {
+  0% {  box-shadow: 0 0 5px orange; }
+  50% { box-shadow: 0 0 20px orange; }
+  100% {box-shadow: 0 0 5px orange; }
+}
 /* glow all the buttons*/
 .glowingButton {
   -webkit-animation: glowing 3500ms infinite;
@@ -616,7 +647,12 @@ div ul li .firstATag:after{
   -moz-animation: glowingHidden 5000ms 1;
   -o-animation: glowingHidden 5000ms 1;
   animation: glowingHidden 5000ms 1; 
-    
+}
+.glowingHiddenFieldsPermanent{
+    -webkit-animation: glowingHiddenOrange 5000ms infinite;
+  -moz-animation: glowingHiddenOrange 5000ms infinite;
+  -o-animation: glowingHiddenOrange 5000ms infinite;
+  animation: glowingHiddenOrange 5000ms infinite; 
 }
 /*----------------------------------------------------*/
 /* End Glowing of the sidebar */

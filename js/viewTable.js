@@ -251,6 +251,7 @@ function fetchData(){
                 text: 'Export selected records',
                 className:'submit',
                 action: function () {
+                    
                     var checkedRows = [];
                     var statuses = [];
                     var allComplete = true;
@@ -262,10 +263,11 @@ function fetchData(){
                     checkedRows.push(row);
                     statuses.push(status);
                     });
-                    
-                    alert(status);
-                    
-                    sendDataToVon(checkedRows); 
+                                
+                    //var xml = sendDataToVon(checkedRows);
+                    var xml = "This text";
+                    download(xml);
+                    toastr.info("File Download");
                 }
             },
             {

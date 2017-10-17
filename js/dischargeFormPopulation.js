@@ -25,6 +25,7 @@ var babyData = getRecordFromDatabase(id);
 
 var dischargeOrTransferedText = (babyData.initialDisposition == 2) ? "Transfer" : "Discharge";
 console.log(dischargeOrTransferedText);
+document.getElementById("dischargeOrTransferPrintHeader").innerHTML = dischargeOrTransferedText;
 document.getElementById("dischargeOrTransferPrint").innerHTML = dischargeOrTransferedText;
 document.getElementById("dischargeOrTransferDatePrint").innerHTML = dischargeOrTransferedText;
 
