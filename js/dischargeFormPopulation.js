@@ -32,7 +32,8 @@ document.getElementById("dischargeOrTransferDatePrint").innerHTML = dischargeOrT
 //Header
 document.getElementById("mothersNameAndSurnamePrint").innerHTML = babyData.mothersFirstName + " " + babyData.mothersLastName;
 document.getElementById("patientMedicalRecordNumberPrint").innerHTML = babyData.patientMedicalRecordNumber;
-document.getElementById("dateOfBirthPrint").innerHTML = moment(babyData.dateOfBirth).format("MMM Do YYYY");
+    console.log(babyData.dateOfBirth);
+document.getElementById("dateOfBirthPrint").innerHTML = babyData.dateOfBirth;
 var sex = babyData.sexOfInfant;
 document.getElementById("sexOfInfantPrint").innerHTML = (sex == 0) ? "Male" : (sex == 1) ? "Female" : "Unknown";
 document.getElementById("mothersAgePrint").innerHTML = babyData.mothersAge;
@@ -144,7 +145,7 @@ if (babyData.chromosomesDone == 1){
     $('chromosomesDonePrintHiddenId').removeClass('chromosomesDonePrintHidden');
 }     
     
-document.getElementById("immunizations652Print").innerHTML = (babyData.immunizations652 == 1) ? " • Immunizations Done on " + moment(babyData.immunizations652Date).format("MMM Do YYYY") : "";
+document.getElementById("immunizations652Print").innerHTML = (babyData.immunizations652 == 1) ? " • Immunizations Done on " + babyData.immunizations652Date : "";
     
 if (babyData.immunizations652 == 1){
     $('immunizations652PrintHiddenId').removeClass('immunizations652PrintHidden');
@@ -154,7 +155,7 @@ if (babyData.immunizations652 == 1){
 
 
 //Footer Discharge Info
-document.getElementById("dateOfDischargePrint").innerHTML = moment(babyData.dateOfInitialDisposition).format("MMM Do YYYY") + " ";
+document.getElementById("dateOfDischargePrint").innerHTML = babyData.dateOfInitialDisposition + " ";
 document.getElementById("placeOfTransferPrint").innerHTML = (babyData.initialDisposition == 2) ? "(" + babyData.transferCenterName + ")" + " " : "";
 document.getElementById("weightAtDischargePrint").innerHTML = "Weight: " + babyData.weightAtInitialDisposition+ " grams";
 document.getElementById("headCircumferenceAtDischargePrint").innerHTML = "HC: " + babyData.headCircumferenceInitialDisposition + "cm";
