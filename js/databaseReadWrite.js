@@ -329,11 +329,11 @@ function createHTTPDELETEConnection(medicalRecordId){
 
 function mapToNaturalLanguage(record){
     var addedRecord = record;
-    if (record.transferCenterPIW == 99999999){
+    if (record.transferCodePIW == 99999999){
         addedRecord.transferCenterName = "Unknown";
     }
     var center = "Unknown";
-    switch(record.transferCenterPIW) {
+    switch(record.transferCodePIW) {
     case 13240:
         center = "Mowbray Maternity Hospital"
         break;
