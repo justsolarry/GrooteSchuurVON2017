@@ -236,7 +236,6 @@ function checkingWhatTypeOfFormToDisplay(){
     else if((weight>=1501 && weight<=7000) && document.getElementById('diedInDeliveryRoomNo').checked){
                 $("#generalDataItemsID").html("GENERAL DATA ITEMS");
                 $("#dayButtonID").text("General Data Items");
-                
                 showNotAVonBabyFields();
             }
     
@@ -364,18 +363,6 @@ function endotrachealTubeVentCheck(){
         $('#nasalCPAPOrNasalVentAfterInitialNo').attr("checked",true);
         $('#nasalCPAPOrNasalVentAfterInitialNo').change();
     }
-}
-function checkIfSuccessfullToastr(){
-    if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
-       toastr.success("All Forms are complete!")
-       }
-    else if($('#patientFormCircle').css('background-color')=="rgb(255, 0, 0)" || $('#generalDataItemsFormCircle').css('background-color')=="rgb(255, 0, 0)" || $('#dischargeCircle').css('background-color')=="rgb(255, 0, 0)"){
-        toastr.error("One of the Forms contain Errors!")
-    }
-    else{
-        toastr.warning("Forms are incomplete!")
-    }
-    
 }
 function formComplete(){     
     if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
@@ -1342,21 +1329,17 @@ function numberOfInfantsDeliveredCheck(){
     if(strUser==2){
         $(hiddenField).slideDown("slow");
         $(hiddenField).addClass('glowingHiddenFields');
-        $('#twinOrTripletOrQuadrupletTwin').attr("checked",true);
-        $('#twinOrTripletOrQuadrupletTwin').change();
-        
+        $('#twinOrTripletOrQuadrupletTwin').attr("checked",true).change();
     }
     else if(strUser==3){
         $(hiddenField).slideDown("slow");
         $(hiddenField).addClass('glowingHiddenFields');
-        $('#twinOrTripletOrQuadrupletTriplet').attr("checked",true);
-        $('#twinOrTripletOrQuadrupletTriplet').change();
+        $('#twinOrTripletOrQuadrupletTriplet').attr("checked",true).change();
     }
     else if(strUser==4){
         $(hiddenField).slideDown("slow");
         $(hiddenField).addClass('glowingHiddenFields');
-        $('#twinOrTripletOrQuadrupletQuadruplet').attr("checked",true);
-        $('#twinOrTripletOrQuadrupletQuadruplet').change();
+        $('#twinOrTripletOrQuadrupletQuadruplet').attr("checked",true).change();
     }
     else{
         $(hiddenField).slideUp("slow");
@@ -1449,10 +1432,10 @@ function showNotAVonBabyFields(){
     $(".enteralFeedingDiv").slideUp("slow");
     $(".oxygenRespiratoryMonitorDiv").slideUp("slow");
     $(".initialDispositionDiv").slideUp("slow");
-    $(".dateOfInitialDispositionDiv").slideUp("slow");
+//    $(".dateOfInitialDispositionDiv").slideUp("slow");
     $(".weightAtInitialDispositionDiv").slideUp("slow");
     $(".headCircumferenceInitialDispositionDiv").slideUp("slow");
-    $(".initialLengthOfStayDiv").slideUp("slow");
+//    $(".initialLengthOfStayDiv").slideUp("slow");
     /*$("#download").slideUp('slow');
     $("#listItem2").slideUp('slow');*/
 }
@@ -1677,6 +1660,71 @@ $(function () {
     $('#PCRDateCalendar').on("click", function (e) {
         $('#PCRDate').focus();
     });
+    $("#appointmentDate1").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate1');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar1').on("click", function (e) {
+        $('#appointmentDate1').focus();
+    });
+    $("#appointmentDate2").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate2');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar2').on("click", function (e) {
+        $('#appointmentDate2').focus();
+    });
+    $("#appointmentDate3").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate3');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar3').on("click", function (e) {
+        $('#appointmentDate3').focus();
+    });
+    $("#appointmentDate4").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate4');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar4').on("click", function (e) {
+        $('#appointmentDate4').focus();
+    });
+    $("#appointmentDate5").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate5');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar5').on("click", function (e) {
+        $('#appointmentDate5').focus();
+    });
     
 });
 /* END Date of Birth*/
@@ -1704,7 +1752,6 @@ $( function() {
         maxDate: '+18M',
         minDate: '0'/*,
         disabled:true*/
-        
     });   
   } );
 /* END Date initial length of stay*/
@@ -1936,11 +1983,9 @@ function totalLengthOfStayCheck(){
 }
 /*28 day date*/
 $( function() {
-    
     $( "#day28Date" ).datepicker({
       showButtonPanel: true,
     dateFormat: 'dd-mm-yy'
-        
     });
   } );
         
@@ -2009,6 +2054,7 @@ $(function(){
         idValue.append($('<option></option>').val(i).html(i+" cm"))
     }
 });
+/*START Future Appointment Dates*/
 $(function(){
     var idValue = $("#appointmentTime1");
     for (i=7;i<=15;i++){
@@ -2039,6 +2085,7 @@ $(function(){
         idValue.append($('<option></option>').val(i).html(i+":00"))
     }
 });
+/*END Future Appointment Dates*/
 /*END - Function to display automated SELECT drop downs */
 /*START - Function to display Diaglog Box to confirm clear form */
 function clearFormDialog() {
