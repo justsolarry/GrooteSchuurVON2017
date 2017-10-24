@@ -51,9 +51,9 @@ document.getElementById("gestationalAgePrint").innerHTML = readableGestationalAg
     
 document.getElementById("birthWeightCategoryPrint").innerHTML = (babyData.birthWeightInGrams < 1000) ? " • ELBW" : (babyData.birthWeightInGrams < 1500) ? " • VLBW" : (babyData.birthWeightInGrams < 2501) ? " • LBW" : "";
     
-if (babyData.birthWeightInGrams < 2501){
-   $('#birthWeightCategoryPrintHiddenId').removeClass('birthWeightCategoryPrintHidden');
-}
+//if (babyData.birthWeightInGrams < 2501){
+//   $('#birthWeightCategoryPrintHiddenId').removeClass('birthWeightCategoryPrintHidden');
+//}
     
 var prematureCategory = (babyData.gestationalAgeInWeeks < 28) ? "Extremely Premature" : (babyData.gestationalAgeInWeeks < 32) ? "Very Premature" : (babyData.gestationalAgeInWeeks < 37) ? "Premature" : "";
 document.getElementById("prematureCategoryPrint").innerHTML = "• " + prematureCategory + " (" + readableGestationalAge + ")";
@@ -160,5 +160,5 @@ document.getElementById("weightAtDischargePrint").innerHTML = "Weight: " + babyD
 document.getElementById("headCircumferenceAtDischargePrint").innerHTML = "HC: " + babyData.headCircumferenceInitialDisposition + "cm";
 //Footer Discharge Info End
 
-document.getElementById("followUpAppointmentPrint").innerHTML = babyData.appointmentLocation + " " + babyData.appointmentDate;
+document.getElementById("followUpAppointmentPrint").innerHTML = babyData.appointmentLocation1 + " " + babyData.appointmentDate1 + " " + babyData.appointmentTime1+"\n" + babyData.appointmentLocation2 + " " + babyData.appointmentDate2 + " " + babyData.appointmentTime2+ "\n" + babyData.appointmentLocation3 + " " + babyData.appointmentDate3 + " " + babyData.appointmentTime3+ "\n" + babyData.appointmentLocation4 + " " + babyData.appointmentDate4 + " " + babyData.appointmentTime4+ "\n" + babyData.appointmentLocation5 + " " + babyData.appointmentDate5 + " " + babyData.appointmentTime5+ "\n";
 }

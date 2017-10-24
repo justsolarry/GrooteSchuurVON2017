@@ -70,7 +70,8 @@
         </button>
 
         <div class="container">
-            <a class="navbar-brand" href="index.html"><span id="dischargeOrTransferPrintHeader"></span> Letter</a>
+            <a href="index.html" style="padding-right:20px;"><button style="z-index:10"  class="btn btn-default" onclick="">Back</button></a>
+            <a class="navbar-brand" href="#"><span id="dischargeOrTransferPrintHeader"></span> Letter</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <button style="z-index:10"  class="btn btn-default" onclick="window.print()">Print Document</button>
@@ -117,7 +118,7 @@
         <hr>
         <center>
         <div class="headingValues">
-            <span><b>Baby of</b>: <span id="mothersNameAndSurnamePrint"></span></span>
+            <span><b>Baby of:</b> <span id="mothersNameAndSurnamePrint"></span></span>
             <span><b>Folder Number: </b><span id="patientMedicalRecordNumberPrint"></span></span>        
             <span><b>DOB</b>: <span id="dateOfBirthPrint"></span></span>
             <span><b>Gender</b>: <span id="sexOfInfantPrint"></span></span>
@@ -132,10 +133,10 @@
         </div>
         </center>
         <div style="display:block;">
-            <p>Problem list</p>
+            <p><b>Problem list</b></p>
             <span style="width:100mm; float:left">
                 <p><span id="birthWeightCategoryPrint"></span>
-                    <textarea class="form-control birthWeightCategoryPrintHidden" id="birthWeightCategoryPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea>
+<!--                    <textarea class="form-control birthWeightCategoryPrintHidden" id="birthWeightCategoryPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea>-->
                 <p><span id="prematureCategoryPrint"></span></p>
                     <textarea class="form-control prematureCategoryPrintHidden" id="prematureCategoryPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea>
                 <p><span id="twinsOrMorePrint"></span></p>
@@ -168,15 +169,15 @@
             </span>
         </div>
         <div style="clear:both; display:block;">
-        <p>Additional Problems / Notes: </p>
+            <p><b>Additional Problems / Notes: </b></p>
             <textarea class="form-control" type="text" placeholder="" style="width:100%"></textarea>
         </div>
         <p>Date of <span id="dischargeOrTransferDatePrint"></span>: <span id="dateOfDischargePrint"></span> <span id="placeOfTransferPrint"></span> <span id="weightAtDischargePrint"></span> <span id="headCircumferenceAtDischargePrint"></span></p>
         <textarea class="" type="text" placeholder="Meds:" style="width:100%">Meds:</textarea>
         <textarea class="" rows="4" type="text" placeholder="Feeds:" style="width:100%">Feeds:</textarea>
         <br>
-        <p>Follow up appointments: <span id="followUpAppointmentPrint"></span></p>
-        <p>Done by: Dr <input type="text" placeholder="_________________________" style="width:100%">
+        <p><b>Follow up appointments: </b><span id="followUpAppointmentPrint"></span></p>
+        <p><b>Done by: Dr </b><input type="text" placeholder="_________________________" style="width:100%">
         <br>    
     </div>
         
