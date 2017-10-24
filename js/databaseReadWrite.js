@@ -355,6 +355,9 @@ function mapToNaturalLanguage(record){
     case 97777777:
         center = "Birth at Home or in Transit"
         break;
+	case 9000217:
+		center="Other"
+		break;
     case 77777777:
         center = "N/A"
         break;
