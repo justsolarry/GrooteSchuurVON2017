@@ -1435,6 +1435,17 @@ function twinOrTripletOrQuadrupletCheck(){
         $(hiddenFieldQuadruplets).addClass('glowingHiddenFields')
     }
 }
+function ROPScreenDoneCheck(){
+    var value1 = document.getElementById('hiddenFieldROPDate');
+    if (document.getElementById('ROPScreenDoneYes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+    }
+    else if(document.getElementById('ROPScreenDoneNo').checked){
+            $(value1).slideUp("slow");
+            $(value1).removeClass('glowingHiddenFields')
+    }
+}
 function showNotAVonBabyFields(){
     
     $(".gestationalAgeInWeeksDiv").slideDown("slow");

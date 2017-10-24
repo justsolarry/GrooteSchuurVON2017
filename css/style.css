@@ -5,6 +5,9 @@ select option:selected{
     height:100%;
     overflow:hidden;
 }
+.activeMenuButton{
+    color: #42DCA3 !important;
+}
 
 /*----------------------------------------------------*/
 /*Temporary navbar container fix*/
@@ -267,14 +270,12 @@ input[type="search"]:-ms-input-placeholder {
 #appointmentDiv2,
 #appointmentDiv3,
 #appointmentDiv4,
-#appointmentDiv5
+#appointmentDiv5,
+#hiddenFieldROPDate
 {
     display:none;
 }
 /* Hiding not a VON baby fields */
-.babyLengthDiv{
-    display:none;
-}
 /*Hiding Transfer Form section A - D*/
 #TransferFormPartA,
 #TransferFormPartB,
@@ -896,48 +897,6 @@ input[type="radio"]:checked~label {
 .inner-panel-body {
     padding: 25px;
 }
-
-/* END Inner Panel*/
-/*----------------------------------------------------*/
-/*START Inner inner panel*/
-.InnerInnerPanel {
-    background-color: transparent;
-    border: 1px solid #337ab7;
-    border-radius: 0px;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    overflow: auto;
-}
-.inner-inner-panel-primary {
-    border-color: #337ab7;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color:#999999;
-    width:100%;
-}
-.inner-inner-panel-primary>.inner-inner-panel-heading {
-    color: #fff;
-    background-color: #337ab7;
-    border-color: #337ab7;
-}
-.inner-inner-panel-heading {
-    padding: 10px 15px;
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    font-size: 18px;
-    text-transform: uppercase;
-    
-}
-.activeMenuButton{
-    color: #42DCA3 !important;
-}
-.inner-inner-panel-body {
-    padding: 25px;
-}
-/*END Inner inner panel*/
-/*----------------------------------------------------*/
 th{
   color: white;
 }
