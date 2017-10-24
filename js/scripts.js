@@ -253,6 +253,42 @@ function inbornOutbornCheck() {
         $('#GroupingHiddenField1').addClass('glowingHiddenFields')
     }
 }
+function headCircumferenceCheck(){
+    var value = document.getElementById('headCircumference').value;
+    if(value>=20 && value<=45 && value.indexOf('.') >= 0){ //correct value
+            $('#headCircumference').removeClass('addRed')
+            $('#headCircumference').addClass('addGreen')
+            $('#headCircumference').removeClass('glowingHiddenFieldsPermanent')
+            }
+    else if(value.indexOf('.') <= -1){
+        toastr.error("Head Circumference - Must be in the format XX.X")
+        $('#headCircumference').addClass('addRed')
+        $('#headCircumference').removeClass('addGreen')
+    }
+    else{
+        toastr.error("Head Circumference - Value must be between 20-45")
+        $('#headCircumference').addClass('addRed')
+        $('#headCircumference').removeClass('addGreen')
+    }
+}
+function headCircumferenceInitialDisposition(){
+    var value = document.getElementById('headCircumferenceInitialDisposition').value;
+    if(value>=20 && value<=45 && value.indexOf('.') >= 0){ //correct value
+            $('#headCircumferenceInitialDisposition').removeClass('addRed')
+            $('#headCircumferenceInitialDisposition').addClass('addGreen')
+            $('#headCircumferenceInitialDisposition').removeClass('glowingHiddenFieldsPermanent')
+            }
+    else if(value.indexOf('.') <= -1){
+        toastr.error("Head Circumference - Must be in the format XX.X")
+        $('#headCircumferenceInitialDisposition').addClass('addRed')
+        $('#headCircumferenceInitialDisposition').removeClass('addGreen')
+    }
+    else{
+        toastr.error("Head Circumference - Value must be between 20-45")
+        $('#headCircumferenceInitialDisposition').addClass('addRed')
+        $('#headCircumferenceInitialDisposition').removeClass('addGreen')
+    }
+}
 function applyRadioTextSelectedColour(element) {
     if (document.getElementById(element).checked) {
         $('.diedInDeliveryRoomYesLabel').addClass('radioTextSelectedColour')
@@ -1323,28 +1359,37 @@ function multipleGestationCheck() {
 function numberOfInfantsDeliveredCheck(){
     var e = document.getElementById("numberOfInfantsDelivered");
     var strUser = e.options[e.selectedIndex].value;
-    var hiddenField = document.getElementById('twinOrTripletDiv');
     if(strUser==2){
-        $(hiddenField).slideDown("slow");
-        $(hiddenField).addClass('glowingHiddenFields');
-        $('#twinOrTripletOrQuadrupletTwin').attr("checked",true).change();
+        $('#hiddenFieldTwins').slideDown("slow");
+        $('#hiddenFieldTriplets').slideUp("slow");
+        $('#hiddenFieldQuadruplets').slideUp("slow");
+        $('#hiddenFieldTwins').addClass('glowingHiddenFields');
+        $('#hiddenFieldTriplets').removeClass('glowingHiddenFields');
+        $('#hiddenFieldQuadruplets').removeClass('glowingHiddenFields');
     }
     else if(strUser==3){
-        $(hiddenField).slideDown("slow");
-        $(hiddenField).addClass('glowingHiddenFields');
-        $('#twinOrTripletOrQuadrupletTriplet').attr("checked",true).change();
+        $('#hiddenFieldTwins').slideUp("slow");
+        $('#hiddenFieldTriplets').slideDown("slow");
+        $('#hiddenFieldQuadruplets').slideUp("slow");
+        $('#hiddenFieldTwins').removeClass('glowingHiddenFields');
+        $('#hiddenFieldTriplets').addClass('glowingHiddenFields');
+        $('#hiddenFieldQuadruplets').removeClass('glowingHiddenFields');
     }
     else if(strUser==4){
-        $(hiddenField).slideDown("slow");
-        $(hiddenField).addClass('glowingHiddenFields');
-        $('#twinOrTripletOrQuadrupletQuadruplet').attr("checked",true).change();
+        $('#hiddenFieldTwins').slideUp("slow");
+        $('#hiddenFieldTriplets').slideUp("slow");
+        $('#hiddenFieldQuadruplets').slideDown("slow");
+        $('#hiddenFieldTwins').removeClass('glowingHiddenFields');
+        $('#hiddenFieldTriplets').removeClass('glowingHiddenFields');
+        $('#hiddenFieldQuadruplets').addClass('glowingHiddenFields');
     }
     else{
-        $(hiddenField).slideUp("slow");
-        $(hiddenField).removeClass('glowingHiddenFields');
         $('#hiddenFieldTwins').slideUp("slow");
         $('#hiddenFieldTriplets').slideUp("slow");
         $('#hiddenFieldQuadruplets').slideUp("slow");
+        $('#hiddenFieldTwins').removeClass('glowingHiddenFields');
+        $('#hiddenFieldTriplets').removeClass('glowingHiddenFields');
+        $('#hiddenFieldQuadruplets').removeClass('glowingHiddenFields');
     }
 }
 function twinOrTripletOrQuadrupletCheck(){
@@ -2008,18 +2053,6 @@ $(function(){
     var idValue = $("#temperatureAdmission");
     for (i=40;i.toFixed(1)>=25;i-=0.2){
         idValue.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+ ' &#8451'))
-    }
-});
-$(function(){
-    var idValue = $("#headCircumference");
-    for (i=20;i.toFixed(1)<=45;i+=0.2){
-        idValue.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+" cm"))
-    }
-});
-$(function(){
-    var idValue = $("#headCircumferenceInitialDisposition");
-    for (i=20;i.toFixed(1)<=45;i+=0.2){
-        idValue.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+" cm"))
     }
 });
 $(function(){
