@@ -11,7 +11,7 @@ $("#thirdPanelID input[type=search]").on('change',InputsAdditionalForm,ColourAdd
 $("#thirdPanelID input:radio").on('click',RadiosAdditionalForm,ColourAdditionalForm);
 $('#thirdPanelID select').on('change', SelectsAdditionalForm,ColourAdditionalForm);
 $('#thirdPanelID textarea').on('change', textareaAdditionalForm,ColourAdditionalForm);
-
+//Patient Form
 function InputsPatientForm(){
     var completeIncompleteCounter = 0;
     var errorCounter = 0;
@@ -108,7 +108,7 @@ function ColourPatientForm(){
     }
     
 }
-
+//General Form
 function InputsGeneralForm(){
     var completeIncompleteCounter = 0;
     var errorCounter = 0;
@@ -206,7 +206,7 @@ function ColourGeneralForm(){
         //toastr.warning("Fields aren't complete");
     }
 }
-
+//Additional Form
 function InputsAdditionalForm(){
     var completeIncompleteCounter = 0;
     var errorCounter = 0;
@@ -278,7 +278,6 @@ function textareaAdditionalForm(){
     });
     return (completeIncompleteCounter);
 }
-
 function ColourAdditionalForm(){
     //pulling the function's array data
     var data = InputsAdditionalForm();
@@ -323,8 +322,7 @@ function ColourAdditionalForm(){
         //toastr.warning("Fields aren't complete");
     }
 }
-
-
+//Checks
 function checkingIncompleteForAdditional(){
     $('#thirdPanelID select:visible').each(function(i) {
         if( !$(this).val() ) {
@@ -357,7 +355,6 @@ function firstFormCheck(){
         });
     });*/
 }
-
 function secondFormCheck(){
     $('#secondPanelID input[type=search]:visible:enabled').each(function(i) {
         if(!$(this).hasClass("addGreen") && !$(this).hasClass("addRed")){
@@ -372,7 +369,6 @@ function secondFormCheck(){
         }
     });
 }
-
 function thirdFormCheck(){
     $('#thirdPanelID input[type=search]:visible:enabled').each(function(i) {
         if(!$(this).hasClass("addGreen") && !$(this).hasClass("addRed")){
@@ -386,5 +382,26 @@ function thirdFormCheck(){
             toastr.warning("Additional Information Form has incomplete fields")
         }
     });
-    checkIfSuccessfullToastr();
+    
+    $('#thirdPanelID textarea:visible').each(function(i) {
+        if(!$(this).hasClass("addGreen") && !$(this).hasClass("addRed")){
+           $('#'+this.id).addClass('glowingHiddenFieldsPermanent');
+            toastr.warning("Additional Information Form has incomplete fields")
+           }
+    });
+    
+}
+function checkComplete(){
+    firstFormCheck();
+    secondFormCheck();
+    thirdFormCheck();
+    if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
+       toastr.success("All Forms are complete!")
+       }
+    else if($('#patientFormCircle').css('background-color')=="rgb(255, 0, 0)" || $('#generalDataItemsFormCircle').css('background-color')=="rgb(255, 0, 0)" || $('#dischargeCircle').css('background-color')=="rgb(255, 0, 0)"){
+        toastr.error("One of the Forms contain Errors!")
+    }
+    else{
+        toastr.warning("Forms are incomplete!")
+    }
 }

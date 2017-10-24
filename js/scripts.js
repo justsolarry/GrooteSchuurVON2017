@@ -234,7 +234,6 @@ function checkingWhatTypeOfFormToDisplay(){
     else if((weight>=1501 && weight<=7000) && document.getElementById('diedInDeliveryRoomNo').checked){
                 $("#generalDataItemsID").html("GENERAL DATA ITEMS");
                 $("#dayButtonID").text("General Data Items");
-                
                 showNotAVonBabyFields();
             }
     
@@ -252,6 +251,42 @@ function inbornOutbornCheck() {
     if (document.getElementById('locationOFBirthOutborn').checked) {
         $("#GroupingHiddenField1").slideDown("slow");
         $('#GroupingHiddenField1').addClass('glowingHiddenFields')
+    }
+}
+function headCircumferenceCheck(){
+    var value = document.getElementById('headCircumference').value;
+    if(value>=20 && value<=45 && value.indexOf('.') >= 0){ //correct value
+            $('#headCircumference').removeClass('addRed')
+            $('#headCircumference').addClass('addGreen')
+            $('#headCircumference').removeClass('glowingHiddenFieldsPermanent')
+            }
+    else if(value.indexOf('.') <= -1){
+        toastr.error("Head Circumference - Must be in the format XX.X")
+        $('#headCircumference').addClass('addRed')
+        $('#headCircumference').removeClass('addGreen')
+    }
+    else{
+        toastr.error("Head Circumference - Value must be between 20-45")
+        $('#headCircumference').addClass('addRed')
+        $('#headCircumference').removeClass('addGreen')
+    }
+}
+function headCircumferenceInitialDisposition(){
+    var value = document.getElementById('headCircumferenceInitialDisposition').value;
+    if(value>=20 && value<=45 && value.indexOf('.') >= 0){ //correct value
+            $('#headCircumferenceInitialDisposition').removeClass('addRed')
+            $('#headCircumferenceInitialDisposition').addClass('addGreen')
+            $('#headCircumferenceInitialDisposition').removeClass('glowingHiddenFieldsPermanent')
+            }
+    else if(value.indexOf('.') <= -1){
+        toastr.error("Head Circumference - Must be in the format XX.X")
+        $('#headCircumferenceInitialDisposition').addClass('addRed')
+        $('#headCircumferenceInitialDisposition').removeClass('addGreen')
+    }
+    else{
+        toastr.error("Head Circumference - Value must be between 20-45")
+        $('#headCircumferenceInitialDisposition').addClass('addRed')
+        $('#headCircumferenceInitialDisposition').removeClass('addGreen')
     }
 }
 function applyRadioTextSelectedColour(element) {
@@ -362,18 +397,6 @@ function endotrachealTubeVentCheck(){
         $('#nasalCPAPOrNasalVentAfterInitialNo').attr("checked",true);
         $('#nasalCPAPOrNasalVentAfterInitialNo').change();
     }
-}
-function checkIfSuccessfullToastr(){
-    if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
-       toastr.success("All Forms are complete!")
-       }
-    else if($('#patientFormCircle').css('background-color')=="rgb(255, 0, 0)" || $('#generalDataItemsFormCircle').css('background-color')=="rgb(255, 0, 0)" || $('#dischargeCircle').css('background-color')=="rgb(255, 0, 0)"){
-        toastr.error("One of the Forms contain Errors!")
-    }
-    else{
-        toastr.warning("Forms are incomplete!")
-    }
-    
 }
 function formComplete(){     
     if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
@@ -1336,32 +1359,37 @@ function multipleGestationCheck() {
 function numberOfInfantsDeliveredCheck(){
     var e = document.getElementById("numberOfInfantsDelivered");
     var strUser = e.options[e.selectedIndex].value;
-    var hiddenField = document.getElementById('twinOrTripletDiv');
     if(strUser==2){
-        $(hiddenField).slideDown("slow");
-        $(hiddenField).addClass('glowingHiddenFields');
-        $('#twinOrTripletOrQuadrupletTwin').attr("checked",true);
-        $('#twinOrTripletOrQuadrupletTwin').change();
-        
+        $('#hiddenFieldTwins').slideDown("slow");
+        $('#hiddenFieldTriplets').slideUp("slow");
+        $('#hiddenFieldQuadruplets').slideUp("slow");
+        $('#hiddenFieldTwins').addClass('glowingHiddenFields');
+        $('#hiddenFieldTriplets').removeClass('glowingHiddenFields');
+        $('#hiddenFieldQuadruplets').removeClass('glowingHiddenFields');
     }
     else if(strUser==3){
-        $(hiddenField).slideDown("slow");
-        $(hiddenField).addClass('glowingHiddenFields');
-        $('#twinOrTripletOrQuadrupletTriplet').attr("checked",true);
-        $('#twinOrTripletOrQuadrupletTriplet').change();
+        $('#hiddenFieldTwins').slideUp("slow");
+        $('#hiddenFieldTriplets').slideDown("slow");
+        $('#hiddenFieldQuadruplets').slideUp("slow");
+        $('#hiddenFieldTwins').removeClass('glowingHiddenFields');
+        $('#hiddenFieldTriplets').addClass('glowingHiddenFields');
+        $('#hiddenFieldQuadruplets').removeClass('glowingHiddenFields');
     }
     else if(strUser==4){
-        $(hiddenField).slideDown("slow");
-        $(hiddenField).addClass('glowingHiddenFields');
-        $('#twinOrTripletOrQuadrupletQuadruplet').attr("checked",true);
-        $('#twinOrTripletOrQuadrupletQuadruplet').change();
+        $('#hiddenFieldTwins').slideUp("slow");
+        $('#hiddenFieldTriplets').slideUp("slow");
+        $('#hiddenFieldQuadruplets').slideDown("slow");
+        $('#hiddenFieldTwins').removeClass('glowingHiddenFields');
+        $('#hiddenFieldTriplets').removeClass('glowingHiddenFields');
+        $('#hiddenFieldQuadruplets').addClass('glowingHiddenFields');
     }
     else{
-        $(hiddenField).slideUp("slow");
-        $(hiddenField).removeClass('glowingHiddenFields');
         $('#hiddenFieldTwins').slideUp("slow");
         $('#hiddenFieldTriplets').slideUp("slow");
         $('#hiddenFieldQuadruplets').slideUp("slow");
+        $('#hiddenFieldTwins').removeClass('glowingHiddenFields');
+        $('#hiddenFieldTriplets').removeClass('glowingHiddenFields');
+        $('#hiddenFieldQuadruplets').removeClass('glowingHiddenFields');
     }
 }
 function twinOrTripletOrQuadrupletCheck(){
@@ -1447,10 +1475,10 @@ function showNotAVonBabyFields(){
     $(".enteralFeedingDiv").slideUp("slow");
     $(".oxygenRespiratoryMonitorDiv").slideUp("slow");
     $(".initialDispositionDiv").slideUp("slow");
-    $(".dateOfInitialDispositionDiv").slideUp("slow");
+//    $(".dateOfInitialDispositionDiv").slideUp("slow");
     $(".weightAtInitialDispositionDiv").slideUp("slow");
     $(".headCircumferenceInitialDispositionDiv").slideUp("slow");
-    $(".initialLengthOfStayDiv").slideUp("slow");
+//    $(".initialLengthOfStayDiv").slideUp("slow");
     /*$("#download").slideUp('slow');
     $("#listItem2").slideUp('slow');*/
 }
@@ -1675,6 +1703,71 @@ $(function () {
     $('#PCRDateCalendar').on("click", function (e) {
         $('#PCRDate').focus();
     });
+    $("#appointmentDate1").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate1');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar1').on("click", function (e) {
+        $('#appointmentDate1').focus();
+    });
+    $("#appointmentDate2").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate2');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar2').on("click", function (e) {
+        $('#appointmentDate2').focus();
+    });
+    $("#appointmentDate3").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate3');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar3').on("click", function (e) {
+        $('#appointmentDate3').focus();
+    });
+    $("#appointmentDate4").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate4');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar4').on("click", function (e) {
+        $('#appointmentDate4').focus();
+    });
+    $("#appointmentDate5").datepicker($.extend({
+        maxDate: '+12M',
+        minDate:'+1D',
+        onSelect: function () {
+            validateFreeText('appointmentDate5');
+            //adding key listener functions for progress bar checks
+            InputsAdditionalForm();
+            ColourAdditionalForm();
+        }
+    }, datepickersOpt));
+    $('#appointmentDateCalendar5').on("click", function (e) {
+        $('#appointmentDate5').focus();
+    });
     
 });
 /* END Date of Birth*/
@@ -1702,7 +1795,6 @@ $( function() {
         maxDate: '+18M',
         minDate: '0'/*,
         disabled:true*/
-        
     });   
   } );
 /* END Date initial length of stay*/
@@ -1934,11 +2026,9 @@ function totalLengthOfStayCheck(){
 }
 /*28 day date*/
 $( function() {
-    
     $( "#day28Date" ).datepicker({
       showButtonPanel: true,
     dateFormat: 'dd-mm-yy'
-        
     });
   } );
         
@@ -1963,18 +2053,6 @@ $(function(){
     var idValue = $("#temperatureAdmission");
     for (i=40;i.toFixed(1)>=25;i-=0.2){
         idValue.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+ ' &#8451'))
-    }
-});
-$(function(){
-    var idValue = $("#headCircumference");
-    for (i=20;i.toFixed(1)<=45;i+=0.2){
-        idValue.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+" cm"))
-    }
-});
-$(function(){
-    var idValue = $("#headCircumferenceInitialDisposition");
-    for (i=20;i.toFixed(1)<=45;i+=0.2){
-        idValue.append($('<option></option>').val(i.toFixed(1)).html(i.toFixed(1)+" cm"))
     }
 });
 $(function(){
@@ -2007,6 +2085,7 @@ $(function(){
         idValue.append($('<option></option>').val(i).html(i+" cm"))
     }
 });
+/*START Future Appointment Dates*/
 $(function(){
     var idValue = $("#appointmentTime1");
     for (i=7;i<=15;i++){
@@ -2037,6 +2116,7 @@ $(function(){
         idValue.append($('<option></option>').val(i).html(i+":00"))
     }
 });
+/*END Future Appointment Dates*/
 /*END - Function to display automated SELECT drop downs */
 /*START - Function to display Diaglog Box to confirm clear form */
 function clearFormDialog() {

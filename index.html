@@ -100,6 +100,7 @@
                               </li>
                            </ul>
                            <!-- Command buttons at the bottom of the progress bar forms -->
+                            <a href="javascript:void(0)" class="btn btn-default btn-lg clickToFinishButton" style="position:relative; width:80%; margin-bottom: 15px; bottom: 60px; font-size: 1em;" onclick="javascript:checkComplete()">Click to Finish</a>
                            <a id="clearFormButton" href="javascript:void(0)" onclick="clearFormDialog();" class="btn btn-default btn-lg" style="position:relative; width:80%; margin-bottom: 15px; bottom: 60px; font-size: 1em;">Clear Form</a>
                            <a id="PrintDischargeButton" href="javascript:void(0)" onclick="printForm(document.getElementById('_id').value);" class="btn btn-default btn-lg" style="position:relative; width:80%; bottom: 60px; font-size: 1em;">Print Discharge Form</a>
                         </div>
@@ -121,7 +122,7 @@
                                  <label class="fixingLabelAlignment" for="birthWeightInGrams">Birth Weight : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="addingUnits unitsGrams">
-                                    <input id="birthWeightInGrams" name="birthWeightInGrams" class="form-control" onchange="validateBirthweight();checkingWhatTypeOfFormToDisplay();" type="search" placeholder="eg. 1500" maxlength="4">
+                                    <input id="birthWeightInGrams" name="birthWeightInGrams" class="form-control onlyNumbers" onchange="validateBirthweight();checkingWhatTypeOfFormToDisplay();settingBabyLength();" type="search" placeholder="eg. 1500" maxlength="4">
                                     </span>
                                  </div>
                               </div>
@@ -139,13 +140,13 @@
                                     <input type="hidden" id="form3color" name="form3color">
                                     <input type="hidden" id="error" name="error">
                                     <input type="hidden" id="session">
-                                    <input id="mothersFirstName" name="mothersFirstName" onchange="validateNoNumbers('mothersFirstName')" class="form-control" type="search" placeholder="eg. Mary">
+                                    <input id="mothersFirstName" name="mothersFirstName" onchange="validateNoNumbers('mothersFirstName')" class="form-control onlyLetters" type="search" placeholder="eg. Mary">
                                  </div>
                               </div>
                               <div class="form-group input-group mothersLastNameDiv">
                                  <label class="fixingLabelAlignment" for="mothersLastName">Mother's Last Name : </label>
                                  <div class="fixingInputAlignment">
-                                    <input id="mothersLastName" name="mothersLastName" onchange="validateNoNumbers('mothersLastName')" class="form-control" type="search" placeholder="eg. Brown">
+                                    <input id="mothersLastName" name="mothersLastName" onchange="validateNoNumbers('mothersLastName')" class="form-control onlyLetters" type="search" placeholder="eg. Brown">
                                  </div>
                               </div>
                               <div class="form-group input-group patientsNameDiv">
@@ -157,7 +158,7 @@
                               <div class="form-group input-group patientMedicalRecordNumberDiv">
                                  <label class="fixingLabelAlignment" for="patientMedicalRecordNumber">Patient's Medical Record Number : </label>
                                  <div class="fixingInputAlignment">
-                                    <input id="patientMedicalRecordNumber" name="patientMedicalRecordNumber" onchange="validatePatientMedicalRecordNumber()" class="form-control" type="search" placeholder="eg. 15494922" maxlength="9">
+                                    <input id="patientMedicalRecordNumber" name="patientMedicalRecordNumber" onchange="validatePatientMedicalRecordNumber()" class="form-control onlyNumbers" type="search" placeholder="eg. 15494922" maxlength="9">
                                  </div>
                               </div>
                               <div class="form-group input-group dateOfBirthDiv">
@@ -306,10 +307,7 @@
                               <div class="form-group input-group headCircumferenceDiv">
                                  <label class="fixingLabelAlignment" for="headCircumference">Head Circumference : </label>
                                  <div class="fixingInputAlignment">
-                                    <select id="headCircumference" name="headCircumferenceAtBirth" class="form-control" style="height:32px;width:40%;">
-                                       <option disabled selected value></option>
-                                       <option value="999.9">Unknown</option>
-                                    </select>
+                                    <input id="headCircumference" name="headCircumference" onchange="headCircumferenceCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
                                  </div>
                               </div>
                               <div class="form-group input-group raceOfMotherDiv">
@@ -3239,7 +3237,7 @@
                                        <label class="fixingLabelAlignmentInner" for="weightAtDispositionAfterReadmission">Weight at Disposition after Readmission : </label>
                                        <div class="fixingInputAlignmentInner">
                                           <span class="addingUnits unitsGrams">
-                                          <input id="weightAtDispositionAfterReadmission" name="weightAtDispositionAfterReadmission" class="form-control" onchange="validateWeight('weightAtDispositionAfterReadmission')" type="search" placeholder="eg. 1122" maxlength="4">
+                                          <input id="weightAtDispositionAfterReadmission" name="weightAtDispositionAfterReadmission" class="form-control onlyNumbers" onchange="validateWeight('weightAtDispositionAfterReadmission')" type="search" placeholder="eg. 1122" maxlength="4">
                                           </span>
                                        </div>
                                     </div>
@@ -3290,17 +3288,14 @@
                                  <label class="fixingLabelAlignment" for="weightAtInitialDisposition">Weight at Initial Disposition : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="addingUnits unitsGrams">
-                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control" onchange="validateWeight('weightAtInitialDisposition')" type="search" placeholder="eg. 1122" maxlength="4">
+                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control onlyNumbers" onchange="validateWeight('weightAtInitialDisposition')" type="search" placeholder="eg. 1122" maxlength="4">
                                     </span>
                                  </div>
                               </div>
                               <div class="form-group input-group headCircumferenceInitialDispositionDiv">
                                  <label class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
                                  <div class="fixingInputAlignment">
-                                    <select id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" class="form-control" style="height:32px;width:40%;">
-                                       <option disabled selected value></option>
-                                       <option value="999.9">Unknown</option>
-                                    </select>
+                                    <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="headCircumferenceInitialDispositionCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
                                  </div>
                               </div>
                            </div>
@@ -3343,6 +3338,7 @@
                                  <div class="inner-panel-heading">
                                     Additional Birth Details
                                  </div>
+<!--
                                  <div class="inner-panel-body">
                                     <div id="twinOrTripletDiv" class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Twins/Triplets/Quadruplets :</label>
@@ -3361,11 +3357,11 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldTwins" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+-->
+                                    <div id="hiddenFieldTwins">
                                           <div class="form-group input-group twinABDiv">
-                                             <label class="fixingLabelAlignmentInnerInner">Twin A/B : </label>
-                                             <div class="fixingInputAlignmentInnerInner">
+                                             <label class="fixingLabelAlignmentInner">Twin A/B : </label>
+                                             <div class="fixingInputAlignmentInner">
                                                 <span class="radioFloatLeftInner">
                                                 <input class="radioType" id="twinABA" type="radio" name = twinAB value="1">
                                                 <label class="radioText" for="twinABA">A</label>
@@ -3375,14 +3371,12 @@
                                                 <label class="radioText" for="twinABB">B</label>
                                                 </span>
                                              </div>
-                                          </div>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldTriplets" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldTriplets">
                                           <div class="form-group input-group tripletABCDiv">
-                                             <label class="fixingLabelAlignmentInnerInner">Triplet A/B/C : </label>
-                                             <div class="fixingInputAlignmentInnerInner">
+                                             <label class="fixingLabelAlignmentInner">Triplet A/B/C : </label>
+                                             <div class="fixingInputAlignmentInner">
                                                 <span class="radioFloatLeftInner">
                                                 <input class="radioType" id="tripletABCA" type="radio" name = tripletABC value="1">
                                                 <label class="radioText" for="tripletABCA">A</label>
@@ -3396,14 +3390,12 @@
                                                 <label class="radioText" for="twinABBC">C</label>
                                                 </span>
                                              </div>
-                                          </div>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldQuadruplets" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldQuadruplets">
                                           <div class="form-group input-group quadrupletABCDDiv">
-                                             <label class="fixingLabelAlignmentInnerInner">Quadruplet A/B/C/D : </label>
-                                             <div class="fixingInputAlignmentInnerInner">
+                                             <label class="fixingLabelAlignmentInner">Quadruplet A/B/C/D : </label>
+                                             <div class="fixingInputAlignmentInner">
                                                 <span class="radioFloatLeftInner">
                                                 <input class="radioType" id="quadrupletABCDA" type="radio" name = quadrupletABCD value="1">
                                                 <label class="radioText" for="quadrupletABCDA">A</label>
@@ -3422,7 +3414,6 @@
                                                 </span>
                                              </div>
                                           </div>
-                                       </div>
                                     </div>
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="mothersAge">Mother's Age  :  </label>
@@ -3689,7 +3680,7 @@
                                                    <select name="CFMHighestScore" class="form-control" style="height:32px;width:70%;">
                                                       <option disabled selected value></option>
                                                       <option value="Normal">Normal</option>
-                                                      <option value="Discontinues Normal">Discontinues Normal</option>
+                                                      <option value="Discontinues Normal">Discontinuous Normal</option>
                                                       <option value="Severely Abnormal">Severely Abnormal</option>
                                                    </select>
                                                 </div>
@@ -3737,7 +3728,7 @@
                                              </div>
                                           </div>
                                           <div class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInner">Number of Codes : </label>
+                                             <label class="fixingLabelAlignmentInner">Number of Episodes : </label>
                                              <div class="fixingInputAlignmentInner">
                                                 <select id="numberOfBacterialCodesDuringAdmission" name="numberOfBacterialCodesDuringAdmission" class="form-control" onchange="javascript:numberOfBacterialCodesDuringAdmissionCheck();" style="height:32px;width:30%;">
                                                    <option disabled selected value></option>
@@ -3992,7 +3983,8 @@
                                           </select>
                                        </div>
                                     </div>
-                                     <div id="appointmentDiv1">
+                                     <div id="appointmentDiv1" class="InnerInnerPanel inner-inter-panel-primary">
+                                         <div class="inner-panel-body">
                                         <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation1">First Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
@@ -4002,7 +3994,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentDate1">First Appointment Date : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                          <span id="appointmentDateCalendar1" class="addingCalendarInner addingCalendarIcon">
                                           <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate1" name="appointmentDate1" class="form-control calendarField" readonly="true"/>
                                           </span>
                                        </div>
@@ -4017,7 +4009,9 @@
                                        </div>
                                     </div>
                                      </div>
-                                    <div id="appointmentDiv2">
+                                         </div>
+                                    <div id="appointmentDiv2" class="InnerInnerPanel inner-inter-panel-primary">
+                                        <div class="inner-panel-body">
                                         <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation2">Second Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
@@ -4027,7 +4021,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentDate2">Second Appointment Date : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                          <span id="appointmentDateCalendar2" class="addingCalendarInner addingCalendarIcon">
                                           <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate2" name="appointmentDate2" class="form-control calendarField" readonly="true"/>
                                           </span>
                                        </div>
@@ -4041,8 +4035,10 @@
                                           </select>
                                        </div>
                                     </div>
+                                        </div>
                                      </div>
-                                     <div id="appointmentDiv3">
+                                     <div id="appointmentDiv3" class="InnerInnerPanel inner-inter-panel-primary">
+                                         <div class="inner-panel-body">
                                          <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation3">Third Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
@@ -4052,7 +4048,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentDate3">Third Appointment Date : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                          <span id="appointmentDateCalendar3" class="addingCalendarInner addingCalendarIcon">
                                           <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate3" name="appointmentDate3" class="form-control calendarField" readonly="true"/>
                                           </span>
                                        </div>
@@ -4066,8 +4062,10 @@
                                           </select>
                                        </div>
                                     </div>
+                                         </div>
                                      </div>
-                                     <div id="appointmentDiv4">
+                                     <div id="appointmentDiv4" class="InnerInnerPanel inner-inter-panel-primary">
+                                         <div class="inner-panel-body">
                                          <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation4">Fourth Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
@@ -4077,7 +4075,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentDate4">Fourth Appointment Date : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                          <span id="appointmentDateCalendar4" class="addingCalendarInner addingCalendarIcon">
                                           <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate4" name="appointmentDate4" class="form-control calendarField" readonly="true"/>
                                           </span>
                                        </div>
@@ -4091,8 +4089,10 @@
                                           </select>
                                        </div>
                                     </div>
+                                         </div>
                                      </div>
-                                     <div id="appointmentDiv5">
+                                     <div id="appointmentDiv5" class="InnerInnerPanel inner-inter-panel-primary">
+                                         <div class="inner-panel-body">
                                          <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation5">Fifth Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
@@ -4102,7 +4102,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentDate5">Fifth Appointment Date : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <span id="appointmentDateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                          <span id="appointmentDateCalendar5" class="addingCalendarInner addingCalendarIcon">
                                           <input type="search" placeholder="dd-mm-yyyy" id="appointmentDate5" name="appointmentDate5" class="form-control calendarField" readonly="true"/>
                                           </span>
                                        </div>
@@ -4115,6 +4115,7 @@
                                              <option value="99">Unknown</option>
                                           </select>
                                        </div>
+                                             </div>
                                     </div>
                                      </div>
                                      
@@ -4157,7 +4158,7 @@
                         </div>
                         <!-- START Completed Button -->
                         <div class="form-group input-group">
-                           <a href="javascript:void(0)" onclick="javascript:thirdFormCheck()" class="btn btn-default btn-lg page-scroll" style="position:relative;width:60%;margin-top:50px">Click to Finish</a>
+                           <a href="javascript:void(0)" onclick="javascript:checkComplete()" class="btn btn-default btn-lg page-scroll clickToFinishButton" style="position:relative;width:60%;margin-top:50px">Click to Finish</a>
                         </div>
                         <!-- END Completed Button -->
                      </form>
@@ -4190,7 +4191,7 @@
     <script type="text/javascript" src="js/jquery.serializejson.js"></script>
     <script type="text/javascript" src="js/autosave.js"></script>
     <script src="js/dischargeFormPopulation.js"></script>
-    <script>
+    <!--<script>
         $(document).ready(function() {
         //var session = document.getElementById("session").value;
             //if(session == true){
@@ -4198,7 +4199,7 @@
                checkForPopulation();
             //}
        });
-    </script>
+    </script>-->
 </body>
 
 </html>

@@ -34,6 +34,24 @@ input[type="radio"]{
 input[type="search"]:disabled,.fixingInputAlignmentInner input[type="text"]:disabled {
     background: #A9A9A9;
 }
+input[type="search"]{
+    text-transform: capitalize;
+}
+input[type="search"]::-webkit-input-placeholder {
+   text-transform: none;
+}
+
+input[type="search"]:-moz-placeholder { /* Firefox 18- */
+   text-transform: none; 
+}
+
+input[type="search"]::-moz-placeholder {  /* Firefox 19+ */
+   text-transform: none;
+}
+
+input[type="search"]:-ms-input-placeholder {  
+   text-transform: none;  
+}
 /*----------------------------------------------------*/
 .calendarField, .addingCalendar , .addingCalendarInner{
     cursor: pointer;
@@ -553,6 +571,11 @@ div ul li .firstATag:after{
 #clearFormButton:after{
     font-family: FontAwesome;
     content: "\f014";
+    margin-left:0.5em;
+}
+.clickToFinishButton:after{
+    font-family: FontAwesome;
+    content: "\f00c";
     margin-left:0.5em;
 }
 

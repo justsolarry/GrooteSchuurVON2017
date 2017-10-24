@@ -298,9 +298,8 @@ function fetchData(){
                     statuses.push(status);
                     });
                                 
-                    //var xml = sendDataToVon(checkedRows);
-                                                    
-                    var xml = "This text";
+                    var xml = sendDataToVon(checkedRows);
+                    //var xml = "This text";
                     download(xml);
                     
                     var today = new Date();
