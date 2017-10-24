@@ -45,7 +45,7 @@ function createXmlForEachRecord(babyData){
     var transferCenterCode = (babyData.transferCenterCode != undefined) ? "<OUTB_CTR>"+ babyData.transferCenterCode + "</OUTB_CTR>\n" : "";
     var headCircumferenceAtBirth = (babyData.headCircumferenceAtBirth != undefined) ? "<BHEADCIR>"+ babyData.headCircumferenceAtBirth +"</BHEADCIR>\n" : "";
     var notHispanic = "<HISP>0</HISP>\n";
-    var maternalRaceOfMother = (babyData.maternalRaceOfMother != undefined) ? "<MATRACE>"+ babyData.maternalRaceOfMother +"</MATRACE>\n" : "";
+    var maternalRaceOfMother = (babyData.maternalRaceOfMother != undefined) ? (babyData.maternalRaceOfMother == 9) ? "<MATRACE>7</MATRACE>\n" : "<MATRACE>"+ babyData.maternalRaceOfMother +"</MATRACE>\n"  : "";
     var prenatalCare = (babyData.prenatalCare != undefined) ? "<PCARE>"+ babyData.prenatalCare +"</PCARE>\n" : "";
     var antenatalSteroids = (babyData.antenatalSteroids != undefined) ? "<ASTER>"+ babyData.antenatalSteroids +"</ASTER>\n" : "";
     var antenatalMagnesiumSulfate = (babyData.antenatalMagnesiumSulfate != undefined) ? "<AMAGSULF>"+ babyData.antenatalMagnesiumSulfate +"</AMAGSULF>\n" : "";
