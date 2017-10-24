@@ -5,6 +5,9 @@ select option:selected{
     height:100%;
     overflow:hidden;
 }
+.activeMenuButton{
+    color: #42DCA3 !important;
+}
 
 /*----------------------------------------------------*/
 /*Temporary navbar container fix*/
@@ -267,7 +270,8 @@ input[type="search"]:-ms-input-placeholder {
 #appointmentDiv2,
 #appointmentDiv3,
 #appointmentDiv4,
-#appointmentDiv5
+#appointmentDiv5,
+#hiddenFieldROPDate
 {
     display:none;
 }
@@ -916,25 +920,9 @@ input[type="radio"]:checked~label {
     color:#999999;
     width:100%;
 }
-.inner-inner-panel-primary>.inner-inner-panel-heading {
-    color: #fff;
-    background-color: #337ab7;
-    border-color: #337ab7;
-}
-.inner-inner-panel-heading {
-    padding: 10px 15px;
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    font-size: 18px;
-    text-transform: uppercase;
-    
-}
-.activeMenuButton{
-    color: #42DCA3 !important;
-}
+
 .inner-inner-panel-body {
-    padding: 25px;
+    padding: 5px;
 }
 /*END Inner inner panel*/
 /*----------------------------------------------------*/

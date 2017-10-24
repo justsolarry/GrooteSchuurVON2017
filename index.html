@@ -14,6 +14,7 @@
       <link href="css/grayscale.css" rel="stylesheet">
       <link href="css/toastr.css" rel="stylesheet" />
       <link href="css/style.css" rel="stylesheet">
+       <link href="fonts/style.css" rel="stylesheet">
       <link href="css/fonts.css" rel="stylesheet">
       <link href="css/hover.css" rel="stylesheet">
       <!--Calendar CSS-->
@@ -570,7 +571,7 @@
                               </div>
                               <div class="form-group input-group temperatureMeasuredWithinFirstHourDiv">
                                  <label class="fixingLabelAlignment">Temp. Measured within the 1st Hour at GSH Nursery : </label>
-                                 <div class="fixingInputAlignment" style="height:64px;">
+                                 <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="temperatureMeasuredWithinFirstHourYes" onchange="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="1">
                                     <label class="radioText" for="temperatureMeasuredWithinFirstHourYes"> Yes</label>
@@ -2918,7 +2919,7 @@
                                        <option value="0">None</option>
                                        <option value="1">Human Milk Only</option>
                                        <option value="2">Formula Only</option>
-                                       <option value="3">Human Milk &#177 Fortifier or Formula</option>
+                                       <option value="3">Human Milk &#177; Fortifier or Formula</option>
                                        <option value="7">N/A</option>
                                        <option value="9">Unknown</option>
                                     </select>
@@ -3263,8 +3264,8 @@
                   <div class="col-md-3"></div>
                   <div id="col-md-8-div-3" class="col-md-9 mx-auto">
                      <form id="thirdForm" class="general-form">
-                        <div id="thirdPanelID" class="panel panel-primary">
-                           <div class="panel-body">
+                            <div id="thirdPanelID" class="panel panel-primary">
+                            <div class="panel-body">
                               <div class="form-group input-group" style="height: 1px; ">
                                  <label class="fixingLabelAlignment" style="height: 1px;"></label>
                                  <div class="fixingInputAlignment" style="height: 1px;">
@@ -3275,26 +3276,6 @@
                                  <div class="inner-panel-heading">
                                     Additional Birth Details
                                  </div>
-<!--
-                                 <div class="inner-panel-body">
-                                    <div id="twinOrTripletDiv" class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInner">Twins/Triplets/Quadruplets :</label>
-                                       <div class="fixingInputAlignmentInner">
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="twinOrTripletOrQuadrupletTwin" type="radio" onchange="javascript:twinOrTripletOrQuadrupletCheck()" name = twinOrTripletOrQuadruplet value="1">
-                                          <label class="radioText" for="twinOrTripletOrQuadrupletTwin"> Twin</label>
-                                          </span>
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="twinOrTripletOrQuadrupletTriplet" type="radio" onchange="javascript:twinOrTripletOrQuadrupletCheck()" name = twinOrTripletOrQuadruplet value="2">
-                                          <label class="radioText" for="twinOrTripletOrQuadrupletTriplet"> Triplet</label>
-                                          </span>
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="twinOrTripletOrQuadrupletQuadruplet" type="radio" onchange="javascript:twinOrTripletOrQuadrupletCheck()" name = twinOrTripletOrQuadruplet value="3">
-                                          <label class="radioText" for="twinOrTripletOrQuadrupletQuadruplet"> Quadruplet</label>
-                                          </span>
-                                       </div>
-                                    </div>
--->
                                     <div id="hiddenFieldTwins">
                                           <div class="form-group input-group twinABDiv">
                                              <label class="fixingLabelAlignmentInner">Twin A/B : </label>
@@ -3361,7 +3342,6 @@
                                           </select>
                                        </div>
                                     </div>
-                                    
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="grav">Grav  :  </label>
                                        <div class="fixingInputAlignmentInner">
@@ -3461,7 +3441,7 @@
                                        </div>
                                     </div>
                                  </div>
-                              </div>
+                              
                               <!--END Additional Birth Details-->
                               <!--START Clinical Additional Fields-->
                               <div class="InnerPanel inner-panel-primary">
@@ -3528,7 +3508,7 @@
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="dayOfLifeVentilationStartedDuration" name="dayOfLifeVentilationStartedDuration" class="form-control" style="height:32px;width:40%;">
                                                    <option disabled selected value></option>
-                                                    <option value="0">&lt 1 Day</option>
+                                                    <option value="0">&lt; 1 Day</option>
                                                     <option value="1">1 Day</option>
                                                 </select>
                                              </div>
@@ -4059,10 +4039,6 @@
                                              </div>
                                     </div>
                                      </div>
-                                     
-                                     
-                                     
-                                     
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="immunizationDate">Immunization Date : </label>
                                        <div class="fixingInputAlignmentInner">
@@ -4082,7 +4058,21 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldROPDate">
+                                     <div class="form-group input-group">
+                                       <label class="fixingLabelAlignmentInner">ROP Screen Done :  </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <span class="radioFloatLeftInner">
+                                          <input class="radioType" id="ROPScreenDoneYes" onchange="javascript:ROPScreenDoneCheck()" type="radio" name = ROPScreenDone value="1">
+                                          <label class="radioText" for="ROPScreenDoneYes">Yes</label>
+                                          </span>
+                                          <span class="radioFloatLeftInner">
+                                          <input class="radioType" id="ROPScreenDoneNo" onchange="javascript:ROPScreenDoneCheck()" type="radio" name = ROPScreenDone value="0">
+                                          <label class="radioText" for="ROPScreenDoneNo">No</label>
+                                          </span>
+                                       </div>
+                                    </div>
+                                    <div id="hiddenFieldROPDate" class="InnerInnerPanel inner-inner-panel-primary">
+                                        <div class="inner-inner-panel-body">
                                        <div class="form-group input-group">
                                           <label class="fixingLabelAlignmentInner" for="ROPDate">ROP Screen Date : </label>
                                           <div class="fixingInputAlignmentInner">
@@ -4091,14 +4081,15 @@
                                              </span>
                                           </div>
                                        </div>
+                                        </div>
                                     </div>
                                  </div>
                               </div>
                               <!--END APPOINTMENT-->
                            </div>
-                        </div>
+                            </div>
                         <!-- START Completed Button -->
-                        <div class="form-group input-group">
+                            <div class="form-group input-group">
                            <a href="javascript:void(0)" onclick="javascript:checkComplete()" class="btn btn-default btn-lg page-scroll clickToFinishButton" style="position:relative;width:60%;margin-top:50px">Click to Finish</a>
                         </div>
                         <!-- END Completed Button -->
@@ -4132,6 +4123,7 @@
     <script type="text/javascript" src="js/jquery.serializejson.js"></script>
     <script type="text/javascript" src="js/autosave.js"></script>
     <script src="js/dischargeFormPopulation.js"></script>
+<!--
     <script>
         $(document).ready(function() {
         //var session = document.getElementById("session").value;
@@ -4141,6 +4133,7 @@
             //}
        });
     </script>
+-->
 </body>
 
 </html>

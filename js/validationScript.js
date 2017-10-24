@@ -255,7 +255,6 @@ function validateGestationalAgeInWeeks(){
 //START Functions that automaically certain strings while the user types
 //remove anything other than numbers
 $(".onlyNumbers").on( "keyup", function( event ) {
-    
     // 1.
     var selection = window.getSelection().toString();
     if ( selection !== '' ) {
@@ -278,14 +277,20 @@ $(".onlyNumbers").on( "keyup", function( event ) {
         } );
  
 } );
-$(".onlyLetters").on( "keyup", function( event ) {
-    var inputValue = event.which;
-        // allow letters and whitespaces only.
-        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) { 
-            event.preventDefault(); 
-        }
+$(".onlyLetters").on( "keyup", function(event) {
+     var node = $(this);
+        node.val(node.val().replace(/[^a-z]/g,'') );
 } );
 $("#headCircumference").on( "keyup", function( event ){
+    var val = $(this).val();
+    if(isNaN(val)){
+         val = val.replace(/[^0-9\.]/g,'');
+         if(val.split('.').length>2) 
+             val =val.replace(/\.+$/,"");
+    }
+    $(this).val(val); 
+});
+$("#headCircumferenceInitialDisposition").on( "keyup", function( event ){
     var val = $(this).val();
     if(isNaN(val)){
          val = val.replace(/[^0-9\.]/g,'');
