@@ -591,7 +591,7 @@ function createXmlForEachRecord2017(babyData){
     + weightAtInitialDisposition + headCircumferenceAtInitialDisposition 
     + initialLengthOfStay + reasonForTransfer 
     + newTransferCenterCode + postTransferDisposition
-    + dispositionAfterReadmission + weightAtDispositionAfterReadmission 
+    + dispositionAfterReadmission 
     + ultimateDisposition + totalLengthOfStay 
     + durationOfAssistedVentilation + daysOfAssistedVentilation 
     + ecmoAtHospital + hypothermicTherapy 

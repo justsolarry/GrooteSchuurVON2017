@@ -29,6 +29,20 @@ var vonStatus = {
         0: "Non-VON"
 }
 
+var months = {
+       1: "January",
+       2: "February",
+       3: "March", 
+       4: "April",
+       5: "May",
+       6: "June",
+       7: "July",
+       8: "August",
+       9: "September",
+       10: "October",
+       11: "November",
+       12: "December",
+}
 
 function fetchData(){
     
@@ -112,6 +126,17 @@ function fetchData(){
                             }
                             
                       }                
+            },
+            {"data": "doc.exportStatus",
+            "render": function (data, type, row) {
+                            if(data=="" || data==null){
+                                return "-";
+                               }
+                            else{
+                               return data;
+                            }
+                            
+                      }
             },
             {"data": "doc.dateOfBirth", 
              render: function (data, type, row) {
@@ -290,6 +315,30 @@ function fetchData(){
                     var xml = sendDataToVon(checkedRows);
                     //var xml = "This text";
                     download(xml);
+                    
+                    var today = new Date();
+                    var time = today.getHours()+":"+today.getMinutes();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    if(dd<10) {
+                        dd = '0'+dd
+                    } 
+
+                    if(mm<10) {
+                        mm = '0'+mm
+                    } 
+
+                    today = dd +" "+months[mm]+ ' ' + yyyy + "@" + time;
+                    
+                    
+                    for (i=0; i<checkedRows.length; i++){
+                      var record = getRecordFromDatabase(checkedRows[i])
+                      record.exportStatus = today;
+                      updateDataInRecord(record);
+                    }
+                    
                     toastr.info("File Download");
                 }
             },
