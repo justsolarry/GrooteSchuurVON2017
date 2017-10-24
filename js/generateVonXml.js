@@ -14,8 +14,11 @@ function createInfantCoreRecord(babyData){
     var mothersLastName = "<MOTHERLASTNAME>" + babyData.mothersLastName + "</MOTHERLASTNAME>\n";
     var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";
     var dateOfBirth = "<DOB>"+ formatDate(babyData.dateOfBirth) + "</DOB>\n";
-    var dateOfAdmission = "<DOA>" + formatDate(babyData.dateOfAdmission) + "</DOA>\n";
-    //var dateOfDischarge = "<DID>" + babyData.dateOfDischarge + "</DID>\n";
+    var dateOfAdmission = "<DOA>" + formatDate(babyData.dateOfBirth) + "</DOA>\n";
+	if (babyData.outbornBirth == 0){
+		dateOfAdmission = "<DOA>" + formatDate(babyData.dateOfAdmission) + "</DOA>\n";
+	}
+    var dateOfDischarge = "<DID>" + formatDate(babyData.dateOfInitialDisposition) + "</DID>\n";
     return "<tblInfantCore>\n" + hospitalNumber + patientFirstName + patientLastName 
         + mothersFirstName + mothersLastName + medicalRecordNumber + dateOfBirth
         + dateOfAdmission + "</tblInfantCore>\n";
@@ -42,7 +45,7 @@ function createXmlForEachRecord(babyData){
     var transferCenterCode = (babyData.transferCenterCode != undefined) ? "<OUTB_CTR>"+ babyData.transferCenterCode + "</OUTB_CTR>\n" : "";
     var headCircumferenceAtBirth = (babyData.headCircumferenceAtBirth != undefined) ? "<BHEADCIR>"+ babyData.headCircumferenceAtBirth +"</BHEADCIR>\n" : "";
     var notHispanic = "<HISP>0</HISP>\n";
-    var maternalRaceOfMother = (babyData.maternalRaceOfMother != undefined) ? "<MATRACE>"+ babyData.maternalRaceOfMother +"</MATRACE>\n" : "";
+    var maternalRaceOfMother = (babyData.maternalRaceOfMother != undefined) ? (babyData.maternalRaceOfMother == 9) ? "<MATRACE>7</MATRACE>\n" : "<MATRACE>"+ babyData.maternalRaceOfMother +"</MATRACE>\n"  : "";
     var prenatalCare = (babyData.prenatalCare != undefined) ? "<PCARE>"+ babyData.prenatalCare +"</PCARE>\n" : "";
     var antenatalSteroids = (babyData.antenatalSteroids != undefined) ? "<ASTER>"+ babyData.antenatalSteroids +"</ASTER>\n" : "";
     var antenatalMagnesiumSulfate = (babyData.antenatalMagnesiumSulfate != undefined) ? "<AMAGSULF>"+ babyData.antenatalMagnesiumSulfate +"</AMAGSULF>\n" : "";
@@ -213,7 +216,7 @@ function createXmlForEachRecord(babyData){
     var newTransferCenterCode = (babyData.newTransferCenterCode != undefined) ? "<XFER_CTR>"+babyData.newTransferCenterCode+"</XFER_CTR>\n" : "";
     var postTransferDisposition = (babyData.postTransferDisposition != undefined) ? "<F2DISP>"+babyData.postTransferDisposition+"</F2DISP>\n" : "";
     var dispositionAfterReadmission = (babyData.dispositionAfterReadmission != undefined) ? "<F3DISP>"+babyData.dispositionAfterReadmission+"</F3DISP>\n" : "";
-    var weightAtDispositionAfterReadmission = (babyData.weightAtDispositionAfterReadmission != undefined) ? "<F3WGT>"+babyData.weightAtDispositionAfterReadmission+"</F3WGT>\n" : "";
+//    var weightAtDispositionAfterReadmission = (babyData.weightAtDispositionAfterReadmission != undefined) ? "<F3WGT>"+babyData.weightAtDispositionAfterReadmission+"</F3WGT>\n" : "";
     var ultimateDisposition = (babyData.ultimateDisposition != undefined) ? "<UDISP>"+babyData.ultimateDisposition+"</UDISP>\n" : "";
     var totalLengthOfStay = (babyData. totalLengthOfStay != undefined) ? "<LOSTOT>"+babyData. totalLengthOfStay+"</LOSTOT>\n" : "";
     var durationOfAssistedVentilation = (babyData.durationOfAssistedVentilation != undefined) ? "<DURVENT>"+babyData.durationOfAssistedVentilation+"</DURVENT>\n" : "";
@@ -504,7 +507,7 @@ function createXmlForEachRecord2017(babyData){
     var newTransferCenterCode = (babyData.newTransferCenterCode != undefined) ? "<XFER_CTR>"+babyData.newTransferCenterCode+"</XFER_CTR>\n" : "";
     var postTransferDisposition = (babyData.postTransferDisposition != undefined) ? "<F2DISP>"+babyData.postTransferDisposition+"</F2DISP>\n" : "";
     var dispositionAfterReadmission = (babyData.dispositionAfterReadmission != undefined) ? "<F3DISP>"+babyData.dispositionAfterReadmission+"</F3DISP>\n" : "";
-    var weightAtDispositionAfterReadmission = (babyData.weightAtDispositionAfterReadmission != undefined) ? "<F3WGT>"+babyData.weightAtDispositionAfterReadmission+"</F3WGT>\n" : "";
+//    var weightAtDispositionAfterReadmission = (babyData.weightAtDispositionAfterReadmission != undefined) ? "<F3WGT>"+babyData.weightAtDispositionAfterReadmission+"</F3WGT>\n" : "";
     var ultimateDisposition = (babyData.ultimateDisposition != undefined) ? "<UDISP>"+babyData.ultimateDisposition+"</UDISP>\n" : "";
     var totalLengthOfStay = (babyData. totalLengthOfStay != undefined) ? "<LOSTOT>"+babyData. totalLengthOfStay+"</LOSTOT>\n" : "";
     var durationOfAssistedVentilation = (babyData.durationOfAssistedVentilation != undefined) ? "<DURVENT>"+babyData.durationOfAssistedVentilation+"</DURVENT>\n" : "";
@@ -534,7 +537,7 @@ function createXmlForEachRecord2017(babyData){
     + LaryngealMaskAirway + oxygenDuringInitialResuscitation 
     + facemaskVentilation + endotrachealTubeVentilation 
     + epinephrine + cardiacCompression 
-    + nasalVentilation + nasalCpap 
+	+ nasalCpap 
     + temperatureMeasuredAtAdmissionState + temperatureMeasuredAtAdmission 
     + bacterialSepsis
     + oxygenOnDay28 + cranialImagning 
@@ -583,9 +586,7 @@ function createXmlForEachRecord2017(babyData){
     + secondBirthDefectCode + thirdBirthDefectCode 
     + fourthBirthDefectCode + fifthBirthDefectCode
     + birthDefectDescription + enteralfeeding 
-    + oxygenAtDischarge + conventionalVentilationAtDischarge 
-    + highFrequencyVentilationAtDischarge + highFlowNasalCannulaAtDischarge
-    + nasalVentilationAtDischarge + nasalCpapAtDischarge 
+    + oxygenAtDischarge 
     + monitorAtDischarge + initialDisposition 
     + weightAtInitialDisposition + headCircumferenceAtInitialDisposition 
     + initialLengthOfStay + reasonForTransfer 
