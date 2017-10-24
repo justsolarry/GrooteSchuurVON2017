@@ -113,6 +113,17 @@ function fetchData(){
                             
                       }                
             },
+            {"data": "doc.exportStatus",
+            "render": function (data, type, row) {
+                            if(data=="" || data==null){
+                                return "-";
+                               }
+                            else{
+                               return "Exported on "+data;
+                            }
+                            
+                      }
+            },
             {"data": "doc.dateOfBirth", 
              render: function (data, type, row) {
                             if(data=="" || data==null){
@@ -288,8 +299,31 @@ function fetchData(){
                     });
                                 
                     //var xml = sendDataToVon(checkedRows);
+                                                    
                     var xml = "This text";
                     download(xml);
+                    
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    if(dd<10) {
+                        dd = '0'+dd
+                    } 
+
+                    if(mm<10) {
+                        mm = '0'+mm
+                    } 
+
+                    today = mm + '/' + dd + '/' + yyyy;
+                    
+                    for (i=0; i<checkedRows.length; i++){
+                      var record = getRecordFromDatabase(checkedRows[i])
+                      record.exportStatus = today;
+                      updateDataInRecord(record);
+                    }
+                    
                     toastr.info("File Download");
                 }
             },
