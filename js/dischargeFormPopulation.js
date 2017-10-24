@@ -8,6 +8,26 @@ function printForm(id){
 //        }
 }
 
+function returnToForm(){
+    var url = window.location.href;
+     if (url.includes("?")) {
+       _url = new URL(url);
+       var id = _url.searchParams.get("id");
+        
+       window.location = "index.html?id="+id;
+    
+      } else{
+       window.location = "index.html";      
+      }
+    
+//    if (document.getElementById('formComplete').value)
+//        {
+            
+//        } else {
+//            toastr.error("Form incomplete");
+//        }
+}
+
 function checkId(){
     var url = window.location.href;
     if (url.includes("?")) {

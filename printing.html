@@ -70,8 +70,8 @@
         </button>
 
         <div class="container">
-            <a href="index.html" style="padding-right:20px;"><button style="z-index:10"  class="btn btn-default" onclick="">Back</button></a>
-            <a class="navbar-brand" href="#"><span id="dischargeOrTransferPrintHeader"></span> Letter</a>
+            <button style="z-index:10"  class="btn btn-default" onclick="returnToForm()" style="padding-right:20px;">Back</button>
+            <a class="navbar-brand" href="#" style="padding-left:20px;"><span id="dischargeOrTransferPrintHeader"></span> Letter</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <button style="z-index:10"  class="btn btn-default" onclick="window.print()">Print Document</button>
@@ -82,7 +82,7 @@
         
       <!-- START Menu -->
       <div id="mySidenav" class="sidenav">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a style="padding-left:20px;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
          <a onclick="createRecord()" class="createNewEntryMenuButton">Create New Entry</a> 
          <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
 <!--         <a href="#" class="helpMenuButton">Help</a>-->
