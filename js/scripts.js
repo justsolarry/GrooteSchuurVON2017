@@ -137,6 +137,7 @@ function loadDefaultValues(){
     $('#necSurgeryNo').prop("checked",true).change();
     $('#otherSurgeryNo').prop("checked",true).change();
     $('#pneumothoraxNo').prop("checked",true).change();
+    $('#PIHWhereOccurredYourHospital').prop("checked",true).change();
     $('#focalIntestinalPerforationNo').prop("checked",true).change();
     $('#coagulaseNegativeNo').prop("checked",true).change();
     $('#fungalInfectionNo').prop("checked",true).change();
@@ -1017,6 +1018,12 @@ function noOfAppointmentsCheck(){
 function numberOfSurgeryCodesCheck(){
    var e = document.getElementById("numberOfSurgeryCodes");
     var strUser = e.options[e.selectedIndex].value;
+    
+    $('#surgicalInfection1No').prop("checked",true).change();
+    $('#surgicalInfection2No').prop("checked",true).change();
+    $('#surgicalInfection3No').prop("checked",true).change();
+    $('#surgicalInfection4No').prop("checked",true).change();
+    $('#surgicalInfection5No').prop("checked",true).change();
     /*if case for Home, died, hospitalized - Show parts D */
     if (strUser==1){
         $('#surgeryDiv1').slideDown("slow");
@@ -1067,12 +1074,6 @@ function cranialImagingCheck() {
         $(value1).addClass('glowingHiddenFields')
     }
     if (document.getElementById('cranialImagingNo').checked) {
-        $(value1).slideUp("slow");
-        $(value1).removeClass('glowingHiddenFields')
-        $('#hiddenFieldCranialImaging select').prop('selectedIndex',0);
-        $('#hiddenFieldCranialImaging input:radio').prop('checked',false);
-    }
-    if (document.getElementById('cranialImagingNA').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
         $('#hiddenFieldCranialImaging select').prop('selectedIndex',0);
@@ -1291,10 +1292,19 @@ function initialDispositionCheck() {
     var hiddenField = document.getElementById('TransferFormPartA');
     /* if transferred */
     if (strUser==2 ){
-    
         $(hiddenField).slideDown("slow");
         $(hiddenField).addClass('glowingHiddenFields');
+        $('#weightAtInitialDispositionLabel').text('Weight at Transfer');
+        $('#headCircumferenceAtInitialDispositionLabel').text('Head Circumference at Transfer');
     }
+    else if(strUser==3){
+            $('#weightAtInitialDispositionLabel').text('Weight at Death');
+            $('#headCircumferenceAtInitialDispositionLabel').text('Head Circumference at Death');
+            }
+    else if(strUser==1){
+            $('#weightAtInitialDispositionLabel').text('Weight at Discharge');
+            $('#headCircumferenceAtInitialDispositionLabel').text('Head Circumference at Discharge');
+            }
     else{
         $(hiddenField).slideUp("slow");
         $(hiddenField).removeClass('glowingHiddenFields');
@@ -1340,6 +1350,7 @@ function congenitalCode1FirstPartCheck(){
 }
 function multipleGestationCheck() {
     if (document.getElementById('multipleGestationYes').checked) {
+        $("#numberOfInfantsDelivered").prop('disabled',false);
         $("#numberOfInfantsDelivered").val('2').change();
         $('#numberOfInfantsDelivered option').prop("disabled", false).change();
         $('#numberOfInfantsDelivered option[value=00]').prop('disabled', true).change(); //disables select
@@ -1348,10 +1359,12 @@ function multipleGestationCheck() {
         $('#numberOfInfantsDelivered option[value=99]').prop('disabled', true).change(); //disables 99
     }
     if (document.getElementById('multipleGestationNo').checked) {
+        $("#numberOfInfantsDelivered").prop('disabled',true);
         $("#numberOfInfantsDelivered").val('1').change();
         $('#numberOfInfantsDelivered option:not([value=1])').prop('disabled', true).change(); //disable everything that isn't 1
     }
     if (document.getElementById('multipleGestationUnknown').checked) {
+        $("#numberOfInfantsDelivered").prop('disabled',true);
         $("#numberOfInfantsDelivered").val('99').change();
         $('#numberOfInfantsDelivered option:not([value=99])').prop('disabled', true).change();
     }
@@ -2069,13 +2082,13 @@ $(function(){
 });
 $(function(){
     var idValue = $("#dayOfLifeVentilationStarted");
-    for (i=1;i<=60;i++){
-        idValue.append($('<option></option>').val(i).html(i+" Days"))
+    for (i=2;i<=60;i++){
+        idValue.append($('<option></option>').val(i).html(i+" Days Old"))
     }
 });
 $(function(){
     var idValue = $("#dayOfLifeVentilationStartedDuration");
-    for (i=1;i<=20;i++){
+    for (i=2;i<=20;i++){
         idValue.append($('<option></option>').val(i).html(i+" Days"))
     }
 });
@@ -2147,3 +2160,8 @@ $('label.fixingLabelAlignment').each(function(){
     }
 });
 /*END - Function to check if each label is too big or not */
+$("#surfactantAtAnyTimeYes").on('click',surfactantLoadDefault);
+
+function surfactantLoadDefault(){
+    $('#respiratoryDistressSyndromeYes').prop("checked",true).change();
+}
