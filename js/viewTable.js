@@ -29,6 +29,20 @@ var vonStatus = {
         0: "Non-VON"
 }
 
+var months = {
+       1: "January",
+       2: "February",
+       3: "March", 
+       4: "April",
+       5: "May",
+       6: "June",
+       7: "July",
+       8: "August",
+       9: "September",
+       10: "October",
+       11: "November",
+       12: "December",
+}
 
 function fetchData(){
     
@@ -119,7 +133,7 @@ function fetchData(){
                                 return "-";
                                }
                             else{
-                               return "Exported on "+data;
+                               return data;
                             }
                             
                       }
@@ -303,6 +317,7 @@ function fetchData(){
                     download(xml);
                     
                     var today = new Date();
+                    var time = today.getHours()+":"+today.getMinutes();
                     var dd = today.getDate();
                     var mm = today.getMonth()+1; //January is 0!
                     var yyyy = today.getFullYear();
@@ -315,7 +330,8 @@ function fetchData(){
                         mm = '0'+mm
                     } 
 
-                    today = mm + '/' + dd + '/' + yyyy;
+                    today = dd +" "+months[mm]+ ' ' + yyyy + "@" + time;
+                    
                     
                     for (i=0; i<checkedRows.length; i++){
                       var record = getRecordFromDatabase(checkedRows[i])
