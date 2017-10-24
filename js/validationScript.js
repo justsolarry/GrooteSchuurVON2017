@@ -254,7 +254,7 @@ function validateGestationalAgeInWeeks(){
 
 //START Functions that automaically certain strings while the user types
 //remove anything other than numbers
-$("#birthWeightInGrams").on( "keyup", function( event ) {
+$(".onlyNumbers").on( "keyup", function( event ) {
     
     // 1.
     var selection = window.getSelection().toString();
@@ -278,77 +278,20 @@ $("#birthWeightInGrams").on( "keyup", function( event ) {
         } );
  
 } );
-//remove anything other than numbers
-$("#weightAtInitialDisposition").on( "keyup", function( event ) {
-    // 1.
-    var selection = window.getSelection().toString();
-    if ( selection !== '' ) {
-        return;
-    }
-    // 2.
-    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
-        return;
-    }
-    // 1
-        var $this = $( this );
-        var input = $this.val();
-        // 2
-        var input = input.replace(/[\D\s\._\-]+/g, "");
-        // 3
-        input = input ? parseInt( input, 10 ) : 0;
-        // 4
-        $this.val( function() {
-            return ( input === 0 ) ? "" : input.toString();
-        } );
- 
+$(".onlyLetters").on( "keyup", function( event ) {
+    var inputValue = event.which;
+        // allow letters and whitespaces only.
+        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) { 
+            event.preventDefault(); 
+        }
 } );
-//remove anything other than numbers
-$("#weightAtDispositionAfterReadmission").on( "keyup", function( event ) {
-    // 1.
-    var selection = window.getSelection().toString();
-    if ( selection !== '' ) {
-        return;
+$("#headCircumference").on( "keyup", function( event ){
+    var val = $(this).val();
+    if(isNaN(val)){
+         val = val.replace(/[^0-9\.]/g,'');
+         if(val.split('.').length>2) 
+             val =val.replace(/\.+$/,"");
     }
-    // 2.
-    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
-        return;
-    }
-    // 1
-        var $this = $( this );
-        var input = $this.val();
-        // 2
-        var input = input.replace(/[\D\s\._\-]+/g, "");
-        // 3
-        input = input ? parseInt( input, 10 ) : 0;
-        // 4
-        $this.val( function() {
-            return ( input === 0 ) ? "" : input.toString();
-        } );
- 
-} );
-//remove anything other than numbers
-$("#patientMedicalRecordNumber").on( "keyup", function( event ) {
-    
-    // 1.
-    var selection = window.getSelection().toString();
-    if ( selection !== '' ) {
-        return;
-    }
-    // 2.
-    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
-        return;
-    }
-    // 1
-        var $this = $( this );
-        var input = $this.val();
-        // 2
-        var input = input.replace(/[\D\s\._\-]+/g, "");
-        // 3
-        input = input ? parseInt( input, 10 ) : 0;
-        // 4
-        $this.val( function() {
-            return ( input === 0 ) ? "" : input.toString();
-        } );
- 
-} );
+    $(this).val(val); 
+});
 //END Functions that automaically certain strings while the user types
