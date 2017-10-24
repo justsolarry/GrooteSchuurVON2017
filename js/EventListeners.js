@@ -386,5 +386,20 @@ function thirdFormCheck(){
             toastr.warning("Additional Information Form has incomplete fields")
         }
     });
-    checkIfSuccessfullToastr();
+    
+}
+
+function checkComplete(){
+    firstFormCheck();
+    secondFormCheck();
+    thirdFormCheck();
+    if($('#patientFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#generalDataItemsFormCircle').css('background-color')=="rgb(0, 128, 0)" && $('#dischargeCircle').css('background-color')=="rgb(0, 128, 0)"){
+       toastr.success("All Forms are complete!")
+       }
+    else if($('#patientFormCircle').css('background-color')=="rgb(255, 0, 0)" || $('#generalDataItemsFormCircle').css('background-color')=="rgb(255, 0, 0)" || $('#dischargeCircle').css('background-color')=="rgb(255, 0, 0)"){
+        toastr.error("One of the Forms contain Errors!")
+    }
+    else{
+        toastr.warning("Forms are incomplete!")
+    }
 }
