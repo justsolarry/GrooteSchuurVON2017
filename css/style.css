@@ -276,9 +276,6 @@ input[type="search"]:-ms-input-placeholder {
     display:none;
 }
 /* Hiding not a VON baby fields */
-.babyLengthDiv{
-    display:none;
-}
 /*Hiding Transfer Form section A - D*/
 #TransferFormPartA,
 #TransferFormPartB,
@@ -900,32 +897,6 @@ input[type="radio"]:checked~label {
 .inner-panel-body {
     padding: 25px;
 }
-
-/* END Inner Panel*/
-/*----------------------------------------------------*/
-/*START Inner inner panel*/
-.InnerInnerPanel {
-    background-color: transparent;
-    border: 1px solid #337ab7;
-    border-radius: 0px;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    overflow: auto;
-}
-.inner-inner-panel-primary {
-    border-color: #337ab7;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color:#999999;
-    width:100%;
-}
-
-.inner-inner-panel-body {
-    padding: 5px;
-}
-/*END Inner inner panel*/
-/*----------------------------------------------------*/
 th{
   color: white;
 }
