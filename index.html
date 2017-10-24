@@ -212,8 +212,10 @@
                                              <option value="8005433">8005433 - Mitchell's Plein District Hospital</option>
                                              <option value="8005435">8005435 - Red Cross Children's Hospital</option>
                                              <option value="97777777">97777777 - Birth at Home or in Transit</option>
+                                             <option value="9000217">Other</option>
                                              <option value="77777777">N/A</option>
                                              <option value="99999999">Unknown</option>
+                                             
                                           </select>
                                        </div>
                                     </div>
@@ -542,7 +544,6 @@
                                        <option value="8">8</option>
                                        <option value="9">9</option>
                                        <option value="10">10</option>
-                                       <option value="77">N/A</option>
                                        <option value="99">Unknown</option>
                                     </select>
                                  </div>
@@ -563,13 +564,12 @@
                                        <option value="8">8</option>
                                        <option value="9">9</option>
                                        <option value="10">10</option>
-                                       <option value="77">N/A</option>
                                        <option value="99">Unknown</option>
                                     </select>
                                  </div>
                               </div>
                               <div class="form-group input-group temperatureMeasuredWithinFirstHourDiv">
-                                 <label class="fixingLabelAlignment">Temperature Measured within the 1st Hour after Admission to your NICU : </label>
+                                 <label class="fixingLabelAlignment">Temp. Measured within the 1st Hour at GSH Nursery : </label>
                                  <div class="fixingInputAlignment" style="height:64px;">
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="temperatureMeasuredWithinFirstHourYes" onchange="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="1">
@@ -1008,7 +1008,7 @@
                                  </div>
                                  <div class="inner-panel-body">
                                     <div class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInner">Cranial Imaging(US/CT/MRI) on or before day 28  : </label>
+                                       <label class="fixingLabelAlignmentInner">Ultrasound on or before day 28  : </label>
                                        <span class="radioFloatLeftInner">
                                        <input class="radioType" id="cranialImagingYes" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="1">
                                        <label class="radioText" for="cranialImagingYes"> Yes</label>
@@ -1016,10 +1016,6 @@
                                        <span class="radioFloatLeftInner">
                                        <input class="radioType" id="cranialImagingNo" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="0">
                                        <label class="radioText" for="cranialImagingNo"> No</label>
-                                       </span>
-                                       <span class="radioFloatLeftInner">
-                                       <input class="radioType" id="cranialImagingNA" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="7">
-                                       <label class="radioText" for="cranialImagingNA"> N/A</label>
                                        </span>
                                        <span class="radioFloatLeftInner">
                                        <input class="radioType" id="cranialImagingUnknown" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="9">
@@ -1620,10 +1616,6 @@
                                     <label class="radioText" for="steroidsForCLDNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="steroidsForCLDNA" onchange="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="7">
-                                    <label class="radioText" for="steroidsForCLDNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="steroidsForCLDUnknown" onchange="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="9">
                                     <label class="radioText" for="steroidsForCLDUnknown">Unknown</label>
                                     </span>
@@ -1639,10 +1631,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="ibuprofenNo" type="radio" name = ibuprofen value="0">
                                     <label class="radioText" for="ibuprofenNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="ibuprofenNA" type="radio" name = ibuprofen value="7">
-                                    <label class="radioText" for="ibuprofenNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="ibuprofenUnknown" type="radio" name = ibuprofen value="9">
@@ -1662,10 +1650,6 @@
                                     <label class="radioText" for="acetaminophenNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="acetaminophenNA" type="radio" name = acetaminophen value="7">
-                                    <label class="radioText" for="acetaminophenNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="acetaminophenUnknown" type="radio" name = acetaminophen value="9">
                                     <label class="radioText" for="acetaminophenUnknown">Unknown</label>
                                     </span>
@@ -1681,10 +1665,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="probioticsNo" type="radio" name = probiotics value="0">
                                     <label class="radioText" for="probioticsNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="probioticsNA" type="radio" name = probiotics value="7">
-                                    <label class="radioText" for="probioticsNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="probioticsUnknown" type="radio" name = probiotics value="9">
@@ -1704,10 +1684,6 @@
                                     <label class="radioText" for="ropTreatmentWithVegfDrugNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ropTreatmentWithVegfDrugNA" type="radio" name = ropTreatmentWithVegfDrug value="7">
-                                    <label class="radioText" for="ropTreatmentWithVegfDrugNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="ropTreatmentWithVegfDrugUnknown" type="radio" name = ropTreatmentWithVegfDrug value="9">
                                     <label class="radioText" for="ropTreatmentWithVegfDrugUnknown">Unknown</label>
                                     </span>
@@ -1725,10 +1701,6 @@
                                     <label class="radioText" for="caffeineNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="caffeineNA" type="radio" name = caffeine value="7">
-                                    <label class="radioText" for="caffeineNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="caffeineUnknown" type="radio" name = caffeine value="9">
                                     <label class="radioText" for="caffeineUnknown">Unknown</label>
                                     </span>
@@ -1744,10 +1716,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="ropSurgeryNo" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="0">
                                     <label class="radioText" for="ropSurgeryNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="ropSurgeryNA" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="7">
-                                    <label class="radioText" for="ropSurgeryNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="ropSurgeryUnknown" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="9">
@@ -1788,10 +1756,6 @@
                                     <label class="radioText" for="pdaSurgeryNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pdaSurgeryNA" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="7">
-                                    <label class="radioText" for="pdaSurgeryNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="pdaSurgeryUnknown" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="9">
                                     <label class="radioText" for="pdaSurgeryUnknown">Unknown</label>
                                     </span>
@@ -1809,10 +1773,6 @@
                                     <label class="radioText" for="necSurgeryNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necSurgeryNA" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="7">
-                                    <label class="radioText" for="necSurgeryNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="necSurgeryUnknown" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="9">
                                     <label class="radioText" for="necSurgeryUnknown">Unknown</label>
                                     </span>
@@ -1828,10 +1788,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="otherSurgeryNo" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="0">
                                     <label class="radioText" for="otherSurgeryNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="otherSurgeryNA" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="7">
-                                    <label class="radioText" for="otherSurgeryNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="otherSurgeryUnknown" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="9">
@@ -2323,10 +2279,6 @@
                                     <label class="radioText" for="respiratoryDistressSyndromeNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="respiratoryDistressSyndromeNA" type="radio" name = respiratoryDistressSyndrome value="7">
-                                    <label class="radioText" for="respiratoryDistressSyndromeNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="respiratoryDistressSyndromeUnknown" type="radio" name = respiratoryDistressSyndrome value="9">
                                     <label class="radioText" for="respiratoryDistressSyndromeUnknown">Unknown</label>
                                     </span>
@@ -2342,10 +2294,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="pneumothoraxNo" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="0">
                                     <label class="radioText" for="pneumothoraxNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="pneumothoraxNA" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="7">
-                                    <label class="radioText" for="pneumothoraxNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="pneumothoraxUnknown" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="9">
@@ -2386,10 +2334,6 @@
                                     <label class="radioText" for="patentDuctusArteriosusNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="patentDuctusArteriosusNA" type="radio" name = patentDuctusArteriosus value="7">
-                                    <label class="radioText" for="patentDuctusArteriosusNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="patentDuctusArteriosusUnknown" type="radio" name = patentDuctusArteriosus value="9">
                                     <label class="radioText" for="patentDuctusArteriosusUnknown">Unknown</label>
                                     </span>
@@ -2407,10 +2351,6 @@
                                     <label class="radioText" for="necrotizingEnterocolitisNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necrotizingEnterocolitisNA" onchange="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="7">
-                                    <label class="radioText" for="necrotizingEnterocolitisNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="necrotizingEnterocolitisUnknown" onchange="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="9">
                                     <label class="radioText" for="necrotizingEnterocolitisUnknown">Unknown</label>
                                     </span>
@@ -2419,7 +2359,7 @@
                               <div id="hiddenFieldnecrotizingEnterocolitis" class="InnerPanel inner-panel-primary">
                                  <div class="inner-panel-body">
                                     <div class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInnerInner">Where Given : </label>
+                                       <label class="fixingLabelAlignmentInnerInner">Where Occurred : </label>
                                        <div class="fixingInputAlignmentInnerInner">
                                           <span class="radioFloatLeftInner">
                                           <input class="radioType" id="necrotizingEnterocolitisWhereOccuredYourHospital" type="radio" name = necrotizingEnterocolitisWhereOccured value="1">
@@ -2447,10 +2387,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="focalIntestinalPerforationNo" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="0">
                                     <label class="radioText" for="focalIntestinalPerforationNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="focalIntestinalPerforationNA" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="7">
-                                    <label class="radioText" for="focalIntestinalPerforationNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="focalIntestinalPerforationUnknown" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="9">
@@ -2982,7 +2918,7 @@
                                        <option value="0">None</option>
                                        <option value="1">Human Milk Only</option>
                                        <option value="2">Formula Only</option>
-                                       <option value="3">Human Milk in Combination with either fortifier or formula</option>
+                                       <option value="3">Human Milk &#177 Fortifier or Formula</option>
                                        <option value="7">N/A</option>
                                        <option value="9">Unknown</option>
                                     </select>
@@ -3147,7 +3083,7 @@
                               <div class="form-group input-group initialDispositionDiv">
                                  <label class="fixingLabelAlignment">Initial Disposition :</label>
                                  <div class="fixingInputAlignment">
-                                    <select id="initialDisposition" name=initialDisposition onchange="javascript:initialDispositionCheck();" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                    <select id="initialDisposition" name=initialDisposition onchange="javascript:initialDispositionCheck();" class="form-control" style="height:32px;width:70%;">
                                        <option disabled selected value></option>
                                        <option value="1">Home</option>
                                        <option value="3">Died</option>
@@ -3156,6 +3092,20 @@
                                        <option value="7">N/A</option>
                                        <option value="9">Unknown</option>
                                     </select>
+                                 </div>
+                              </div>
+                              <div class="form-group input-group weightAtInitialDispositionDiv">
+                                 <label id="weightAtInitialDispositionLabel" class="fixingLabelAlignment" for="weightAtInitialDisposition">Weight at Initial Disposition : </label>
+                                 <div class="fixingInputAlignment">
+                                    <span class="addingUnits unitsGrams">
+                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control onlyNumbers" onchange="validateWeight('weightAtInitialDisposition')" type="search" placeholder="eg. 1122" maxlength="4">
+                                    </span>
+                                 </div>
+                              </div>
+                              <div class="form-group input-group headCircumferenceInitialDispositionDiv">
+                                 <label id="headCircumferenceAtInitialDispositionLabel" class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
+                                 <div class="fixingInputAlignment">
+                                    <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="headCircumferenceInitialDispositionCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
                                  </div>
                               </div>
                               <div id="TransferFormPartA" class="InnerPanel inner-panel-primary TransferFormPartADiv">
@@ -3284,20 +3234,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="form-group input-group weightAtInitialDispositionDiv">
-                                 <label class="fixingLabelAlignment" for="weightAtInitialDisposition">Weight at Initial Disposition : </label>
-                                 <div class="fixingInputAlignment">
-                                    <span class="addingUnits unitsGrams">
-                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control onlyNumbers" onchange="validateWeight('weightAtInitialDisposition')" type="search" placeholder="eg. 1122" maxlength="4">
-                                    </span>
-                                 </div>
-                              </div>
-                              <div class="form-group input-group headCircumferenceInitialDispositionDiv">
-                                 <label class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
-                                 <div class="fixingInputAlignment">
-                                    <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="headCircumferenceInitialDispositionCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
-                                 </div>
-                              </div>
+                              
                            </div>
                         </div>
                      </form>
@@ -3424,15 +3361,7 @@
                                           </select>
                                        </div>
                                     </div>
-                                    <div class="form-group input-group babyLengthDiv">
-                                       <label class="fixingLabelAlignmentInner">Baby Length : </label>
-                                       <div class="fixingInputAlignmentInner">
-                                          <select id="babyLength" name="babyLength" class="form-control" style="height:32px;width:40%;">
-                                             <option disabled selected value></option>
-                                             <option value="99">Unknown</option>
-                                          </select>
-                                       </div>
-                                    </div>
+                                    
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="grav">Grav  :  </label>
                                        <div class="fixingInputAlignmentInner">
@@ -3522,6 +3451,15 @@
                                           </div>
                                        </div>
                                     </div>
+                                  <div class="form-group input-group babyLengthDiv">
+                                       <label class="fixingLabelAlignmentInner">Baby Length : </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <select id="babyLength" name="babyLength" class="form-control" style="height:32px;width:40%;">
+                                             <option disabled selected value></option>
+                                             <option value="99">Unknown</option>
+                                          </select>
+                                       </div>
+                                    </div>
                                  </div>
                               </div>
                               <!--END Additional Birth Details-->
@@ -3581,6 +3519,7 @@
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="dayOfLifeVentilationStarted" name="dayOfLifeVentilationStarted" class="form-control" style="height:32px;width:40%;">
                                                    <option disabled selected value></option>
+                                                    <option value="1">1 Day Old</option>
                                                 </select>
                                              </div>
                                           </div>
@@ -3589,6 +3528,8 @@
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="dayOfLifeVentilationStartedDuration" name="dayOfLifeVentilationStartedDuration" class="form-control" style="height:32px;width:40%;">
                                                    <option disabled selected value></option>
+                                                    <option value="0">&lt 1 Day</option>
+                                                    <option value="1">1 Day</option>
                                                 </select>
                                              </div>
                                           </div>
