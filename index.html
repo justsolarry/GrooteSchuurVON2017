@@ -101,10 +101,14 @@
                               </li>
                            </ul>
                            <!-- Command buttons at the bottom of the progress bar forms -->
-                            <a href="javascript:void(0)" class="btn btn-default btn-lg clickToFinishButton" style="position:relative; width:80%; margin-bottom: 15px; bottom: 60px; font-size: 1em;" onclick="javascript:checkComplete()">Click to Finish</a>
-                           <a id="clearFormButton" href="javascript:void(0)" onclick="clearFormDialog();" class="btn btn-default btn-lg" style="position:relative; width:80%; margin-bottom: 15px; bottom: 60px; font-size: 1em;">Clear Form</a>
-                           <a id="PrintDischargeButton" href="javascript:void(0)" onclick="printForm(document.getElementById('_id').value);" class="btn btn-default btn-lg" style="position:relative; width:80%; bottom: 60px; font-size: 1em;">Print Discharge Form</a>
+                            
+                            
                         </div>
+                         <div class="buttonBox">
+                                <a href="javascript:void(0)" class="btn btn-default btn-lg clickToFinishButton" onclick="javascript:checkComplete()">Click to Finish</a>
+                               <a id="clearFormButton" href="javascript:void(0)" onclick="clearFormDialog();" class="btn btn-default btn-lg" >Clear Form</a>
+                               <a id="PrintDischargeButton" href="javascript:void(0)" onclick="printForm(document.getElementById('_id').value);" class="btn btn-default btn-lg">Print Discharge Form</a>
+                            </div>
                      </div>
                      <!-- ***************  Side bar *************** -->
                   </div>
@@ -241,8 +245,8 @@
                                     <span id="dateOfInitialDispositionCalendar" class="addingCalendar addingCalendarIcon">
                                     <input type="search" name="dateOfInitialDisposition" id="dateOfInitialDisposition" placeholder="dd-mm-yyyy" class="form-control calendarField" readonly="true"/>
                                     </span>
-                                     <i class="fa fa-question-circle ownToolTip" style="right:100px;">
-                                    <span class="ownToolTipText">The first time that the infant was discharged/transferred from your hospital</span>
+                                     <i class="fa fa-question-circle ownToolTip" style="right:80px;">
+                                    <span class="ownToolTipText">The first time that the infant was discharged or transferred from your hospital</span>
                                     </i>
                                  </div>
                               </div>
@@ -308,7 +312,7 @@
                                  </div>
                               </div>
                               <div class="form-group input-group headCircumferenceDiv">
-                                 <label class="fixingLabelAlignment" for="headCircumference">Head Circumference : </label>
+                                 <label class="fixingLabelAlignment" for="headCircumference">Head Circumference (cm) : </label>
                                  <div class="fixingInputAlignment">
                                     <input id="headCircumference" name="headCircumference" onchange="headCircumferenceCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
                                  </div>
@@ -3104,7 +3108,7 @@
                                  </div>
                               </div>
                               <div class="form-group input-group headCircumferenceInitialDispositionDiv">
-                                 <label id="headCircumferenceAtInitialDispositionLabel" class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
+                                 <label id="headCircumferenceAtInitialDispositionLabel" class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition (cm) : </label>
                                  <div class="fixingInputAlignment">
                                     <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="headCircumferenceInitialDispositionCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
                                  </div>
