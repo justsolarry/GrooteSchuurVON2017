@@ -315,7 +315,7 @@ input[type="search"]:-ms-input-placeholder {
     display: inline-block;
     margin: 8px 0px;
     /* START changing the location of the icon*/
-    right:50px;
+    right:30px;
     /* END changing the location of the icon*/
 }
 .ownToolTip .ownToolTipText {
@@ -347,16 +347,12 @@ input[type="search"]:-ms-input-placeholder {
     left:0px;
     top:50px;
     width: 25%;
-    min-width: 350px;
+    min-width: 330px;
     height:100vh;
     list-style: none;
     border-right: 1px solid;
     display:none;
-    /*border-style:solid;
-    border-width: 1px;*/
     background:black;
-    /*box-shadow: 0px 0px 10px rgba(189, 195, 199,1.0);*/
-    /*border-radius: 4px;*/
 }
 /* Sidebar Styles */
 .hide-sidebar{
@@ -492,8 +488,7 @@ input[type="search"]:-ms-input-placeholder {
     list-style: none;
     margin:0;
     margin-left:60px;
-    margin-top: 80px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     padding:0;
     position:relative;
     counter-reset: step;
@@ -518,8 +513,25 @@ input[type="search"]:-ms-input-placeholder {
     margin-left: auto;
     position:relative;
     width: 85%;
-    @media (max-height: 769px) {
-        margin-bottom: 60px;
+    
+}
+.buttonBox{
+    position:absolute;
+    bottom: 0;
+    margin-bottom: 80px;
+}
+.buttonBox a{
+    position:relative; 
+    width:80%; 
+    margin-bottom: 15px; 
+    font-size: 1em;
+}
+@media (max-width: 1280px) {
+    .progressBarUL li {
+        margin-top: 100px;
+    }
+    .buttonBox a {
+        margin-bottom: 25px; 
     }
 }
 /* Each section name */
@@ -572,18 +584,18 @@ div ul li .firstATag:after{
 #clearFormButton:after{
     font-family: FontAwesome;
     content: "\f014";
-    margin-left:0.5em;
+    float:right;
 }
 .clickToFinishButton:after{
     font-family: FontAwesome;
     content: "\f00c";
-    margin-left:0.5em;
+    float:right;
 }
 
 #PrintDischargeButton:after{
     font-family: FontAwesome;
     content: "\f02f";
-    margin-left:0.5em;
+    float:right;
 }
 /*END PROGRESS BAR*/
 /*----------------------------------------------------*/
@@ -828,7 +840,7 @@ input[type="radio"]:checked~label {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     overflow: auto;
-    
+    overflow-x: hidden;
 }
 .panel-primary {
     border-color: #337ab7;
@@ -836,8 +848,8 @@ input[type="radio"]:checked~label {
     font-size: 14px;
     line-height: 1.42857143;
     color:#999999;
-    min-width:950px;
-    margin: 0 auto;
+    min-width:930px;
+    margin-left: 7px;
 }
 .panel-primary>.panel-heading {
     color: #fff;
@@ -847,8 +859,6 @@ input[type="radio"]:checked~label {
 .panel-heading {
     padding: 10px 15px;
     border-bottom: 1px solid transparent;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
 }
 .panel-body {
     padding: 35px;
@@ -859,7 +869,11 @@ input[type="radio"]:checked~label {
     line-height: 1.42857143;
     color: white;
 }
-
+@media (max-width: 1280px) {
+    .panel-primary {
+        min-width:900px;
+    }
+}
 /*END Panel CSS*/
 /*----------------------------------------------------*/
 /* START Inner Panel*/
@@ -871,6 +885,7 @@ input[type="radio"]:checked~label {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     overflow: auto;
+    overflow-x: hidden;
 }
 .inner-panel-primary {
     border-color: #337ab7;
@@ -888,11 +903,8 @@ input[type="radio"]:checked~label {
 .inner-panel-heading {
     padding: 10px 15px;
     border-bottom: 1px solid transparent;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
     font-size: 18px;
     text-transform: uppercase;
-    
 }
 .inner-panel-body {
     padding: 25px;

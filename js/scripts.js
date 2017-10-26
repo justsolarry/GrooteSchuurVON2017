@@ -323,10 +323,6 @@ function steroidsForCLDCheck() {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
-    if (document.getElementById('steroidsForCLDNA').checked) {
-        $(value1).slideUp("slow");
-        $(value1).removeClass('glowingHiddenFields')
-    }
     if (document.getElementById('steroidsForCLDUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
@@ -453,10 +449,6 @@ function necrotizingEnterocolitisCheck() {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
-    if (document.getElementById('necrotizingEnterocolitisNA').checked) {
-        $(value1).slideUp("slow");
-        $(value1).removeClass('glowingHiddenFields')
-    }
     if (document.getElementById('necrotizingEnterocolitisUnknown').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
@@ -469,10 +461,6 @@ function focalIntestinalPerforationCheck() {
         $(value1).addClass('glowingHiddenFields')
     }
     if (document.getElementById('focalIntestinalPerforationNo').checked) {
-        $(value1).slideUp("slow");
-        $(value1).removeClass('glowingHiddenFields')
-    }
-    if (document.getElementById('focalIntestinalPerforationNA').checked) {
         $(value1).slideUp("slow");
         $(value1).removeClass('glowingHiddenFields')
     }
