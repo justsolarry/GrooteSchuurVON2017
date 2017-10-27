@@ -163,7 +163,7 @@ function checkingWhatTypeOfFormToDisplay(){
         /*$("#secondForm").trigger('reset'); 
         $("#thirdForm").trigger('reset'); */
         $("#generalDataItemsID").html("DELIVERY ROOM DEATH FORM");
-        $("#dayButtonID").text("Delivery Room Death Form");
+        $("#dayButtonID").text("Death Form");
             hideNotAVonBabyFields();  //hiding Not a VON baby fields
         $(".gestationalAgeInWeeksDiv").slideDown("slow");
         $(".gestionalDaysDiv").slideDown("slow");
@@ -272,13 +272,13 @@ function headCircumferenceCheck(){
         $('#headCircumference').removeClass('addGreen')
     }
 }
-function headCircumferenceInitialDisposition(){
+function headCircumferenceInitialDispositionCheck(){
     var value = document.getElementById('headCircumferenceInitialDisposition').value;
     if(value>=20 && value<=45 && value.indexOf('.') >= 0){ //correct value
             $('#headCircumferenceInitialDisposition').removeClass('addRed')
             $('#headCircumferenceInitialDisposition').addClass('addGreen')
             $('#headCircumferenceInitialDisposition').removeClass('glowingHiddenFieldsPermanent')
-            }
+    }
     else if(value.indexOf('.') <= -1){
         toastr.error("Head Circumference - Must be in the format XX.X")
         $('#headCircumferenceInitialDisposition').addClass('addRed')
@@ -666,7 +666,6 @@ function respiratory36WeeksOxygenCheck() {
     var value1 = document.getElementById('hiddenFieldRespiratory36WeeksOxygenGroup');
     if (document.getElementById('oxygenAt36WeeksYes').checked) {
         $(value1).slideDown("slow");
-        $(value1).addClass('glowingHiddenFields')
         //uncheck all the ones below it NA
         $('#conventionalAt36WeeksNA').attr("checked",false);
         $('#highFrequencyVentilationAt36WeeksNA').attr("checked",false);
@@ -679,7 +678,6 @@ function respiratory36WeeksOxygenCheck() {
         $('#highFlowNasalCannulaAt36WeeksNA').change();
         $('#nasalIMVAt36WeeksNA').change();
         $('#nasalCpapAt36WeeksNA').change();
-        toastr.success("Respiratory at 36 weeks - All N/A fields are unchecked")
     }
     if (document.getElementById('oxygenAt36WeeksNo').checked) {
         $(value1).slideUp("slow");
@@ -737,7 +735,6 @@ function oxygenAtDischargeCheck() {
     var value1 = document.getElementById('hiddenFieldAtDischargeGroup');
     if (document.getElementById('oxygenAtDischargeYes').checked) {
         $(value1).slideDown("slow");
-        $(value1).addClass('glowingHiddenFields')
     }
     if (document.getElementById('oxygenAtDischargeNo').checked) {
         $(value1).slideUp("slow");
@@ -775,7 +772,6 @@ function AfterInitialResuscitationCheck() {
     var value1 = document.getElementById('hiddenFieldAfterInitialResuscitation');
     if (document.getElementById('oxygenAfterInitialResuscitationYes').checked) {
         $(value1).slideDown("slow");
-        $(value1).addClass('glowingHiddenFields')
     }
     if (document.getElementById('oxygenAfterInitialResuscitationNo').checked) {
         $(value1).slideUp("slow");
@@ -2141,7 +2137,8 @@ function clearFormDialog() {
         "Clear Form": function() {
           $( this ).dialog( "close" );
             /*toastr.success("Form cleared Successfully!")*/
-            location.reload();
+//            location.reload();
+            window.location.href = 'index.html';
         },
         Cancel: function() {
           $( this ).dialog( "close" );

@@ -524,7 +524,7 @@ input[type="search"]:-ms-input-placeholder {
     position:relative; 
     width:80%; 
     margin-bottom: 15px; 
-    font-size: 1em;
+    font-size: 0.9em;
 }
 @media (max-width: 1280px) {
     .progressBarUL li {
@@ -583,7 +583,7 @@ div ul li .firstATag:after{
 }
 #clearFormButton:after{
     font-family: FontAwesome;
-    content: "\f014";
+    content: "\f01e";
     float:right;
 }
 .clickToFinishButton:after{

@@ -106,7 +106,7 @@
                         </div>
                          <div class="buttonBox">
                                 <a href="javascript:void(0)" class="btn btn-default btn-lg clickToFinishButton" onclick="javascript:checkComplete()">Click to Finish</a>
-                               <a id="clearFormButton" href="javascript:void(0)" onclick="clearFormDialog();" class="btn btn-default btn-lg" >Clear Form</a>
+                               <a id="clearFormButton" href="javascript:void(0)" onclick="clearFormDialog();" class="btn btn-default btn-lg" >Start Again</a>
                                <a id="PrintDischargeButton" href="javascript:void(0)" onclick="printForm(document.getElementById('_id').value);" class="btn btn-default btn-lg">Print Discharge Form</a>
                             </div>
                      </div>
@@ -314,7 +314,7 @@
                               <div class="form-group input-group headCircumferenceDiv">
                                  <label class="fixingLabelAlignment" for="headCircumference">Head Circumference (cm) : </label>
                                  <div class="fixingInputAlignment">
-                                    <input id="headCircumference" name="headCircumference" onchange="headCircumferenceCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
+                                    <input id="headCircumference" name="headCircumference" onchange="javascript:headCircumferenceCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
                                  </div>
                               </div>
                               <div class="form-group input-group raceOfMotherDiv">
@@ -517,7 +517,7 @@
                                  <label class="fixingLabelAlignment">Number of Infants Delivered : </label>
                                  <div class="fixingInputAlignment">
                                     <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class="form-control" onchange="javascript:numberOfInfantsDeliveredCheck();" style="height:32px;width:30%;">
-                                       <option disabled selected value="00"></option>
+                                       <option disabled selected ></option>
                                        <option value="1">1</option>
                                        <option value="2">2</option>
                                        <option value="3">3</option>
@@ -3103,14 +3103,14 @@
                                  <label id="weightAtInitialDispositionLabel" class="fixingLabelAlignment" for="weightAtInitialDisposition">Weight at Initial Disposition : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="addingUnits unitsGrams">
-                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control onlyNumbers" onchange="validateWeight('weightAtInitialDisposition')" type="search" placeholder="eg. 1122" maxlength="4">
+                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control onlyNumbers" onchange="javascript:validateWeight('weightAtInitialDisposition')" type="search" placeholder="eg. 1122" maxlength="4">
                                     </span>
                                  </div>
                               </div>
                               <div class="form-group input-group headCircumferenceInitialDispositionDiv">
                                  <label id="headCircumferenceAtInitialDispositionLabel" class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition (cm) : </label>
                                  <div class="fixingInputAlignment">
-                                    <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="headCircumferenceInitialDispositionCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
+                                    <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="javascript:headCircumferenceInitialDispositionCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
                                  </div>
                               </div>
                               <div id="TransferFormPartA" class="InnerPanel inner-panel-primary TransferFormPartADiv">
