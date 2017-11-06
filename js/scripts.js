@@ -401,9 +401,6 @@ function formComplete(){
         $('#formComplete').val(true)
        }
 }
-function successReload(){
-    
-}
 function diedWithin12HoursCheck() {
     var value1 = document.getElementById('RespiratorySupportAfterInitialResuscitationDiv');
     if (document.getElementById('diedWithin12HoursYes').checked) {
@@ -1090,20 +1087,66 @@ function immunizations652Check() {
     var value1 = document.getElementById('hiddenFieldImmunizations652Date');
     if (document.getElementById('immunizations652Yes').checked) {
         $(value1).slideDown("slow");
-        $(value1).addClass('glowingHiddenFields')
+        $(value1).addClass('glowingHiddenFields');
         $('#immunizationDate').datepicker('setDate', null);
     }
     if (document.getElementById('immunizations652No').checked) {
         $(value1).slideUp("slow");
-        $(value1).removeClass('glowingHiddenFields')
+        $(value1).removeClass('glowingHiddenFields');
         $('#immunizations652Date').datepicker('setDate', null);
-        toastr.success("Immunization date - setting it")
+        toastr.success("Immunization date is Set")
         var arg = 43;
         var d = $('#dateOfBirth').datepicker('getDate');
         d.setDate(d.getDate() + arg);
         $('#immunizationDate').datepicker('setDate', d);
         
-        calculate4WeeksAfterGivenImmunizationDateCheckedNo();
+        
+        //add 6 weeks onto the DOB
+        var arg = 42; 
+        var d = $('#dateOfBirth').datepicker('getDate'); //get the date that they manually inputted
+        var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 6 weeks onto the date
+        var currentDate = new Date();
+        var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
+        
+        if(days>0){
+           $('#immunizationDate').val("Due");
+           }
+        else{
+            $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+        }
+    }
+}
+function immunizations1052Check(){
+    var value1 = document.getElementById('hiddenFieldImmunizations1052Date');
+    if (document.getElementById('immunizations1052Yes').checked) {
+        $(value1).slideDown("slow");
+        $(value1).addClass('glowingHiddenFields')
+        $('#immunizationDate').datepicker('setDate', null);
+    }
+    if (document.getElementById('immunizations1052No').checked) {
+        $(value1).slideUp("slow");
+        $(value1).removeClass('glowingHiddenFields');
+        $('#immunizations1052Date').datepicker('setDate', null);
+        toastr.success("Immunization date is Set")
+        var arg = 43;
+        var d = $('#immunizations652Date').datepicker('getDate');
+        d.setDate(d.getDate() + arg);
+        $('#immunizationDate').datepicker('setDate', d);
+        
+        
+        //add 6 weeks onto the DOB
+        var arg = 42; 
+        var d = $('#immunizations652Date').datepicker('getDate'); //get the date that they manually inputted
+        var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 6 weeks onto the date
+        var currentDate = new Date();
+        var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
+        
+        if(days>0){
+           $('#immunizationDate').val("Due");
+           }
+        else{
+            $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+        }
     }
 }
 function immunizations1452Check(){
@@ -1115,14 +1158,28 @@ function immunizations1452Check(){
     }
     if (document.getElementById('immunizations1452No').checked) {
         $(value1).slideUp("slow");
-        $(value1).removeClass('glowingHiddenFields')
-        toastr.success("Immunization date - setting it")
-        var arg = 56;
-        var d = $('#dateOfBirth').datepicker('getDate');
+        $(value1).removeClass('glowingHiddenFields');
+        $('#immunizations1452Date').datepicker('setDate', null);
+        toastr.success("Immunization date is Set")
+        var arg = 43;
+        var d = $('#immunizations1052Date').datepicker('getDate');
         d.setDate(d.getDate() + arg);
         $('#immunizationDate').datepicker('setDate', d);
         
-        //calculate4WeeksAfterGivenImmunizationDateCheckedNo();
+        
+        //add 6 weeks onto the DOB
+        var arg = 42; 
+        var d = $('#immunizations1052Date').datepicker('getDate'); //get the date that they manually inputted
+        var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 6 weeks onto the date
+        var currentDate = new Date();
+        var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
+        
+        if(days>0){
+           $('#immunizationDate').val("Due");
+           }
+        else{
+            $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+        }
     }
 }
 function temperatureMeasuredWithinFirstHourCheck() {
@@ -1278,16 +1335,16 @@ function initialDispositionCheck() {
     if (strUser==2 ){
         $(hiddenField).slideDown("slow");
         $(hiddenField).addClass('glowingHiddenFields');
-        $('#weightAtInitialDispositionLabel').text('Weight at Transfer');
-        $('#headCircumferenceAtInitialDispositionLabel').text('Head Circumference at Transfer');
+        $('#weightAtInitialDispositionLabel').text('Weight at Transfer :');
+        $('#headCircumferenceAtInitialDispositionLabel').text('Head Circumference at Transfer :');
     }
     else if(strUser==3){
-            $('#weightAtInitialDispositionLabel').text('Weight at Death');
-            $('#headCircumferenceAtInitialDispositionLabel').text('Head Circumference at Death');
+            $('#weightAtInitialDispositionLabel').text('Weight at Death :');
+            $('#headCircumferenceAtInitialDispositionLabel').text('Head Circumference at Death :');
             }
     else if(strUser==1){
-            $('#weightAtInitialDispositionLabel').text('Weight at Discharge');
-            $('#headCircumferenceAtInitialDispositionLabel').text('Head Circumference at Discharge');
+            $('#weightAtInitialDispositionLabel').text('Weight at Discharge :');
+            $('#headCircumferenceAtInitialDispositionLabel').text('Head Circumference at Discharge :');
             }
     else{
         $(hiddenField).slideUp("slow");
@@ -1419,17 +1476,6 @@ function twinOrTripletOrQuadrupletCheck(){
         $(hiddenFieldQuadruplets).addClass('glowingHiddenFields')
     }
 }
-function ROPScreenDoneCheck(){
-    var value1 = document.getElementById('hiddenFieldROPDate');
-    if (document.getElementById('ROPScreenDoneYes').checked) {
-        $(value1).slideDown("slow");
-        $(value1).addClass('glowingHiddenFields')
-    }
-    else if(document.getElementById('ROPScreenDoneNo').checked){
-            $(value1).slideUp("slow");
-            $(value1).removeClass('glowingHiddenFields')
-    }
-}
 function showNotAVonBabyFields(){
     
     $(".gestationalAgeInWeeksDiv").slideDown("slow");
@@ -1486,9 +1532,10 @@ function showNotAVonBabyFields(){
 //    $(".dateOfInitialDispositionDiv").slideUp("slow");
     $(".weightAtInitialDispositionDiv").slideUp("slow");
     $(".headCircumferenceInitialDispositionDiv").slideUp("slow");
-//    $(".initialLengthOfStayDiv").slideUp("slow");
-    /*$("#download").slideUp('slow');
-    $("#listItem2").slideUp('slow');*/
+    //pulling up inner panels
+    $("#hiddenFieldTemperatureFirstHour").slideUp("slow");
+    $("#hiddenFieldCongenitalInfectionOrganisms").slideUp("slow");
+    $("#hiddenFieldSurfactantAtAnyTime").slideUp("slow");
 }
 function hideNotAVonBabyFields(){
     
@@ -1613,6 +1660,7 @@ $(function () {
             validateFreeText('dateOfInitialDisposition');
             lengthOfStayCheck(); //display length of stay
             checkingOlder28Days();
+            making40dayDate();
             //adding key listener functions for progress bar checks
             InputsPatientForm();
             ColourPatientForm();
@@ -1646,22 +1694,45 @@ $(function () {
     $("#immunizations652Date").datepicker($.extend({
         maxDate: '0',
         onSelect: function () {
+            validateFreeText('immunizations652Date');
             calculate4WeeksAfterGivenImmunizationDate(); //setting the 28 day oxygen
-            
             //adding key listener functions for progress bar checks
             InputsPatientForm();
             ColourPatientForm();
+            
+            var arg = 28;
+            var minDateOf28 = $('#immunizations652Date').datepicker('getDate');
+            minDateOf28.setDate(minDateOf28.getDate() + arg);
+            $("#immunizations1052Date").datepicker("option", "minDate", minDateOf28);
         }
     }, datepickersOpt));
     $('#immunizations652DateCalendar').on("click", function (e) {
         $('#immunizations652DateCalendar').focus();
     });
     
+    $("#immunizations1052Date").datepicker($.extend({
+        maxDate: '0',
+        onSelect: function () {
+            validateFreeText('immunizations1052Date');
+            calculate4WeeksAfterGivenImmunizationDate2();
+            //adding key listener functions for progress bar checks
+            InputsPatientForm();
+            ColourPatientForm();
+            
+            var arg = 28;
+            var minDateOf28 = $('#immunizations1052Date').datepicker('getDate');
+            minDateOf28.setDate(minDateOf28.getDate() + arg);
+            $("#immunizations1452Date").datepicker("option", "minDate", minDateOf28);
+        }
+    }, datepickersOpt));
+    $('#immunizations1052DateCalendar').on("click", function (e) {
+        $('#immunizations1052DateCalendar').focus();
+    });
     $("#immunizations1452Date").datepicker($.extend({
         maxDate: '0',
         onSelect: function () {
-            //calculate4WeeksAfterGivenImmunizationDate(); //setting the 28 day oxygen
-            
+            validateFreeText('immunizations1452Date');
+            calculate4WeeksAfterGivenImmunizationDate3();
             //adding key listener functions for progress bar checks
             InputsPatientForm();
             ColourPatientForm();
@@ -1697,7 +1768,6 @@ $(function () {
     $('#ROPDateCalendar').on("click", function (e) {
         $('#ROPDate').focus();
     });
-    
     $("#PCRDate").datepicker($.extend({
         maxDate: '+12M',
         minDate:'+1D',
@@ -1806,10 +1876,30 @@ $( function() {
     });   
   } );
 /* END Date initial length of stay*/
-
 function calculate4WeeksAfterGivenImmunizationDate(){
     var arg = 28; //4 weeks
     var d = $('#immunizations652Date').datepicker('getDate'); //get the date that they manually inputted
+    var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 4 weeks onto the date
+    var currentDate = new Date();
+    var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
+    if(days>0){
+        //do another check inside here to see ask the user if they have done 14/52 immunization.
+        //If No, then it is due
+        //If yes, then take that date and get the new date.
+        $('#hiddenFieldImmunizations1052').slideDown('slow');
+        $('#hiddenFieldImmunizations1052').addClass('glowingHiddenFields');
+       $('#immunizationDate').val("Pending");
+       }
+    else{
+        $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
+        $('#hiddenFieldImmunizations1052').slideUp('slow');
+        $('#hiddenFieldImmunizations1052').removeClass('glowingHiddenFields');
+    }
+    
+}
+function calculate4WeeksAfterGivenImmunizationDate2(){
+    var arg = 28; //4 weeks
+    var d = $('#immunizations1052Date').datepicker('getDate'); //get the date that they manually inputted
     var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 4 weeks onto the date
     var currentDate = new Date();
     var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
@@ -1828,19 +1918,22 @@ function calculate4WeeksAfterGivenImmunizationDate(){
     }
     
 }
-function calculate4WeeksAfterGivenImmunizationDateCheckedNo(){
-    var arg = 42; //4 weeks
-    var d = $('#dateOfBirth').datepicker('getDate'); //get the date that they manually inputted
+function calculate4WeeksAfterGivenImmunizationDate3(){
+    var arg = 28; //4 weeks
+    var d = $('#immunizations1452Date').datepicker('getDate'); //get the date that they manually inputted
     var temporaryDate = new Date(d.setDate(d.getDate() + arg));//add 4 weeks onto the date
     var currentDate = new Date();
     var days   = (currentDate - temporaryDate)/1000/60/60/24; // number days old
     if(days>0){
+        //do another check inside here to see ask the user if they have done 14/52 immunization.
+        //If No, then it is due
+        //If yes, then take that date and get the new date.
        $('#immunizationDate').val("Due");
        }
     else{
         $('#immunizationDate').datepicker('setDate', d); //set the next immunization date to the new date.
     }
-    
+
 }
 function adding28Days(){
     var arg = 28;
@@ -1918,33 +2011,48 @@ function lengthOfStayCheck(){
     var daysAdmission   = (initialDisposition - admission)/1000/60/60/24;
     //if DOB and inborn, take DOB
     //if inborn AND dob > and intial > and admission = 0 
+    
     if($('#locationOFBirthInborn').is(':checked') && (dobValue.length)>0 && (initialDispositionValue.length)>0){
         $('#initialLengthOfStay').val(daysDOB);
-        //If the initial disposition date is less than 2 days then make the day 3 of line panel N/A
-        if(daysDOB<=2){
-            $('#bacterialSepsisNA').attr("checked",true);
-            $('#coagulaseNegativeNA').attr("checked",true);
-            $('#fungalInfectionNA').attr("checked",true);
+        //checking for ROP sceen
+        if(daysDOB<(31*7)){
+            $('#hiddenFieldROPDate').slideUp('slow');
            }
         else{
-            $('#bacterialSepsisNA').attr("checked",false);
-            $('#coagulaseNegativeNA').attr("checked",false);
-            $('#fungalInfectionNA').attr("checked",false);
+            $('#hiddenFieldROPDate').slideDown('slow');
+        }
+        //If the initial disposition date is less than 2 days then make the day 3 of line panel N/A
+        if(daysDOB<=2){
+            $('#bacterialSepsisNA').attr("checked",true).change();
+            $('#coagulaseNegativeNA').attr("checked",true).change();
+            $('#fungalInfectionNA').attr("checked",true).change();
+           }
+        else{
+            $('#bacterialSepsisNA').attr("checked",false).change();
+            $('#coagulaseNegativeNA').attr("checked",false).change();
+            $('#fungalInfectionNA').attr("checked",false).change();
         }
        }
     //if outborn AND dob > and admission >0 and intial
     else if($('#locationOFBirthOutborn').is(':checked')&& (dobValue.length)>0 && (initialDispositionValue.length)>0 && (admissionValue.length)>0){
             $('#initialLengthOfStay').val(daysAdmission);
+        //checking for ROP sceen
+        if(daysAdmission<(31*7)){
+            $('#hiddenFieldROPDate').slideUp('slow');
+           }
+        else{
+            $('#hiddenFieldROPDate').slideDown('slow');
+        }
             //If the initial disposition date is less than 2 days then make the day 3 of line panel N/A
             if(daysAdmission<=2){
-                $('#bacterialSepsisNA').attr("checked",true);
-                $('#coagulaseNegativeNA').attr("checked",true);
-                $('#fungalInfectionNA').attr("checked",true);
+                $('#bacterialSepsisNA').attr("checked",true).change();
+                $('#coagulaseNegativeNA').attr("checked",true).change();
+                $('#fungalInfectionNA').attr("checked",true).change();
                }
             else{
-                $('#bacterialSepsisNA').attr("checked",false);
-                $('#coagulaseNegativeNA').attr("checked",false);
-                $('#fungalInfectionNA').attr("checked",false);
+                $('#bacterialSepsisNA').attr("checked",false).change();
+                $('#coagulaseNegativeNA').attr("checked",false).change();
+                $('#fungalInfectionNA').attr("checked",false).change();
             }
             }
 }
@@ -1966,47 +2074,32 @@ function totalLengthOfStayCheckGreaterThan28(){
     //if days is less than 28
     if($('#totalLengthOfStay').val()<28){
         //checking 28 day NA buttons
-        $('#oxygenDay28NA').attr("checked",true);
-        $('#oxygenDay28NA').change();
+        $('#oxygenDay28NA').prop("checked",true).change();
        }
     else{
         //Setting 28 day oxygen buttons to unchecked
-        $('#oxygenDay28NA').attr("checked",false);
-        $('#oxygenDay28NA').change();
+        $('#oxygenDay28NA').prop("checked",false).change();
     }
 }
 function totalLengthOfStayCheckGreaterThan36weeks(){
     //if days is less than 36 weeks
     if($('#totalLengthOfStay').val()<(36*7)){
         //checking 36 week NA buttons
-        $('#oxygenAt36WeeksNA').attr("checked",true);
-        $('#conventionalAt36WeeksNA').attr("checked",true);
-        $('#highFrequencyVentilationAt36WeeksNA').attr("checked",true);
-        $('#highFlowNasalCannulaAt36WeeksNA').attr("checked",true);
-        $('#nasalIMVAt36WeeksNA').attr("checked",true);
-        $('#nasalCpapAt36WeeksNA').attr("checked",true);
-        $('#oxygenAt36WeeksNA').change();
-        $('#conventionalAt36WeeksNA').change();
-        $('#highFrequencyVentilationAt36WeeksNA').change();
-        $('#highFlowNasalCannulaAt36WeeksNA').change();
-        $('#nasalIMVAt36WeeksNA').change();
-        $('#nasalCpapAt36WeeksNA').change();
-        
+        $('#oxygenAt36WeeksNA').prop("checked",true).change();
+        $('#conventionalAt36WeeksNA').prop("checked",true).change();
+        $('#highFrequencyVentilationAt36WeeksNA').prop("checked",true).change();
+        $('#highFlowNasalCannulaAt36WeeksNA').prop("checked",true).change();
+        $('#nasalIMVAt36WeeksNA').prop("checked",true).change();
+        $('#nasalCpapAt36WeeksNA').prop("checked",true).change();
        }
     else{
         //Setting week 36 buttons to unchecked
-        $('#oxygenAt36WeeksNA').attr("checked",false);
-        $('#conventionalAt36WeeksNA').attr("checked",false);
-        $('#highFrequencyVentilationAt36WeeksNA').attr("checked",false);
-        $('#highFlowNasalCannulaAt36WeeksNA').attr("checked",false);
-        $('#nasalIMVAt36WeeksNA').attr("checked",false);
-        $('#nasalCpapAt36WeeksNA').attr("checked",false);
-        $('#oxygenAt36WeeksNA').change();
-        $('#conventionalAt36WeeksNA').change();
-        $('#highFrequencyVentilationAt36WeeksNA').change();
-        $('#highFlowNasalCannulaAt36WeeksNA').change();
-        $('#nasalIMVAt36WeeksNA').change();
-        $('#nasalCpapAt36WeeksNA').change();
+        $('#oxygenAt36WeeksNA').prop("checked",false).change();
+        $('#conventionalAt36WeeksNA').prop("checked",false).change();
+        $('#highFrequencyVentilationAt36WeeksNA').prop("checked",false).change();
+        $('#highFlowNasalCannulaAt36WeeksNA').prop("checked",false).change();
+        $('#nasalIMVAt36WeeksNA').prop("checked",false).change();
+        $('#nasalCpapAt36WeeksNA').prop("checked",false).change();
     }
 }
 function totalLengthOfStayCheck(){

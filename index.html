@@ -21,7 +21,7 @@
       <link rel="stylesheet" href="calendar/jquery-ui.css">
    </head>
     <!--class="stop-scrolling"-->
-   <body id="page-top" onload="configureDB()" class="stop-scrolling">
+   <body id="page-top" onload="configureDB()">
       <!-- Clear Form Dialog -->
       <div id="dialog-confirm" title="Clear the Form?">
          <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
@@ -127,7 +127,7 @@
                                  <label class="fixingLabelAlignment" for="birthWeightInGrams">Birth Weight : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="addingUnits unitsGrams">
-                                    <input id="birthWeightInGrams" name="birthWeightInGrams" class="form-control onlyNumbers" onchange="validateBirthweight();checkingWhatTypeOfFormToDisplay();settingBabyLength();" type="search" placeholder="eg. 1500" maxlength="4">
+                                    <input id="birthWeightInGrams" name="birthWeightInGrams" class="form-control onlyNumbers" onchange="javascript:validateBirthweight();checkingWhatTypeOfFormToDisplay();" type="search" placeholder="eg. 1500" maxlength="4">
                                     </span>
                                  </div>
                               </div>
@@ -290,7 +290,7 @@
                               <div class="form-group input-group gestationalAgeInWeeksDiv">
                                  <label class="fixingLabelAlignment" for="gestationalAgeInWeeks">Gestational Age (Weeks) : </label>
                                  <div class="fixingInputAlignment">
-                                    <select id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" onchange="javascript:checkGestationalAgeInWeeks();countingDaysInWeeksForRespiratory();" style="height:32px;width:40%;">
+                                    <select id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" onchange="javascript:checkGestationalAgeInWeeks();countingDaysInWeeksForRespiratory();" style="height:32px;width:30%;">
                                        <option disabled selected value></option>
                                        <option value="99">Unknown</option>
                                     </select>
@@ -299,7 +299,7 @@
                               <div class="form-group input-group gestionalDaysDiv">
                                  <label class="fixingLabelAlignment">Gestational Age (Days) :</label>
                                  <div class="fixingInputAlignment">
-                                    <select id="gestionalDays" name=gestionalDays class="form-control" onchange="countingDaysInWeeksForRespiratory();" style="height:32px;width:40%;">
+                                    <select id="gestionalDays" name=gestionalDays class="form-control" onchange="countingDaysInWeeksForRespiratory();" style="height:32px;width:30%;">
                                        <option disabled selected value></option>
                                        <option value="0">0 Days</option>
                                        <option value="1">1 Day</option>
@@ -312,15 +312,17 @@
                                  </div>
                               </div>
                               <div class="form-group input-group headCircumferenceDiv">
-                                 <label class="fixingLabelAlignment" for="headCircumference">Head Circumference (cm) : </label>
+                                 <label class="fixingLabelAlignment" for="headCircumference">Head Circumference : </label>
                                  <div class="fixingInputAlignment">
+                                     <span class="addingUnits unitsCm">
                                     <input id="headCircumference" name="headCircumference" onchange="javascript:headCircumferenceCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
+                                     </span>
                                  </div>
                               </div>
                               <div class="form-group input-group raceOfMotherDiv">
                                  <label class="fixingLabelAlignment">Race of Mother : </label>
                                  <div class="fixingInputAlignment">
-                                    <select id="raceOfMother" name=raceOfMother class="form-control" style="height:32px;width:40%;">
+                                    <select id="raceOfMother" name=raceOfMother class="form-control" style="height:32px;width:30%;">
                                        <option disabled selected value></option>
                                        <option value="1">Black</option>
                                        <option value="7">Coloured</option>
@@ -1046,7 +1048,7 @@
                                           </div>
                                           <div id="hiddenFieldPIHWhereOccurred">
                                              <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInnerInner">Where Occurred?  : </label>
+                                                <label class="fixingLabelAlignmentInnerInner">Where Occurred : </label>
                                                 <div class="fixingInputAlignmentInnerInner">
                                                    <span class="radioFloatLeftInner">
                                                    <input class="radioType" id="PIHWhereOccurredYourHospital" type="radio" name = PIHWhereOccurred value="1">
@@ -3108,9 +3110,11 @@
                                  </div>
                               </div>
                               <div class="form-group input-group headCircumferenceInitialDispositionDiv">
-                                 <label id="headCircumferenceAtInitialDispositionLabel" class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition (cm) : </label>
+                                 <label id="headCircumferenceAtInitialDispositionLabel" class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
                                  <div class="fixingInputAlignment">
+                                     <span class="addingUnits unitsCm">
                                     <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="javascript:headCircumferenceInitialDispositionCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
+                                     </span>
                                  </div>
                               </div>
                               <div id="TransferFormPartA" class="InnerPanel inner-panel-primary TransferFormPartADiv">
@@ -3121,7 +3125,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Reason for Transfer : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select name=reasonForTransfer class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select name=reasonForTransfer id="reasonForTransfer" class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="1">Growth/Discharge planning</option>
                                              <option value="2">Medical/Diagnostic Services</option>
@@ -3137,7 +3141,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Transfer Code of Center to Which infant Transferred : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select name=transferCode class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select name=transferCode id="transferCode" class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="13240">13240 - Mowbray Maternity Hospital</option>
                                              <option value="14994">14994 - New Somerset Hospital</option>
@@ -3155,7 +3159,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Post Transfer Disposition : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="postTransferDisposition" onchange="javascript:postTransferDispositionCheck();" name=postTransferDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select id="postTransferDisposition" onchange="javascript:postTransferDispositionCheck();" name=postTransferDisposition class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="1">Home</option>
                                              <option value="2">Transferred Again to Another Hospital</option>
@@ -3177,7 +3181,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Disposition after Readmission : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="dispositionAfterReadmission" onchange="javascript:dispositionAfterReadmissionCheck();" name=dispositionAfterReadmission class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select id="dispositionAfterReadmission" onchange="javascript:dispositionAfterReadmissionCheck();" name=dispositionAfterReadmission class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="1">Home</option>
                                              <option value="3">Died</option>
@@ -3206,7 +3210,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Ultimate Disposition : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="ultimateDisposition" onchange="javascript:ultimateDispositionCheck();" name=ultimateDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select id="ultimateDisposition" onchange="javascript:ultimateDispositionCheck();" name=ultimateDisposition class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="1">Home</option>
                                              <option value="3">Died</option>
@@ -3849,9 +3853,9 @@
                                        <div id="hiddenFieldImmunizations652Date" class="InnerPanel inner-panel-primary">
                                           <div class="inner-panel-body">
                                              <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner" for="immunizationDate">Date : </label>
+                                                <label class="fixingLabelAlignmentInner" for="immunizations652Date">Date : </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                   <span class="addingCalendarInner addingCalendarIcon">
+                                                   <span id="immunizations652DateCalendar" class="addingCalendarInner addingCalendarIcon">
                                                    <input type="search" placeholder="dd-mm-yyyy" id="immunizations652Date" name="immunizations652Date" class="form-control calendarField" readonly="true"/>
                                                    </span>
                                                 </div>
@@ -3859,16 +3863,43 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldImmunizations1452">
+                                    <div id="hiddenFieldImmunizations1052">
+                                       <div class="form-group input-group">
+                                          <label class="fixingLabelAlignmentInner">Received 10/52 Immunizations   :  </label>
+                                          <div class="fixingInputAlignmentInner">
+                                             <span class="radioFloatLeftInner">
+                                             <input class="radioType" id="immunizations1052Yes" onchange="javascript:immunizations1052Check()" type="radio" name = immunizations1052 value="1">
+                                             <label class="radioText" for="immunizations1052Yes">Yes</label>
+                                             </span>
+                                             <span class="radioFloatLeftInner">
+                                             <input class="radioType" id="immunizations1052No" onchange="javascript:immunizations1052Check()" type="radio" name = immunizations1052 value="0">
+                                             <label class="radioText" for="immunizations1052No">No</label>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div id="hiddenFieldImmunizations1052Date" class="InnerPanel inner-panel-primary">
+                                          <div class="inner-panel-body">
+                                             <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner" for="immunizations1052Date">Date : </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                   <span id="immunizations1052DateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                                    <input type="search" placeholder="dd-mm-yyyy" id="immunizations1052Date" name="immunizations1052Date" class="form-control calendarField" readonly="true"/>
+                                                   </span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                     <div id="hiddenFieldImmunizations1452">
                                        <div class="form-group input-group">
                                           <label class="fixingLabelAlignmentInner">Received 14/52 Immunizations   :  </label>
                                           <div class="fixingInputAlignmentInner">
                                              <span class="radioFloatLeftInner">
-                                             <input class="radioType" id="immunizations1452Yes" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations652 value="1">
+                                             <input class="radioType" id="immunizations1452Yes" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations1452 value="1">
                                              <label class="radioText" for="immunizations1452Yes">Yes</label>
                                              </span>
                                              <span class="radioFloatLeftInner">
-                                             <input class="radioType" id="immunizations1452No" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations652 value="0">
+                                             <input class="radioType" id="immunizations1452No" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations1452 value="0">
                                              <label class="radioText" for="immunizations1452No">No</label>
                                              </span>
                                           </div>
@@ -3876,10 +3907,10 @@
                                        <div id="hiddenFieldImmunizations1452Date" class="InnerPanel inner-panel-primary">
                                           <div class="inner-panel-body">
                                              <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner" for="immunizationDate">Date : </label>
+                                                <label class="fixingLabelAlignmentInner" for="immunizations1452Date">Date : </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                   <span class="addingCalendarInner addingCalendarIcon">
-                                                   <input type="search" placeholder="dd-mm-yyyy" id="immunizations1452Date" name="immunizations1452Date" class="form-control calendarField" readonly="true"/>
+                                                   <span id="immunizations1452DateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                                    <input type="search" placeholder="dd-mm-yyyy" id="immunizations1452Date" name="immunizations1452Date" class="form-control calendarField" readonly="true"/>
                                                    </span>
                                                 </div>
                                              </div>
@@ -3915,7 +3946,7 @@
                                         <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation1">First Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation1" name="appointmentLocation1" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation1" name="appointmentLocation1" class="form-control" onchange="validateAppointmentLocation('appointmentLocation1')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -3942,7 +3973,7 @@
                                         <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation2">Second Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation2" name="appointmentLocation2" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation2" name="appointmentLocation2" class="form-control" onchange="validateAppointmentLocation('appointmentLocation2')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -3969,7 +4000,7 @@
                                          <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation3">Third Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation3" name="appointmentLocation3" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation3" name="appointmentLocation3" class="form-control" onchange="validateAppointmentLocation('appointmentLocation3')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -3996,7 +4027,7 @@
                                          <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation4">Fourth Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation4" name="appointmentLocation4" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation4" name="appointmentLocation4" class="form-control" onchange="validateAppointmentLocation('appointmentLocation4')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -4023,7 +4054,7 @@
                                          <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation5">Fifth Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation5" name="appointmentLocation5" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation5" name="appointmentLocation5" class="form-control" onchange="validateAppointmentLocation('appointmentLocation5')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -4062,19 +4093,6 @@
                                              <input type="search" placeholder="dd-mm-yyyy" id="PCRDate" name="PCRDate" class="form-control calendarField" readonly="true"/>
                                              </span>
                                           </div>
-                                       </div>
-                                    </div>
-                                     <div class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInner">ROP Screen Done :  </label>
-                                       <div class="fixingInputAlignmentInner">
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="ROPScreenDoneYes" onchange="javascript:ROPScreenDoneCheck()" type="radio" name = ROPScreenDone value="1">
-                                          <label class="radioText" for="ROPScreenDoneYes">Yes</label>
-                                          </span>
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="ROPScreenDoneNo" onchange="javascript:ROPScreenDoneCheck()" type="radio" name = ROPScreenDone value="0">
-                                          <label class="radioText" for="ROPScreenDoneNo">No</label>
-                                          </span>
                                        </div>
                                     </div>
                                     <div id="hiddenFieldROPDate" class="InnerPanel inner-panel-primary">

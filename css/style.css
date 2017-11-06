@@ -62,7 +62,7 @@ input[type="search"]:-ms-input-placeholder {
 /* START adding units*/
 .panel-body .addingCalendar:after{
     position:relative;
-    right:260px;
+    right:245px;
     top:5px;
     float:right;
     font-family: FontAwesome;
@@ -76,7 +76,7 @@ input[type="search"]:-ms-input-placeholder {
 }
 .panel-body .addingUnits:after {
     position:relative;
-    right:280px;
+    right:260px;
     top:5px;
     float:right; 
 }
@@ -264,6 +264,8 @@ input[type="search"]:-ms-input-placeholder {
 #bacterialCodeDuringAdmissionDiv1,
 #bacterialCodeDuringAdmissionDiv2,
 #bacterialCodeDuringAdmissionDiv3,
+#hiddenFieldImmunizations1052,
+#hiddenFieldImmunizations1052Date,
 #hiddenFieldImmunizations1452,
 #hiddenFieldImmunizations1452Date,
 #appointmentDiv1,
