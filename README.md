@@ -6,11 +6,11 @@ This application replaces the paper form process in the Neonatal Unit at Groote 
 1 - Launch "index.html"
 
 ## Features
-*Dynamic form validation
-*Partial form automation
-*Automated discharge form
-*Storing forms in database
-*Modifying existing forms
+* Dynamic form validation
+* Partial form automation
+* Automated discharge form
+* Storing forms in database
+* Modifying existing forms
 
 
 ## Bugs and Issues
