@@ -3,6 +3,13 @@
 
 ## Getting Started
 
+## Features
+Dynamic form validation
+Partial form automation 
+Automated discharge form
+Storing forms in database
+Modifying existing forms
+
 
 ## Bugs and Issues
 
