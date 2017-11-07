@@ -2186,6 +2186,12 @@ $(function(){
         idValue.append($('<option></option>').val(i).html(i+" cm"))
     }
 });
+$(function(){
+    var idValue = $("#headCircumference");
+    for (i=20;i<=60;i++){
+        idValue.append($('<option></option>').val(i).html(i+" cm"))
+    }
+});
 /*START Future Appointment Dates*/
 $(function(){
     var idValue = $("#appointmentTime1");
