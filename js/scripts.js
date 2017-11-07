@@ -254,24 +254,24 @@ function inbornOutbornCheck() {
         $('#GroupingHiddenField1').addClass('glowingHiddenFields')
     }
 }
-function headCircumferenceCheck(){
-    var value = document.getElementById('headCircumference').value;
-    if(value>=20 && value<=45 && value.indexOf('.') >= 0){ //correct value
-            $('#headCircumference').removeClass('addRed')
-            $('#headCircumference').addClass('addGreen')
-            $('#headCircumference').removeClass('glowingHiddenFieldsPermanent')
-            }
-    else if(value.indexOf('.') <= -1){
-        toastr.error("Head Circumference - Must be in the format XX.X")
-        $('#headCircumference').addClass('addRed')
-        $('#headCircumference').removeClass('addGreen')
-    }
-    else{
-        toastr.error("Head Circumference - Value must be between 20-45")
-        $('#headCircumference').addClass('addRed')
-        $('#headCircumference').removeClass('addGreen')
-    }
-}
+//function headCircumferenceCheck(){
+//    var value = document.getElementById('headCircumference').value;
+//    if(value>=20 && value<=45 && value.indexOf('.') >= 0){ //correct value
+//            $('#headCircumference').removeClass('addRed')
+//            $('#headCircumference').addClass('addGreen')
+//            $('#headCircumference').removeClass('glowingHiddenFieldsPermanent')
+//            }
+//    else if(value.indexOf('.') <= -1){
+//        toastr.error("Head Circumference - Must be in the format XX.X")
+//        $('#headCircumference').addClass('addRed')
+//        $('#headCircumference').removeClass('addGreen')
+//    }
+//    else{
+//        toastr.error("Head Circumference - Value must be between 20-45")
+//        $('#headCircumference').addClass('addRed')
+//        $('#headCircumference').removeClass('addGreen')
+//    }
+//}
 function headCircumferenceInitialDispositionCheck(){
     var value = document.getElementById('headCircumferenceInitialDisposition').value;
     if(value>=20 && value<=45 && value.indexOf('.') >= 0){ //correct value
@@ -2188,7 +2188,13 @@ $(function(){
 });
 $(function(){
     var idValue = $("#headCircumference");
-    for (i=20;i<=60;i++){
+    for (i=20;i<=45;i++){
+        idValue.append($('<option></option>').val(i).html(i+" cm"))
+    }
+});
+$(function(){
+    var idValue = $("#headCircumferenceInitialDisposition");
+    for (i=20;i<=45;i++){
         idValue.append($('<option></option>').val(i).html(i+" cm"))
     }
 });

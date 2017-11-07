@@ -316,6 +316,7 @@
                                  <div class="fixingInputAlignment">
                                      <select id="headCircumference" name="headCircumference" class=" form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
+                                                <option value="99">Unknown</option>
                                           </select>
                                  </div>
                               </div>
@@ -1032,7 +1033,7 @@
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Worst Grade of PIH (0-4) : </label>
                                              <div class="fixingInputAlignmentInnerInner">
-                                                <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" form-control" style="height:32px;width:20%;">
+                                                <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" form-control" style="height:32px;width:40%;">
                                                    <option disabled selected value></option>
                                                    <option value="0">0</option>
                                                    <option value="1">1</option>
@@ -2467,7 +2468,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInnerInner">Worst Stage of ROP : </label>
                                        <div class="fixingInputAlignmentInnerInner">
-                                          <select name=state class="form-control" style="height:32px;width:20%;">
+                                          <select name=state class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="0">0</option>
                                              <option value="1">1</option>
@@ -3111,9 +3112,10 @@
                               <div class="form-group input-group headCircumferenceInitialDispositionDiv">
                                  <label id="headCircumferenceAtInitialDispositionLabel" class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
                                  <div class="fixingInputAlignment">
-                                     <span class="addingUnits unitsCm">
-                                    <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="javascript:headCircumferenceInitialDispositionCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
-                                     </span>
+                                     <select id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" class=" form-control" style="height:32px;width:40%;">
+                                             <option disabled selected value></option>
+                                                <option value="99">Unknown</option>
+                                          </select>
                                  </div>
                               </div>
                               <div id="TransferFormPartA" class="InnerPanel inner-panel-primary TransferFormPartADiv">
@@ -3353,7 +3355,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="grav">Grav  :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="grav" name=grav class="form-control" style="height:32px;width:20%;">
+                                          <select id="grav" name=grav class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                              <option value="1">1</option>
@@ -3372,7 +3374,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="para">Para  :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="para" name=para class="form-control" style="height:32px;width:20%;">
+                                          <select id="para" name=para class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                              <option value="1">1</option>
@@ -3861,7 +3863,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime1">First Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime1" name=appointmentTime1 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime1" name=appointmentTime1 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -3888,7 +3890,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime2">Second Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime2" name=appointmentTime2 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime2" name=appointmentTime2 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -3915,7 +3917,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime3">Third Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime3" name=appointmentTime3 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime3" name=appointmentTime3 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -3942,7 +3944,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime4">Fourth Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime4" name=appointmentTime4 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime4" name=appointmentTime4 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -3969,7 +3971,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime5">Fifth Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime5" name=appointmentTime5 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime5" name=appointmentTime5 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
