@@ -7,5 +7,5 @@ function sendDataToVon(listOfMedicalRecordIds){
         var xmlRecord = create2018Xml(jsonRecord);
         entireXmlDocument += xmlRecord;
     }
-    return '<?xml version="1.0"?>\n' +  entireXmlDocument;
+    return '<?xml version="1.0"?>\n' + '<NewDataSet>' +  entireXmlDocument + '</NewDataSet>';
 }

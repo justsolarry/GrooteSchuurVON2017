@@ -19,7 +19,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
       icon: neonatalIcon
   })
-  mainWindow.setMenu(null);
+  //mainWindow.setMenu(null);
   mainWindow.maximize()
     
   // and load the index.html of the app.

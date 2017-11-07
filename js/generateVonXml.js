@@ -15,25 +15,29 @@ function createInfantCoreRecord(babyData){
     var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";
     var dateOfBirth = "<DOB>"+ formatDate(babyData.dateOfBirth) + "</DOB>\n";
     var dateOfAdmission = "<DOA>" + formatDate(babyData.dateOfBirth) + "</DOA>\n";
-	if (babyData.outbornBirth == 0){
+	if (babyData.outbornBirth == 1){
 		dateOfAdmission = "<DOA>" + formatDate(babyData.dateOfAdmission) + "</DOA>\n";
 	}
     var dateOfDischarge = "<DID>" + formatDate(babyData.dateOfInitialDisposition) + "</DID>\n";
     return "<tblInfantCore>\n" + hospitalNumber + patientFirstName + patientLastName 
         + mothersFirstName + mothersLastName + medicalRecordNumber + dateOfBirth
-        + dateOfAdmission + "</tblInfantCore>\n";
+        + dateOfAdmission + dateOfDischarge + "</tblInfantCore>\n";
 }
 
 function formatDate(date){
-    console.log(date);
-    date = new Date(date); // Format 2011-05-10T16:49:06.547125-04:00
-    console.log("after: " + date);
-    var fileDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() +"-02:00";
+    date = date.split("-");
+    var year = date[2];
+    var month = date[1];
+    var day = date[0];
+    date = new Date(year, month, day); // Format 2011-05-10T16:49:06.547125-04:00
+    var monthFormatted = ((date.getMonth()+1).length == 1 ) ? "0" + (date.getMonth()+1) : (date.getMonth()+1);
+    var dayFormatted = ((date.getDate()).length == 1 ) ? "0" + date.getDate() : date.getDate();
+    var fileDate = date.getFullYear() + "-" + monthFormatted + "-" + dayFormatted + "T00:00:00-02:00";
     return fileDate;
 }
 
 function createXmlForEachRecord(babyData){
-    var birthYear = "<BYEAR>"+babyData.birthYear+"</BYEAR>\n";    
+    var birthYear = "<BYEAR>"+ babyData.dateOfBirth.substr(babyData.dateOfBirth.lastIndexOf("-")+1)+"</BYEAR>\n";    
 //    var deleteEntry = "<DELETED>0</DELETED>\n"; //(1 to delete record although only under rare circumstances)
     var birthWeightInGrams = (babyData.birthWeightInGrams != undefined) ? "<BWGT>"+babyData.birthWeightInGrams+"</BWGT>\n" : ""; // != undefined
     var gestationalAgeInWeeks = (babyData.gestationalAgeInWeeks != undefined) ? "<GAWEEKS>"+babyData.gestationalAgeInWeeks+"</GAWEEKS>\n" : "";
@@ -321,7 +325,7 @@ function createXmlForEachRecord(babyData){
 
 
 function createXmlForEachRecord2017(babyData){
-    var birthYear = "<BYEAR>"+babyData.birthYear+"</BYEAR>\n";    
+    var birthYear = "<BYEAR>"+ babyData.dateOfBirth.substr(babyData.dateOfBirth.lastIndexOf("-")+1)+"</BYEAR>\n";    
 //    var deleteEntry = "<DELETED>0</DELETED>\n"; //(1 to delete record although only under rare circumstances)
     var birthWeightInGrams = (babyData.birthWeightInGrams != undefined) ? "<BWGT>"+babyData.birthWeightInGrams+"</BWGT>\n" : ""; // != undefined
     var gestationalAgeInWeeks = (babyData.gestationalAgeInWeeks != undefined) ? "<GAWEEKS>"+babyData.gestationalAgeInWeeks+"</GAWEEKS>\n" : "";
@@ -591,7 +595,7 @@ function createXmlForEachRecord2017(babyData){
     + weightAtInitialDisposition + headCircumferenceAtInitialDisposition 
     + initialLengthOfStay + reasonForTransfer 
     + newTransferCenterCode + postTransferDisposition
-    + dispositionAfterReadmission + weightAtDispositionAfterReadmission 
+    + dispositionAfterReadmission
     + ultimateDisposition + totalLengthOfStay 
     + durationOfAssistedVentilation + daysOfAssistedVentilation 
     + ecmoAtHospital + hypothermicTherapy 
