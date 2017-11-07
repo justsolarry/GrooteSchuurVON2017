@@ -93,8 +93,14 @@ function validateBirthweight(){
         if(weight>1800){ //showing HIE in additional fields section
             $('.HIEDiv').slideDown('slow');
         }
-        if(weight<=1800){ //hiding HIE in additional fields section
+        else{//hiding HIE in additional fields section
             $('.HIEDiv').slideUp('slow');
+        }
+        if(weight<1251){
+            $('#hiddenFieldROPDate').slideUp('slow');
+        }
+        else{
+            $('#hiddenFieldROPDate').slideDown('slow');
         }
     }
     
@@ -122,6 +128,7 @@ function validateWeight(ID){
         if(weight>=401 && weight<=5000){
             $('#'+ID).removeClass('addRed')
             $('#'+ID).addClass('addGreen')
+            $('#'+ID).removeClass('glowingHiddenFieldsPermanent')
         }
         if (weight>=5001 && weight<=6999){
             toastr.warning(replaceString+' - Are you sure?'); 
@@ -216,46 +223,28 @@ function validatePatientMedicalRecordNumber(){
     }
     
 }
-function validateAppointmentLocation(){
+function validateAppointmentLocation(ID){
+    var location = document.getElementById(ID).value;
     var alphaExp = /^[a-zA-Z\s\-]*$/;
-    var value1 = document.getElementById('appointmentLocation').value;
-  if ((value1.length) ==0){
-    toastr.error("Appointment Location - Value cannot be empty");
-    $('#appointmentLocation').addClass('addRed')
-      $('#appointmentLocation').removeClass('addGreen')
-  }
-    else if (value1.match(alphaExp)){
-             $('#appointmentLocation').removeClass('addRed')
-                $('#appointmentLocation').addClass('addGreen')
-             }
-    else{
-        toastr.error("Appointment Location - - Only letters allowed");
-        $('#appointmentLocation').addClass('addRed')
-        $('#appointmentLocation').removeClass('addGreen')
+    if(location.length==0){
+        toastr.error('Appointment Location - Value cannot be empty');
+        $('#'+ID).addClass('addRed')
+        $('#'+ID).removeClass('addGreen')
     }
-  
-}
-function validateGestationalAgeInWeeks(){
-    var gestationalAgeInWeeks = document.getElementById('gestationalAgeInWeeks').value;
-  if ((gestationalAgeInWeeks.length) ==0){
-    toastr.error('Gestational Age - Value cannot be empty');
-        $('#gestationalAgeInWeeks').addClass('addRed')
-  }
-    else if (gestationalAgeInWeeks > 46 || gestationalAgeInWeeks < 15)
-  {
-      toastr.error('Gestational Age - Invalid value, must be from 15-46 weeks');
-        $('#gestationalAgeInWeeks').addClass('addRed')
-  }
-    else{
-        $('#gestationalAgeInWeeks').removeClass('addRed')
+    else if(location.match(alphaExp)){
+        $('#'+ID).removeClass('addRed')
+        $('#'+ID).addClass('addGreen')
+        $('#'+ID).removeClass('glowingHiddenFieldsPermanent')
     }
-  
+    else{
+        toastr.error("Appointment Location - Only letters allowed");
+        $('#'+ID).addClass('addRed')
+        $('#'+ID).removeClass('addGreen')
+    }
 }
-
 //START Functions that automaically certain strings while the user types
 //remove anything other than numbers
 $(".onlyNumbers").on( "keyup", function( event ) {
-    
     // 1.
     var selection = window.getSelection().toString();
     if ( selection !== '' ) {
@@ -278,14 +267,20 @@ $(".onlyNumbers").on( "keyup", function( event ) {
         } );
  
 } );
-$(".onlyLetters").on( "keyup", function( event ) {
-    var inputValue = event.which;
-        // allow letters and whitespaces only.
-        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) { 
-            event.preventDefault(); 
-        }
+$(".onlyLetters").on( "keyup", function(event) {
+     var node = $(this);
+        node.val(node.val().replace(/[^a-z]/g,'') );
 } );
 $("#headCircumference").on( "keyup", function( event ){
+    var val = $(this).val();
+    if(isNaN(val)){
+         val = val.replace(/[^0-9\.]/g,'');
+         if(val.split('.').length>2) 
+             val =val.replace(/\.+$/,"");
+    }
+    $(this).val(val); 
+});
+$("#headCircumferenceInitialDisposition").on( "keyup", function( event ){
     var val = $(this).val();
     if(isNaN(val)){
          val = val.replace(/[^0-9\.]/g,'');

@@ -94,3 +94,13 @@ font-style: normal;
 font-weight: normal;
 src: local('Avenir LT Std 55 Oblique'), url('AvenirLTStd-Oblique.woff') format('woff');
 }
+
+@font-face {
+font-family: 'Julius sans one';
+font-style: normal;
+font-weight: normal;
+src: local('Julius sans one'), url('julius-sans-one-v5-latin-regular.woff') format('woff'),
+     local('Julius sans one'), url('julius-sans-one-v5-latin-regular.woff2') format('woff2'),
+     local('Julius sans one'), url('julius-sans-one-v5-latin-regular.svg') format('svg'),
+     local('Julius sans one'), url('julius-sans-one-v5-latin-regular.ttf') format('ttf');
+}

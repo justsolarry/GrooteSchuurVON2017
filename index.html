@@ -14,13 +14,14 @@
       <link href="css/grayscale.css" rel="stylesheet">
       <link href="css/toastr.css" rel="stylesheet" />
       <link href="css/style.css" rel="stylesheet">
+       <link href="fonts/style.css" rel="stylesheet">
       <link href="css/fonts.css" rel="stylesheet">
       <link href="css/hover.css" rel="stylesheet">
       <!--Calendar CSS-->
       <link rel="stylesheet" href="calendar/jquery-ui.css">
    </head>
     <!--class="stop-scrolling"-->
-   <body id="page-top" onload="configureDB()">
+   <body id="page-top" onload="configureDB()" class="stop-scrolling">
       <!-- Clear Form Dialog -->
       <div id="dialog-confirm" title="Clear the Form?">
          <p><span class="fa fa-exclamation-triangle" style="float:left; margin:12px 12px 20px 0;"></span>The entire form will be permanently cleared. Are you sure?</p>
@@ -100,10 +101,14 @@
                               </li>
                            </ul>
                            <!-- Command buttons at the bottom of the progress bar forms -->
-                            <a href="javascript:void(0)" class="btn btn-default btn-lg clickToFinishButton" style="position:relative; width:80%; margin-bottom: 15px; bottom: 60px; font-size: 1em;" onclick="javascript:checkComplete()">Click to Finish</a>
-                           <a id="clearFormButton" href="javascript:void(0)" onclick="clearFormDialog();" class="btn btn-default btn-lg" style="position:relative; width:80%; margin-bottom: 15px; bottom: 60px; font-size: 1em;">Clear Form</a>
-                           <a id="PrintDischargeButton" href="javascript:void(0)" onclick="printForm(document.getElementById('_id').value);" class="btn btn-default btn-lg" style="position:relative; width:80%; bottom: 60px; font-size: 1em;">Print Discharge Form</a>
+                            
+                            
                         </div>
+                         <div class="buttonBox">
+                                <a href="javascript:void(0)" class="btn btn-default btn-lg clickToFinishButton" onclick="javascript:checkComplete()">Click to Finish</a>
+                               <a id="clearFormButton" href="javascript:void(0)" onclick="clearFormDialog();" class="btn btn-default btn-lg" >Start Again</a>
+                               <a id="PrintDischargeButton" href="javascript:void(0)" onclick="printForm(document.getElementById('_id').value);" class="btn btn-default btn-lg">Print Discharge Form</a>
+                            </div>
                      </div>
                      <!-- ***************  Side bar *************** -->
                   </div>
@@ -122,7 +127,7 @@
                                  <label class="fixingLabelAlignment" for="birthWeightInGrams">Birth Weight : </label>
                                  <div class="fixingInputAlignment">
                                     <span class="addingUnits unitsGrams">
-                                    <input id="birthWeightInGrams" name="birthWeightInGrams" class="form-control onlyNumbers" onchange="validateBirthweight();checkingWhatTypeOfFormToDisplay();settingBabyLength();" type="search" placeholder="eg. 1500" maxlength="4">
+                                    <input id="birthWeightInGrams" name="birthWeightInGrams" class="form-control onlyNumbers" onchange="javascript:validateBirthweight();checkingWhatTypeOfFormToDisplay();" type="search" placeholder="eg. 1500" maxlength="4">
                                     </span>
                                  </div>
                               </div>
@@ -212,8 +217,10 @@
                                              <option value="8005433">8005433 - Mitchell's Plein District Hospital</option>
                                              <option value="8005435">8005435 - Red Cross Children's Hospital</option>
                                              <option value="97777777">97777777 - Birth at Home or in Transit</option>
+                                             <option value="9000217">Other</option>
                                              <option value="77777777">N/A</option>
                                              <option value="99999999">Unknown</option>
+                                             
                                           </select>
                                        </div>
                                     </div>
@@ -238,8 +245,8 @@
                                     <span id="dateOfInitialDispositionCalendar" class="addingCalendar addingCalendarIcon">
                                     <input type="search" name="dateOfInitialDisposition" id="dateOfInitialDisposition" placeholder="dd-mm-yyyy" class="form-control calendarField" readonly="true"/>
                                     </span>
-                                     <i class="fa fa-question-circle ownToolTip" style="right:100px;">
-                                    <span class="ownToolTipText">The first time that the infant was discharged/transferred from your hospital</span>
+                                     <i class="fa fa-question-circle ownToolTip" style="right:80px;">
+                                    <span class="ownToolTipText">The first time that the infant was discharged or transferred from your hospital</span>
                                     </i>
                                  </div>
                               </div>
@@ -283,7 +290,7 @@
                               <div class="form-group input-group gestationalAgeInWeeksDiv">
                                  <label class="fixingLabelAlignment" for="gestationalAgeInWeeks">Gestational Age (Weeks) : </label>
                                  <div class="fixingInputAlignment">
-                                    <select id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" onchange="javascript:checkGestationalAgeInWeeks();countingDaysInWeeksForRespiratory();" style="height:32px;width:40%;">
+                                    <select id="gestationalAgeInWeeks" name="gestationalAgeInWeeks" class="form-control" onchange="javascript:checkGestationalAgeInWeeks();countingDaysInWeeksForRespiratory();" style="height:32px;width:30%;">
                                        <option disabled selected value></option>
                                        <option value="99">Unknown</option>
                                     </select>
@@ -292,7 +299,7 @@
                               <div class="form-group input-group gestionalDaysDiv">
                                  <label class="fixingLabelAlignment">Gestational Age (Days) :</label>
                                  <div class="fixingInputAlignment">
-                                    <select id="gestionalDays" name=gestionalDays class="form-control" onchange="countingDaysInWeeksForRespiratory();" style="height:32px;width:40%;">
+                                    <select id="gestionalDays" name=gestionalDays class="form-control" onchange="countingDaysInWeeksForRespiratory();" style="height:32px;width:30%;">
                                        <option disabled selected value></option>
                                        <option value="0">0 Days</option>
                                        <option value="1">1 Day</option>
@@ -307,13 +314,16 @@
                               <div class="form-group input-group headCircumferenceDiv">
                                  <label class="fixingLabelAlignment" for="headCircumference">Head Circumference : </label>
                                  <div class="fixingInputAlignment">
-                                    <input id="headCircumference" name="headCircumference" onchange="headCircumferenceCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
+                                     <select id="headCircumference" name="headCircumference" class=" form-control" style="height:32px;width:40%;">
+                                             <option disabled selected value></option>
+                                                <option value="99">Unknown</option>
+                                          </select>
                                  </div>
                               </div>
                               <div class="form-group input-group raceOfMotherDiv">
                                  <label class="fixingLabelAlignment">Race of Mother : </label>
                                  <div class="fixingInputAlignment">
-                                    <select id="raceOfMother" name=raceOfMother class="form-control" style="height:32px;width:40%;">
+                                    <select id="raceOfMother" name=raceOfMother class="form-control" style="height:32px;width:30%;">
                                        <option disabled selected value></option>
                                        <option value="1">Black</option>
                                        <option value="7">Coloured</option>
@@ -510,7 +520,7 @@
                                  <label class="fixingLabelAlignment">Number of Infants Delivered : </label>
                                  <div class="fixingInputAlignment">
                                     <select id="numberOfInfantsDelivered" name="numberOfInfantsDelivered" class="form-control" onchange="javascript:numberOfInfantsDeliveredCheck();" style="height:32px;width:30%;">
-                                       <option disabled selected value="00"></option>
+                                       <option disabled selected ></option>
                                        <option value="1">1</option>
                                        <option value="2">2</option>
                                        <option value="3">3</option>
@@ -542,7 +552,6 @@
                                        <option value="8">8</option>
                                        <option value="9">9</option>
                                        <option value="10">10</option>
-                                       <option value="77">N/A</option>
                                        <option value="99">Unknown</option>
                                     </select>
                                  </div>
@@ -563,14 +572,13 @@
                                        <option value="8">8</option>
                                        <option value="9">9</option>
                                        <option value="10">10</option>
-                                       <option value="77">N/A</option>
                                        <option value="99">Unknown</option>
                                     </select>
                                  </div>
                               </div>
                               <div class="form-group input-group temperatureMeasuredWithinFirstHourDiv">
-                                 <label class="fixingLabelAlignment">Temperature Measured within the 1st Hour after Admission to your NICU : </label>
-                                 <div class="fixingInputAlignment" style="height:64px;">
+                                 <label class="fixingLabelAlignment">Temp. Measured within the 1st Hour at GSH Nursery : </label>
+                                 <div class="fixingInputAlignment">
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="temperatureMeasuredWithinFirstHourYes" onchange="javascript:temperatureMeasuredWithinFirstHourCheck();" type="radio" name = temperatureMeasuredWithinFirstHour value="1">
                                     <label class="radioText" for="temperatureMeasuredWithinFirstHourYes"> Yes</label>
@@ -594,10 +602,8 @@
                                     <div class="form-group input-group new-input-group">
                                        <label class="fixingLabelAlignmentInner">Temperature : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="temperatureAdmission" name="temperatureAdmission" class=" ddList centerSelect form-control" style="height:32px;width:20%;">
+                                          <select id="temperatureAdmission" name="temperatureAdmission" class=" ddList centerSelect form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
-                                             <option value="777.7">N/A</option>
-                                             <option value="999.9">Unknown</option>
                                           </select>
                                        </div>
                                     </div>
@@ -711,7 +717,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Hours : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="ageAtFirstSurfactantHours" name="ageAtFirstSurfactantHours" class="form-control" style="height:32px;width:20%;">
+                                          <select id="ageAtFirstSurfactantHours" name="ageAtFirstSurfactantHours" class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -720,7 +726,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Minutes : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="ageAtFirstSurfactantMinutes" name="ageAtFirstSurfactantMinutes" class="form-control" style="height:32px;width:20%;">
+                                          <select id="ageAtFirstSurfactantMinutes" name="ageAtFirstSurfactantMinutes" class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="0">0</option>
                                              <option value="15">15</option>
@@ -867,8 +873,8 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldBacterialSepsisBefore" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldBacterialSepsisBefore" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInner">Number of Codes : </label>
                                              <div class="fixingInputAlignmentInner">
@@ -1008,7 +1014,7 @@
                                  </div>
                                  <div class="inner-panel-body">
                                     <div class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInner">Cranial Imaging(US/CT/MRI) on or before day 28  : </label>
+                                       <label class="fixingLabelAlignmentInner">Ultrasound on or before day 28  : </label>
                                        <span class="radioFloatLeftInner">
                                        <input class="radioType" id="cranialImagingYes" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="1">
                                        <label class="radioText" for="cranialImagingYes"> Yes</label>
@@ -1018,20 +1024,16 @@
                                        <label class="radioText" for="cranialImagingNo"> No</label>
                                        </span>
                                        <span class="radioFloatLeftInner">
-                                       <input class="radioType" id="cranialImagingNA" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="7">
-                                       <label class="radioText" for="cranialImagingNA"> N/A</label>
-                                       </span>
-                                       <span class="radioFloatLeftInner">
                                        <input class="radioType" id="cranialImagingUnknown" type="radio" onchange="javascript:cranialImagingCheck();" name = cranialImaging value="9">
                                        <label class="radioText" for="cranialImagingUnknown"> Unknown</label>
                                        </span>
                                     </div>
-                                    <div id="hiddenFieldCranialImaging" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldCranialImaging" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Worst Grade of PIH (0-4) : </label>
                                              <div class="fixingInputAlignmentInnerInner">
-                                                <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" form-control" style="height:32px;width:20%;">
+                                                <select id="worstGradePIH" name=state onchange="javascript:PIHWhereOccurredCheck();" class=" form-control" style="height:32px;width:40%;">
                                                    <option disabled selected value></option>
                                                    <option value="0">0</option>
                                                    <option value="1">1</option>
@@ -1045,7 +1047,7 @@
                                           </div>
                                           <div id="hiddenFieldPIHWhereOccurred">
                                              <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInnerInner">Where Occurred?  : </label>
+                                                <label class="fixingLabelAlignmentInnerInner">Where Occurred : </label>
                                                 <div class="fixingInputAlignmentInnerInner">
                                                    <span class="radioFloatLeftInner">
                                                    <input class="radioType" id="PIHWhereOccurredYourHospital" type="radio" name = PIHWhereOccurred value="1">
@@ -1403,11 +1405,11 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldBacterialSepsis" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-primary">
+                                    <div id="hiddenFieldBacterialSepsis" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInner">Where Occurred : </label>
-                                             <div class="fixingInputAlignmentInner">
+                                             <label class="fixingLabelAlignmentInnerInner">Where Occurred : </label>
+                                             <div class="fixingInputAlignmentInnerInner">
                                                 <span class="radioFloatLeftInner">
                                                 <input class="radioType" id="bacterialSepsisWhereOccurredYourHospital" type="radio" name = bacterialSepsisWhereOccurred value="1">
                                                 <label class="radioTextForHospitalResponse" for="bacterialSepsisWhereOccurredYourHospital">Your Hospital</label>
@@ -1423,8 +1425,8 @@
                                              </div>
                                           </div>
                                           <div class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInner">Number of Codes : </label>
-                                             <div class="fixingInputAlignmentInner">
+                                             <label class="fixingLabelAlignmentInnerInner">Number of Codes : </label>
+                                             <div class="fixingInputAlignmentInnerInner">
                                                 <select id="numberOfBacterialSepsisAfter" name="numberOfBacterialSepsisAfter" class="form-control" onchange="javascript:numberOfBacterialSepsisAfterCheck();" style="height:32px;width:30%;">
                                                    <option disabled selected value></option>
                                                    <option value="1">1</option>
@@ -1434,8 +1436,8 @@
                                              </div>
                                           </div>
                                           <div id="bacterialAfterDiv1" class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 1 : </label>
-                                             <div class="fixingInputAlignmentInner">
+                                             <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 1 : </label>
+                                             <div class="fixingInputAlignmentInnerInner">
                                                 <select id="pathogenCodeAfter1" name=pathogenCodeAfter1 class="form-control" style="height:32px;width:70%;">
                                                    <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
@@ -1463,8 +1465,8 @@
                                              </div>
                                           </div>
                                           <div id="bacterialAfterDiv2" class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 2 : </label>
-                                             <div class="fixingInputAlignmentInner">
+                                             <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 2 : </label>
+                                             <div class="fixingInputAlignmentInnerInner">
                                                 <select id="pathogenCodeAfter2" name=pathogenCodeAfter2 class="form-control" style="height:32px;width:70%;">
                                                    <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
@@ -1492,8 +1494,8 @@
                                              </div>
                                           </div>
                                           <div id="bacterialAfterDiv3" class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInner">Bacterial Pathogen Codes 3 : </label>
-                                             <div class="fixingInputAlignmentInner">
+                                             <label class="fixingLabelAlignmentInnerInner">Bacterial Pathogen Codes 3 : </label>
+                                             <div class="fixingInputAlignmentInnerInner">
                                                 <select id="pathogenCodeAfter3" name=pathogenCodeAfter3 class="form-control" style="height:32px;width:70%;">
                                                    <option disabled selected value=""></option>
                                                    <option value="102">102 - Acinetobacter species</option>
@@ -1543,11 +1545,11 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldCoagulaseNegative" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldCoagulaseNegative" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInner">Where Occurred : </label>
-                                             <div class="fixingInputAlignmentInner">
+                                             <label class="fixingLabelAlignmentInnerInner">Where Occurred : </label>
+                                             <div class="fixingInputAlignmentInnerInner">
                                                 <span class="radioFloatLeftInner">
                                                 <input class="radioType" id="coagulaseNegativeWhereOccurredYourHospital" type="radio" name = coagulaseNegativeWhereOccurred value="1">
                                                 <label class="radioTextForHospitalResponse" for="coagulaseNegativeWhereOccurredYourHospital">Your Hospital</label>
@@ -1585,11 +1587,11 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldFungalInfection" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldFungalInfection" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInner">Where Occurred : </label>
-                                             <div class="fixingInputAlignmentInner">
+                                             <label class="fixingLabelAlignmentInnerInner">Where Occurred : </label>
+                                             <div class="fixingInputAlignmentInnerInner">
                                                 <span class="radioFloatLeftInner">
                                                 <input class="radioType" id="fungalInfectionWhereOccurredYourHospital" type="radio" name = fungalInfectionWhereOccurred value="1">
                                                 <label class="radioTextForHospitalResponse" for="fungalInfectionWhereOccurredYourHospital">Your Hospital</label>
@@ -1620,10 +1622,6 @@
                                     <label class="radioText" for="steroidsForCLDNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="steroidsForCLDNA" onchange="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="7">
-                                    <label class="radioText" for="steroidsForCLDNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="steroidsForCLDUnknown" onchange="javascript:steroidsForCLDCheck()" type="radio" name = steroidsForCLD value="9">
                                     <label class="radioText" for="steroidsForCLDUnknown">Unknown</label>
                                     </span>
@@ -1639,10 +1637,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="ibuprofenNo" type="radio" name = ibuprofen value="0">
                                     <label class="radioText" for="ibuprofenNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="ibuprofenNA" type="radio" name = ibuprofen value="7">
-                                    <label class="radioText" for="ibuprofenNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="ibuprofenUnknown" type="radio" name = ibuprofen value="9">
@@ -1662,10 +1656,6 @@
                                     <label class="radioText" for="acetaminophenNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="acetaminophenNA" type="radio" name = acetaminophen value="7">
-                                    <label class="radioText" for="acetaminophenNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="acetaminophenUnknown" type="radio" name = acetaminophen value="9">
                                     <label class="radioText" for="acetaminophenUnknown">Unknown</label>
                                     </span>
@@ -1681,10 +1671,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="probioticsNo" type="radio" name = probiotics value="0">
                                     <label class="radioText" for="probioticsNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="probioticsNA" type="radio" name = probiotics value="7">
-                                    <label class="radioText" for="probioticsNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="probioticsUnknown" type="radio" name = probiotics value="9">
@@ -1704,10 +1690,6 @@
                                     <label class="radioText" for="ropTreatmentWithVegfDrugNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="ropTreatmentWithVegfDrugNA" type="radio" name = ropTreatmentWithVegfDrug value="7">
-                                    <label class="radioText" for="ropTreatmentWithVegfDrugNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="ropTreatmentWithVegfDrugUnknown" type="radio" name = ropTreatmentWithVegfDrug value="9">
                                     <label class="radioText" for="ropTreatmentWithVegfDrugUnknown">Unknown</label>
                                     </span>
@@ -1725,10 +1707,6 @@
                                     <label class="radioText" for="caffeineNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="caffeineNA" type="radio" name = caffeine value="7">
-                                    <label class="radioText" for="caffeineNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="caffeineUnknown" type="radio" name = caffeine value="9">
                                     <label class="radioText" for="caffeineUnknown">Unknown</label>
                                     </span>
@@ -1744,10 +1722,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="ropSurgeryNo" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="0">
                                     <label class="radioText" for="ropSurgeryNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="ropSurgeryNA" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="7">
-                                    <label class="radioText" for="ropSurgeryNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="ropSurgeryUnknown" onchange="javascript:ropSurgeryCheck()" type="radio" name = ropSurgery value="9">
@@ -1788,10 +1762,6 @@
                                     <label class="radioText" for="pdaSurgeryNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="pdaSurgeryNA" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="7">
-                                    <label class="radioText" for="pdaSurgeryNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="pdaSurgeryUnknown" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = pdaSurgery value="9">
                                     <label class="radioText" for="pdaSurgeryUnknown">Unknown</label>
                                     </span>
@@ -1809,10 +1779,6 @@
                                     <label class="radioText" for="necSurgeryNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necSurgeryNA" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="7">
-                                    <label class="radioText" for="necSurgeryNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="necSurgeryUnknown" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = necSurgery value="9">
                                     <label class="radioText" for="necSurgeryUnknown">Unknown</label>
                                     </span>
@@ -1828,10 +1794,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="otherSurgeryNo" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="0">
                                     <label class="radioText" for="otherSurgeryNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="otherSurgeryNA" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="7">
-                                    <label class="radioText" for="otherSurgeryNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="otherSurgeryUnknown" onchange="javascript:checkIfThereIsSurgery();" type="radio" name = otherSurgery value="9">
@@ -1858,8 +1820,8 @@
                                        </div>
                                     </div>
                                     <!-- START SURGERY CODE-->
-                                    <div id="surgeryDiv1" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="surgeryDiv1" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 1 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -1948,8 +1910,8 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div id="surgeryDiv2" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="surgeryDiv2" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 2 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -2038,8 +2000,8 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div id="surgeryDiv3" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="surgeryDiv3" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 3 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -2128,8 +2090,8 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div id="surgeryDiv4" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="surgeryDiv4" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 4 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -2218,8 +2180,8 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div id="surgeryDiv5" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="surgeryDiv5" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Surgery Code 5 :</label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -2323,10 +2285,6 @@
                                     <label class="radioText" for="respiratoryDistressSyndromeNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="respiratoryDistressSyndromeNA" type="radio" name = respiratoryDistressSyndrome value="7">
-                                    <label class="radioText" for="respiratoryDistressSyndromeNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="respiratoryDistressSyndromeUnknown" type="radio" name = respiratoryDistressSyndrome value="9">
                                     <label class="radioText" for="respiratoryDistressSyndromeUnknown">Unknown</label>
                                     </span>
@@ -2342,10 +2300,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="pneumothoraxNo" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="0">
                                     <label class="radioText" for="pneumothoraxNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="pneumothoraxNA" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="7">
-                                    <label class="radioText" for="pneumothoraxNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="pneumothoraxUnknown" onchange="javascript:pneumothoraxCheck();" type="radio" name = pneumothorax value="9">
@@ -2386,10 +2340,6 @@
                                     <label class="radioText" for="patentDuctusArteriosusNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="patentDuctusArteriosusNA" type="radio" name = patentDuctusArteriosus value="7">
-                                    <label class="radioText" for="patentDuctusArteriosusNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="patentDuctusArteriosusUnknown" type="radio" name = patentDuctusArteriosus value="9">
                                     <label class="radioText" for="patentDuctusArteriosusUnknown">Unknown</label>
                                     </span>
@@ -2407,10 +2357,6 @@
                                     <label class="radioText" for="necrotizingEnterocolitisNo">No</label>
                                     </span>
                                     <span class="radioFloatLeft">
-                                    <input class="radioType" id="necrotizingEnterocolitisNA" onchange="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="7">
-                                    <label class="radioText" for="necrotizingEnterocolitisNA">N/A</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
                                     <input class="radioType" id="necrotizingEnterocolitisUnknown" onchange="javascript:necrotizingEnterocolitisCheck();" type="radio" name = necrotizingEnterocolitis value="9">
                                     <label class="radioText" for="necrotizingEnterocolitisUnknown">Unknown</label>
                                     </span>
@@ -2419,7 +2365,7 @@
                               <div id="hiddenFieldnecrotizingEnterocolitis" class="InnerPanel inner-panel-primary">
                                  <div class="inner-panel-body">
                                     <div class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInnerInner">Where Given : </label>
+                                       <label class="fixingLabelAlignmentInnerInner">Where Occurred : </label>
                                        <div class="fixingInputAlignmentInnerInner">
                                           <span class="radioFloatLeftInner">
                                           <input class="radioType" id="necrotizingEnterocolitisWhereOccuredYourHospital" type="radio" name = necrotizingEnterocolitisWhereOccured value="1">
@@ -2447,10 +2393,6 @@
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="focalIntestinalPerforationNo" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="0">
                                     <label class="radioText" for="focalIntestinalPerforationNo">No</label>
-                                    </span>
-                                    <span class="radioFloatLeft">
-                                    <input class="radioType" id="focalIntestinalPerforationNA" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="7">
-                                    <label class="radioText" for="focalIntestinalPerforationNA">N/A</label>
                                     </span>
                                     <span class="radioFloatLeft">
                                     <input class="radioType" id="focalIntestinalPerforationUnknown" onchange="javascript:focalIntestinalPerforationCheck();" type="radio" name = focalIntestinalPerforation value="9">
@@ -2526,7 +2468,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInnerInner">Worst Stage of ROP : </label>
                                        <div class="fixingInputAlignmentInnerInner">
-                                          <select name=state class="form-control" style="height:32px;width:20%;">
+                                          <select name=state class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="0">0</option>
                                              <option value="1">1</option>
@@ -2982,7 +2924,7 @@
                                        <option value="0">None</option>
                                        <option value="1">Human Milk Only</option>
                                        <option value="2">Formula Only</option>
-                                       <option value="3">Human Milk in Combination with either fortifier or formula</option>
+                                       <option value="3">Human Milk &#177; Fortifier or Formula</option>
                                        <option value="7">N/A</option>
                                        <option value="9">Unknown</option>
                                     </select>
@@ -3147,7 +3089,7 @@
                               <div class="form-group input-group initialDispositionDiv">
                                  <label class="fixingLabelAlignment">Initial Disposition :</label>
                                  <div class="fixingInputAlignment">
-                                    <select id="initialDisposition" name=initialDisposition onchange="javascript:initialDispositionCheck();" class=" ddList centerSelect form-control" style="height:32px;width:70%;">
+                                    <select id="initialDisposition" name=initialDisposition onchange="javascript:initialDispositionCheck();" class="form-control" style="height:32px;width:70%;">
                                        <option disabled selected value></option>
                                        <option value="1">Home</option>
                                        <option value="3">Died</option>
@@ -3155,7 +3097,25 @@
                                        <option value="5">Still Hospitalized as of First Birthday</option>
                                        <option value="7">N/A</option>
                                        <option value="9">Unknown</option>
+                                        <option value="10">Pending</option>
                                     </select>
+                                 </div>
+                              </div>
+                              <div class="form-group input-group weightAtInitialDispositionDiv">
+                                 <label id="weightAtInitialDispositionLabel" class="fixingLabelAlignment" for="weightAtInitialDisposition">Weight at Initial Disposition : </label>
+                                 <div class="fixingInputAlignment">
+                                    <span class="addingUnits unitsGrams">
+                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control onlyNumbers" onchange="javascript:validateWeight('weightAtInitialDisposition')" type="search" placeholder="eg. 1122" maxlength="4">
+                                    </span>
+                                 </div>
+                              </div>
+                              <div class="form-group input-group headCircumferenceInitialDispositionDiv">
+                                 <label id="headCircumferenceAtInitialDispositionLabel" class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
+                                 <div class="fixingInputAlignment">
+                                     <select id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" class=" form-control" style="height:32px;width:40%;">
+                                             <option disabled selected value></option>
+                                                <option value="99">Unknown</option>
+                                          </select>
                                  </div>
                               </div>
                               <div id="TransferFormPartA" class="InnerPanel inner-panel-primary TransferFormPartADiv">
@@ -3166,7 +3126,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Reason for Transfer : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select name=reasonForTransfer class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select name=reasonForTransfer id="reasonForTransfer" class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="1">Growth/Discharge planning</option>
                                              <option value="2">Medical/Diagnostic Services</option>
@@ -3182,7 +3142,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Transfer Code of Center to Which infant Transferred : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select name=transferCode class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select name=transferCode id="transferCode" class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="13240">13240 - Mowbray Maternity Hospital</option>
                                              <option value="14994">14994 - New Somerset Hospital</option>
@@ -3200,7 +3160,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Post Transfer Disposition : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="postTransferDisposition" onchange="javascript:postTransferDispositionCheck();" name=postTransferDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select id="postTransferDisposition" onchange="javascript:postTransferDispositionCheck();" name=postTransferDisposition class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="1">Home</option>
                                              <option value="2">Transferred Again to Another Hospital</option>
@@ -3222,7 +3182,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Disposition after Readmission : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="dispositionAfterReadmission" onchange="javascript:dispositionAfterReadmissionCheck();" name=dispositionAfterReadmission class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select id="dispositionAfterReadmission" onchange="javascript:dispositionAfterReadmissionCheck();" name=dispositionAfterReadmission class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="1">Home</option>
                                              <option value="3">Died</option>
@@ -3251,7 +3211,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner">Ultimate Disposition : </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="ultimateDisposition" onchange="javascript:ultimateDispositionCheck();" name=ultimateDisposition class=" ddList centerSelect form-control" style="height:32px;width:80%;">
+                                          <select id="ultimateDisposition" onchange="javascript:ultimateDispositionCheck();" name=ultimateDisposition class="form-control" style="height:32px;width:80%;">
                                              <option disabled selected value></option>
                                              <option value="1">Home</option>
                                              <option value="3">Died</option>
@@ -3284,20 +3244,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="form-group input-group weightAtInitialDispositionDiv">
-                                 <label class="fixingLabelAlignment" for="weightAtInitialDisposition">Weight at Initial Disposition : </label>
-                                 <div class="fixingInputAlignment">
-                                    <span class="addingUnits unitsGrams">
-                                    <input id="weightAtInitialDisposition" name="weightAtInitialDisposition" class="form-control onlyNumbers" onchange="validateWeight('weightAtInitialDisposition')" type="search" placeholder="eg. 1122" maxlength="4">
-                                    </span>
-                                 </div>
-                              </div>
-                              <div class="form-group input-group headCircumferenceInitialDispositionDiv">
-                                 <label class="fixingLabelAlignment" for="headCircumferenceInitialDisposition">Head Circumference at Initial Disposition : </label>
-                                 <div class="fixingInputAlignment">
-                                    <input id="headCircumferenceInitialDisposition" name="headCircumferenceInitialDisposition" onchange="headCircumferenceInitialDispositionCheck()" class="form-control" type="search" placeholder="eg. 21.2" maxlength="4">
-                                 </div>
-                              </div>
+                              
                            </div>
                         </div>
                      </form>
@@ -3326,8 +3273,8 @@
                   <div class="col-md-3"></div>
                   <div id="col-md-8-div-3" class="col-md-9 mx-auto">
                      <form id="thirdForm" class="general-form">
-                        <div id="thirdPanelID" class="panel panel-primary">
-                           <div class="panel-body">
+                            <div id="thirdPanelID" class="panel panel-primary">
+                            <div class="panel-body">
                               <div class="form-group input-group" style="height: 1px; ">
                                  <label class="fixingLabelAlignment" style="height: 1px;"></label>
                                  <div class="fixingInputAlignment" style="height: 1px;">
@@ -3338,26 +3285,7 @@
                                  <div class="inner-panel-heading">
                                     Additional Birth Details
                                  </div>
-<!--
-                                 <div class="inner-panel-body">
-                                    <div id="twinOrTripletDiv" class="form-group input-group">
-                                       <label class="fixingLabelAlignmentInner">Twins/Triplets/Quadruplets :</label>
-                                       <div class="fixingInputAlignmentInner">
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="twinOrTripletOrQuadrupletTwin" type="radio" onchange="javascript:twinOrTripletOrQuadrupletCheck()" name = twinOrTripletOrQuadruplet value="1">
-                                          <label class="radioText" for="twinOrTripletOrQuadrupletTwin"> Twin</label>
-                                          </span>
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="twinOrTripletOrQuadrupletTriplet" type="radio" onchange="javascript:twinOrTripletOrQuadrupletCheck()" name = twinOrTripletOrQuadruplet value="2">
-                                          <label class="radioText" for="twinOrTripletOrQuadrupletTriplet"> Triplet</label>
-                                          </span>
-                                          <span class="radioFloatLeftInner">
-                                          <input class="radioType" id="twinOrTripletOrQuadrupletQuadruplet" type="radio" onchange="javascript:twinOrTripletOrQuadrupletCheck()" name = twinOrTripletOrQuadruplet value="3">
-                                          <label class="radioText" for="twinOrTripletOrQuadrupletQuadruplet"> Quadruplet</label>
-                                          </span>
-                                       </div>
-                                    </div>
--->
+                                  <div class="inner-panel-body">
                                     <div id="hiddenFieldTwins">
                                           <div class="form-group input-group twinABDiv">
                                              <label class="fixingLabelAlignmentInner">Twin A/B : </label>
@@ -3424,19 +3352,10 @@
                                           </select>
                                        </div>
                                     </div>
-                                    <div class="form-group input-group babyLengthDiv">
-                                       <label class="fixingLabelAlignmentInner">Baby Length : </label>
-                                       <div class="fixingInputAlignmentInner">
-                                          <select id="babyLength" name="babyLength" class="form-control" style="height:32px;width:40%;">
-                                             <option disabled selected value></option>
-                                             <option value="99">Unknown</option>
-                                          </select>
-                                       </div>
-                                    </div>
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="grav">Grav  :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="grav" name=grav class="form-control" style="height:32px;width:20%;">
+                                          <select id="grav" name=grav class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                              <option value="1">1</option>
@@ -3455,7 +3374,7 @@
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="para">Para  :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="para" name=para class="form-control" style="height:32px;width:20%;">
+                                          <select id="para" name=para class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                              <option value="1">1</option>
@@ -3488,8 +3407,8 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldRVD" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldRVD" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Viral Load  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -3522,8 +3441,18 @@
                                           </div>
                                        </div>
                                     </div>
+                                  <div class="form-group input-group babyLengthDiv">
+                                       <label class="fixingLabelAlignmentInner">Baby Length : </label>
+                                       <div class="fixingInputAlignmentInner">
+                                          <select id="babyLength" name="babyLength" class="form-control" style="height:32px;width:40%;">
+                                             <option disabled selected value></option>
+                                             <option value="99">Unknown</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                  </div>
                                  </div>
-                              </div>
+                              
                               <!--END Additional Birth Details-->
                               <!--START Clinical Additional Fields-->
                               <div class="InnerPanel inner-panel-primary">
@@ -3544,8 +3473,8 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldJaundiceNeedingPhototherapy" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldJaundiceNeedingPhototherapy" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Level above Exchange  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -3574,13 +3503,14 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldInvasiveVentilation" class="InnerInnerPanel inner-inner-primary-panel">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldInvasiveVentilation" class="InnerPanel inner-inner-primary-panel">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner" for="dayOfLifeVentilationStarted">Day of Life Ventilation Started  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="dayOfLifeVentilationStarted" name="dayOfLifeVentilationStarted" class="form-control" style="height:32px;width:40%;">
                                                    <option disabled selected value></option>
+                                                    <option value="1">1 Day Old</option>
                                                 </select>
                                              </div>
                                           </div>
@@ -3589,6 +3519,8 @@
                                              <div class="fixingInputAlignmentInnerInner">
                                                 <select id="dayOfLifeVentilationStartedDuration" name="dayOfLifeVentilationStartedDuration" class="form-control" style="height:32px;width:40%;">
                                                    <option disabled selected value></option>
+                                                    <option value="0">&lt; 1 Day</option>
+                                                    <option value="1">1 Day</option>
                                                 </select>
                                              </div>
                                           </div>
@@ -3613,8 +3545,8 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldhypoxicIschaemicEncephalopathy" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldhypoxicIschaemicEncephalopathy" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner" for="hypoxicIschaemicEncephalopathyHighestScore">Highest HIE Score  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -3699,8 +3631,8 @@
                                           </select>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldSepsisDuringAdmission" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldSepsisDuringAdmission" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group">
                                              <label class="fixingLabelAlignmentInnerInner">Number of Episodes  :  </label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -3727,104 +3659,6 @@
                                                 </span>
                                              </div>
                                           </div>
-                                          <div class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInner">Number of Episodes : </label>
-                                             <div class="fixingInputAlignmentInner">
-                                                <select id="numberOfBacterialCodesDuringAdmission" name="numberOfBacterialCodesDuringAdmission" class="form-control" onchange="javascript:numberOfBacterialCodesDuringAdmissionCheck();" style="height:32px;width:30%;">
-                                                   <option disabled selected value></option>
-                                                   <option value="1">1</option>
-                                                   <option value="2">2</option>
-                                                   <option value="3">3</option>
-                                                </select>
-                                             </div>
-                                          </div>
-                                          <div id="bacterialCodeDuringAdmissionDiv1" class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInnerInner">Bacterial Code 1 : </label>
-                                             <div class="fixingInputAlignmentInnerInner">
-                                                <select id="bacterialCodeDuringAdmission1" name=bacterialCodeDuringAdmission1 class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value=""></option>
-                                                   <option value="102">102 - Acinetobacter species</option>
-                                                   <option value="201">201 - Bacteroides species</option>
-                                                   <option value="501">501 - Enterobacter species</option>
-                                                   <option value="502">502 - Enterococcus species</option>
-                                                   <option value="503">503 - Escherichia coli</option>
-                                                   <option value="801">801 - Haemophilus species</option>
-                                                   <option value="1101">1101 - Klebsiella species</option>
-                                                   <option value="1201">1201 - Listeria monocytogenes</option>
-                                                   <option value="1301">1301 - Moraxella species</option>
-                                                   <option value="1401">1401 - Neisseria species</option>
-                                                   <option value="1604">1604 - Proteus species</option>
-                                                   <option value="1606">1606 - Pseudomonas species</option>
-                                                   <option value="1902">1902 - Serratia species</option>
-                                                   <option value="1903">1903 - Staphylococcus coagulase positive</option>
-                                                   <option value="1904">1904 - Stenotrophomonas maltophilia</option>
-                                                   <option value="1905">1905 - Group B Streptococcus or GBS</option>
-                                                   <option value="1906">1906 - Streptococcus anginosus</option>
-                                                   <option value="1907">1907 - Streptococcus pneumoniae</option>
-                                                   <option value="1908">1908 - Streptococcus pyogenes</option>
-                                                   <option value="7777">N/A</option>
-                                                   <option value="9999">Unknown</option>
-                                                </select>
-                                             </div>
-                                          </div>
-                                          <div id="bacterialCodeDuringAdmissionDiv2" class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInnerInner">Bacterial Code 2 : </label>
-                                             <div class="fixingInputAlignmentInnerInner">
-                                                <select id="bacterialCodeDuringAdmission2" name=bacterialCodeDuringAdmission2 class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value=""></option>
-                                                   <option value="102">102 - Acinetobacter species</option>
-                                                   <option value="201">201 - Bacteroides species</option>
-                                                   <option value="501">501 - Enterobacter species</option>
-                                                   <option value="502">502 - Enterococcus species</option>
-                                                   <option value="503">503 - Escherichia coli</option>
-                                                   <option value="801">801 - Haemophilus species</option>
-                                                   <option value="1101">1101 - Klebsiella species</option>
-                                                   <option value="1201">1201 - Listeria monocytogenes</option>
-                                                   <option value="1301">1301 - Moraxella species</option>
-                                                   <option value="1401">1401 - Neisseria species</option>
-                                                   <option value="1604">1604 - Proteus species</option>
-                                                   <option value="1606">1606 - Pseudomonas species</option>
-                                                   <option value="1902">1902 - Serratia species</option>
-                                                   <option value="1903">1903 - Staphylococcus coagulase positive</option>
-                                                   <option value="1904">1904 - Stenotrophomonas maltophilia</option>
-                                                   <option value="1905">1905 - Group B Streptococcus or GBS</option>
-                                                   <option value="1906">1906 - Streptococcus anginosus</option>
-                                                   <option value="1907">1907 - Streptococcus pneumoniae</option>
-                                                   <option value="1908">1908 - Streptococcus pyogenes</option>
-                                                   <option value="7777">N/A</option>
-                                                   <option value="9999">Unknown</option>
-                                                </select>
-                                             </div>
-                                          </div>
-                                          <div id="bacterialCodeDuringAdmissionDiv3" class="form-group input-group">
-                                             <label class="fixingLabelAlignmentInnerInner">Bacterial Code 3 : </label>
-                                             <div class="fixingInputAlignmentInnerInner">
-                                                <select id="bacterialCodeDuringAdmission3" name=bacterialCodeDuringAdmission3 class="form-control" style="height:32px;width:70%;">
-                                                   <option disabled selected value=""></option>
-                                                   <option value="102">102 - Acinetobacter species</option>
-                                                   <option value="201">201 - Bacteroides species</option>
-                                                   <option value="501">501 - Enterobacter species</option>
-                                                   <option value="502">502 - Enterococcus species</option>
-                                                   <option value="503">503 - Escherichia coli</option>
-                                                   <option value="801">801 - Haemophilus species</option>
-                                                   <option value="1101">1101 - Klebsiella species</option>
-                                                   <option value="1201">1201 - Listeria monocytogenes</option>
-                                                   <option value="1301">1301 - Moraxella species</option>
-                                                   <option value="1401">1401 - Neisseria species</option>
-                                                   <option value="1604">1604 - Proteus species</option>
-                                                   <option value="1606">1606 - Pseudomonas species</option>
-                                                   <option value="1902">1902 - Serratia species</option>
-                                                   <option value="1903">1903 - Staphylococcus coagulase positive</option>
-                                                   <option value="1904">1904 - Stenotrophomonas maltophilia</option>
-                                                   <option value="1905">1905 - Group B Streptococcus or GBS</option>
-                                                   <option value="1906">1906 - Streptococcus anginosus</option>
-                                                   <option value="1907">1907 - Streptococcus pneumoniae</option>
-                                                   <option value="1908">1908 - Streptococcus pyogenes</option>
-                                                   <option value="7777">N/A</option>
-                                                   <option value="9999">Unknown</option>
-                                                </select>
-                                             </div>
-                                          </div>
                                        </div>
                                     </div>
                                  </div>
@@ -3849,8 +3683,8 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldFetalMedicineUnitFlaggedGroup" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldFetalMedicineUnitFlaggedGroup" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group new-input-group">
                                              <label class="fixingLabelAlignmentInnerInner" for="antenatalScan">Antenatal Scan : </label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -3872,8 +3706,8 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldChromosomesDone" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldChromosomesDone" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group new-input-group">
                                              <label class="fixingLabelAlignmentInnerInner" for="chromosomesDoneResults">Results : </label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -3895,8 +3729,8 @@
                                           </span>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldAbnormalHeadUltrasound" class="InnerInnerPanel inner-inner-panel-primary">
-                                       <div class="inner-inner-panel-body">
+                                    <div id="hiddenFieldAbnormalHeadUltrasound" class="InnerPanel inner-panel-primary">
+                                       <div class="inner-panel-body">
                                           <div class="form-group input-group new-input-group">
                                              <label class="fixingLabelAlignmentInnerInner" for="abnormalHeadUltrasoundResult">Details : </label>
                                              <div class="fixingInputAlignmentInnerInner">
@@ -3919,12 +3753,12 @@
                                              </span>
                                           </div>
                                        </div>
-                                       <div id="hiddenFieldImmunizations652Date" class="InnerInnerPanel inner-inner-panel-primary">
-                                          <div class="inner-inner-panel-body">
+                                       <div id="hiddenFieldImmunizations652Date" class="InnerPanel inner-panel-primary">
+                                          <div class="inner-panel-body">
                                              <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner" for="immunizationDate">Date : </label>
+                                                <label class="fixingLabelAlignmentInner" for="immunizations652Date">Date : </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                   <span class="addingCalendarInner addingCalendarIcon">
+                                                   <span id="immunizations652DateCalendar" class="addingCalendarInner addingCalendarIcon">
                                                    <input type="search" placeholder="dd-mm-yyyy" id="immunizations652Date" name="immunizations652Date" class="form-control calendarField" readonly="true"/>
                                                    </span>
                                                 </div>
@@ -3932,27 +3766,54 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldImmunizations1452">
+                                    <div id="hiddenFieldImmunizations1052">
+                                       <div class="form-group input-group">
+                                          <label class="fixingLabelAlignmentInner">Received 10/52 Immunizations   :  </label>
+                                          <div class="fixingInputAlignmentInner">
+                                             <span class="radioFloatLeftInner">
+                                             <input class="radioType" id="immunizations1052Yes" onchange="javascript:immunizations1052Check()" type="radio" name = immunizations1052 value="1">
+                                             <label class="radioText" for="immunizations1052Yes">Yes</label>
+                                             </span>
+                                             <span class="radioFloatLeftInner">
+                                             <input class="radioType" id="immunizations1052No" onchange="javascript:immunizations1052Check()" type="radio" name = immunizations1052 value="0">
+                                             <label class="radioText" for="immunizations1052No">No</label>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div id="hiddenFieldImmunizations1052Date" class="InnerPanel inner-panel-primary">
+                                          <div class="inner-panel-body">
+                                             <div class="form-group input-group">
+                                                <label class="fixingLabelAlignmentInner" for="immunizations1052Date">Date : </label>
+                                                <div class="fixingInputAlignmentInner">
+                                                   <span id="immunizations1052DateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                                    <input type="search" placeholder="dd-mm-yyyy" id="immunizations1052Date" name="immunizations1052Date" class="form-control calendarField" readonly="true"/>
+                                                   </span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                     <div id="hiddenFieldImmunizations1452">
                                        <div class="form-group input-group">
                                           <label class="fixingLabelAlignmentInner">Received 14/52 Immunizations   :  </label>
                                           <div class="fixingInputAlignmentInner">
                                              <span class="radioFloatLeftInner">
-                                             <input class="radioType" id="immunizations1452Yes" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations652 value="1">
+                                             <input class="radioType" id="immunizations1452Yes" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations1452 value="1">
                                              <label class="radioText" for="immunizations1452Yes">Yes</label>
                                              </span>
                                              <span class="radioFloatLeftInner">
-                                             <input class="radioType" id="immunizations1452No" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations652 value="0">
+                                             <input class="radioType" id="immunizations1452No" onchange="javascript:immunizations1452Check()" type="radio" name = immunizations1452 value="0">
                                              <label class="radioText" for="immunizations1452No">No</label>
                                              </span>
                                           </div>
                                        </div>
-                                       <div id="hiddenFieldImmunizations1452Date" class="InnerInnerPanel inner-inner-panel-primary">
-                                          <div class="inner-inner-panel-body">
+                                       <div id="hiddenFieldImmunizations1452Date" class="InnerPanel inner-panel-primary">
+                                          <div class="inner-panel-body">
                                              <div class="form-group input-group">
-                                                <label class="fixingLabelAlignmentInner" for="immunizationDate">Date : </label>
+                                                <label class="fixingLabelAlignmentInner" for="immunizations1452Date">Date : </label>
                                                 <div class="fixingInputAlignmentInner">
-                                                   <span class="addingCalendarInner addingCalendarIcon">
-                                                   <input type="search" placeholder="dd-mm-yyyy" id="immunizations1452Date" name="immunizations1452Date" class="form-control calendarField" readonly="true"/>
+                                                   <span id="immunizations1452DateCalendar" class="addingCalendarInner addingCalendarIcon">
+                                                    <input type="search" placeholder="dd-mm-yyyy" id="immunizations1452Date" name="immunizations1452Date" class="form-control calendarField" readonly="true"/>
                                                    </span>
                                                 </div>
                                              </div>
@@ -3983,12 +3844,12 @@
                                           </select>
                                        </div>
                                     </div>
-                                     <div id="appointmentDiv1" class="InnerInnerPanel inner-inter-panel-primary">
+                                     <div id="appointmentDiv1" class="InnerPanel inner-inter-panel-primary">
                                          <div class="inner-panel-body">
                                         <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation1">First Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation1" name="appointmentLocation1" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation1" name="appointmentLocation1" class="form-control" onchange="validateAppointmentLocation('appointmentLocation1')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -4002,7 +3863,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime1">First Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime1" name=appointmentTime1 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime1" name=appointmentTime1 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -4010,12 +3871,12 @@
                                     </div>
                                      </div>
                                          </div>
-                                    <div id="appointmentDiv2" class="InnerInnerPanel inner-inter-panel-primary">
+                                    <div id="appointmentDiv2" class="InnerPanel inner-inter-panel-primary">
                                         <div class="inner-panel-body">
                                         <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation2">Second Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation2" name="appointmentLocation2" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation2" name="appointmentLocation2" class="form-control" onchange="validateAppointmentLocation('appointmentLocation2')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -4029,7 +3890,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime2">Second Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime2" name=appointmentTime2 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime2" name=appointmentTime2 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -4037,12 +3898,12 @@
                                     </div>
                                         </div>
                                      </div>
-                                     <div id="appointmentDiv3" class="InnerInnerPanel inner-inter-panel-primary">
+                                     <div id="appointmentDiv3" class="InnerPanel inner-inter-panel-primary">
                                          <div class="inner-panel-body">
                                          <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation3">Third Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation3" name="appointmentLocation3" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation3" name="appointmentLocation3" class="form-control" onchange="validateAppointmentLocation('appointmentLocation3')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -4056,7 +3917,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime3">Third Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime3" name=appointmentTime3 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime3" name=appointmentTime3 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -4064,12 +3925,12 @@
                                     </div>
                                          </div>
                                      </div>
-                                     <div id="appointmentDiv4" class="InnerInnerPanel inner-inter-panel-primary">
+                                     <div id="appointmentDiv4" class="InnerPanel inner-inter-panel-primary">
                                          <div class="inner-panel-body">
                                          <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation4">Fourth Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation4" name="appointmentLocation4" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation4" name="appointmentLocation4" class="form-control" onchange="validateAppointmentLocation('appointmentLocation4')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -4083,7 +3944,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime4">Fourth Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime4" name=appointmentTime4 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime4" name=appointmentTime4 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -4091,12 +3952,12 @@
                                     </div>
                                          </div>
                                      </div>
-                                     <div id="appointmentDiv5" class="InnerInnerPanel inner-inter-panel-primary">
+                                     <div id="appointmentDiv5" class="InnerPanel inner-inter-panel-primary">
                                          <div class="inner-panel-body">
                                          <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentLocation5">Fifth Appointment Location :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <input id="appointmentLocation5" name="appointmentLocation5" class="form-control" onchange="validateAppointmentLocation()" type="search" placeholder="Helderberg Hospital">
+                                          <input id="appointmentLocation5" name="appointmentLocation5" class="form-control" onchange="validateAppointmentLocation('appointmentLocation5')" type="search" placeholder="Helderberg Hospital">
                                        </div>
                                     </div>
                                     <div class="form-group input-group">
@@ -4110,7 +3971,7 @@
                                      <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="appointmentTime5">Fifth Appointment Time :  </label>
                                        <div class="fixingInputAlignmentInner">
-                                          <select id="appointmentTime5" name=appointmentTime5 class="form-control" style="height:32px;width:20%;">
+                                          <select id="appointmentTime5" name=appointmentTime5 class="form-control" style="height:32px;width:40%;">
                                              <option disabled selected value></option>
                                              <option value="99">Unknown</option>
                                           </select>
@@ -4118,10 +3979,6 @@
                                              </div>
                                     </div>
                                      </div>
-                                     
-                                     
-                                     
-                                     
                                     <div class="form-group input-group">
                                        <label class="fixingLabelAlignmentInner" for="immunizationDate">Immunization Date : </label>
                                        <div class="fixingInputAlignmentInner">
@@ -4141,7 +3998,8 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div id="hiddenFieldROPDate">
+                                    <div id="hiddenFieldROPDate" class="InnerPanel inner-panel-primary">
+                                        <div class="inner-panel-body">
                                        <div class="form-group input-group">
                                           <label class="fixingLabelAlignmentInner" for="ROPDate">ROP Screen Date : </label>
                                           <div class="fixingInputAlignmentInner">
@@ -4150,14 +4008,15 @@
                                              </span>
                                           </div>
                                        </div>
+                                        </div>
                                     </div>
                                  </div>
                               </div>
                               <!--END APPOINTMENT-->
                            </div>
-                        </div>
+                            </div>
                         <!-- START Completed Button -->
-                        <div class="form-group input-group">
+                            <div class="form-group input-group">
                            <a href="javascript:void(0)" onclick="javascript:checkComplete()" class="btn btn-default btn-lg page-scroll clickToFinishButton" style="position:relative;width:60%;margin-top:50px">Click to Finish</a>
                         </div>
                         <!-- END Completed Button -->
@@ -4194,8 +4053,7 @@
     <script>
         $(document).ready(function() {
         //var session = document.getElementById("session").value;
-            //if(session == true){4
-               
+            //if(session == true){
                autosave();
                checkForPopulation();
             //}
