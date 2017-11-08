@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Groote Schuur Hospital - Data Capture and Report Management System">
+    <meta name="author" content="Larry Liu, Denham Preen, Sabelo Xulu">
+      
+    <title>Groote Schuur Neonatal Data Management Application - Print</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom fonts -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet">
+    
+    <link href="css/toastr.css" rel="stylesheet" />
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="scss/dischargeTransferStyle.scss" rel="stylesheet"/>    
+      <link href="Calendar/jquery-ui.css" rel="stylesheet"/>
+      <!-- Electron JQUERY support-->
+      <script>
+         if (typeof module === 'object') {
+             window.module = module;
+             module = undefined;
+         }
+      </script>
+    
+      <style>
+      @media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .hideWhenPrinting{ visibility: hidden;}
+        #dischargeTransferHTMLPrint, #dischargeTransferHTMLPrint * {
+        visibility: visible;
+    }
+    #dischargeTransferHTMLPrint {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $A4PageWidthLess1mmBorderAnd5mmPadding; 
+        height: $A4PageHeight;
+/*        border: 1mm solid black;*/
+        margin:0;
+        
+        background: white;
+        color: black;
+        padding: 0mm 5mm;
+    }    
+    .one-third{
+        width: 64mm;
+        height:150px;
+        display:inline;
+    }
+}
+      </style>
+      
+  </head>
+    
+    <body onload="configureDB(); checkId();">
+        
+        <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
+        <button class="menuButton navbar-toggler navbar-toggler-right" type="button" onclick="openNav()" style="cursor: pointer; display: inline">
+            Menu <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="container">
+            <button style="z-index:10"  class="btn btn-default" onclick="returnToForm()" style="padding-right:20px;">Back</button>
+            <a class="navbar-brand" href="#" style="padding-left:20px;"><span id="dischargeOrTransferPrintHeader"></span> Letter</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <button style="z-index:10"  class="btn btn-default" onclick="window.print()">Print Document</button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        
+      <!-- START Menu -->
+      <div id="mySidenav" class="sidenav">
+          <a style="padding-left:20px;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <a onclick="createRecord()" class="createNewEntryMenuButton">Create New Entry</a> 
+         <a href="viewTable.html" class="viewAllEntriesMenuButton">View All Entries</a>
+<!--         <a href="#" class="helpMenuButton">Help</a>-->
+           
+    
+<!--         <a href="#" class="loginMenuButton">Change Password</a>-->
+      </div>
+      <!-- END Menu -->
+        
+    <div id="dischargeTransferHTMLPrint">
+        
+        <center>
+        
+            <div class="printRow">
+                <span class="one-third">
+                    <br><br>
+                    <img src="img/westernCapeLogo.png" alt="Western Cape" width="90%">
+                </span>
+                <span class="one-third">
+                    <h3><span id="dischargeOrTransferPrint"></span> Letter</h3>
+                </span>
+                <span class="one-third" style="float:right">
+                    <br><br>
+                    <p>Neonatal Unit<br>
+                    Groote Schuur Hospital<br>
+                    021-404-6069</p>
+                </span>
+            </div>
+        
+       </center>
+
+        
+        <hr>
+        <center>
+        <div class="headingValues">
+            <span><b>Baby of:</b> <span id="mothersNameAndSurnamePrint"></span></span>
+            <span><b>Folder Number: </b><span id="patientMedicalRecordNumberPrint"></span></span>        
+            <span><b>DOB</b>: <span id="dateOfBirthPrint"></span></span>
+            <span><b>Gender</b>: <span id="sexOfInfantPrint"></span></span>
+            <span><b>Mothers Age</b>: <span id="mothersAgePrint"></span></span>
+            <span><b>Mode Of Delivery</b>: <span id="modeOfDeliveryPrint"></span></span>
+            <span><b>Apgars (1min)</b>: <span id="apgarScoresOneMinPrint"></span></span>
+            <span><b>Apgars (5min)</b>: <span id="apgarScoresFiveMinPrint"></span></span>
+            <span><b>Birth Weight</b>: <span id="birthWeightInGramsPrint"></span></span>
+            <span><b>Head Circumference</b>: <span id="headCircumferenceAtBirthPrint"></span></span>
+            <span><b>Gestational Age</b>: <span id="gestationalAgePrint"></span></span>
+            <br>
+        </div>
+        </center>
+        <div style="display:block;">
+            <p><b>Problem list</b></p>
+            <span style="width:100mm; float:left">
+                <p><span id="birthWeightCategoryPrint"></span>
+<!--                    <textarea class="form-control birthWeightCategoryPrintHidden" id="birthWeightCategoryPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea>-->
+                <p><span id="prematureCategoryPrint"></span></p>
+                    <textarea class="form-control prematureCategoryPrintHidden" id="prematureCategoryPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea>
+                <p><span id="twinsOrMorePrint"></span></p>
+                    <textarea class="form-control twinsOrMorePrintHidden" id="twinsOrMorePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea>
+                <p><span id="rvdValuePrint"></span>
+                    <textarea class="form-control rvdValuePrintHidden" id="rvdValuePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="surfactantAtAnyTimePrint"></span>
+                    <textarea class="form-control surfactantAtAnyTimePrintHidden" id="surfactantAtAnyTimePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="cldPrint"></span>
+                    <textarea class="form-control cldPrintHidden" id="cldPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="necPlusPrint"></span>
+                    <textarea class="form-control necPlusPrintHidden" id="necPlusPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="ventilationPrint" ></span>
+                    <textarea class="form-control ventilationPrintHidden" id="ventilationPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+            </span>
+            <span style="width:100mm; ">
+                <p><span id="hypoxicIschemicEncephalopathyHighestScorePrint"></span><textarea class="form-control hypoxicIschemicEncephalopathyHighestScorePrintHidden" id="hypoxicIschemicEncephalopathyHighestScorePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="jaundiceNeedingPhototherapyPrint"></span>
+                    <textarea class="form-control jaundiceNeedingPhototherapyPrintHidden" id="jaundiceNeedingPhototherapyPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="sepsisDuringAdmissionPrint"></span>
+                    <textarea class="form-control sepsisDuringAdmissionPrintHidden" id="sepsisDuringAdmissionPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="fetalMedicineUnitFlaggedPrint"></span>
+                    <textarea class="form-control fetalMedicineUnitFlaggedPrintHidden" id="fetalMedicineUnitFlaggedPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="abnormalHeadUltrasoundPrint"></span>
+                    <textarea class="form-control abnormalHeadUltrasoundPrintHidden" id="abnormalHeadUltrasoundPrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="chromosomesDonePrint"></span>
+                    <textarea class="form-control chromosomesDonePrintHidden" id="chromosomesDonePrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+                <p><span id="immunizations652Print"></span>
+                    <textarea class="form-control immunizations652PrintHidden" id="immunizations652PrintHiddenId" type="text" placeholder="additional comments" style="height:10px;width:100%"></textarea></p>
+            </span>
+        </div>
+        <div style="clear:both; display:block;">
+            <p><b>Additional Problems / Notes: </b></p>
+            <textarea class="form-control" type="text" placeholder="" style="width:100%"></textarea>
+        </div>
+        <p>Date of <span id="dischargeOrTransferDatePrint"></span>: <span id="dateOfDischargePrint"></span> <span id="placeOfTransferPrint"></span> <span id="weightAtDischargePrint"></span> <span id="headCircumferenceAtDischargePrint"></span></p>
+        <textarea class="" type="text" placeholder="Meds:" style="width:100%">Meds:</textarea>
+        <textarea class="" rows="4" type="text" placeholder="Feeds:" style="width:100%">Feeds:</textarea>
+        <br>
+        <p><b>Follow up appointments: </b><span id="followUpAppointmentPrint"></span></p>
+        <p><b>Done by: Dr </b><input type="text" placeholder="_________________________" style="width:100%">
+        <br>    
+    </div>
+        
+        <div class="hideWhenPrinting">  
+            <center>
+                <button style="z-index:10;margin:0px 0px 20px 0px;"  class="btn btn-default" onclick="window.print()">Print Document</button>
+            </center>
+        </div>
+        
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/databaseReadWrite.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/dischargeFormPopulation.js"></script>
+        <script src="Calendar/jquery-ui.js"></script>
+    
+    <script type="text/javascript" src="js/tether.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- Custom library scripts -->
+    <script type="text/javascript" src="js/grayscale.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <!-- Custom VON Team Scripts -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script src="js/stretchy.js" async></script>
+
+    </body>
+</html>

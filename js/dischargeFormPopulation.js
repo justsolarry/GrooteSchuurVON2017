@@ -62,7 +62,7 @@ document.getElementById("modeOfDeliveryPrint").innerHTML = (delivery == 0) ? "Va
 document.getElementById("apgarScoresOneMinPrint").innerHTML = babyData.apgarScoresOneMin;
 document.getElementById("apgarScoresFiveMinPrint").innerHTML = babyData.apgarScoresFiveMin;
 document.getElementById("birthWeightInGramsPrint").innerHTML = babyData.birthWeightInGrams;
-document.getElementById("headCircumferenceAtBirthPrint").innerHTML = babyData.headCircumferenceAtBirth + "cm";
+document.getElementById("headCircumferenceAtBirthPrint").innerHTML = babyData.headCircumference + "cm";
 var readableGestationalAge = babyData.gestationalAgeInWeeks + " weeks and " + babyData.gestionalDays + " days";
 document.getElementById("gestationalAgePrint").innerHTML = readableGestationalAge;
 //Header End
@@ -178,8 +178,14 @@ if (babyData.immunizations652 == 1){
 document.getElementById("dateOfDischargePrint").innerHTML = babyData.dateOfInitialDisposition + " ";
 document.getElementById("placeOfTransferPrint").innerHTML = (babyData.initialDisposition == 2) ? "(" + babyData.transferCenterName + ")" + " " : "";
 document.getElementById("weightAtDischargePrint").innerHTML = "Weight: " + babyData.weightAtInitialDisposition+ " grams";
-document.getElementById("headCircumferenceAtDischargePrint").innerHTML = "HC: " + babyData.headCircumferenceInitialDisposition + "cm";
+document.getElementById("headCircumferenceAtDischargePrint").innerHTML = " HC: " + babyData.headCircumferenceInitialDisposition + "cm";
 //Footer Discharge Info End
 
-document.getElementById("followUpAppointmentPrint").innerHTML = babyData.appointmentLocation1 + " " + babyData.appointmentDate1 + " " + babyData.appointmentTime1+"\n" + babyData.appointmentLocation2 + " " + babyData.appointmentDate2 + " " + babyData.appointmentTime2+ "\n" + babyData.appointmentLocation3 + " " + babyData.appointmentDate3 + " " + babyData.appointmentTime3+ "\n" + babyData.appointmentLocation4 + " " + babyData.appointmentDate4 + " " + babyData.appointmentTime4+ "\n" + babyData.appointmentLocation5 + " " + babyData.appointmentDate5 + " " + babyData.appointmentTime5+ "\n";
+var appointment1 = (babyData.appointmentLocation1 != "") ? babyData.appointmentLocation1 + " " + babyData.appointmentDate1 + " " + babyData.appointmentTime1+ ":00"+"\n" : "No Appointments set";    
+var appointment2 = (babyData.appointmentLocation2 != "") ? ", " + babyData.appointmentLocation2 + " " + babyData.appointmentDate2 + " " + babyData.appointmentTime2+ ":00" +"\n" : "";        
+var appointment3 = (babyData.appointmentLocation3 != "") ? ", " + babyData.appointmentLocation3 + " " + babyData.appointmentDate3 + " " + babyData.appointmentTime3+ ":00" +"\n" : "";    
+var appointment4 = (babyData.appointmentLocation4 != "") ? ", " + babyData.appointmentLocation4 + " " + babyData.appointmentDate4 + " " + babyData.appointmentTime4+ ":00"+"\n" : "";
+var appointment5 = (babyData.appointmentLocation5 != "") ? ", " + babyData.appointmentLocation5 + " " + babyData.appointmentDate5 + " " + babyData.appointmentTime5+ ":00"+"\n" : "";    
+    
+    document.getElementById("followUpAppointmentPrint").innerHTML = appointment1 + appointment2 + appointment3 + appointment4 + appointment5;
 }

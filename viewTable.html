@@ -147,7 +147,9 @@
      <script>
         function download(text) {
             console.log("download function called")
-            var filename = "VONTransferFile" + ".xml";
+            var d = new Date();
+            var dat = d.toDateString();
+            var filename = "VONTransferFile"+ dat.replace(/\s/g, '')+ ".xml";
             var pom = document.createElement('a');
             pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
             pom.setAttribute('download', filename);

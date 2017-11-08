@@ -269,7 +269,7 @@ $(".onlyNumbers").on( "keyup", function( event ) {
 } );
 $(".onlyLetters").on( "keyup", function(event) {
      var node = $(this);
-        node.val(node.val().replace(/[^a-z]/g,'') );
+        node.val(node.val().replace(/[^A-Za-z]/g,'') );
 } );
 $("#headCircumference").on( "keyup", function( event ){
     var val = $(this).val();

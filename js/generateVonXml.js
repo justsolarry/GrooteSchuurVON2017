@@ -37,6 +37,7 @@ function formatDate(date){
 }
 
 function createXmlForEachRecord(babyData){
+    var hospitalNumber = "<HOSPNO>1052</HOSPNO>\n"; 
     var birthYear = "<BYEAR>"+ babyData.dateOfBirth.substr(babyData.dateOfBirth.lastIndexOf("-")+1)+"</BYEAR>\n";    
 //    var deleteEntry = "<DELETED>0</DELETED>\n"; //(1 to delete record although only under rare circumstances)
     var birthWeightInGrams = (babyData.birthWeightInGrams != undefined) ? "<BWGT>"+babyData.birthWeightInGrams+"</BWGT>\n" : ""; // != undefined
@@ -235,7 +236,7 @@ function createXmlForEachRecord(babyData){
     var seizures = (babyData.seizures != undefined) ? "<SEIZURE>"+babyData.seizures+"</SEIZURE>\n" : "";
     var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";  //required
 
-    var xmlDocument = "<tblInfantVON>\n" + birthYear 
+    var xmlDocument = "<tblInfantVON>\n" + hospitalNumber + birthYear 
     + birthWeightInGrams + gestationalAgeInWeeks 
     + gestationalAgePlusDays + diedInDeliveryRoom 
     + outbornBirth + dayOfAdmission 
@@ -325,6 +326,7 @@ function createXmlForEachRecord(babyData){
 
 
 function createXmlForEachRecord2017(babyData){
+    var hospitalNumber = "<HOSPNO>1052</HOSPNO>\n"; 
     var birthYear = "<BYEAR>"+ babyData.dateOfBirth.substr(babyData.dateOfBirth.lastIndexOf("-")+1)+"</BYEAR>\n";    
 //    var deleteEntry = "<DELETED>0</DELETED>\n"; //(1 to delete record although only under rare circumstances)
     var birthWeightInGrams = (babyData.birthWeightInGrams != undefined) ? "<BWGT>"+babyData.birthWeightInGrams+"</BWGT>\n" : ""; // != undefined
@@ -526,7 +528,7 @@ function createXmlForEachRecord2017(babyData){
     var seizures = (babyData.seizures != undefined) ? "<SEIZURE>"+babyData.seizures+"</SEIZURE>\n" : "";
     var medicalRecordNumber = "<MEDICALRECORDNUMBER>"+babyData.patientMedicalRecordNumber+"</MEDICALRECORDNUMBER>\n";  //required
 
-    var xmlDocument = "<tblInfantVON>\n" + birthYear 
+    var xmlDocument = "<tblInfantVON>\n" + hospitalNumber + birthYear 
     + birthWeightInGrams + gestationalAgeInWeeks 
     + gestationalAgePlusDays + diedInDeliveryRoom 
     + outbornBirth + dayOfAdmission 

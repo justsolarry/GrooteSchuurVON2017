@@ -1,0 +1,921 @@
+select option:selected{
+    background: blue;
+}
+.stop-scrolling{
+    height:100%;
+    overflow:hidden;
+}
+.activeMenuButton{
+    color: #42DCA3 !important;
+}
+
+/*----------------------------------------------------*/
+/*Temporary navbar container fix*/
+.navbar-toggler {
+            z-index: 1;
+        }
+        
+        @media (max-width: 576px) {
+            nav>.container {
+                width: 100%;
+            }
+        }
+/*Temporary navbar container fix*/
+/*----------------------------------------------------*/
+.general-form{ 
+    margin:0 auto;
+}
+/* Targetting all the div inside the col-md-9 tag */
+.cold-md-9 div{
+    display:block;
+}
+textarea{
+}
+input[type="radio"]{
+    position:relative;
+}
+input[type="search"]:disabled,.fixingInputAlignmentInner input[type="text"]:disabled {
+    background: #A9A9A9;
+}
+input[type="search"]{
+    text-transform: capitalize;
+}
+input[type="search"]::-webkit-input-placeholder {
+   text-transform: none;
+}
+
+input[type="search"]:-moz-placeholder { /* Firefox 18- */
+   text-transform: none; 
+}
+
+input[type="search"]::-moz-placeholder {  /* Firefox 19+ */
+   text-transform: none;
+}
+
+input[type="search"]:-ms-input-placeholder {  
+   text-transform: none;  
+}
+/*----------------------------------------------------*/
+.calendarField, .addingCalendar , .addingCalendarInner{
+    cursor: pointer;
+}
+/* START adding units*/
+.panel-body .addingCalendar:after{
+    position:relative;
+    right:245px;
+    top:5px;
+    float:right;
+    font-family: FontAwesome;
+}
+.panel-body .addingCalendarInner:after{
+    position:relative;
+    right:295px;
+    top:5px;
+    float:right;
+    font-family: FontAwesome;
+}
+.panel-body .addingUnits:after {
+    position:relative;
+    right:260px;
+    top:5px;
+    float:right; 
+}
+.panel-body .addingUnitsInner:after {
+    position:relative;
+    right:295px;
+    top:5px;
+    float:right; 
+}
+.unitsGrams:after{
+    content:"grams";
+}
+.unitsHours:after{
+    content:"hours";
+}
+.unitsWeeks:after{
+    content:"weeks";
+}
+.unitsCm:after{
+    content:"cm";
+}
+.unitsDays:after{
+    content:"days";
+}
+.unitsYears:after{
+    content:"years";
+}
+.unitsCentigrade:after{
+    content: "\2103";
+}
+.addingCalendarIcon:after{
+    content: "\f073";
+    color:black;
+}
+/* END adding units*/
+/*----------------------------------------------------*/
+.menuButton:hover{
+    color: white;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-transition: all .2s ease-in-out;
+      -moz-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+}
+.subHeadingTitle{
+    word-spacing: 12px;
+    font-family:  Charcoal, sans-serif;
+    font-size: 2.25em;
+    text-transform: uppercase;
+    margin-bottom: 27px;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+}
+/*----------------------------------------------------*/
+.fixingInputAlignment{
+    margin-left: 50%;
+    width: 50%;
+    height: 32px; 
+}
+.fixingInputAlignmentInner{
+    margin-left:350px;
+    width:60%;
+    height:32px; 
+}
+.fixingInputAlignmentInnerInner{
+    margin-left:300px;
+    width:60%;
+    height:32px; 
+}
+/*----------------------------------------------------*/
+/* The first label inside the DIV input-group class*/
+.input-group .fixingLabelAlignment{
+    float: left;
+    clear: left;
+    text-align: right;
+    font-size:18px;
+    padding-right:10px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    display: inline-block;
+    line-height:32px;
+    width: 50%;
+    /*background-color:green;*/
+}
+.fixingLabelAlignmentInner{
+    display: inline-block;
+    float: left;
+    clear: left;
+    height:32px;
+    width: 45%;
+    text-align: right;
+    padding-right:10px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+   /*background-color: green;*/
+}
+.fixingLabelAlignmentInnerInner{
+    display: inline-block;
+    float: left;
+    clear: left;
+    height:32px;
+    width: 40%;
+    text-align: right;
+    padding-right:10px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+   /*background-color: green;*/
+}
+/*----------------------------------------------------*/
+#GroupingHiddenField1,
+#hiddenField3,
+#hiddenField4,
+#hiddenField5,
+#hiddenField6,
+#hiddenFieldTemperatureFirstHour,
+#hiddenFieldCranialImaging,
+#hiddenFieldSteroidsCLD,
+#hiddenFieldROPSurgery,
+#hiddenFieldpPneumothorax,
+#hiddenFieldnecrotizingEnterocolitis,
+#hiddenFieldfocalIntestinalPerforation,
+#hiddenFieldRespiratory36WeeksOxygenGroup,
+#hiddenFieldAtInitialResuscitation,
+#hiddenFieldAfterInitialResuscitation,
+#hiddenFieldBacterialSepsisBefore,
+#hiddenFieldBacterialSepsis,
+#hiddenFieldCoagulaseNegative,
+#hiddenFieldFungalInfection,
+#hiddenFieldROPRetinal,
+#hiddenFieldBirthDefectCodes,
+#hiddenFieldAtDischargeGroup,
+#hiddenFieldHidingEntireSurgeryPanel,
+#hiddenFieldAPGARGroup,
+#hiddenFieldCongenitalInfectionOrganisms,
+#hiddenFieldPIHWhereOccurred,
+#hiddenFieldFetalMedicineUnitFlaggedGroup,
+#hiddenFieldFetalMedicineUnitFlaggedGroup,
+#hiddenFieldJaundiceNeedingPhototherapy,
+#hiddenFieldInvasiveVentilation,
+#hiddenFieldHIVStatus,
+#hiddenFieldHearingScreenCheck,
+#hiddenFieldRVD,
+#hiddenFieldhypoxicIschaemicEncephalopathy,
+#hiddenFieldSepsisDuringAdmission,
+#hiddenFieldImmunizations652Date,
+#hiddenFieldCFM48Hours,
+#hiddenFieldCongenitalCode1SecondPart,
+#hiddenFieldAppointmentPCRDate,
+#hiddenFieldSurfactantAtAnyTime,
+#hiddenFieldAbnormalHeadUltrasound,
+#hiddenFieldChromosomesDone,
+#hiddenFieldImmunizations652,
+#hiddenFieldTwinAB,
+#hiddenFieldTripletABC,
+.modeOfDeliveryAdditionalDiv,
+.sixWeeksOldDateDiv,
+#addNewBacterialFieldDiv,
+#organismCodeDuringAdmissionDiv,
+#dialog-confirm,
+#hiddenFieldTwins,
+#hiddenFieldTriplets,
+#hiddenFieldQuadruplets,
+#twinOrTripletDiv,
+#bacterialBeforeDiv1,
+#bacterialBeforeDiv2,
+#bacterialBeforeDiv3,
+#removeNewBacterialFieldDiv,
+#addNewBacterialFieldDiv,
+#bacterialAfterDiv1,
+#bacterialAfterDiv2,
+#bacterialAfterDiv3,
+#birthDefectCodeDiv1,
+#birthDefectCodeDiv2,
+#birthDefectCodeDiv3,
+#birthDefectCodeDiv4,
+#birthDefectCodeDiv5,
+#congenitalCodeDiv1,
+#congenitalCodeDiv2,
+#congenitalCodeDiv3,
+#surgeryDiv1,
+#surgeryDiv2,
+#surgeryDiv3,
+#surgeryDiv4,
+#surgeryDiv5,
+#bacterialCodeDuringAdmissionDiv1,
+#bacterialCodeDuringAdmissionDiv2,
+#bacterialCodeDuringAdmissionDiv3,
+#hiddenFieldImmunizations1052,
+#hiddenFieldImmunizations1052Date,
+#hiddenFieldImmunizations1452,
+#hiddenFieldImmunizations1452Date,
+#appointmentDiv1,
+#appointmentDiv2,
+#appointmentDiv3,
+#appointmentDiv4,
+#appointmentDiv5,
+#hiddenFieldROPDate
+{
+    display:none;
+}
+/* Hiding not a VON baby fields */
+/*Hiding Transfer Form section A - D*/
+#TransferFormPartA,
+#TransferFormPartB,
+#TransferFormPartC,
+#TransferFormPartD{
+    display:none;
+}
+/*----------------------------------------------------*/
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #bdc3c7;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #bdc3c7;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #bdc3c7;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #bdc3c7;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #bdc3c7;
+}
+/*----------------------------------------------------*/
+.float-left{
+    float:left;
+}
+.formProgressLabel{
+    font-family: sans-serif;
+    font-size: 1.2em;
+}
+/*----------------------------------------------------*/
+.ownToolTip {
+    position: relative;
+    display: inline-block;
+    margin: 8px 0px;
+    /* START changing the location of the icon*/
+    right:30px;
+    /* END changing the location of the icon*/
+}
+.ownToolTip .ownToolTipText {
+    visibility: hidden;
+    width: 120px;
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 3px;
+    position: absolute;
+    z-index: 999;
+    top: -5px;
+    left: 140%;
+    font-family: sans-serif;
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.ownToolTip:hover .ownToolTipText {
+    visibility: visible;
+    opacity: 1;
+}
+/*----------------------------------------------------*/
+/* Navigation left side panel container */
+#sidebar-container {
+    z-index:999;
+    position: fixed;
+    left:0px;
+    top:50px;
+    width: 25%;
+    min-width: 330px;
+    height:100vh;
+    list-style: none;
+    border-right: 1px solid;
+    display:none;
+    background:black;
+}
+/* Sidebar Styles */
+.hide-sidebar{
+    display:none;
+}
+/*Buttons on the side bar*/
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+.sidebar-nav li #patientButtonID:hover{
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+/*Cant use numbers in the front of an ID*/
+.sidebar-nav li #dayButtonID:hover{
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+.sidebar-nav li #dischargeButtonID:hover{
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+.sidebar-nav li #patientButtonID:active,
+.sidebar-nav li #28dayButtonID:active,
+.sidebar-nav li #dischargeButtonID:active,
+.sidebar-nav li #patientButtonID:focus,
+.sidebar-nav li #28dayButtonID:focus,
+.sidebar-nav li #dischargeButtonID:focus {
+    text-decoration: none;
+}
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 0;
+    }
+    #wrapper.toggled {
+        padding-left: 250px;
+    }
+    #sidebar-wrapper {
+        width: 0;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+/*----------------------------------------------------*/
+/* Progress bar */
+/* Start */
+.patientInfoPanel{
+    position:relative;
+    top: 20px;
+    border: 1px solid gray;
+    margin: 10px auto;
+    height:150px;
+    border-radius: 4px;
+    width:80%;
+    
+}
+.patientMedicalRecordDiv{
+    padding:5px;
+}
+.patientNameRecordDiv{
+    padding:5px;
+}
+.patientInfoPanelPatientMedical,.patientInfoPanelPatientName{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    color: dimgray;
+    display:block;
+    text-align: left;
+    padding-left: 2em;
+    line-height: 2em;
+}
+.patientInfoPanelPatientMedical:before{
+    position:relative;
+    right:5px;
+    float:left;
+    font-family: FontAwesome;
+    content: "\f2bb";
+    line-height: 2em;
+}
+.patientInfoPanelPatientName:before{
+    position:relative;
+    right:5px;
+    float:left;
+    font-family: FontAwesome;
+    content: "\f2c0";
+    line-height: 2em;
+}
+.patientInfoPanelPatientMedicalDisplay, .patientInfoPanelPatientNameDisplay{
+    display:block;
+    line-height:1em;
+}
+.patientMedicalRecordDivFormat{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: transparent;
+    position: relative;
+    line-height: 1em;
+    border-style: none;
+    color: #D7DBDD;
+    display:block;
+    text-align: left;
+    padding-left: 35px;
+    /*text-align: center;*/
+}
+/*----------------------------------------------------*/
+/*START PROGRESS BAR*/
+.progressBarUL{
+    list-style: none;
+    margin:0;
+    margin-left:60px;
+    margin-bottom: 50px;
+    padding:0;
+    position:relative;
+    counter-reset: step;
+    /*background-color: red;*/
+}
+/*pseudo for the solid line*/
+.progressBarUL:before{
+    z-index: 9998;
+    content:'';
+    position:absolute;
+    right:99%;
+    width:0px;
+    height:100%;
+    border:1px solid white;
+    
+}
+/* each item in the list */
+.progressBarUL li{
+    margin-top: 50px;
+    margin-bottom: auto;
+    margin-right: auto;
+    margin-left: auto;
+    position:relative;
+    width: 85%;
+    
+}
+.buttonBox{
+    position:absolute;
+    bottom: 0;
+    margin-bottom: 80px;
+}
+.buttonBox a{
+    position:relative; 
+    width:80%; 
+    margin-bottom: 15px; 
+    font-size: 0.9em;
+}
+@media (max-width: 1280px) {
+    .progressBarUL li {
+        margin-top: 100px;
+    }
+    .buttonBox a {
+        margin-bottom: 25px; 
+    }
+}
+/* Each section name */
+.progressBarUL li a{
+    font-family: "Proxima Nova Alt Light","Avenir LT Std 35 Light","Circular Std Book";
+    width:95%;
+    border-radius: 5px;
+    border: 1px solid;
+}
+/* circles */
+/* ".progressBarUL li span"  It was previously this but to decrease specifity value we made it this so the black doesn't take priority over the colour classes we are adding.*/
+div ul li .firstATag{
+    z-index: 9999;
+    content:'';
+    width:60px;
+    height:60px;
+    top:-12px;
+    left:-50px;
+    border:2px solid white;
+    position:absolute;
+    border-radius: 50%;
+    background-color: orange;
+    cursor: pointer;
+}
+/*pseudo for the circle line*/
+div ul li .firstATag:before{
+    z-index: 9998;
+    content:'';
+    position:absolute;
+    top:0;
+    left:-20px;
+    width:0px;
+    height:100%;
+}
+/* numbers */
+div ul li .firstATag:after{
+    font-family: sans-serif;
+    font-size: 20px;
+    z-index: 9999;
+    content: counter(step);
+    counter-increment: step;
+    color:white;
+    width:25px;
+    height:25px;
+    margin-left:-12.5px;
+    margin-top: 12px;
+    position:absolute;
+    
+}
+#clearFormButton:after{
+    font-family: FontAwesome;
+    content: "\f01e";
+    float:right;
+}
+.clickToFinishButton:after{
+    font-family: FontAwesome;
+    content: "\f00c";
+    float:right;
+}
+
+#PrintDischargeButton:after{
+    font-family: FontAwesome;
+    content: "\f02f";
+    float:right;
+}
+/*END PROGRESS BAR*/
+/*----------------------------------------------------*/
+/* Start Glowing of the sidebar */
+@-webkit-keyframes glowing {
+  0% {  -webkit-box-shadow: 0 0 3px #bdc3c7; }
+  50% {  -webkit-box-shadow: 0 0 40px #bdc3c7; }
+  100% {  -webkit-box-shadow: 0 0 3px #bdc3c7; }
+}
+
+@-moz-keyframes glowing {
+  0% {  -moz-box-shadow: 0 0 3px #bdc3c7; }
+  50% {  -moz-box-shadow: 0 0 40px #bdc3c7; }
+  100% {  -moz-box-shadow: 0 0 3px #bdc3c7; }
+}
+
+@-o-keyframes glowing {
+  0% {  box-shadow: 0 0 3px #bdc3c7; }
+  50% { box-shadow: 0 0 40px #bdc3c7; }
+  100% {box-shadow: 0 0 3px #bdc3c7; }
+}
+/* this one*/
+@keyframes glowing {
+  0% {  box-shadow: 0 0 10px #bdc3c7; }
+  50% {  box-shadow: 0 0 40px #bdc3c7; }
+  100% { box-shadow: 0 0 10px #bdc3c7; }
+}
+/* glow all the buttons*/
+/* Start Glowing of the hidden Fields */
+@-webkit-keyframes glowingHidden {
+  0% {  -webkit-box-shadow: 0 0 3px #bdc3c7; }
+  50% {  -webkit-box-shadow: 0 0 20px #bdc3c7; }
+  100% {  -webkit-box-shadow: 0 0 3px #bdc3c7; }
+}
+
+@-moz-keyframes glowingHidden {
+  0% {  -moz-box-shadow: 0 0 3px #bdc3c7; }
+  50% {  -moz-box-shadow: 0 0 20px #bdc3c7; }
+  100% {  -moz-box-shadow: 0 0 3px #bdc3c7; }
+}
+
+@-o-keyframes glowingHidden {
+  0% {  box-shadow: 0 0 3px #bdc3c7; }
+  50% { box-shadow: 0 0 20px #bdc3c7; }
+  100% {box-shadow: 0 0 3px #bdc3c7; }
+}
+/* this one*/
+@keyframes glowingHidden {
+  0% {  box-shadow: 0 0 3px #bdc3c7; }
+  50% { box-shadow: 0 0 20px #bdc3c7; }
+  100% {box-shadow: 0 0 3px #bdc3c7; }
+}
+@-webkit-keyframes glowingHiddenOrange {
+  0% {  -webkit-box-shadow: 0 0 3px orange; }
+  50% {  -webkit-box-shadow: 0 0 20px orange; }
+  100% {  -webkit-box-shadow: 0 0 3px orange; }
+}
+
+@-moz-keyframes glowingHiddenOrange {
+  0% {  -moz-box-shadow: 0 0 3px orange; }
+  50% {  -moz-box-shadow: 0 0 20px orange; }
+  100% {  -moz-box-shadow: 0 0 3px orange; }
+}
+
+@-o-keyframes glowingHiddenOrange {
+  0% {  box-shadow: 0 0 3px orange; }
+  50% { box-shadow: 0 0 20px orange; }
+  100% {box-shadow: 0 0 3px orange; }
+}
+/* this one*/
+@keyframes glowingHiddenOrange {
+  0% {  box-shadow: 0 0 5px orange; }
+  50% { box-shadow: 0 0 20px orange; }
+  100% {box-shadow: 0 0 5px orange; }
+}
+/* glow all the buttons*/
+.glowingButton {
+  -webkit-animation: glowing 3500ms infinite;
+  -moz-animation: glowing 3500ms infinite;
+  -o-animation: glowing 3500ms infinite;
+  animation: glowing 3500ms infinite;
+}
+.glowingHiddenFields{
+    -webkit-animation: glowingHidden 5000ms 1;
+  -moz-animation: glowingHidden 5000ms 1;
+  -o-animation: glowingHidden 5000ms 1;
+  animation: glowingHidden 5000ms 1; 
+}
+.glowingHiddenFieldsPermanent{
+    -webkit-animation: glowingHiddenOrange 5000ms infinite;
+  -moz-animation: glowingHiddenOrange 5000ms infinite;
+  -o-animation: glowingHiddenOrange 5000ms infinite;
+  animation: glowingHiddenOrange 5000ms infinite; 
+}
+/*----------------------------------------------------*/
+/* End Glowing of the sidebar */
+/* radio buttons */
+.radioFloatLeft{ /*for less than 3/4 radio */
+    float:left;
+    margin-right:0.01rem;
+    line-height: 32px;
+}
+.radioFloatLeftInner{ /*for less than 3/4 radio */
+    float:left;
+    margin: 0 0.01rem;
+    margin-top: -5px;
+    right:500px;
+    line-height: 32px;
+    /*background: red;*/
+}
+input[type="radio"]{
+    visibility: hidden;
+}
+.radioFloatLeftForSurgery{ /*for less than 3/4 radio */
+    float:left;
+    margin: 0 25px;
+    margin-top: 5px;
+   /* background:Red;*/
+}
+.radioMoreThan5{
+    
+}
+.radioText{
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:100;
+    border-radius: 4px;
+    padding :0px 10px;
+    border: 1px solid #444444;
+	background: #222222 url("../calendar/images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #eeeeee;
+    width: 6em;
+}
+
+.radioTextForHospitalResponse{
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:100;
+    border-radius: 4px;
+    padding :0px 10px;
+    border: 1px solid #444444;
+	background: #222222 url("../calendar/images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #eeeeee;
+    width: 9em;
+}
+.radioText:hover, .radioTextForHospitalResponse:hover{
+    border: 1px solid #0b93d5;
+	background: #003147 url("../calendar/images/ui-bg_highlight-soft_33_003147_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #ffffff;
+    cursor: pointer;
+    
+}
+input[type="radio"]:checked~label {
+    border: 1px solid #26b3f7;
+    background: #0972a5 url(../calendar/images/ui-bg_highlight-hard_20_0972a5_1x100.png) 50% 50% repeat-x;
+    font-weight: normal;
+    color: #ffffff;
+}
+/*----------------------------------------------------*/
+/* START Menu CSS */
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 9999999; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+/* START Menu Icons*/
+.sidenav a:nth-child(2):before{
+    content: "\f055"; 
+    font-family: FontAwesome;
+    padding-right: 10px;
+}
+.sidenav a:nth-child(3):before{
+    content: "\f15c"; 
+    font-family: FontAwesome;
+    padding-right: 10px;
+}
+.sidenav a:nth-child(4):before{
+    content: "\f059"; 
+    font-family: FontAwesome;
+    padding-right: 10px;
+}
+.sidenav a:nth-child(5):before{
+    content: "\f08b"; 
+    font-family: FontAwesome;
+    padding-right: 10px;
+}
+/* END Menu Icons*/
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 24px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    font-family: "Lato", sans-serif;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+/* END Menu CSS */
+/*----------------------------------------------------*/
+/*START Panel CSS*/
+.panel {
+    /*margin-bottom: 20px;
+    margin-left: 25px;*/
+    background-color: transparent;
+    border: 3px solid #337ab7;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    overflow: auto;
+    overflow-x: hidden;
+}
+.panel-primary {
+    border-color: #337ab7;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color:#999999;
+    min-width:930px;
+    margin-left: 7px;
+}
+.panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+}
+.panel-body {
+    padding: 35px;
+}
+.panel-body p {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: white;
+}
+@media (max-width: 1280px) {
+    .panel-primary {
+        min-width:900px;
+    }
+}
+/*END Panel CSS*/
+/*----------------------------------------------------*/
+/* START Inner Panel*/
+.InnerPanel {
+    margin: 2em 0;
+    background-color: transparent;
+    border: 1.5px solid #337ab7;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    overflow: auto;
+    overflow-x: hidden;
+}
+.inner-panel-primary {
+    border-color: #337ab7;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color:#999999;
+    width:100%;
+}
+.inner-panel-primary>.inner-panel-heading {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+.inner-panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.inner-panel-body {
+    padding: 25px;
+}
+th{
+  color: white;
+}
+
+table{
+    color:black;
+}
+
