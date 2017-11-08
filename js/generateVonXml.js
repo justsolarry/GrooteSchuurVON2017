@@ -86,16 +86,16 @@ function createXmlForEachRecord(babyData){
     var bacterialSepsisPathogen3 = (babyData.bacterialSepsisPathogen3 != undefined) ? "<EBSEPSCD3>"+ babyData.bacterialSepsisPathogen3 +"</EBSEPSCD3>\n": "";
 
     var oxygenOnDay28 = (babyData.oxygenOnDay28 != undefined) ? "<NEWOX28>"+ babyData.oxygenOnDay28 +"</NEWOX28>\n": "";
-    var cranialImagning = (babyData.cranialImagning != undefined) ? "<USOUND1>"+ babyData.cranialImagning +"</USOUND1>\n": "";
-    var periventricularHemorrhage = (babyData.periventricularHemorrhage != undefined) ? "<UGRADE1>"+ babyData.periventricularHemorrhage +"</UGRADE1>\n": "";
+    var cranialImagning = (babyData.cranialImaging != undefined) ? "<USOUND1>"+ babyData.cranialImaging +"</USOUND1>\n": "";
+    var periventricularHemorrhage = (babyData.PIHWhereOccurred != undefined) ? "<UGRADE1>"+ babyData.PIHWhereOccurred +"</UGRADE1>\n": "";
     var pihOccurance = (babyData.pihOccurance != undefined) ? "<PIHWFO>"+ babyData.pihOccurance +"</PIHWFO>\n": "";
     var diedWithin12Hours = (babyData.diedWithin12Hours != undefined) ? "<DIE12>"+ babyData.diedWithin12Hours +"</DIE12>\n": "";
 
-    var receivedOxygen = (babyData.receivedOxygen != undefined) ? "<OXY>"+ babyData.receivedOxygen  +"</OXY>\n": "";
-    var conventionalVentilation = (babyData.conventionalVentilation != undefined) ? "<VENT>"+ babyData.conventionalVentilation +"</VENT>\n": "";
-    var highFrequencyVentilation = (babyData.highFrequencyVentilation != undefined) ? "<HFV>"+ babyData.highFrequencyVentilation +"</HFV>\n": "";
-    var highFlowNasalCannula = (babyData.highFlowNasalCannula != undefined) ? "<HFNC>"+ babyData.highFlowNasalCannula +"</HFNC>\n": "";
-    var nasalIMV = (babyData.nasalIMV != undefined) ? "<NIMV>"+ babyData.nasalIMV +"</NIMV>\n": "";
+    var receivedOxygen = (babyData.oxygenAfterInitialResuscitation != undefined) ? "<OXY>"+ babyData.oxygenAfterInitialResuscitation  +"</OXY>\n": "";
+    var conventionalVentilation = (babyData.conventionalVentilationAfterInitial != undefined) ? "<VENT>"+ babyData.conventionalVentilationAfterInitial +"</VENT>\n": "";
+    var highFrequencyVentilation = (babyData.highFrequencyAfterInitial != undefined) ? "<HFV>"+ babyData.highFrequencyAfterInitial +"</HFV>\n": "";
+    var highFlowNasalCannula = (babyData.highFlowAfterInitial != undefined) ? "<HFNC>"+ babyData.highFlowAfterInitial +"</HFNC>\n": "";
+    var nasalIMV = (babyData.nasalVentilationAfterInitial != undefined) ? "<NIMV>"+ babyData.nasalVentilationAfterInitial +"</NIMV>\n": "";
     var nasalCPAPafterResuscitation = (babyData.nasalCPAPafterResuscitation != undefined) ? "<CPAP>" + babyData.nasalCPAPafterResuscitation +"</CPAP>\n": "";
     var nasalCPAPnoETT = (babyData.nasalCPAPnoETT != undefined) ? "<CPAPES>"+ babyData.nasalCPAPnoETT +"</CPAPES>\n": "";
     var surfactant = (babyData.surfactant != undefined) ? "<DRSURF>"+ babyData.surfactant +"</DRSURF>\n": "";
@@ -331,15 +331,15 @@ function createXmlForEachRecord2017(babyData){
 //    var deleteEntry = "<DELETED>0</DELETED>\n"; //(1 to delete record although only under rare circumstances)
     var birthWeightInGrams = (babyData.birthWeightInGrams != undefined) ? "<BWGT>"+babyData.birthWeightInGrams+"</BWGT>\n" : ""; // != undefined
     var gestationalAgeInWeeks = (babyData.gestationalAgeInWeeks != undefined) ? "<GAWEEKS>"+babyData.gestationalAgeInWeeks+"</GAWEEKS>\n" : "";
-    var gestationalAgePlusDays = (babyData.gestationalAgePlusDays != undefined) ? "<GADAYS>"+babyData.gestationalAgePlusDays+"</GADAYS>\n" : "";
+    var gestationalAgePlusDays = (babyData.gestationalDays != undefined) ? "<GADAYS>"+babyData.gestationalDays+"</GADAYS>\n" : "";
 
     var diedInDeliveryRoom = (babyData.diedInDeliveryRoom != undefined) ? "<DELDIE>"+babyData.diedInDeliveryRoom+"</DELDIE>\n"  : "";
     var outbornBirth = (babyData.outbornBirth != undefined) ? "<LOCATE>"+ babyData.outbornBirth +"</LOCATE>\n" : "";
     var dayOfAdmission = (babyData.dayOfAdmission != undefined) ? "<DAYADMISS>"+ babyData.dayOfAdmission +"</DAYADMISS>\n" : "";
     var transferCenterCode = (babyData.transferCenterCode != undefined) ? "<OUTB_CTR>"+ babyData.transferCenterCode + "</OUTB_CTR>\n" : "";
-    var headCircumferenceAtBirth = (babyData.headCircumferenceAtBirth != undefined) ? "<BHEADCIR>"+ babyData.headCircumferenceAtBirth +"</BHEADCIR>\n" : "";
+    var headCircumferenceAtBirth = (babyData.headCircumference != undefined) ? "<BHEADCIR>"+ babyData.headCircumference +"</BHEADCIR>\n" : "";
     var notHispanic = "<HISP>0</HISP>\n";
-    var maternalRaceOfMother = (babyData.maternalRaceOfMother != undefined) ? "<MATRACE>"+ babyData.maternalRaceOfMother +"</MATRACE>\n" : "";
+    var maternalRaceOfMother = (babyData.raceOfMother != undefined) ? "<MATRACE>"+ babyData.raceOfMother +"</MATRACE>\n" : "";
     var prenatalCare = (babyData.prenatalCare != undefined) ? "<PCARE>"+ babyData.prenatalCare +"</PCARE>\n" : "";
     var antenatalSteroids = (babyData.antenatalSteroids != undefined) ? "<ASTER>"+ babyData.antenatalSteroids +"</ASTER>\n" : "";
     var antenatalMagnesiumSulfate = (babyData.antenatalMagnesiumSulfate != undefined) ? "<AMAGSULF>"+ babyData.antenatalMagnesiumSulfate +"</AMAGSULF>\n" : "";
@@ -349,7 +349,7 @@ function createXmlForEachRecord2017(babyData){
     var modeOfDelivery = (babyData.modeOfDelivery != undefined) ? "<VAGDEL>"+ babyData.modeOfDelivery +"</VAGDEL>\n" : "";
     var sexOfInfant = (babyData.sexOfInfant != undefined) ? "<SEX>"+ babyData.sexOfInfant +"</SEX>\n" : "";
     var multipleGestation = (babyData.multipleGestation != undefined) ? "<MULT>"+ babyData.multipleGestation +"</MULT>\n" : "";
-    var numberOfBirthsDelivered = (babyData.numberOfBirthsDelivered != undefined) ? "<NBIRTHS>"+ babyData.numberOfBirthsDelivered +"</NBIRTHS>\n" : "";
+    var numberOfBirthsDelivered = (babyData.numberOfInfantsDelivered != undefined) ? "<NBIRTHS>"+ babyData.numberOfInfantsDelivered +"</NBIRTHS>\n" : "";
 
 //    var congenitalInfection = (babyData.congenitalInfection != undefined) ? "<CONGENINF>"+ babyData.congenitalInfection +"</CONGENINF>\n" : "";
 //    var congenitalInfectionOrg1 = (babyData.congenitalInfection != undefined) ? "<CONGENINFCD1>"+ babyData.congenitalInfectionOrg1 +"</CONGENINFCD1>\n" : "";
@@ -358,23 +358,23 @@ function createXmlForEachRecord2017(babyData){
 
     var apgarScoresOneMin = (babyData.apgarScoresOneMin != undefined) ? "<AP1>"+ babyData.apgarScoresOneMin +"</AP1>\n" : "";
     var apgarScoresFiveMin = (babyData.apgarScoresFiveMin != undefined) ? "<AP5>"+ babyData.apgarScoresFiveMin +"</AP5>\n" : "";
-    var oxygenDuringInitialResuscitation = (babyData.oxygenDuringInitialResuscitation != undefined) ? "<DROX>" + babyData.oxygenDuringInitialResuscitation+ "</DROX>\n" : "";
-    var facemaskVentilation = (babyData.facemaskVentilation != undefined) ? "<DRBM>"+ babyData.facemaskVentilation +"</DRBM>\n" : "";
+    var oxygenDuringInitialResuscitation = (babyData.oxygenAtInitialResuscitation != undefined) ? "<DROX>" + babyData.oxygenAtInitialResuscitation+ "</DROX>\n" : "";
+    var facemaskVentilation = (babyData.faceMaskVent != undefined) ? "<DRBM>"+ babyData.faceMaskVent +"</DRBM>\n" : "";
     var LaryngealMaskAirway = (babyData.LaryngealMaskAirway != undefined) ? "<DRLMA>"+ babyData.LaryngealMaskAirway +"</DRLMA>\n" : "";
-    var endotrachealTubeVentilation = (babyData.endotrachealTubeVentilation != undefined) ? "<DRET>" + babyData.endotrachealTubeVentilation +"</DRET>\n": "";
+    var endotrachealTubeVentilation = (babyData.endotrachealTubeVent != undefined) ? "<DRET>" + babyData.endotrachealTubeVent +"</DRET>\n": "";
     var epinephrine =(babyData.epinephrine != undefined) ? "<DREP>"+ babyData.epinephrine +"</DREP>\n": "";
     var cardiacCompression = (babyData.cardiacCompression != undefined) ?"<DRCC>"+ babyData.cardiacCompression +"</DRCC>\n": "";
 //    var nasalVentilation = (babyData.nasalVentilation != undefined) ?"<DRNIMV>"+ babyData.nasalVentilation +"</DRNIMV>\n": "";
 
-    var nasalCpap = (babyData.nasalCpap != undefined) ? "<DRCPAP>"+ babyData.nasalCpap +"</DRCPAP>\n" : "";
+    var nasalCpap = (babyData.nasalCPAPAfterInitial != undefined) ? "<DRCPAP>"+ babyData.nasalCPAPAfterInitial +"</DRCPAP>\n" : "";
     var temperatureMeasuredAtAdmissionState = (babyData.temperatureMeasuredAtAdmissionState != undefined) ? "<ATEMPM>"+ babyData.temperatureMeasuredAtAdmissionState +"</ATEMPM>\n" :"";
-    var temperatureMeasuredAtAdmission = (babyData.temperatureMeasuredAtAdmission != undefined) ? "<ATEMP>"+ babyData.temperatureMeasuredAtAdmission +"</ATEMP>\n": "";
+    var temperatureMeasuredAtAdmission = (babyData.temperatureAdmission != undefined) ? "<ATEMP>"+ babyData.temperatureAdmission +"</ATEMP>\n": "";
     var bacterialSepsis = (babyData.bacterialSepsis != undefined) ? "<EBSEPS>"+ babyData.bacterialSepsis +"</EBSEPS>\n": "";
 //    var bacterialSepsisPathogen1 = (babyData.bacterialSepsisPathogen1 != undefined) ? "<EBSEPSCD1>"+ babyData.bacterialSepsisPathogen1 +"</EBSEPSCD1>\n": "";
 //    var bacterialSepsisPathogen2= (babyData.bacterialSepsisPathogen2 != undefined) ? "<EBSEPSCD2>"+ babyData.bacterialSepsisPathogen2 +"</EBSEPSCD2>\n": "";
 //    var bacterialSepsisPathogen3 = (babyData.bacterialSepsisPathogen3 != undefined) ? "<EBSEPSCD3>"+ babyData.bacterialSepsisPathogen3 +"</EBSEPSCD3>\n": "";
 
-    var oxygenOnDay28 = (babyData.oxygenOnDay28 != undefined) ? "<NEWOX28>"+ babyData.oxygenOnDay28 +"</NEWOX28>\n": "";
+    var oxygenOnDay28 = (babyData.oxygenDay28 != undefined) ? "<NEWOX28>"+ babyData.oxygenDay28 +"</NEWOX28>\n": "";
     var cranialImagning = (babyData.cranialImagning != undefined) ? "<USOUND1>"+ babyData.cranialImagning +"</USOUND1>\n": "";
     var periventricularHemorrhage = (babyData.periventricularHemorrhage != undefined) ? "<UGRADE1>"+ babyData.periventricularHemorrhage +"</UGRADE1>\n": "";
     var pihOccurance = (babyData.pihOccurance != undefined) ? "<PIHWFO>"+ babyData.pihOccurance +"</PIHWFO>\n": "";

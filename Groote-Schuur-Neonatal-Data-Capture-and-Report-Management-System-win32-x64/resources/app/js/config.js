@@ -2,6 +2,6 @@
 
 var dbConfig = {
     ipAddress: "localhost",
-    dbName: "test1"
+    dbName: "von2017"
 };
 
