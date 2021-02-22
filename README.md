@@ -3,7 +3,7 @@
 This application replaces the paper form process in the Neonatal Unit at Groote Schuur Hospital. 
 
 ## Getting Started
-1 - Launch "index.html"
+1. Launch "index.html"
 
 ## Features
 * Dynamic form validation
